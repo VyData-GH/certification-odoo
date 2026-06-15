@@ -5,7 +5,7 @@ create table if not exists public.exam_sessions (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users (id) on delete cascade,
   session_date timestamptz not null default now(),
-  mode text not null check (mode in ('full', 'quick', 'module', 'review')),
+  mode text not null check (mode in ('full', 'quick', 'module', 'review', 'sample')),
   total_questions int not null,
   correct int not null,
   wrong int not null,

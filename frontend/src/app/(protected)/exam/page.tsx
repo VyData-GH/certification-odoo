@@ -29,6 +29,7 @@ import {
   ExamConfig,
   ExamResult,
   EXAM_PRESETS,
+  examDurationMinutes,
   LocalizedQuestion,
   ModuleId,
 } from "@/types/exam";
@@ -80,10 +81,11 @@ function ExamContent() {
       }
       clearExamReplay();
     } else if (moduleParam) {
+      const questionCount = parseInt(countParam || "15", 10);
       examConfig = {
         mode: "module",
-        questionCount: parseInt(countParam || "15", 10),
-        durationMinutes: 20,
+        questionCount,
+        durationMinutes: examDurationMinutes(questionCount, "module"),
         modules: [moduleParam],
       };
       selected = selectQuestions(examConfig);
@@ -225,9 +227,11 @@ function ExamContent() {
           <h1 className="font-medium text-sm">
             {isReviewMode
               ? tr.exam.reviewMode
-              : config.questionCount === 120
-                ? tr.exam.fullExam
-                : `${tr.exam.training} — ${questions.length} ${tr.exam.questions}`}
+              : config.presetId === "sample-test"
+                ? tr.exam.sampleTest
+                : config.questionCount === 120
+                  ? tr.exam.fullExam
+                  : `${tr.exam.training} — ${questions.length} ${tr.exam.questions}`}
           </h1>
           {!isReviewMode && config.durationMinutes > 0 ? (
             <ExamTimer

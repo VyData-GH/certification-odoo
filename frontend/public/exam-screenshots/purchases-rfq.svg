@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img">
+  <rect width="480" height="280" fill="#f8f9fa"/>
+  <rect width="480" height="40" fill="#714B67"/>
+  <text x="16" y="26" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="bold">P00089 (RFQ)</text>
+  <rect x="220" y="8" width="110" height="24" rx="3" fill="#17a2b8"/>
+  <text x="232" y="24" fill="#fff" font-size="10" font-weight="bold">Send by Email</text>
+  <rect x="338" y="8" width="122" height="24" rx="3" fill="#28a745"/>
+  <text x="350" y="24" fill="#fff" font-size="10" font-weight="bold">Confirm Order</text>
+  <text x="16" y="64" fill="#6c757d" font-size="11">Vendor: Wood Corner</text>
+  <rect x="16" y="80" width="448" height="80" rx="4" fill="#fff" stroke="#dee2e6"/>
+  <text x="28" y="104" fill="#495057" font-size="11" font-weight="bold">Product</text>
+  <text x="300" y="104" fill="#495057" font-size="11" font-weight="bold">Qty</text>
+  <text x="28" y="132" fill="#212529" font-size="11">Office Chair</text>
+  <text x="300" y="132" fill="#212529" font-size="11">20.00</text>
+</svg>

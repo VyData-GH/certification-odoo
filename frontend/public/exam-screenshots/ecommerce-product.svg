@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img">
+  <rect width="480" height="280" fill="#f8f9fa"/>
+  <rect width="480" height="40" fill="#714B67"/>
+  <text x="16" y="26" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Shop : Custom Desk</text>
+  <rect x="16" y="56" width="200" height="160" rx="4" fill="#dee2e6"/>
+  <text x="80" y="140" fill="#6c757d" font-size="12">Product image</text>
+  <text x="240" y="80" fill="#212529" font-size="16" font-weight="bold">Custom Desk</text>
+  <text x="240" y="104" fill="#6c757d" font-size="11">Color:</text>
+  <rect x="290" y="92" width="48" height="20" rx="2" fill="#fff" stroke="#714B67"/>
+  <text x="298" y="106" fill="#212529" font-size="10">Black ¾</text>
+  <text x="240" y="140" fill="#714B67" font-size="18" font-weight="bold">$ 299.00</text>
+  <rect x="240" y="160" width="120" height="32" rx="4" fill="#714B67"/>
+  <text x="258" y="181" fill="#fff" font-size="12" font-weight="bold">Add to Cart</text>
+</svg>

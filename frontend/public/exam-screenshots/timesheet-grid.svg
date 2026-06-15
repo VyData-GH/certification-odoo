@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" role="img">
+  <rect width="480" height="280" fill="#f8f9fa"/>
+  <rect width="480" height="40" fill="#714B67"/>
+  <text x="16" y="26" fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Timesheets : Week 24</text>
+  <rect x="16" y="52" width="448" height="200" rx="4" fill="#fff" stroke="#dee2e6"/>
+  <text x="28" y="76" fill="#495057" font-size="10" font-weight="bold">Project / Task</text>
+  <text x="200" y="76" fill="#495057" font-size="10" font-weight="bold">Mon</text>
+  <text x="250" y="76" fill="#495057" font-size="10" font-weight="bold">Tue</text>
+  <text x="300" y="76" fill="#495057" font-size="10" font-weight="bold">Wed</text>
+  <line x1="16" y1="84" x2="464" y2="84" stroke="#dee2e6"/>
+  <text x="28" y="108" fill="#212529" font-size="10">Internal / Training</text>
+  <rect x="196" y="94" width="40" height="20" rx="2" fill="#fff3cd" stroke="#ffc107"/>
+  <text x="206" y="108" fill="#212529" font-size="10">4:00</text>
+  <rect x="246" y="94" width="40" height="20" rx="2" fill="#fff" stroke="#dee2e6"/>
+  <text x="256" y="108" fill="#adb5bd" font-size="10">0:00</text>
+  <text x="28" y="140" fill="#212529" font-size="10">Client Project / Design</text>
+  <rect x="296" y="126" width="40" height="20" rx="2" fill="#fff3cd" stroke="#ffc107"/>
+  <text x="304" y="140" fill="#212529" font-size="10">6:30</text>
+</svg>

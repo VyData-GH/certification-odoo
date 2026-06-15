@@ -87,7 +87,9 @@ export const translations = {
         "If you wish to make changes to your account, please reach out to our Support Services.",
       subjects:
         "The exam will cover the following subjects: Website, eCommerce, Survey, Marketing, AI, CRM, Sales, Purchases, Project, Timesheet, Accounting, Inventory, MRP, HR, Spreadsheet, Knowledge, POS, and Studio.",
-      duration: "You'll have 1.5 hours to complete this 120-question exam.",
+      duration: "You'll have 1.5 hours to complete the 120-question certification exam.",
+      sampleDuration:
+        "The official Odoo sample test gives you 20 minutes for 30 questions.",
       pass: "You must score (at least) 70% to PASS.",
       rightPts: "Each RIGHT answer is worth 1 point.",
       wrongPts: "Each WRONG answer will cost you ½ point.",
@@ -99,31 +101,37 @@ export const translations = {
     presets: {
       "full-exam": {
         title: "Full Mock Exam",
-        description: "120 questions · 1h30 · All modules · Official conditions",
+        description: "All modules · Official conditions",
         badge: "Official",
       },
       "half-exam": {
         title: "Half Exam",
-        description: "60 questions · 45 min · Random mix of all modules",
+        description: "Random mix of all modules",
+      },
+      "sample-test": {
+        title: "Odoo Sample Test",
+        description:
+          "12 UI screenshots · Same scoring as Odoo official sample",
+        badge: "Odoo",
       },
       "quick-quiz": {
         title: "Quick Quiz",
-        description: "20 questions · 15 min · Ideal for a daily session",
+        description: "Ideal for a short daily session",
       },
       "daily-challenge": {
         title: "Daily Challenge",
-        description: "30 questions · 25 min · Daily random selection",
+        description: "Daily random selection",
         badge: "Daily",
       },
       "review-mode": {
         title: "Review Mode",
-        description:
-          "15 questions · No timer · Immediate explanations after each answer",
+        description: "Immediate explanations after each answer",
       },
     },
     exam: {
       leave: "← Leave",
       reviewMode: "Review Mode",
+      sampleTest: "Odoo Sample Test — 30 questions · 20 min",
       fullExam: "Mock Exam — 120 questions",
       training: "Training",
       questions: "questions",
@@ -140,6 +148,7 @@ export const translations = {
       continue: "Continue exam",
       submitFinal: "Submit definitively",
       question: "Question",
+      screenshotCaption: "Odoo interface screenshot (training mockup)",
       explanation: "Explanation",
     },
     nav2: {
@@ -210,6 +219,7 @@ export const translations = {
         module: "Module",
         review: "Review",
         quick: "Quiz",
+        sample: "Sample Test",
       },
     },
     modules_labels: {
@@ -322,7 +332,9 @@ export const translations = {
       subjects:
         "L'examen couvrira les sujets suivants : Website, eCommerce, Survey, Marketing, AI, CRM, Sales, Purchases, Project, Timesheet, Accounting, Inventory, MRP, HR, Spreadsheet, Knowledge, POS et Studio.",
       duration:
-        "Vous aurez 1h30 pour compléter cet examen de 120 questions.",
+        "Vous aurez 1h30 pour compléter l'examen de certification de 120 questions.",
+      sampleDuration:
+        "Le sample test officiel Odoo : 30 questions en 20 minutes.",
       pass: "Vous devez obtenir au moins 70% pour RÉUSSIR.",
       rightPts: "Chaque BONNE réponse vaut 1 point.",
       wrongPts: "Chaque MAUVAISE réponse coûte ½ point.",
@@ -334,32 +346,37 @@ export const translations = {
     presets: {
       "full-exam": {
         title: "Examen blanc complet",
-        description:
-          "120 questions · 1h30 · Tous les modules · Conditions officielles",
+        description: "Tous les modules · Conditions officielles",
         badge: "Officiel",
       },
       "half-exam": {
         title: "Demi-examen",
-        description: "60 questions · 45 min · Mix aléatoire de tous les modules",
+        description: "Mix aléatoire de tous les modules",
+      },
+      "sample-test": {
+        title: "Sample Test Odoo",
+        description:
+          "12 captures d'interface · Même barème que le sample officiel",
+        badge: "Odoo",
       },
       "quick-quiz": {
         title: "Quiz rapide",
-        description: "20 questions · 15 min · Idéal pour une session quotidienne",
+        description: "Idéal pour une courte session quotidienne",
       },
       "daily-challenge": {
         title: "Défi du jour",
-        description: "30 questions · 25 min · Sélection aléatoire quotidienne",
+        description: "Sélection aléatoire quotidienne",
         badge: "Quotidien",
       },
       "review-mode": {
         title: "Mode révision",
-        description:
-          "15 questions · Sans chrono · Explications immédiates après chaque réponse",
+        description: "Explications immédiates après chaque réponse",
       },
     },
     exam: {
       leave: "← Quitter",
       reviewMode: "Mode révision",
+      sampleTest: "Sample Test Odoo — 30 questions · 20 min",
       fullExam: "Examen blanc — 120 questions",
       training: "Entraînement",
       questions: "questions",
@@ -376,6 +393,7 @@ export const translations = {
       continue: "Continuer l'examen",
       submitFinal: "Soumettre définitivement",
       question: "Question",
+      screenshotCaption: "Capture d'interface Odoo (maquette d'entraînement)",
       explanation: "Explication",
     },
     nav2: {
@@ -447,6 +465,7 @@ export const translations = {
         module: "Module",
         review: "Révision",
         quick: "Quiz",
+        sample: "Sample Test",
       },
     },
     modules_labels: {

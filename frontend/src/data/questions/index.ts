@@ -17,8 +17,10 @@ import { spreadsheetQuestions } from "./spreadsheet";
 import { knowledgeQuestions } from "./knowledge";
 import { posQuestions } from "./pos";
 import { studioQuestions } from "./studio";
+import { screenshotQuestions } from "./screenshot-questions";
 
 export const allQuestions: Question[] = [
+  ...screenshotQuestions,
   ...websiteQuestions,
   ...ecommerceQuestions,
   ...surveyQuestions,

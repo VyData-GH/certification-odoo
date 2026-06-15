@@ -28,6 +28,11 @@ export interface BilingualField {
   fr: string;
 }
 
+export interface QuestionImage {
+  src: string;
+  alt: BilingualField;
+}
+
 export interface Question {
   id: string;
   module: ModuleId;
@@ -35,6 +40,7 @@ export interface Question {
   options: { en: OptionsTuple; fr: OptionsTuple };
   correctIndex: number;
   explanation: BilingualField;
+  image?: QuestionImage;
 }
 
 export interface LocalizedQuestion {
@@ -44,9 +50,10 @@ export interface LocalizedQuestion {
   options: OptionsTuple;
   correctIndex: number;
   explanation: string;
+  image?: { src: string; alt: string };
 }
 
-export type ExamMode = "full" | "quick" | "module" | "review";
+export type ExamMode = "full" | "quick" | "module" | "review" | "sample";
 
 export interface ExamConfig {
   mode: ExamMode;
@@ -106,8 +113,43 @@ export const EXAM_RULES = {
   pointsUnanswered: 0,
 } as const;
 
+/** Official Odoo cert pacing: 120 questions in 1.5 hours. */
+export const OFFICIAL_EXAM_QUESTIONS = EXAM_RULES.totalQuestions;
+export const OFFICIAL_EXAM_MINUTES = EXAM_RULES.durationMinutes;
+
+/** Odoo official sample test (fixed duration, not proportional). */
+export const SAMPLE_TEST_MINUTES = 20;
+
+/**
+ * Exam time limit from official Odoo ratio (120 Q → 90 min),
+ * except sample test (30 Q → 20 min) and review mode (no timer).
+ */
+export function examDurationMinutes(
+  questionCount: number,
+  mode?: ExamMode
+): number {
+  if (questionCount <= 0 || mode === "review") return 0;
+  if (mode === "sample") return SAMPLE_TEST_MINUTES;
+  return Math.round(
+    (questionCount / OFFICIAL_EXAM_QUESTIONS) * OFFICIAL_EXAM_MINUTES
+  );
+}
+
+/** e.g. 90 → "1h30", 45 → "45 min" */
+export function formatExamDuration(minutes: number): string {
+  if (minutes <= 0) return "—";
+  if (minutes % 60 === 0) return `${minutes / 60}h`;
+  if (minutes > 60) {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    return `${h}h${String(m).padStart(2, "0")}`;
+  }
+  return `${minutes} min`;
+}
+
 export const EXAM_PRESET_IDS = [
   "full-exam",
+  "sample-test",
   "half-exam",
   "quick-quiz",
   "daily-challenge",
@@ -116,32 +158,69 @@ export const EXAM_PRESET_IDS = [
 
 export type ExamPresetId = (typeof EXAM_PRESET_IDS)[number];
 
+export const SAMPLE_TEST_RULES = {
+  questionCount: 30,
+  durationMinutes: SAMPLE_TEST_MINUTES,
+  screenshotCount: 12,
+  passPercentage: 70,
+} as const;
+
 export const EXAM_PRESETS: ExamPreset[] = [
   {
     id: "full-exam",
     title: "full-exam",
     description: "full-exam",
     badge: "Official",
-    config: { mode: "full", questionCount: 120, durationMinutes: 90 },
+    config: {
+      mode: "full",
+      questionCount: OFFICIAL_EXAM_QUESTIONS,
+      durationMinutes: examDurationMinutes(OFFICIAL_EXAM_QUESTIONS),
+    },
+  },
+  {
+    id: "sample-test",
+    title: "sample-test",
+    description: "sample-test",
+    badge: "Odoo",
+    config: {
+      mode: "sample",
+      questionCount: SAMPLE_TEST_RULES.questionCount,
+      durationMinutes: examDurationMinutes(
+        SAMPLE_TEST_RULES.questionCount,
+        "sample"
+      ),
+    },
   },
   {
     id: "half-exam",
     title: "half-exam",
     description: "half-exam",
-    config: { mode: "full", questionCount: 60, durationMinutes: 45 },
+    config: {
+      mode: "full",
+      questionCount: 60,
+      durationMinutes: examDurationMinutes(60),
+    },
   },
   {
     id: "quick-quiz",
     title: "quick-quiz",
     description: "quick-quiz",
-    config: { mode: "quick", questionCount: 20, durationMinutes: 15 },
+    config: {
+      mode: "quick",
+      questionCount: 20,
+      durationMinutes: examDurationMinutes(20),
+    },
   },
   {
     id: "daily-challenge",
     title: "daily-challenge",
     description: "daily-challenge",
     badge: "Daily",
-    config: { mode: "quick", questionCount: 30, durationMinutes: 25 },
+    config: {
+      mode: "quick",
+      questionCount: 30,
+      durationMinutes: examDurationMinutes(30),
+    },
   },
   {
     id: "review-mode",

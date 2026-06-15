@@ -81,7 +81,13 @@ export function complexQ(
   };
 }
 
-/** @deprecated Prefer complexQ for new or revised questions */
-export function q(input: QInput): Question {
-  return input;
+/** Certification-style question with an optional UI screenshot (shuffled at exam runtime). */
+export function screenshotQ(
+  input: Omit<QInput, "options" | "correctIndex"> & {
+    correct: Bilingual;
+    distractors: DistractorTriple;
+    image: { src: string; alt: Bilingual };
+  }
+): Question {
+  return { ...complexQ(input), image: input.image };
 }

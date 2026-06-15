@@ -1,4 +1,5 @@
 import { allQuestions } from "@/data/questions";
+import { screenshotQuestions } from "@/data/questions/screenshot-questions";
 import {
   AnswerRecord,
   ExamConfig,
@@ -7,7 +8,23 @@ import {
   LocalizedQuestion,
   ModuleId,
   Question,
+  SAMPLE_TEST_RULES,
 } from "@/types/exam";
+
+/** Mirrors Odoo official sample test section mix (text questions only). */
+const SAMPLE_TEXT_SECTIONS: { modules: ModuleId[]; count: number }[] = [
+  { modules: ["studio", "knowledge", "survey", "ai"], count: 2 },
+  { modules: ["crm"], count: 2 },
+  { modules: ["inventory"], count: 2 },
+  { modules: ["mrp"], count: 2 },
+  { modules: ["website", "ecommerce"], count: 2 },
+  { modules: ["hr"], count: 2 },
+  { modules: ["timesheet"], count: 1 },
+  { modules: ["project"], count: 2 },
+  { modules: ["accounting"], count: 2 },
+  { modules: ["purchases"], count: 2 },
+  { modules: ["sales"], count: 1 },
+];
 
 function seededRandom(seed: number) {
   let s = seed;
@@ -36,6 +53,10 @@ export function getDailySeed(): number {
 }
 
 export function selectQuestions(config: ExamConfig): Question[] {
+  if (config.mode === "sample") {
+    return selectSampleTestQuestions(Date.now());
+  }
+
   const pool = config.modules?.length
     ? allQuestions.filter((q) => config.modules!.includes(q.module))
     : allQuestions;
@@ -86,6 +107,46 @@ function selectBalancedQuestions(
   }
 
   return shuffle(selected, random);
+}
+
+function selectSampleTestQuestions(seed: number): Question[] {
+  const random = seededRandom(seed);
+  const usedIds = new Set<string>();
+  const selected: Question[] = [];
+
+  for (const q of shuffle(screenshotQuestions, random).slice(
+    0,
+    SAMPLE_TEST_RULES.screenshotCount
+  )) {
+    selected.push(q);
+    usedIds.add(q.id);
+  }
+
+  const textPool = allQuestions.filter((q) => !q.image);
+
+  for (const section of SAMPLE_TEXT_SECTIONS) {
+    const sectionPool = shuffle(
+      textPool.filter(
+        (q) => section.modules.includes(q.module) && !usedIds.has(q.id)
+      ),
+      random
+    );
+    for (const q of sectionPool.slice(0, section.count)) {
+      selected.push(q);
+      usedIds.add(q.id);
+    }
+  }
+
+  const target = SAMPLE_TEST_RULES.questionCount;
+  if (selected.length < target) {
+    const remaining = shuffle(
+      textPool.filter((q) => !usedIds.has(q.id)),
+      random
+    );
+    selected.push(...remaining.slice(0, target - selected.length));
+  }
+
+  return shuffle(selected, random).slice(0, target);
 }
 
 /** Shuffle answer options so the correct choice is not always first. */

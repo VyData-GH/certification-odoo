@@ -12,6 +12,9 @@ export function localizeQuestion(
     options: question.options[locale],
     correctIndex: question.correctIndex,
     explanation: question.explanation[locale],
+    image: question.image
+      ? { src: question.image.src, alt: question.image.alt[locale] }
+      : undefined,
   };
 }
 

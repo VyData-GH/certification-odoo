@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/context/LanguageContext";
-import { EXAM_PRESETS, EXAM_RULES, MODULES } from "@/types/exam";
+import { EXAM_PRESETS, EXAM_RULES, formatExamDuration, MODULES } from "@/types/exam";
 import { getQuestionStats } from "@/lib/exam-engine";
 
 export default function HomePage() {
@@ -17,6 +17,7 @@ export default function HomePage() {
     tr.guidelines.support,
     tr.guidelines.subjects,
     tr.guidelines.duration,
+    tr.guidelines.sampleDuration,
     tr.guidelines.pass,
     tr.guidelines.rightPts,
     tr.guidelines.wrongPts,
@@ -47,7 +48,7 @@ export default function HomePage() {
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
             { label: tr.home.questions, value: String(EXAM_RULES.totalQuestions) },
-            { label: tr.home.duration, value: "1h30" },
+            { label: tr.home.duration, value: formatExamDuration(EXAM_RULES.durationMinutes) },
             {
               label: tr.home.passThreshold,
               value: `${EXAM_RULES.passPercentage}%`,
@@ -111,6 +112,11 @@ export default function HomePage() {
             {EXAM_PRESETS.map((preset) => {
               const presetTr =
                 tr.presets[preset.id as keyof typeof tr.presets];
+              const durationLabel =
+                preset.config.durationMinutes > 0
+                  ? formatExamDuration(preset.config.durationMinutes)
+                  : tr.exam.noTimer;
+              const description = `${preset.config.questionCount} ${tr.exam.questions} · ${durationLabel} · ${presetTr.description}`;
               return (
                 <Link
                   key={preset.id}
@@ -128,7 +134,7 @@ export default function HomePage() {
                     )}
                   </div>
                   <p className="text-sm text-odoo-text-muted mt-2">
-                    {presetTr.description}
+                    {description}
                   </p>
                   <span className="inline-block mt-3 text-sm font-medium text-odoo-brand">
                     {tr.home.start}

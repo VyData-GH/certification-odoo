@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { LocalizedQuestion } from "@/types/exam";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -36,6 +37,21 @@ export function QuestionCard({
       </div>
 
       <div className="odoo-card-body">
+        {question.image && (
+          <figure className="mb-5 rounded-sm border border-gray-200 bg-white overflow-hidden">
+            <Image
+              src={question.image.src}
+              alt={question.image.alt}
+              width={480}
+              height={280}
+              className="w-full h-auto"
+              unoptimized
+            />
+            <figcaption className="px-3 py-2 text-xs text-odoo-text-muted bg-gray-50 border-t border-gray-200">
+              {tr.exam.screenshotCaption}
+            </figcaption>
+          </figure>
+        )}
         <p className="text-base text-odoo-text leading-relaxed mb-5">
           {question.text}
         </p>
