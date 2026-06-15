@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+:root {
+  --odoo-brand: #714b67;
+  --odoo-brand-dark: #5c3d54;
+  --odoo-brand-light: #875a7b;
+  --odoo-action: #00a09d;
+  --odoo-action-dark: #008f8c;
+  --odoo-bg: #f0f0f0;
+  --odoo-view-bg: #ffffff;
+  --odoo-border: #cccccc;
+  --odoo-border-light: #dee2e6;
+  --odoo-text: #212529;
+  --odoo-text-muted: #6c757d;
+  --odoo-success: #28a745;
+  --odoo-danger: #dc3545;
+  --odoo-warning: #ffc107;
+  --odoo-info: #17a2b8;
+}
+
+@theme inline {
+  --color-odoo-brand: var(--odoo-brand);
+  --color-odoo-brand-dark: var(--odoo-brand-dark);
+  --color-odoo-brand-light: var(--odoo-brand-light);
+  --color-odoo-action: var(--odoo-action);
+  --color-odoo-bg: var(--odoo-bg);
+  --color-odoo-text: var(--odoo-text);
+  --color-odoo-text-muted: var(--odoo-text-muted);
+  --color-odoo-success: var(--odoo-success);
+  --color-odoo-danger: var(--odoo-danger);
+  --color-odoo-warning: var(--odoo-warning);
+  --font-sans: var(--font-lato), "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+}
+
+body {
+  background: var(--odoo-bg);
+  color: var(--odoo-text);
+  font-family: var(--font-lato), "Lucida Grande", Helvetica, Verdana, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Odoo navbar */
+.odoo-navbar {
+  background: var(--odoo-brand);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.odoo-lang-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+/* Odoo buttons */
+.odoo-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  background: var(--odoo-brand-light);
+  color: white;
+  border: 1px solid var(--odoo-brand-light);
+  border-radius: 3px;
+  font-weight: 500;
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.odoo-btn-primary:hover {
+  background: var(--odoo-brand);
+  border-color: var(--odoo-brand);
+  color: white;
+}
+
+.odoo-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  background: white;
+  color: var(--odoo-text);
+  border: 1px solid var(--odoo-border);
+  border-radius: 3px;
+  font-weight: 400;
+  transition: background 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.odoo-btn-secondary:hover {
+  background: #f8f9fa;
+}
+
+.odoo-btn-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  background: var(--odoo-action);
+  color: white;
+  border: 1px solid var(--odoo-action);
+  border-radius: 3px;
+  font-weight: 500;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+
+.odoo-btn-success:hover {
+  background: var(--odoo-action-dark);
+  border-color: var(--odoo-action-dark);
+}
+
+/* Odoo cards / panels */
+.odoo-card {
+  background: var(--odoo-view-bg);
+  border: 1px solid var(--odoo-border-light);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.odoo-card-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--odoo-border-light);
+  background: #fafafa;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--odoo-text);
+}
+
+.odoo-card-body {
+  padding: 1rem;
+}
+
+/* Odoo page header */
+.odoo-page-header {
+  background: white;
+  border-bottom: 1px solid var(--odoo-border-light);
+}
+
+.odoo-back-link {
+  color: var(--odoo-brand);
+  text-decoration: none;
+}
+
+.odoo-back-link:hover {
+  text-decoration: underline;
+}
+
+/* Odoo form controls */
+.odoo-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--odoo-border-light);
+  border-radius: 3px;
+  background: white;
+  transition: border-color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.odoo-option:hover:not(:disabled) {
+  border-color: var(--odoo-brand-light);
+  background: #faf5f9;
+}
+
+.odoo-option-selected {
+  border-color: var(--odoo-brand);
+  background: #f9f2f7;
+  box-shadow: 0 0 0 1px var(--odoo-brand);
+}
+
+.odoo-option-correct {
+  border-color: var(--odoo-success);
+  background: #f0fff4;
+}
+
+.odoo-option-wrong {
+  border-color: var(--odoo-danger);
+  background: #fff5f5;
+}
+
+/* Odoo badges */
+.odoo-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.odoo-badge-brand {
+  background: #f0e6ee;
+  color: var(--odoo-brand);
+}
+
+.odoo-badge-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.odoo-badge-warning {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* Stat boxes */
+.odoo-stat-box {
+  background: white;
+  border: 1px solid var(--odoo-border-light);
+  border-radius: 3px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.odoo-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--odoo-brand);
+  line-height: 1.2;
+}
+
+.odoo-stat-label {
+  font-size: 12px;
+  color: var(--odoo-text-muted);
+  margin-top: 0.25rem;
+}
+
+/* Guidelines block */
+.odoo-guidelines {
+  background: white;
+  border-left: 4px solid var(--odoo-brand);
+  border: 1px solid var(--odoo-border-light);
+  border-left: 4px solid var(--odoo-brand);
+}
+
+.odoo-guidelines li {
+  padding: 0.35rem 0;
+  color: var(--odoo-text);
+  font-size: 13px;
+}
+
+/* Module grid nav buttons */
+.odoo-nav-grid button,
+.odoo-nav-grid a {
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+/* Exam header bar */
+.odoo-exam-bar {
+  background: var(--odoo-brand);
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+::selection {
+  background-color: #714b6740;
+}
+
+/* White wordmark on Odoo purple navbar */
+.brand-logo-light {
+  filter: brightness(0) invert(1);
+}
