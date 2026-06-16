@@ -37,6 +37,15 @@ export const translations = {
       localOnly: "Local mode — sign in to sync history to the cloud",
       cloudSynced: "History synced to your account",
       error: "Authentication error",
+      errorEmailRateLimit:
+        "Email sending limit reached (about 2 emails per hour with Supabase's built-in provider). Wait before trying again, or check your inbox — a confirmation email may already have been sent.",
+      errorSignupRateLimit:
+        "Too many sign-up or resend attempts for this address. Please wait a few minutes before trying again.",
+      errorTooManyRequests:
+        "Too many requests. Please wait a moment and try again.",
+      errorInvalidCredentials: "Incorrect email or password.",
+      errorUserAlreadyRegistered:
+        "An account with this email already exists. Sign in or use password recovery.",
       emailNotVerified:
         "Your email address has not been verified yet. Check your inbox and click the confirmation link before signing in.",
       verifyEmailTitle: "Verify your email",
@@ -321,6 +330,15 @@ export const translations = {
       localOnly: "Mode local — connectez-vous pour synchroniser dans le cloud",
       cloudSynced: "Historique synchronisé avec votre compte",
       error: "Erreur d'authentification",
+      errorEmailRateLimit:
+        "Limite d'envoi d'e-mails atteinte (environ 2 e-mails par heure avec le fournisseur intégré Supabase). Patientez avant de réessayer, ou consultez votre boîte mail : un e-mail de confirmation a peut-être déjà été envoyé.",
+      errorSignupRateLimit:
+        "Trop de tentatives d'inscription ou de renvoi pour cette adresse. Patientez quelques minutes avant de réessayer.",
+      errorTooManyRequests:
+        "Trop de requêtes. Patientez un moment puis réessayez.",
+      errorInvalidCredentials: "E-mail ou mot de passe incorrect.",
+      errorUserAlreadyRegistered:
+        "Un compte existe déjà avec cet e-mail. Connectez-vous ou utilisez la récupération de mot de passe.",
       emailNotVerified:
         "Votre adresse e-mail n'est pas encore vérifiée. Consultez votre boîte mail et cliquez sur le lien de confirmation avant de vous connecter.",
       verifyEmailTitle: "Vérifiez votre e-mail",

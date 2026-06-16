@@ -6,7 +6,11 @@ import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
-import { isEmailVerified } from "@/lib/auth";
+import {
+  formatAuthError,
+  isEmailNotVerifiedError,
+  isEmailVerified,
+} from "@/lib/auth";
 
 function AuthForm() {
   const { tr } = useLanguage();
@@ -53,13 +57,10 @@ function AuthForm() {
         }
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : tr.auth.error;
-      if (message === "EMAIL_NOT_VERIFIED") {
+      if (isEmailNotVerifiedError(err)) {
         setPendingVerificationEmail(email);
-        setError(tr.auth.emailNotVerified);
-      } else {
-        setError(message);
       }
+      setError(formatAuthError(err, tr.auth));
     } finally {
       setLoading(false);
     }
@@ -74,7 +75,7 @@ function AuthForm() {
       await resendVerificationEmail(target);
       setInfo(tr.auth.verifyEmailResentInfo.replace("{email}", target));
     } catch (err) {
-      setError(err instanceof Error ? err.message : tr.auth.error);
+      setError(formatAuthError(err, tr.auth));
     } finally {
       setResendLoading(false);
     }
