@@ -21,12 +21,15 @@ export const MODULES = [
 
 export type ModuleId = (typeof MODULES)[number]["id"];
 
-type OptionsTuple = [string, string, string, string];
-
 export interface BilingualField {
   en: string;
   fr: string;
 }
+
+export type QuestionOptions = {
+  en: readonly string[];
+  fr: readonly string[];
+};
 
 export interface QuestionImage {
   src: string;
@@ -37,20 +40,26 @@ export interface Question {
   id: string;
   module: ModuleId;
   text: BilingualField;
-  options: { en: OptionsTuple; fr: OptionsTuple };
+  options: QuestionOptions;
   correctIndex: number;
   explanation: BilingualField;
   image?: QuestionImage;
+  /** yesno = 2 choices (Oui/Non · Yes/No); default = multiple choice */
+  questionType?: "mcq" | "yesno";
 }
 
 export interface LocalizedQuestion {
   id: string;
   module: ModuleId;
   text: string;
-  options: OptionsTuple;
+  /** Display choices (includes « I don't know » as last item when dontKnowIndex is set). */
+  options: string[];
   correctIndex: number;
+  /** Index of « I don't know » / « Je ne sais pas » when present. */
+  dontKnowIndex: number | null;
   explanation: string;
   image?: { src: string; alt: string };
+  questionType?: "mcq" | "yesno";
 }
 
 export type ExamMode = "full" | "quick" | "module" | "review" | "sample";
@@ -94,6 +103,8 @@ export interface ExamResult {
   correct: number;
   wrong: number;
   unanswered: number;
+  /** Explicit « I don't know » answers (0 points, same as blank for scoring). */
+  dontKnow?: number;
   score: number;
   /** Official exam %: (score / totalQuestions) × 100 — can be negative with wrong answers */
   percentage: number;

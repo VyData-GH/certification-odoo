@@ -22,6 +22,8 @@ export default function HomePage() {
     tr.guidelines.rightPts,
     tr.guidelines.wrongPts,
     tr.guidelines.unansweredPts,
+    tr.guidelines.dontKnowPts,
+    tr.guidelines.odooTab,
     tr.guidelines.submit,
     tr.guidelines.luck,
   ];

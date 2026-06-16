@@ -71,7 +71,7 @@ export const translations = {
       tip1: "Train daily with the daily challenge (different selection each day)",
       tip2: "Use review mode to understand mistakes with explanations",
       tip3: "Take the full mock exam when you regularly score above 75% on half-exams",
-      tip4: "Watch the scoring: a wrong answer costs ½ point — think before answering",
+      tip4: "Watch the scoring: a wrong answer costs ½ point — use « I don't know » when unsure (0 pts)",
       footer:
         "Independent simulator — not affiliated with Odoo SA. Based on the official Odoo 19 Functional Certification program.",
       view360: "360° Coverage",
@@ -94,6 +94,10 @@ export const translations = {
       rightPts: "Each RIGHT answer is worth 1 point.",
       wrongPts: "Each WRONG answer will cost you ½ point.",
       unansweredPts: "Each UNANSWERED question is worth 0 points.",
+      dontKnowPts:
+        "Use « I don't know » to skip a question without losing points (0 points, like a blank answer).",
+      odooTab:
+        "You may use Odoo in another browser tab, but you will not have time to look up every answer.",
       submit:
         "Once you submit the exam on the final page, you CANNOT go back. So, be careful and make sure to double-check your answers.",
       luck: "Best of Luck!",
@@ -128,6 +132,33 @@ export const translations = {
         description: "Immediate explanations after each answer",
       },
     },
+    briefing: {
+      intro:
+        "This session follows the official Odoo functional certification rules.",
+      sampleTitle: "Odoo Sample Test",
+      certTitle: "Odoo 19 Certification — Mock Exam",
+      trainingTitle: "Training Session",
+      reviewTitle: "Review Mode",
+      sampleTime:
+        "You have {minutes} minutes for {questions} questions (~{seconds} seconds per question on average).",
+      examTime:
+        "You have {duration} for {questions} questions (~{seconds} seconds per question on average).",
+      scoring:
+        "You gain 1 point per correct answer and lose ½ point per wrong answer.",
+      dontKnow:
+        "Use « I don't know » — always the last choice in the list — to skip without losing points (0 points).",
+      odooTab:
+        "You may open Odoo in another tab, but you will not have time to verify each answer.",
+      pass: "You need at least {threshold}% to pass.",
+      submitFinal:
+        "Once submitted, you cannot change your answers — check them carefully.",
+      reviewIntro: "No timer — take your time on each question.",
+      reviewExplanations:
+        "The explanation appears after you pick an answer or « I don't know ».",
+      back: "← Back",
+      startExam: "Start exam",
+      startReview: "Start review",
+    },
     exam: {
       leave: "← Leave",
       reviewMode: "Review Mode",
@@ -141,10 +172,17 @@ export const translations = {
         "Reminder: like the official exam, once submitted you cannot change your answers.",
       confirmTitle: "Confirm submission?",
       unanswered:
-        "question(s) remain unanswered. Unanswered questions are worth 0 points.",
-      allAnswered: "All questions have been answered.",
+        "question(s) left blank (0 points).",
+      dontKnowSummary: "marked « I don't know » (0 points).",
+      allAnswered: "Every question has been addressed.",
       scoringReminder:
-        "Scoring: +1 correct, −½ wrong. Pass threshold: 70%.",
+        "Scoring: +1 correct, −½ wrong, 0 blank or « I don't know ». Pass threshold: 70%.",
+      dontKnow: "I don't know",
+      dontKnowChosen: "You chose « I don't know » — 0 points (no penalty).",
+      dontKnowHint:
+        "« I don't know » is always the last answer choice (A–E) — 0 points, no −½ penalty.",
+      odooTabHint:
+        "You may use Odoo in another tab, but there is not enough time to look up every answer.",
       continue: "Continue exam",
       submitFinal: "Submit definitively",
       question: "Question",
@@ -153,7 +191,10 @@ export const translations = {
     },
     nav2: {
       navigation: "Navigation",
-      answered: "answered",
+      answered: "addressed",
+      legendAnswered: "Answered",
+      legendDontKnow: "I don't know",
+      legendBlank: "Blank",
       previous: "Previous",
       next: "Next",
       submit: "Submit exam",
@@ -170,11 +211,12 @@ export const translations = {
       points: "points",
       correct: "Correct",
       wrong: "Wrong",
-      unanswered: "Unanswered",
+      unanswered: "Blank",
+      dontKnow: "I don't know",
       duration: "Duration",
       byModule: "Results by module",
       scoringReminder:
-        "Official scoring: +1 pt per correct answer, −½ pt per wrong answer, 0 pt if unanswered. Pass threshold: 70%.",
+        "Official scoring: +1 pt correct, −½ pt wrong, 0 pt blank or « I don't know ». Pass: 70%.",
       retry: "Retry",
       retryQuiz: "Retake quiz",
       reviewWeak: "Review my weak areas",
@@ -314,7 +356,7 @@ export const translations = {
       tip1: "Entraînez-vous quotidiennement avec le défi du jour (sélection différente chaque jour)",
       tip2: "Utilisez le mode révision pour comprendre vos erreurs avec les explications",
       tip3: "Passez l'examen blanc complet quand vous dépassez régulièrement 75% sur les demi-examens",
-      tip4: "Attention au barème : une mauvaise réponse coûte ½ point — réfléchissez avant de répondre",
+      tip4: "Attention au barème : une mauvaise réponse coûte ½ point — utilisez « Je ne sais pas » si vous hésitez (0 pt)",
       footer:
         "Simulateur indépendant — non affilié à Odoo SA. Basé sur le programme officiel Odoo 19 Functional Certification.",
       view360: "Couverture 360°",
@@ -339,6 +381,10 @@ export const translations = {
       rightPts: "Chaque BONNE réponse vaut 1 point.",
       wrongPts: "Chaque MAUVAISE réponse coûte ½ point.",
       unansweredPts: "Chaque question SANS RÉPONSE vaut 0 point.",
+      dontKnowPts:
+        "Utilisez « Je ne sais pas » pour passer une question sans perdre de points (0 point, comme une réponse vide).",
+      odooTab:
+        "Vous pouvez utiliser Odoo dans un autre onglet, mais vous n'aurez pas le temps de vérifier chaque réponse.",
       submit:
         "Une fois l'examen soumis sur la page finale, vous NE POUVEZ PLUS revenir en arrière. Vérifiez bien vos réponses.",
       luck: "Bonne chance !",
@@ -373,6 +419,33 @@ export const translations = {
         description: "Explications immédiates après chaque réponse",
       },
     },
+    briefing: {
+      intro:
+        "Cette session suit les règles de la certification fonctionnelle Odoo officielle.",
+      sampleTitle: "Sample Test Odoo",
+      certTitle: "Certification Odoo 19 — Examen blanc",
+      trainingTitle: "Session d'entraînement",
+      reviewTitle: "Mode révision",
+      sampleTime:
+        "Vous disposez de {minutes} minutes pour {questions} questions (~{seconds} secondes par question en moyenne).",
+      examTime:
+        "Vous disposez de {duration} pour {questions} questions (~{seconds} secondes par question en moyenne).",
+      scoring:
+        "Chaque bonne réponse rapporte 1 point ; chaque mauvaise réponse enlève ½ point.",
+      dontKnow:
+        "Utilisez « Je ne sais pas » — toujours le dernier choix de la liste — pour passer sans perdre de points (0 point).",
+      odooTab:
+        "Vous pouvez ouvrir Odoo dans un autre onglet, mais vous n'aurez pas le temps de tout vérifier.",
+      pass: "Il faut obtenir au moins {threshold} % pour réussir.",
+      submitFinal:
+        "Une fois soumis, vous ne pouvez plus modifier vos réponses — vérifiez-les bien.",
+      reviewIntro: "Sans chrono — prenez le temps sur chaque question.",
+      reviewExplanations:
+        "L'explication s'affiche après votre réponse ou « Je ne sais pas ».",
+      back: "← Retour",
+      startExam: "Commencer l'examen",
+      startReview: "Commencer la révision",
+    },
     exam: {
       leave: "← Quitter",
       reviewMode: "Mode révision",
@@ -385,11 +458,18 @@ export const translations = {
       reminder:
         "Rappel : comme l'examen officiel, une fois soumis vous ne pourrez plus modifier vos réponses.",
       confirmTitle: "Confirmer la soumission ?",
-      unanswered:
-        "question(s) sans réponse. Les questions non répondues valent 0 point.",
-      allAnswered: "Toutes les questions ont une réponse.",
+      unanswered: "question(s) laissée(s) vide(s) (0 point).",
+      dontKnowSummary: "marquée(s) « Je ne sais pas » (0 point).",
+      allAnswered: "Toutes les questions ont été traitées.",
       scoringReminder:
-        "Barème : +1 bonne réponse, −½ mauvaise réponse. Seuil : 70%.",
+        "Barème : +1 bonne, −½ mauvaise, 0 vide ou « Je ne sais pas ». Seuil : 70%.",
+      dontKnow: "Je ne sais pas",
+      dontKnowChosen:
+        "Vous avez choisi « Je ne sais pas » — 0 point (pas de pénalité).",
+      dontKnowHint:
+        "« Je ne sais pas » est toujours le dernier choix proposé (A à E) — 0 point, pas de pénalité −½.",
+      odooTabHint:
+        "Vous pouvez utiliser Odoo dans un autre onglet, mais le temps ne permet pas de tout vérifier.",
       continue: "Continuer l'examen",
       submitFinal: "Soumettre définitivement",
       question: "Question",
@@ -398,7 +478,10 @@ export const translations = {
     },
     nav2: {
       navigation: "Navigation",
-      answered: "répondues",
+      answered: "traitées",
+      legendAnswered: "Répondues",
+      legendDontKnow: "Je ne sais pas",
+      legendBlank: "Vides",
       previous: "Précédent",
       next: "Suivant",
       submit: "Soumettre l'examen",
@@ -415,11 +498,12 @@ export const translations = {
       points: "points",
       correct: "Correctes",
       wrong: "Incorrectes",
-      unanswered: "Sans réponse",
+      unanswered: "Vides",
+      dontKnow: "Je ne sais pas",
       duration: "Durée",
       byModule: "Résultats par module",
       scoringReminder:
-        "Barème officiel : +1 pt par bonne réponse, −½ pt par mauvaise réponse, 0 pt si non répondu. Seuil : 70%.",
+        "Barème officiel : +1 pt bonne, −½ pt mauvaise, 0 pt vide ou « Je ne sais pas ». Seuil : 70%.",
       retry: "Recommencer",
       retryQuiz: "Recommencer le quiz",
       reviewWeak: "Réviser mes points faibles",

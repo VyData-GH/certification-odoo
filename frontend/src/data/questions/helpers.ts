@@ -1,15 +1,12 @@
 import { ModuleId, Question } from "@/types/exam";
 
-type Opts = [string, string, string, string];
 type Bilingual = { en: string; fr: string };
 type DistractorTriple = [Bilingual, Bilingual, Bilingual];
 
-interface QInput {
+interface QBase {
   id: string;
   module: ModuleId;
   text: Bilingual;
-  options: { en: Opts; fr: Opts };
-  correctIndex: number;
   explanation: Bilingual;
 }
 
@@ -25,7 +22,6 @@ const WEAK_DISTRACTOR_PATTERNS = [
 ];
 
 function assertPlausibleDistractors(distractors: Bilingual[], questionId: string) {
-  // Dev-only check at build/SSR time — avoid noisy duplicate logs in the browser
   if (typeof window !== "undefined") return;
   if (typeof process !== "undefined" && process.env.NODE_ENV === "production") return;
   for (const d of distractors) {
@@ -47,12 +43,11 @@ function assertPlausibleDistractors(distractors: Bilingual[], questionId: string
 }
 
 /**
- * Certification-style question: correct answer first (shuffled at exam runtime).
- * Distractors must be plausible Odoo 19 alternatives — real menus, settings, or workflows
- * that could mislead someone who has not mastered the topic.
+ * Certification-style question: 4 real choices (shuffled at exam runtime).
+ * « I don't know » is appended automatically when the exam starts.
  */
 export function complexQ(
-  input: Omit<QInput, "options" | "correctIndex"> & {
+  input: QBase & {
     correct: Bilingual;
     distractors: DistractorTriple;
   }
@@ -78,12 +73,59 @@ export function complexQ(
     },
     correctIndex: 0,
     explanation: input.explanation,
+    questionType: "mcq",
   };
 }
 
-/** Certification-style question with an optional UI screenshot (shuffled at exam runtime). */
+/** Three real choices (1 correct + 2 distractors) — common on the official exam. */
+export function mcq3Q(
+  input: QBase & {
+    correct: Bilingual;
+    distractors: [Bilingual, Bilingual];
+  }
+): Question {
+  assertPlausibleDistractors(input.distractors, input.id);
+  return {
+    id: input.id,
+    module: input.module,
+    text: input.text,
+    options: {
+      en: [input.correct.en, input.distractors[0].en, input.distractors[1].en],
+      fr: [input.correct.fr, input.distractors[0].fr, input.distractors[1].fr],
+    },
+    correctIndex: 0,
+    explanation: input.explanation,
+    questionType: "mcq",
+  };
+}
+
+/** Yes / No question (2 real choices + « I don't know » at exam time = 3 visible choices). */
+export function yesNoQ(
+  input: QBase & {
+    correctIsYes: boolean;
+    yes?: Bilingual;
+    no?: Bilingual;
+  }
+): Question {
+  const yes = input.yes ?? { en: "Yes", fr: "Oui" };
+  const no = input.no ?? { en: "No", fr: "Non" };
+  return {
+    id: input.id,
+    module: input.module,
+    text: input.text,
+    options: {
+      en: [yes.en, no.en],
+      fr: [yes.fr, no.fr],
+    },
+    correctIndex: input.correctIsYes ? 0 : 1,
+    explanation: input.explanation,
+    questionType: "yesno",
+  };
+}
+
+/** Certification-style question with an optional UI screenshot. */
 export function screenshotQ(
-  input: Omit<QInput, "options" | "correctIndex"> & {
+  input: QBase & {
     correct: Bilingual;
     distractors: DistractorTriple;
     image: { src: string; alt: Bilingual };

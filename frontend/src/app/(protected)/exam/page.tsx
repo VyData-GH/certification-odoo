@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ExamBriefing } from "@/components/ExamBriefing";
 import { QuestionCard } from "@/components/QuestionCard";
 import { ExamNavigation } from "@/components/ExamNavigation";
 import { ExamTimer } from "@/components/ExamTimer";
@@ -21,6 +22,7 @@ import {
   startExamRetry,
 } from "@/lib/exam-replay";
 import { localizeQuestions } from "@/lib/localize";
+import { isDontKnow, isUnanswered } from "@/lib/answers";
 import { saveHistory } from "@/services/historyService";
 import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
@@ -52,6 +54,7 @@ function ExamContent() {
   const [reviewRevealed, setReviewRevealed] = useState(false);
   const [config, setConfig] = useState<ExamConfig | null>(null);
   const [sessionSeed, setSessionSeed] = useState<number | null>(null);
+  const [examStarted, setExamStarted] = useState(false);
 
   const isReviewMode = config?.mode === "review";
 
@@ -110,7 +113,11 @@ function ExamContent() {
     }
 
     const localized = localizeQuestions(selected, locale);
-    const shuffled = shuffleAllQuestionOptions(localized, seed);
+    const shuffled = shuffleAllQuestionOptions(
+      localized,
+      seed,
+      tr.exam.dontKnow
+    );
 
     queueMicrotask(() => {
       setConfig(examConfig);
@@ -120,9 +127,15 @@ function ExamContent() {
       const duration = examConfig.durationMinutes * 60;
       setRemainingSeconds(duration);
       setTotalSeconds(duration);
-      setStartedAt(Date.now());
+      setExamStarted(false);
+      setStartedAt(null);
     });
-  }, [searchParams, router, locale]);
+  }, [searchParams, router, locale, tr.exam.dontKnow]);
+
+  const handleStartExam = useCallback(() => {
+    setExamStarted(true);
+    setStartedAt(Date.now());
+  }, []);
 
   const handleSubmit = useCallback(() => {
     if (!config || !startedAt || sessionSeed === null) return;
@@ -158,7 +171,9 @@ function ExamContent() {
   }, [config, startedAt, sessionSeed, questions, answers, accessToken]);
 
   useEffect(() => {
-    if (!config || submitted || isReviewMode || remainingSeconds <= 0) return;
+    if (!config || !examStarted || submitted || isReviewMode || remainingSeconds <= 0) {
+      return;
+    }
 
     const interval = setInterval(() => {
       setRemainingSeconds((prev) => {
@@ -172,7 +187,7 @@ function ExamContent() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [config, submitted, isReviewMode, remainingSeconds, handleSubmit]);
+  }, [config, examStarted, submitted, isReviewMode, remainingSeconds, handleSubmit]);
 
   const handleSelect = (index: number) => {
     if (submitted) return;
@@ -200,6 +215,16 @@ function ExamContent() {
     );
   }
 
+  if (!examStarted) {
+    return (
+      <ExamBriefing
+        config={config}
+        questionCount={questions.length}
+        onStart={handleStartExam}
+      />
+    );
+  }
+
   if (submitted && result) {
     return (
       <div className="min-h-screen bg-odoo-bg py-8">
@@ -211,7 +236,10 @@ function ExamContent() {
     );
   }
 
-  const unanswered = answers.filter((a) => a === null).length;
+  const blankCount = answers.filter(isUnanswered).length;
+  const dontKnowCount = answers.filter(
+    (a, i) => isDontKnow(a, questions[i]?.dontKnowIndex)
+  ).length;
   const currentQuestion = questions[currentIndex];
 
   return (
@@ -265,6 +293,7 @@ function ExamContent() {
               currentIndex={currentIndex}
               totalQuestions={questions.length}
               answers={answers}
+              dontKnowIndices={questions.map((q) => q.dontKnowIndex)}
               onGoTo={(i) => {
                 if (isReviewMode) setReviewRevealed(false);
                 setCurrentIndex(i);
@@ -276,8 +305,16 @@ function ExamContent() {
             />
 
             {!isReviewMode && (
-              <div className="mt-3 p-3 text-sm bg-amber-50 border border-amber-200 text-amber-900" style={{ borderRadius: 3 }}>
-                <strong>⚠️</strong> {tr.exam.reminder}
+              <div className="mt-3 space-y-2">
+                <div className="p-3 text-sm bg-amber-50 border border-amber-200 text-amber-900" style={{ borderRadius: 3 }}>
+                  <strong>⚠️</strong> {tr.exam.reminder}
+                </div>
+                <div className="p-3 text-sm bg-blue-50 border border-blue-200 text-blue-900" style={{ borderRadius: 3 }}>
+                  {tr.exam.odooTabHint}
+                </div>
+                <div className="p-3 text-sm bg-white border border-gray-200 text-odoo-text-muted" style={{ borderRadius: 3 }}>
+                  {tr.exam.dontKnowHint}
+                </div>
               </div>
             )}
           </div>
@@ -290,13 +327,18 @@ function ExamContent() {
         message={
           <>
             <p className="mb-3">
-              {unanswered > 0 ? (
+              {blankCount > 0 && (
                 <>
-                  <strong>{unanswered}</strong> {tr.exam.unanswered}
+                  <strong>{blankCount}</strong> {tr.exam.unanswered}
+                  {dontKnowCount > 0 ? " " : ""}
                 </>
-              ) : (
-                tr.exam.allAnswered
               )}
+              {dontKnowCount > 0 && (
+                <>
+                  <strong>{dontKnowCount}</strong> {tr.exam.dontKnowSummary}
+                </>
+              )}
+              {blankCount === 0 && dontKnowCount === 0 && tr.exam.allAnswered}
             </p>
             <p className="text-sm text-odoo-text-muted">
               {tr.exam.scoringReminder}

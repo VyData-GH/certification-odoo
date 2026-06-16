@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { isDontKnow } from "@/lib/answers";
+import { optionLabel } from "@/lib/exam-present";
 import { LocalizedQuestion } from "@/types/exam";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -60,14 +62,18 @@ export function QuestionCard({
           {question.options.map((option, index) => {
             const isSelected = selectedIndex === index;
             const isCorrect = index === question.correctIndex;
+            const isDontKnowOption =
+              question.dontKnowIndex != null && index === question.dontKnowIndex;
             let cls = "odoo-option";
 
             if (showResult) {
               if (isCorrect) cls += " odoo-option-correct";
-              else if (isSelected) cls += " odoo-option-wrong";
+              else if (isSelected && !isCorrect) cls += " odoo-option-wrong";
               else cls += " opacity-50";
             } else if (isSelected) {
-              cls += " odoo-option-selected";
+              cls += isDontKnowOption
+                ? " border-amber-500 bg-amber-50"
+                : " odoo-option-selected";
             }
 
             return (
@@ -76,7 +82,11 @@ export function QuestionCard({
                 type="button"
                 disabled={disabled || showResult}
                 onClick={() => onSelect(index)}
-                className={`${cls} ${disabled || showResult ? "cursor-default" : ""}`}
+                className={`${cls} ${disabled || showResult ? "cursor-default" : ""} ${
+                  isDontKnowOption && !isSelected && !showResult
+                    ? "border-dashed border-gray-300"
+                    : ""
+                }`}
               >
                 <div className="flex items-start gap-3">
                   <span
@@ -85,19 +95,33 @@ export function QuestionCard({
                         ? "bg-odoo-success text-white"
                         : showResult && isSelected && !isCorrect
                           ? "bg-odoo-danger text-white"
-                          : isSelected
-                            ? "bg-odoo-brand text-white"
-                            : "bg-gray-100 text-odoo-text-muted"
+                          : isSelected && isDontKnowOption
+                            ? "bg-amber-500 text-white"
+                            : isSelected
+                              ? "bg-odoo-brand text-white"
+                              : "bg-gray-100 text-odoo-text-muted"
                     }`}
                   >
-                    {String.fromCharCode(65 + index)}
+                    {optionLabel(index)}
                   </span>
-                  <span className="text-odoo-text pt-0.5">{option}</span>
+                  <span
+                    className={`pt-0.5 ${
+                      isDontKnowOption ? "text-odoo-text-muted italic" : "text-odoo-text"
+                    }`}
+                  >
+                    {option}
+                  </span>
                 </div>
               </button>
             );
           })}
         </div>
+
+        {showResult && isDontKnow(selectedIndex, question.dontKnowIndex) && (
+          <p className="mt-4 text-sm text-amber-800 bg-amber-50 border border-amber-200 px-3 py-2 rounded-sm">
+            {tr.exam.dontKnowChosen}
+          </p>
+        )}
 
         {showResult && (
           <div className="mt-5 p-3 rounded-sm bg-blue-50 border border-blue-200">

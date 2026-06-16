@@ -18,8 +18,10 @@ import { knowledgeQuestions } from "./knowledge";
 import { posQuestions } from "./pos";
 import { studioQuestions } from "./studio";
 import { screenshotQuestions } from "./screenshot-questions";
+import { yesNoQuestions } from "./yesno-questions";
 
 export const allQuestions: Question[] = [
+  ...yesNoQuestions,
   ...screenshotQuestions,
   ...websiteQuestions,
   ...ecommerceQuestions,

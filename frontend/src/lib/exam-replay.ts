@@ -7,7 +7,9 @@ import {
   LocalizedQuestion,
   Question,
 } from "@/types/exam";
+import { isDontKnow } from "@/lib/answers";
 import { shuffleAllQuestionOptions } from "@/lib/exam-engine";
+import { t } from "@/i18n/translations";
 
 const REPLAY_STORAGE_KEY = "odoo-exam-replay";
 
@@ -122,7 +124,8 @@ export function getReviewItems(
   const localized = localizeQuestions(ordered, locale);
   const shuffled = shuffleAllQuestionOptions(
     localized,
-    sessionMeta.sessionSeed
+    sessionMeta.sessionSeed,
+    t(locale).exam.dontKnow
   );
   const answerMap = new Map(
     answers.map((a) => [a.questionId, a.selectedIndex])
@@ -133,6 +136,8 @@ export function getReviewItems(
     const selected = answerMap.get(question.id) ?? null;
     if (selected === null || selected === undefined) {
       items.push({ question, selectedIndex: null, status: "unanswered" });
+    } else if (isDontKnow(selected, question.dontKnowIndex)) {
+      continue;
     } else if (selected !== question.correctIndex) {
       items.push({ question, selectedIndex: selected, status: "wrong" });
     }

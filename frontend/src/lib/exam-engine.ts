@@ -1,3 +1,5 @@
+import { isDontKnow, isUnanswered } from "@/lib/answers";
+import { prepareQuestionForExam } from "@/lib/exam-present";
 import { allQuestions } from "@/data/questions";
 import { screenshotQuestions } from "@/data/questions/screenshot-questions";
 import {
@@ -127,7 +129,10 @@ function selectSampleTestQuestions(seed: number): Question[] {
   for (const section of SAMPLE_TEXT_SECTIONS) {
     const sectionPool = shuffle(
       textPool.filter(
-        (q) => section.modules.includes(q.module) && !usedIds.has(q.id)
+        (q) =>
+          section.modules.includes(q.module) &&
+          !usedIds.has(q.id) &&
+          q.questionType !== "yesno"
       ),
       random
     );
@@ -146,43 +151,66 @@ function selectSampleTestQuestions(seed: number): Question[] {
     selected.push(...remaining.slice(0, target - selected.length));
   }
 
+  // Mix in yes/no questions (official exam includes them)
+  const yesNoPool = shuffle(
+    textPool.filter((q) => q.questionType === "yesno" && !usedIds.has(q.id)),
+    random
+  );
+  for (const yn of yesNoPool.slice(0, 4)) {
+    if (selected.length === 0) break;
+    const replaceAt = Math.floor(random() * selected.length);
+    const old = selected[replaceAt];
+    if (old) usedIds.delete(old.id);
+    selected[replaceAt] = yn;
+    usedIds.add(yn.id);
+  }
+
   return shuffle(selected, random).slice(0, target);
 }
 
-/** Shuffle answer options so the correct choice is not always first. */
+/** Shuffle real options and append « I don't know » like the official Odoo exam. */
 export function shuffleQuestionOptions(
   question: LocalizedQuestion,
-  random: () => number
+  random: () => number,
+  dontKnowLabel: string,
+  includeDontKnow = true
 ): LocalizedQuestion {
-  const order = [0, 1, 2, 3];
-  for (let i = order.length - 1; i > 0; i--) {
-    const j = Math.floor(random() * (i + 1));
-    [order[i], order[j]] = [order[j], order[i]];
-  }
-
-  return {
-    ...question,
-    options: order.map((i) => question.options[i]) as LocalizedQuestion["options"],
-    correctIndex: order.indexOf(question.correctIndex),
-  };
+  return prepareQuestionForExam(question, dontKnowLabel, random, includeDontKnow);
 }
 
 export function shuffleAllQuestionOptions(
   questions: LocalizedQuestion[],
-  seed: number
+  seed: number,
+  dontKnowLabel: string,
+  includeDontKnow = true
 ): LocalizedQuestion[] {
   const random = seededRandom(seed);
-  return questions.map((q) => shuffleQuestionOptions(q, random));
+  return questions.map((q) =>
+    shuffleQuestionOptions(q, random, dontKnowLabel, includeDontKnow)
+  );
+}
+
+/** Average seconds per question for a timed exam. */
+export function secondsPerQuestion(
+  durationMinutes: number,
+  questionCount: number
+): number {
+  if (questionCount <= 0 || durationMinutes <= 0) return 0;
+  return Math.round((durationMinutes * 60) / questionCount);
 }
 
 export function calculateScore(
-  questions: Pick<LocalizedQuestion, "id" | "module" | "correctIndex">[],
+  questions: Pick<
+    LocalizedQuestion,
+    "id" | "module" | "correctIndex" | "dontKnowIndex"
+  >[],
   answers: AnswerRecord[]
 ): Pick<
   ExamResult,
   | "correct"
   | "wrong"
   | "unanswered"
+  | "dontKnow"
   | "score"
   | "percentage"
   | "passed"
@@ -192,6 +220,7 @@ export function calculateScore(
   let correct = 0;
   let wrong = 0;
   let unanswered = 0;
+  let dontKnow = 0;
   const moduleBreakdown = {} as Record<
     ModuleId,
     { correct: number; total: number }
@@ -203,9 +232,11 @@ export function calculateScore(
     }
     moduleBreakdown[q.module].total++;
 
-    const selected = answerMap.get(q.id);
-    if (selected === null || selected === undefined) {
+    const selected = answerMap.get(q.id) ?? null;
+    if (isUnanswered(selected)) {
       unanswered++;
+    } else if (isDontKnow(selected, q.dontKnowIndex)) {
+      dontKnow++;
     } else if (selected === q.correctIndex) {
       correct++;
       moduleBreakdown[q.module].correct++;
@@ -217,7 +248,7 @@ export function calculateScore(
   const score =
     correct * EXAM_RULES.pointsCorrect +
     wrong * EXAM_RULES.pointsWrong +
-    unanswered * EXAM_RULES.pointsUnanswered;
+    (unanswered + dontKnow) * EXAM_RULES.pointsUnanswered;
 
   const total = questions.length;
   const maxScore = total * EXAM_RULES.pointsCorrect;
@@ -228,6 +259,7 @@ export function calculateScore(
     correct,
     wrong,
     unanswered,
+    dontKnow,
     score,
     percentage,
     passed: percentage >= EXAM_RULES.passPercentage,

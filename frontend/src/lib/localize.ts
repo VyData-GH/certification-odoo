@@ -9,9 +9,11 @@ export function localizeQuestion(
     id: question.id,
     module: question.module,
     text: question.text[locale],
-    options: question.options[locale],
+    options: [...question.options[locale]],
     correctIndex: question.correctIndex,
+    dontKnowIndex: null,
     explanation: question.explanation[locale],
+    questionType: question.questionType,
     image: question.image
       ? { src: question.image.src, alt: question.image.alt[locale] }
       : undefined,

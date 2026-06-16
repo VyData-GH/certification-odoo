@@ -92,10 +92,13 @@ export function ExamResultSummary({
         )}
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className={`grid gap-3 ${result.dontKnow ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3"}`}>
         {[
           { label: tr.results.correct, value: result.correct },
           { label: tr.results.wrong, value: result.wrong },
+          ...(result.dontKnow
+            ? [{ label: tr.results.dontKnow, value: result.dontKnow }]
+            : []),
           {
             label: tr.results.examPoints,
             value: `${result.score.toFixed(1)}`,
