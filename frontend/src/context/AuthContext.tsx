@@ -9,7 +9,7 @@ import {
 } from "react";
 import type { Session, User } from "@supabase/supabase-js";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase/client";
-import { isEmailVerified } from "@/lib/auth";
+import { getAuthRedirectUrl, isEmailVerified } from "@/lib/auth";
 import { syncLocalHistoryToCloud } from "@/services/historyService";
 
 interface AuthContextValue {
@@ -73,7 +73,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signUp = useCallback(async (email: string, password: string) => {
     const supabase = getSupabase();
     if (!supabase) throw new Error("Supabase not configured");
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: getAuthRedirectUrl() },
+    });
     if (error) throw error;
     const needsEmailVerification = Boolean(
       data.user && !isEmailVerified(data.user)
@@ -90,6 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const { error } = await supabase.auth.resend({
       type: "signup",
       email,
+      options: { emailRedirectTo: getAuthRedirectUrl() },
     });
     if (error) throw error;
   }, []);
