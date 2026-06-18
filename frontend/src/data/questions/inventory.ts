@@ -601,4 +601,304 @@ export const inventoryQuestions = [
       fr: "Chaque type d'opération (Réceptions, Livraisons, Transferts internes, etc.) contrôle les paramètres de workflow pour ce processus entrepôt.",
     },
   }),
+  complexQ({
+    id: "inv-021",
+    module: "inventory",
+    text: {
+      en: "What do inventory transfers determine in Odoo warehouse operations? (Odoo Learn — Basic Warehouse Setup)",
+      fr: "Que déterminent les transferts de stock dans les opérations entrepôt Odoo ? (Odoo Learn — Configuration entrepôt)",
+    },
+    correct: {
+      en: "How products move within the warehouse and how shipments are processed",
+      fr: "Comment les produits se déplacent dans l'entrepôt et comment les expéditions sont traitées",
+    },
+    distractors: [
+      {
+        en: "The number of employees needed in the warehouse",
+        fr: "Le nombre d'employés nécessaires dans l'entrepôt",
+      },
+      {
+        en: "The pricing of products based on warehouse location",
+        fr: "La tarification des produits selon l'emplacement entrepôt",
+      },
+      {
+        en: "Which suppliers can send shipments to the warehouse",
+        fr: "Quels fournisseurs peuvent envoyer des expéditions à l'entrepôt",
+      },
+    ],
+    explanation: {
+      en: "Operation types and transfers define inbound, outbound, and internal flows (receipt, pick, pack, ship).",
+      fr: "Les types d'opération et transferts définissent les flux entrants, sortants et internes (réception, prélèvement, colisage, expédition).",
+    },
+  }),
+  complexQ({
+    id: "inv-022",
+    module: "inventory",
+    text: {
+      en: "When should you use a three-step receipt for quality checks in Odoo?",
+      fr: "Quand utiliser une réception en trois étapes pour les contrôles qualité dans Odoo ?",
+    },
+    correct: {
+      en: "Only when quality checks must happen at a separate inspection location",
+      fr: "Uniquement quand les contrôles qualité doivent avoir lieu dans un emplacement d'inspection séparé",
+    },
+    distractors: [
+      {
+        en: "Only when some products need quality checks, regardless of location",
+        fr: "Dès que certains produits nécessitent un contrôle qualité, quel que soit l'emplacement",
+      },
+      {
+        en: "Always, because quality checks can only be done with three-step receipts",
+        fr: "Toujours, car les contrôles qualité ne sont possibles qu'avec une réception en trois étapes",
+      },
+      {
+        en: "Never, because quality checks are only possible with one-step receipts",
+        fr: "Jamais, car les contrôles qualité ne sont possibles qu'avec une réception en une étape",
+      },
+    ],
+    explanation: {
+      en: "Three-step receipt adds an input → quality → stock flow when inspection is physically separated from storage.",
+      fr: "La réception en trois étapes ajoute un flux entrée → qualité → stock quand l'inspection est physiquement séparée du stockage.",
+    },
+  }),
+  complexQ({
+    id: "inv-023",
+    module: "inventory",
+    text: {
+      en: "In Odoo's three-step delivery process, what are the correct steps for moving products?",
+      fr: "Dans une livraison en trois étapes Odoo, quelles sont les étapes correctes pour déplacer les produits ?",
+    },
+    correct: {
+      en: "Pick from storage → Pack into orders → Move to the output area",
+      fr: "Prélever depuis le stock → Coliser par commande → Déplacer vers la zone de sortie",
+    },
+    distractors: [
+      {
+        en: "Perform quality check → Move to picking → Pack into orders",
+        fr: "Contrôle qualité → Déplacement vers prélèvement → Colisage par commande",
+      },
+      {
+        en: "Pick from storage → Send to quality check → Move directly to customers",
+        fr: "Prélever depuis le stock → Envoyer au contrôle qualité → Livrer directement au client",
+      },
+      {
+        en: "Pack into orders → Pick from storage → Move to the picking area",
+        fr: "Coliser par commande → Prélever depuis le stock → Déplacer vers la zone de prélèvement",
+      },
+    ],
+    explanation: {
+      en: "Three-step delivery separates pick, pack, and ship stages before the carrier collects goods from the output location.",
+      fr: "La livraison en trois étapes sépare prélèvement, colisage et expédition avant enlèvement par le transporteur en zone de sortie.",
+    },
+  }),
+  complexQ({
+    id: "inv-024",
+    module: "inventory",
+    text: {
+      en: "Where are cycle counts performed in Odoo Inventory?",
+      fr: "Où sont effectués les comptages cycliques dans Inventaire Odoo ?",
+    },
+    correct: {
+      en: "At specific stock locations",
+      fr: "Sur des emplacements de stock précis",
+    },
+    distractors: [
+      {
+        en: "At the warehouse level only, without location detail",
+        fr: "Au niveau entrepôt uniquement, sans détail par emplacement",
+      },
+      {
+        en: "On storage categories instead of physical locations",
+        fr: "Sur les catégories de stockage plutôt que sur les emplacements physiques",
+      },
+      {
+        en: "On operation types such as receipts and deliveries",
+        fr: "Sur les types d'opération comme les réceptions et livraisons",
+      },
+    ],
+    explanation: {
+      en: "Cycle counts target locations; you can schedule counts per location and request counts from the Locations list.",
+      fr: "Les comptages cycliques ciblent des emplacements ; on peut planifier par emplacement et demander un comptage depuis la liste des emplacements.",
+    },
+  }),
+  complexQ({
+    id: "inv-025",
+    module: "inventory",
+    text: {
+      en: "How do you request a cycle count for products in a location in Odoo?",
+      fr: "Comment demander un comptage cyclique pour les produits d'un emplacement dans Odoo ?",
+    },
+    correct: {
+      en: "Select the products in that location, then click the Request a Count button",
+      fr: "Sélectionner les produits de cet emplacement, puis cliquer sur le bouton Demander un comptage",
+    },
+    distractors: [
+      {
+        en: "Change the Next Expected date on the location form only",
+        fr: "Modifier uniquement la date Prochain comptage prévu sur la fiche emplacement",
+      },
+      {
+        en: "Email the person assigned to count the warehouse manually",
+        fr: "Envoyer un e-mail manuellement à la personne chargée du comptage entrepôt",
+      },
+      {
+        en: "Change the User field on each product stored in the location",
+        fr: "Modifier le champ Utilisateur sur chaque produit stocké dans l'emplacement",
+      },
+    ],
+    explanation: {
+      en: "From Inventory → Locations, select products and use Request a Count to launch a scheduled inventory count.",
+      fr: "Depuis Inventaire → Emplacements, sélectionnez les produits et utilisez Demander un comptage pour lancer un inventaire planifié.",
+    },
+  }),
+  complexQ({
+    id: "inv-026",
+    module: "inventory",
+    text: {
+      en: "Which reordering rule trigger makes Odoo automatically order products when forecasted stock falls below the minimum?",
+      fr: "Quel déclencheur de règle de réapprovisionnement commande automatiquement quand le stock prévu passe sous le minimum ?",
+    },
+    correct: {
+      en: "Auto",
+      fr: "Auto",
+    },
+    distractors: [
+      {
+        en: "Manual",
+        fr: "Manuel",
+      },
+      {
+        en: "MTO (Make to Order route only)",
+        fr: "MTO (route Fabrication sur commande uniquement)",
+      },
+      {
+        en: "MPS (Master Production Schedule)",
+        fr: "PDP (Plan directeur de production)",
+      },
+    ],
+    explanation: {
+      en: "Auto reordering rules generate RFQs or MOs when forecasted quantity drops below the minimum threshold.",
+      fr: "Les règles Auto génèrent des demandes de prix ou des OF quand la quantité prévue descend sous le seuil minimum.",
+    },
+  }),
+  complexQ({
+    id: "inv-027",
+    module: "inventory",
+    text: {
+      en: "A reordering rule has Min 10, Max 20, and 5 units on hand. How many units will Odoo order?",
+      fr: "Une règle min 10, max 20, avec 5 unités en stock. Combien d'unités Odoo commande-t-il ?",
+    },
+    correct: {
+      en: "15 units (to reach the maximum of 20)",
+      fr: "15 unités (pour atteindre le maximum de 20)",
+    },
+    distractors: [
+      {
+        en: "10 units (to reach the minimum of 10)",
+        fr: "10 unités (pour atteindre le minimum de 10)",
+      },
+      {
+        en: "5 units (the gap below minimum only)",
+        fr: "5 unités (uniquement l'écart sous le minimum)",
+      },
+      {
+        en: "25 units (maximum plus on-hand quantity)",
+        fr: "25 unités (maximum plus quantité en stock)",
+      },
+    ],
+    explanation: {
+      en: "Odoo orders enough to bring forecasted/on-hand stock up to the Max quantity: 20 − 5 = 15.",
+      fr: "Odoo commande pour remonter le stock jusqu'au maximum : 20 − 5 = 15.",
+    },
+  }),
+  complexQ({
+    id: "inv-028",
+    module: "inventory",
+    text: {
+      en: "Where can you see all reordering rules for all products in Odoo?",
+      fr: "Où voir toutes les règles de réapprovisionnement de tous les produits dans Odoo ?",
+    },
+    correct: {
+      en: "Inventory app → Replenishment dashboard",
+      fr: "Application Inventaire → Tableau de bord Réapprovisionnement",
+    },
+    distractors: [
+      {
+        en: "Manufacturing app → Reordering Logic menu",
+        fr: "Application Fabrication → menu Logique de réapprovisionnement",
+      },
+      {
+        en: "Automation app → Rules and Replenishment",
+        fr: "Application Automatisation → Règles et réapprovisionnement",
+      },
+      {
+        en: "Only on each individual product form; no global list exists",
+        fr: "Uniquement sur chaque fiche produit ; aucune liste globale n'existe",
+      },
+    ],
+    explanation: {
+      en: "The Replenishment report lists products below minimum and all configured reordering rules.",
+      fr: "Le rapport Réapprovisionnement liste les produits sous le minimum et toutes les règles configurées.",
+    },
+  }),
+  complexQ({
+    id: "inv-029",
+    module: "inventory",
+    text: {
+      en: "On-hand quantity is between the reordering rule minimum and maximum. What does Order to Max do?",
+      fr: "Le stock est entre le minimum et le maximum de la règle. Que fait Commander jusqu'au max ?",
+    },
+    correct: {
+      en: "Creates a purchase order for the difference between the maximum and on-hand quantities",
+      fr: "Crée un bon de commande pour la différence entre le maximum et la quantité en stock",
+    },
+    distractors: [
+      {
+        en: "Does nothing because the rule is not triggered below minimum",
+        fr: "Ne fait rien car la règle n'est pas déclenchée tant que le minimum n'est pas atteint",
+      },
+      {
+        en: "Orders the full maximum quantity regardless of on-hand stock",
+        fr: "Commande la quantité maximum complète quel que soit le stock actuel",
+      },
+      {
+        en: "Orders the difference between maximum and minimum only",
+        fr: "Commande uniquement la différence entre maximum et minimum",
+      },
+    ],
+    explanation: {
+      en: "Order to Max manually tops up stock to the Max level even when forecast is above the Min threshold.",
+      fr: "Commander jusqu'au max réapprovisionne manuellement jusqu'au niveau Max même si le stock prévu est au-dessus du Min.",
+    },
+  }),
+  complexQ({
+    id: "inv-030",
+    module: "inventory",
+    text: {
+      en: "When does a product with a manual reordering rule appear on the Replenishment report?",
+      fr: "Quand un produit avec règle manuelle apparaît-il sur le rapport Réapprovisionnement ?",
+    },
+    correct: {
+      en: "When forecasted quantity is below the minimum set in the reordering rule",
+      fr: "Quand la quantité prévue est inférieure au minimum défini dans la règle",
+    },
+    distractors: [
+      {
+        en: "Only when no vendor is configured on the product form",
+        fr: "Uniquement quand aucun fournisseur n'est configuré sur la fiche produit",
+      },
+      {
+        en: "Whenever minimum and maximum are both set to zero",
+        fr: "Dès que le minimum et le maximum sont tous deux à zéro",
+      },
+      {
+        en: "Never; manual rules are excluded from the Replenishment report",
+        fr: "Jamais ; les règles manuelles sont exclues du rapport Réapprovisionnement",
+      },
+    ],
+    explanation: {
+      en: "Manual rules list needs on the Replenishment dashboard when forecast drops below Min; the user clicks Order to generate RFQs.",
+      fr: "Les règles manuelles affichent les besoins sur le tableau Réapprovisionnement quand le prévu passe sous le Min ; l'utilisateur clique Commander pour générer les demandes de prix.",
+    },
+  }),
 ];

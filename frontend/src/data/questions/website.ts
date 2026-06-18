@@ -601,4 +601,94 @@ export const websiteQuestions = [
       fr: "Les utilisateurs autorisés passent en Éditer sur le frontend pour glisser des blocs et ajuster le thème.",
     },
   }),
+  complexQ({
+    id: "web-021",
+    module: "website",
+    text: {
+      en: "After building a site with the Website configurator, what can you still change?",
+      fr: "Après avoir créé un site avec le configurateur Website, que peut-on encore modifier ?",
+    },
+    correct: {
+      en: "Everything — logo, colors, content, and structure remain editable",
+      fr: "Tout — logo, couleurs, contenu et structure restent modifiables",
+    },
+    distractors: [
+      {
+        en: "Only the color palette can be changed after configurator completion",
+        fr: "Seule la palette de couleurs peut être modifiée après le configurateur",
+      },
+      {
+        en: "Only the logo can be changed; pages are locked",
+        fr: "Seul le logo peut être changé ; les pages sont verrouillées",
+      },
+      {
+        en: "Nothing — the configurator output is frozen unless you restart from scratch",
+        fr: "Rien — le résultat du configurateur est figé sauf à recommencer à zéro",
+      },
+    ],
+    explanation: {
+      en: "Configurator generates a starting site; Edit mode and settings allow full customization afterward.",
+      fr: "Le configurateur génère un site de départ ; le mode Éditer et les paramètres permettent toute personnalisation ensuite.",
+    },
+  }),
+  complexQ({
+    id: "web-022",
+    module: "website",
+    text: {
+      en: "How does selecting the main objective affect a website created with the Website configurator?",
+      fr: "Comment le choix de l'objectif principal affecte-t-il un site créé avec le configurateur Website ?",
+    },
+    correct: {
+      en: "Among other effects, it influences the main call-to-action button on the homepage",
+      fr: "Entre autres effets, il influence le bouton d'appel à l'action principal de la page d'accueil",
+    },
+    distractors: [
+      {
+        en: "It locks the number of pages you can add to the website",
+        fr: "Il verrouille le nombre de pages que vous pouvez ajouter au site",
+      },
+      {
+        en: "It sets the pricing structure for all eCommerce products automatically",
+        fr: "Il définit automatiquement la structure tarifaire de tous les produits eCommerce",
+      },
+      {
+        en: "It determines which industry-specific templates are available exclusively",
+        fr: "Il détermine exclusivement quels modèles sectoriels sont disponibles",
+      },
+    ],
+    explanation: {
+      en: "Business objective presets adapt homepage content and primary CTA to the selected goal.",
+      fr: "Les préréglages d'objectif métier adaptent le contenu d'accueil et le CTA principal au but choisi.",
+    },
+  }),
+  complexQ({
+    id: "web-023",
+    module: "website",
+    text: {
+      en: "What is the purpose of selecting an industry type during Website configurator setup?",
+      fr: "À quoi sert de choisir un type d'industrie lors de la configuration du configurateur Website ?",
+    },
+    correct: {
+      en: "To tailor the website theme, content blocks, and features to that industry",
+      fr: "Pour adapter le thème, les blocs de contenu et les fonctionnalités à ce secteur",
+    },
+    distractors: [
+      {
+        en: "To set the primary color scheme only, without affecting page content",
+        fr: "Pour définir uniquement la palette de couleurs, sans affecter le contenu",
+      },
+      {
+        en: "To configure the main button action exclusively",
+        fr: "Pour configurer exclusivement l'action du bouton principal",
+      },
+      {
+        en: "To enable fiscal localization for the company's accounting country",
+        fr: "Pour activer la localisation fiscale du pays comptable de la société",
+      },
+    ],
+    explanation: {
+      en: "Industry selection preloads relevant snippets, imagery, and page structure for faster setup.",
+      fr: "Le choix d'industrie précharge snippets, visuels et structure de pages pertinents pour un démarrage rapide.",
+    },
+  }),
 ];

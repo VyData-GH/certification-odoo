@@ -601,4 +601,94 @@ export const hrQuestions = [
       fr: "Flotte suit assignations véhicules, contrats de service et coûts liés à l'employé utilisant la voiture.",
     },
   }),
+  complexQ({
+    id: "hr-021",
+    module: "hr",
+    text: {
+      en: "What must you configure to post job positions on the company website from Recruitment?",
+      fr: "Que configurer pour publier des postes sur le site de l'entreprise depuis Recrutement ?",
+    },
+    correct: {
+      en: "Enable the Online Posting option on Recruitment settings",
+      fr: "Activer l'option Publication en ligne dans les paramètres Recrutement",
+    },
+    distractors: [
+      {
+        en: "Configure the Job Board option in Payroll settings",
+        fr: "Configurer l'option Job Board dans les paramètres Paie",
+      },
+      {
+        en: "It is not possible to publish jobs online from Odoo Recruitment",
+        fr: "Il est impossible de publier des offres en ligne depuis Recrutement Odoo",
+      },
+      {
+        en: "Enable both Process section toggles on the company form only",
+        fr: "Activer les deux bascules de la section Processus sur la fiche société uniquement",
+      },
+    ],
+    explanation: {
+      en: "Online Posting connects recruitment job positions to the website jobs page.",
+      fr: "La publication en ligne relie les postes Recrutement à la page Emplois du site web.",
+    },
+  }),
+  complexQ({
+    id: "hr-022",
+    module: "hr",
+    text: {
+      en: "How can applicants automatically receive an email when their application is received?",
+      fr: "Comment les candidats peuvent-ils recevoir automatiquement un e-mail à la réception de leur candidature ?",
+    },
+    correct: {
+      en: "Add an email template to the corresponding stage of the job position pipeline",
+      fr: "Ajouter un modèle d'e-mail à l'étape correspondante du pipeline du poste",
+    },
+    distractors: [
+      {
+        en: "Enable Send Interview Survey on Recruitment settings globally",
+        fr: "Activer Envoyer le sondage d'entretien dans les paramètres Recrutement globalement",
+      },
+      {
+        en: "Add an interview form on the job position; emails send automatically from Surveys",
+        fr: "Ajouter un formulaire d'entretien sur le poste ; les e-mails partent automatiquement depuis Sondages",
+      },
+      {
+        en: "This requires Studio to automate emails; Recruitment has no built-in templates",
+        fr: "Cela exige Studio pour automatiser les e-mails ; Recrutement n'a pas de modèles intégrés",
+      },
+    ],
+    explanation: {
+      en: "Stage email templates trigger when applications enter or move through pipeline stages.",
+      fr: "Les modèles d'e-mail d'étape se déclenchent quand les candidatures entrent ou changent d'étape.",
+    },
+  }),
+  complexQ({
+    id: "hr-023",
+    module: "hr",
+    text: {
+      en: "How can you tell that a job offer was sent to an applicant in Recruitment?",
+      fr: "Comment savoir qu'une offre d'emploi a été envoyée à un candidat dans Recrutement ?",
+    },
+    correct: {
+      en: "A Contract smart button appears on the applicant's form",
+      fr: "Un bouton intelligent Contrat apparaît sur la fiche du candidat",
+    },
+    distractors: [
+      {
+        en: "An Offers smart button appears on the applicant page",
+        fr: "Un bouton intelligent Offres apparaît sur la fiche candidat",
+      },
+      {
+        en: "The applicant moves automatically to the Contract Proposal stage only",
+        fr: "Le candidat passe automatiquement à l'étape Proposition de contrat uniquement",
+      },
+      {
+        en: "It is not visible in Recruitment; check Payroll contracts only",
+        fr: "Ce n'est pas visible dans Recrutement ; vérifier uniquement les contrats Paie",
+      },
+    ],
+    explanation: {
+      en: "Generated contract records link back to the applicant via the Contract smart button.",
+      fr: "Les contrats générés sont reliés au candidat via le bouton intelligent Contrat.",
+    },
+  }),
 ];

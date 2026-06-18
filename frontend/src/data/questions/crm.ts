@@ -601,4 +601,154 @@ export const crmQuestions = [
       fr: "Odoo 19 permet à chaque équipe commerciale d'avoir ses propres étapes de pipeline adaptées à son processus. Les étapes se gèrent sur la fiche d'équipe accessible via CRM ‣ Configuration ‣ Équipes commerciales.",
     },
   }),
+  complexQ({
+    id: "crm-021",
+    module: "crm",
+    text: {
+      en: "Why can't a lead's probability be manually set to 100% in Odoo CRM?",
+      fr: "Pourquoi ne peut-on pas définir manuellement la probabilité d'une piste à 100 % dans le CRM Odoo ?",
+    },
+    correct: {
+      en: "A lead with 100% probability is considered won and is automatically closed",
+      fr: "Une piste à 100 % de probabilité est considérée comme gagnée et est automatiquement clôturée",
+    },
+    distractors: [
+      {
+        en: "Odoo only allows preconfigured values of 10%, 50%, and 80%",
+        fr: "Odoo n'autorise que les valeurs prédéfinies 10 %, 50 % et 80 %",
+      },
+      {
+        en: "Manual probability is capped at 75% until AI recalculates the score",
+        fr: "La probabilité manuelle est plafonnée à 75 % jusqu'au recalcul par l'IA",
+      },
+      {
+        en: "Manager approval is required for any probability above 50%",
+        fr: "L'approbation du manager est requise pour toute probabilité supérieure à 50 %",
+      },
+    ],
+    explanation: {
+      en: "100% probability means the opportunity is won; Odoo closes it instead of leaving an open record at full probability.",
+      fr: "100 % signifie que l'opportunité est gagnée ; Odoo la clôture au lieu de laisser un enregistrement ouvert à probabilité maximale.",
+    },
+  }),
+  complexQ({
+    id: "crm-022",
+    module: "crm",
+    text: {
+      en: "How does Odoo AI determine a lead's win probability?",
+      fr: "Comment l'IA Odoo détermine-t-elle la probabilité de gain d'une piste ?",
+    },
+    correct: {
+      en: "Using your company's history of won and lost opportunities to predict conversion likelihood",
+      fr: "En utilisant l'historique des opportunités gagnées et perdues de votre société pour prédire la conversion",
+    },
+    distractors: [
+      {
+        en: "By analyzing CRM data across all Odoo companies worldwide for a typical industry average",
+        fr: "En analysant les données CRM de toutes les sociétés Odoo dans le monde pour une moyenne sectorielle",
+      },
+      {
+        en: "From publicly available CRM datasets using a proprietary black-box algorithm only",
+        fr: "À partir de jeux de données CRM publics via un algorithme propriétaire boîte noire uniquement",
+      },
+      {
+        en: "From the Accounting app forecast of when revenue will hit the bank account",
+        fr: "Depuis la prévision Comptabilité de la date d'encaissement du revenu",
+      },
+    ],
+    explanation: {
+      en: "Predictive lead scoring learns from your own pipeline outcomes, not generic global averages.",
+      fr: "Le scoring prédictif apprend de vos propres résultats pipeline, pas de moyennes globales génériques.",
+    },
+  }),
+  complexQ({
+    id: "crm-023",
+    module: "crm",
+    text: {
+      en: "How do you move an opportunity to a different pipeline stage in CRM?",
+      fr: "Comment déplacer une opportunité vers une autre étape du pipeline dans le CRM ?",
+    },
+    correct: {
+      en: "Drag and drop the card on the Kanban dashboard, or select the new stage on the opportunity form",
+      fr: "Glisser-déposer la carte sur le Kanban, ou sélectionner la nouvelle étape sur la fiche opportunité",
+    },
+    distractors: [
+      {
+        en: "Open the Stages tab and drag the opportunity between stage columns inside the form only",
+        fr: "Ouvrir l'onglet Étapes et glisser l'opportunité entre colonnes uniquement dans le formulaire",
+      },
+      {
+        en: "Double-click the card on the dashboard and pick a stage from a dropdown menu only",
+        fr: "Double-cliquer la carte sur le tableau de bord et choisir une étape dans une liste déroulante uniquement",
+      },
+      {
+        en: "The customer must email support requesting the stage change",
+        fr: "Le client doit envoyer un e-mail au support pour demander le changement d'étape",
+      },
+    ],
+    explanation: {
+      en: "Pipeline Kanban drag-and-drop and the stage selector on the opportunity are both supported.",
+      fr: "Le glisser-déposer Kanban et le sélecteur d'étape sur l'opportunité sont tous deux pris en charge.",
+    },
+  }),
+  complexQ({
+    id: "crm-024",
+    module: "crm",
+    text: {
+      en: "Where can you review the full history and logged activities of a CRM opportunity?",
+      fr: "Où consulter l'historique complet et les activités enregistrées d'une opportunité CRM ?",
+    },
+    correct: {
+      en: "In the chatter section on the opportunity form",
+      fr: "Dans la section Chatter sur la fiche opportunité",
+    },
+    distractors: [
+      {
+        en: "On the dedicated Opportunity History page under CRM Reporting",
+        fr: "Sur la page Historique des opportunités sous Rapports CRM",
+      },
+      {
+        en: "In the History tab between the Stages and Notes tabs on the opportunity",
+        fr: "Dans l'onglet Historique entre les onglets Étapes et Notes",
+      },
+      {
+        en: "In the Activities report under CRM ‣ Reporting ‣ Activities only",
+        fr: "Uniquement dans le rapport Activités sous CRM ‣ Rapports ‣ Activités",
+      },
+    ],
+    explanation: {
+      en: "Chatter logs messages, activities, stage changes, and linked documents on the opportunity.",
+      fr: "Le chatter enregistre messages, activités, changements d'étape et documents liés sur l'opportunité.",
+    },
+  }),
+  complexQ({
+    id: "crm-025",
+    module: "crm",
+    text: {
+      en: "How many default activity types are available in the CRM app?",
+      fr: "Combien de types d'activités par défaut sont disponibles dans l'application CRM ?",
+    },
+    correct: {
+      en: "Six: schedule activity, phone call, meeting, email, to-do, and upload document",
+      fr: "Six : planifier une activité, appel, réunion, e-mail, tâche et téléverser un document",
+    },
+    distractors: [
+      {
+        en: "Three: phone call, meeting, and email only",
+        fr: "Trois : appel, réunion et e-mail uniquement",
+      },
+      {
+        en: "Five: in-person meeting, virtual meeting, call, email, and upload document",
+        fr: "Cinq : réunion en personne, réunion virtuelle, appel, e-mail et document",
+      },
+      {
+        en: "As many types as apps installed in the database",
+        fr: "Autant de types que d'applications installées dans la base",
+      },
+    ],
+    explanation: {
+      en: "CRM ships with six standard activity types; additional types can be configured if needed.",
+      fr: "Le CRM inclut six types d'activités standard ; d'autres types peuvent être configurés si besoin.",
+    },
+  }),
 ];

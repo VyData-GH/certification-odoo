@@ -601,4 +601,154 @@ export const purchasesQuestions = [
       fr: "Les demandes de prix Odoo 19 sont des brouillons négociables (étapes Demande de prix, Envoyée). « Confirmer la commande » crée un BC engageant avec Date de confirmation et des réceptions attendues si Inventaire est installé.",
     },
   }),
+  complexQ({
+    id: "pur-021",
+    module: "purchases",
+    text: {
+      en: "A reordering rule has minimum 5 and maximum 10 units. When triggered, how many units does Odoo order?",
+      fr: "Une règle min 5, max 10. Une fois déclenchée, combien d'unités Odoo commande-t-il ?",
+    },
+    correct: {
+      en: "As much as needed to reach 10 units in stock (the maximum)",
+      fr: "Autant que nécessaire pour atteindre 10 unités en stock (le maximum)",
+    },
+    distractors: [
+      {
+        en: "Always exactly 10 units regardless of current stock",
+        fr: "Toujours exactement 10 unités quel que soit le stock actuel",
+      },
+      {
+        en: "Always between 5 and 10 units randomly",
+        fr: "Toujours entre 5 et 10 unités de façon aléatoire",
+      },
+      {
+        en: "Only enough to reach the minimum of 5 units",
+        fr: "Uniquement assez pour atteindre le minimum de 5 unités",
+      },
+    ],
+    explanation: {
+      en: "Reordering rules replenish up to the Max threshold, not just to the Min.",
+      fr: "Les règles de réapprovisionnement remontent le stock jusqu'au Max, pas seulement jusqu'au Min.",
+    },
+  }),
+  complexQ({
+    id: "pur-022",
+    module: "purchases",
+    text: {
+      en: "Can reordering rules be created on service-type products in Odoo?",
+      fr: "Peut-on créer des règles de réapprovisionnement sur des produits de type service ?",
+    },
+    correct: {
+      en: "No",
+      fr: "Non",
+    },
+    distractors: [
+      {
+        en: "Yes, for all product types including services",
+        fr: "Oui, pour tous les types de produits y compris les services",
+      },
+      {
+        en: "Yes, but only when the service is linked to a project",
+        fr: "Oui, mais uniquement si le service est lié à un projet",
+      },
+      {
+        en: "Yes, when the service product is also sold in Point of Sale",
+        fr: "Oui, quand le service est aussi vendu au Point de Vente",
+      },
+    ],
+    explanation: {
+      en: "Reordering rules apply to storable and consumable products tracked in inventory, not services.",
+      fr: "Les règles de réapprovisionnement s'appliquent aux produits stockables et consommables, pas aux services.",
+    },
+  }),
+  complexQ({
+    id: "pur-023",
+    module: "purchases",
+    text: {
+      en: "Can reordering rules be created on consumable-type products in Odoo?",
+      fr: "Peut-on créer des règles de réapprovisionnement sur des produits consommables ?",
+    },
+    correct: {
+      en: "Yes",
+      fr: "Oui",
+    },
+    distractors: [
+      {
+        en: "No, only storable products support reordering rules",
+        fr: "Non, seuls les produits stockables supportent les règles de réapprovisionnement",
+      },
+      {
+        en: "Only if they are sold through Point of Sale",
+        fr: "Uniquement s'ils sont vendus au Point de Vente",
+      },
+      {
+        en: "Only when consumables use FIFO valuation",
+        fr: "Uniquement quand les consommables utilisent la valorisation FIFO",
+      },
+    ],
+    explanation: {
+      en: "Consumable products can use reordering rules when procurement via purchase or manufacture is needed.",
+      fr: "Les produits consommables peuvent avoir des règles de réapprovisionnement pour les achats ou fabrications associés.",
+    },
+  }),
+  complexQ({
+    id: "pur-024",
+    module: "purchases",
+    text: {
+      en: "You bought IAP credits for Document Digitization. Can you use them for Lead Generation?",
+      fr: "Vous avez acheté des crédits IAP pour la numérisation de documents. Pouvez-vous les utiliser pour la génération de prospects ?",
+    },
+    correct: {
+      en: "No — IAP credits are not interchangeable between services",
+      fr: "Non — les crédits IAP ne sont pas interchangeables entre services",
+    },
+    distractors: [
+      {
+        en: "Yes — IAP credits are a fungible currency for any Odoo IAP service",
+        fr: "Oui — les crédits IAP sont une monnaie fongible pour tout service IAP Odoo",
+      },
+      {
+        en: "Yes — exchange them in Settings using the credit exchange procedure",
+        fr: "Oui — échangez-les dans Paramètres via la procédure d'échange de crédits",
+      },
+      {
+        en: "Yes — refund document credits in Settings, then buy lead generation credits",
+        fr: "Oui — remboursez les crédits documents dans Paramètres, puis achetez des crédits prospects",
+      },
+    ],
+    explanation: {
+      en: "Each IAP service (OCR, lead mining, SMS, etc.) requires its own prepaid credit pack from the IAP catalog.",
+      fr: "Chaque service IAP (OCR, prospection, SMS, etc.) nécessite son propre pack de crédits dans le catalogue IAP.",
+    },
+  }),
+  complexQ({
+    id: "pur-025",
+    module: "purchases",
+    text: {
+      en: "When reordering rules trigger a purchase, which vendor is used by default?",
+      fr: "Quand une règle de réapprovisionnement déclenche un achat, quel fournisseur est utilisé par défaut ?",
+    },
+    correct: {
+      en: "The first vendor listed on the product form Purchase tab",
+      fr: "Le premier fournisseur listé sur l'onglet Achats de la fiche produit",
+    },
+    distractors: [
+      {
+        en: "The vendor with the cheapest price across all RFQs this year",
+        fr: "Le fournisseur au prix le plus bas sur toutes les demandes de prix de l'année",
+      },
+      {
+        en: "The vendor with the shortest lead time in the purchase agreement",
+        fr: "Le fournisseur au délai le plus court dans l'accord-cadre",
+      },
+      {
+        en: "The most frequently used vendor in the last 90 days company-wide",
+        fr: "Le fournisseur le plus utilisé sur les 90 derniers jours à l'échelle société",
+      },
+    ],
+    explanation: {
+      en: "Default vendor on the product form supplies RFQs generated by replenishment unless another vendor is specified on the rule.",
+      fr: "Le fournisseur par défaut sur la fiche produit alimente les demandes de prix de réapprovisionnement sauf autre fournisseur sur la règle.",
+    },
+  }),
 ];

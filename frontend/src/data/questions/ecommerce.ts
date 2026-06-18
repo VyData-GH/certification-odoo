@@ -601,4 +601,154 @@ export const ecommerceQuestions = [
       fr: "Odoo stocke les commandes inachevées en devis ; Relancer les paniers abandonnés envoie des e-mails pour les nouveaux paniers.",
     },
   }),
+  complexQ({
+    id: "eco-021",
+    module: "ecommerce",
+    text: {
+      en: "How do you hide a product from the online shop without deleting it?",
+      fr: "Comment masquer un produit de la boutique en ligne sans le supprimer ?",
+    },
+    correct: {
+      en: "Set the product as Unpublished on the product page or via the Website smart button",
+      fr: "Marquer le produit comme Non publié sur la fiche ou via le bouton intelligent Site web",
+    },
+    distractors: [
+      {
+        en: "Move the product to an Archived category on the shop page",
+        fr: "Déplacer le produit vers une catégorie Archivée sur la page boutique",
+      },
+      {
+        en: "Set sales price to zero so the product is hidden automatically",
+        fr: "Mettre le prix de vente à zéro pour masquer automatiquement le produit",
+      },
+      {
+        en: "Disable the entire website until the catalog is ready",
+        fr: "Désactiver tout le site web jusqu'à ce que le catalogue soit prêt",
+      },
+    ],
+    explanation: {
+      en: "Unpublished products remain in the backend but are not visible on /shop.",
+      fr: "Les produits non publiés restent dans le backend mais ne sont pas visibles sur /shop.",
+    },
+  }),
+  complexQ({
+    id: "eco-022",
+    module: "ecommerce",
+    text: {
+      en: "How do you assign an eCommerce category to a product?",
+      fr: "Comment assigner une catégorie eCommerce à un produit ?",
+    },
+    correct: {
+      en: "Set the eCommerce category on the product form (Sales or Website tab depending on version)",
+      fr: "Définir la catégorie eCommerce sur la fiche produit (onglet Ventes ou Site web)",
+    },
+    distractors: [
+      {
+        en: "Drag the product card onto the category in the website builder customize tab only",
+        fr: "Glisser la fiche produit sur la catégorie uniquement dans l'onglet Personnaliser du builder",
+      },
+      {
+        en: "Assign categories only by editing the shop page HTML directly",
+        fr: "Assigner les catégories uniquement en éditant le HTML de la page boutique",
+      },
+      {
+        en: "Categories are inherited from the inventory product category automatically",
+        fr: "Les catégories sont héritées automatiquement de la catégorie produit inventaire",
+      },
+    ],
+    explanation: {
+      en: "Public shop categories on the product control where the item appears in the /shop catalog.",
+      fr: "Les catégories publiques sur le produit contrôlent où l'article apparaît dans le catalogue /shop.",
+    },
+  }),
+  complexQ({
+    id: "eco-023",
+    module: "ecommerce",
+    text: {
+      en: "How do you display a promotional ribbon such as Sale on a product card?",
+      fr: "Comment afficher un ruban promotionnel (ex. Promo) sur une fiche produit boutique ?",
+    },
+    correct: {
+      en: "Use product ribbons configured in eCommerce and assign them on the product",
+      fr: "Utiliser les rubans produit configurés en eCommerce et les assigner sur le produit",
+    },
+    distractors: [
+      {
+        en: "Enlarge the product card to 4×4 blocks in the website editor only",
+        fr: "Agrandir la carte produit en blocs 4×4 uniquement dans l'éditeur website",
+      },
+      {
+        en: "Add the word Sale to the product name on the General Information tab",
+        fr: "Ajouter le mot Promo au nom du produit sur l'onglet Informations générales",
+      },
+      {
+        en: "Enable Sale mode globally in Inventory settings for all discounted items",
+        fr: "Activer le mode Promo globalement dans Inventaire pour tous les articles remisés",
+      },
+    ],
+    explanation: {
+      en: "Ribbons are reusable badges (Sale, New, etc.) shown on product cards in the shop.",
+      fr: "Les rubans sont des badges réutilisables (Promo, Nouveau, etc.) affichés sur les cartes produit.",
+    },
+  }),
+  complexQ({
+    id: "eco-024",
+    module: "ecommerce",
+    text: {
+      en: "When are optional products suggested versus accessory products on eCommerce?",
+      fr: "Quand les produits optionnels sont-ils suggérés par rapport aux produits accessoires en eCommerce ?",
+    },
+    correct: {
+      en: "Optional products are suggested when the customer clicks Add to cart; accessories when reviewing the cart before payment",
+      fr: "Les produits optionnels sont suggérés au clic Ajouter au panier ; les accessoires lors de la revue du panier avant paiement",
+    },
+    distractors: [
+      {
+        en: "Optional products appear at checkout; accessories appear on the product page only",
+        fr: "Les optionnels apparaissent au paiement ; les accessoires uniquement sur la page produit",
+      },
+      {
+        en: "Optional products replace the main product; accessories are added alongside it at cart review",
+        fr: "Les optionnels remplacent le produit principal ; les accessoires s'ajoutent à la revue du panier",
+      },
+      {
+        en: "There is no difference; both terms mean cross-selling in Odoo",
+        fr: "Il n'y a pas de différence ; les deux termes désignent le cross-selling dans Odoo",
+      },
+    ],
+    explanation: {
+      en: "Optional products prompt at add-to-cart; accessory products upsell in the cart before checkout.",
+      fr: "Les optionnels s'affichent à l'ajout panier ; les accessoires font de l'upsell dans le panier avant paiement.",
+    },
+  }),
+  complexQ({
+    id: "eco-025",
+    module: "ecommerce",
+    text: {
+      en: "Where do you configure cross-selling and upselling products for the online shop?",
+      fr: "Où configurer le cross-selling et l'upselling pour la boutique en ligne ?",
+    },
+    correct: {
+      en: "On the product Sales tab in the eCommerce section",
+      fr: "Sur l'onglet Ventes du produit, section eCommerce",
+    },
+    distractors: [
+      {
+        en: "On the product Inventory tab under reordering rules",
+        fr: "Sur l'onglet Inventaire du produit sous les règles de réapprovisionnement",
+      },
+      {
+        en: "In Website settings under the eCommerce tab only, not per product",
+        fr: "Uniquement dans Paramètres Site web onglet eCommerce, pas par produit",
+      },
+      {
+        en: "In Marketing Automation campaign triggers for abandoned carts",
+        fr: "Dans les déclencheurs Marketing Automation pour paniers abandonnés",
+      },
+    ],
+    explanation: {
+      en: "Optional and accessory product lists are defined per product on the Sales/eCommerce tab.",
+      fr: "Les listes de produits optionnels et accessoires se définissent par produit sur l'onglet Ventes/eCommerce.",
+    },
+  }),
 ];

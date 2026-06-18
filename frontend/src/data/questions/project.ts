@@ -601,4 +601,124 @@ export const projectQuestions = [
       fr: "Les évaluations de tâches envoient des demandes de satisfaction aux clients après achèvement, avec résultats visibles sur le tableau de bord projet.",
     },
   }),
+  complexQ({
+    id: "prj-021",
+    module: "project",
+    text: {
+      en: "How do you activate Project stages in the projects Kanban view?",
+      fr: "Comment activer les étapes de projet dans la vue Kanban des projets ?",
+    },
+    correct: {
+      en: "Go to Project ‣ Configuration ‣ Settings and enable Project Stages",
+      fr: "Aller dans Projet ‣ Configuration ‣ Paramètres et activer Étapes de projet",
+    },
+    distractors: [
+      {
+        en: "Project stages are visible by default without any configuration",
+        fr: "Les étapes de projet sont visibles par défaut sans configuration",
+      },
+      {
+        en: "Enable stages individually on each project's settings form only",
+        fr: "Activer les étapes individuellement sur la fiche de chaque projet uniquement",
+      },
+      {
+        en: "Install Studio and create a custom Kanban column model for stages",
+        fr: "Installer Studio et créer un modèle de colonnes Kanban personnalisé pour les étapes",
+      },
+    ],
+    explanation: {
+      en: "Project Stages setting adds horizontal stage columns to group projects in the Kanban view.",
+      fr: "Le paramètre Étapes de projet ajoute des colonnes horizontales pour regrouper les projets en Kanban.",
+    },
+  }),
+  complexQ({
+    id: "prj-022",
+    module: "project",
+    text: {
+      en: "Does moving a project to a different Kanban stage change its project status (On track, At risk, etc.)?",
+      fr: "Déplacer un projet vers une autre étape Kanban modifie-t-il son statut projet (Dans les temps, À risque, etc.) ?",
+    },
+    correct: {
+      en: "No — Kanban stages and project status are independent",
+      fr: "Non — les étapes Kanban et le statut projet sont indépendants",
+    },
+    distractors: [
+      {
+        en: "Yes — the status always mirrors the Kanban stage name automatically",
+        fr: "Oui — le statut reprend toujours automatiquement le nom de l'étape Kanban",
+      },
+      {
+        en: "Yes — but only when the project has milestones configured",
+        fr: "Oui — mais uniquement si le projet a des jalons configurés",
+      },
+      {
+        en: "Yes — status updates when the project manager validates the stage change",
+        fr: "Oui — le statut se met à jour quand le chef de projet valide le changement d'étape",
+      },
+    ],
+    explanation: {
+      en: "Stages track workflow columns; status reflects health updates from project updates, not drag-and-drop alone.",
+      fr: "Les étapes suivent le workflow Kanban ; le statut reflète les mises à jour de santé, pas seul le glisser-déposer.",
+    },
+  }),
+  complexQ({
+    id: "prj-023",
+    module: "project",
+    text: {
+      en: "What does the colored bar at the top of each project Kanban stage indicate?",
+      fr: "Que indique la barre colorée en haut de chaque étape Kanban projet ?",
+    },
+    correct: {
+      en: "The number of projects with each status in that Kanban stage",
+      fr: "Le nombre de projets avec chaque statut dans cette étape Kanban",
+    },
+    distractors: [
+      {
+        en: "The total allocated hours for projects in the stage",
+        fr: "Le total des heures allouées aux projets de l'étape",
+      },
+      {
+        en: "The number of projects with each tag in the stage",
+        fr: "Le nombre de projets avec chaque étiquette dans l'étape",
+      },
+      {
+        en: "The budget consumption percentage for the stage",
+        fr: "Le pourcentage de consommation budgétaire de l'étape",
+      },
+    ],
+    explanation: {
+      en: "Stage header colors summarize how many projects are On track, At risk, Off track, etc. within that column.",
+      fr: "Les couleurs d'en-tête d'étape résument combien de projets sont Dans les temps, À risque, etc. dans la colonne.",
+    },
+  }),
+  complexQ({
+    id: "prj-024",
+    module: "project",
+    text: {
+      en: "After creating a new Project Update on the dashboard, how is the project's state determined?",
+      fr: "Après une nouvelle Mise à jour projet sur le tableau de bord, comment l'état du projet est-il déterminé ?",
+    },
+    correct: {
+      en: "The project state is updated to match the state given in the latest Project Update",
+      fr: "L'état du projet est mis à jour pour correspondre à celui de la dernière Mise à jour projet",
+    },
+    distractors: [
+      {
+        en: "The state is averaged across all previous Project Updates",
+        fr: "L'état est la moyenne de toutes les mises à jour précédentes",
+      },
+      {
+        en: "The state is calculated only from task progress percentage, ignoring updates",
+        fr: "L'état est calculé uniquement depuis le pourcentage d'avancement des tâches",
+      },
+      {
+        en: "Project updates do not affect state; only milestone completion does",
+        fr: "Les mises à jour projet n'affectent pas l'état ; seule l'achèvement des jalons compte",
+      },
+    ],
+    explanation: {
+      en: "Each Project Update sets the current health state shown on the project card and dashboard.",
+      fr: "Chaque Mise à jour projet définit l'état de santé affiché sur la carte et le tableau de bord projet.",
+    },
+  }),
 ];

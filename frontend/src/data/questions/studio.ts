@@ -601,4 +601,154 @@ export const studioQuestions = [
       fr: "Validation staging réduit risque casser workflows déploiement personnalisations Studio production.",
     },
   }),
+  complexQ({
+    id: "stu-021",
+    module: "studio",
+    text: {
+      en: "What does a model represent in Odoo Studio?",
+      fr: "Que représente un modèle dans Odoo Studio ?",
+    },
+    correct: {
+      en: "A business concept such as a sales order or contact",
+      fr: "Un concept métier comme une commande client ou un contact",
+    },
+    distractors: [
+      {
+        en: "A single record row inside a spreadsheet view",
+        fr: "Une seule ligne d'enregistrement dans une vue tableur",
+      },
+      {
+        en: "A single field column on a form view",
+        fr: "Une seule colonne de champ sur une vue formulaire",
+      },
+      {
+        en: "A PostgreSQL database instance managed outside Odoo",
+        fr: "Une instance de base PostgreSQL gérée hors Odoo",
+      },
+    ],
+    explanation: {
+      en: "Models (e.g. sale.order, res.partner) structure business data; views display model records.",
+      fr: "Les modèles (ex. sale.order, res.partner) structurent les données métier ; les vues affichent les enregistrements.",
+    },
+  }),
+  complexQ({
+    id: "stu-022",
+    module: "studio",
+    text: {
+      en: "How can you switch between views to edit them in Studio?",
+      fr: "Comment basculer entre les vues pour les modifier dans Studio ?",
+    },
+    correct: {
+      en: "Using view icons, the Views menu in Studio, or by switching views outside Studio — all of these",
+      fr: "Via les icônes de vue, le menu Vues dans Studio, ou en changeant de vue hors Studio — toutes ces options",
+    },
+    distractors: [
+      {
+        en: "Only by closing Studio and reopening the app from Settings",
+        fr: "Uniquement en fermant Studio et rouvrant l'application depuis Paramètres",
+      },
+      {
+        en: "Only through the Views menu; view icons do not open Studio edit mode",
+        fr: "Uniquement via le menu Vues ; les icônes de vue n'ouvrent pas le mode édition Studio",
+      },
+      {
+        en: "By exporting the view XML and editing it in a code editor only",
+        fr: "En exportant le XML de vue et en l'éditant uniquement dans un éditeur de code",
+      },
+    ],
+    explanation: {
+      en: "Studio lets you pick the target view from icons, the Views list, or navigate normally then re-enter Studio.",
+      fr: "Studio permet de choisir la vue cible via les icônes, la liste Vues, ou en naviguant puis en réouvrant Studio.",
+    },
+  }),
+  complexQ({
+    id: "stu-023",
+    module: "studio",
+    text: {
+      en: "What should you do before implementing customizations with Studio?",
+      fr: "Que faire avant d'implémenter des personnalisations avec Studio ?",
+    },
+    correct: {
+      en: "Test changes on a duplicate/staging database before applying them to production",
+      fr: "Tester les changements sur une base dupliquée/staging avant la production",
+    },
+    distractors: [
+      {
+        en: "Open an Odoo support ticket before every field addition",
+        fr: "Ouvrir un ticket support Odoo avant chaque ajout de champ",
+      },
+      {
+        en: "Apply changes on a unrelated model first as a mandatory warm-up",
+        fr: "Appliquer d'abord les changements sur un modèle sans lien comme échauffement obligatoire",
+      },
+      {
+        en: "Disable automatic backups because Studio changes cannot be reverted",
+        fr: "Désactiver les sauvegardes automatiques car les changements Studio sont irréversibles",
+      },
+    ],
+    explanation: {
+      en: "Studio modifies the database schema and views; staging tests prevent breaking live workflows.",
+      fr: "Studio modifie le schéma et les vues ; les tests sur copie évitent de casser les flux en production.",
+    },
+  }),
+  complexQ({
+    id: "stu-024",
+    module: "studio",
+    text: {
+      en: "What should you check before adding a new field to a view in Studio?",
+      fr: "Que vérifier avant d'ajouter un nouveau champ à une vue dans Studio ?",
+    },
+    correct: {
+      en: "Whether the field already exists on the model in the database",
+      fr: "Si le champ existe déjà sur le modèle dans la base de données",
+    },
+    distractors: [
+      {
+        en: "Whether the field color matches the company theme palette",
+        fr: "Si la couleur du champ correspond à la palette du thème société",
+      },
+      {
+        en: "Whether all users have export rights on the model",
+        fr: "Si tous les utilisateurs ont les droits d'export sur le modèle",
+      },
+      {
+        en: "Whether the PostgreSQL table has fewer than 50 columns",
+        fr: "Si la table PostgreSQL a moins de 50 colonnes",
+      },
+    ],
+    explanation: {
+      en: "Reuse existing fields from the Existing fields list when possible instead of duplicating columns.",
+      fr: "Réutilisez les champs existants de la liste Champs existants quand c'est possible plutôt que de dupliquer des colonnes.",
+    },
+  }),
+  complexQ({
+    id: "stu-025",
+    module: "studio",
+    text: {
+      en: "Where can you find Studio-created fields that are not yet on the current view?",
+      fr: "Où trouver les champs créés avec Studio qui ne sont pas encore sur la vue actuelle ?",
+    },
+    correct: {
+      en: "In the Add tab → Existing fields section in Studio",
+      fr: "Dans l'onglet Ajouter → section Champs existants de Studio",
+    },
+    distractors: [
+      {
+        en: "In the View tab by selecting Show Invisible Elements only",
+        fr: "Dans l'onglet Vue en sélectionnant uniquement Afficher les éléments invisibles",
+      },
+      {
+        en: "In the New fields section even if they were created on another model",
+        fr: "Dans la section Nouveaux champs même s'ils ont été créés sur un autre modèle",
+      },
+      {
+        en: "They are not listed; you must recreate the field on each view",
+        fr: "Ils ne sont pas listés ; il faut recréer le champ sur chaque vue",
+      },
+    ],
+    explanation: {
+      en: "Fields created with Studio exist on the model and appear under Existing fields for drag-and-drop onto views.",
+      fr: "Les champs Studio existent sur le modèle et apparaissent sous Champs existants pour glisser-déposer sur les vues.",
+    },
+  }),
 ];

@@ -601,4 +601,124 @@ export const timesheetQuestions = [
       fr: "Odoo peut proposer des lignes de feuilles de temps depuis les événements agenda, laissant les employés confirmer les heures de réunions liées aux projets.",
     },
   }),
+  complexQ({
+    id: "ts-021",
+    module: "timesheet",
+    text: {
+      en: "By default, what is logged if you start the timer and stop it after three minutes?",
+      fr: "Par défaut, que est enregistré si vous démarrez le chrono et l'arrêtez après trois minutes ?",
+    },
+    correct: {
+      en: "Fifteen minutes are logged (minimum rounding increment)",
+      fr: "Quinze minutes sont enregistrées (incrément minimum d'arrondi)",
+    },
+    distractors: [
+      {
+        en: "Exactly three minutes are logged",
+        fr: "Exactement trois minutes sont enregistrées",
+      },
+      {
+        en: "Five minutes are logged",
+        fr: "Cinq minutes sont enregistrées",
+      },
+      {
+        en: "Nothing is logged until the employee manually edits the duration",
+        fr: "Rien n'est enregistré tant que l'employé ne modifie pas manuellement la durée",
+      },
+    ],
+    explanation: {
+      en: "Timesheet timers round up to the configured minimum duration (often 15 minutes) by default.",
+      fr: "Les chronos feuilles de temps arrondissent à la durée minimale configurée (souvent 15 minutes) par défaut.",
+    },
+  }),
+  complexQ({
+    id: "ts-022",
+    module: "timesheet",
+    text: {
+      en: "In the Timesheets grid, what does a red total at the bottom of a day column mean?",
+      fr: "Dans la grille Feuilles de temps, que signifie un total rouge en bas d'une colonne jour ?",
+    },
+    correct: {
+      en: "You logged more time than your contractual working hours for that day",
+      fr: "Vous avez saisi plus de temps que vos heures contractuelles ce jour-là",
+    },
+    distractors: [
+      {
+        en: "You logged less time than your contractual working hours",
+        fr: "Vous avez saisi moins de temps que vos heures contractuelles",
+      },
+      {
+        en: "No time has been logged yet for that day",
+        fr: "Aucun temps n'a encore été saisi ce jour",
+      },
+      {
+        en: "The timesheet entries for that day failed validation",
+        fr: "Les entrées de ce jour ont échoué à la validation",
+      },
+    ],
+    explanation: {
+      en: "Grid totals compare logged hours against the employee's expected daily hours from their contract.",
+      fr: "Les totaux de la grille comparent les heures saisies aux heures journalières attendues du contrat employé.",
+    },
+  }),
+  complexQ({
+    id: "ts-023",
+    module: "timesheet",
+    text: {
+      en: "How can you validate specific timesheet entries instead of all entries at once?",
+      fr: "Comment valider des entrées de feuilles de temps spécifiques plutôt que tout d'un coup ?",
+    },
+    correct: {
+      en: "In List view, select the entries and click Validate",
+      fr: "En vue Liste, sélectionner les entrées et cliquer Valider",
+    },
+    distractors: [
+      {
+        en: "In Grid view only, multi-select cells and click Validate",
+        fr: "Uniquement en vue Grille, sélectionner les cellules et cliquer Valider",
+      },
+      {
+        en: "In Kanban view, drag cards to the Validated column",
+        fr: "En vue Kanban, glisser les cartes vers la colonne Validé",
+      },
+      {
+        en: "It is not possible; all timesheets must be validated together",
+        fr: "Ce n'est pas possible ; toutes les feuilles de temps doivent être validées ensemble",
+      },
+    ],
+    explanation: {
+      en: "Managers can validate a subset of lines from the timesheet list view after review.",
+      fr: "Les managers peuvent valider un sous-ensemble de lignes depuis la vue liste après revue.",
+    },
+  }),
+  complexQ({
+    id: "ts-024",
+    module: "timesheet",
+    text: {
+      en: "How do you start and stop the timesheet timer with a keyboard shortcut?",
+      fr: "Comment démarrer et arrêter le chrono feuille de temps avec un raccourci clavier ?",
+    },
+    correct: {
+      en: "Press the letter shown to the left of a timesheet row to start; press it again to stop",
+      fr: "Appuyer sur la lettre affichée à gauche d'une ligne pour démarrer ; réappuyer pour arrêter",
+    },
+    distractors: [
+      {
+        en: "Press Shift+S to start and Shift+S again to stop",
+        fr: "Appuyer sur Maj+S pour démarrer et Maj+S pour arrêter",
+      },
+      {
+        en: "Press 1 to start and 0 to stop",
+        fr: "Appuyer sur 1 pour démarrer et 0 pour arrêter",
+      },
+      {
+        en: "Press Space on the grid cell to toggle start and stop",
+        fr: "Appuyer sur Espace sur la cellule pour basculer démarrage/arrêt",
+      },
+    ],
+    explanation: {
+      en: "Grid view shows shortcut letters per row for quick timer control without the mouse.",
+      fr: "La vue grille affiche des lettres de raccourci par ligne pour contrôler le chrono sans souris.",
+    },
+  }),
 ];

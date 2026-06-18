@@ -601,4 +601,154 @@ export const salesQuestions = [
       fr: "Le portail client Odoo 19 permet de consulter les commandes et payer les factures via les acquéreurs intégrés (Site web ‣ Configuration ‣ Prestataires de paiement). Le Paiement en ligne sur les devis peut aussi confirmer les commandes.",
     },
   }),
+  complexQ({
+    id: "sal-021",
+    module: "sales",
+    text: {
+      en: "Where do you activate the Dropshipping feature in Odoo?",
+      fr: "Où activer la fonctionnalité Dropshipping dans Odoo ?",
+    },
+    correct: {
+      en: "Inventory ‣ Configuration ‣ Settings, then enable Dropshipping and save",
+      fr: "Inventaire ‣ Configuration ‣ Paramètres, activer Dropshipping puis enregistrer",
+    },
+    distractors: [
+      {
+        en: "Sales ‣ Configuration ‣ Settings, then enable Dropshipping",
+        fr: "Ventes ‣ Configuration ‣ Paramètres, puis activer Dropshipping",
+      },
+      {
+        en: "Purchase ‣ Configuration ‣ Settings, then enable Dropshipping",
+        fr: "Achats ‣ Configuration ‣ Paramètres, puis activer Dropshipping",
+      },
+      {
+        en: "Manufacturing ‣ Configuration ‣ Settings, then enable Dropshipping",
+        fr: "Fabrication ‣ Configuration ‣ Paramètres, puis activer Dropshipping",
+      },
+    ],
+    explanation: {
+      en: "Dropshipping is an inventory route enabled in Inventory settings before it can be set on products.",
+      fr: "Le dropshipping est une route inventaire activée dans les paramètres Inventaire avant d'être posée sur les produits.",
+    },
+  }),
+  complexQ({
+    id: "sal-022",
+    module: "sales",
+    text: {
+      en: "What must be configured on a product for dropshipping to work?",
+      fr: "Que faut-il configurer sur un produit pour que le dropshipping fonctionne ?",
+    },
+    correct: {
+      en: "Enable the Dropship route on the Inventory tab and define at least one vendor on the Purchase tab",
+      fr: "Activer la route Dropship sur l'onglet Inventaire et définir au moins un fournisseur sur l'onglet Achats",
+    },
+    distractors: [
+      {
+        en: "Enable the Dropship route and set the product sales price to zero",
+        fr: "Activer la route Dropship et mettre le prix de vente à zéro",
+      },
+      {
+        en: "Define a vendor and enable Vendor Responsibility on the Inventory tab only",
+        fr: "Définir un fournisseur et activer Responsabilité fournisseur sur l'onglet Inventaire uniquement",
+      },
+      {
+        en: "Nothing; dropshipping is automatic for all storable products",
+        fr: "Rien ; le dropshipping est automatique pour tous les produits stockables",
+      },
+    ],
+    explanation: {
+      en: "Dropship route triggers vendor-to-customer delivery; a vendor must exist to generate the purchase flow.",
+      fr: "La route Dropship déclenche une livraison fournisseur→client ; un fournisseur est requis pour générer l'achat.",
+    },
+  }),
+  complexQ({
+    id: "sal-023",
+    module: "sales",
+    text: {
+      en: "With multiple vendors on a dropshipped product, which vendor does Odoo use?",
+      fr: "Avec plusieurs fournisseurs sur un produit en dropshipping, quel fournisseur Odoo utilise-t-il ?",
+    },
+    correct: {
+      en: "The first vendor listed on the product Purchase tab",
+      fr: "Le premier fournisseur listé sur l'onglet Achats du produit",
+    },
+    distractors: [
+      {
+        en: "The vendor with the lowest purchase price",
+        fr: "Le fournisseur au prix d'achat le plus bas",
+      },
+      {
+        en: "The last vendor on the vendor list",
+        fr: "Le dernier fournisseur de la liste",
+      },
+      {
+        en: "The vendor with the shortest delivery lead time automatically",
+        fr: "Le fournisseur au délai de livraison le plus court automatiquement",
+      },
+    ],
+    explanation: {
+      en: "Default vendor sequence on the product form determines the dropship RFQ unless another rule applies.",
+      fr: "L'ordre des fournisseurs sur la fiche produit détermine la demande de prix dropship sauf autre règle.",
+    },
+  }),
+  complexQ({
+    id: "sal-024",
+    module: "sales",
+    text: {
+      en: "Which invoicing policy bills customers based on hours worked on a project?",
+      fr: "Quelle politique de facturation facture le client selon les heures travaillées sur un projet ?",
+    },
+    correct: {
+      en: "Based on Timesheets",
+      fr: "Basé sur les feuilles de temps",
+    },
+    distractors: [
+      {
+        en: "Based on Delivered Quantities (Manual)",
+        fr: "Basé sur les quantités livrées (manuel)",
+      },
+      {
+        en: "Based on Milestones",
+        fr: "Basé sur les jalons",
+      },
+      {
+        en: "Based on Employees headcount",
+        fr: "Basé sur le nombre d'employés",
+      },
+    ],
+    explanation: {
+      en: "Timesheet invoicing policy links billable hours logged on the project to customer invoices.",
+      fr: "La politique basée sur les feuilles de temps relie les heures facturables saisies sur le projet aux factures client.",
+    },
+  }),
+  complexQ({
+    id: "sal-025",
+    module: "sales",
+    text: {
+      en: "What happens when Automatic Invoice is enabled in Sales settings?",
+      fr: "Que se passe-t-il quand Facturation automatique est activée dans les paramètres Ventes ?",
+    },
+    correct: {
+      en: "Odoo automatically creates an invoice when a salesperson confirms a sales order",
+      fr: "Odoo crée automatiquement une facture quand un commercial confirme une commande client",
+    },
+    distractors: [
+      {
+        en: "Odoo invoices automatically each time delivered quantity is updated on the order",
+        fr: "Odoo facture automatiquement à chaque mise à jour de la quantité livrée",
+      },
+      {
+        en: "Odoo invoices when the customer pays online on the eCommerce checkout",
+        fr: "Odoo facture quand le client paie en ligne sur la boutique",
+      },
+      {
+        en: "Odoo invoices when warehouse staff validates the delivery order",
+        fr: "Odoo facture quand l'entrepôt valide le bon de livraison",
+      },
+    ],
+    explanation: {
+      en: "Automatic Invoice generates a draft/posted invoice on sales order confirmation depending on configuration.",
+      fr: "La facturation automatique génère une facture brouillon/comptabilisée à la confirmation de la commande selon la configuration.",
+    },
+  }),
 ];

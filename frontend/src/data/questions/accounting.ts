@@ -601,4 +601,154 @@ export const accountingQuestions = [
       fr: "Le plan comptable structure tous les comptes du grand livre (actif, passif, capitaux propres, produits, charges) de la société.",
     },
   }),
+  complexQ({
+    id: "acc-021",
+    module: "accounting",
+    text: {
+      en: "How can Odoo automatically apply the correct fiscal position on transactions?",
+      fr: "Comment Odoo peut-il appliquer automatiquement la bonne position fiscale sur les transactions ?",
+    },
+    correct: {
+      en: "Enable and configure Detect Automatically on the fiscal position",
+      fr: "Activer et configurer Détecter automatiquement sur la position fiscale",
+    },
+    distractors: [
+      {
+        en: "Add fiscal positions to each product on the Accounting tab only",
+        fr: "Ajouter les positions fiscales sur chaque produit via l'onglet Comptabilité uniquement",
+      },
+      {
+        en: "Populate the Account field manually on every invoice line",
+        fr: "Renseigner manuellement le champ Compte sur chaque ligne de facture",
+      },
+      {
+        en: "Enable fiscal positions globally in Payroll settings",
+        fr: "Activer les positions fiscales globalement dans les paramètres Paie",
+      },
+    ],
+    explanation: {
+      en: "Automatic detection maps partners and countries to fiscal positions without manual selection on each invoice.",
+      fr: "La détection automatique associe partenaires et pays aux positions fiscales sans sélection manuelle sur chaque facture.",
+    },
+  }),
+  complexQ({
+    id: "acc-022",
+    module: "accounting",
+    text: {
+      en: "You added products to a draft invoice before selecting the customer, and taxes are wrong. Why?",
+      fr: "Vous avez ajouté des produits avant de choisir le client sur une facture brouillon, et les taxes sont incorrectes. Pourquoi ?",
+    },
+    correct: {
+      en: "The Customer field must be set before adding product lines so the fiscal position applies",
+      fr: "Le champ Client doit être renseigné avant les lignes produit pour que la position fiscale s'applique",
+    },
+    distractors: [
+      {
+        en: "Fiscal positions apply only to service products, not goods",
+        fr: "Les positions fiscales s'appliquent uniquement aux services, pas aux biens",
+      },
+      {
+        en: "Taxes update only after posting the invoice, not on draft",
+        fr: "Les taxes se mettent à jour uniquement après comptabilisation, pas en brouillon",
+      },
+      {
+        en: "The product category tax overrides fiscal positions permanently",
+        fr: "La taxe de catégorie produit remplace définitivement les positions fiscales",
+      },
+    ],
+    explanation: {
+      en: "Partner-driven fiscal positions remap taxes when the customer is known; line order matters on draft invoices.",
+      fr: "Les positions fiscales liées au partenaire remappent les taxes une fois le client connu ; l'ordre des lignes compte en brouillon.",
+    },
+  }),
+  complexQ({
+    id: "acc-023",
+    module: "accounting",
+    text: {
+      en: "What does the Account Mapping tab on a fiscal position do?",
+      fr: "Que fait l'onglet Mapping des comptes sur une position fiscale ?",
+    },
+    correct: {
+      en: "Defines which income or expense accounts replace the product default accounts when the fiscal position applies",
+      fr: "Définit quels comptes de produits/charges remplacent les comptes par défaut du produit quand la position fiscale s'applique",
+    },
+    distractors: [
+      {
+        en: "Lists accounts that are forbidden under this fiscal position",
+        fr: "Liste les comptes interdits sous cette position fiscale",
+      },
+      {
+        en: "Shows all taxes applied in the context of the fiscal position only",
+        fr: "Affiche uniquement toutes les taxes appliquées dans le contexte de la position fiscale",
+      },
+      {
+        en: "Maps warehouse locations to tax jurisdictions automatically",
+        fr: "Associe automatiquement les emplacements entrepôt aux juridictions fiscales",
+      },
+    ],
+    explanation: {
+      en: "Account mapping redirects revenue/expense accounts for foreign or special tax regimes alongside tax mapping.",
+      fr: "Le mapping des comptes redirige les comptes de produits/charges pour les régimes fiscaux spéciaux, en complément du mapping des taxes.",
+    },
+  }),
+  complexQ({
+    id: "acc-024",
+    module: "accounting",
+    text: {
+      en: "What is the purpose of the suspense account in bank reconciliation?",
+      fr: "Quel est le rôle du compte d'attente dans le rapprochement bancaire ?",
+    },
+    correct: {
+      en: "It temporarily holds bank transactions until they are reconciled to the correct accounts",
+      fr: "Il retient temporairement les transactions bancaires jusqu'à leur rapprochement sur les bons comptes",
+    },
+    distractors: [
+      {
+        en: "It tracks how much customers owe the company on open invoices",
+        fr: "Il suit le montant dû par les clients sur les factures ouvertes",
+      },
+      {
+        en: "It tracks how much the company owes vendors on unpaid bills",
+        fr: "Il suit le montant dû aux fournisseurs sur les factures impayées",
+      },
+      {
+        en: "It bridges registered payments until they appear as imported bank statement lines only",
+        fr: "Il fait le lien entre paiements enregistrés et lignes de relevé importées uniquement",
+      },
+    ],
+    explanation: {
+      en: "Unreconciled bank statement lines post to suspense until matched with invoices, payments, or models.",
+      fr: "Les lignes de relevé non rapprochées passent par le compte d'attente jusqu'au matching avec factures, paiements ou modèles.",
+    },
+  }),
+  complexQ({
+    id: "acc-025",
+    module: "accounting",
+    text: {
+      en: "What does clicking the trash icon on a reconciled bank transaction do?",
+      fr: "Que fait le clic sur l'icône corbeille sur une transaction bancaire rapprochée ?",
+    },
+    correct: {
+      en: "It unreconciles the transaction without deleting the underlying bank line",
+      fr: "Il annule le rapprochement sans supprimer la ligne bancaire sous-jacente",
+    },
+    distractors: [
+      {
+        en: "It permanently deletes the bank statement line from the database",
+        fr: "Il supprime définitivement la ligne de relevé bancaire de la base",
+      },
+      {
+        en: "It deletes the vendor bill linked to the reconciliation",
+        fr: "Il supprime la facture fournisseur liée au rapprochement",
+      },
+      {
+        en: "It removes the partner set on the transaction only",
+        fr: "Il retire uniquement le partenaire défini sur la transaction",
+      },
+    ],
+    explanation: {
+      en: "Unreconcile breaks the match so you can reassign the bank line to different open items.",
+      fr: "Annuler le rapprochement rompt l'association pour réaffecter la ligne bancaire à d'autres pièces ouvertes.",
+    },
+  }),
 ];

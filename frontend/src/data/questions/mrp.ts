@@ -601,4 +601,304 @@ export const mrpQuestions = [
       fr: "Odoo propose des actions Scinder (par quantité) et Fusionner sur les OF pour adapter les lots de production sans recréer la demande depuis zéro.",
     },
   }),
+  complexQ({
+    id: "mrp-021",
+    module: "mrp",
+    text: {
+      en: "Which setting must be enabled to add operations and work centers to a bill of materials?",
+      fr: "Quel paramètre activer pour ajouter des opérations et centres de travail à une nomenclature ?",
+    },
+    correct: {
+      en: "Work Orders",
+      fr: "Ordres de travail",
+    },
+    distractors: [
+      {
+        en: "Manufacture route on the product category only",
+        fr: "Route Fabriquer sur la catégorie produit uniquement",
+      },
+      {
+        en: "Multiple routes on the warehouse configuration page",
+        fr: "Routes multiples sur la page de configuration entrepôt",
+      },
+      {
+        en: "Work center locations without enabling work orders",
+        fr: "Emplacements de centres de travail sans activer les ordres de travail",
+      },
+    ],
+    explanation: {
+      en: "Work Orders unlock operations tab on BoMs and shop floor tracking per operation.",
+      fr: "Les ordres de travail activent l'onglet Opérations sur les nomenclatures et le suivi atelier par opération.",
+    },
+  }),
+  complexQ({
+    id: "mrp-022",
+    module: "mrp",
+    text: {
+      en: "For products with multiple bills of materials, which BoM is selected by default for new manufacturing orders?",
+      fr: "Pour un produit avec plusieurs nomenclatures, laquelle est sélectionnée par défaut pour un nouvel OF ?",
+    },
+    correct: {
+      en: "The BoM listed first on the product's Bill of Materials page",
+      fr: "La nomenclature listée en premier sur la page Nomenclatures du produit",
+    },
+    distractors: [
+      {
+        en: "The BoM that was created first chronologically",
+        fr: "La nomenclature créée en premier chronologiquement",
+      },
+      {
+        en: "The most recently created BoM",
+        fr: "La nomenclature créée le plus récemment",
+      },
+      {
+        en: "No BoM is selected; the user must choose one on every MO",
+        fr: "Aucune nomenclature n'est sélectionnée ; l'utilisateur doit en choisir une à chaque OF",
+      },
+    ],
+    explanation: {
+      en: "BoM sequence on the product form determines the default BoM used when Odoo creates manufacturing orders.",
+      fr: "L'ordre des nomenclatures sur la fiche produit détermine la nomenclature par défaut lors de la création des OF.",
+    },
+  }),
+  complexQ({
+    id: "mrp-023",
+    module: "mrp",
+    text: {
+      en: "Where can production files and diagrams be uploaded on a bill of materials in Odoo?",
+      fr: "Où téléverser fichiers et schémas de production sur une nomenclature Odoo ?",
+    },
+    correct: {
+      en: "The Instructions tab on the BoM",
+      fr: "L'onglet Instructions de la nomenclature",
+    },
+    distractors: [
+      {
+        en: "The Worksheet tab on the work center form",
+        fr: "L'onglet Feuille de travail sur la fiche centre de travail",
+      },
+      {
+        en: "The Notes tab on the manufacturing order",
+        fr: "L'onglet Notes sur l'ordre de fabrication",
+      },
+      {
+        en: "The Miscellaneous tab on the product template",
+        fr: "L'onglet Divers sur le modèle de produit",
+      },
+    ],
+    explanation: {
+      en: "BoM Instructions hold documents operators see on work orders and shop floor steps.",
+      fr: "L'onglet Instructions de la nomenclature contient les documents visibles sur les ordres de travail et l'atelier.",
+    },
+  }),
+  complexQ({
+    id: "mrp-024",
+    module: "mrp",
+    text: {
+      en: "How does Odoo link a specific bill of materials to a product variant?",
+      fr: "Comment Odoo lie une nomenclature spécifique à une variante de produit ?",
+    },
+    correct: {
+      en: "Using the Product Variant field on the BoM",
+      fr: "Via le champ Variante de produit sur la nomenclature",
+    },
+    distractors: [
+      {
+        en: "Using the Product Attribute field on the sales order line",
+        fr: "Via le champ Attribut produit sur la ligne de commande client",
+      },
+      {
+        en: "Using the Manufacturing Route on the customer form",
+        fr: "Via la route Fabrication sur la fiche client",
+      },
+      {
+        en: "Using the Sales Order reference on the BoM header",
+        fr: "Via la référence commande client sur l'en-tête de nomenclature",
+      },
+    ],
+    explanation: {
+      en: "Variant-specific BoMs restrict components and operations to the matching product variant.",
+      fr: "Les nomenclatures par variante restreignent composants et opérations à la variante correspondante.",
+    },
+  }),
+  complexQ({
+    id: "mrp-025",
+    module: "mrp",
+    text: {
+      en: "How many unique products can a single manufacturing order contain in Odoo?",
+      fr: "Combien de produits distincts un seul ordre de fabrication peut-il contenir dans Odoo ?",
+    },
+    correct: {
+      en: "One finished product",
+      fr: "Un seul produit fini",
+    },
+    distractors: [
+      {
+        en: "Two products when using a kit BoM",
+        fr: "Deux produits lors de l'utilisation d'une nomenclature kit",
+      },
+      {
+        en: "Up to three products sharing the same work center",
+        fr: "Jusqu'à trois produits partageant le même centre de travail",
+      },
+      {
+        en: "Unlimited products as long as they share one BoM",
+        fr: "Produits illimités tant qu'ils partagent une nomenclature",
+      },
+    ],
+    explanation: {
+      en: "Each MO produces one finished product (quantity can be >1); components are listed on the BoM, not as separate finished products.",
+      fr: "Chaque OF fabrique un produit fini (quantité pouvant être >1) ; les composants sont sur la nomenclature, pas comme produits finis distincts.",
+    },
+  }),
+  complexQ({
+    id: "mrp-026",
+    module: "mrp",
+    text: {
+      en: "How is the End date/time calculated on a manufacturing order?",
+      fr: "Comment la date/heure de fin est-elle calculée sur un ordre de fabrication ?",
+    },
+    correct: {
+      en: "Scheduled date plus the expected duration of all work orders",
+      fr: "Date planifiée plus la durée prévue de tous les ordres de travail",
+    },
+    distractors: [
+      {
+        en: "Scheduled date plus a fixed 24-hour buffer",
+        fr: "Date planifiée plus un délai fixe de 24 heures",
+      },
+      {
+        en: "Scheduled date plus the real duration already logged on work orders",
+        fr: "Date planifiée plus la durée réelle déjà saisie sur les ordres de travail",
+      },
+      {
+        en: "There is no End field; only the scheduled start date is stored",
+        fr: "Il n'y a pas de champ Fin ; seule la date de début planifiée est enregistrée",
+      },
+    ],
+    explanation: {
+      en: "MO end date planning sums expected operation durations from the BoM routing starting at the scheduled start.",
+      fr: "La fin planifiée de l'OF additionne les durées prévues des opérations de la gamme à partir du début planifié.",
+    },
+  }),
+  complexQ({
+    id: "mrp-027",
+    module: "mrp",
+    text: {
+      en: "Where do you configure one-step vs multi-step manufacturing in Odoo?",
+      fr: "Où configurer la fabrication en une étape vs plusieurs étapes dans Odoo ?",
+    },
+    correct: {
+      en: "Inventory → Warehouses → select warehouse → Manufacture section",
+      fr: "Inventaire → Entrepôts → sélectionner l'entrepôt → section Fabrication",
+    },
+    distractors: [
+      {
+        en: "Manufacturing → Settings → Manufacturing Steps section",
+        fr: "Fabrication → Paramètres → section Étapes de fabrication",
+      },
+      {
+        en: "Shop Floor → Settings → Manufacturing Steps section",
+        fr: "Atelier → Paramètres → section Étapes de fabrication",
+      },
+      {
+        en: "It is not possible to change manufacturing steps after warehouse creation",
+        fr: "Il est impossible de modifier les étapes de fabrication après création de l'entrepôt",
+      },
+    ],
+    explanation: {
+      en: "Warehouse manufacture settings define pick components / produce / store finished goods flows (1, 2, or 3 steps).",
+      fr: "Les paramètres Fabrication de l'entrepôt définissent les flux prélèvement composants / production / stockage produit fini (1, 2 ou 3 étapes).",
+    },
+  }),
+  complexQ({
+    id: "mrp-028",
+    module: "mrp",
+    text: {
+      en: "What happens when Replenish Scrapped Quantities is enabled and components are scrapped from an MO on Shop Floor?",
+      fr: "Que se passe-t-il si Réapprovisionner quantités rebutées est activé et que des composants sont rebutés depuis l'atelier ?",
+    },
+    correct: {
+      en: "A Pick Components transfer is automatically created to replace the scrapped components",
+      fr: "Un transfert Prélèvement de composants est créé automatiquement pour remplacer les composants rebutés",
+    },
+    distractors: [
+      {
+        en: "A purchase order is created to buy replacement components from the vendor",
+        fr: "Un bon de commande est créé pour racheter les composants chez le fournisseur",
+      },
+      {
+        en: "The option only appears when adding components, not when scrapping",
+        fr: "L'option n'apparaît qu'à l'ajout de composants, pas lors d'un rebut",
+      },
+      {
+        en: "Scrapped quantities are replenished only after manually clicking Check Availability",
+        fr: "Les quantités rebutées ne sont réapprovisionnées qu'après un clic manuel sur Vérifier la disponibilité",
+      },
+    ],
+    explanation: {
+      en: "Shop Floor can trigger internal component picks to restore MO component availability after scrap.",
+      fr: "L'atelier peut déclencher des prélèvements internes pour rétablir la disponibilité des composants de l'OF après rebut.",
+    },
+  }),
+  complexQ({
+    id: "mrp-029",
+    module: "mrp",
+    text: {
+      en: "When merging manufacturing orders in Odoo, what must all MOs being merged have in common?",
+      fr: "Lors de la fusion d'ordres de fabrication, que doivent avoir en commun tous les OF fusionnés ?",
+    },
+    correct: {
+      en: "The same finished product being produced",
+      fr: "Le même produit fini à fabriquer",
+    },
+    distractors: [
+      {
+        en: "The same scheduled date and work center only",
+        fr: "Uniquement la même date planifiée et le même centre de travail",
+      },
+      {
+        en: "The same quantity to produce on each MO",
+        fr: "La même quantité à produire sur chaque OF",
+      },
+      {
+        en: "Nothing; any MOs can be merged regardless of product or BoM",
+        fr: "Rien ; n'importe quels OF peuvent être fusionnés quel que soit le produit ou la nomenclature",
+      },
+    ],
+    explanation: {
+      en: "Merge combines MOs for the same product/BOM compatibility so production lines and components align.",
+      fr: "La fusion regroupe des OF compatibles pour le même produit/nomenclature afin d'aligner composants et opérations.",
+    },
+  }),
+  complexQ({
+    id: "mrp-030",
+    module: "mrp",
+    text: {
+      en: "Which statement about reordering rules in a manufacturing context is FALSE?",
+      fr: "Quelle affirmation sur les règles de réapprovisionnement en contexte fabrication est FAUSSE ?",
+    },
+    correct: {
+      en: "You cannot automatically create RFQs without enabling the MTO route",
+      fr: "On ne peut pas créer automatiquement des demandes de prix sans activer la route MTO",
+    },
+    distractors: [
+      {
+        en: "You can configure 0,0 reordering rules by setting minimum and maximum quantities to 0",
+        fr: "On peut configurer des règles 0,0 en mettant minimum et maximum à 0",
+      },
+      {
+        en: "Products can have either the Buy or Manufacture route for replenishment",
+        fr: "Les produits peuvent avoir la route Acheter ou Fabriquer pour le réapprovisionnement",
+      },
+      {
+        en: "Vendors are set on the Purchase tab of the product form for buy routes",
+        fr: "Les fournisseurs se définissent sur l'onglet Achats de la fiche produit pour les routes achat",
+      },
+    ],
+    explanation: {
+      en: "Auto reordering rules with the Buy route create RFQs without MTO; MTO is a separate replenishment strategy.",
+      fr: "Les règles Auto avec la route Acheter créent des demandes de prix sans MTO ; le MTO est une stratégie distincte.",
+    },
+  }),
 ];

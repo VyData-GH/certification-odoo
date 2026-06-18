@@ -601,4 +601,94 @@ export const posQuestions = [
       fr: "Plusieurs caisses ou boutiques peuvent partager entrepôt quand inventaire géré centralement.",
     },
   }),
+  complexQ({
+    id: "pos-021",
+    module: "pos",
+    text: {
+      en: "How do you apply a percentage discount to a single product in the POS cart?",
+      fr: "Comment appliquer une remise en pourcentage sur un produit du panier POS ?",
+    },
+    correct: {
+      en: "Select the product, click the Discount button, and enter the percentage",
+      fr: "Sélectionner le produit, cliquer sur Remise et saisir le pourcentage",
+    },
+    distractors: [
+      {
+        en: "Click the price button and type a lower unit price manually only",
+        fr: "Cliquer sur Prix et saisir manuellement un prix unitaire inférieur uniquement",
+      },
+      {
+        en: "Discounts are applied automatically from the customer's purchase history",
+        fr: "Les remises s'appliquent automatiquement depuis l'historique d'achat du client",
+      },
+      {
+        en: "Percentage discounts can only be applied to the entire order, not one line",
+        fr: "Les remises en % ne peuvent s'appliquer qu'à la commande entière, pas à une ligne",
+      },
+    ],
+    explanation: {
+      en: "POS discount control on a line opens a percentage or fixed discount dialog for that product.",
+      fr: "Le contrôle Remise sur une ligne ouvre une saisie en pourcentage ou montant fixe pour ce produit.",
+    },
+  }),
+  complexQ({
+    id: "pos-022",
+    module: "pos",
+    text: {
+      en: "Why assign a customer to a POS order before payment?",
+      fr: "Pourquoi assigner un client à une commande POS avant le paiement ?",
+    },
+    correct: {
+      en: "To track purchase history and apply loyalty or pricelist benefits on the order",
+      fr: "Pour suivre l'historique d'achat et appliquer fidélité ou tarifs spécifiques sur la commande",
+    },
+    distractors: [
+      {
+        en: "Customers are assigned automatically only after card payment with a saved token",
+        fr: "Les clients sont assignés automatiquement uniquement après paiement carte avec jeton enregistré",
+      },
+      {
+        en: "Assignment is required only for returns, not for standard sales",
+        fr: "L'assignation n'est requise que pour les retours, pas pour les ventes standard",
+      },
+      {
+        en: "You can assign a customer only after the order is fully paid and closed",
+        fr: "On ne peut assigner un client qu'après paiement complet et clôture de la commande",
+      },
+    ],
+    explanation: {
+      en: "Linking a partner on the POS order enables loyalty points, fiscal data, and customer-specific pricing.",
+      fr: "Lier un partenaire sur la commande POS active points fidélité, données fiscales et tarifs client.",
+    },
+  }),
+  complexQ({
+    id: "pos-023",
+    module: "pos",
+    text: {
+      en: "How can a customer split payment between two payment methods on POS?",
+      fr: "Comment un client peut-il répartir le paiement entre deux modes de paiement au POS ?",
+    },
+    correct: {
+      en: "Enter a partial amount on the first method, then pay the remaining balance with the second method",
+      fr: "Saisir un montant partiel sur le premier mode, puis payer le solde avec le second mode",
+    },
+    distractors: [
+      {
+        en: "Split payment requires enabling a dedicated Split Bills module in Inventory settings",
+        fr: "Le paiement partagé exige d'activer un module Fraction de facture dans Inventaire",
+      },
+      {
+        en: "Only one payment method is allowed per POS order in Odoo",
+        fr: "Un seul mode de paiement est autorisé par commande POS dans Odoo",
+      },
+      {
+        en: "Split payment works only for restaurant tables with course firing enabled",
+        fr: "Le paiement partagé fonctionne uniquement pour les tables restaurant avec envoi de plats",
+      },
+    ],
+    explanation: {
+      en: "POS accepts multiple payment lines until the order total is fully covered.",
+      fr: "Le POS accepte plusieurs lignes de paiement jusqu'à couvrir le total de la commande.",
+    },
+  }),
 ];
