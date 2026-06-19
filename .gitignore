@@ -23,6 +23,9 @@ yarn-error.log*
 .env
 .env.*
 !.env*.example
+
+# temporary Odoo Learn scraper (local only — never commit)
+scripts/
 frontend/.env
 frontend/.env.*
 !frontend/.env.local.example

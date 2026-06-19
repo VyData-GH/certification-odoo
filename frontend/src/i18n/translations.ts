@@ -6,6 +6,7 @@ export const translations = {
     appSubtitle: "Training Simulator",
     nav: {
       home: "Home",
+      courses: "Courses",
       modules: "Modules",
       history: "History",
       startExam: "Start Exam",
@@ -246,6 +247,23 @@ export const translations = {
       subtitle: "Target your weak areas",
       quizDesc: "Focused quiz on this module only",
     },
+    courses: {
+      title: "Course Study",
+      subtitle: "Review each certification module before practicing",
+      intro:
+        "Short summaries aligned with the Odoo 19 functional certification syllabus. Read a module, then launch a quiz, sample test, or full exam.",
+      readMore: "Study module",
+      keyTopics: "Key topics",
+      examFocus: "Certification focus",
+      readyToPractice: "Ready to practice?",
+      practiceHint: "Start with a short quiz, then try the sample test or full exam from Home.",
+      quiz10: "Quiz — 10 Q",
+      quiz15: "Quiz — 15 Q",
+      quiz20: "Quiz — 20 Q",
+      allModules: "All modules →",
+      notFound: "Module not found",
+      backToList: "Back to courses",
+    },
     historyPage: {
       title: "Session History",
       subtitle: "Track your progress over time",
@@ -299,6 +317,7 @@ export const translations = {
     appSubtitle: "Simulateur d'entraînement",
     nav: {
       home: "Accueil",
+      courses: "Cours",
       modules: "Modules",
       history: "Historique",
       startExam: "Lancer l'examen",
@@ -541,6 +560,24 @@ export const translations = {
       title: "Entraînement par module",
       subtitle: "Ciblez vos points faibles",
       quizDesc: "Quiz ciblé sur ce module uniquement",
+    },
+    courses: {
+      title: "Étude des cours",
+      subtitle: "Révisez chaque module avant de vous entraîner",
+      intro:
+        "Synthèses courtes alignées sur le programme de certification fonctionnelle Odoo 19. Lisez un module, puis lancez un quiz, un examen blanc ou l'examen complet.",
+      readMore: "Étudier le module",
+      keyTopics: "Points clés",
+      examFocus: "À retenir pour la certification",
+      readyToPractice: "Prêt à vous entraîner ?",
+      practiceHint:
+        "Commencez par un quiz court, puis essayez l'examen blanc ou l'examen complet depuis l'accueil.",
+      quiz10: "Quiz — 10 Q",
+      quiz15: "Quiz — 15 Q",
+      quiz20: "Quiz — 20 Q",
+      allModules: "Tous les modules →",
+      notFound: "Module introuvable",
+      backToList: "Retour aux cours",
     },
     historyPage: {
       title: "Historique des sessions",

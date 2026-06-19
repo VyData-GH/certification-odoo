@@ -37,6 +37,7 @@ export function OdooNavbar() {
 
   const links = [
     { href: "/", label: tr.nav.home },
+    { href: "/courses", label: tr.nav.courses },
     { href: "/modules", label: tr.nav.modules },
     { href: "/history", label: tr.nav.history },
   ];
@@ -52,7 +53,8 @@ export function OdooNavbar() {
                 key={link.href}
                 href={link.href}
                 className={`px-3 py-1.5 text-sm rounded transition-colors ${
-                  pathname === link.href
+                  pathname === link.href ||
+                  (link.href !== "/" && pathname.startsWith(`${link.href}/`))
                     ? "bg-white/15 text-white font-medium"
                     : "text-white/75 hover:text-white hover:bg-white/10"
                 }`}
