@@ -51,13 +51,9 @@ export async function clearHistory(
   accessToken?: string | null
 ): Promise<void> {
   if (accessToken) {
-    try {
-      await clearHistoryOnApi(accessToken);
-      return;
-    } catch {
-      clearLocalHistory();
-      return;
-    }
+    await clearHistoryOnApi(accessToken);
+    clearLocalHistory();
+    return;
   }
   clearLocalHistory();
 }
@@ -67,13 +63,9 @@ export async function deleteHistorySession(
   accessToken?: string | null
 ): Promise<void> {
   if (accessToken) {
-    try {
-      await deleteHistorySessionOnApi(sessionId, accessToken);
-      return;
-    } catch {
-      deleteLocalResult(sessionId);
-      return;
-    }
+    await deleteHistorySessionOnApi(sessionId, accessToken);
+    deleteLocalResult(sessionId);
+    return;
   }
   deleteLocalResult(sessionId);
 }

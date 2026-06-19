@@ -47,6 +47,7 @@ export default function HistoryPage() {
   const [mobileShowDetail, setMobileShowDetail] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [clearing, setClearing] = useState(false);
+  const [actionError, setActionError] = useState<string | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
 
   const refresh = useCallback(async () => {
@@ -97,23 +98,32 @@ export default function HistoryPage() {
   };
 
   const handleDeleteSession = async (id: string) => {
-    await deleteHistorySession(id, accessToken);
-    setHistory((prev) => prev.filter((item) => item.id !== id));
-    if (selectedId === id) {
-      const remaining = filtered.filter((item) => item.id !== id);
-      setSelectedId(remaining[0]?.id ?? null);
-      if (remaining.length === 0) setMobileShowDetail(false);
+    setActionError(null);
+    try {
+      await deleteHistorySession(id, accessToken);
+      setHistory((prev) => prev.filter((item) => item.id !== id));
+      if (selectedId === id) {
+        const remaining = filtered.filter((item) => item.id !== id);
+        setSelectedId(remaining[0]?.id ?? null);
+        if (remaining.length === 0) setMobileShowDetail(false);
+      }
+    } catch {
+      setActionError(tr.historyPage.actionError);
+      await refresh();
     }
   };
 
   const handleClearConfirm = async () => {
     setClearing(true);
+    setActionError(null);
     try {
       await clearHistory(accessToken);
       setHistory([]);
       setSelectedId(null);
       setMobileShowDetail(false);
       setShowClearConfirm(false);
+    } catch {
+      setActionError(tr.historyPage.actionError);
     } finally {
       setClearing(false);
     }
@@ -205,6 +215,9 @@ export default function HistoryPage() {
               ? tr.historyPage.sourceCloud
               : tr.historyPage.sourceLocal}
           </span>
+          {actionError && (
+            <p className="text-sm text-odoo-danger w-full">{actionError}</p>
+          )}
         </div>
 
         <div className="flex gap-1 mb-5 border-b border-odoo-border-light">

@@ -72,7 +72,10 @@ Endpoints (header `Authorization: Bearer <token>`) :
 
 - `GET /api/history` — liste les sessions
 - `POST /api/history` — enregistre une session
-- `DELETE /api/history` — efface l'historique
+- `DELETE /api/history` — efface tout l'historique
+- `DELETE /api/history/:id` — supprime une session
+
+Base existante : exécuter aussi `supabase/migrate_production.sql` dans le SQL Editor.
 
 ---
 

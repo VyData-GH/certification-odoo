@@ -300,6 +300,8 @@ export const translations = {
       deleteConfirmTitle: "Delete session",
       deleteConfirm: "This session will be permanently removed from your history.",
       deleteConfirmAction: "Delete",
+      actionError:
+        "Could not update history on the server. Please check your connection and try again.",
       correct: "correct",
       sourceCloud: "Cloud (Supabase)",
       sourceLocal: "Local (browser)",
@@ -667,6 +669,8 @@ export const translations = {
       deleteConfirm:
         "Cette session sera définitivement retirée de votre historique.",
       deleteConfirmAction: "Supprimer",
+      actionError:
+        "Impossible de mettre à jour l'historique sur le serveur. Vérifiez votre connexion et réessayez.",
       correct: "correctes",
       sourceCloud: "Cloud (Supabase)",
       sourceLocal: "Local (navigateur)",
