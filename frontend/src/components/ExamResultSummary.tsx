@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { WeakQuestionsModal } from "@/components/WeakQuestionsModal";
-import { ExamResult, EXAM_RULES, MODULES, ModuleId } from "@/types/exam";
+import { ExamResult, EXAM_RULES, CERTIFICATION_MODULES, CertificationModuleId, ModuleId } from "@/types/exam";
 import { formatTime } from "@/lib/exam-engine";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -31,7 +31,7 @@ export function ExamResultSummary({
   const examScoreLabel = tr.results.examScoreOfficial
     .replace("{score}", result.score.toFixed(1));
 
-  const moduleResults = MODULES.map((mod) => {
+  const moduleResults = CERTIFICATION_MODULES.map((mod) => {
     const data = result.moduleBreakdown[mod.id];
     if (!data || data.total === 0) return null;
     const pct = (data.correct / data.total) * 100;

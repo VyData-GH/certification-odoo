@@ -1,4 +1,4 @@
-export const MODULES = [
+export const CERTIFICATION_MODULES = [
   { id: "website", label: "Website", icon: "🌐" },
   { id: "ecommerce", label: "eCommerce", icon: "🛒" },
   { id: "survey", label: "Survey", icon: "📋" },
@@ -19,7 +19,46 @@ export const MODULES = [
   { id: "studio", label: "Studio", icon: "🎨" },
 ] as const;
 
-export type ModuleId = (typeof MODULES)[number]["id"];
+/** Modules Odoo Learn complémentaires (hors examen certification) */
+export const SUPPLEMENTARY_MODULES = [
+  { id: "sign", label: "Sign", icon: "✍️" },
+  { id: "global-settings", label: "Global Settings", icon: "⚙️" },
+  { id: "documents", label: "Documents", icon: "📄" },
+  { id: "elearning", label: "eLearning", icon: "🎓" },
+  { id: "planning", label: "Planning", icon: "📅" },
+  { id: "rental", label: "Rental", icon: "🔑" },
+  { id: "subscription", label: "Subscription", icon: "🔄" },
+  { id: "barcode", label: "Barcode", icon: "🏷️" },
+  { id: "field-service", label: "Field Service", icon: "🛠️" },
+  { id: "iot", label: "IoT", icon: "📡" },
+  { id: "appointments", label: "Appointments", icon: "📆" },
+  { id: "plm", label: "PLM", icon: "🔬" },
+] as const;
+
+/** @deprecated Alias — modules certification uniquement */
+export const MODULES = CERTIFICATION_MODULES;
+
+export type CertificationModuleId =
+  (typeof CERTIFICATION_MODULES)[number]["id"];
+export type SupplementaryModuleId =
+  (typeof SUPPLEMENTARY_MODULES)[number]["id"];
+export type ModuleId = CertificationModuleId | SupplementaryModuleId;
+
+export function isCertificationModuleId(
+  value: string
+): value is CertificationModuleId {
+  return CERTIFICATION_MODULES.some((m) => m.id === value);
+}
+
+export function isSupplementaryModuleId(
+  value: string
+): value is SupplementaryModuleId {
+  return SUPPLEMENTARY_MODULES.some((m) => m.id === value);
+}
+
+export function isModuleId(value: string): value is ModuleId {
+  return isCertificationModuleId(value) || isSupplementaryModuleId(value);
+}
 
 export interface BilingualField {
   en: string;
@@ -124,9 +163,12 @@ export const EXAM_RULES = {
   pointsUnanswered: 0,
 } as const;
 
-/** Official Odoo cert pacing: 120 questions in 1.5 hours. */
+/** Official Odoo cert pacing: 120 questions in 1.5 hours (= 45 s/question). */
 export const OFFICIAL_EXAM_QUESTIONS = EXAM_RULES.totalQuestions;
 export const OFFICIAL_EXAM_MINUTES = EXAM_RULES.durationMinutes;
+export const OFFICIAL_SECONDS_PER_QUESTION = Math.round(
+  (OFFICIAL_EXAM_MINUTES * 60) / OFFICIAL_EXAM_QUESTIONS
+);
 
 /** Odoo official sample test (fixed duration, not proportional). */
 export const SAMPLE_TEST_MINUTES = 20;
@@ -175,6 +217,30 @@ export const SAMPLE_TEST_RULES = {
   screenshotCount: 12,
   passPercentage: 70,
 } as const;
+
+/** Sample test pacing: 30 Q → 20 min (~40 s/question). */
+export const SAMPLE_SECONDS_PER_QUESTION = Math.round(
+  (SAMPLE_TEST_MINUTES * 60) / SAMPLE_TEST_RULES.questionCount
+);
+
+/**
+ * Apply official Odoo timing to the actual drawn question count
+ * (certification ratio or sample-test fixed duration).
+ */
+export function resolveExamTiming(
+  config: ExamConfig,
+  actualQuestionCount: number
+): ExamConfig {
+  const count = Math.max(0, actualQuestionCount);
+  if (config.mode === "review") {
+    return { ...config, questionCount: count, durationMinutes: 0 };
+  }
+  return {
+    ...config,
+    questionCount: count,
+    durationMinutes: examDurationMinutes(count, config.mode),
+  };
+}
 
 export const EXAM_PRESETS: ExamPreset[] = [
   {

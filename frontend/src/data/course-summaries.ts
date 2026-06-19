@@ -1,4 +1,4 @@
-import { ModuleId } from "@/types/exam";
+import { CertificationModuleId } from "@/types/exam";
 
 export interface CourseSummary {
   readMinutes: number;
@@ -8,7 +8,10 @@ export interface CourseSummary {
   mustKnow: { en: string[]; fr: string[] };
 }
 
-export const COURSE_SUMMARIES: Record<ModuleId, CourseSummary> = {
+export const CERTIFICATION_COURSE_SUMMARIES: Record<
+  CertificationModuleId,
+  CourseSummary
+> = {
   crm: {
     readMinutes: 4,
     overview: {
@@ -1108,3 +1111,6 @@ export const COURSE_SUMMARIES: Record<ModuleId, CourseSummary> = {
     },
   },
 };
+
+/** @deprecated Alias certification */
+export const COURSE_SUMMARIES = CERTIFICATION_COURSE_SUMMARIES;

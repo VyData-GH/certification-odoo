@@ -20,6 +20,7 @@ import { studioQuestions } from "./studio";
 import { screenshotQuestions } from "./screenshot-questions";
 import { yesNoQuestions } from "./yesno-questions";
 import { odooLearnQuestions } from "./odoo-learn";
+import { odooLearnSupplementaryQuestions } from "./odoo-learn-supplementary";
 
 export const allQuestions: Question[] = [
   ...yesNoQuestions,
@@ -43,4 +44,5 @@ export const allQuestions: Question[] = [
   ...posQuestions,
   ...studioQuestions,
   ...odooLearnQuestions,
+  ...odooLearnSupplementaryQuestions,
 ];

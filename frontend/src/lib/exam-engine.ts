@@ -4,13 +4,17 @@ import { allQuestions } from "@/data/questions";
 import { screenshotQuestions } from "@/data/questions/screenshot-questions";
 import {
   AnswerRecord,
+  CERTIFICATION_MODULES,
+  CertificationModuleId,
   ExamConfig,
   ExamResult,
   EXAM_RULES,
+  isCertificationModuleId,
   LocalizedQuestion,
   ModuleId,
   Question,
   SAMPLE_TEST_RULES,
+  SupplementaryModuleId,
 } from "@/types/exam";
 
 /** Mirrors Odoo official sample test section mix (text questions only). */
@@ -70,7 +74,8 @@ export function selectQuestions(config: ExamConfig): Question[] {
   const random = seededRandom(useDailySeed ? getDailySeed() : Date.now());
 
   if (config.mode === "full" && !config.modules?.length) {
-    return selectBalancedQuestions(pool, count, random);
+    const certPool = pool.filter((q) => isCertificationModuleId(q.module));
+    return selectBalancedQuestions(certPool, count, random);
   }
 
   return shuffle(pool, random).slice(0, count);
@@ -279,10 +284,39 @@ export function formatTime(seconds: number): string {
 
 export function getQuestionStats() {
   const byModule = {} as Record<ModuleId, number>;
+  const byCertification = {} as Record<CertificationModuleId, number>;
+  const bySupplementary = {} as Record<SupplementaryModuleId, number>;
+
+  for (const mod of CERTIFICATION_MODULES) {
+    byCertification[mod.id] = 0;
+  }
+
   for (const q of allQuestions) {
     byModule[q.module] = (byModule[q.module] ?? 0) + 1;
+    if (isCertificationModuleId(q.module)) {
+      byCertification[q.module] = (byCertification[q.module] ?? 0) + 1;
+    } else {
+      bySupplementary[q.module] = (bySupplementary[q.module] ?? 0) + 1;
+    }
   }
-  return { total: allQuestions.length, byModule };
+
+  const certificationTotal = Object.values(byCertification).reduce(
+    (a, b) => a + b,
+    0
+  );
+  const supplementaryTotal = Object.values(bySupplementary).reduce(
+    (a, b) => a + b,
+    0
+  );
+
+  return {
+    total: allQuestions.length,
+    certificationTotal,
+    supplementaryTotal,
+    byModule,
+    byCertification,
+    bySupplementary,
+  };
 }
 
 export function getModuleQuestionCount(moduleId: ModuleId): number {

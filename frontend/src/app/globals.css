@@ -262,6 +262,66 @@ body {
   background-color: #714b6740;
 }
 
+/* Loading & route transitions */
+@keyframes odoo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes odoo-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes odoo-route-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.odoo-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid #e9ecef;
+  border-top-color: var(--odoo-brand);
+  border-radius: 50%;
+  animation: odoo-spin 0.75s linear infinite;
+}
+
+.odoo-page-enter {
+  animation: odoo-page-enter 0.28s ease-out;
+}
+
+.odoo-route-progress {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--odoo-action),
+    var(--odoo-brand-light),
+    transparent
+  );
+  animation: odoo-route-progress 0.9s ease-in-out infinite;
+}
+
+.odoo-content-reveal {
+  animation: odoo-page-enter 0.32s ease-out;
+}
+
 /* White wordmark on Odoo purple navbar */
 .brand-logo-light {
   filter: brightness(0) invert(1);

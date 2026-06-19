@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { AppLoading } from "@/components/AppLoading";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { isEmailVerified } from "@/lib/auth";
@@ -23,19 +24,11 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   }, [canAccess, loading, router, pathname]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-odoo-bg text-odoo-text-muted text-sm">
-        {tr.auth.loading}
-      </div>
-    );
+    return <AppLoading message={tr.auth.loading} />;
   }
 
   if (!configured || !canAccess) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-odoo-bg text-odoo-text-muted text-sm">
-        {tr.auth.redirecting}
-      </div>
-    );
+    return <AppLoading message={tr.auth.redirecting} />;
   }
 
   return <>{children}</>;

@@ -1,14 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { ModuleId } from "@/types/exam";
+import {
+  examDurationMinutes,
+  formatExamDuration,
+  ModuleId,
+} from "@/types/exam";
 
 interface ModuleQuizControlsProps {
   moduleId: ModuleId;
   totalQuestions: number;
+}
+
+function quizLabel(count: number, template: string): string {
+  const duration = formatExamDuration(examDurationMinutes(count, "module"));
+  return template.replace("{n}", String(count)).replace("{duration}", duration);
 }
 
 export function ModuleQuizControls({
@@ -18,10 +26,13 @@ export function ModuleQuizControls({
   const router = useRouter();
   const { tr } = useLanguage();
   const [customCount, setCustomCount] = useState("");
+  const [launching, setLaunching] = useState(false);
 
-  const disabled = totalQuestions === 0;
+  const disabled = totalQuestions === 0 || launching;
 
   function launch(count: number | "all") {
+    if (disabled) return;
+    setLaunching(true);
     const param = count === "all" ? "all" : String(count);
     router.push(`/exam?module=${moduleId}&count=${param}`);
   }
@@ -34,32 +45,48 @@ export function ModuleQuizControls({
     launch(Math.min(parsed, totalQuestions));
   }
 
+  if (launching) {
+    return (
+      <div className="flex items-center gap-2 text-sm text-odoo-text-muted py-2">
+        <div className="odoo-spinner w-5 h-5 border-2" aria-hidden />
+        <span>{tr.modulesQuiz.launching}</span>
+      </div>
+    );
+  }
+
+  const parsedCustom = parseInt(customCount, 10);
+  const previewCount =
+    !Number.isNaN(parsedCustom) && parsedCustom >= 1
+      ? Math.min(parsedCustom, totalQuestions)
+      : null;
+
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
         {[10, 15, 20]
           .filter((n) => n <= totalQuestions)
           .map((n) => (
-            <Link
+            <button
               key={n}
-              href={`/exam?module=${moduleId}&count=${n}`}
-              className={`odoo-btn-secondary flex-1 min-w-[4rem] text-center text-sm ${
-                disabled ? "pointer-events-none opacity-50" : ""
-              }`}
-              aria-disabled={disabled}
+              type="button"
+              onClick={() => launch(n)}
+              disabled={disabled}
+              className="odoo-btn-secondary flex-1 min-w-[5.5rem] text-center text-sm disabled:opacity-50"
             >
-              {n} Q
-            </Link>
+              {quizLabel(n, tr.modulesQuiz.questionsWithDuration)}
+            </button>
           ))}
         {totalQuestions > 0 && (
-          <Link
-            href={`/exam?module=${moduleId}&count=all`}
-            className={`odoo-btn-primary flex-1 min-w-[5rem] text-center text-sm ${
-              disabled ? "pointer-events-none opacity-50" : ""
-            }`}
+          <button
+            type="button"
+            onClick={() => launch("all")}
+            disabled={disabled}
+            className="odoo-btn-primary flex-1 min-w-[6rem] text-center text-sm disabled:opacity-50"
           >
             {tr.modulesQuiz.allQuestions.replace("{n}", String(totalQuestions))}
-          </Link>
+            {" · "}
+            {formatExamDuration(examDurationMinutes(totalQuestions, "module"))}
+          </button>
         )}
       </div>
 
@@ -85,6 +112,11 @@ export function ModuleQuizControls({
           {tr.modulesQuiz.startCustom}
         </button>
       </form>
+      {previewCount !== null && (
+        <p className="text-xs text-odoo-text-muted">
+          {quizLabel(previewCount, tr.modulesQuiz.questionsWithDuration)}
+        </p>
+      )}
     </div>
   );
 }

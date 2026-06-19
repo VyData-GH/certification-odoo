@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { getModuleIconUrl } from "@/lib/module-icons";
-import { MODULES, ModuleId } from "@/types/exam";
+import { CERTIFICATION_MODULES, ModuleId, SUPPLEMENTARY_MODULES } from "@/types/exam";
 
 interface ModuleIconProps {
   moduleId: ModuleId;
@@ -16,7 +16,9 @@ export function ModuleIcon({
   className = "",
 }: ModuleIconProps) {
   const [failed, setFailed] = useState(false);
-  const mod = MODULES.find((m) => m.id === moduleId);
+  const mod =
+    CERTIFICATION_MODULES.find((m) => m.id === moduleId) ??
+    SUPPLEMENTARY_MODULES.find((m) => m.id === moduleId);
   const fallback = mod?.icon ?? "📦";
 
   if (failed) {

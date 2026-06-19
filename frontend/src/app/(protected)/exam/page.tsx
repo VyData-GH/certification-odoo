@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { AppLoading } from "@/components/AppLoading";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { ExamBriefing } from "@/components/ExamBriefing";
@@ -32,7 +33,7 @@ import {
   ExamConfig,
   ExamResult,
   EXAM_PRESETS,
-  examDurationMinutes,
+  resolveExamTiming,
   LocalizedQuestion,
   ModuleId,
 } from "@/types/exam";
@@ -93,11 +94,12 @@ function ExamContent() {
       examConfig = {
         mode: "module",
         questionCount,
-        durationMinutes: examDurationMinutes(questionCount, "module"),
+        durationMinutes: 0,
         modules: [moduleParam],
       };
       selected = selectQuestions(examConfig);
       seed = Date.now();
+      examConfig = resolveExamTiming(examConfig, selected.length);
     } else if (presetId) {
       const preset = EXAM_PRESETS.find((p) => p.id === presetId);
       if (!preset) {
@@ -107,6 +109,7 @@ function ExamContent() {
       examConfig = { ...preset.config, presetId: preset.id };
       selected = selectQuestions(examConfig);
       seed = Date.now();
+      examConfig = resolveExamTiming(examConfig, selected.length);
     } else {
       router.replace("/");
       return;
@@ -213,26 +216,24 @@ function ExamContent() {
   };
 
   if (!config || questions.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-odoo-bg">
-        <div className="text-odoo-text-muted">{tr.exam.loading}</div>
-      </div>
-    );
+    return <AppLoading message={tr.exam.loading} />;
   }
 
   if (!examStarted) {
     return (
-      <ExamBriefing
-        config={config}
-        questionCount={questions.length}
-        onStart={handleStartExam}
-      />
+      <div className="odoo-content-reveal">
+        <ExamBriefing
+          config={config}
+          questionCount={questions.length}
+          onStart={handleStartExam}
+        />
+      </div>
     );
   }
 
   if (submitted && result) {
     return (
-      <div className="min-h-screen bg-odoo-bg py-8">
+      <div className="min-h-screen bg-odoo-bg py-8 odoo-content-reveal">
         <ResultsPanel
           result={result}
           onRetry={() => startExamRetry(result, router.push)}
@@ -248,7 +249,7 @@ function ExamContent() {
   const currentQuestion = questions[currentIndex];
 
   return (
-    <div className="min-h-screen bg-odoo-bg">
+    <div className="min-h-screen bg-odoo-bg odoo-content-reveal">
       <header className="odoo-exam-bar sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-4 h-11 flex items-center justify-between gap-3">
           <div className="flex items-center gap-4 min-w-0">
@@ -362,13 +363,7 @@ function ExamContent() {
 
 export default function ExamPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center bg-odoo-bg">
-          <div className="text-odoo-text-muted">…</div>
-        </div>
-      }
-    >
+    <Suspense fallback={<AppLoading />}>
       <ExamContent />
     </Suspense>
   );

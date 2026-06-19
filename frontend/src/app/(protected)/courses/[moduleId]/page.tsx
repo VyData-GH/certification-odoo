@@ -5,13 +5,17 @@ import { useParams } from "next/navigation";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
-import { COURSE_SUMMARIES } from "@/data/course-summaries";
+import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
+import { SUPPLEMENTARY_COURSE_SUMMARIES } from "@/data/course-summaries-supplementary";
 import { useLanguage } from "@/context/LanguageContext";
 import { getQuestionStats } from "@/lib/exam-engine";
-import { MODULES, ModuleId } from "@/types/exam";
+import { isCertificationModuleId, isModuleId } from "@/types/exam";
 
-function isModuleId(value: string): value is ModuleId {
-  return MODULES.some((m) => m.id === value);
+function getSummary(moduleId: string) {
+  if (isCertificationModuleId(moduleId)) {
+    return CERTIFICATION_COURSE_SUMMARIES[moduleId];
+  }
+  return SUPPLEMENTARY_COURSE_SUMMARIES[moduleId as keyof typeof SUPPLEMENTARY_COURSE_SUMMARIES];
 }
 
 export default function CourseModulePage() {
@@ -36,9 +40,10 @@ export default function CourseModulePage() {
     );
   }
 
-  const summary = COURSE_SUMMARIES[moduleId];
+  const summary = getSummary(moduleId);
   const label = tr.modules_labels[moduleId] ?? moduleId;
   const count = stats.byModule[moduleId] ?? 0;
+  const isCert = isCertificationModuleId(moduleId);
   const overview =
     locale === "fr" ? summary.overview.fr : summary.overview.en;
   const quickFlow =
@@ -60,9 +65,15 @@ export default function CourseModulePage() {
       backLabel={`← ${tr.nav.courses}`}
     >
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-5">
-        <p className="text-xs text-odoo-text-muted uppercase tracking-wide">
-          {readTime}
-        </p>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-odoo-text-muted uppercase tracking-wide">
+          <span>{readTime}</span>
+          <span>·</span>
+          <span>
+            {isCert
+              ? tr.courses.certificationSection
+              : tr.courses.supplementarySection}
+          </span>
+        </div>
 
         <section className="odoo-card">
           <div className="odoo-card-header">{tr.courses.quickFlow}</div>
@@ -106,10 +117,7 @@ export default function CourseModulePage() {
             <p className="text-sm text-odoo-text-muted">
               {count} {tr.home.questionsAvailable} — {tr.courses.practiceHint}
             </p>
-            <ModuleQuizControls
-              moduleId={moduleId}
-              totalQuestions={count}
-            />
+            <ModuleQuizControls moduleId={moduleId} totalQuestions={count} />
             <div className="pt-1">
               <Link href="/modules" className="odoo-btn-secondary text-sm">
                 {tr.courses.allModules}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/context/LanguageContext";
-import { EXAM_PRESETS, EXAM_RULES, formatExamDuration, MODULES } from "@/types/exam";
+import { EXAM_PRESETS, EXAM_RULES, formatExamDuration, CERTIFICATION_MODULES } from "@/types/exam";
 import { getQuestionStats } from "@/lib/exam-engine";
 
 export default function HomePage() {
@@ -86,7 +86,7 @@ export default function HomePage() {
               {tr.home.view360Desc} — {tr.home.modulesCovered}:
             </p>
             <div className="flex flex-wrap gap-1.5">
-              {MODULES.map((m) => (
+              {CERTIFICATION_MODULES.map((m) => (
                 <span
                   key={m.id}
                   className="odoo-badge odoo-badge-brand inline-flex items-center gap-1.5"
@@ -96,7 +96,7 @@ export default function HomePage() {
                   <span>
                     {tr.modules_labels[m.id] ?? m.label}
                     <span className="ml-1 opacity-60">
-                      ({stats.byModule[m.id] ?? 0})
+                      ({stats.byCertification[m.id] ?? 0})
                     </span>
                   </span>
                 </span>

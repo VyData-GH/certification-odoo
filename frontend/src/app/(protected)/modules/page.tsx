@@ -1,15 +1,26 @@
 "use client";
 
-import { ModuleIcon } from "@/components/ModuleIcon";
-import { ModuleQuizControls } from "@/components/ModuleQuizControls";
+import { ModuleCatalogSection } from "@/components/ModuleCatalogSection";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/context/LanguageContext";
-import { MODULES } from "@/types/exam";
+import { CERTIFICATION_MODULES, SUPPLEMENTARY_MODULES } from "@/types/exam";
 import { getQuestionStats } from "@/lib/exam-engine";
 
 export default function ModulesPage() {
   const { tr } = useLanguage();
   const stats = getQuestionStats();
+
+  const certificationItems = CERTIFICATION_MODULES.map((mod) => ({
+    id: mod.id,
+    label: tr.modules_labels[mod.id] ?? mod.label,
+    questionCount: stats.byCertification[mod.id] ?? 0,
+  }));
+
+  const supplementaryItems = SUPPLEMENTARY_MODULES.map((mod) => ({
+    id: mod.id,
+    label: tr.modules_labels[mod.id] ?? mod.label,
+    questionCount: stats.bySupplementary[mod.id] ?? 0,
+  }));
 
   return (
     <PageShell
@@ -18,31 +29,23 @@ export default function ModulesPage() {
       backHref="/"
       backLabel={`← ${tr.nav.home}`}
     >
-      <div className="max-w-6xl mx-auto px-4 py-6">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {MODULES.map((mod) => {
-            const count = stats.byModule[mod.id] ?? 0;
-            const label = tr.modules_labels[mod.id] ?? mod.label;
-            return (
-              <div key={mod.id} className="odoo-card">
-                <div className="odoo-card-header flex items-center justify-between gap-2">
-                  <span className="flex items-center gap-2 min-w-0">
-                    <ModuleIcon moduleId={mod.id} size={26} />
-                    <span className="truncate">{label}</span>
-                  </span>
-                  <span className="font-normal text-odoo-text-muted">
-                    {count} Q
-                  </span>
-                </div>
-                <div className="odoo-card-body">
-                  <p className="text-sm text-odoo-text-muted mb-3">
-                    {tr.modules.quizDesc}
-                  </p>
-                  <ModuleQuizControls moduleId={mod.id} totalQuestions={count} />
-                </div>
-              </div>
-            );
-          })}
+      <div className="max-w-6xl mx-auto px-4 py-6 space-y-8">
+        <ModuleCatalogSection
+          title={tr.modules.certificationSection}
+          description={`${tr.modules.certificationSectionDesc} — ${stats.certificationTotal} Q`}
+          modules={certificationItems}
+          quizDesc={tr.modules.quizDesc}
+          courseHref={(id) => `/courses/${id}`}
+        />
+
+        <div className="border-t border-odoo-border-light pt-2">
+          <ModuleCatalogSection
+            title={tr.modules.supplementarySection}
+            description={`${tr.modules.supplementarySectionDesc} — ${stats.supplementaryTotal} Q`}
+            modules={supplementaryItems}
+            quizDesc={tr.modules.studyCourse}
+            courseHref={(id) => `/courses/${id}`}
+          />
         </div>
       </div>
     </PageShell>
