@@ -264,6 +264,9 @@ body {
 
 /* Loading & route transitions */
 @keyframes odoo-spin {
+  from {
+    transform: rotate(0deg);
+  }
   to {
     transform: rotate(360deg);
   }
@@ -280,42 +283,49 @@ body {
   }
 }
 
-@keyframes odoo-route-progress {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+.odoo-spinner,
+.odoo-spinner-sm,
+.odoo-spinner-lg {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #e9ecef;
+  border-top-color: var(--odoo-brand);
+  border-right-color: var(--odoo-brand-light);
+  animation: odoo-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.odoo-spinner-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-width: 2px;
 }
 
 .odoo-spinner {
   width: 2.5rem;
   height: 2.5rem;
-  border: 3px solid #e9ecef;
-  border-top-color: var(--odoo-brand);
-  border-radius: 50%;
-  animation: odoo-spin 0.75s linear infinite;
+  border-width: 3px;
+}
+
+.odoo-spinner-lg {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-width: 4px;
+}
+
+.odoo-spinner-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid var(--odoo-border-light);
+  border-radius: 3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .odoo-page-enter {
   animation: odoo-page-enter 0.28s ease-out;
-}
-
-.odoo-route-progress {
-  height: 100%;
-  width: 40%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--odoo-action),
-    var(--odoo-brand-light),
-    transparent
-  );
-  animation: odoo-route-progress 0.9s ease-in-out infinite;
 }
 
 .odoo-content-reveal {

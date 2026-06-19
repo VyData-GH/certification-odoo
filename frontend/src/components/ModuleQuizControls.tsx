@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   examDurationMinutes,
@@ -47,8 +48,8 @@ export function ModuleQuizControls({
 
   if (launching) {
     return (
-      <div className="flex items-center gap-2 text-sm text-odoo-text-muted py-2">
-        <div className="odoo-spinner w-5 h-5 border-2" aria-hidden />
+      <div className="flex items-center justify-center gap-3 text-sm text-odoo-text-muted py-4">
+        <LoadingSpinner size="sm" />
         <span>{tr.modulesQuiz.launching}</span>
       </div>
     );

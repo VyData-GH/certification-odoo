@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { AppLoading } from "@/components/AppLoading";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { ExamResultSummary } from "@/components/ExamResultSummary";
 import { PageShell } from "@/components/PageShell";
@@ -175,9 +176,7 @@ export default function HistoryPage() {
         </div>
 
         {loading ? (
-          <div className="odoo-card p-10 text-center text-odoo-text-muted">
-            …
-          </div>
+          <AppLoading fullScreen={false} message={tr.common.loading} />
         ) : history.length === 0 ? (
           <div className="odoo-card p-10 text-center text-odoo-text-muted">
             <p>{tr.historyPage.empty}</p>
