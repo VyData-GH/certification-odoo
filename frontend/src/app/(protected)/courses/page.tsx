@@ -25,6 +25,10 @@ export default function CoursesPage() {
             const label = tr.modules_labels[mod.id] ?? mod.label;
             const overview =
               locale === "fr" ? summary.overview.fr : summary.overview.en;
+            const readTime = tr.courses.readTime.replace(
+              "{min}",
+              String(summary.readMinutes)
+            );
 
             return (
               <Link
@@ -32,9 +36,14 @@ export default function CoursesPage() {
                 href={`/courses/${mod.id}`}
                 className="odoo-card block hover:ring-2 hover:ring-odoo-brand/30 transition-shadow"
               >
-                <div className="odoo-card-header flex items-center gap-2 min-w-0">
-                  <ModuleIcon moduleId={mod.id} size={26} />
-                  <span className="truncate">{label}</span>
+                <div className="odoo-card-header flex items-center justify-between gap-2 min-w-0">
+                  <span className="flex items-center gap-2 min-w-0">
+                    <ModuleIcon moduleId={mod.id} size={26} />
+                    <span className="truncate">{label}</span>
+                  </span>
+                  <span className="text-xs text-odoo-text-muted shrink-0">
+                    {readTime}
+                  </span>
                 </div>
                 <div className="odoo-card-body">
                   <p className="text-sm text-odoo-text-muted line-clamp-3">

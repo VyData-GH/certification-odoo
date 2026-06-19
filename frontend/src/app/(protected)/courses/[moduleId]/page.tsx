@@ -40,10 +40,16 @@ export default function CourseModulePage() {
   const count = stats.byModule[moduleId] ?? 0;
   const overview =
     locale === "fr" ? summary.overview.fr : summary.overview.en;
+  const quickFlow =
+    locale === "fr" ? summary.quickFlow.fr : summary.quickFlow.en;
   const keyTopics =
     locale === "fr" ? summary.keyTopics.fr : summary.keyTopics.en;
-  const examTips =
-    locale === "fr" ? summary.examTips.fr : summary.examTips.en;
+  const mustKnow =
+    locale === "fr" ? summary.mustKnow.fr : summary.mustKnow.en;
+  const readTime = tr.courses.readTime.replace(
+    "{min}",
+    String(summary.readMinutes)
+  );
 
   return (
     <PageShell
@@ -53,6 +59,21 @@ export default function CourseModulePage() {
       backLabel={`← ${tr.nav.courses}`}
     >
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-5">
+        <p className="text-xs text-odoo-text-muted uppercase tracking-wide">
+          {readTime}
+        </p>
+
+        <section className="odoo-card">
+          <div className="odoo-card-header">{tr.courses.quickFlow}</div>
+          <div className="odoo-card-body">
+            <ol className="space-y-2 list-decimal pl-5 text-sm text-odoo-text">
+              {quickFlow.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         <section className="odoo-card">
           <div className="odoo-card-header flex items-center gap-2">
             <ModuleIcon moduleId={moduleId} size={28} />
@@ -67,11 +88,11 @@ export default function CourseModulePage() {
           </div>
         </section>
 
-        <section className="odoo-card">
+        <section className="odoo-card border-l-4 border-l-odoo-brand">
           <div className="odoo-card-header">{tr.courses.examFocus}</div>
           <div className="odoo-card-body">
-            <ul className="space-y-1.5 list-disc pl-5 text-sm text-odoo-text-muted">
-              {examTips.map((tip) => (
+            <ul className="space-y-1.5 list-disc pl-5 text-sm text-odoo-text">
+              {mustKnow.map((tip) => (
                 <li key={tip}>{tip}</li>
               ))}
             </ul>

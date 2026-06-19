@@ -252,9 +252,11 @@ export const translations = {
       subtitle: "Review each certification module before practicing",
       intro:
         "Short summaries aligned with the Odoo 19 functional certification syllabus. Read a module, then launch a quiz, sample test, or full exam.",
+      readTime: "~{min} min read",
+      quickFlow: "Essential flow",
       readMore: "Study module",
-      keyTopics: "Key topics",
-      examFocus: "Certification focus",
+      keyTopics: "Everything to cover",
+      examFocus: "Exam traps & distinctions",
       readyToPractice: "Ready to practice?",
       practiceHint: "Start with a short quiz, then try the sample test or full exam from Home.",
       quiz10: "Quiz — 10 Q",
@@ -566,9 +568,11 @@ export const translations = {
       subtitle: "Révisez chaque module avant de vous entraîner",
       intro:
         "Synthèses courtes alignées sur le programme de certification fonctionnelle Odoo 19. Lisez un module, puis lancez un quiz, un examen blanc ou l'examen complet.",
+      readTime: "~{min} min de lecture",
+      quickFlow: "Flux essentiel",
       readMore: "Étudier le module",
-      keyTopics: "Points clés",
-      examFocus: "À retenir pour la certification",
+      keyTopics: "Tout ce qu'il faut couvrir",
+      examFocus: "Pièges & distinctions examen",
       readyToPractice: "Prêt à vous entraîner ?",
       practiceHint:
         "Commencez par un quiz court, puis essayez l'examen blanc ou l'examen complet depuis l'accueil.",
