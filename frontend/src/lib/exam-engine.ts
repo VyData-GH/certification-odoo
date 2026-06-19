@@ -284,3 +284,20 @@ export function getQuestionStats() {
   }
   return { total: allQuestions.length, byModule };
 }
+
+export function getModuleQuestionCount(moduleId: ModuleId): number {
+  return allQuestions.filter((q) => q.module === moduleId).length;
+}
+
+/** Parse ?count= from module quiz URLs; supports numeric values and "all". */
+export function parseModuleQuizCount(
+  moduleId: ModuleId,
+  countParam: string | null
+): number {
+  const max = getModuleQuestionCount(moduleId);
+  if (max === 0) return 0;
+  if (!countParam || countParam === "all") return max;
+  const parsed = parseInt(countParam, 10);
+  if (Number.isNaN(parsed) || parsed < 1) return Math.min(15, max);
+  return Math.min(parsed, max);
+}

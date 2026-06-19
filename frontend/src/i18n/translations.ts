@@ -247,6 +247,11 @@ export const translations = {
       subtitle: "Target your weak areas",
       quizDesc: "Focused quiz on this module only",
     },
+    modulesQuiz: {
+      allQuestions: "All ({n})",
+      customPlaceholder: "1–{max} questions",
+      startCustom: "Start",
+    },
     courses: {
       title: "Course Study",
       subtitle: "Review each certification module before practicing",
@@ -562,6 +567,11 @@ export const translations = {
       title: "Entraînement par module",
       subtitle: "Ciblez vos points faibles",
       quizDesc: "Quiz ciblé sur ce module uniquement",
+    },
+    modulesQuiz: {
+      allQuestions: "Toutes ({n})",
+      customPlaceholder: "1–{max} questions",
+      startCustom: "Lancer",
     },
     courses: {
       title: "Étude des cours",

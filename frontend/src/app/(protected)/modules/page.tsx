@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
+import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/context/LanguageContext";
 import { MODULES } from "@/types/exam";
@@ -38,26 +38,7 @@ export default function ModulesPage() {
                   <p className="text-sm text-odoo-text-muted mb-3">
                     {tr.modules.quizDesc}
                   </p>
-                  <div className="flex gap-2">
-                    <Link
-                      href={`/exam?module=${mod.id}&count=10`}
-                      className="odoo-btn-secondary flex-1 text-center text-sm"
-                    >
-                      10 Q
-                    </Link>
-                    <Link
-                      href={`/exam?module=${mod.id}&count=15`}
-                      className="odoo-btn-secondary flex-1 text-center text-sm"
-                    >
-                      15 Q
-                    </Link>
-                    <Link
-                      href={`/exam?module=${mod.id}&count=20`}
-                      className="odoo-btn-primary flex-1 text-center text-sm"
-                    >
-                      20 Q
-                    </Link>
-                  </div>
+                  <ModuleQuizControls moduleId={mod.id} totalQuestions={count} />
                 </div>
               </div>
             );

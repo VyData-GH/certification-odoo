@@ -12,6 +12,7 @@ import { ExamTimer } from "@/components/ExamTimer";
 import { ResultsPanel } from "@/components/ResultsPanel";
 import {
   calculateScore,
+  parseModuleQuizCount,
   selectQuestions,
   shuffleAllQuestionOptions,
 } from "@/lib/exam-engine";
@@ -84,7 +85,11 @@ function ExamContent() {
       }
       clearExamReplay();
     } else if (moduleParam) {
-      const questionCount = parseInt(countParam || "15", 10);
+      const questionCount = parseModuleQuizCount(moduleParam, countParam);
+      if (questionCount === 0) {
+        router.replace("/modules");
+        return;
+      }
       examConfig = {
         mode: "module",
         questionCount,

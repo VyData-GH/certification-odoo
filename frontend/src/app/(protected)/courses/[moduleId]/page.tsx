@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ModuleIcon } from "@/components/ModuleIcon";
+import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
 import { COURSE_SUMMARIES } from "@/data/course-summaries";
 import { useLanguage } from "@/context/LanguageContext";
@@ -105,29 +106,12 @@ export default function CourseModulePage() {
             <p className="text-sm text-odoo-text-muted">
               {count} {tr.home.questionsAvailable} — {tr.courses.practiceHint}
             </p>
-            <div className="flex flex-wrap gap-2">
-              <Link
-                href={`/exam?module=${moduleId}&count=10`}
-                className="odoo-btn-secondary text-sm"
-              >
-                {tr.courses.quiz10}
-              </Link>
-              <Link
-                href={`/exam?module=${moduleId}&count=15`}
-                className="odoo-btn-secondary text-sm"
-              >
-                {tr.courses.quiz15}
-              </Link>
-              <Link
-                href={`/exam?module=${moduleId}&count=20`}
-                className="odoo-btn-primary text-sm"
-              >
-                {tr.courses.quiz20}
-              </Link>
-              <Link
-                href="/modules"
-                className="odoo-btn-secondary text-sm ml-auto"
-              >
+            <ModuleQuizControls
+              moduleId={moduleId}
+              totalQuestions={count}
+            />
+            <div className="pt-1">
+              <Link href="/modules" className="odoo-btn-secondary text-sm">
                 {tr.courses.allModules}
               </Link>
             </div>
