@@ -36,3 +36,6 @@ frontend/.env.*
 # typescript
 *.tsbuildinfo
 frontend/next-env.d.ts
+
+# Generated certificate samples (regenerate: node frontend/scripts/generate-cert-previews.mjs)
+frontend/public/certificate-previews/*.pdf

@@ -40,3 +40,12 @@ export async function saveHistoryToApi(
 export async function clearHistoryOnApi(token: string): Promise<void> {
   await apiFetch<void>("/api/history", token, { method: "DELETE" });
 }
+
+export async function deleteHistorySessionOnApi(
+  sessionId: string,
+  token: string
+): Promise<void> {
+  await apiFetch<void>(`/api/history/${sessionId}`, token, {
+    method: "DELETE",
+  });
+}

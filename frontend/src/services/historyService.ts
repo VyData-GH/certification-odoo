@@ -1,11 +1,13 @@
 import {
   clearExamHistory as clearLocalHistory,
+  deleteExamResult as deleteLocalResult,
   getExamHistory as getLocalHistory,
   saveExamResult as saveLocalHistory,
 } from "@/lib/storage";
 import { ExamResult } from "@/types/exam";
 import {
   clearHistoryOnApi,
+  deleteHistorySessionOnApi,
   fetchHistoryFromApi,
   saveHistoryToApi,
 } from "./historyApi";
@@ -58,6 +60,22 @@ export async function clearHistory(
     }
   }
   clearLocalHistory();
+}
+
+export async function deleteHistorySession(
+  sessionId: string,
+  accessToken?: string | null
+): Promise<void> {
+  if (accessToken) {
+    try {
+      await deleteHistorySessionOnApi(sessionId, accessToken);
+      return;
+    } catch {
+      deleteLocalResult(sessionId);
+      return;
+    }
+  }
+  deleteLocalResult(sessionId);
 }
 
 /** Push local-only sessions to cloud after login */

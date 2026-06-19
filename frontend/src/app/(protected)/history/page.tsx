@@ -1,30 +1,48 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AppLoading } from "@/components/AppLoading";
+import { CertificationStatsPanel } from "@/components/CertificationStatsPanel";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { ExamResultSummary } from "@/components/ExamResultSummary";
+import { HistorySessionList } from "@/components/HistorySessionList";
 import { PageShell } from "@/components/PageShell";
 import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
-import { formatTime } from "@/lib/exam-engine";
+import {
+  computeAttemptsUntilPass,
+  filterByTab,
+  HistoryTab,
+} from "@/lib/history-utils";
 import { startExamRetry } from "@/lib/exam-replay";
 import {
   clearHistory,
+  deleteHistorySession,
   HistorySource,
   loadHistory,
 } from "@/services/historyService";
 import { ExamResult } from "@/types/exam";
 
+function recipientNameFromUser(user: { email?: string | null; user_metadata?: Record<string, unknown> } | null): string {
+  if (!user) return "Participant";
+  const meta = user.user_metadata ?? {};
+  const fullName = meta.full_name ?? meta.name;
+  if (typeof fullName === "string" && fullName.trim()) return fullName.trim();
+  const email = user.email ?? "";
+  const local = email.split("@")[0];
+  return local || "Participant";
+}
+
 export default function HistoryPage() {
   const router = useRouter();
   const { tr } = useLanguage();
-  const { accessToken } = useAuth();
+  const { accessToken, user } = useAuth();
   const [history, setHistory] = useState<ExamResult[]>([]);
   const [source, setSource] = useState<HistorySource>("local");
   const [loading, setLoading] = useState(true);
+  const [tab, setTab] = useState<HistoryTab>("certification");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [mobileShowDetail, setMobileShowDetail] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
@@ -36,16 +54,6 @@ export default function HistoryPage() {
     const { items, source: src } = await loadHistory(accessToken);
     setHistory(items);
     setSource(src);
-    if (items.length > 0) {
-      const firstId = items[0].id;
-      setSelectedId((prev) =>
-        prev && items.some((i) => i.id === prev) ? prev : firstId
-      );
-      if (items.length === 1) setMobileShowDetail(true);
-    } else {
-      setSelectedId(null);
-      setMobileShowDetail(false);
-    }
     setLoading(false);
   }, [accessToken]);
 
@@ -55,12 +63,47 @@ export default function HistoryPage() {
     });
   }, [refresh]);
 
+  const filtered = useMemo(
+    () => filterByTab(history, tab),
+    [history, tab]
+  );
+
+  useEffect(() => {
+    if (filtered.length === 0) {
+      setSelectedId(null);
+      setMobileShowDetail(false);
+      return;
+    }
+    setSelectedId((prev) =>
+      prev && filtered.some((i) => i.id === prev) ? prev : filtered[0].id
+    );
+  }, [filtered]);
+
+  const fullExamStats = useMemo(
+    () => computeAttemptsUntilPass(history, "full-exam"),
+    [history]
+  );
+  const sampleStats = useMemo(
+    () => computeAttemptsUntilPass(history, "sample-test"),
+    [history]
+  );
+
   const selectSession = (id: string) => {
     setSelectedId(id);
     setMobileShowDetail(true);
     requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  };
+
+  const handleDeleteSession = async (id: string) => {
+    await deleteHistorySession(id, accessToken);
+    setHistory((prev) => prev.filter((item) => item.id !== id));
+    if (selectedId === id) {
+      const remaining = filtered.filter((item) => item.id !== id);
+      setSelectedId(remaining[0]?.id ?? null);
+      if (remaining.length === 0) setMobileShowDetail(false);
+    }
   };
 
   const handleClearConfirm = async () => {
@@ -76,60 +119,44 @@ export default function HistoryPage() {
     }
   };
 
-  const modeLabel = (mode: ExamResult["mode"]) =>
-    tr.historyPage.modes[mode] ?? mode;
+  const modeLabel = (mode: ExamResult["mode"], item: ExamResult) => {
+    if (item.sessionMeta?.presetId) {
+      const preset = tr.presets[item.sessionMeta.presetId as keyof typeof tr.presets];
+      if (preset?.title) return preset.title;
+    }
+    return tr.historyPage.modes[mode] ?? mode;
+  };
 
-  const selected = history.find((h) => h.id === selectedId) ?? null;
+  const selected = filtered.find((h) => h.id === selectedId) ?? null;
+  const userId = user?.id ?? "local-user";
+  const recipientName = recipientNameFromUser(user);
 
   const sessionList = (
-    <div className="space-y-2">
-      {history.length > 1 && (
-        <p className="text-xs text-odoo-text-muted mb-2 px-1">
-          {tr.historyPage.clickHint}
-        </p>
+    <div className="space-y-3">
+      {tab === "certification" && (
+        <CertificationStatsPanel
+          fullExam={fullExamStats}
+          sampleTest={sampleStats}
+          recipientName={recipientName}
+          userId={userId}
+        />
       )}
-      {history.map((item) => (
+      <HistorySessionList
+        items={filtered}
+        selectedId={selectedId}
+        onSelect={selectSession}
+        onDelete={handleDeleteSession}
+        modeLabel={modeLabel}
+      />
+      {history.length > 0 && (
         <button
-          key={item.id}
           type="button"
-          onClick={() => selectSession(item.id)}
-          className={`odoo-card p-4 w-full text-left transition-colors ${
-            selectedId === item.id
-              ? "ring-2 ring-odoo-brand bg-[#faf5f9]"
-              : "hover:bg-gray-50"
-          }`}
+          onClick={() => setShowClearConfirm(true)}
+          className="text-sm text-odoo-danger hover:underline px-1"
         >
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-2 min-w-0">
-              <span
-                className={`w-2 h-2 rounded-full shrink-0 ${
-                  item.passed ? "bg-odoo-success" : "bg-odoo-warning"
-                }`}
-              />
-              <span className="font-bold text-odoo-text">
-                {item.percentage.toFixed(0)}%
-              </span>
-              <span className="odoo-badge odoo-badge-brand">
-                {modeLabel(item.mode)}
-              </span>
-            </div>
-            <span className="text-xs text-odoo-brand shrink-0 hidden sm:inline">
-              {tr.historyPage.viewDetails}
-            </span>
-          </div>
-          <div className="text-sm text-odoo-text-muted mt-1">
-            {new Date(item.date).toLocaleString()} · {item.correct}/
-            {item.totalQuestions} · {formatTime(item.durationUsedSeconds)}
-          </div>
+          {tr.historyPage.clear}
         </button>
-      ))}
-      <button
-        type="button"
-        onClick={() => setShowClearConfirm(true)}
-        className="text-sm text-odoo-danger hover:underline px-1"
-      >
-        {tr.historyPage.clear}
-      </button>
+      )}
     </div>
   );
 
@@ -159,6 +186,11 @@ export default function HistoryPage() {
     </div>
   );
 
+  const tabs: { id: HistoryTab; label: string }[] = [
+    { id: "certification", label: tr.historyPage.tabCertification },
+    { id: "training", label: tr.historyPage.tabTraining },
+  ];
+
   return (
     <PageShell
       title={tr.historyPage.title}
@@ -167,12 +199,32 @@ export default function HistoryPage() {
       backLabel={`← ${tr.nav.home}`}
     >
       <div className="max-w-5xl mx-auto px-4 py-6">
-        <div className="mb-4">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="odoo-badge odoo-badge-brand">
             {source === "cloud"
               ? tr.historyPage.sourceCloud
               : tr.historyPage.sourceLocal}
           </span>
+        </div>
+
+        <div className="flex gap-1 mb-5 border-b border-odoo-border-light">
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => {
+                setTab(t.id);
+                setMobileShowDetail(false);
+              }}
+              className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                tab === t.id
+                  ? "border-odoo-brand text-odoo-brand"
+                  : "border-transparent text-odoo-text-muted hover:text-odoo-text"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {loading ? (
@@ -186,7 +238,6 @@ export default function HistoryPage() {
           </div>
         ) : (
           <>
-            {/* Desktop : liste + analyse côte à côte */}
             <div className="hidden lg:grid lg:grid-cols-5 gap-4">
               <div className="lg:col-span-2">{sessionList}</div>
               <div className="lg:col-span-3">
@@ -197,13 +248,8 @@ export default function HistoryPage() {
               </div>
             </div>
 
-            {/* Mobile : liste OU analyse */}
             <div className="lg:hidden">
-              {!mobileShowDetail ? (
-                sessionList
-              ) : (
-                sessionDetail
-              )}
+              {!mobileShowDetail ? sessionList : sessionDetail}
             </div>
           </>
         )}

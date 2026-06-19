@@ -203,6 +203,22 @@ export async function clearHistory(userId: string): Promise<void> {
   if (error) throw error;
 }
 
+export async function deleteHistorySession(
+  sessionId: string,
+  userId: string
+): Promise<void> {
+  const { error, count } = await getSupabaseAdmin()
+    .from("exam_sessions")
+    .delete({ count: "exact" })
+    .eq("id", sessionId)
+    .eq("user_id", userId);
+
+  if (error) throw error;
+  if (count === 0) {
+    throw new ApiError("Session not found", 404);
+  }
+}
+
 export function toErrorResponse(err: unknown): Response {
   if (err instanceof ApiError) {
     return Response.json({ detail: err.message }, { status: err.status });

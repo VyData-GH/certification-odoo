@@ -23,3 +23,9 @@ export function clearExamHistory(): void {
   if (typeof window === "undefined") return;
   localStorage.removeItem(HISTORY_KEY);
 }
+
+export function deleteExamResult(id: string): void {
+  if (typeof window === "undefined") return;
+  const history = getExamHistory().filter((item) => item.id !== id);
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+}
