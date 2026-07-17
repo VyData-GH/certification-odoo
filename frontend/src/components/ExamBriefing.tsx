@@ -60,6 +60,10 @@ export function ExamBriefing({ config, questionCount, onStart }: ExamBriefingPro
     rules.push(tr.briefing.submitFinal);
   }
 
+  if (config.forceEnglish) {
+    rules.unshift(tr.briefing.englishOnly);
+  }
+
   const title = isSample
     ? tr.briefing.sampleTitle
     : isReview

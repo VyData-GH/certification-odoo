@@ -1,15 +1,82 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { PageShell } from "@/components/PageShell";
+import { ReadinessPanel } from "@/components/ReadinessPanel";
+import { SmartTrainingLinks } from "@/components/SmartTrainingLinks";
+import { StudyPlanPanel } from "@/components/StudyPlanPanel";
+import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
-import { EXAM_PRESETS, EXAM_RULES, formatExamDuration, CERTIFICATION_MODULES } from "@/types/exam";
+import {
+  buildStudyPlan,
+  computeReadiness,
+  getMistakeQuestionIds,
+  getWeakModules,
+} from "@/lib/learning-analytics";
+import { getDueSrsCount, seedSrsFromMistakeIds } from "@/lib/spaced-repetition";
+import { loadHistory } from "@/services/historyService";
+import {
+  EXAM_PRESETS,
+  EXAM_RULES,
+  formatExamDuration,
+  CERTIFICATION_MODULES,
+  ExamResult,
+} from "@/types/exam";
 import { getQuestionStats } from "@/lib/exam-engine";
 
 export default function HomePage() {
   const { tr, locale } = useLanguage();
+  const { accessToken } = useAuth();
   const stats = getQuestionStats();
+  const [history, setHistory] = useState<ExamResult[]>([]);
+  const [dueCount, setDueCount] = useState(0);
+  const [loadedToken, setLoadedToken] = useState<string | null | undefined>(
+    undefined
+  );
+
+  const analyticsLoading = loadedToken !== accessToken;
+
+  useEffect(() => {
+    let cancelled = false;
+    void loadHistory(accessToken)
+      .then(({ items }) => {
+        if (cancelled) return;
+        setHistory(items);
+        const mistakes = getMistakeQuestionIds(items, 80);
+        seedSrsFromMistakeIds(mistakes);
+        setDueCount(getDueSrsCount());
+        setLoadedToken(accessToken);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setHistory([]);
+        setDueCount(0);
+        setLoadedToken(accessToken);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [accessToken]);
+
+  const readiness = useMemo(
+    () => computeReadiness(history, dueCount),
+    [history, dueCount]
+  );
+  const weakModules = useMemo(() => getWeakModules(history, 4, 3), [history]);
+  const studyPlan = useMemo(() => buildStudyPlan(weakModules), [weakModules]);
+  const mistakeCount = readiness.mistakeCount;
+
+  const classicPresets = EXAM_PRESETS.filter(
+    (p) =>
+      ![
+        "redo-mistakes",
+        "weak-modules",
+        "spaced-review",
+      ].includes(p.id)
+  );
 
   const guidelines = [
     tr.guidelines.nominative,
@@ -34,6 +101,36 @@ export default function HomePage() {
       subtitle={`${tr.home.heroSubtitle} — ${tr.home.heroDesc}`}
     >
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-5">
+        {analyticsLoading ? (
+          <section
+            className="odoo-card"
+            role="status"
+            aria-live="polite"
+            aria-busy="true"
+            aria-label={tr.readiness.loading}
+          >
+            <div className="odoo-card-header">{tr.readiness.title}</div>
+            <div className="odoo-card-body flex flex-col items-center justify-center gap-3 py-10">
+              <LoadingSpinner size="md" />
+              <p className="text-sm text-odoo-text-muted">{tr.readiness.loading}</p>
+            </div>
+          </section>
+        ) : (
+          <>
+            <div className="odoo-content-reveal space-y-5">
+              <ReadinessPanel report={readiness} />
+
+              <SmartTrainingLinks
+                mistakeCount={mistakeCount}
+                dueCount={dueCount}
+                hasWeakModules={weakModules.length > 0}
+              />
+
+              <StudyPlanPanel steps={studyPlan} />
+            </div>
+          </>
+        )}
+
         {/* Official guidelines — mirrors Odoo certification page */}
         <section className="odoo-guidelines odoo-card">
           <div className="odoo-card-header">{tr.guidelines.title}</div>
@@ -105,13 +202,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Training modes */}
+        {/* Classic training modes */}
         <section>
           <h2 className="text-base font-bold text-odoo-text mb-3">
             {tr.home.trainingModes}
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            {EXAM_PRESETS.map((preset) => {
+            {classicPresets.map((preset) => {
               const presetTr =
                 tr.presets[preset.id as keyof typeof tr.presets];
               const durationLabel =
@@ -172,17 +269,18 @@ export default function HomePage() {
               <li>{tr.home.tip2}</li>
               <li>{tr.home.tip3}</li>
               <li>{tr.home.tip4}</li>
+              <li>{tr.home.tip5}</li>
             </ul>
             {locale === "en" && (
               <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
-                💡 The real exam is in English — use EN mode to practice exam
-                vocabulary.
+                💡 The real exam is in English — use the English-only full mock
+                to practice exam vocabulary.
               </p>
             )}
             {locale === "fr" && (
               <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
-                💡 L&apos;examen réel est en anglais — utilisez le mode EN pour
-                vous familiariser avec le vocabulaire.
+                💡 L&apos;examen réel est en anglais — utilisez l&apos;examen
+                blanc EN pour vous familiariser avec le vocabulaire.
               </p>
             )}
           </div>

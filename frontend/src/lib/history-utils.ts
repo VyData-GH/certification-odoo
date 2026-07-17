@@ -1,8 +1,23 @@
-import { EXAM_RULES, ExamResult } from "@/types/exam";
+import { EXAM_RULES, ExamResult, ModuleId } from "@/types/exam";
 
 export type HistoryTab = "certification" | "training";
 
 export type CertificationTrack = "full-exam" | "sample-test";
+
+/** Module unique d’un quiz ciblé (sessionMeta ou breakdown). */
+export function getSingleModuleId(result: ExamResult): ModuleId | null {
+  const configured = result.sessionMeta?.modules?.filter(Boolean) ?? [];
+  if (configured.length === 1) return configured[0];
+
+  const fromBreakdown = (
+    Object.entries(result.moduleBreakdown ?? {}) as Array<
+      [ModuleId, { correct: number; total: number }]
+    >
+  ).filter(([, data]) => data.total > 0);
+
+  if (fromBreakdown.length === 1) return fromBreakdown[0][0];
+  return null;
+}
 
 export function isSampleTestSession(result: ExamResult): boolean {
   return (

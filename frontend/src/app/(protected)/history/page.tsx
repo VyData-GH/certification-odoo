@@ -43,7 +43,9 @@ export default function HistoryPage() {
   const [source, setSource] = useState<HistorySource>("local");
   const [loading, setLoading] = useState(true);
   const [tab, setTab] = useState<HistoryTab>("certification");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [preferredSelectedId, setPreferredSelectedId] = useState<string | null>(
+    null
+  );
   const [mobileShowDetail, setMobileShowDetail] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const [clearing, setClearing] = useState(false);
@@ -69,16 +71,16 @@ export default function HistoryPage() {
     [history, tab]
   );
 
-  useEffect(() => {
-    if (filtered.length === 0) {
-      setSelectedId(null);
-      setMobileShowDetail(false);
-      return;
+  const selectedId = useMemo(() => {
+    if (filtered.length === 0) return null;
+    if (
+      preferredSelectedId &&
+      filtered.some((item) => item.id === preferredSelectedId)
+    ) {
+      return preferredSelectedId;
     }
-    setSelectedId((prev) =>
-      prev && filtered.some((i) => i.id === prev) ? prev : filtered[0].id
-    );
-  }, [filtered]);
+    return filtered[0].id;
+  }, [filtered, preferredSelectedId]);
 
   const fullExamStats = useMemo(
     () => computeAttemptsUntilPass(history, "full-exam"),
@@ -90,7 +92,7 @@ export default function HistoryPage() {
   );
 
   const selectSession = (id: string) => {
-    setSelectedId(id);
+    setPreferredSelectedId(id);
     setMobileShowDetail(true);
     requestAnimationFrame(() => {
       detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -101,10 +103,10 @@ export default function HistoryPage() {
     setActionError(null);
     try {
       await deleteHistorySession(id, accessToken);
+      const remaining = filtered.filter((item) => item.id !== id);
       setHistory((prev) => prev.filter((item) => item.id !== id));
-      if (selectedId === id) {
-        const remaining = filtered.filter((item) => item.id !== id);
-        setSelectedId(remaining[0]?.id ?? null);
+      if (preferredSelectedId === id || selectedId === id) {
+        setPreferredSelectedId(remaining[0]?.id ?? null);
         if (remaining.length === 0) setMobileShowDetail(false);
       }
     } catch {
@@ -119,7 +121,7 @@ export default function HistoryPage() {
     try {
       await clearHistory(accessToken);
       setHistory([]);
-      setSelectedId(null);
+      setPreferredSelectedId(null);
       setMobileShowDetail(false);
       setShowClearConfirm(false);
     } catch {

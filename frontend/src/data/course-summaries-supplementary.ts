@@ -569,4 +569,233 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
       ],
     },
   },
+  events: {
+    readMinutes: 4,
+    overview: {
+      en: "Odoo Events: publish events, manage tracks, booths, attendance, and lead generation.",
+      fr: "Odoo Événements : publier des événements, gérer tracks, stands, présence et génération de leads.",
+    },
+    quickFlow: {
+      en: [
+        "Create event → configure tickets and registration",
+        "Add tracks / exhibitors / rooms as needed",
+        "Check-in attendees → follow up leads and reporting",
+      ],
+      fr: [
+        "Créer l'événement → configurer billets et inscriptions",
+        "Ajouter tracks / exposants / salles selon le besoin",
+        "Pointer les participants → leads et reporting",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "Event templates and SEO-friendly publishing",
+        "Tracks, talk proposals, speaker communication",
+        "Barcode attendance and multi-slot events",
+        "Online exhibitors, booths, community rooms",
+        "Live broadcast, gamification, lead generation",
+      ],
+      fr: [
+        "Modèles d'événements et publication SEO",
+        "Tracks, propositions de talks, communication speakers",
+        "Présence par code-barres et multi-créneaux",
+        "Exposants en ligne, stands, salles communautaires",
+        "Diffusion live, gamification, génération de leads",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "Registration and tickets drive attendee records",
+        "Tracks organize the agenda; booths are for exhibitors",
+        "Attendance can be scanned via barcode",
+      ],
+      fr: [
+        "Inscriptions et billets créent les participants",
+        "Les tracks organisent l'agenda ; les stands sont pour exposants",
+        "La présence peut être scannée via code-barres",
+      ],
+    },
+  },
+  helpdesk: {
+    readMinutes: 5,
+    overview: {
+      en: "Helpdesk: teams, tickets, SLAs, live chat, help center, and after-sales billing of time.",
+      fr: "Helpdesk : équipes, tickets, SLA, live chat, centre d'aide et facturation du temps après-vente.",
+    },
+    quickFlow: {
+      en: [
+        "Configure Helpdesk team → stages and SLA policies",
+        "Receive tickets (email, website, live chat)",
+        "Resolve → optional timesheets / ratings / help center",
+      ],
+      fr: [
+        "Configurer l'équipe Helpdesk → étapes et politiques SLA",
+        "Recevoir les tickets (e-mail, site, live chat)",
+        "Résoudre → feuilles de temps / notes / centre d'aide",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "Teams, stages, and ticket channels",
+        "SLA policies and inactive ticket handling",
+        "Live chat, chatbot, visitor tracking",
+        "Customer ratings and after-sales features",
+        "Help Center: eLearning, Forums, Knowledge",
+      ],
+      fr: [
+        "Équipes, étapes et canaux de tickets",
+        "Politiques SLA et tickets inactifs",
+        "Live chat, chatbot, suivi des visiteurs",
+        "Notes clients et fonctions après-vente",
+        "Centre d'aide : eLearning, Forums, Knowledge",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "SLAs measure response/resolution against team policies",
+        "Live chat can hand off to tickets or sales orders",
+        "Track & bill time links Helpdesk to Timesheets",
+      ],
+      fr: [
+        "Les SLA mesurent réponse/résolution selon l'équipe",
+        "Le live chat peut basculer vers tickets ou commandes",
+        "Suivi & facturation du temps lie Helpdesk aux feuilles de temps",
+      ],
+    },
+  },
+  voip: {
+    readMinutes: 4,
+    overview: {
+      en: "Odoo VoIP: make/receive calls, queues, voicemail, Axivox setup, and CRM/support workflows.",
+      fr: "Odoo VoIP : appels entrants/sortants, files, messagerie, setup Axivox et flux CRM/support.",
+    },
+    quickFlow: {
+      en: [
+        "Configure VoIP provider (e.g. Axivox) → devices",
+        "Call from CRM/Helpdesk → log activity",
+        "Use queues, transfer, voicemail as needed",
+      ],
+      fr: [
+        "Configurer le fournisseur VoIP (ex. Axivox) → appareils",
+        "Appeler depuis CRM/Helpdesk → journaliser l'activité",
+        "Utiliser files, transfert, messagerie selon le besoin",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "Sales calls and support agent workflows",
+        "Axivox / provider setup and devices",
+        "Transfer, forward, voicemail, audio messages",
+        "Call queues and dynamic caller ID",
+      ],
+      fr: [
+        "Appels commerciaux et flux agent support",
+        "Configuration Axivox / fournisseur et appareils",
+        "Transfert, renvoi, messagerie, messages audio",
+        "Files d'attente et Caller ID dynamique",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "VoIP integrates with CRM opportunities and Helpdesk",
+        "Queues distribute inbound calls to agents",
+        "Devices and integrations are configured per user/company",
+      ],
+      fr: [
+        "Le VoIP s'intègre aux opportunités CRM et au Helpdesk",
+        "Les files distribuent les appels entrants aux agents",
+        "Appareils et intégrations se configurent par utilisateur/société",
+      ],
+    },
+  },
+  "business-cases": {
+    readMinutes: 4,
+    overview: {
+      en: "Business case studies: branded products, manufacturing, logistics — apply Odoo across apps.",
+      fr: "Cas métier : produits de marque, fabrication, logistique — appliquer Odoo transversalement.",
+    },
+    quickFlow: {
+      en: [
+        "Read the business scenario",
+        "Map needs to Odoo apps (Sales, Inventory, MRP…)",
+        "Identify the configuration and process steps",
+      ],
+      fr: [
+        "Lire le scénario métier",
+        "Mapper les besoins aux apps Odoo (Ventes, Stock, MRP…)",
+        "Identifier configuration et étapes de processus",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "Branded T-shirts case",
+        "Motorcycle company case",
+        "TecPro 2.0 case & solution",
+        "Superstar Logistic case",
+      ],
+      fr: [
+        "Cas T-shirts de marque",
+        "Cas société de motos",
+        "Cas TecPro 2.0 et solution",
+        "Cas Superstar Logistic",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "Cases test end-to-end thinking, not a single menu",
+        "Focus on which app owns the master data vs transactions",
+      ],
+      fr: [
+        "Les cas testent une vision bout-en-bout, pas un seul menu",
+        "Repérer quelle app porte les données maîtres vs les transactions",
+      ],
+    },
+  },
+  "technical-training": {
+    readMinutes: 5,
+    overview: {
+      en: "Technical Training: Odoo modules, ORM, fields, views, actions, security, and ordering basics.",
+      fr: "Formation technique : modules Odoo, ORM, champs, vues, actions, sécurité et tris.",
+    },
+    quickFlow: {
+      en: [
+        "Create/extend a module → models & fields",
+        "Define views and actions",
+        "Add security (ACL / record rules) → test",
+      ],
+      fr: [
+        "Créer/étendre un module → modèles et champs",
+        "Définir vues et actions",
+        "Ajouter la sécurité (ACL / règles) → tester",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "Module structure and composition",
+        "ORM models, fields, and attributes",
+        "Buttons, actions, widgets",
+        "SQL constraints and security basics",
+        "List/search view attributes and ordering",
+      ],
+      fr: [
+        "Structure et composition d'un module",
+        "Modèles ORM, champs et attributs",
+        "Boutons, actions, widgets",
+        "Contraintes SQL et bases de sécurité",
+        "Attributs vues liste/recherche et tris",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "A module packages models, views, data, and security",
+        "Fields have attributes (required, readonly, related…)",
+        "Actions link menus/buttons to windows or server logic",
+      ],
+      fr: [
+        "Un module regroupe modèles, vues, data et sécurité",
+        "Les champs ont des attributs (required, readonly, related…)",
+        "Les actions lient menus/boutons aux fenêtres ou au serveur",
+      ],
+    },
+  },
 };

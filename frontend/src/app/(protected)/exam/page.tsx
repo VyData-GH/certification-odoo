@@ -65,69 +65,156 @@ function ExamContent() {
     const presetId = searchParams.get("preset");
     const moduleParam = searchParams.get("module") as ModuleId | null;
     const countParam = searchParams.get("count");
+    const forceEnglish =
+      searchParams.get("lang") === "en" ||
+      searchParams.get("forceEnglish") === "1";
 
-    let examConfig: ExamConfig;
-    let selected;
-    let seed: number;
+    let cancelled = false;
 
-    if (replayParam === "1") {
-      const replay = peekExamReplay();
-      if (!replay) {
-        router.replace("/");
-        return;
-      }
-      examConfig = replay.config;
-      selected = loadQuestionsByIds(replay.questionIds);
-      seed = replay.sessionSeed;
-      if (selected.length === 0) {
+    async function boot() {
+      let examConfig: ExamConfig;
+      let selected;
+      let seed: number;
+
+      if (replayParam === "1") {
+        const replay = peekExamReplay();
+        if (!replay) {
+          router.replace("/");
+          return;
+        }
+        examConfig = replay.config;
+        selected = loadQuestionsByIds(replay.questionIds);
+        seed = replay.sessionSeed;
+        if (selected.length === 0) {
+          clearExamReplay();
+          router.replace("/");
+          return;
+        }
         clearExamReplay();
+      } else if (moduleParam) {
+        const questionCount = parseModuleQuizCount(moduleParam, countParam);
+        if (questionCount === 0) {
+          router.replace("/modules");
+          return;
+        }
+        examConfig = {
+          mode: "module",
+          questionCount,
+          durationMinutes: 0,
+          modules: [moduleParam],
+          forceEnglish,
+        };
+        selected = selectQuestions(examConfig);
+        seed = Date.now();
+        examConfig = resolveExamTiming(examConfig, selected.length);
+      } else if (presetId) {
+        const preset = EXAM_PRESETS.find((p) => p.id === presetId);
+        if (!preset) {
+          router.replace("/");
+          return;
+        }
+        examConfig = {
+          ...preset.config,
+          presetId: preset.id,
+          forceEnglish: forceEnglish || preset.id === "full-exam" && searchParams.get("lang") === "en",
+        };
+
+        if (
+          presetId === "redo-mistakes" ||
+          presetId === "weak-modules" ||
+          presetId === "spaced-review"
+        ) {
+          const { loadHistory } = await import("@/services/historyService");
+          const {
+            getMistakeQuestionIds,
+            getWeakModules,
+          } = await import("@/lib/learning-analytics");
+          const {
+            getDueSrsQuestionIds,
+            seedSrsFromMistakeIds,
+            getDueSrsCount,
+          } = await import("@/lib/spaced-repetition");
+
+          const { items } = await loadHistory(accessToken);
+          let questionIds: string[] = [];
+          let modules: ModuleId[] | undefined;
+
+          if (presetId === "redo-mistakes") {
+            questionIds = getMistakeQuestionIds(items, examConfig.questionCount);
+            if (questionIds.length === 0) {
+              router.replace("/?need=mistakes");
+              return;
+            }
+            examConfig = {
+              ...examConfig,
+              questionIds,
+              questionCount: questionIds.length,
+              mode: "review",
+              showExplanations: true,
+            };
+          } else if (presetId === "spaced-review") {
+            const mistakes = getMistakeQuestionIds(items, 80);
+            seedSrsFromMistakeIds(mistakes);
+            questionIds = getDueSrsQuestionIds(new Date(), examConfig.questionCount);
+            if (questionIds.length === 0) {
+              // Fallback: recent mistakes if nothing due yet
+              questionIds = mistakes.slice(0, examConfig.questionCount);
+            }
+            if (questionIds.length === 0) {
+              router.replace("/?need=spaced");
+              return;
+            }
+            examConfig = {
+              ...examConfig,
+              questionIds,
+              questionCount: questionIds.length,
+              mode: "review",
+              showExplanations: true,
+            };
+            void getDueSrsCount;
+          } else {
+            // weak-modules
+            const weak = getWeakModules(items, 4, 3);
+            modules =
+              weak.length > 0
+                ? weak.map((w) => w.moduleId)
+                : (["crm", "sales", "accounting", "inventory"] as ModuleId[]);
+            examConfig = {
+              ...examConfig,
+              modules,
+              mode: "quick",
+            };
+          }
+        }
+
+        selected = selectQuestions(examConfig);
+        seed = Date.now();
+        examConfig = resolveExamTiming(examConfig, selected.length);
+      } else {
         router.replace("/");
         return;
       }
-      clearExamReplay();
-    } else if (moduleParam) {
-      const questionCount = parseModuleQuizCount(moduleParam, countParam);
-      if (questionCount === 0) {
-        router.replace("/modules");
-        return;
-      }
-      examConfig = {
-        mode: "module",
-        questionCount,
-        durationMinutes: 0,
-        modules: [moduleParam],
-      };
-      selected = selectQuestions(examConfig);
-      seed = Date.now();
-      examConfig = resolveExamTiming(examConfig, selected.length);
-    } else if (presetId) {
-      const preset = EXAM_PRESETS.find((p) => p.id === presetId);
-      if (!preset) {
+
+      if (cancelled) return;
+
+      if (!selected || selected.length === 0) {
         router.replace("/");
         return;
       }
-      examConfig = { ...preset.config, presetId: preset.id };
-      selected = selectQuestions(examConfig);
-      seed = Date.now();
-      examConfig = resolveExamTiming(examConfig, selected.length);
-    } else {
-      router.replace("/");
-      return;
-    }
 
-    if (!selected || selected.length === 0) {
-      router.replace("/");
-      return;
-    }
+      const examLocale =
+        examConfig.forceEnglish || forceEnglish ? "en" : locale;
+      const dontKnowLabel =
+        examLocale === "en"
+          ? "I don't know"
+          : tr.exam.dontKnow;
+      const localized = localizeQuestions(selected, examLocale);
+      const shuffled = shuffleAllQuestionOptions(
+        localized,
+        seed,
+        dontKnowLabel
+      );
 
-    const localized = localizeQuestions(selected, locale);
-    const shuffled = shuffleAllQuestionOptions(
-      localized,
-      seed,
-      tr.exam.dontKnow
-    );
-
-    queueMicrotask(() => {
       setConfig(examConfig);
       setSessionSeed(seed);
       setQuestions(shuffled);
@@ -137,8 +224,13 @@ function ExamContent() {
       setTotalSeconds(duration);
       setExamStarted(false);
       setStartedAt(null);
-    });
-  }, [searchParams, router, locale, tr.exam.dontKnow]);
+    }
+
+    void boot();
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams, router, locale, tr.exam.dontKnow, accessToken]);
 
   const handleStartExam = useCallback(() => {
     setExamStarted(true);
@@ -175,6 +267,9 @@ function ExamContent() {
     setResult(examResult);
     setSubmitted(true);
     void saveHistory(examResult, accessToken);
+    void import("@/lib/spaced-repetition")
+      .then(({ updateSrsFromResult }) => updateSrsFromResult(examResult))
+      .catch(() => undefined);
     setShowConfirm(false);
   }, [config, startedAt, sessionSeed, questions, answers, accessToken]);
 

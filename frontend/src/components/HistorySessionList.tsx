@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { ModuleIcon } from "@/components/ModuleIcon";
 import { useLanguage } from "@/context/LanguageContext";
 import { formatTime } from "@/lib/exam-engine";
+import { getSingleModuleId } from "@/lib/history-utils";
 import { ExamResult } from "@/types/exam";
 
 interface HistorySessionListProps {
@@ -52,7 +54,13 @@ export function HistorySessionList({
             {tr.historyPage.clickHint}
           </p>
         )}
-        {items.map((item) => (
+        {items.map((item) => {
+          const singleModuleId = getSingleModuleId(item);
+          const moduleLabel = singleModuleId
+            ? (tr.modules_labels[singleModuleId] ?? singleModuleId)
+            : null;
+
+          return (
           <div
             key={item.id}
             className={`odoo-card p-4 w-full transition-colors ${
@@ -77,9 +85,17 @@ export function HistorySessionList({
                     <span className="font-bold text-odoo-text">
                       {item.percentage.toFixed(0)}%
                     </span>
-                    <span className="odoo-badge odoo-badge-brand truncate">
-                      {modeLabel(item.mode, item)}
-                    </span>
+                    {singleModuleId ? (
+                      <ModuleIcon
+                        moduleId={singleModuleId}
+                        size={22}
+                        title={moduleLabel ?? undefined}
+                      />
+                    ) : (
+                      <span className="odoo-badge odoo-badge-brand truncate">
+                        {modeLabel(item.mode, item)}
+                      </span>
+                    )}
                   </div>
                   <span className="text-xs text-odoo-brand shrink-0 hidden sm:inline">
                     {tr.historyPage.viewDetails}
@@ -101,7 +117,8 @@ export function HistorySessionList({
               </button>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <ConfirmDialog

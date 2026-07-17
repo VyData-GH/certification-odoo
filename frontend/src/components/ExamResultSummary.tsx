@@ -3,8 +3,15 @@
 import { useState } from "react";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { WeakQuestionsModal } from "@/components/WeakQuestionsModal";
-import { ExamResult, EXAM_RULES, CERTIFICATION_MODULES, CertificationModuleId, ModuleId } from "@/types/exam";
+import {
+  ExamResult,
+  EXAM_RULES,
+  CERTIFICATION_MODULES,
+  SUPPLEMENTARY_MODULES,
+  ModuleId,
+} from "@/types/exam";
 import { formatTime } from "@/lib/exam-engine";
+import { getSingleModuleId } from "@/lib/history-utils";
 import { useLanguage } from "@/context/LanguageContext";
 
 function progressBarColor(pct: number): string {
@@ -12,6 +19,8 @@ function progressBarColor(pct: number): string {
   if (pct > 0) return "var(--odoo-warning)";
   return "var(--odoo-danger)";
 }
+
+const ALL_MODULES = [...CERTIFICATION_MODULES, ...SUPPLEMENTARY_MODULES];
 
 interface ExamResultSummaryProps {
   result: ExamResult;
@@ -30,20 +39,35 @@ export function ExamResultSummary({
   const [reviewOpen, setReviewOpen] = useState(false);
   const examScoreLabel = tr.results.examScoreOfficial
     .replace("{score}", result.score.toFixed(1));
+  const singleModuleId = getSingleModuleId(result);
 
-  const moduleResults = CERTIFICATION_MODULES.map((mod) => {
+  const moduleResults = ALL_MODULES.map((mod) => {
     const data = result.moduleBreakdown[mod.id];
     if (!data || data.total === 0) return null;
     const pct = (data.correct / data.total) * 100;
     const label = tr.modules_labels[mod.id] ?? mod.label;
     return { id: mod.id, label, correct: data.correct, total: data.total, pct };
   }).filter(Boolean) as Array<{
-    id: string;
+    id: ModuleId;
     label: string;
     correct: number;
     total: number;
     pct: number;
   }>;
+
+  // Modules présents dans le breakdown mais absents du catalogue (sécurité)
+  for (const [id, data] of Object.entries(result.moduleBreakdown ?? {}) as Array<
+    [ModuleId, { correct: number; total: number }]
+  >) {
+    if (!data.total || moduleResults.some((m) => m.id === id)) continue;
+    moduleResults.push({
+      id,
+      label: tr.modules_labels[id] ?? id,
+      correct: data.correct,
+      total: data.total,
+      pct: (data.correct / data.total) * 100,
+    });
+  }
 
   return (
     <>
@@ -60,6 +84,15 @@ export function ExamResultSummary({
         >
           {result.percentage.toFixed(0)}%
         </div>
+        {singleModuleId && (
+          <div className="flex justify-center mb-3">
+            <ModuleIcon
+              moduleId={singleModuleId}
+              size={36}
+              title={tr.modules_labels[singleModuleId] ?? singleModuleId}
+            />
+          </div>
+        )}
         <p className="text-sm text-odoo-text-muted">
           {tr.results.correctAnswersCount
             .replace("{correct}", String(result.correct))
@@ -115,44 +148,50 @@ export function ExamResultSummary({
         <div className="odoo-card">
           <div className="odoo-card-header">{tr.results.byModule}</div>
           <div className="odoo-card-body space-y-3">
-            {moduleResults
-              .sort((a, b) => a.pct - b.pct)
-              .map((mod) => (
-                <div key={mod.id}>
-                  <div className="flex items-center justify-between text-sm mb-1 gap-2">
+            {(singleModuleId
+              ? moduleResults
+              : [...moduleResults].sort((a, b) => a.pct - b.pct)
+            ).map((mod) => (
+              <div key={mod.id}>
+                <div className="flex items-center justify-between text-sm mb-1 gap-2">
+                  {singleModuleId ? (
+                    <ModuleIcon
+                      moduleId={mod.id}
+                      size={28}
+                      title={mod.label}
+                    />
+                  ) : (
                     <span className="flex items-center gap-2 text-odoo-text min-w-0">
-                      <ModuleIcon
-                        moduleId={mod.id as ModuleId}
-                        size={22}
-                      />
+                      <ModuleIcon moduleId={mod.id} size={22} title={mod.label} />
                       <span className="truncate">{mod.label}</span>
                     </span>
-                    <span
-                      className={`shrink-0 tabular-nums ${
-                        mod.pct >= 70
-                          ? "text-odoo-success"
-                          : mod.pct > 0
-                            ? "text-odoo-warning"
-                            : "text-odoo-danger"
-                      }`}
-                    >
-                      {mod.correct}/{mod.total} · {mod.pct.toFixed(0)}%
-                    </span>
-                  </div>
-                  <div
-                    className="h-2.5 bg-gray-200 overflow-hidden"
-                    style={{ borderRadius: 2 }}
+                  )}
+                  <span
+                    className={`shrink-0 tabular-nums ${
+                      mod.pct >= 70
+                        ? "text-odoo-success"
+                        : mod.pct > 0
+                          ? "text-odoo-warning"
+                          : "text-odoo-danger"
+                    }`}
                   >
-                    <div
-                      className="h-full transition-[width] duration-300"
-                      style={{
-                        width: `${Math.max(mod.pct, mod.pct > 0 ? 4 : 0)}%`,
-                        backgroundColor: progressBarColor(mod.pct),
-                      }}
-                    />
-                  </div>
+                    {mod.correct}/{mod.total} · {mod.pct.toFixed(0)}%
+                  </span>
                 </div>
-              ))}
+                <div
+                  className="h-2.5 bg-gray-200 overflow-hidden"
+                  style={{ borderRadius: 2 }}
+                >
+                  <div
+                    className="h-full transition-[width] duration-300"
+                    style={{
+                      width: `${Math.max(mod.pct, mod.pct > 0 ? 4 : 0)}%`,
+                      backgroundColor: progressBarColor(mod.pct),
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}

@@ -33,6 +33,11 @@ export const SUPPLEMENTARY_MODULES = [
   { id: "iot", label: "IoT", icon: "📡" },
   { id: "appointments", label: "Appointments", icon: "📆" },
   { id: "plm", label: "PLM", icon: "🔬" },
+  { id: "events", label: "Events", icon: "🎪" },
+  { id: "helpdesk", label: "Helpdesk", icon: "🎧" },
+  { id: "voip", label: "VoIP", icon: "📞" },
+  { id: "business-cases", label: "Business Cases", icon: "💼" },
+  { id: "technical-training", label: "Technical Training", icon: "💻" },
 ] as const;
 
 /** @deprecated Alias — modules certification uniquement */
@@ -108,8 +113,12 @@ export interface ExamConfig {
   questionCount: number;
   durationMinutes: number;
   modules?: ModuleId[];
+  /** Exact question set (mistakes / SRS / replay). */
+  questionIds?: string[];
   showExplanations?: boolean;
   presetId?: string;
+  /** Force English question text (real exam conditions). */
+  forceEnglish?: boolean;
 }
 
 export interface ExamSessionMeta {
@@ -207,6 +216,9 @@ export const EXAM_PRESET_IDS = [
   "quick-quiz",
   "daily-challenge",
   "review-mode",
+  "redo-mistakes",
+  "weak-modules",
+  "spaced-review",
 ] as const;
 
 export type ExamPresetId = (typeof EXAM_PRESET_IDS)[number];
@@ -306,6 +318,41 @@ export const EXAM_PRESETS: ExamPreset[] = [
     config: {
       mode: "review",
       questionCount: 15,
+      durationMinutes: 0,
+      showExplanations: true,
+    },
+  },
+  {
+    id: "redo-mistakes",
+    title: "redo-mistakes",
+    description: "redo-mistakes",
+    badge: "Smart",
+    config: {
+      mode: "review",
+      questionCount: 25,
+      durationMinutes: 0,
+      showExplanations: true,
+    },
+  },
+  {
+    id: "weak-modules",
+    title: "weak-modules",
+    description: "weak-modules",
+    badge: "Smart",
+    config: {
+      mode: "quick",
+      questionCount: 30,
+      durationMinutes: examDurationMinutes(30),
+    },
+  },
+  {
+    id: "spaced-review",
+    title: "spaced-review",
+    description: "spaced-review",
+    badge: "SRS",
+    config: {
+      mode: "review",
+      questionCount: 20,
       durationMinutes: 0,
       showExplanations: true,
     },

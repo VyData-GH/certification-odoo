@@ -59,6 +59,14 @@ export function getDailySeed(): number {
 }
 
 export function selectQuestions(config: ExamConfig): Question[] {
+  if (config.questionIds?.length) {
+    const byId = new Map(allQuestions.map((q) => [q.id, q]));
+    const ordered = config.questionIds
+      .map((id) => byId.get(id))
+      .filter(Boolean) as Question[];
+    return ordered.slice(0, config.questionCount || ordered.length);
+  }
+
   if (config.mode === "sample") {
     return selectSampleTestQuestions(Date.now());
   }
@@ -75,10 +83,52 @@ export function selectQuestions(config: ExamConfig): Question[] {
 
   if (config.mode === "full" && !config.modules?.length) {
     const certPool = pool.filter((q) => isCertificationModuleId(q.module));
-    return selectBalancedQuestions(certPool, count, random);
+    return selectFullExamQuestions(certPool, count, random);
   }
 
   return shuffle(pool, random).slice(0, count);
+}
+
+/** Full mock: balanced modules + screenshots + yes/no like the real exam mix. */
+function selectFullExamQuestions(
+  pool: Question[],
+  count: number,
+  random: () => number
+): Question[] {
+  const screenshotTarget = Math.min(
+    12,
+    Math.max(6, Math.round(count * 0.08)),
+    screenshotQuestions.length
+  );
+  const yesNoTarget = Math.min(8, Math.max(4, Math.round(count * 0.05)));
+
+  const usedIds = new Set<string>();
+  const selected: Question[] = [];
+
+  for (const q of shuffle(screenshotQuestions, random).slice(
+    0,
+    screenshotTarget
+  )) {
+    selected.push(q);
+    usedIds.add(q.id);
+  }
+
+  const yesNoPool = shuffle(
+    pool.filter((q) => q.questionType === "yesno" && !usedIds.has(q.id)),
+    random
+  );
+  for (const q of yesNoPool.slice(0, yesNoTarget)) {
+    selected.push(q);
+    usedIds.add(q.id);
+  }
+
+  const remainingSlots = Math.max(0, count - selected.length);
+  const textPool = pool.filter(
+    (q) => !usedIds.has(q.id) && !q.image && q.questionType !== "yesno"
+  );
+  selected.push(...selectBalancedQuestions(textPool, remainingSlots, random));
+
+  return shuffle(selected, random).slice(0, count);
 }
 
 function selectBalancedQuestions(

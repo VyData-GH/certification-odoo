@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/BrandLogo";
+import { UserAvatarMenu } from "@/components/UserAvatarMenu";
 import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/i18n/translations";
@@ -66,23 +67,12 @@ export function OdooNavbar() {
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageToggle />
-          {!loading && user && (
-            <div className="hidden sm:flex items-center gap-2">
-              <span className="text-xs text-white/70 max-w-[140px] truncate">
-                {user.email}
-              </span>
-              <button
-                type="button"
-                onClick={() => signOut()}
-                className="text-xs text-white/80 hover:text-white underline"
-              >
-                {tr.nav.logout}
-              </button>
-            </div>
-          )}
           <Link href="/exam?preset=full-exam" className="odoo-btn-primary text-sm">
             {tr.nav.startExam}
           </Link>
+          {!loading && user?.email && (
+            <UserAvatarMenu email={user.email} onSignOut={() => void signOut()} />
+          )}
         </div>
       </div>
     </nav>
