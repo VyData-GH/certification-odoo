@@ -19,12 +19,14 @@ import { posQuestions } from "./pos";
 import { studioQuestions } from "./studio";
 import { screenshotQuestions } from "./screenshot-questions";
 import { yesNoQuestions } from "./yesno-questions";
+import { sampleCertQuestions } from "./sample-cert-questions";
 import { odooLearnQuestions } from "./odoo-learn";
 import { odooLearnSupplementaryQuestions } from "./odoo-learn-supplementary";
 
 export const allQuestions: Question[] = [
   ...yesNoQuestions,
   ...screenshotQuestions,
+  ...sampleCertQuestions,
   ...websiteQuestions,
   ...ecommerceQuestions,
   ...surveyQuestions,
