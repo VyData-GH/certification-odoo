@@ -2,7 +2,7 @@ import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const accountingLearnQuestions = [
-  complexQ({
+complexQ({
     id: "acc-026",
     module: "accounting",
     text: {
@@ -23,7 +23,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (bases multi-entreprises) : Lorsque la nouvelle unité a son propre numéro d'identification fiscale/déclarations fiscales indépendantes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-027",
     module: "accounting",
     text: {
@@ -44,7 +44,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Bases multi-entreprises) : Pays et devise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-028",
     module: "accounting",
     text: {
@@ -65,7 +65,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Bases multi-entreprises) : Gérez plusieurs entités qui ne partagent pas le même grand livre mais consolident quand même les reportings.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-029",
     module: "accounting",
     text: {
@@ -86,7 +86,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions Multi-Entreprises) : Aucun document commercial.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-030",
     module: "accounting",
     text: {
@@ -107,7 +107,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions multi-entreprises) : La confirmation d'une facture fournisseur chez l'acheteur ne crée aucun document chez le vendeur ; le vendeur doit d'abord émettre la facture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-031",
     module: "accounting",
     text: {
@@ -128,7 +128,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions multi-entreprises) : attribuez la liste de prix CAD de Stealthy Pine à l'enregistrement du partenaire de Stealthy Wood.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-032",
     module: "accounting",
     text: {
@@ -149,7 +149,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Mise en route) : Ils garantissent que votre base de données répond à toutes les exigences et normes comptables de votre pays.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-033",
     module: "accounting",
     text: {
@@ -170,7 +170,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Mise en route) : Il a le même montant de débits et de crédits.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-034",
     module: "accounting",
     text: {
@@ -191,7 +191,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Mise en route) : Une liste de tous les comptes et leurs débits et crédits.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-035",
     module: "accounting",
     text: {
@@ -211,7 +211,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Plan comptable) : Un par entreprise, mais plusieurs par base de données.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-036",
     module: "accounting",
     text: {
@@ -231,7 +231,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Plan comptable) : Si aucune devise n'est définie, le compte peut être utilisé avec n'importe quelle devise.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-037",
     module: "accounting",
     text: {
@@ -251,7 +251,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Plan comptable) : Comptes de revenus",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-038",
     module: "accounting",
     text: {
@@ -271,7 +271,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Mettez à jour votre plan comptable) : Dépréciez les comptes inutiles.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-039",
     module: "accounting",
     text: {
@@ -291,7 +291,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Mettez à jour votre plan comptable) : Le compte est spécifique à Odoo et ne doit en aucun cas être modifié.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-040",
     module: "accounting",
     text: {
@@ -312,7 +312,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Importer un solde d'ouverture) : Le compte des encours",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-041",
     module: "accounting",
     text: {
@@ -333,7 +333,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Importer un solde d'ouverture) : Ajoutez chaque facture ou facture sur une seule ligne dans le modèle d'importation avec le montant restant à payer comme total et importez dans le modèle correspondant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-042",
     module: "accounting",
     text: {
@@ -354,7 +354,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Importer un solde d'ouverture) : Il évite de dupliquer le solde des comptes clients et fournisseurs lors de l'importation à la fois du grand livre général et des factures et factures ouvertes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-043",
     module: "accounting",
     text: {
@@ -375,7 +375,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre une facture client) : 3 lignes : Ventes de produits, Taxe reçue, Compte client",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-044",
     module: "accounting",
     text: {
@@ -396,7 +396,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Emettre une facture client) : Un débit en Compte Client",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-045",
     module: "accounting",
     text: {
@@ -416,7 +416,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Emettre une facture client) : Sur le produit, ou la catégorie de produit, ou le journal",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-046",
     module: "accounting",
     text: {
@@ -436,7 +436,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre une facture client) : Sections et notes",
     },
   }),
-  yesNoQ({
+yesNoQ({
     id: "acc-047",
     module: "accounting",
     text: {
@@ -449,7 +449,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre une facture client) : Oui",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-048",
     module: "accounting",
     text: {
@@ -470,7 +470,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Facture client issue de la commande client) : Une ligne bleue signifie que cette ligne de commande client est facturable.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-049",
     module: "accounting",
     text: {
@@ -491,7 +491,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (facture client à partir d'une commande client) : dans la vue liste des commandes client, sélectionnez plusieurs commandes client, cliquez sur Actions > Créer une ou plusieurs factures, cochez Facturation consolidée, puis cliquez sur Créer un brouillon.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-050",
     module: "accounting",
     text: {
@@ -512,7 +512,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Facture client issue d'une commande client) : Création d'une facture régulière lorsqu'aucune ligne de commande n'est facturable.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-051",
     module: "accounting",
     text: {
@@ -532,7 +532,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre un avoir) : En activant le paramètre sur le journal « Factures clients ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-052",
     module: "accounting",
     text: {
@@ -553,7 +553,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre une note de crédit) : 100 $ du compte de revenus dans la colonne DÉBIT et 100 $ du compte recevable dans la colonne CRÉDIT.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-053",
     module: "accounting",
     text: {
@@ -573,7 +573,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre un avoir) : Créez une note à partir de la facture et retirez les couverts des produits de l'avoir, puis confirmez-la.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-054",
     module: "accounting",
     text: {
@@ -593,7 +593,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre un avoir) : Partiellement payé.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-055",
     module: "accounting",
     text: {
@@ -613,7 +613,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Émettre un avoir) : Avec la facture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-056",
     module: "accounting",
     text: {
@@ -634,7 +634,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer une facture fournisseur) : Un crédit dans le Compte Fournisseur",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-057",
     module: "accounting",
     text: {
@@ -654,7 +654,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer une facture fournisseur) : 1 à payer, 2 dépenses, 1 taxe",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-058",
     module: "accounting",
     text: {
@@ -674,7 +674,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer une facture fournisseur) : Le compte Dépenses est le compte par défaut du journal Facture fournisseur. Pour vérifier cette réponse, ouvrez la vue formulaire du journal à partir du menu Configuration.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-059",
     module: "accounting",
     text: {
@@ -694,7 +694,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer une facture fournisseur) : manuellement, en téléchargeant un document et en envoyant un e-mail à un alias de messagerie.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-060",
     module: "accounting",
     text: {
@@ -715,7 +715,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Numérisation des factures fournisseurs) : Cliquer sur le bouton ciseaux permet de choisir où diviser le PDF.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-061",
     module: "accounting",
     text: {
@@ -736,7 +736,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (numérisation des factures fournisseurs) : Reconnaître quels textes sur la facture appartiennent à quels champs dans Odoo",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-062",
     module: "accounting",
     text: {
@@ -757,7 +757,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conditions de paiement et conditions générales) : La date d'échéance, les conditions de paiement et les éventuelles incitations de paiement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-063",
     module: "accounting",
     text: {
@@ -778,7 +778,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conditions de paiement et conditions générales) : Oui, vous pouvez mettre à jour les CGU par défaut dans le document lorsque vous le créez.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-064",
     module: "accounting",
     text: {
@@ -798,7 +798,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conditions de paiement et conditions générales) : Texte sur la facture et lien vers la page Web sur la facture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-065",
     module: "accounting",
     text: {
@@ -819,7 +819,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements et comptes impayés) : Ce sont des comptes de dépôt temporaires utilisés pour enregistrer le paiement enregistré d'une facture ou d'un effet jusqu'à ce que le paiement puisse être rapproché de la transaction bancaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-066",
     module: "accounting",
     text: {
@@ -840,7 +840,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements et comptes impayés) : Lorsque le paiement intégral ou la facture elle-même est rapprochée de la transaction bancaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-067",
     module: "accounting",
     text: {
@@ -861,7 +861,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements et impayés) : Pour n'avoir qu'un seul paiement par partenaire au lieu de par facture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-068",
     module: "accounting",
     text: {
@@ -882,7 +882,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements et comptes impayés) : Le bouton « Payer » rapproche automatiquement le paiement avec la facture ou l'addition.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-069",
     module: "accounting",
     text: {
@@ -903,7 +903,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements et comptes impayés) : Dans le journal Cash, définissez le compte « Paiements impayés » du mode de paiement sur le compte principal « Cash » du journal. Utilisez ensuite ce mode de paiement lors de l'enregistrement du paiement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-070",
     module: "accounting",
     text: {
@@ -924,7 +924,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements en ligne) : Ce fournisseur de paiement est disponible pour les clients de tous les pays.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-071",
     module: "accounting",
     text: {
@@ -945,7 +945,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements en ligne) : Depuis l'enregistrement du fournisseur de paiement, ouvrez l'onglet Messages et modifiez le texte du message.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-072",
     module: "accounting",
     text: {
@@ -966,7 +966,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Paiements en ligne) : En paiement",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-073",
     module: "accounting",
     text: {
@@ -987,7 +987,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Suivi des paiements clients) : Email, SMS, lettre, WhatsApp.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-074",
     module: "accounting",
     text: {
@@ -1008,7 +1008,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Suivi des paiements clients) : Filtrez la vue Liste des clients par « Suivi requis », sélectionnez les clients, puis cliquez sur « Traiter les suivis » dans le menu Actions.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-075",
     module: "accounting",
     text: {
@@ -1029,7 +1029,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Suivi des paiements clients) : Dans le menu Configuration, sélectionnez Niveaux de suivi.  Les actions peuvent être choisies pour chaque niveau et définies comme automatiques ou non.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-076",
     module: "accounting",
     text: {
@@ -1050,7 +1050,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Suivi des paiements client) : Dans le formulaire Client, le chateur conserve un enregistrement complet de toutes les actions de suivi.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-077",
     module: "accounting",
     text: {
@@ -1071,7 +1071,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Suivi des paiements client) : Sur le bouton intelligent Due, disponible dans le formulaire client, et en cliquant dessus, dans le Rapport de Suivi.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-078",
     module: "accounting",
     text: {
@@ -1091,7 +1091,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Remises en espèces) : 980,00€",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-079",
     module: "accounting",
     text: {
@@ -1111,7 +1111,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Remises en espèces) : Les modalités de paiement sont inscrites sur la facture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-080",
     module: "accounting",
     text: {
@@ -1132,7 +1132,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Configuration bancaire) : Il maintient temporairement un équilibre entre la création d'une transaction bancaire et son rapprochement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-081",
     module: "accounting",
     text: {
@@ -1153,7 +1153,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Configuration bancaire) : Non, mais le champ est obligatoire pour générer des fichiers de paiement tels que SEPA et NACHA.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-082",
     module: "accounting",
     text: {
@@ -1174,7 +1174,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (configuration bancaire) : Il vous permet de configurer chaque journal bancaire/caisse avec son propre compte d'encours et de paiements impayés pour éliminer toute confusion.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-083",
     module: "accounting",
     text: {
@@ -1195,7 +1195,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions bancaires & synchronisation bancaire) : Cette transaction et chaque transaction entre celle-ci et le relevé précédent.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-084",
     module: "accounting",
     text: {
@@ -1216,7 +1216,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions bancaires & synchronisation bancaire) : Banque et Carte",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-085",
     module: "accounting",
     text: {
@@ -1237,7 +1237,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transactions bancaires & synchronisation bancaire) : Depuis la vue liste des transactions, cliquez sur le champ de toute transaction non rapprochée et modifiez-la directement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-086",
     module: "accounting",
     text: {
@@ -1258,7 +1258,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapprochement bancaire) : Lorsque le partenaire d'une transaction sortante n'a aucune facture ni aucun paiement",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-087",
     module: "accounting",
     text: {
@@ -1279,7 +1279,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapprochement bancaire) : Il annule le rapprochement de la transaction.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-088",
     module: "accounting",
     text: {
@@ -1300,7 +1300,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapprochement bancaire) : Le compte d'attente fait office de compte de dépôt temporaire jusqu'à ce que la transaction soit rapprochée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-089",
     module: "accounting",
     text: {
@@ -1321,7 +1321,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de réconciliation) : Lors de la réconciliation, cliquez sur le bouton du modèle de réconciliation souhaité.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-090",
     module: "accounting",
     text: {
@@ -1342,7 +1342,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de réconciliation) : Reséquencez les modèles de réconciliation en les faisant glisser et en les déposant dans la vue liste pour les organiser du modèle de réconciliation la plus prioritaire en haut au plus bas en bas.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-091",
     module: "accounting",
     text: {
@@ -1363,7 +1363,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (modèles de rapprochement) : un pourcentage du solde restant de la transaction après que d'autres lignes ont distribué des montants sur d'autres comptes",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-092",
     module: "accounting",
     text: {
@@ -1384,7 +1384,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (virement SEPA) : sortant",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-093",
     module: "accounting",
     text: {
@@ -1405,7 +1405,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Transfert SEPA) : Via la fonction « paiement groupé ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-094",
     module: "accounting",
     text: {
@@ -1426,7 +1426,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Prélèvement SEPA) : Un numéro de compte bancaire",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-095",
     module: "accounting",
     text: {
@@ -1447,7 +1447,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Prélèvement SEPA) : CORE",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-096",
     module: "accounting",
     text: {
@@ -1467,7 +1467,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (SEPA Direct Debit) : La banque refusera la transaction.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-097",
     module: "accounting",
     text: {
@@ -1488,7 +1488,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des prêts) : Synchronisation avec la fonction de calendrier d'amortissement de votre banque.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-098",
     module: "accounting",
     text: {
@@ -1509,7 +1509,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion du prêt) : Oui, en cliquant sur le bouton Calculer, vous pouvez définir les champs pertinents et Odoo calculera le montant des intérêts en devise à utiliser sur le prêt.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-099",
     module: "accounting",
     text: {
@@ -1530,7 +1530,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion du prêt) : Ceci est utile si vous avez déjà créé manuellement des entrées avant la création de ce prêt.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-100",
     module: "accounting",
     text: {
@@ -1551,7 +1551,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des prêts) : L'annulation d'un prêt supprime toutes les écritures, même celles publiées, tandis que la clôture d'un prêt supprime uniquement les brouillons d'écritures.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-101",
     module: "accounting",
     text: {
@@ -1572,7 +1572,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des prêts) : Allez dans Comptabilité > Reporting > Analyse des prêts, puis passez le filtre de Actuel à Fermé.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-102",
     module: "accounting",
     text: {
@@ -1592,7 +1592,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Taxes et TVA) : En sélectionnant la méthode d'arrondi dans les paramètres généraux.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-103",
     module: "accounting",
     text: {
@@ -1612,7 +1612,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Taxes et TVA) : En déterminant un périmètre fiscal.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-104",
     module: "accounting",
     text: {
@@ -1632,7 +1632,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Taxes et TVA) : Activez « Affecter la base des taxes ultérieures » sur la première taxe et définissez la séquence fiscale afin que la deuxième taxe vienne après la première dans les paramètres fiscaux.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-105",
     module: "accounting",
     text: {
@@ -1652,7 +1652,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Base caisse) : Pour maintenir temporairement le solde fiscal entre la confirmation de la facture et le paiement",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-106",
     module: "accounting",
     text: {
@@ -1673,7 +1673,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Base caisse) : Lorsque les factures sont payées.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-107",
     module: "accounting",
     text: {
@@ -1693,7 +1693,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Positions fiscales) : En activant et configurant la fonctionnalité « détecter automatiquement » sur la situation fiscale.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-108",
     module: "accounting",
     text: {
@@ -1713,7 +1713,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Positions fiscales) : Le champ « Client/Vendeur » doit être renseigné avant d'ajouter un produit.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-109",
     module: "accounting",
     text: {
@@ -1733,7 +1733,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Positions fiscales) : Définissez quels comptes de revenus ou de dépenses doivent remplacer les comptes par défaut utilisés sur un produit lorsque la position fiscale est appliquée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-110",
     module: "accounting",
     text: {
@@ -1754,7 +1754,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Déclaration fiscale) : Les comptes courants fiscaux configurés « à payer » et « à recevoir ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-111",
     module: "accounting",
     text: {
@@ -1775,7 +1775,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Déclaration fiscale) : Une fois soumise, la déclaration fiscale ne peut plus être modifiée, et la facture sera reportée à la déclaration fiscale de l'exercice suivant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-112",
     module: "accounting",
     text: {
@@ -1796,7 +1796,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Déclaration d'impôts) : \"Ventes\", \"Achat\", \"Déclaration d'impôts\", \"Tout\" et dates de verrouillage \"Dures\" si nécessaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-113",
     module: "accounting",
     text: {
@@ -1817,7 +1817,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Taxes supplémentaires (écotaxe, alcool, luxe,...)) : La taxe actuelle sera ajoutée à la base sur laquelle sera appliquée la prochaine taxe (listée après celle en cours dans la liste des taxes).",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-114",
     module: "accounting",
     text: {
@@ -1838,7 +1838,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Taxes supplémentaires (écotaxe, alcool, luxe,...)) : Elle définit dans quel ordre les taxes sont calculées.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-115",
     module: "accounting",
     text: {
@@ -1859,7 +1859,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Création et gestion d'actifs) : Ligne droite puis décroissante",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-116",
     module: "accounting",
     text: {
@@ -1879,7 +1879,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Création et gestion d'actifs) : Basé sur des jours par période",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-117",
     module: "accounting",
     text: {
@@ -1900,7 +1900,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Création et gestion d'actifs) : Par le compte d'immobilisations des actifs",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-118",
     module: "accounting",
     text: {
@@ -1921,7 +1921,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles d'actifs et automatisation) : Uniquement les actifs non courants et les immobilisations",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-119",
     module: "accounting",
     text: {
@@ -1942,7 +1942,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles d'actifs et automatisation) : Durée",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-120",
     module: "accounting",
     text: {
@@ -1963,7 +1963,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles d'actifs et automatisation) : génère plusieurs éléments d'actif en fonction de la quantité de la ligne de facture au lieu d'un seul actif global",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-121",
     module: "accounting",
     text: {
@@ -1983,7 +1983,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (reconnaissance des dépenses et des revenus et entrées uniques) : saisissez une « Date de début » et une « Date de fin » via le menu « bascule » sur une facture ou une facture.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-122",
     module: "accounting",
     text: {
@@ -2003,7 +2003,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Constatation des dépenses et revenus et écritures ponctuelles) : Le compte utilisé doit être soit de type « Dépenses » soit « Revenus ».",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-123",
     module: "accounting",
     text: {
@@ -2023,7 +2023,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Constatation des dépenses et des revenus et entrées ponctuelles) : Ils doivent utiliser le même compte.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-124",
     module: "accounting",
     text: {
@@ -2044,7 +2044,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Comptabilité analytique) : Ils appliquent automatiquement une distribution analytique spécifique basée sur des critères définis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-125",
     module: "accounting",
     text: {
@@ -2065,7 +2065,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Comptabilité analytique) : En allant dans le menu Comptabilité > Éléments analytiques.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-126",
     module: "accounting",
     text: {
@@ -2085,7 +2085,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Budgets analytiques) : Configurez d'abord des comptes analytiques pour structurer et filtrer votre budget",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-127",
     module: "accounting",
     text: {
@@ -2105,7 +2105,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Budgets analytiques) : Le montant atteint.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-128",
     module: "accounting",
     text: {
@@ -2125,7 +2125,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Budgets analytiques) : Si confirmée, cette ligne de commande dépassera le budget.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-129",
     module: "accounting",
     text: {
@@ -2146,7 +2146,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conformité fiscale américaine - Avatax) : Le numéro de compte AvaTax et la clé de licence.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-130",
     module: "accounting",
     text: {
@@ -2167,7 +2167,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conformité fiscale américaine – Avatax) : Lorsque vous validez un bon de livraison.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-131",
     module: "accounting",
     text: {
@@ -2188,7 +2188,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Conformité fiscale américaine - Avatax) : L'adresse de l'entreprise et l'adresse du client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-132",
     module: "accounting",
     text: {
@@ -2209,7 +2209,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion multi-entreprises et succursales) : Il existe un exercice fiscal géré par l'entreprise principale, et il s'applique à toutes ses succursales.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-133",
     module: "accounting",
     text: {
@@ -2230,7 +2230,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Gestion multi-entreprises et succursales) : L'accès des utilisateurs peut être accordé ou limité à des entreprises et/ou succursales principales spécifiques.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-134",
     module: "accounting",
     text: {
@@ -2251,7 +2251,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (gestion multi-entreprises et succursales) : Oui, les comptes peuvent être mappés ou fusionnés entre les entreprises, et les rapports sont impactés avec tous les éléments de journal affichés du point de vue de l'entreprise active.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-135",
     module: "accounting",
     text: {
@@ -2272,7 +2272,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapports financiers) : Dans la vue de la liste des éléments du journal, sélectionnez les entrées à modifier, cliquez sur le compte et mettez-le à jour avec le bon.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-136",
     module: "accounting",
     text: {
@@ -2293,7 +2293,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapports financiers) : Les rapports de bilan, de profits et pertes et de balance de vérification.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-137",
     module: "accounting",
     text: {
@@ -2314,7 +2314,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapports financiers) : Sélectionnez une période à l'aide du bouton « Comparaison » du bilan.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-138",
     module: "accounting",
     text: {
@@ -2335,7 +2335,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Rapports financiers) : Cliquez sur le bouton budget du rapport « Profits & Pertes », nommez-le et attribuez des montants à chaque compte nécessitant une analyse.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-139",
     module: "accounting",
     text: {
@@ -2356,7 +2356,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks) : FIFO, AVCO, Standard",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-140",
     module: "accounting",
     text: {
@@ -2377,7 +2377,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks) : En manuel, les comptables doivent effectuer des écritures de journal périodiques pour mettre à jour la valeur du compte de stock, mais en automatisé, ils ne le font pas.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-141",
     module: "accounting",
     text: {
@@ -2398,7 +2398,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks) : 36€",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-142",
     module: "accounting",
     text: {
@@ -2418,7 +2418,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks (Continental)) : A réception des marchandises.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-143",
     module: "accounting",
     text: {
@@ -2438,7 +2438,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks (Continental)) : c. 	Si les marchandises ne sont pas vendues immédiatement, le comptable doit les ajouter au bilan.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-144",
     module: "accounting",
     text: {
@@ -2459,7 +2459,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks (anglo-saxon)) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-145",
     module: "accounting",
     text: {
@@ -2480,7 +2480,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Valorisation des stocks (anglo-saxon)) : Lorsque la facture au client est confirmée",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-146",
     module: "accounting",
     text: {
@@ -2500,7 +2500,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Multi-devises - Gains/Pertes réalisés) : Après enregistrement du paiement.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-147",
     module: "accounting",
     text: {
@@ -2520,7 +2520,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Multi-devises - Gains/Pertes réalisés) : En définissant une devise dans la « Devise du fournisseur » du formulaire du fournisseur.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-148",
     module: "accounting",
     text: {
@@ -2540,7 +2540,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Multi-devises - Gains/Pertes réalisés) : En cliquant sur le bouton ⋮ et en cochant les deux champs.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "acc-149",
     module: "accounting",
     text: {
@@ -2560,7 +2560,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Multi-devises – Gains/Pertes non réalisés) : Fixez une date de retournement le premier jour après la clôture.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-150",
     module: "accounting",
     text: {
@@ -2581,7 +2581,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Clôture de l'année fiscale) : Dans l'application Paramètres, activez l'option Années fiscales, puis créez une nouvelle année fiscale avec des dates de début et de fin spécifiques.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-151",
     module: "accounting",
     text: {
@@ -2602,7 +2602,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Clôture de l'exercice) : Au bilan, avec la période fixée à « Fin d'année » pour l'année en cours, sur la ligne Bénéfices non alloués des années précédentes",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-152",
     module: "accounting",
     text: {
@@ -2623,7 +2623,7 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Clôture de l'année fiscale) : Journal des déclarations d'impôts.",
     },
   }),
-  complexQ({
+complexQ({
     id: "acc-153",
     module: "accounting",
     text: {
@@ -2644,4 +2644,5 @@ export const accountingLearnQuestions = [
       fr: "Source Odoo Learn (Clôture de l'exercice) : Révisé ou Supervisé.",
     },
   }),
+
 ];

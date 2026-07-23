@@ -2,7 +2,7 @@ import { complexQ, mcq3Q } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const studioLearnQuestions = [
-  complexQ({
+complexQ({
     id: "stu-026",
     module: "studio",
     text: {
@@ -23,7 +23,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer une base de données Odoo) : Trois heures.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-027",
     module: "studio",
     text: {
@@ -44,7 +44,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer une base de données Odoo) : Un email est envoyé avec un lien pour créer un mot de passe sécurisé pour la base de données Odoo.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-028",
     module: "studio",
     text: {
@@ -65,7 +65,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer une base de données Odoo) : En tant qu'administrateur, accédez au module Applications et cliquez sur installer sur l'application qui doit être installée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-029",
     module: "studio",
     text: {
@@ -86,7 +86,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Naviguer dans Odoo) : Dans « Mon profil » sous l'onglet « Sécurité du compte »",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-030",
     module: "studio",
     text: {
@@ -107,7 +107,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Naviguer dans Odoo) : une fonctionnalité de suivi du temps, permettant à l'utilisateur de s'enregistrer (et de sortir) de l'application Attendance",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-031",
     module: "studio",
     text: {
@@ -128,7 +128,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Naviguer dans Odoo) : Liste, Kanban, Calendrier, Pivot, Graphique, Activité.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-032",
     module: "studio",
     text: {
@@ -149,7 +149,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Google Calendar Sync) : ID client et secret client",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-033",
     module: "studio",
     text: {
@@ -170,7 +170,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Synchronisation du calendrier Outlook) : Comptes dans n'importe quel répertoire organisationnel ET comptes Microsoft personnels",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-034",
     module: "studio",
     text: {
@@ -191,7 +191,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Filtres et Vues) : En choisissant Date de création > Mois précédent",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-035",
     module: "studio",
     text: {
@@ -212,7 +212,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Filtres et Vues) : Onglet Autres informations",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-036",
     module: "studio",
     text: {
@@ -233,7 +233,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Filtres et vues) : Filtrage à l'aide de n'importe quel « champ » dans Odoo, tel que les paniers abandonnés ou les dates",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-037",
     module: "studio",
     text: {
@@ -254,7 +254,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Calendrier Odoo) : sous le bouton intelligent Prochaine réunion et les activités planifiées dans Chatter",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-038",
     module: "studio",
     text: {
@@ -275,7 +275,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Vues et plus) : Vue hiérarchique.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-039",
     module: "studio",
     text: {
@@ -296,7 +296,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Vues et plus) : Si vous êtes un utilisateur Odoo personnel ou professionnel.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-040",
     module: "studio",
     text: {
@@ -317,7 +317,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Vues et plus) : recherchez dans l'application Contacts les contacts en double et supprimez-les après avoir fusionné avec succès d'autres contacts.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-041",
     module: "studio",
     text: {
@@ -338,7 +338,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Importer et Exporter des Données) : Actions",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-042",
     module: "studio",
     text: {
@@ -359,7 +359,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Importation et Exportation de Données) : Je souhaite mettre à jour les données",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-043",
     module: "studio",
     text: {
@@ -380,7 +380,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Importation et Exportation de données) : icône d'engrenage → Importer des enregistrements",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-044",
     module: "studio",
     text: {
@@ -401,7 +401,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès au groupe) : le groupe existera même si les utilisateurs qui le composent sont échangés, et il est plus facile de gérer plusieurs utilisateurs qui ont besoin des mêmes autorisations de cette façon.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-045",
     module: "studio",
     text: {
@@ -422,7 +422,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès de groupe) : Ils ne peuvent afficher que les probabilités de prospects",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-046",
     module: "studio",
     text: {
@@ -443,7 +443,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès de groupe) : Exécuter",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-047",
     module: "studio",
     text: {
@@ -464,7 +464,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : Appels vocaux et vidéo) : Flux d'historique",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-048",
     module: "studio",
     text: {
@@ -485,7 +485,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Qu'est-ce que Studio ?) : Aucun",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-049",
     module: "studio",
     text: {
@@ -505,7 +505,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Qu'est-ce que Studio ?) : Demandez-vous si la personnalisation en vaut la peine et calculez combien de temps vous gagneriez en introduisant la personnalisation.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-050",
     module: "studio",
     text: {
@@ -526,7 +526,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Studio Basics) : Un concept commercial, tel que « commande client ».",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-051",
     module: "studio",
     text: {
@@ -546,7 +546,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Champs simples) : Champs simples et champs relationnels.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-052",
     module: "studio",
     text: {
@@ -566,7 +566,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Champs simples) : Ils affichent les données du champ de différentes manières.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-053",
     module: "studio",
     text: {
@@ -587,7 +587,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Champs simples) : Elle nous permet d'ajouter des filtres dont les enregistrements correspondants permettront d'appliquer la propriété.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-054",
     module: "studio",
     text: {
@@ -607,7 +607,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un champ) : Effectuez les modifications et testez-les dans une base de données en double.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-055",
     module: "studio",
     text: {
@@ -627,7 +627,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un champ) : Vérifiez si le champ existe déjà dans la base de données.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-056",
     module: "studio",
     text: {
@@ -647,7 +647,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un champ) : Dans l'onglet Ajouter, dans la section Champs existants.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-057",
     module: "studio",
     text: {
@@ -668,7 +668,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Champs relationnels) : Un lien plusieurs-à-un.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-058",
     module: "studio",
     text: {
@@ -689,7 +689,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Champs relationnels) : Les champs de balises de produit dans le modèle de modèle de produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-059",
     module: "studio",
     text: {
@@ -710,7 +710,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les vues) : En regardant sous Champs existants.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-060",
     module: "studio",
     text: {
@@ -731,7 +731,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les vues) : Liste et Formulaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-061",
     module: "studio",
     text: {
@@ -752,7 +752,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créez votre application) : Créez un nouveau modèle.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "stu-062",
     module: "studio",
     text: {
@@ -772,7 +772,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créez votre application) : Affectation des utilisateurs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-063",
     module: "studio",
     text: {
@@ -793,7 +793,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnalisez votre application (partie 1)) : Ajoutez un champ associé avec la relation « Contact > Email ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-064",
     module: "studio",
     text: {
@@ -814,7 +814,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnalisez votre application (partie 1)) : Champs associés",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-065",
     module: "studio",
     text: {
@@ -835,7 +835,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnalisez votre application (partie 2)) : Dans Studio, allez dans Vues, ​​puis cliquez sur la vue pour l'activer.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-066",
     module: "studio",
     text: {
@@ -856,7 +856,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnalisez votre application (partie 2)) : Elle permet aux utilisateurs de rechercher des enregistrements par leur adresse.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-067",
     module: "studio",
     text: {
@@ -877,7 +877,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Règles de filtrage et domaines) : Utilisation des domaines.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-068",
     module: "studio",
     text: {
@@ -898,7 +898,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Règles de filtrage et domaines) : La vue Formulaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-069",
     module: "studio",
     text: {
@@ -919,7 +919,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les rapports) : En tapant du texte directement ou en tapant « / » et en sélectionnant parmi les options disponibles dans l'éditeur de rapports dans Studio",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-070",
     module: "studio",
     text: {
@@ -940,7 +940,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les rapports) : En cliquant sur le bouton \"Aperçu avant impression\"",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-071",
     module: "studio",
     text: {
@@ -961,7 +961,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les rapports) : Survolez la première cellule de la colonne, cliquez sur les trois points puis cliquez sur + Insérer à gauche ou + Insérer à droite",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-072",
     module: "studio",
     text: {
@@ -982,7 +982,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer un nouveau rapport) : Pour définir ce qui est affiché dans l'en-tête et le pied de page",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-073",
     module: "studio",
     text: {
@@ -1003,7 +1003,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer un nouveau rapport) : En tapant « / », en sélectionnant « Champ », puis en sélectionnant le champ souhaité",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-074",
     module: "studio",
     text: {
@@ -1024,7 +1024,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Créer un nouveau rapport) : En positionnant le curseur dans l'en-tête de colonne, puis en cliquant sur l'outil violet et en sélectionnant « Insérer à gauche » ou « Insérer à droite »",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-075",
     module: "studio",
     text: {
@@ -1045,7 +1045,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Automations) : actions automatisées exécutées en fonction de déclencheurs spécifiques",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-076",
     module: "studio",
     text: {
@@ -1066,7 +1066,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations) : Pour déterminer quand la règle d'automatisation doit être déclenchée en fonction de mises à jour de champs spécifiques",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-077",
     module: "studio",
     text: {
@@ -1087,7 +1087,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations) : Sélectionnez le déclencheur « Lors de l'enregistrement », définissez les conditions « Priorité = Élevée » et « Le projet est en cours (Recherche & Développement) » dans le champ « Appliquer sur », et sélectionnez « Priorité (Tâche) » dans le champ « Lors de la mise à jour ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-078",
     module: "studio",
     text: {
@@ -1108,7 +1108,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Règles d'approbation) : Dans la vue correspondante, cliquez sur le bouton auquel vous souhaitez appliquer la règle",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-079",
     module: "studio",
     text: {
@@ -1129,7 +1129,7 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Règles d'approbation) : Un utilisateur qui approuve une étape dans un processus d'approbation en plusieurs étapes ne peut approuver aucune autre étape pour le même enregistrement",
     },
   }),
-  complexQ({
+complexQ({
     id: "stu-080",
     module: "studio",
     text: {
@@ -1150,4 +1150,5 @@ export const studioLearnQuestions = [
       fr: "Source Odoo Learn (Règles d'approbation) : Un message d'erreur s'affiche au salarié, et une activité est créée pour l'approbateur désigné",
     },
   }),
+
 ];

@@ -1,4 +1,4 @@
-import { complexQ } from "../helpers";
+import { complexQ, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const crmLearnQuestions = [
@@ -1995,6 +1995,21 @@ export const crmLearnQuestions = [
     explanation: {
       en: "Source Odoo Learn (Gamification): Settings app > Gamification Tools > Badges",
       fr: "Source Odoo Learn (Gamification) : Application Paramètres > Outils de Gamification > Badges",
+    },
+  }),
+  yesNoQ({
+    id: "crm-122",
+    module: "crm",
+    text: {
+      en: "By default, activities with set schedules will automatically trigger after the previous activity is marked complete. (Odoo Learn — Activities)",
+      fr: "Par défaut, les activités avec des horaires définis se déclencheront automatiquement une fois que l'activité précédente sera marquée comme terminée. (Odoo Learn — Activités)",
+    },
+    correctIsYes: false,
+    yes: { en: "True. Activities will always automatically trigger when a previous activity is complete, even if it’s ahead of schedule.", fr: "Vrai. Les activités se déclencheront toujours automatiquement lorsqu’une activité précédente sera terminée, même si elle est en avance sur le calendrier." },
+    no: { en: "False. Activities must be changed from triggering after a previous activity’s deadline to triggering after completion of a previous activity.", fr: "FAUX. Les activités doivent passer d’un déclenchement après la date limite d’une activité précédente à un déclenchement après l’achèvement d’une activité précédente." },
+    explanation: {
+      en: "Source Odoo Learn (Activities): False. Activities must be changed from triggering after a previous activity’s deadline to triggering after completion of a previous activity.",
+      fr: "Source Odoo Learn (Activités) : Faux. Les activités doivent passer d’un déclenchement après la date limite d’une activité précédente à un déclenchement après l’achèvement d’une activité précédente.",
     },
   }),
 ];

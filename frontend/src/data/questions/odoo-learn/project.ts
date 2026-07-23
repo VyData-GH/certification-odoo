@@ -1,4 +1,4 @@
-import { complexQ, mcq3Q } from "../helpers";
+import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const projectLearnQuestions = [
@@ -1070,6 +1070,36 @@ export const projectLearnQuestions = [
     explanation: {
       en: "Source Odoo Learn (Customer ratings): It’s the average satisfaction rate based on completed client surveys",
       fr: "Source Odoo Learn (Évaluations clients) : C'est le taux de satisfaction moyen basé sur les enquêtes clients complétées",
+    },
+  }),
+  yesNoQ({
+    id: "prj-079",
+    module: "project",
+    text: {
+      en: "Moving a project to a different Kanban stage affects its status. (Odoo Learn — Project stages)",
+      fr: "Le déplacement d'un projet vers une autre étape Kanban affecte son statut. (Odoo Learn — Étapes du projet)",
+    },
+    correctIsYes: false,
+    yes: { en: "True.", fr: "Vrai." },
+    no: { en: "False.", fr: "FAUX." },
+    explanation: {
+      en: "Source Odoo Learn (Project stages): False.",
+      fr: "Source Odoo Learn (Étapes du projet) : Faux.",
+    },
+  }),
+  yesNoQ({
+    id: "prj-080",
+    module: "project",
+    text: {
+      en: "Milestones are project-specific. (Odoo Learn — Milestones)",
+      fr: "Les jalons sont spécifiques au projet. (Odoo Learn — Jalons)",
+    },
+    correctIsYes: true,
+    yes: { en: "True.", fr: "Vrai." },
+    no: { en: "False.", fr: "FAUX." },
+    explanation: {
+      en: "Source Odoo Learn (Milestones): True.",
+      fr: "Source Odoo Learn (Jalons) : Vrai.",
     },
   }),
 ];

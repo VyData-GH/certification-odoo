@@ -2,7 +2,7 @@ import { complexQ, mcq3Q } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const websiteLearnQuestions = [
-  complexQ({
+complexQ({
     id: "web-024",
     module: "website",
     text: {
@@ -23,7 +23,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : texte et couleurs) : Pour améliorer l'attrait visuel et la lisibilité",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-025",
     module: "website",
     text: {
@@ -44,7 +44,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : texte et couleurs) : Pour suivre les directives qui garantissent que les sites Web sont faciles à utiliser",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-026",
     module: "website",
     text: {
@@ -65,7 +65,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site internet : texte et couleurs) : Thème",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-027",
     module: "website",
     text: {
@@ -86,7 +86,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : texte et couleurs) : Utiliser les paramètres de visibilité conditionnelle",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-028",
     module: "website",
     text: {
@@ -107,7 +107,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : texte et couleurs) : Invitez les utilisateurs à effectuer une action spécifique",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-029",
     module: "website",
     text: {
@@ -128,7 +128,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Configurateur de site Web) : Tout",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-030",
     module: "website",
     text: {
@@ -149,7 +149,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Configurateur de site Web) : Entre autres, cela affecte le bouton principal du site Web",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-031",
     module: "website",
     text: {
@@ -170,7 +170,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Configurateur de site Web) : Pour personnaliser le contenu et les fonctionnalités du site Web",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-032",
     module: "website",
     text: {
@@ -191,7 +191,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : images et mouvements) : Accès à une large gamme d'images gratuites en haute résolution",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-033",
     module: "website",
     text: {
@@ -212,7 +212,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : images et mouvements) : Ils créent un décor esthétique moderne et dynamique qui harmonise les pages",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-034",
     module: "website",
     text: {
@@ -233,7 +233,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : images et mouvements) : En intégrant des liens YouTube ou Vimeo directement dans le contenu d'une page Web",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-035",
     module: "website",
     text: {
@@ -254,7 +254,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Concevez votre site Web : images et mouvements) : Ils améliorent la vitesse de chargement des sites Web",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-036",
     module: "website",
     text: {
@@ -275,7 +275,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires de contact) : Il permet d'organiser des formulaires avec différentes actions sans encombrer la page",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-037",
     module: "website",
     text: {
@@ -296,7 +296,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires de contact) : Parce que la plupart des paramètres personnalisables des formulaires dépendent de l'action",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-038",
     module: "website",
     text: {
@@ -317,7 +317,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires de contact) : Masquer les champs spécifiques en fonction de la saisie de l'utilisateur",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-039",
     module: "website",
     text: {
@@ -338,7 +338,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires de contact) : En précisant une page de redirection",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-040",
     module: "website",
     text: {
@@ -359,7 +359,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Navigation : liens et menus) : Pour naviguer vers des sections spécifiques au sein d'une page",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-041",
     module: "website",
     text: {
@@ -380,7 +380,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Navigation : liens & menus) : Décaler un élément vers la droite",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-042",
     module: "website",
     text: {
@@ -401,7 +401,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Navigation : liens & menus) : Megamenu",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-043",
     module: "website",
     text: {
@@ -422,7 +422,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Traductions) : Pour toucher un public plus large",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-044",
     module: "website",
     text: {
@@ -443,7 +443,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Traductions) : il traduit automatiquement le texte identique sur le site Web",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-045",
     module: "website",
     text: {
@@ -463,7 +463,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Traductions) : La langue principale permet des capacités d'édition complètes, tandis que les autres langues sont limitées à la traduction uniquement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-046",
     module: "website",
     text: {
@@ -484,7 +484,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (version mobile) : Parce que les appareils mobiles ont des écrans plus petits.",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-047",
     module: "website",
     text: {
@@ -505,7 +505,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (version mobile) : Bootstrap",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-048",
     module: "website",
     text: {
@@ -526,7 +526,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Version mobile) : Visibilité conditionnelle",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-049",
     module: "website",
     text: {
@@ -547,7 +547,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (version mobile) : En empilant automatiquement les éléments à l'aide de grilles Bootstrap.",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-050",
     module: "website",
     text: {
@@ -568,7 +568,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer un nom de domaine gratuit) : www.",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-051",
     module: "website",
     text: {
@@ -589,7 +589,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer un nom de domaine gratuit) : www.goodexample.com",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-052",
     module: "website",
     text: {
@@ -610,7 +610,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Blogs) : renforcement de la confiance, amélioration du référencement, engagement du public",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-053",
     module: "website",
     text: {
@@ -631,7 +631,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Blogs) : Mettez à jour votre blog au moins une fois par semaine",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-054",
     module: "website",
     text: {
@@ -652,7 +652,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Blogs) : En appuyant sur la touche \"/\" et en sélectionnant dans le menu",
     },
   }),
-  complexQ({
+complexQ({
     id: "web-055",
     module: "website",
     text: {
@@ -673,7 +673,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Blogs) : À des fins de référencement et pour améliorer le classement des sites Web",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-056",
     module: "website",
     text: {
@@ -693,7 +693,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Search Engine Optimization (SEO)) : Pour fournir des informations sur une page Web aux moteurs de recherche et aux visiteurs.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-057",
     module: "website",
     text: {
@@ -713,7 +713,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Optimisation pour les moteurs de recherche (SEO)) : Plans du site",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-058",
     module: "website",
     text: {
@@ -733,7 +733,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Search Engine Optimization (SEO)) : Pour donner aux moteurs de recherche une idée de la structure de votre contenu.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-059",
     module: "website",
     text: {
@@ -753,7 +753,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Analyse de site Web) : Pour comprendre le comportement des visiteurs et améliorer les performances du site Web.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-060",
     module: "website",
     text: {
@@ -773,7 +773,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (analyse de site Web) : quelqu'un qui n'est compté qu'une seule fois, quelles que soient les visites multiples.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-061",
     module: "website",
     text: {
@@ -793,7 +793,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Analyse de site Web) : Taux de rebond.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-062",
     module: "website",
     text: {
@@ -813,7 +813,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Multi-site web) : Pour cibler divers marchés avec un contenu personnalisé et gérer différentes marques.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-063",
     module: "website",
     text: {
@@ -833,7 +833,7 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Multi-site) : Les applications Odoo installées et la base de données utilisée.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "web-064",
     module: "website",
     text: {
@@ -853,4 +853,5 @@ export const websiteLearnQuestions = [
       fr: "Source Odoo Learn (Multi-site web) : Ajustez le champ Site Web dans la fiche produit.",
     },
   }),
+
 ];
