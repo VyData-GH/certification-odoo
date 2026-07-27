@@ -569,6 +569,53 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
       ],
     },
   },
+  quality: {
+    readMinutes: 4,
+    overview: {
+      en: "Odoo Quality: control points (QCPs), checks on manufacturing and receipts, alerts, failure locations, and worksheet/spreadsheet templates.",
+      fr: "Odoo Qualité : points de contrôle (QCP), contrôles en fabrication et réception, alertes, emplacements d'échec et modèles feuille de travail/feuille de calcul.",
+    },
+    quickFlow: {
+      en: [
+        "Configure QCPs on operations, products, or categories",
+        "Checks trigger on MOs, work orders, or incoming transfers",
+        "Failed items → failure location; alerts for corrective/preventive actions",
+      ],
+      fr: [
+        "Configurer les QCP sur opérations, produits ou catégories",
+        "Les contrôles se déclenchent sur OF, OT ou réceptions entrantes",
+        "Articles défectueux → emplacement d'échec ; alertes pour actions correctives/préventives",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "QCP types: Pass/Fail, Measurement, Worksheet, Take a Picture, Spreadsheet",
+        "Quality alerts, preventive/corrective actions, Date Closed on final stage",
+        "Failure locations (requires Storage Locations)",
+        "Worksheet templates in Studio; Measure norm and tolerance",
+        "Incoming shipment checks before production",
+      ],
+      fr: [
+        "Types de QCP : Réussite-Échec, Mesure, Feuille de travail, Prendre une photo, Feuille de calcul",
+        "Alertes qualité, actions préventives/correctives, Date de clôture à l'étape finale",
+        "Emplacements d'échec (nécessite Emplacements de stockage)",
+        "Modèles feuille de travail dans Studio ; norme et tolérance de mesure",
+        "Contrôles à la réception avant production",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "QCPs automatically generate quality checks during operations",
+        "Process work-order checks from Shop Floor; purple button opens pop-up",
+        "Spreadsheet success cell must be TRUE; Control Type All = every unit",
+      ],
+      fr: [
+        "Les QCP génèrent automatiquement des contrôles qualité lors des opérations",
+        "Traiter les contrôles OT depuis Atelier ; le bouton violet ouvre une pop-up",
+        "La cellule de réussite feuille de calcul doit être TRUE ; type Tous = chaque unité",
+      ],
+    },
+  },
   events: {
     readMinutes: 4,
     overview: {
@@ -795,6 +842,61 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
         "Un module regroupe modèles, vues, data et sécurité",
         "Les champs ont des attributs (required, readonly, related…)",
         "Les actions lient menus/boutons aux fenêtres ou au serveur",
+      ],
+    },
+  },
+  "ai-business-cases": {
+    readMinutes: 5,
+    overview: {
+      en: "AI Business Cases: practical Odoo AI videos — agents, live chat, AI fields, document sorting, and domain use cases (warehouse proximity, helpdesk routing, pricing, HR screening).",
+      fr: "Cas d'usage IA : vidéos pratiques Odoo AI — agents, live chat, champs IA, tri documentaire et cas métier (entrepôt proche, routage helpdesk, pricing, screening RH).",
+    },
+    quickFlow: {
+      en: [
+        "Enable AI → create agent (sources, tools, style)",
+        "Attach agent to Live Chat / use AI fields on records",
+        "Apply a business case prompt (routing, pricing, screening…)",
+      ],
+      fr: [
+        "Activer l'IA → créer un agent (sources, outils, style)",
+        "Lier l'agent au Live Chat / utiliser des champs IA",
+        "Appliquer un cas métier (routage, pricing, screening…)",
+      ],
+    },
+    keyTopics: {
+      en: [
+        "AI Agents: sources, tools, response style",
+        "AI Live Chat channel configuration",
+        "AI-enabled fields and text generation/improvement",
+        "Inventory/Sales: proximity warehouse, packing instructions, UoM conversion reports",
+        "Quality & purchase: vendor performance from quality alerts",
+        "Helpdesk ticket routing; CRM lead vibe-check",
+        "Documents sorting; applicant screening; expense categorization",
+        "Image generation and website copy integration",
+      ],
+      fr: [
+        "Agents IA : sources, outils, style de réponse",
+        "Configuration du canal Live Chat IA",
+        "Champs IA et génération/amélioration de texte",
+        "Stock/Ventes : entrepôt de proximité, packing 3PL, rapports conversion UdM",
+        "Qualité & achats : perf fournisseurs via alertes qualité",
+        "Routage tickets Helpdesk ; vibe-check pistes CRM",
+        "Tri Documents ; screening candidats ; catégorisation notes de frais",
+        "Génération d'images et intégration de textes site web",
+      ],
+    },
+    mustKnow: {
+      en: [
+        "Agents need sources + tools + response style before going live",
+        "Live Chat exposure = agent configured then added to a channel",
+        "Business cases are prompt/automation patterns on real Odoo workflows",
+        "Review AI outputs before critical inventory, pricing, or HR decisions",
+      ],
+      fr: [
+        "Un agent nécessite sources + outils + style avant mise en prod",
+        "Live Chat = agent configuré puis ajouté à un canal",
+        "Les cas d'usage sont des patterns prompt/automation sur des flux Odoo réels",
+        "Relire les sorties IA avant décisions stock, prix ou RH critiques",
       ],
     },
   },

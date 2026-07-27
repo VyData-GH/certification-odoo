@@ -39,11 +39,13 @@ const SUPPLEMENTARY_TECH_NAMES: Record<SupplementaryModuleId, string> = {
   iot: "iot",
   appointments: "appointment",
   plm: "mrp_plm",
+  quality: "quality_control",
   events: "website_event",
   helpdesk: "helpdesk",
   voip: "voip",
   "business-cases": "base",
   "technical-training": "base",
+  "ai-business-cases": "ai_app",
 };
 
 const ICON_CDN = "https://download.odoocdn.com/icons";

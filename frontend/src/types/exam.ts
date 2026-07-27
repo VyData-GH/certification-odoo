@@ -33,11 +33,13 @@ export const SUPPLEMENTARY_MODULES = [
   { id: "iot", label: "IoT", icon: "📡" },
   { id: "appointments", label: "Appointments", icon: "📆" },
   { id: "plm", label: "PLM", icon: "🔬" },
+  { id: "quality", label: "Quality", icon: "✅" },
   { id: "events", label: "Events", icon: "🎪" },
   { id: "helpdesk", label: "Helpdesk", icon: "🎧" },
   { id: "voip", label: "VoIP", icon: "📞" },
   { id: "business-cases", label: "Business Cases", icon: "💼" },
   { id: "technical-training", label: "Technical Training", icon: "💻" },
+  { id: "ai-business-cases", label: "AI Business Cases", icon: "🤖" },
 ] as const;
 
 /** @deprecated Alias — modules certification uniquement */

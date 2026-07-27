@@ -3,6 +3,27 @@ import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 /** Questions Odoo Learn — modules complémentaires (hors certification) */
 export const businessCasesSupplementaryQuestions = [
   complexQ({
+    id: "bcs-001",
+    module: "business-cases",
+    text: {
+      en: "What would be the best way to implement a stock solution in this use case? (Odoo Learn — Branded T-shirts: Case)",
+      fr: "Quelle serait la meilleure façon de mettre en place une solution de stock dans ce cas d’utilisation ? (Odoo Learn — T-shirts de marque : Cas)",
+    },
+    correct: {
+      en: "Use the Project app for inventory management",
+      fr: "Utiliser l’application Projet pour la gestion des stocks",
+    },
+    distractors: [
+      { en: "Use the Inventory App", fr: "Utiliser l’application Inventaire" },
+      { en: "Use the Manufacturing app only", fr: "Utiliser uniquement l’application Fabrication" },
+      { en: "Track stock in a spreadsheet outside Odoo", fr: "Suivre le stock dans un tableur hors Odoo" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Branded T-shirts: Case): Use the Project app for inventory management",
+      fr: "Source Odoo Learn (T-shirts de marque : Cas) : Utiliser l’application Projet pour la gestion des stocks",
+    },
+  }),
+  complexQ({
     id: "bcs-002",
     module: "business-cases",
     text: {
