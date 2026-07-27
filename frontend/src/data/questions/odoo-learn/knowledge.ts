@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const knowledgeLearnQuestions = [
-  complexQ({
+complexQ({
     id: "kno-021",
     module: "knowledge",
     text: {
@@ -23,7 +23,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Créer des articles) : Privé > Espace de travail > Partagé",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-022",
     module: "knowledge",
     text: {
@@ -44,7 +44,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Créer des articles) : Dans la catégorie \"Privé\"",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-023",
     module: "knowledge",
     text: {
@@ -65,7 +65,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Créer des articles) : L'article sera immédiatement accessible à tous les membres ayant accès à Knowledge.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-024",
     module: "knowledge",
     text: {
@@ -86,7 +86,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Créer des articles) : Pour aligner le titre de l'article avec son contenu pour plus de clarté organisationnelle.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-025",
     module: "knowledge",
     text: {
@@ -107,7 +107,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Modifier les articles) : Sélectionnez ou double-cliquez dessus pour afficher la barre d'outils de l'éditeur de texte.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-026",
     module: "knowledge",
     text: {
@@ -128,7 +128,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Modifier les articles) : Glisser et déposer l'image de votre lecteur local vers l'article Knowledge.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-027",
     module: "knowledge",
     text: {
@@ -149,7 +149,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Modifier les articles) : Tous les champs HTML prennent en charge les commandes Knowledge sans l'application.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-028",
     module: "knowledge",
     text: {
@@ -170,7 +170,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Modifier les articles) : Cliquez sur l'icône de points de suspension et sélectionnez \"Ajouter une icône\".",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-029",
     module: "knowledge",
     text: {
@@ -191,7 +191,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Modifier les articles) : Vous pouvez modifier les modèles comme n'importe quel autre article.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-030",
     module: "knowledge",
     text: {
@@ -212,7 +212,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Gérer et structurer les articles) : Il répertorie automatiquement tous les articles imbriqués de l'article parent.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-031",
     module: "knowledge",
     text: {
@@ -233,7 +233,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Gérer et structurer les articles) : Il affiche les articles contenus dans les articles imbriqués.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-032",
     module: "knowledge",
     text: {
@@ -254,7 +254,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Gérer et structurer les articles) : Cliquez sur l'icône points de suspension > Exporter > Enregistrer au format PDF > Enregistrer.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-033",
     module: "knowledge",
     text: {
@@ -275,7 +275,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Gérer et structurer les articles) : Glissez-déposez, ou utilisez l'option « Déplacer vers » après avoir cliqué sur l'icône points de suspension.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-034",
     module: "knowledge",
     text: {
@@ -296,7 +296,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Gérer et structurer les articles) : Etablir une hiérarchie entre les articles parents et imbriqués.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-035",
     module: "knowledge",
     text: {
@@ -317,7 +317,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès) : Pour contrôler la visibilité et la possibilité de recherche d'un article.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-036",
     module: "knowledge",
     text: {
@@ -338,7 +338,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès) : Voir, rechercher et lire l'article.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-037",
     module: "knowledge",
     text: {
@@ -359,7 +359,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès) : En tapant \"$\" dans la palette de commandes pour lister tous les articles masqués.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-038",
     module: "knowledge",
     text: {
@@ -380,7 +380,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès) : Pas d'accès",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-039",
     module: "knowledge",
     text: {
@@ -401,7 +401,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Supprimer et restaurer des articles) : Désarchiver, créer une copie et exporter",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-040",
     module: "knowledge",
     text: {
@@ -422,7 +422,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Supprimer et restaurer des articles) : Les articles supprimés peuvent être restaurés, mais les articles supprimés sont perdus.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-041",
     module: "knowledge",
     text: {
@@ -443,7 +443,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Supprimer et restaurer des articles) : ouvrez la corbeille et cliquez sur « Restaurer » ou utilisez le filtre de recherche « Corbeille ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-042",
     module: "knowledge",
     text: {
@@ -464,7 +464,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (Supprimer et restaurer des articles) : Le contenu affiche la version de l'article sélectionné et la comparaison montre les différences de version.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-043",
     module: "knowledge",
     text: {
@@ -485,7 +485,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (applications Knowledge et Odoo) : Pour stocker du contenu à réutiliser et copier-coller ailleurs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-044",
     module: "knowledge",
     text: {
@@ -506,7 +506,7 @@ export const knowledgeLearnQuestions = [
       fr: "Source Odoo Learn (applications Knowledge et Odoo) : Insérer une vue dans l'article et Insérer un lien dans l'article.",
     },
   }),
-  complexQ({
+complexQ({
     id: "kno-045",
     module: "knowledge",
     text: {

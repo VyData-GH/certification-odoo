@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const posLearnQuestions = [
-  complexQ({
+complexQ({
     id: "pos-024",
     module: "pos",
     text: {
@@ -23,7 +23,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Création de produits) : Biens, Services et Combo : Produits consommables ou stockables, éléments immatériels nécessitant un suivi ou ensembles de produits multiples.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-025",
     module: "pos",
     text: {
@@ -44,7 +44,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Création de produit) : La direction fixe un coût fixe et prédéterminé qui reste inchangé jusqu'à nouvel ordre.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-026",
     module: "pos",
     text: {
@@ -65,7 +65,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Création de produit) : nom du produit, une image correspondante, le prix de vente standard et potentiellement d'autres détails descriptifs de base.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-027",
     module: "pos",
     text: {
@@ -86,7 +86,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Création de produit) : Une licence logicielle avec un an de support technique inclus, car l'aspect support représente une activité de suivi après la vente initiale.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-028",
     module: "pos",
     text: {
@@ -107,7 +107,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (variantes de produits) : instantanément, dynamiquement et jamais",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-029",
     module: "pos",
     text: {
@@ -128,7 +128,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Variantes de produits) : En sélectionnant « Jamais » comme mode de création de variantes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-030",
     module: "pos",
     text: {
@@ -149,7 +149,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Variantes de produits) : Activation de la fonctionnalité « Variantes » dans les paramètres de l'application Ventes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-031",
     module: "pos",
     text: {
@@ -170,7 +170,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Combos de produits) : Le nombre d'éléments ajoutés à ce choix de combo",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-032",
     module: "pos",
     text: {
@@ -191,7 +191,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Combos de produits) : L'article le moins cher du combo",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-033",
     module: "pos",
     text: {
@@ -212,7 +212,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Combos de produits) : Le prix total du combo reste le même",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-034",
     module: "pos",
     text: {
@@ -233,7 +233,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Combos de produits) : Pour afficher le combo de produits sous sa propre catégorie dans le registre POS",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-035",
     module: "pos",
     text: {
@@ -254,7 +254,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : Entre autres, via le menu « Catégories de produits PoS » sous « Configuration » dans l'application Point de vente.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-036",
     module: "pos",
     text: {
@@ -275,7 +275,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : pour organiser et afficher les produits dans l'interface POS, y compris la grille de produits, le panier et les reçus imprimés.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-037",
     module: "pos",
     text: {
@@ -296,7 +296,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : En le sélectionnant dans le champ « Catégorie » de l'onglet « Point de vente » du formulaire produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-038",
     module: "pos",
     text: {
@@ -317,7 +317,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : Ouvrez le formulaire de catégorie POS enfant et remplissez le champ « Catégorie parent ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-039",
     module: "pos",
     text: {
@@ -338,7 +338,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : restreindre temporairement l'accès aux commandes automatiques aux produits de cette catégorie à une période spécifiée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-040",
     module: "pos",
     text: {
@@ -359,7 +359,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (catégories POS) : Les catégories enfants sont complètement masquées et inaccessibles dans l'interface POS.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-041",
     module: "pos",
     text: {
@@ -380,7 +380,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Reçus et factures) : Il génère un code QR ou une URL à utiliser pour accéder aux factures en ligne",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-042",
     module: "pos",
     text: {
@@ -401,7 +401,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Reçus et Factures) : Le numéro du billet, la date d'achat et un code unique",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-043",
     module: "pos",
     text: {
@@ -422,7 +422,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Reçus et Factures) : Commandes liées au profil client",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-044",
     module: "pos",
     text: {
@@ -443,7 +443,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Modes de paiement) : Aucune intégration n'est requise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-045",
     module: "pos",
     text: {
@@ -464,7 +464,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Modes de paiement) : Pour préciser le journal comptable où sont enregistrées les opérations de paiement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-046",
     module: "pos",
     text: {
@@ -485,7 +485,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Modes de paiement) : Deux modes de paiement en espèces ne peuvent pas partager le même journal de caisse.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-047",
     module: "pos",
     text: {
@@ -506,7 +506,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Modes de paiement) : Journaux de trésorerie et bancaires.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-048",
     module: "pos",
     text: {
@@ -527,7 +527,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (livraison de nourriture en ligne) : accédez aux paramètres du point de vente, faites défiler jusqu'à « Connecteur de livraison de nourriture » et activez Urban Piper.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-049",
     module: "pos",
     text: {
@@ -548,7 +548,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Livraison de nourriture en ligne) : Nom d'utilisateur et clé API.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-050",
     module: "pos",
     text: {
@@ -569,7 +569,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Livraison de nourriture en ligne) : Cliquez sur \"+ Créer un magasin\" pour configurer le point de vente dans Urban Piper.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-051",
     module: "pos",
     text: {
@@ -590,7 +590,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Livraison de repas en ligne) : En sélectionnant le POS dans le champ \"Disponible en livraison de repas\" du produit, puis en synchronisant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-052",
     module: "pos",
     text: {
@@ -611,7 +611,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Livraison de nourriture en ligne) : La commande est initialement « En attente » et l'utilisateur peut choisir de l'accepter ou de la refuser.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-053",
     module: "pos",
     text: {
@@ -632,7 +632,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer des listes de prix) : En le sélectionnant dans la case \"Disponible\" sous les paramètres de tarification.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-054",
     module: "pos",
     text: {
@@ -653,7 +653,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer des listes de prix) : Prix des produits basés sur des conditions définies.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-055",
     module: "pos",
     text: {
@@ -674,7 +674,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer des listes de prix) : Fixe, Remise, Formule : « Fixe » fixe un prix spécifique, « Remise » le réduit et « Formule » calcule les prix de manière dynamique.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-056",
     module: "pos",
     text: {
@@ -695,7 +695,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Mettre en place des listes de prix) : Vous attribuez des listes de prix dans le formulaire client ; la commutation revient à la valeur par défaut, sauf si le nouveau client dispose de sa propre liste de prix.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-057",
     module: "pos",
     text: {
@@ -716,7 +716,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Fidélisation) : Promotions, coupons, carte cadeau et programme de fidélité.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-058",
     module: "pos",
     text: {
@@ -737,7 +737,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Fidélisation) : Il permet de gagner du temps en pré-remplissant les champs et paramètres communs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-059",
     module: "pos",
     text: {
@@ -758,7 +758,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Fidélisation) : La structure des conditions et récompenses disponibles.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-060",
     module: "pos",
     text: {
@@ -779,7 +779,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Fidélisation) : Il restreint le programme de fidélité à s'appliquer uniquement lorsqu'une liste de prix choisie est active dans le panier du point de vente.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-061",
     module: "pos",
     text: {
@@ -800,7 +800,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (fidéliser) : des conditions sont établies pour déterminer la qualification et des récompenses sont définies pour leur accomplissement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-062",
     module: "pos",
     text: {
@@ -821,7 +821,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Affichage de préparation) : Pour préparer, prêt et terminer",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-063",
     module: "pos",
     text: {
@@ -842,7 +842,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Affichage de préparation) : Dans une configuration de restaurant, cliquez sur le bouton Commander.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-064",
     module: "pos",
     text: {
@@ -863,7 +863,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Affichage de préparation) : Il permet de préciser quels produits envoyer dans l'affichage de préparation.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-065",
     module: "pos",
     text: {
@@ -884,7 +884,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer les imprimantes) : L'adresse IP de l'imprimante.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-066",
     module: "pos",
     text: {
@@ -905,7 +905,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer les imprimantes) : Pour connecter l'imprimante physique à la base de données POS.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-067",
     module: "pos",
     text: {
@@ -926,7 +926,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer les imprimantes) : Le tiroir-caisse doit d'abord être connecté à une imprimante.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-068",
     module: "pos",
     text: {
@@ -947,7 +947,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer les imprimantes) : En définissant les catégories POS du produit dans le profil de l'imprimante.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-069",
     module: "pos",
     text: {
@@ -968,7 +968,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Configurer les imprimantes) : Il contourne l'étape de confirmation manuelle après chaque vente pour l'impression des reçus.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-070",
     module: "pos",
     text: {
@@ -989,7 +989,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Terminaux de paiement) : Banque",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-071",
     module: "pos",
     text: {
@@ -1010,7 +1010,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Terminaux de paiement) : Terminal",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-072",
     module: "pos",
     text: {
@@ -1031,7 +1031,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Terminaux de paiement) : Pour tester des transactions sans frais réels.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-073",
     module: "pos",
     text: {
@@ -1052,7 +1052,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Terminaux de paiement) : pour activer les notifications en temps réel pour les événements de paiement pertinents, tels que les transferts de fonds des clients.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-074",
     module: "pos",
     text: {
@@ -1073,7 +1073,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Vendre des produits) : Sélectionnez le produit dans le panier, cliquez sur le bouton de remise et saisissez le pourcentage de remise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-075",
     module: "pos",
     text: {
@@ -1094,7 +1094,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Vendre des produits) : Cliquez sur le bouton client et sélectionnez ou créez un client pour l'attribuer à la commande afin de suivre les achats et d'appliquer des points de fidélité.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-076",
     module: "pos",
     text: {
@@ -1115,7 +1115,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Vendre des produits) : Lors du paiement, sélectionnez le premier mode de paiement et saisissez le montant, puis sélectionnez le deuxième mode de paiement pour le solde restant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-077",
     module: "pos",
     text: {
@@ -1136,7 +1136,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Vendre des produits) : Sélectionnez le produit, cliquez sur le bouton prix, saisissez le nouveau montant et confirmez. Le système remplacera le prix initial pour cette commande uniquement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-078",
     module: "pos",
     text: {
@@ -1157,7 +1157,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Rembourser les clients) : Basculez vers l'application Ventes et recherchez la commande en utilisant les détails du client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-079",
     module: "pos",
     text: {
@@ -1178,7 +1178,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Rembourser les clients) : Sélectionnez la commande, choisissez le produit à rembourser, définissez la quantité et cliquez sur « Rembourser ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-080",
     module: "pos",
     text: {
@@ -1199,7 +1199,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Rembourser les clients) : espèces, carte, compte client et carte cadeau.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-081",
     module: "pos",
     text: {
@@ -1220,7 +1220,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les devis) : En cliquant sur « Actions » puis « Devis/Commandes ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-082",
     module: "pos",
     text: {
@@ -1241,7 +1241,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les devis) : Les utilisateurs peuvent saisir un montant spécifique ou un pourcentage.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-083",
     module: "pos",
     text: {
@@ -1262,7 +1262,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les devis) : Il est automatiquement déduit du montant final.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-084",
     module: "pos",
     text: {
@@ -1283,7 +1283,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les devis) : En actualisant la page des commandes clients et en cochant le bouton intelligent « Transférer vers le point de vente », qui fournit un résumé des transactions POS connectées.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-085",
     module: "pos",
     text: {
@@ -1304,7 +1304,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Expédier plus tard) : Uniquement lorsque tous les articles de la commande sont en stock et à la date prévue.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-086",
     module: "pos",
     text: {
@@ -1325,7 +1325,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Expédier plus tard) : permettez aux clients de choisir une date de livraison ultérieure.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-087",
     module: "pos",
     text: {
@@ -1346,7 +1346,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Expédier plus tard) : Le système confirmant que les articles commandés sont désormais en stock.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-088",
     module: "pos",
     text: {
@@ -1367,7 +1367,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les préréglages) : Parce que cela rend tous les prix négatifs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-089",
     module: "pos",
     text: {
@@ -1388,7 +1388,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les préréglages) : On me demande de saisir un nom ou d'ajouter un compte client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-090",
     module: "pos",
     text: {
@@ -1409,7 +1409,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les préréglages) : Pour adapter les taux de taxe en fonction du type de commande.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-091",
     module: "pos",
     text: {
@@ -1430,7 +1430,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Réservation) : En cliquant sur « Partager », puis « Copier le lien et fermer » et en collant le lien où je veux.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-092",
     module: "pos",
     text: {
@@ -1451,7 +1451,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Réservation) : « Par visiteur » dans le champ « Affectation »",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-093",
     module: "pos",
     text: {
@@ -1472,7 +1472,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Réservation) : Depuis le menu Réservation ou en cliquant sur les notifications de réservation sur une table réservée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-094",
     module: "pos",
     text: {
@@ -1493,7 +1493,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Réservation) : En reliant les tables via le bouton intelligent « Ressources » dans le type de rendez-vous « Table ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-095",
     module: "pos",
     text: {
@@ -1514,7 +1514,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérez vos étages et tables) : Vous pouvez créer un nouvel étage à partir du tableau de bord de l'application POS.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-096",
     module: "pos",
     text: {
@@ -1535,7 +1535,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérer vos sols et tables) : Activation « Est un Bar/Restaurant »",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-097",
     module: "pos",
     text: {
@@ -1556,7 +1556,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérez vos étages et tables) : Cliquez sur l'option \"Modifier le plan\" puis sur \"Ajouter une table\".",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-098",
     module: "pos",
     text: {
@@ -1577,7 +1577,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Gérez vos étages et tables) : La commande est automatiquement liée à la table sélectionnée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-099",
     module: "pos",
     text: {
@@ -1598,7 +1598,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Prendre des commandes) : Créez une nouvelle commande en tant que vente directe.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-100",
     module: "pos",
     text: {
@@ -1619,7 +1619,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Prendre les commandes) : Je peux éventuellement attribuer une table ou un onglet avant le paiement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-101",
     module: "pos",
     text: {
@@ -1640,7 +1640,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Prendre les commandes) : Attribue automatiquement une nouvelle commande à la table sélectionnée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-102",
     module: "pos",
     text: {
@@ -1661,7 +1661,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Prendre les commandes) : L'intégralité de la commande apparaît, divisée par cours. Seul le premier cours est actif ; les autres formations sont en attente de tir.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-103",
     module: "pos",
     text: {
@@ -1682,7 +1682,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Prendre les commandes) : Je clique sur le cours souhaité dans le panier avant d'ajouter d'autres articles.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-104",
     module: "pos",
     text: {
@@ -1703,7 +1703,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Cours) : Toutes les réponses sont correctes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-105",
     module: "pos",
     text: {
@@ -1724,7 +1724,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Cours) : Je ne peux transférer un cours vers un autre cours dans le même ordre qu'en cliquant sur un cours, puis sur « Transférer le cours » et en sélectionnant le cours préféré.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-106",
     module: "pos",
     text: {
@@ -1745,7 +1745,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Transfert des ordres) : La commande complète est transférée vers la table sélectionnée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-107",
     module: "pos",
     text: {
@@ -1766,7 +1766,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Ordres de transfert) : cliquez sur les points de suspension, choisissez Fractionner, sélectionnez les éléments et cliquez sur Transférer.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-108",
     module: "pos",
     text: {
@@ -1787,7 +1787,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Ordres de transfert) : Les articles transférés sont fusionnés dans la commande en cours.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-109",
     module: "pos",
     text: {
@@ -1808,7 +1808,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Kiosque d'auto-commande) : Pour identifier le numéro de tracker avec le tableau du client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-110",
     module: "pos",
     text: {
@@ -1829,7 +1829,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (kiosque de commande automatique) : en ajoutant des images et en personnalisant le style du bouton de commande",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-111",
     module: "pos",
     text: {
@@ -1850,7 +1850,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (kiosque de commande automatique) : Dans les paramètres du kiosque, activez « Restreindre les catégories » et sélectionnez des catégories spécifiques.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-112",
     module: "pos",
     text: {
@@ -1871,7 +1871,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (fractionnement de facture) : cliquez sur les points de suspension, puis sur « Split ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-113",
     module: "pos",
     text: {
@@ -1892,7 +1892,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Partage de facture) : Sélectionnez les articles du client et cliquez sur « Paiement ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-114",
     module: "pos",
     text: {
@@ -1913,7 +1913,7 @@ export const posLearnQuestions = [
       fr: "Source Odoo Learn (Partage de facture) : Tant qu'il y a au moins deux éléments.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pos-115",
     module: "pos",
     text: {

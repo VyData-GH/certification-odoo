@@ -2,7 +2,7 @@ import { complexQ, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const crmLearnQuestions = [
-  complexQ({
+complexQ({
     id: "crm-026",
     module: "crm",
     text: {
@@ -23,7 +23,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Google Calendar Sync) : seuls les comptes Google Workspace peuvent être des utilisateurs internes",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-027",
     module: "crm",
     text: {
@@ -44,7 +44,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Google Calendar Sync) : crée la demande de redirection ou un lien vers Google et relie le site Web Odoo à la connexion OAuth nouvellement créée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-028",
     module: "crm",
     text: {
@@ -65,7 +65,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Google Calendar Sync) : Dans la page \"Audience\".",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-029",
     module: "crm",
     text: {
@@ -86,7 +86,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Synchronisation du calendrier Outlook) : ID d'application (client) et secret client",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-030",
     module: "crm",
     text: {
@@ -107,7 +107,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Outlook Calendar Sync) : « Inscription de l'application »",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-031",
     module: "crm",
     text: {
@@ -128,7 +128,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Calendrier Odoo) : À partir de la section Chatter d'un enregistrement",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-032",
     module: "crm",
     text: {
@@ -149,7 +149,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Calendrier Odoo) : Utilisateurs publics, privés et internes uniquement",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-033",
     module: "crm",
     text: {
@@ -170,7 +170,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités planifiées) : Une activité à venir est programmée",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-034",
     module: "crm",
     text: {
@@ -191,7 +191,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités planifiées) : Le nombre d'activités en retard ou à échéance aujourd'hui",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-035",
     module: "crm",
     text: {
@@ -212,7 +212,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités programmées) : Dans la section Chatter",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-036",
     module: "crm",
     text: {
@@ -233,7 +233,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Bases) : Nom.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-037",
     module: "crm",
     text: {
@@ -254,7 +254,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Bases) : Créez un contact vide pour l'entreprise avec uniquement le nom renseigné.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-038",
     module: "crm",
     text: {
@@ -275,7 +275,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Contacts - Bases) : Changer le titre ou le rôle d'un employé.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-039",
     module: "crm",
     text: {
@@ -296,7 +296,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Bases de Chatter) : modifications de champs, messages, notes et tâches planifiées",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-040",
     module: "crm",
     text: {
@@ -317,7 +317,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Chatter Basics) : il enregistre cette entrée dans votre dossier Favoris dans l'application Discuter",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-041",
     module: "crm",
     text: {
@@ -338,7 +338,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Bases de Chatter) : La note apparaît dans Chatter et informe les utilisateurs internes tagués",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-042",
     module: "crm",
     text: {
@@ -359,7 +359,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Canned Responses) : Pour gagner du temps et assurer une communication cohérente",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-043",
     module: "crm",
     text: {
@@ -380,7 +380,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Réponses standardisées) : Discuter de l'application",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-044",
     module: "crm",
     text: {
@@ -401,7 +401,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (réponses standardisées) : vous seul pouvez utiliser cette réponse standardisée",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-045",
     module: "crm",
     text: {
@@ -422,7 +422,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss: Direct Messages) : en aperçu cliquable",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-046",
     module: "crm",
     text: {
@@ -443,7 +443,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss: Direct Messages) : il masque la conversation jusqu'à ce que vous la recherchiez",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-047",
     module: "crm",
     text: {
@@ -464,7 +464,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : messages directs) : Bell",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-048",
     module: "crm",
     text: {
@@ -485,7 +485,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : Appels vocaux et vidéo) : Générer un lien public vers le chat",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-049",
     module: "crm",
     text: {
@@ -506,7 +506,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : appels vocaux et vidéo) : lever la main",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-050",
     module: "crm",
     text: {
@@ -527,7 +527,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss: Channels) : Il y a des messages non lus",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-051",
     module: "crm",
     text: {
@@ -548,7 +548,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss: Channels) : accédez à toutes les chaînes disponibles",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-052",
     module: "crm",
     text: {
@@ -569,7 +569,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss: Channels) : Tout employé de l'entreprise",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-053",
     module: "crm",
     text: {
@@ -590,7 +590,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : WhatsApp Basics) : Le modèle préconfiguré doit être soumis à Meta pour approbation.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-054",
     module: "crm",
     text: {
@@ -611,7 +611,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : WhatsApp Basics) : Dans le chat, dans l'icône de messagerie dans le coin supérieur droit, sous forme de message de chat dans le coin inférieur droit et dans l'application Discuss.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-055",
     module: "crm",
     text: {
@@ -632,7 +632,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Odoo Discuss : WhatsApp Basics) : Un modèle Whatsapp est utilisé pour envoyer du texte, des images et des liens préformatés au client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-056",
     module: "crm",
     text: {
@@ -653,7 +653,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (WhatsApp : Configuration avancée) : Champ de Modèle.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-057",
     module: "crm",
     text: {
@@ -674,7 +674,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (WhatsApp : Configuration avancée) : S'applique à.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-058",
     module: "crm",
     text: {
@@ -695,7 +695,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (bases et pipelines du CRM) : six. Planifiez une activité, un appel téléphonique, une réunion, un e-mail, une tâche et téléchargez un document.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-059",
     module: "crm",
     text: {
@@ -716,7 +716,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (bases et pipelines du CRM) : bleu pour les activités qui nécessitent l'approbation du responsable.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-060",
     module: "crm",
     text: {
@@ -737,7 +737,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (bases et pipelines du CRM) : les activités peuvent être attribuées à des personnes autres que le vendeur affecté à une opportunité.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-061",
     module: "crm",
     text: {
@@ -758,7 +758,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Bases du CRM : Probabilités et équipes commerciales) : Il s'ajuste automatiquement en conséquence",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-062",
     module: "crm",
     text: {
@@ -779,7 +779,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Bases du CRM : Probabilités et équipes commerciales) : En cliquant sur l'icône « engrenage » à côté du champ de probabilité",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-063",
     module: "crm",
     text: {
@@ -800,7 +800,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Bases du CRM : Probabilités et équipes de vente) : Multi-équipes",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-064",
     module: "crm",
     text: {
@@ -821,7 +821,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités de planification CRM) : il affiche les opportunités qui ont un statut d'activité dans la couleur sélectionnée, à cette étape uniquement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-065",
     module: "crm",
     text: {
@@ -842,7 +842,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités de planification CRM) : Il ajoute 7 jours à la date limite d'activité actuelle",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-066",
     module: "crm",
     text: {
@@ -863,7 +863,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités de planification CRM) : Dans l'activité, planifiez un « Appel » ou une « Réunion », ouvrez l'application « Calendrier » et utilisez le bouton « Partager les disponibilités ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-067",
     module: "crm",
     text: {
@@ -884,7 +884,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités personnalisées) : Le nom d'une activité est son nom tel qu'il apparaît « dans les coulisses ». Le résumé par défaut indique la manière dont l'activité apparaît dans le pipeline et dans les opportunités.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-069",
     module: "crm",
     text: {
@@ -905,7 +905,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités personnalisées) : Il ne suggérera pas d'activité si le champ est laissé vide.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-070",
     module: "crm",
     text: {
@@ -926,7 +926,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'activité) : Non. Les plans d'activité sont suivis séparément des activités dans les bases de données Odoo.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-071",
     module: "crm",
     text: {
@@ -947,7 +947,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'activité) : L'utilisateur actuellement affecté à l'opportunité pour laquelle le plan d'activité est en cours de configuration.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-072",
     module: "crm",
     text: {
@@ -968,7 +968,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'activité) : Oui, si ces activités associées sont définies pour être déclenchées et pas seulement suggérées lorsque l'activité est terminée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-073",
     module: "crm",
     text: {
@@ -989,7 +989,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Opportunités gagnées et perdues) : seule l'application CRM est requise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-074",
     module: "crm",
     text: {
@@ -1010,7 +1010,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Opportunités gagnées et perdues) : Oui. Cliquer sur le bouton « Restaurer » sur une opportunité perdue restaure sa probabilité de victoire déterminée par l'IA et la ramène au stade où elle se trouvait lorsqu'elle était initialement marquée comme perdue.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-075",
     module: "crm",
     text: {
@@ -1031,7 +1031,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (opportunités gagnées et perdues) : l'IA d'Odoo utilise les données des opportunités gagnées et perdues pour prédire quelles opportunités futures pourraient réussir ou échouer et pourquoi.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-076",
     module: "crm",
     text: {
@@ -1052,7 +1052,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (configuration des équipes commerciales et attribution des leads) : affectation basée sur des règles",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-077",
     module: "crm",
     text: {
@@ -1073,7 +1073,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Configuration des équipes commerciales et attribution des leads) : Le champ « Alias ​​de messagerie »",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-078",
     module: "crm",
     text: {
@@ -1094,7 +1094,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Configuration des équipes commerciales et attribution des leads) : Règles d'affectation",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-079",
     module: "crm",
     text: {
@@ -1115,7 +1115,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (automatisations et rapports des activités CRM) : vue en liste",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-080",
     module: "crm",
     text: {
@@ -1136,7 +1136,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations et reporting des activités CRM) : Reporting avec 'Group By' > Vendeur",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-081",
     module: "crm",
     text: {
@@ -1157,7 +1157,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations et reporting des activités CRM) : Remplir automatiquement le contenu du message",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-082",
     module: "crm",
     text: {
@@ -1178,7 +1178,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Reporting de l'équipe commerciale) : tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-083",
     module: "crm",
     text: {
@@ -1199,7 +1199,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Reporting de l'équipe commerciale) : Graphique en aires",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-084",
     module: "crm",
     text: {
@@ -1220,7 +1220,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Rapports de l'équipe commerciale) : A et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-085",
     module: "crm",
     text: {
@@ -1241,7 +1241,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (plugin de boîte aux lettres Gmail) : cliquez sur le signe « plus » dans la barre latérale droite > recherchez « Odoo » > cliquez sur le carré « Odoo Inbox Addin » > cliquez sur « Installer »",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-086",
     module: "crm",
     text: {
@@ -1262,7 +1262,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Plugin de boîte aux lettres Gmail) : Cliquez sur « Créer » (sous la section « Opportunités »)",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-087",
     module: "crm",
     text: {
@@ -1283,7 +1283,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (plugin de boîte aux lettres Gmail) : « Aucun »",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-088",
     module: "crm",
     text: {
@@ -1304,7 +1304,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Plugin de boîte aux lettres Outlook) : Plugins de messagerie",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-089",
     module: "crm",
     text: {
@@ -1325,7 +1325,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (plugin Outlook Mailbox) : extrait de la documentation Odoo",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-090",
     module: "crm",
     text: {
@@ -1346,7 +1346,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (plugin Outlook Mailbox) : il enregistre cet e-mail spécifique dans le formulaire de ce contact dans Odoo",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-091",
     module: "crm",
     text: {
@@ -1367,7 +1367,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'attribution marketing) : Source",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-092",
     module: "crm",
     text: {
@@ -1388,7 +1388,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'attribution marketing) : Filtres > Ajouter un filtre personnalisé > Actif est défini",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-093",
     module: "crm",
     text: {
@@ -1409,7 +1409,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'attribution marketing) : Pivot",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-094",
     module: "crm",
     text: {
@@ -1430,7 +1430,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités planifiées et opportunités de déplacement) : Sur le tableau de bord, faites glisser et déposez l'opportunité dans la nouvelle étape. Ou, si l'occasion se présente, sélectionnez la nouvelle étape",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-095",
     module: "crm",
     text: {
@@ -1451,7 +1451,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités programmées et opportunités de déménagement) : Dans la section de discussion de la page d'opportunité",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-096",
     module: "crm",
     text: {
@@ -1472,7 +1472,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Activités programmées et opportunités de déménagement) : Vérifiez la date de la réunion sur le bouton intelligent dans la page de l'opportunité",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-097",
     module: "crm",
     text: {
@@ -1493,7 +1493,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Partner Autocomplete) : Un crédit de saisie semi-automatique partenaire par enrichissement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-098",
     module: "crm",
     text: {
@@ -1514,7 +1514,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Partner Autocomplete) : Adresses email des salariés de l'entreprise enrichie.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-099",
     module: "crm",
     text: {
@@ -1535,7 +1535,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (complétion automatique du partenaire) : la saisie semi-automatique du partenaire ne fonctionne que pour les nouveaux contacts de l'entreprise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-100",
     module: "crm",
     text: {
@@ -1556,7 +1556,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (CRM Lead & Opportunity Basics) : Un prospect avec une probabilité de 100 % est considéré comme « gagné » et est automatiquement clôturé.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-101",
     module: "crm",
     text: {
@@ -1577,7 +1577,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (CRM Lead & Opportunity Basics) : Odoo AI utilise l'enregistrement des opportunités gagnées et perdues de votre entreprise pour identifier les données qui peuvent aider à prédire la probabilité qu'un prospect se transforme en vente.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-102",
     module: "crm",
     text: {
@@ -1598,7 +1598,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (CRM Lead & Opportunity Basics) : une date saisie manuellement pour laquelle vous vous attendez à ce que l'opportunité soit gagnée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-103",
     module: "crm",
     text: {
@@ -1619,7 +1619,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Generation - Forms & Email Aliases) : Site Web, car un site Web personnalisé est nécessaire pour héberger et créer des formulaires pour prospects.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-104",
     module: "crm",
     text: {
@@ -1640,7 +1640,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Génération de leads - Formulaires et alias de courrier électronique) : Oui, ces deux champs peuvent être définis, même si le vendeur choisi ne fait pas partie de l'équipe commerciale choisie.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-105",
     module: "crm",
     text: {
@@ -1661,7 +1661,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Generation - Forms & Email Aliases) : Si l'option de configuration « Leads » dans les paramètres de l'application CRM est activée ou non.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-106",
     module: "crm",
     text: {
@@ -1682,7 +1682,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Génération de leads – Formulaires et alias de messagerie) : Le nom de l'entreprise.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-107",
     module: "crm",
     text: {
@@ -1703,7 +1703,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Génération de leads - Événements, rendez-vous et visiteurs du site Web) : Lead",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-108",
     module: "crm",
     text: {
@@ -1724,7 +1724,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Génération de leads - Événements, rendez-vous et visiteurs du site Web) : Créez des opportunités",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-109",
     module: "crm",
     text: {
@@ -1745,7 +1745,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Génération de leads - Événements, rendez-vous et visiteurs du site Web) : Depuis l'application CRM, cliquez sur Configuration > Paramètres. Ensuite, activez la fonctionnalité « Visites aux prospects » et cliquez sur « Enregistrer ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-110",
     module: "crm",
     text: {
@@ -1766,7 +1766,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Enrichissement de leads) : L'enrichissement de leads est uniquement disponible pour les adresses e-mail des entreprises aux États-Unis, au Canada et au Mexique.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-111",
     module: "crm",
     text: {
@@ -1787,7 +1787,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Enrichment) : Les leads sans informations essentielles sont automatiquement enrichis à intervalles réguliers.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-112",
     module: "crm",
     text: {
@@ -1808,7 +1808,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Enrichissement de leads) : Chacun des éléments précédents peut être inclus dans l'enrichissement de leads.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-113",
     module: "crm",
     text: {
@@ -1829,7 +1829,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Mining) : L’extraction de plomb n’est disponible qu’aux États-Unis et dans l’Union européenne.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-114",
     module: "crm",
     text: {
@@ -1850,7 +1850,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Mining) : Basculez d’abord vers « Entreprises et leurs contacts » dans le formulaire de génération de leads. Définissez le formulaire pour filtrer par rôle et définissez le rôle préféré sur « PDG ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-115",
     module: "crm",
     text: {
@@ -1871,7 +1871,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Lead Mining) : Tout vendeur ou équipe commerciale.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-116",
     module: "crm",
     text: {
@@ -1892,7 +1892,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Predictive Lead Scoring) : attribution basée sur des règles",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-117",
     module: "crm",
     text: {
@@ -1913,7 +1913,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Predictive Lead Scoring) : La page de l'équipe commerciale",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-118",
     module: "crm",
     text: {
@@ -1934,7 +1934,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Predictive Lead Scoring) : ignore l'affectation automatique mais permet l'affectation manuelle",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-119",
     module: "crm",
     text: {
@@ -1955,7 +1955,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Gamification) : Mode Développeur.",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-120",
     module: "crm",
     text: {
@@ -1976,7 +1976,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Gamification) : Application Paramètres > Outils de Gamification > Définitions d'objectifs",
     },
   }),
-  complexQ({
+complexQ({
     id: "crm-121",
     module: "crm",
     text: {
@@ -1997,7 +1997,7 @@ export const crmLearnQuestions = [
       fr: "Source Odoo Learn (Gamification) : Application Paramètres > Outils de Gamification > Badges",
     },
   }),
-  yesNoQ({
+yesNoQ({
     id: "crm-122",
     module: "crm",
     text: {
@@ -2010,6 +2010,153 @@ export const crmLearnQuestions = [
     explanation: {
       en: "Source Odoo Learn (Activities): False. Activities must be changed from triggering after a previous activity’s deadline to triggering after completion of a previous activity.",
       fr: "Source Odoo Learn (Activités) : Faux. Les activités doivent passer d’un déclenchement après la date limite d’une activité précédente à un déclenchement après l’achèvement d’une activité précédente.",
+    },
+  }),
+complexQ({
+    id: "crm-123",
+    module: "crm",
+    text: {
+      en: "You’ve bought in-app purchase (IAP) credits for Document Digitization and want to use them with the Lead Generation service. How do you do this? (Odoo Learn — In-App Services (Tokens and Credits))",
+      fr: "Vous avez acheté des crédits d'achat in-app (IAP) pour la numérisation de documents et souhaitez les utiliser avec le service Lead Generation. Comment faites-vous cela ? (Odoo Learn — Services intégrés à l'application (jetons et crédits))",
+    },
+    correct: {
+      en: "This can’t be done. IAP credits are not interchangeable.",
+      fr: "Cela ne peut pas être fait. Les crédits IAP ne sont pas interchangeables.",
+    },
+    distractors: [
+      { en: "Log into your database, go to the Settings app, search for “credit refund” and follow the process.The IAP funds this refund generates can then be used to purchase Lead Generation credits.", fr: "Connectez-vous à votre base de données, accédez à l'application Paramètres, recherchez « remboursement de crédit » et suivez le processus. Les fonds IAP générés par ce remboursement peuvent ensuite être utilisés pour acheter des crédits de génération de leads." },
+      { en: "Log into your database, go to the Settings app, search for “credit exchange” and follow the process. IAP credits may be exchanged for different kinds of credits at varying conversion rates.", fr: "Connectez-vous à votre base de données, accédez à l'application Paramètres, recherchez « échange de crédits » et suivez le processus. Les crédits IAP peuvent être échangés contre différents types de crédits à différents taux de conversion." },
+      { en: "IAP credits are a fungible currency. You can simply purchase credits and spend them on any service you like.", fr: "Les crédits IAP sont une monnaie fongible. Vous pouvez simplement acheter des crédits et les dépenser pour le service de votre choix." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (In-App Services (Tokens and Credits)): This can’t be done. IAP credits are not interchangeable.",
+      fr: "Source Odoo Learn (services intégrés à l'application (jetons et crédits)) : cela ne peut pas être fait. Les crédits IAP ne sont pas interchangeables.",
+    },
+  }),
+complexQ({
+    id: "crm-124",
+    module: "crm",
+    text: {
+      en: "What is the primary purpose of the Odoo Gmail Plugin? (Odoo Learn — Gmail Mailbox Plugin)",
+      fr: "Quel est l’objectif principal du plugin Odoo Gmail ? (Odoo Learn — Plugin de boîte aux lettres Gmail)",
+    },
+    correct: {
+      en: "To allow users to create and work with Odoo records directly from Gmail",
+      fr: "Pour permettre aux utilisateurs de créer et de travailler avec des enregistrements Odoo directement depuis Gmail",
+    },
+    distractors: [
+      { en: "To replace Gmail with Odoo Mail", fr: "Pour remplacer Gmail par Odoo Mail" },
+      { en: "To synchronize multiple Gmail accounts", fr: "Pour synchroniser plusieurs comptes Gmail" },
+      { en: "To create email templates in Gmail", fr: "Pour créer des modèles d'e-mails dans Gmail" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Gmail Mailbox Plugin): To allow users to create and work with Odoo records directly from Gmail",
+      fr: "Source Odoo Learn (plugin Gmail Mailbox) : pour permettre aux utilisateurs de créer et de travailler avec des enregistrements Odoo directement depuis Gmail",
+    },
+  }),
+complexQ({
+    id: "crm-125",
+    module: "crm",
+    text: {
+      en: "How do users install the Odoo Inbox Add-in in Gmail? (Odoo Learn — Gmail Mailbox Plugin)",
+      fr: "Comment les utilisateurs installent-ils le complément Odoo Inbox dans Gmail ? (Odoo Learn — Plugin de boîte aux lettres Gmail)",
+    },
+    correct: {
+      en: "Click the plus sign in the Gmail side panel, search for \"Odoo,\" and install the add-in",
+      fr: "Cliquez sur le signe plus dans le panneau latéral de Gmail, recherchez « Odoo » et installez le complément.",
+    },
+    distractors: [
+      { en: "Download it from the Odoo website", fr: "Téléchargez-le depuis le site Odoo" },
+      { en: "Open Settings and enable it manually", fr: "Ouvrez les paramètres et activez-le manuellement" },
+      { en: "Contact their administrator for installation", fr: "Contactez leur administrateur pour l'installation" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Gmail Mailbox Plugin): Click the plus sign in the Gmail side panel, search for \"Odoo,\" and install the add-in",
+      fr: "Source Odoo Learn (plugin de boîte aux lettres Gmail) : cliquez sur le signe plus dans le panneau latéral de Gmail, recherchez « Odoo » et installez le complément.",
+    },
+  }),
+complexQ({
+    id: "crm-126",
+    module: "crm",
+    text: {
+      en: "What information is required when connecting the Gmail Plugin to Odoo for the first time? (Odoo Learn — Gmail Mailbox Plugin)",
+      fr: "Quelles informations sont requises lors de la première connexion du plugin Gmail à Odoo ? (Odoo Learn — Plugin de boîte aux lettres Gmail)",
+    },
+    correct: {
+      en: "Database URL",
+      fr: "URL de la base de données",
+    },
+    distractors: [
+      { en: "Gmail password only", fr: "Mot de passe Gmail uniquement" },
+      { en: "CRM pipeline name", fr: "Nom du pipeline CRM" },
+      { en: "Project ID and API key", fr: "ID du projet et clé API" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Gmail Mailbox Plugin): Database URL",
+      fr: "Source Odoo Learn (Plugin de boîte aux lettres Gmail) : URL de la base de données",
+    },
+  }),
+complexQ({
+    id: "crm-127",
+    module: "crm",
+    text: {
+      en: "This Outlook mailbox plugin setup process applies to databases running which version? (Odoo Learn — Outlook Mailbox Plugin)",
+      fr: "Ce processus de configuration du plug-in de boîte aux lettres Outlook s'applique aux bases de données exécutant quelle version ? (Odoo Learn — Plugin de boîte aux lettres Outlook)",
+    },
+    correct: {
+      en: "Version 19.2 and later",
+      fr: "Versions 19.2 et ultérieures",
+    },
+    distractors: [
+      { en: "Version 18.0 and later", fr: "Versions 18.0 et ultérieures" },
+      { en: "Version 19.0 and later", fr: "Version 19.0 et versions ultérieures" },
+      { en: "Version 19.3 and later", fr: "Versions 19.3 et ultérieures" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Outlook Mailbox Plugin): Version 19.2 and later",
+      fr: "Source Odoo Learn (Plugin Outlook Mailbox) : Version 19.2 et ultérieure",
+    },
+  }),
+complexQ({
+    id: "crm-128",
+    module: "crm",
+    text: {
+      en: "Where do users install the Odoo Outlook plugin from within Outlook? (Odoo Learn — Outlook Mailbox Plugin)",
+      fr: "Où les utilisateurs installent-ils le plugin Odoo Outlook depuis Outlook ? (Odoo Learn — Plugin de boîte aux lettres Outlook)",
+    },
+    correct: {
+      en: "Apps icon on the email > Get add-ins",
+      fr: "Icône d'applications sur l'e-mail > Obtenir des compléments",
+    },
+    distractors: [
+      { en: "Settings > Extensions", fr: "Paramètres > Extensions" },
+      { en: "Account Settings > Plugins", fr: "Paramètres du compte > Plugins" },
+      { en: "Outlook Marketplace website only", fr: "Site Web Outlook Marketplace uniquement" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Outlook Mailbox Plugin): Apps icon on the email > Get add-ins",
+      fr: "Source Odoo Learn (plugin Outlook Mailbox) : icône d'applications sur l'e-mail > Obtenir des compléments",
+    },
+  }),
+complexQ({
+    id: "crm-129",
+    module: "crm",
+    text: {
+      en: "What is the name of the Outlook add-in users search for? (Odoo Learn — Outlook Mailbox Plugin)",
+      fr: "Quel est le nom du complément Outlook recherché par les utilisateurs ? (Odoo Learn — Plugin de boîte aux lettres Outlook)",
+    },
+    correct: {
+      en: "Odoo Inbox Addin ✅",
+      fr: "Complément de boîte de réception Odoo ✅",
+    },
+    distractors: [
+      { en: "Odoo Mail Connector", fr: "Connecteur de messagerie Odoo" },
+      { en: "Odoo CRM Plugin", fr: "Plugin Odoo CRM" },
+      { en: "Odoo Outlook Extension", fr: "Extension Outlook Odoo" },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Outlook Mailbox Plugin): Odoo Inbox Addin ✅",
+      fr: "Source Odoo Learn (plugin de boîte aux lettres Outlook) : complément de boîte de réception Odoo ✅",
     },
   }),
 ];

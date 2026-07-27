@@ -2644,5 +2644,4 @@ complexQ({
       fr: "Source Odoo Learn (Clôture de l'exercice) : Révisé ou Supervisé.",
     },
   }),
-
 ];

@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const hrLearnQuestions = [
-  complexQ({
+complexQ({
     id: "hr-024",
     module: "hr",
     text: {
@@ -23,7 +23,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des employés) : Ils sont connectés et travaillent activement dans la base de données",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-025",
     module: "hr",
     text: {
@@ -44,7 +44,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des Employés) : Leur nom",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-026",
     module: "hr",
     text: {
@@ -65,7 +65,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des employés) : accédez à Configuration > Employé : Lieux de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-027",
     module: "hr",
     text: {
@@ -86,7 +86,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrôle de Présence) : C’est en dehors des heures de travail du salarié",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-028",
     module: "hr",
     text: {
@@ -107,7 +107,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrôle de présence) : Activez la fonctionnalité « Travail à distance » dans les paramètres",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-029",
     module: "hr",
     text: {
@@ -128,7 +128,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrôle de présence) : Visualisation des employés dans la vue Liste",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-030",
     module: "hr",
     text: {
@@ -149,7 +149,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Départements) : Un département imbriqué dans un autre département",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-031",
     module: "hr",
     text: {
@@ -170,7 +170,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Départements) : Formulaire d'entretien",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-032",
     module: "hr",
     text: {
@@ -191,7 +191,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Départements) : Uniquement le nom du département",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-033",
     module: "hr",
     text: {
@@ -212,7 +212,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un employé) : L'utilisateur associé",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-034",
     module: "hr",
     text: {
@@ -233,7 +233,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un employé) : La date d'embauche et le calendrier d'évaluation configurés dans l'application « Évaluations »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-035",
     module: "hr",
     text: {
@@ -254,7 +254,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter un employé) : La localisation de la base de données",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-036",
     module: "hr",
     text: {
@@ -275,7 +275,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (intégration) : définissez le champ « Attribué à » sur « Utilisateur par défaut »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-037",
     module: "hr",
     text: {
@@ -296,7 +296,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Onboarding) : Sélectionnez le département enfant spécifique dans le champ « Département »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-038",
     module: "hr",
     text: {
@@ -317,7 +317,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Onboarding) : Cliquez sur le bouton « Lancer le plan » sur la fiche de l'employé",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-039",
     module: "hr",
     text: {
@@ -338,7 +338,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Certifications) : Application Employés > Configuration > Types de compétences",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-040",
     module: "hr",
     text: {
@@ -359,7 +359,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Certifications) : activez le bouton « Certification » sur le formulaire Type de compétence",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-041",
     module: "hr",
     text: {
@@ -380,7 +380,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Certifications) : Accédez à l'application Employés > Apprentissage > Certifications et vérifiez les entrées rouges ou orange.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-042",
     module: "hr",
     text: {
@@ -401,7 +401,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Badges) : Dans l'application « Employés », accédez à « Configuration » > « Badges ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-043",
     module: "hr",
     text: {
@@ -422,7 +422,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Badges) : Permet de définir le nombre maximum de badges attribués chaque mois.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-044",
     module: "hr",
     text: {
@@ -443,7 +443,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Badges) : Dans l'onglet « Badges reçus » de la fiche employé.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-045",
     module: "hr",
     text: {
@@ -464,7 +464,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Offboarding) : Accédez à l'application « Employés » et accédez à « Configurations » > « Plans d'activité »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-046",
     module: "hr",
     text: {
@@ -485,7 +485,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Offboarding) : Sur le formulaire de l'employé, cliquez sur l'icône « Engrenage », puis cliquez sur « Archiver »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-047",
     module: "hr",
     text: {
@@ -506,7 +506,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Offboarding) : Sélectionnez le filtre « Archivé » dans la barre de recherche",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-048",
     module: "hr",
     text: {
@@ -527,7 +527,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (taux de rétention des employés) : accédez à l'application « Employés » > « Rapports » > « Contrats »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-049",
     module: "hr",
     text: {
@@ -548,7 +548,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Taux de rétention des employés) : Pivot",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-050",
     module: "hr",
     text: {
@@ -569,7 +569,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (taux de rétention des employés) : regrouper par « raison de départ »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-051",
     module: "hr",
     text: {
@@ -590,7 +590,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des présences) : vérifie automatiquement les employés après un laps de temps spécifié après leur quart de travail, s'ils ne l'ont pas déjà fait.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-052",
     module: "hr",
     text: {
@@ -611,7 +611,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des présences) : Il est converti en temps libre",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-053",
     module: "hr",
     text: {
@@ -632,7 +632,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des présences) : L'utilisateur est automatiquement déconnecté de la base de données",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-054",
     module: "hr",
     text: {
@@ -653,7 +653,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des présences) : L'employé a enregistré plus d'heures que prévu, selon son horaire de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-055",
     module: "hr",
     text: {
@@ -674,7 +674,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des présences) : Oui, en définissant le nombre d'heures approuvées sur le relevé de présence.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-056",
     module: "hr",
     text: {
@@ -695,7 +695,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des présences) : filtré par « Poste »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-057",
     module: "hr",
     text: {
@@ -716,7 +716,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (heures supplémentaires) : accédez à « Présences » > « Paramètres » > « Ensembles de règles pour les heures supplémentaires »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-058",
     module: "hr",
     text: {
@@ -737,7 +737,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Heures supplémentaires) : Soit des heures supplémentaires payées, soit des congés",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-059",
     module: "hr",
     text: {
@@ -758,7 +758,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Heures supplémentaires) : Sur le type de saisie travail dans l'application Paie",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-060",
     module: "hr",
     text: {
@@ -779,7 +779,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases du recrutement) : Activez l'option « Publication en ligne »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-061",
     module: "hr",
     text: {
@@ -800,7 +800,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases du recrutement) : en ajoutant un modèle d'e-mail à l'étape respective du pipeline de postes",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-062",
     module: "hr",
     text: {
@@ -821,7 +821,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases du recrutement) : Un bouton intelligent « Offres » apparaît sur la page du candidat",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-063",
     module: "hr",
     text: {
@@ -842,7 +842,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des postes) : permet aux candidats de postuler au poste en envoyant leur CV à l'adresse e-mail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-064",
     module: "hr",
     text: {
@@ -863,7 +863,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des postes) : Non, vous devez ajouter la compétence et la sélectionner séparément dans la liste actuelle.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-065",
     module: "hr",
     text: {
@@ -884,7 +884,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des postes) : La personne sélectionnée peut consulter tous les candidats et les documents respectifs, participer à toutes les réunions liées au poste et refuser des candidats, même si elle ne dispose pas des droits d'accès à l'application « Recrutement ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-066",
     module: "hr",
     text: {
@@ -905,7 +905,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter des candidats) : B et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-067",
     module: "hr",
     text: {
@@ -926,7 +926,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter des candidats) : La section « Sourcing » de l’application.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-068",
     module: "hr",
     text: {
@@ -947,7 +947,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajouter des candidats) : L'alias de l'adresse e-mail du poste et un CV PDF.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-069",
     module: "hr",
     text: {
@@ -968,7 +968,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires d'entretien) : Enquêtes",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-070",
     module: "hr",
     text: {
@@ -989,7 +989,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires d'entretien) : Cliquez sur le bouton « Envoyer l'entretien » sur la carte du candidat",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-071",
     module: "hr",
     text: {
@@ -1010,7 +1010,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Formulaires d'entretien) : Cochez la case « Durée limite de l'enquête » dans l'onglet « Options »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-072",
     module: "hr",
     text: {
@@ -1031,7 +1031,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Compétences des candidats) : cliquez sur la carte Poste de travail, puis cliquez sur l'icône « Équipement », puis sur « Rechercher les candidats correspondants »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-073",
     module: "hr",
     text: {
@@ -1052,7 +1052,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Compétences du candidat) : Sur la fiche du candidat, cliquez sur l'onglet « Compétences », puis cliquez sur « Ajouter »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-074",
     module: "hr",
     text: {
@@ -1073,7 +1073,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Compétences des candidats) : accédez à l'application « Recrutement » > « Configuration » > « Types de compétences »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-075",
     module: "hr",
     text: {
@@ -1094,7 +1094,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Planifier des entretiens) : passez la souris sur le nom de la scène, cliquez sur l'icône en forme d'engrenage et cliquez sur « Modifier ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-076",
     module: "hr",
     text: {
@@ -1115,7 +1115,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Planifier les entretiens) : Nom, adresse e-mail et numéro de téléphone.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-077",
     module: "hr",
     text: {
@@ -1136,7 +1136,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Planifier des entretiens) : accédez au dossier du candidat et cochez le bouton intelligent « Réunion ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-078",
     module: "hr",
     text: {
@@ -1157,7 +1157,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Engager un candidat) : Signez",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-079",
     module: "hr",
     text: {
@@ -1178,7 +1178,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (embaucher un candidat) : cliquez sur le bouton « Générer une offre » sur la carte du candidat.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-080",
     module: "hr",
     text: {
@@ -1199,7 +1199,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (embaucher un candidat) : 30 jours",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-081",
     module: "hr",
     text: {
@@ -1220,7 +1220,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Recruitment Analytics) : cliquez sur « Reporting » > « Performance de l'équipe »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-082",
     module: "hr",
     text: {
@@ -1241,7 +1241,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Recruitment Analytics) : Le nombre moyen de jours que chaque candidat reste à chaque étape.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-083",
     module: "hr",
     text: {
@@ -1262,7 +1262,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Analyses de recrutement) : Analyse du temps d'étape",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-084",
     module: "hr",
     text: {
@@ -1283,7 +1283,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des parrainages) : les diapositives d'intégration",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-085",
     module: "hr",
     text: {
@@ -1304,7 +1304,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des références) : dans l'application de références, cliquez sur « Afficher les offres d'emploi », puis cliquez sur « Envoyer un e-mail » sur la carte d'emploi individuelle.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-086",
     module: "hr",
     text: {
@@ -1325,7 +1325,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des Parrainages) : En faisant embaucher un de mes filleuls",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-087",
     module: "hr",
     text: {
@@ -1346,7 +1346,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager les postes) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-088",
     module: "hr",
     text: {
@@ -1367,7 +1367,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager les postes) : Oui, en cliquant sur le bouton « Envoyer un e-mail à un ami » sur le tableau de bord des références",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-089",
     module: "hr",
     text: {
@@ -1388,7 +1388,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager les postes) : Le module de messagerie WhatsApp",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-090",
     module: "hr",
     text: {
@@ -1409,7 +1409,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager des emplois) : Référent",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-091",
     module: "hr",
     text: {
@@ -1430,7 +1430,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager des emplois) : QR codes",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-092",
     module: "hr",
     text: {
@@ -1451,7 +1451,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Partager des offres d'emploi) : accédez à l'application « Recrutement », cliquez sur les trois points dans le coin supérieur droit de la carte d'offre d'emploi, cliquez sur « Configurations », et elle apparaîtra en haut à gauche.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-093",
     module: "hr",
     text: {
@@ -1472,7 +1472,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Points de parrainage) : Dans l'application Recrutement",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-094",
     module: "hr",
     text: {
@@ -1493,7 +1493,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Points de parrainage) : 15 points",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-095",
     module: "hr",
     text: {
@@ -1514,7 +1514,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Points de parrainage) : Tous les points gagnés pour cette étape sont mis à jour.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-096",
     module: "hr",
     text: {
@@ -1535,7 +1535,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Récompenses de parrainage) : Accédez à « Configuration » > « Récompenses » ou cliquez sur « Récompenses » sur le tableau de bord.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-097",
     module: "hr",
     text: {
@@ -1556,7 +1556,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Récompenses de parrainage) : Un bouton « Acheter » apparaît sur la carte de récompense",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-098",
     module: "hr",
     text: {
@@ -1577,7 +1577,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Récompenses de parrainage) : Activités",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-099",
     module: "hr",
     text: {
@@ -1598,7 +1598,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Alertes de parrainage) : Accédez à « Configuration » > « Alertes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-100",
     module: "hr",
     text: {
@@ -1619,7 +1619,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Alertes de parrainage) : Cliquable",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-101",
     module: "hr",
     text: {
@@ -1640,7 +1640,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Alertes de parrainage) : Cliquez sur « Envoyer un courrier » sur le formulaire d'alerte",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-102",
     module: "hr",
     text: {
@@ -1661,7 +1661,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des évaluations) : Cela dépend du temps minimum entre les évaluations.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-103",
     module: "hr",
     text: {
@@ -1682,7 +1682,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des évaluations) : sous Configuration > Paramètres > Plans d'évaluation.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-104",
     module: "hr",
     text: {
@@ -1703,7 +1703,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des évaluations) : Les différents résultats d'une évaluation, tels que « Besoin d'amélioration ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-105",
     module: "hr",
     text: {
@@ -1724,7 +1724,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Effectuer des évaluations) : cliquez sur le bouton « Demander des commentaires » sur le formulaire d'évaluation",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-106",
     module: "hr",
     text: {
@@ -1745,7 +1745,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Evaluations de conduite) : Tous les managers",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-107",
     module: "hr",
     text: {
@@ -1766,7 +1766,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Evaluations de conduite) : Note précédente",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-108",
     module: "hr",
     text: {
@@ -1787,7 +1787,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (objectifs d'évaluation) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-109",
     module: "hr",
     text: {
@@ -1808,7 +1808,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Objectifs d'évaluation) : Superviseur",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-110",
     module: "hr",
     text: {
@@ -1829,7 +1829,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Objectifs d'évaluation) : Le « Progrès » passe à « 100 % »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-111",
     module: "hr",
     text: {
@@ -1850,7 +1850,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'évaluation) : Analyse d'évaluation et évolution des compétences",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-112",
     module: "hr",
     text: {
@@ -1871,7 +1871,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'évaluation) : Mois et Département",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-113",
     module: "hr",
     text: {
@@ -1892,7 +1892,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapport d'évaluation) : Une augmentation du niveau de compétence par rapport à l'évaluation précédente.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-114",
     module: "hr",
     text: {
@@ -1913,7 +1913,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la paie) : Le rapport sur les coûts des avantages sociaux",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-115",
     module: "hr",
     text: {
@@ -1934,7 +1934,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la paie) : Demi-journée, journée ou sans arrondi",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-116",
     module: "hr",
     text: {
@@ -1955,7 +1955,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la Paie) : Toutes les heures de travail listées dans l'onglet 'Heures de travail' disparaissent",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-117",
     module: "hr",
     text: {
@@ -1976,7 +1976,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Configuration Salaire) : application « Paie » > « Configuration » > « Structures »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-118",
     module: "hr",
     text: {
@@ -1997,7 +1997,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Configuration du salaire) : Oui, « Travailleur » et « Employé »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-119",
     module: "hr",
     text: {
@@ -2018,7 +2018,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Configuration du salaire) : Le type de structure « Travailleur » calcule la rémunération en fonction d'un salaire horaire et le type de structure « Employé » calcule la rémunération en fonction d'un salaire fixe.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-120",
     module: "hr",
     text: {
@@ -2039,7 +2039,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de contrat) : Le modèle de contrat contient les détails financiers du contrat et le modèle PDF est le contrat qui est signé.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-121",
     module: "hr",
     text: {
@@ -2060,7 +2060,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de contrat) : Les modèles PDF utilisés pour créer de nouveaux contrats et mettre à jour les anciens.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-122",
     module: "hr",
     text: {
@@ -2081,7 +2081,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (modèles de contrat) : permet uniquement à ce service d'utiliser le modèle de contrat.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-123",
     module: "hr",
     text: {
@@ -2102,7 +2102,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'employés) : Le salaire est augmenté d'un pourcentage précis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-124",
     module: "hr",
     text: {
@@ -2123,7 +2123,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'employé) : Je vois les détails du dossier de l'employé pour ce moment précis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-125",
     module: "hr",
     text: {
@@ -2144,7 +2144,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'employés) : Leur poste est permanent, ce qui signifie qu'il n'y a pas de date de fin définie.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-126",
     module: "hr",
     text: {
@@ -2165,7 +2165,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Pièces jointes au salaire) : Attribution du salaire",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-127",
     module: "hr",
     text: {
@@ -2186,7 +2186,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Pièces jointes au salaire) : application « Paie » > « Contrats » > « Pièces jointes au salaire »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-128",
     module: "hr",
     text: {
@@ -2207,7 +2207,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Pièces jointes au salaire) : Sur le formulaire de pièce jointe au salaire, sélectionnez les employés et cliquez sur le bouton « Créer des pièces jointes individuelles »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-129",
     module: "hr",
     text: {
@@ -2228,7 +2228,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Entrées de travail) : Seules les entrées de travail avec des conflits",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-130",
     module: "hr",
     text: {
@@ -2249,7 +2249,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Entrées de travail) : cliquez sur le bouton « Supprimer » dans la fenêtre contextuelle d'entrée de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-131",
     module: "hr",
     text: {
@@ -2270,7 +2270,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Work Entries) : Sur la fiche « Avertissements » du tableau de bord et sur le tableau de bord « Work Entries »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-132",
     module: "hr",
     text: {
@@ -2291,7 +2291,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (fiches de paie) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-133",
     module: "hr",
     text: {
@@ -2312,7 +2312,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Files de paie) : Les champs « Contrat » et « Structure »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-134",
     module: "hr",
     text: {
@@ -2333,7 +2333,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fiches de paie) : Dans la vue du calendrier mensuel par défaut",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-135",
     module: "hr",
     text: {
@@ -2354,7 +2354,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Lots de Paie) : Présente toutes les fiches de paie créées qui ne sont pas actuellement dans un lot",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-136",
     module: "hr",
     text: {
@@ -2375,7 +2375,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Lots de Paie) : Le nom du lot et la période couverte par le lot",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-137",
     module: "hr",
     text: {
@@ -2396,7 +2396,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Lots de paie) : Cliquez sur le bouton « Nouveau » sur le tableau de bord des lots",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-138",
     module: "hr",
     text: {
@@ -2417,7 +2417,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Reporting de paie) : Rapport ADP",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-139",
     module: "hr",
     text: {
@@ -2438,7 +2438,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Reporting de Paie) : Effectif",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-140",
     module: "hr",
     text: {
@@ -2459,7 +2459,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Reporting Paie) : Les entrées de travail validées du mois en cours",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-141",
     module: "hr",
     text: {
@@ -2480,7 +2480,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Dépenses par e-mail) : autorisez la création d'enregistrements de dépenses en envoyant un reçu par e-mail à un alias de messagerie spécifié.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-142",
     module: "hr",
     text: {
@@ -2501,7 +2501,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Email Expenses) : La « Référence » pour la catégorie de dépenses",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-143",
     module: "hr",
     text: {
@@ -2522,7 +2522,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Dépenses par e-mail) : Accédez à « Configuration » > « Catégories de dépenses »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-144",
     module: "hr",
     text: {
@@ -2543,7 +2543,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Journal des dépenses) : la « Description », la « Catégorie », la « Date de la dépense » et le « Total ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-145",
     module: "hr",
     text: {
@@ -2564,7 +2564,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Journal des dépenses) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-146",
     module: "hr",
     text: {
@@ -2585,7 +2585,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Enregistrer les dépenses) : uniquement lorsque la catégorie de dépenses a le champ « Coût » défini sur zéro",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-147",
     module: "hr",
     text: {
@@ -2606,7 +2606,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Notes de frais) : Cliquez sur le bouton « Nouveau »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-148",
     module: "hr",
     text: {
@@ -2627,7 +2627,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Notes de dépenses) : La plage de dates de tous les reçus joints",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-149",
     module: "hr",
     text: {
@@ -2648,7 +2648,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Notes de frais) : La note de frais n'a pas encore été soumise",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-150",
     module: "hr",
     text: {
@@ -2669,7 +2669,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les dépenses) : Cliquez sur « Mes dépenses » > « Dépenses à traiter » dans le menu supérieur.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-151",
     module: "hr",
     text: {
@@ -2690,7 +2690,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les dépenses) : Chèque, dépôt direct ou sur leur chèque de paie.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-152",
     module: "hr",
     text: {
@@ -2711,7 +2711,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les dépenses) : Cliquez sur « Approuvé » dans le menu latéral du tableau de bord « Dépenses à traiter ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-153",
     module: "hr",
     text: {
@@ -2732,7 +2732,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Refacturer les dépenses) : « Refacturer les coûts » doit être défini sur « Au prix coûtant »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-154",
     module: "hr",
     text: {
@@ -2753,7 +2753,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Refacturer les dépenses) : Les dépenses sont répertoriées dans l'onglet « Lignes de commande » d'une commande client",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-155",
     module: "hr",
     text: {
@@ -2774,7 +2774,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Refacturer les dépenses) : Lorsque le statut de la note de frais est « Publié »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-156",
     module: "hr",
     text: {
@@ -2795,7 +2795,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des cartes de dépenses) : Un compte Stripe et les applications Odoo Expenses, Accounting et Invoicing",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-157",
     module: "hr",
     text: {
@@ -2816,7 +2816,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des cartes de dépenses) : définit un montant total maximum pour la carte",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-158",
     module: "hr",
     text: {
@@ -2837,7 +2837,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Créer des cartes de dépenses) : Cartes physiques et virtuelles",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-159",
     module: "hr",
     text: {
@@ -2858,7 +2858,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Time Off Basics) : Une demande de congé en attente d'approbation",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-160",
     module: "hr",
     text: {
@@ -2879,7 +2879,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des congés) : A et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-161",
     module: "hr",
     text: {
@@ -2900,7 +2900,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Time Off Basics) : Le montant des congés refusés",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-162",
     module: "hr",
     text: {
@@ -2921,7 +2921,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Types de congés) : Accédez à l'application « Congés » > « Configuration » > « Types de congés »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-163",
     module: "hr",
     text: {
@@ -2942,7 +2942,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Types de congés) : « Absence » et « Temps travaillé »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-164",
     module: "hr",
     text: {
@@ -2963,7 +2963,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Types de congés) : par le responsable de l'employé",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-165",
     module: "hr",
     text: {
@@ -2984,7 +2984,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'accumulation) : Lorsque deux règles sont créées",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-166",
     module: "hr",
     text: {
@@ -3005,7 +3005,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'accumulation) : Présences et calendrier",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-167",
     module: "hr",
     text: {
@@ -3026,7 +3026,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Plans d'accumulation) : Configuration > Plans d'accumulation",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-168",
     module: "hr",
     text: {
@@ -3047,7 +3047,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des congés) : Cliquez sur « Gestion » > « Congés »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-169",
     module: "hr",
     text: {
@@ -3068,7 +3068,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des congés) : Toutes les demandes sont soit automatiquement approuvées, soit nécessitent une ou deux approbations.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-170",
     module: "hr",
     text: {
@@ -3089,7 +3089,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des congés) : par horaire de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-171",
     module: "hr",
     text: {
@@ -3110,7 +3110,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapports sur les congés) : graphique à barres",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-172",
     module: "hr",
     text: {
@@ -3131,7 +3131,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapports sur les congés) : Accédez à « Rapports » > « Solde »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-173",
     module: "hr",
     text: {
@@ -3152,7 +3152,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Rapport de congés) : Expiré",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-174",
     module: "hr",
     text: {
@@ -3173,7 +3173,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases de Frontdesk) : L'heure du dernier visiteur au départ",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-175",
     module: "hr",
     text: {
@@ -3194,7 +3194,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases de Frontdesk) : Oui, mais Odoo déformera la photo pour la rendre carrée",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-176",
     module: "hr",
     text: {
@@ -3215,7 +3215,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases de Frontdesk) : par e-mail, SMS ou discussion",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-177",
     module: "hr",
     text: {
@@ -3236,7 +3236,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion du Frontdesk) : Accédez à l'application « Frontdesk » et cliquez sur « Nouveau » soit sur le tableau de bord principal, sur le tableau de bord d'une station ou sur la liste des visiteurs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-178",
     module: "hr",
     text: {
@@ -3257,7 +3257,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (gestion de la réception) : la date et l'heure actuelles sont définies comme heure d'enregistrement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-179",
     module: "hr",
     text: {
@@ -3278,7 +3278,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (gestion de la réception) : accédez à l'application « Frontdesk » > « Visiteurs ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-180",
     module: "hr",
     text: {
@@ -3299,7 +3299,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Basics) : Vous voyez un triangle rouge.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-181",
     module: "hr",
     text: {
@@ -3320,7 +3320,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Basics) : cliquez sur « l'icône d'activité » sur la carte d'un véhicule, ou cliquez sur le bouton « Activités » dans le chat sur la page du véhicule.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-182",
     module: "hr",
     text: {
@@ -3341,7 +3341,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Basics) : En modifiant le champ Pilote.",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-183",
     module: "hr",
     text: {
@@ -3362,7 +3362,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajout de véhicules) : Fabricants qui ont des modèles de véhicules dans l'application Fleet",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-184",
     module: "hr",
     text: {
@@ -3383,7 +3383,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajout de véhicules) : Voiture et vélo",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-185",
     module: "hr",
     text: {
@@ -3404,7 +3404,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Ajout de véhicules) : La couleur",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-186",
     module: "hr",
     text: {
@@ -3425,7 +3425,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Véhicules d'entretien) : Cliquez sur « Flotte » > « Services »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-187",
     module: "hr",
     text: {
@@ -3446,7 +3446,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Véhicules d'entretien) : Le « Nom » et la « Catégorie »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-188",
     module: "hr",
     text: {
@@ -3467,7 +3467,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Service des véhicules) : Le conducteur",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-189",
     module: "hr",
     text: {
@@ -3488,7 +3488,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les accidents) : Dans le champ « Notes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-190",
     module: "hr",
     text: {
@@ -3509,7 +3509,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les Accidents) : Après approbation du devis",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-191",
     module: "hr",
     text: {
@@ -3530,7 +3530,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les accidents) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-192",
     module: "hr",
     text: {
@@ -3551,7 +3551,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Reporting) : Coûts du contrat",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-193",
     module: "hr",
     text: {
@@ -3572,7 +3572,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Reporting) : Regroupez les données par « Véhicule »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-194",
     module: "hr",
     text: {
@@ -3593,7 +3593,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Fleet Reporting) : affichez les données sous forme de tableau croisé dynamique",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-195",
     module: "hr",
     text: {
@@ -3614,7 +3614,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases du déjeuner) : Les jours où les produits d'un fournisseur spécifique sont disponibles",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-196",
     module: "hr",
     text: {
@@ -3635,7 +3635,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases du déjeuner) : Sur un formulaire fournisseur",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-197",
     module: "hr",
     text: {
@@ -3656,7 +3656,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Lunch Basics) : Créez un message d'alerte à partir du tableau de bord des alertes de déjeuner",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-198",
     module: "hr",
     text: {
@@ -3677,7 +3677,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Passer des commandes de déjeuner) : modifiez la date sur le tableau de bord du déjeuner par la date de demain, puis passez une commande",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-199",
     module: "hr",
     text: {
@@ -3698,7 +3698,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Passer des commandes de déjeuner) : accédez à « Mon déjeuner » > « Mes commandes » et cliquez sur « Récommander »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-200",
     module: "hr",
     text: {
@@ -3719,7 +3719,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Passer des commandes de déjeuner) : S'il n'y a pas assez d'argent sur le compte du déjeuner pour acheter l'article",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-201",
     module: "hr",
     text: {
@@ -3740,7 +3740,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des commandes) : Cliquez sur « Envoyer une notification » dans le tableau de bord « Gestion des commandes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-202",
     module: "hr",
     text: {
@@ -3761,7 +3761,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des commandes) : Cliquez sur « Envoyer les commandes » sur le tableau de bord « Gestion des commandes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-203",
     module: "hr",
     text: {
@@ -3782,7 +3782,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des commandes) : Sur le rapport « Fournisseurs de contrôle »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-204",
     module: "hr",
     text: {
@@ -3803,7 +3803,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des approbations) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-205",
     module: "hr",
     text: {
@@ -3824,7 +3824,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Bases des approbations) : Cocher le bouton radio « Obligatoire » dans l'onglet « Options » d'un formulaire « Type d'approbation »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-206",
     module: "hr",
     text: {
@@ -3845,7 +3845,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (bases des approbations) : en sélectionnant « un approbateur requis » dans le champ « Responsable de l'employé » du formulaire « Type d'approbation »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-207",
     module: "hr",
     text: {
@@ -3866,7 +3866,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des approbations) : accédez à l'application « Approbations » et accédez à « Manager » > « Toutes les approbations »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-208",
     module: "hr",
     text: {
@@ -3887,7 +3887,7 @@ export const hrLearnQuestions = [
       fr: "Source Odoo Learn (Gestion des approbations) : Ouvrez la demande d'approbation et cliquez sur « Retirer »",
     },
   }),
-  complexQ({
+complexQ({
     id: "hr-209",
     module: "hr",
     text: {
@@ -3906,6 +3906,69 @@ export const hrLearnQuestions = [
     explanation: {
       en: "Source Odoo Learn (Approvals Management): Kanban",
       fr: "Source Odoo Learn (Gestion des approbations) : Kanban",
+    },
+  }),
+complexQ({
+    id: "hr-210",
+    module: "hr",
+    text: {
+      en: "What is a ‘balance cap’? (Odoo Learn — Accrual Plans)",
+      fr: "Qu’est-ce qu’un « plafond d’équilibre » ? (Odoo Learn — Plans d'accumulation)",
+    },
+    correct: {
+      en: "The maximum amount of time off the employee can earn, in total, from the accrual plan.",
+      fr: "Le nombre maximum de jours de congé que l'employé peut gagner, au total, grâce au plan d'accumulation.",
+    },
+    distractors: [
+      { en: "The maximum number of hours an employee can earn in a year with the accrual plan.", fr: "Le nombre maximum d'heures qu'un employé peut gagner dans une année avec le plan d'accumulation." },
+      { en: "The maximum amount of time off in total that an employee can carry, including all time off types and all accrual plans.", fr: "La durée totale maximale des congés qu'un employé peut prendre, y compris tous les types de congés et tous les plans d'accumulation." },
+      { en: "The maximum amount of time off that can be requested in a single time off request.", fr: "Durée maximale de congé pouvant être demandée en une seule demande de congé." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Accrual Plans): The maximum amount of time off the employee can earn, in total, from the accrual plan.",
+      fr: "Source Odoo Learn (Plans d'accumulation) : Le nombre maximum de jours de congé que l'employé peut gagner, au total, grâce au plan d'accumulation.",
+    },
+  }),
+complexQ({
+    id: "hr-211",
+    module: "hr",
+    text: {
+      en: "What information is not available on the Accrual Plans dashboard? (Odoo Learn — Accrual Plans)",
+      fr: "Quelles informations ne sont pas disponibles sur le tableau de bord des plans d'accumulation ? (Odoo Learn — Plans d'accumulation)",
+    },
+    correct: {
+      en: "The total number of hours or days earned from the plan.",
+      fr: "Le nombre total d'heures ou de jours gagnés grâce au plan.",
+    },
+    distractors: [
+      { en: "The plan name.", fr: "Le nom du plan." },
+      { en: "The number of employees on the plan.", fr: "Le nombre d'employés inscrits au régime." },
+      { en: "The number of milestones, or Levels, in the plan.", fr: "Le nombre de jalons, ou niveaux, dans le plan." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Accrual Plans): The total number of hours or days earned from the plan.",
+      fr: "Source Odoo Learn (Plans d'accumulation) : Le nombre total d'heures ou de jours gagnés grâce au plan.",
+    },
+  }),
+complexQ({
+    id: "hr-212",
+    module: "hr",
+    text: {
+      en: "Can I see how much time off I will earn in the future? (Odoo Learn — Accrual Plans)",
+      fr: "Puis-je voir combien de temps libre je gagnerai à l’avenir ? (Odoo Learn — Plans d'accumulation)",
+    },
+    correct: {
+      en: "Yes, by changing the date in the ‘Balance at the (date)’ field on the Time Off Dashboard.",
+      fr: "Oui, en modifiant la date dans le champ « Solde au (date) » du tableau de bord des congés.",
+    },
+    distractors: [
+      { en: "No, this is not possible in Odoo.", fr: "Non, ce n'est pas possible dans Odoo." },
+      { en: "Yes, but only if all time off types are set to ‘Days’ and not ‘Hours’.", fr: "Oui, mais seulement si tous les types de congés sont définis sur « Jours » et non « Heures »." },
+      { en: "Yes, but only managers can view that feature; regular users cannot.", fr: "Oui, mais seuls les gestionnaires peuvent voir cette fonctionnalité ; les utilisateurs réguliers ne le peuvent pas." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Accrual Plans): Yes, by changing the date in the ‘Balance at the (date)’ field on the Time Off Dashboard.",
+      fr: "Source Odoo Learn (Plans d'accumulation) : Oui, en modifiant la date dans le champ « Solde au (date) » sur le tableau de bord des congés.",
     },
   }),
 ];

@@ -2,7 +2,7 @@ import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const purchasesLearnQuestions = [
-  complexQ({
+complexQ({
     id: "pur-026",
     module: "purchases",
     text: {
@@ -23,7 +23,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (services intégrés à l'application (jetons et crédits)) : cela ne peut pas être fait. Les crédits IAP ne sont pas interchangeables.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-027",
     module: "purchases",
     text: {
@@ -44,7 +44,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Services In-App (Jetons et Crédits)) : Les services IAP sont automatiquement intégrés à toutes les bases de données Odoo. Aucune configuration supplémentaire n'est requise pour qu'ils fonctionnent.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-028",
     module: "purchases",
     text: {
@@ -65,7 +65,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (services intégrés à l'application (jetons et crédits)) : vrai. Les services IAP peuvent être restreints par entreprise dans l'application Paramètres.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-029",
     module: "purchases",
     text: {
@@ -86,7 +86,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (WhatsApp : Configuration avancée) : Pour configurer la réception ou le retour de messages de WhatsApp vers Odoo.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-030",
     module: "purchases",
     text: {
@@ -107,7 +107,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'achat : votre première demande de devis) : pour appliquer automatiquement une tarification basée sur la quantité",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-031",
     module: "purchases",
     text: {
@@ -128,7 +128,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'achat : votre première demande de devis) : La RFQ se transforme en bon de commande. La commande a été passée",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-032",
     module: "purchases",
     text: {
@@ -149,7 +149,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Principes de base de l'achat : Votre première demande de devis) : Pour valider et confirmer la livraison du produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-033",
     module: "purchases",
     text: {
@@ -170,7 +170,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Délai d'achat) : Délai de sécurité d'achat",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-034",
     module: "purchases",
     text: {
@@ -191,7 +191,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Délai d'achat) : Date de création de l'appel d'offres plus les jours d'achat",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-035",
     module: "purchases",
     text: {
@@ -212,7 +212,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Délai d'achat) : 10 jours",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-036",
     module: "purchases",
     text: {
@@ -233,7 +233,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Règles de réapprovisionnement) : Autant que nécessaire pour avoir 10 unités en stock",
     },
   }),
-  yesNoQ({
+yesNoQ({
     id: "pur-037",
     module: "purchases",
     text: {
@@ -246,7 +246,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (règles de réorganisation) : Non",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "pur-038",
     module: "purchases",
     text: {
@@ -266,7 +266,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (règles de réorganisation) : Non",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-039",
     module: "purchases",
     text: {
@@ -287,7 +287,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (listes de prix des fournisseurs) : accédez au formulaire Produit et cliquez sur l'onglet Achat.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-040",
     module: "purchases",
     text: {
@@ -308,7 +308,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix des fournisseurs) : Accédez à l'application Achat > ​​Menu Configuration > « Liste de prix des fournisseurs ». Ensuite, cliquez sur l'icône en forme de rouage, puis sur « Importer des enregistrements »",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-041",
     module: "purchases",
     text: {
@@ -329,7 +329,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix des fournisseurs) : 4 x 20 = 80 $",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-042",
     module: "purchases",
     text: {
@@ -350,7 +350,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Approbations et avertissements) : définir un avertissement « Message de blocage » sur le fournisseur",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-043",
     module: "purchases",
     text: {
@@ -371,7 +371,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Approbations & Avertissements) : Paramètres généraux > Gérer les utilisateurs > Sélectionner l'employé > Droits d'accès",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-044",
     module: "purchases",
     text: {
@@ -392,7 +392,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Approbations et avertissements) : Un « Administrateur des achats » doit approuver toute demande de devis de 200 $ (ou plus) créée par un « Utilisateur des achats »",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-045",
     module: "purchases",
     text: {
@@ -413,7 +413,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Commandes générales) : date limite de commande, arrivée prévue, quantité",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-046",
     module: "purchases",
     text: {
@@ -434,7 +434,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Commandes globales) : Toutes les demandes de prix de la commande globale sont devenues des bons de commande",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-047",
     module: "purchases",
     text: {
@@ -455,7 +455,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (commandes générales) : lors d'achats récurrents du ou des mêmes produits auprès du même fournisseur",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-048",
     module: "purchases",
     text: {
@@ -476,7 +476,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrôle des factures) : Oui, si la politique de contrôle des factures du produit commandé est définie sur « quantités commandées ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-049",
     module: "purchases",
     text: {
@@ -497,7 +497,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Bill Control) : la politique de Bill Control est définie sur « Quantités reçues » et je n'ai pas encore reçu de produits",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-050",
     module: "purchases",
     text: {
@@ -518,7 +518,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Bill Control) : Bill, dans l'onglet 'Autres informations'",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-051",
     module: "purchases",
     text: {
@@ -539,7 +539,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'achat : RFQ alternatifs - Appels d'offres) : Contrats d'achat et alternatives d'achat",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-052",
     module: "purchases",
     text: {
@@ -560,7 +560,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'achat : RFQ alternatifs - Appels d'offres) : Le nom du fournisseur",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-053",
     module: "purchases",
     text: {
@@ -581,7 +581,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrats d'achat : RFQ alternatifs - Appels d'offres) : Sur la RFQ, cliquez sur « Lien vers la RFQ existante » et sélectionnez les bons de commande auxquels le lier.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-054",
     module: "purchases",
     text: {
@@ -602,7 +602,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrat d'achat : Modèle d'achat) : Produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-055",
     module: "purchases",
     text: {
@@ -623,7 +623,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrat d'achat : Modèle d'achat) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-056",
     module: "purchases",
     text: {
@@ -644,7 +644,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (Contrat d'achat : Modèle d'achat) : Les quantités sont copiées à partir d'un modèle d'achat, mais mises à zéro dans une commande globale",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-057",
     module: "purchases",
     text: {
@@ -665,7 +665,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (EDI Purchase to Sales Order) : Il permet un échange structuré de documents entre bases de données, réduisant ainsi les erreurs.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-058",
     module: "purchases",
     text: {
@@ -686,7 +686,7 @@ export const purchasesLearnQuestions = [
       fr: "Source Odoo Learn (achat EDI vers commande client) : une commande client est automatiquement générée avec tous les détails de la commande.",
     },
   }),
-  complexQ({
+complexQ({
     id: "pur-059",
     module: "purchases",
     text: {

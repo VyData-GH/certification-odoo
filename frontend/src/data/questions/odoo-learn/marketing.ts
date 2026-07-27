@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const marketingLearnQuestions = [
-  complexQ({
+complexQ({
     id: "mkt-021",
     module: "marketing",
     text: {
@@ -23,7 +23,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Digest Emails) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-022",
     module: "marketing",
     text: {
@@ -44,7 +44,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Digest Emails) : installez l'application appropriée pour ce KPI",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-023",
     module: "marketing",
     text: {
@@ -65,7 +65,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Digest Emails) : utilisez le bouton « Planifier » pour le programmer à une date ultérieure",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-024",
     module: "marketing",
     text: {
@@ -86,7 +86,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (KPI personnalisés pour les e-mails de résumé) : Un champ case à cocher et un champ entier",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-025",
     module: "marketing",
     text: {
@@ -107,7 +107,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (KPI personnalisés pour les e-mails Digest) : Technique > Modèles > sélectionnez le champ",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-026",
     module: "marketing",
     text: {
@@ -128,7 +128,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (KPI personnalisés pour les e-mails de résumé) : Dans l'onglet « Destinataires » du formulaire d'e-mail de résumé",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-027",
     module: "marketing",
     text: {
@@ -149,7 +149,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Bases du marketing) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-028",
     module: "marketing",
     text: {
@@ -170,7 +170,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Bases du marketing) : Oui, si l'option « Campagnes de mailing » est activée dans les paramètres de l'application Email marketing.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-029",
     module: "marketing",
     text: {
@@ -191,7 +191,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Bases du marketing) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-030",
     module: "marketing",
     text: {
@@ -212,7 +212,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Email Marketing Essentials) : La page Paramètres (Configuration > Paramètres).",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-031",
     module: "marketing",
     text: {
@@ -233,7 +233,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Email Marketing Essentials) : « En file d'attente ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-032",
     module: "marketing",
     text: {
@@ -254,7 +254,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Email Marketing Essentials) : a et b sont corrects.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-033",
     module: "marketing",
     text: {
@@ -275,7 +275,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Campagnes Email) : Activez la fonctionnalité « Campagnes Mailing »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-034",
     module: "marketing",
     text: {
@@ -296,7 +296,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Campagnes email) : Site Web",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-035",
     module: "marketing",
     text: {
@@ -317,7 +317,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Campagnes Email) : Il n'y a pas de limite",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-036",
     module: "marketing",
     text: {
@@ -338,7 +338,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Listes de diffusion) : Uniquement lorsque l'application SMS Marketing est installée sur la base de données",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-037",
     module: "marketing",
     text: {
@@ -359,7 +359,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Listes de diffusion) : Non",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-038",
     module: "marketing",
     text: {
@@ -380,7 +380,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Listes de diffusion) : Newsletter",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-039",
     module: "marketing",
     text: {
@@ -401,7 +401,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de marketing par e-mail) : Ajouter aux modèles",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-040",
     module: "marketing",
     text: {
@@ -422,7 +422,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles d'Email Marketing) : En créant un nouveau mailing",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-041",
     module: "marketing",
     text: {
@@ -443,7 +443,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de marketing par e-mail) : Cliquez sur le bouton « Remplacer » dans le champ « Médias » dans la barre latérale",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-042",
     module: "marketing",
     text: {
@@ -464,7 +464,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de marketing par e-mail avancés) : La section « Options de conception » de l'onglet « Conception »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-043",
     module: "marketing",
     text: {
@@ -485,7 +485,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de marketing par e-mail avancés) : Le champ « Filtre » lorsqu'une image est sélectionnée",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-044",
     module: "marketing",
     text: {
@@ -506,7 +506,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de marketing par e-mail avancés) : dans la section « Texte en ligne » de l'onglet « Personnaliser »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-045",
     module: "marketing",
     text: {
@@ -527,7 +527,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les désinscriptions) : Option liste noire lors de la désinscription",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-046",
     module: "marketing",
     text: {
@@ -548,7 +548,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les désinscriptions) : Excluez-moi",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-047",
     module: "marketing",
     text: {
@@ -569,7 +569,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les désinscriptions) : Configuration > Raisons de désinscription",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-048",
     module: "marketing",
     text: {
@@ -590,7 +590,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (A/B Testing) : Achats",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-049",
     module: "marketing",
     text: {
@@ -611,7 +611,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (A/B Testing) : L'onglet « A/B Testing » sur l'e-mail d'origine",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-050",
     module: "marketing",
     text: {
@@ -632,7 +632,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (A/B Testing) : tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-051",
     module: "marketing",
     text: {
@@ -653,7 +653,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (E-mail de réactivation des leads perdus) : Lead/Opportunité",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-052",
     module: "marketing",
     text: {
@@ -674,7 +674,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (e-mail de réactivation des leads perdus) : Inclure archivé",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-053",
     module: "marketing",
     text: {
@@ -683,19 +683,19 @@ export const marketingLearnQuestions = [
     },
     correct: {
       en: "Click the ‘Disk’ icon > Enter a title for the filter > Click ‘Add’",
-      fr: "Click the ‘Disk’ icon > Enter a title for the filter > Click ‘Add’",
+      fr: "Cliquez sur l'icône « Disque » > Entrez un titre pour le filtre > Cliquez sur « Ajouter »",
     },
     distractors: [
-      { en: "Click the ‘Star’ icon > Enter a title for the filter > Click ‘Save’", fr: "Click the ‘Star’ icon > Enter a title for the filter > Click ‘Save’" },
-      { en: "Click the ‘Thumbs Up’ icon > Enter a title for the filter > Click ‘Add’", fr: "Click the ‘Thumbs Up’ icon > Enter a title for the filter > Click ‘Add’" },
-      { en: "Click the ‘Smiley Face’ icon > Enter a title for the filter > Click ‘Favorite’", fr: "Click the ‘Smiley Face’ icon > Enter a title for the filter > Click ‘Favorite’" },
+      { en: "Click the ‘Star’ icon > Enter a title for the filter > Click ‘Save’", fr: "Cliquez sur l'icône « Étoile » > Entrez un titre pour le filtre > Cliquez sur « Enregistrer »" },
+      { en: "Click the ‘Thumbs Up’ icon > Enter a title for the filter > Click ‘Add’", fr: "Cliquez sur l'icône « Jouet » > Entrez un titre pour le filtre > Cliquez sur « Ajouter »" },
+      { en: "Click the ‘Smiley Face’ icon > Enter a title for the filter > Click ‘Favorite’", fr: "Cliquez sur l'icône « Smiley Face » > Entrez un titre pour le filtre > Cliquez sur « Favoris »" },
     ],
     explanation: {
       en: "Source Odoo Learn (Lost Leads Reactivation Email): Click the ‘Disk’ icon > Enter a title for the filter > Click ‘Add’",
-      fr: "Source Odoo Learn (Lost Leads Reactivation Email): Click the ‘Disk’ icon > Enter a title for the filter > Click ‘Add’",
+      fr: "Source Odoo Learn (E-mail de réactivation des leads perdus) : Cliquez sur l'icône « Disque » > Entrez un titre pour le filtre > Cliquez sur « Ajouter »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-054",
     module: "marketing",
     text: {
@@ -704,19 +704,19 @@ export const marketingLearnQuestions = [
     },
     correct: {
       en: "IAP Credits.",
-      fr: "IAP Credits.",
+      fr: "Crédits IAP.",
     },
     distractors: [
-      { en: "Message Money.", fr: "Message Money." },
-      { en: "SMS Bucks.", fr: "SMS Bucks." },
-      { en: "Odoo Dollars.", fr: "Odoo Dollars." },
+      { en: "Message Money.", fr: "Message d'argent." },
+      { en: "SMS Bucks.", fr: "Des dollars SMS." },
+      { en: "Odoo Dollars.", fr: "Dollars Odoo." },
     ],
     explanation: {
       en: "Source Odoo Learn (SMS Marketing): IAP Credits.",
-      fr: "Source Odoo Learn (SMS Marketing): IAP Credits.",
+      fr: "Source Odoo Learn (SMS Marketing) : Crédits IAP.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-055",
     module: "marketing",
     text: {
@@ -725,19 +725,19 @@ export const marketingLearnQuestions = [
     },
     correct: {
       en: "Activate the ‘Include Opt-out link’ feature.",
-      fr: "Activate the ‘Include Opt-out link’ feature.",
+      fr: "Activez la fonctionnalité « Inclure le lien de désinscription ».",
     },
     distractors: [
-      { en: "Activate the ‘Customer Portal’ feature.", fr: "Activate the ‘Customer Portal’ feature." },
-      { en: "Activate the ‘I’m Done’ feature.", fr: "Activate the ‘I’m Done’ feature." },
-      { en: "It’s impossible.", fr: "It’s impossible." },
+      { en: "Activate the ‘Customer Portal’ feature.", fr: "Activez la fonctionnalité « Portail client »." },
+      { en: "Activate the ‘I’m Done’ feature.", fr: "Activez la fonction « J’ai terminé »." },
+      { en: "It’s impossible.", fr: "C'est impossible." },
     ],
     explanation: {
       en: "Source Odoo Learn (SMS Marketing): Activate the ‘Include Opt-out link’ feature.",
-      fr: "Source Odoo Learn (SMS Marketing): Activate the ‘Include Opt-out link’ feature.",
+      fr: "Source Odoo Learn (SMS Marketing) : activez la fonctionnalité « Inclure le lien de désinscription ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-056",
     module: "marketing",
     text: {
@@ -746,208 +746,208 @@ export const marketingLearnQuestions = [
     },
     correct: {
       en: "Multiple phone numbers.",
-      fr: "Multiple phone numbers.",
+      fr: "Plusieurs numéros de téléphone.",
     },
     distractors: [
-      { en: "Only one phone number.", fr: "Only one phone number." },
-      { en: "Only phone numbers of coworkers.", fr: "Only phone numbers of coworkers." },
-      { en: "Odoo doesn’t provide SMS tests.", fr: "Odoo doesn’t provide SMS tests." },
+      { en: "Only one phone number.", fr: "Un seul numéro de téléphone." },
+      { en: "Only phone numbers of coworkers.", fr: "Uniquement les numéros de téléphone des collègues." },
+      { en: "Odoo doesn’t provide SMS tests.", fr: "Odoo ne propose pas de tests SMS." },
     ],
     explanation: {
       en: "Source Odoo Learn (SMS Marketing): Multiple phone numbers.",
-      fr: "Source Odoo Learn (SMS Marketing): Multiple phone numbers.",
+      fr: "Source Odoo Learn (SMS Marketing) : Plusieurs numéros de téléphone.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-057",
     module: "marketing",
     text: {
       en: "What is necessary in order to send SMS messages through Odoo? (Odoo Learn — Your First SMS Marketing Message)",
-      fr: "What is necessary in order to send SMS messages through Odoo? (Odoo Learn — Your First SMS Marketing Message)",
+      fr: "Que faut-il pour envoyer des SMS via Odoo ? (Odoo Learn – Votre premier message marketing SMS)",
     },
     correct: {
       en: "IAP credits",
-      fr: "IAP credits",
+      fr: "Crédits du PEI",
     },
     distractors: [
-      { en: "SMS credits", fr: "SMS credits" },
-      { en: "LOL credits", fr: "LOL credits" },
-      { en: "TXT credits", fr: "TXT credits" },
+      { en: "SMS credits", fr: "Crédits SMS" },
+      { en: "LOL credits", fr: "Crédits mdr" },
+      { en: "TXT credits", fr: "Crédits TXT" },
     ],
     explanation: {
       en: "Source Odoo Learn (Your First SMS Marketing Message): IAP credits",
-      fr: "Source Odoo Learn (Your First SMS Marketing Message): IAP credits",
+      fr: "Source Odoo Learn (Votre premier message marketing SMS) : crédits IAP",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-058",
     module: "marketing",
     text: {
       en: "On an SMS form, what is the purpose of the ‘Title’ field? (Odoo Learn — Your First SMS Marketing Message)",
-      fr: "On an SMS form, what is the purpose of the ‘Title’ field? (Odoo Learn — Your First SMS Marketing Message)",
+      fr: "Sur un formulaire SMS, à quoi sert le champ « Titre » ? (Odoo Learn – Votre premier message marketing SMS)",
     },
     correct: {
       en: "Internal reference *only*, the recipient(s) won’t see it",
-      fr: "Internal reference *only*, the recipient(s) won’t see it",
+      fr: "Référence interne *uniquement*, le(s) destinataire(s) ne la verront pas",
     },
     distractors: [
-      { en: "External reference *only*, the recipient(s) sees it on their message", fr: "External reference *only*, the recipient(s) sees it on their message" },
-      { en: "External reference *only*, the recipient(s) won’t see it", fr: "External reference *only*, the recipient(s) won’t see it" },
-      { en: "Internal reference *only*, the recipient(s) sees it on their message", fr: "Internal reference *only*, the recipient(s) sees it on their message" },
+      { en: "External reference *only*, the recipient(s) sees it on their message", fr: "Référence externe *uniquement*, le(s) destinataire(s) la voient sur son message" },
+      { en: "External reference *only*, the recipient(s) won’t see it", fr: "Référence externe *uniquement*, le(s) destinataire(s) ne la verront pas" },
+      { en: "Internal reference *only*, the recipient(s) sees it on their message", fr: "Référence interne *uniquement*, le(s) destinataire(s) la voient sur son message" },
     ],
     explanation: {
       en: "Source Odoo Learn (Your First SMS Marketing Message): Internal reference *only*, the recipient(s) won’t see it",
-      fr: "Source Odoo Learn (Your First SMS Marketing Message): Internal reference *only*, the recipient(s) won’t see it",
+      fr: "Source Odoo Learn (Votre premier message marketing SMS) : Référence interne *uniquement*, le(s) destinataire(s) ne le verront pas",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-059",
     module: "marketing",
     text: {
       en: "On the ‘A/B Tests’ tab, what button should be clicked to modify an existing SMS for test purposes? (Odoo Learn — Your First SMS Marketing Message)",
-      fr: "On the ‘A/B Tests’ tab, what button should be clicked to modify an existing SMS for test purposes? (Odoo Learn — Your First SMS Marketing Message)",
+      fr: "Dans l'onglet « A/B Tests », sur quel bouton cliquer pour modifier un SMS existant à des fins de test ? (Odoo Learn – Votre premier message marketing SMS)",
     },
     correct: {
       en: "Create an Alternative Version",
-      fr: "Create an Alternative Version",
+      fr: "Créer une version alternative",
     },
     distractors: [
-      { en: "Modify Existing Version", fr: "Modify Existing Version" },
-      { en: "Change Original Version", fr: "Change Original Version" },
-      { en: "Write Test Version", fr: "Write Test Version" },
+      { en: "Modify Existing Version", fr: "Modifier la version existante" },
+      { en: "Change Original Version", fr: "Changer la version originale" },
+      { en: "Write Test Version", fr: "Écrire la version de test" },
     ],
     explanation: {
       en: "Source Odoo Learn (Your First SMS Marketing Message): Create an Alternative Version",
-      fr: "Source Odoo Learn (Your First SMS Marketing Message): Create an Alternative Version",
+      fr: "Source Odoo Learn (Votre premier message marketing SMS) : Créez une version alternative",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-060",
     module: "marketing",
     text: {
       en: "How can I add a social media account to the Social Marketing app? (Odoo Learn — Social Marketing Basics)",
-      fr: "How can I add a social media account to the Social Marketing app? (Odoo Learn — Social Marketing Basics)",
+      fr: "Comment puis-je ajouter un compte de réseau social à l'application Social Marketing ? (Odoo Learn – Bases du marketing social)",
     },
     correct: {
       en: "Both A and B",
       fr: "A et B",
     },
     distractors: [
-      { en: "Click ‘Add Stream’ on the ‘Campaigns’ dashboard.", fr: "Click ‘Add Stream’ on the ‘Campaigns’ dashboard." },
-      { en: "Click ‘Configuration > Social Media’ and click the corresponding  ‘Link account’ button.", fr: "Click ‘Configuration > Social Media’ and click the corresponding  ‘Link account’ button." },
-      { en: "Click ‘Sync’ on the main Social Marketing dashboard", fr: "Click ‘Sync’ on the main Social Marketing dashboard" },
+      { en: "Click ‘Add Stream’ on the ‘Campaigns’ dashboard.", fr: "Cliquez sur « Ajouter un flux » sur le tableau de bord « Campagnes »." },
+      { en: "Click ‘Configuration > Social Media’ and click the corresponding  ‘Link account’ button.", fr: "Cliquez sur « Configuration > Réseaux sociaux » et cliquez sur le bouton « Lier le compte » correspondant." },
+      { en: "Click ‘Sync’ on the main Social Marketing dashboard", fr: "Cliquez sur « Sync » sur le tableau de bord principal du marketing social" },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Basics): Both A and B",
-      fr: "Source Odoo Learn (Social Marketing Basics): Both A and B",
+      fr: "Source Odoo Learn (bases du marketing social) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-061",
     module: "marketing",
     text: {
       en: "How can I post to social media? (Odoo Learn — Social Marketing Basics)",
-      fr: "How can I post to social media? (Odoo Learn — Social Marketing Basics)",
+      fr: "Comment puis-je publier sur les réseaux sociaux ? (Odoo Learn – Bases du marketing social)",
     },
     correct: {
       en: "Click ‘New Post’ on the main Social Marketing dashboard.",
-      fr: "Click ‘New Post’ on the main Social Marketing dashboard.",
+      fr: "Cliquez sur « Nouvelle publication » sur le tableau de bord principal du marketing social.",
     },
     distractors: [
-      { en: "Click ‘Add Stream’ on the main Social Marketing dashboard.", fr: "Click ‘Add Stream’ on the main Social Marketing dashboard." },
-      { en: "Click ‘New Stream’ on the main Social Marketing dashboard.", fr: "Click ‘New Stream’ on the main Social Marketing dashboard." },
-      { en: "I can only post on the social media platform directly (i.e Facebook, Instagram), I cannot post directly from Odoo.", fr: "I can only post on the social media platform directly (i.e Facebook, Instagram), I cannot post directly from Odoo." },
+      { en: "Click ‘Add Stream’ on the main Social Marketing dashboard.", fr: "Cliquez sur « Ajouter un flux » sur le tableau de bord principal du marketing social." },
+      { en: "Click ‘New Stream’ on the main Social Marketing dashboard.", fr: "Cliquez sur « Nouveau flux » sur le tableau de bord principal du marketing social." },
+      { en: "I can only post on the social media platform directly (i.e Facebook, Instagram), I cannot post directly from Odoo.", fr: "Je ne peux publier que directement sur la plateforme de médias sociaux (c'est-à-dire Facebook, Instagram), je ne peux pas publier directement depuis Odoo." },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Basics): Click ‘New Post’ on the main Social Marketing dashboard.",
-      fr: "Source Odoo Learn (Social Marketing Basics): Click ‘New Post’ on the main Social Marketing dashboard.",
+      fr: "Source Odoo Learn (bases du marketing social) : cliquez sur « Nouvelle publication » sur le tableau de bord principal du marketing social.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-062",
     module: "marketing",
     text: {
       en: "Can I schedule future social media posts? (Odoo Learn — Social Marketing Basics)",
-      fr: "Can I schedule future social media posts? (Odoo Learn — Social Marketing Basics)",
+      fr: "Puis-je programmer de futures publications sur les réseaux sociaux ? (Odoo Learn – Bases du marketing social)",
     },
     correct: {
       en: "Yes, by selecting ‘Schedule later’ on the ‘Your Post’ form, and select the date and time to post using the calendar selector.",
-      fr: "Yes, by selecting ‘Schedule later’ on the ‘Your Post’ form, and select the date and time to post using the calendar selector.",
+      fr: "Oui, en sélectionnant « Planifier plus tard » sur le formulaire « Votre publication », puis en sélectionnant la date et l'heure de publication à l'aide du sélecteur de calendrier.",
     },
     distractors: [
-      { en: "Yes, but future posts can be created for Facebook only; all other social media platforms must be posted immediately.", fr: "Yes, but future posts can be created for Facebook only; all other social media platforms must be posted immediately." },
-      { en: "Yes, but only if there are no images used in the post.", fr: "Yes, but only if there are no images used in the post." },
-      { en: "No, all posts are automatically posted immediately.", fr: "No, all posts are automatically posted immediately." },
+      { en: "Yes, but future posts can be created for Facebook only; all other social media platforms must be posted immediately.", fr: "Oui, mais les futures publications peuvent être créées uniquement pour Facebook ; toutes les autres plateformes de médias sociaux doivent être publiées immédiatement." },
+      { en: "Yes, but only if there are no images used in the post.", fr: "Oui, mais seulement si aucune image n’est utilisée dans la publication." },
+      { en: "No, all posts are automatically posted immediately.", fr: "Non, tous les messages sont automatiquement publiés immédiatement." },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Basics): Yes, by selecting ‘Schedule later’ on the ‘Your Post’ form, and select the date and time to post using the calendar selector.",
-      fr: "Source Odoo Learn (Social Marketing Basics): Yes, by selecting ‘Schedule later’ on the ‘Your Post’ form, and select the date and time to post using the calendar selector.",
+      fr: "Source Odoo Learn (bases du marketing social) : Oui, en sélectionnant « Planifier plus tard » sur le formulaire « Votre publication », et sélectionnez la date et l'heure de publication à l'aide du sélecteur de calendrier.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-063",
     module: "marketing",
     text: {
       en: "How can I find all my campaigns? (Odoo Learn — Social Marketing Campaigns)",
-      fr: "How can I find all my campaigns? (Odoo Learn — Social Marketing Campaigns)",
+      fr: "Comment retrouver toutes mes campagnes ? (Odoo Learn – Campagnes de marketing social)",
     },
     correct: {
       en: "Click ‘Campaigns’ in the top menu of the ‘Social Marketing’ app.",
-      fr: "Click ‘Campaigns’ in the top menu of the ‘Social Marketing’ app.",
+      fr: "Cliquez sur « Campagnes » dans le menu supérieur de l'application « Marketing social ».",
     },
     distractors: [
-      { en: "Click ‘Posts’ in the top menu of the ‘Social Marketing’ app.", fr: "Click ‘Posts’ in the top menu of the ‘Social Marketing’ app." },
-      { en: "Click ‘Feed’ in the top menu of the ‘Social Marketing’ app.", fr: "Click ‘Feed’ in the top menu of the ‘Social Marketing’ app." },
-      { en: "Click ‘Visitors’ in the top menu of the ‘Social Marketing’ app.", fr: "Click ‘Visitors’ in the top menu of the ‘Social Marketing’ app." },
+      { en: "Click ‘Posts’ in the top menu of the ‘Social Marketing’ app.", fr: "Cliquez sur « Publications » dans le menu supérieur de l'application « Marketing social »." },
+      { en: "Click ‘Feed’ in the top menu of the ‘Social Marketing’ app.", fr: "Cliquez sur « Flux » dans le menu supérieur de l'application « Marketing social »." },
+      { en: "Click ‘Visitors’ in the top menu of the ‘Social Marketing’ app.", fr: "Cliquez sur « Visiteurs » dans le menu supérieur de l'application « Marketing social »." },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Campaigns): Click ‘Campaigns’ in the top menu of the ‘Social Marketing’ app.",
-      fr: "Source Odoo Learn (Social Marketing Campaigns): Click ‘Campaigns’ in the top menu of the ‘Social Marketing’ app.",
+      fr: "Source Odoo Learn (Campagnes de marketing social) : Cliquez sur « Campagnes » dans le menu supérieur de l'application « Marketing social ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-064",
     module: "marketing",
     text: {
       en: "What is NOT a field on a campaign card? (Odoo Learn — Social Marketing Campaigns)",
-      fr: "What is NOT a field on a campaign card? (Odoo Learn — Social Marketing Campaigns)",
+      fr: "Qu'est-ce qui n'est PAS un champ sur une carte de campagne ? (Odoo Learn – Campagnes de marketing social)",
     },
     correct: {
       en: "Streams",
-      fr: "Streams",
+      fr: "Flux",
     },
     distractors: [
-      { en: "Campaign Name", fr: "Campaign Name" },
-      { en: "Responsible", fr: "Responsible" },
-      { en: "Tags", fr: "Tags" },
+      { en: "Campaign Name", fr: "Nom de la campagne" },
+      { en: "Responsible", fr: "Responsable" },
+      { en: "Tags", fr: "Balises" },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Campaigns): Streams",
-      fr: "Source Odoo Learn (Social Marketing Campaigns): Streams",
+      fr: "Source Odoo Learn (Campagnes de marketing social) : Streams",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-065",
     module: "marketing",
     text: {
       en: "When a campaign is created, what stage does it appear in, by default? (Odoo Learn — Social Marketing Campaigns)",
-      fr: "When a campaign is created, what stage does it appear in, by default? (Odoo Learn — Social Marketing Campaigns)",
+      fr: "Lorsqu'une campagne est créée, à quelle étape apparaît-elle par défaut ? (Odoo Learn – Campagnes de marketing social)",
     },
     correct: {
       en: "New",
-      fr: "New",
+      fr: "Nouveau",
     },
     distractors: [
-      { en: "Running", fr: "Running" },
-      { en: "Ended", fr: "Ended" },
-      { en: "Sent", fr: "Sent" },
+      { en: "Running", fr: "En cours d'exécution" },
+      { en: "Ended", fr: "Terminé" },
+      { en: "Sent", fr: "Envoyé" },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Campaigns): New",
-      fr: "Source Odoo Learn (Social Marketing Campaigns): New",
+      fr: "Source Odoo Learn (Campagnes de marketing social) : Nouveau",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-066",
     module: "marketing",
     text: {
@@ -961,14 +961,14 @@ export const marketingLearnQuestions = [
     distractors: [
       { en: "SMS Allowance (in SMS Marketing app).", fr: "Allocation SMS (dans l'application SMS Marketing)." },
       { en: "Campaign Allowance (in Social Marketing app).", fr: "Allocation de campagne (dans l'application Social Marketing)." },
-      { en: "It’s impossible.", fr: "It’s impossible." },
+      { en: "It’s impossible.", fr: "C'est impossible." },
     ],
     explanation: {
       en: "Source Odoo Learn (Social Marketing Campaign Channels): Mailing Campaigns (in Email Marketing app).",
       fr: "Source Odoo Learn (Canaux de campagne de marketing social) : Campagnes de mailing (dans l'application Email Marketing).",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-067",
     module: "marketing",
     text: {
@@ -989,7 +989,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Canaux de campagne de marketing social) : Pour donner à vos clients le pouvoir de se désinscrire du mailing.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-068",
     module: "marketing",
     text: {
@@ -1010,7 +1010,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Canaux de campagne de marketing social) : autant que vous le souhaitez.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-069",
     module: "marketing",
     text: {
@@ -1031,7 +1031,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Notifications Push et Live Chat) : Application de site Web.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-070",
     module: "marketing",
     text: {
@@ -1052,7 +1052,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Notifications Push et Live Chat) : Cela me permet de choisir sur laquelle de mes pages de site Web l'utilisateur atterrira en cliquant sur mon message. Le lien sera également suivi.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-071",
     module: "marketing",
     text: {
@@ -1073,7 +1073,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Notifications Push et Live Chat) : Tout ce qui précède.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-072",
     module: "marketing",
     text: {
@@ -1094,7 +1094,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Marketing Automation Essentials) : en cours d'exécution.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-073",
     module: "marketing",
     text: {
@@ -1115,7 +1115,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Marketing Automation Essentials) : sélectionnez « Rechercher plus » dans le menu déroulant « Cible ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-074",
     module: "marketing",
     text: {
@@ -1136,7 +1136,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Marketing Automation Essentials) : Le nombre de contacts qui correspondent aux critères « Filtre » que vous venez de configurer.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-075",
     module: "marketing",
     text: {
@@ -1157,7 +1157,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Activités Marketing) : Oui, bien sûr.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-076",
     module: "marketing",
     text: {
@@ -1178,7 +1178,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Activités marketing) : Durée d’expiration.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-077",
     module: "marketing",
     text: {
@@ -1199,7 +1199,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Activités marketing) : Action serveur.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-078",
     module: "marketing",
     text: {
@@ -1220,7 +1220,7 @@ export const marketingLearnQuestions = [
       fr: "Source Odoo Learn (Test/Campagnes en cours) : Oui, sans aucun problème.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-079",
     module: "marketing",
     text: {
@@ -1234,14 +1234,14 @@ export const marketingLearnQuestions = [
     distractors: [
       { en: "Log out, and log back in immediately.", fr: "Déconnectez-vous et reconnectez-vous immédiatement." },
       { en: "Close the application, and re-open it immediately.", fr: "Fermez l'application et rouvrez-la immédiatement." },
-      { en: "It’s impossible.", fr: "It’s impossible." },
+      { en: "It’s impossible.", fr: "C'est impossible." },
     ],
     explanation: {
       en: "Source Odoo Learn (Testing/Running Campaigns): Refresh the page.",
       fr: "Source Odoo Learn (Test/Campagnes en cours) : Actualisez la page.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mkt-080",
     module: "marketing",
     text: {

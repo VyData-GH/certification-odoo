@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const inventoryLearnQuestions = [
-  complexQ({
+complexQ({
     id: "inv-031",
     module: "inventory",
     text: {
@@ -23,7 +23,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'inventaire : recevoir et stocker le stock) : un bon de commande.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-032",
     module: "inventory",
     text: {
@@ -44,7 +44,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'inventaire : réception et stockage du stock) : pour garantir que les produits sont stockés au bon emplacement d'entrepôt",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-033",
     module: "inventory",
     text: {
@@ -65,7 +65,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'inventaire : recevoir et stocker le stock) : il permet de suivre les quantités et les emplacements des stocks du produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-034",
     module: "inventory",
     text: {
@@ -86,7 +86,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (bases de l'inventaire et expéditions sortantes) : parce que leur équipe de sélection est très efficace pour localiser les produits et que l'équipe de livraison se concentre sur la vérification, l'emballage et l'expédition.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-035",
     module: "inventory",
     text: {
@@ -107,7 +107,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (bases de l'inventaire et expéditions sortantes) : une commande client",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-036",
     module: "inventory",
     text: {
@@ -128,7 +128,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Bases de l'inventaire et expéditions sortantes) : les articles sont disponibles et réservés",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-037",
     module: "inventory",
     text: {
@@ -149,7 +149,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (configuration de base de l'entrepôt) : comment les produits se déplacent dans l'entrepôt et comment les expéditions sont traitées",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-038",
     module: "inventory",
     text: {
@@ -170,7 +170,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (configuration de base de l'entrepôt) : Prélèvement dans le stockage → Emballer dans les commandes → Déplacer vers la zone de sortie",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-039",
     module: "inventory",
     text: {
@@ -191,7 +191,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Entrepôts et emplacements) : un nœud subordonné sous un emplacement parent dans la hiérarchie des emplacements",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-040",
     module: "inventory",
     text: {
@@ -212,7 +212,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Entrepôts et emplacements) : Interne et Transit",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-041",
     module: "inventory",
     text: {
@@ -233,7 +233,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Entrepôts et emplacements) : Un mouvement de stock réduit la quantité disponible",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-042",
     module: "inventory",
     text: {
@@ -254,7 +254,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Unités de mesure) : Configuration > Paramètres > section Produits > Unités de mesure.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-043",
     module: "inventory",
     text: {
@@ -275,7 +275,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Unités de mesure) : Divisez la nouvelle unité de mesure par l'unité de mesure de référence.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-044",
     module: "inventory",
     text: {
@@ -296,7 +296,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Unités de mesure) : Livres",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-045",
     module: "inventory",
     text: {
@@ -317,7 +317,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Ajustements d'inventaire et inventaires cycliques) : Emplacements",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-046",
     module: "inventory",
     text: {
@@ -338,7 +338,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Ajustements d'inventaire et inventaires cycliques) : Une fois que les ajustements d'inventaire ont été effectués par rapport aux produits de l'emplacement",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-047",
     module: "inventory",
     text: {
@@ -359,7 +359,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Ajustements d'inventaire et inventaires cycliques) : cochez les cases à côté des produits à cet emplacement, puis cliquez sur le bouton « Demander un inventaire »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-048",
     module: "inventory",
     text: {
@@ -380,7 +380,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Intégrer les Landed Costs) : Dépenses qui doivent être payées, en plus du coût d'un produit lors de son achat",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-049",
     module: "inventory",
     text: {
@@ -401,7 +401,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Intégrer les coûts au débarquement) : Coût moyen (AVCO)",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-050",
     module: "inventory",
     text: {
@@ -422,7 +422,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Intégrer les coûts au débarquement) : par couleur",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-051",
     module: "inventory",
     text: {
@@ -443,7 +443,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès pour les équipes d'inventaire) : Pour assurer la sécurité et empêcher l'accès aux configurations inutiles",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-052",
     module: "inventory",
     text: {
@@ -464,7 +464,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès pour les équipes d'inventaire) : Pour consulter les bons de commande et traiter les réceptions",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-053",
     module: "inventory",
     text: {
@@ -485,7 +485,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Droits d'accès pour les équipes d'inventaire) : Code barre",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-054",
     module: "inventory",
     text: {
@@ -506,7 +506,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Make-to-Order (MTO)) : Il déclenche automatiquement un réapprovisionnement en fonction de la demande",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-055",
     module: "inventory",
     text: {
@@ -527,7 +527,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Make-to-Order (MTO)) : Pour indiquer à Odoo comment le produit doit être réapprovisionné",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-056",
     module: "inventory",
     text: {
@@ -548,7 +548,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication sur commande (MTO)) : Une demande de devis (RFQ)",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-057",
     module: "inventory",
     text: {
@@ -569,7 +569,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (règles de réorganisation) : Auto",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-058",
     module: "inventory",
     text: {
@@ -590,7 +590,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles de réorganisation) : 15",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-059",
     module: "inventory",
     text: {
@@ -611,7 +611,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles de réapprovisionnement) : Dans l'application Inventaire, sous le tableau de bord de réapprovisionnement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-060",
     module: "inventory",
     text: {
@@ -632,7 +632,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Délai de livraison) : 15 juin",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-061",
     module: "inventory",
     text: {
@@ -653,7 +653,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Délai de livraison) : La « Date limite de commande » sur une demande de devis indique trois jours à compter d'aujourd'hui",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-062",
     module: "inventory",
     text: {
@@ -674,7 +674,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Délais de livraison) : Délai client uniquement",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-063",
     module: "inventory",
     text: {
@@ -695,7 +695,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Resupply Warehouse) : Formulaire Produit, dans l'onglet 'Inventaire'",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-064",
     module: "inventory",
     text: {
@@ -716,7 +716,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Entrepôt de réapprovisionnement) : « Emplacements de stockage » et « Itinéraires en plusieurs étapes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-065",
     module: "inventory",
     text: {
@@ -737,7 +737,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Resupply Warehouse) : « Commande de livraison » depuis l'entrepôt et « Reçu » pour la boutique",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-066",
     module: "inventory",
     text: {
@@ -758,7 +758,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Lots et numéros de série) : Odoo affiche un message d'erreur",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-067",
     module: "inventory",
     text: {
@@ -779,7 +779,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Lots et numéros de série) : Visualisation du mouvement des lots et des séries",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-068",
     module: "inventory",
     text: {
@@ -800,7 +800,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Lots et numéros de série) : Marchandises",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-069",
     module: "inventory",
     text: {
@@ -821,7 +821,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Travailler avec des produits périssables) : A & B.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-070",
     module: "inventory",
     text: {
@@ -842,7 +842,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Travailler avec des produits périssables) : lots et numéros de série, dates d'expiration, emplacements de stockage et itinéraires en plusieurs étapes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-071",
     module: "inventory",
     text: {
@@ -863,7 +863,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Travailler avec des produits périssables) : un emplacement de « perte d'inventaire » doit être défini avec un compte de perte spécifié, et la catégorie de produit doit utiliser la méthode de valorisation FIFO ou AVCO, et la valorisation des stocks de la catégorie doit être définie sur Perpétuel.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-072",
     module: "inventory",
     text: {
@@ -884,7 +884,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dates d'expiration) : lots et numéros de série",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-073",
     module: "inventory",
     text: {
@@ -905,7 +905,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dates d'expiration) : Elle est recalculée en fonction de sa configuration dans la fiche produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-074",
     module: "inventory",
     text: {
@@ -926,7 +926,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dates d'expiration) : B et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-075",
     module: "inventory",
     text: {
@@ -947,7 +947,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (règles Push & Pull) : itinéraires en plusieurs étapes",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-076",
     module: "inventory",
     text: {
@@ -968,7 +968,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles Push & Pull) : Déclenchez une autre règle",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-077",
     module: "inventory",
     text: {
@@ -989,7 +989,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles Push & Pull) : Cela dépend de la manière dont l'itinéraire est configuré et du nombre de règles entrant en action au cours du processus.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-078",
     module: "inventory",
     text: {
@@ -1010,7 +1010,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles de rangement) : Pour attribuer automatiquement les produits entrants à des emplacements de stockage spécifiques",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-079",
     module: "inventory",
     text: {
@@ -1031,7 +1031,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles de mise en stock) : A et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-080",
     module: "inventory",
     text: {
@@ -1052,7 +1052,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Règles de mise en stock) : WH/Stock",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-081",
     module: "inventory",
     text: {
@@ -1073,7 +1073,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Catégories de stockage) : La « Catégorie d'avoir » utilise la catégorie de stockage choisie pour déterminer où un produit est rangé, en fonction de la capacité de l'emplacement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-082",
     module: "inventory",
     text: {
@@ -1094,7 +1094,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Catégories de stockage) : 0 unité est stockée dans l'emplacement A et 50 unités sont stockées dans l'emplacement B",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-083",
     module: "inventory",
     text: {
@@ -1115,7 +1115,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (catégories de stockage) : B et C",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-084",
     module: "inventory",
     text: {
@@ -1136,7 +1136,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cross-Docking) : « Itinéraires en plusieurs étapes »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-085",
     module: "inventory",
     text: {
@@ -1157,7 +1157,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cross-Docking) : « Acheter » et « Cross-Dock »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-086",
     module: "inventory",
     text: {
@@ -1178,7 +1178,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cross-Docking) : Deux",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-087",
     module: "inventory",
     text: {
@@ -1199,7 +1199,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Consignation) : Reçu",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-088",
     module: "inventory",
     text: {
@@ -1220,7 +1220,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Consignation) : Dans la zone « Attribuer un propriétaire », située sur le récépissé d'entrepôt",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-089",
     module: "inventory",
     text: {
@@ -1241,7 +1241,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Consignation) : ‘0.00’",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-090",
     module: "inventory",
     text: {
@@ -1262,7 +1262,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dispatch Management System) : Sur un transfert par lots lorsque le statut est défini sur « En cours »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-091",
     module: "inventory",
     text: {
@@ -1283,7 +1283,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dispatch Management System) : accédez à l'emplacement du quai depuis « Configuration » > « Emplacements », et cochez la case « Est-ce un emplacement de quai »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-092",
     module: "inventory",
     text: {
@@ -1304,7 +1304,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Dispatch Management System) : Parce que « Sortie » est l'emplacement par défaut et ne précise pas l'emplacement exact du quai pour nos commandes",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-093",
     module: "inventory",
     text: {
@@ -1325,7 +1325,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réservation) : Inventaire > Configuration > Types d'opérations",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-094",
     module: "inventory",
     text: {
@@ -1346,7 +1346,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réservation) : Cliquez sur \"Vérifier la disponibilité\" sur le bon de livraison",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-095",
     module: "inventory",
     text: {
@@ -1367,7 +1367,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réservation) : Le nombre de jours avant la date de livraison prévue",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-096",
     module: "inventory",
     text: {
@@ -1388,7 +1388,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu des stratégies de suppression) : Quels articles doivent être récupérés ou retirés du stock, et quand",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-097",
     module: "inventory",
     text: {
@@ -1409,7 +1409,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu des stratégies de suppression) : Premier expiré, premier sorti (FEFO)",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-098",
     module: "inventory",
     text: {
@@ -1430,7 +1430,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu des stratégies de suppression) : Moins de paquets",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-099",
     module: "inventory",
     text: {
@@ -1451,7 +1451,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FIFO et LIFO) : en sélectionnant FIFO comme stratégie de suppression",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-100",
     module: "inventory",
     text: {
@@ -1472,7 +1472,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FIFO et LIFO) : lots/numéros de série",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-101",
     module: "inventory",
     text: {
@@ -1493,7 +1493,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FIFO & LIFO) : En allant dans Configuration > Localisation > Stratégie de suppression",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-102",
     module: "inventory",
     text: {
@@ -1514,7 +1514,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FEFO) : date d'expiration, lots et numéros de série",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-103",
     module: "inventory",
     text: {
@@ -1535,7 +1535,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FEFO) : Date de suppression",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-104",
     module: "inventory",
     text: {
@@ -1556,7 +1556,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression FEFO) : Choisissez 7 produits du LOT 1 et 13 produits du LOT 2",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-105",
     module: "inventory",
     text: {
@@ -1577,7 +1577,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression de l'emplacement le plus proche) : emplacements de stockage, itinéraires en plusieurs étapes",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-106",
     module: "inventory",
     text: {
@@ -1598,7 +1598,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression de l'emplacement le plus proche) : accédez à l'application Inventaire > Configuration > Emplacements > « Congélateur A » et définissez la « Stratégie de suppression » sur « Emplacement le plus proche ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-107",
     module: "inventory",
     text: {
@@ -1619,7 +1619,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression de l'emplacement le plus proche) : Renommez « Étagère Z » en « Étagère A ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-108",
     module: "inventory",
     text: {
@@ -1640,7 +1640,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression des moindres packages) : packages, uniquement",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-109",
     module: "inventory",
     text: {
@@ -1661,7 +1661,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression des moindres packages) : le « Package source » contenait les quantités exactes pour la commande, il a donc été utilisé à nouveau comme « Package de destination »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-110",
     module: "inventory",
     text: {
@@ -1682,7 +1682,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Stratégie de suppression du moindre paquet) : choisissez 33 unités dans le pack de 50",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-111",
     module: "inventory",
     text: {
@@ -1703,7 +1703,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Emballage) : Les unités font référence à des articles de produit individuels, tandis que les emballages sont différentes quantités d'unités d'un produit emballées ensemble et comptées comme un article.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-112",
     module: "inventory",
     text: {
@@ -1724,7 +1724,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Packaging) : Le prix de vente du produit est divisé par 4.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-113",
     module: "inventory",
     text: {
@@ -1745,7 +1745,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Emballage) : Mettez à jour le champ « Unité » avec l'emballage que je souhaite utiliser.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-114",
     module: "inventory",
     text: {
@@ -1766,7 +1766,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Packages) : les emballages sont des regroupements prédéfinis d'un seul produit, les packages sont des conteneurs indéterminés de plusieurs produits.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-115",
     module: "inventory",
     text: {
@@ -1787,7 +1787,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Packages) : Oui, je peux utiliser le bouton de liste sur chaque produit pour spécifier le package et la quantité de produits dans chacun.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-116",
     module: "inventory",
     text: {
@@ -1808,7 +1808,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Packages) : Je peux créer un transfert interne et utiliser le bouton « Mettre en Pack ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-117",
     module: "inventory",
     text: {
@@ -1829,7 +1829,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Expédier des packages multi-boîtes) : Forfaits",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-118",
     module: "inventory",
     text: {
@@ -1850,7 +1850,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Expédier des packages multi-boîtes) : cliquez sur le bouton intelligent « Packages » sur une opération et affichez les détails du package parent",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-119",
     module: "inventory",
     text: {
@@ -1871,7 +1871,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Expédier des packages multi-boîtes) : cliquez sur le lien « Détails » pour chaque ligne de produits, regroupez-les en packages, puis cliquez sur « Mettre dans le pack » pour ajouter à un package parent.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-120",
     module: "inventory",
     text: {
@@ -1892,7 +1892,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Envois multi-colis) : Forfaits",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-121",
     module: "inventory",
     text: {
@@ -1913,7 +1913,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (envois multi-colis) : spécifiez le même « colis de destination » pour chaque produit du colis",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-122",
     module: "inventory",
     text: {
@@ -1934,7 +1934,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (expéditions multi-colis) : le bon de livraison d'origine est terminé, les produits peuvent être livrés au client et la commande en souffrance est créée et liée dans le bavardage du bon de livraison d'origine. La commande en souffrance est accessible à partir de la fiche « Commandes de livraison » sur la page Aperçu de l'inventaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-123",
     module: "inventory",
     text: {
@@ -1955,7 +1955,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Politique d'expédition) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-124",
     module: "inventory",
     text: {
@@ -1976,7 +1976,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Politique d'expédition) : La commande attend que les produits soient disponibles avant de pouvoir être expédiée",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-125",
     module: "inventory",
     text: {
@@ -1997,7 +1997,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Politique d'expédition) : Tout ou partie de la commande est prête à être expédiée",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-126",
     module: "inventory",
     text: {
@@ -2018,7 +2018,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Opération de retours personnalisés) : « Reçus »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-127",
     module: "inventory",
     text: {
@@ -2039,7 +2039,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Opération de retour personnalisé) : « Reçu »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-128",
     module: "inventory",
     text: {
@@ -2060,7 +2060,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Opération de retours personnalisés) : « Type de retours »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-129",
     module: "inventory",
     text: {
@@ -2081,7 +2081,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Transferts par lots) : Je peux utiliser le prélèvement par lots en une, deux ou trois étapes ; la deuxième étape est généralement l'étape de tri",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-130",
     module: "inventory",
     text: {
@@ -2102,7 +2102,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Transferts par lots) : Il crée automatiquement des lots en fonction de la méthode de regroupement que vous sélectionnez (par exemple, par transporteur, contact, etc.)",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-131",
     module: "inventory",
     text: {
@@ -2123,7 +2123,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Transferts par lots) : Dans l'onglet « Lots » après avoir sélectionné le type d'opération",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-132",
     module: "inventory",
     text: {
@@ -2144,7 +2144,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cluster Picking) : l'une des options « Expédition sortante »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-133",
     module: "inventory",
     text: {
@@ -2165,7 +2165,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cluster Picking) : Lorsqu'il est utilisé pour expédier des articles au client",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-134",
     module: "inventory",
     text: {
@@ -2186,7 +2186,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Cluster Picking) : Les produits sont affichés par ordre alphabétique de l'emplacement de stockage",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-135",
     module: "inventory",
     text: {
@@ -2207,7 +2207,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Imprimer les étiquettes d'expédition) : obtenir un tarif et créer un envoi",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-136",
     module: "inventory",
     text: {
@@ -2228,7 +2228,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Imprimer les étiquettes d'expédition) : cliquez sur le bouton intelligent « Environnement de test »",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-137",
     module: "inventory",
     text: {
@@ -2249,7 +2249,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Imprimer les étiquettes d'expédition) : Prix du produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-138",
     module: "inventory",
     text: {
@@ -2270,7 +2270,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Wave Picking) : Wave Picking",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-139",
     module: "inventory",
     text: {
@@ -2291,7 +2291,7 @@ export const inventoryLearnQuestions = [
       fr: "Source Odoo Learn (Wave Picking) : Le même type d’opération",
     },
   }),
-  complexQ({
+complexQ({
     id: "inv-140",
     module: "inventory",
     text: {

@@ -2,7 +2,7 @@ import { complexQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const salesLearnQuestions = [
-  complexQ({
+complexQ({
     id: "sal-026",
     module: "sales",
     text: {
@@ -23,7 +23,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Magasin de meubles) : Oui.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-027",
     module: "sales",
     text: {
@@ -44,7 +44,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Magasin de meubles) : Accédez à l'application Ventes > Facturer > Commandes à facturer",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-028",
     module: "sales",
     text: {
@@ -65,7 +65,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Événements et Marketing) : La question est posée une fois par participant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-029",
     module: "sales",
     text: {
@@ -86,7 +86,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Événements et Marketing) : Événements → Configuration → Génération de leads → Créer.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-030",
     module: "sales",
     text: {
@@ -107,7 +107,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Événements et marketing) : Oui, les publications peuvent être créées et publiées sur plusieurs flux en même temps.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-031",
     module: "sales",
     text: {
@@ -128,7 +128,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Restaurant) : Shift conflictuel pour la même personne.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-032",
     module: "sales",
     text: {
@@ -149,7 +149,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Restaurant) : A et B",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-033",
     module: "sales",
     text: {
@@ -170,7 +170,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Restaurant) : Icône en forme de crayon dans le coin supérieur droit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-034",
     module: "sales",
     text: {
@@ -191,7 +191,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Service Administratif) : Alias ​​email",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-035",
     module: "sales",
     text: {
@@ -212,7 +212,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Département Administratif) : Il divise un lot de documents en fichiers séparés, auxquels peuvent chacun être assignées des actions différentes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-036",
     module: "sales",
     text: {
@@ -233,7 +233,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Service Administratif) : Les actions peuvent être créées et personnalisées dans l'application Documents > Configuration > Actions",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-037",
     module: "sales",
     text: {
@@ -254,7 +254,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Construction Project) : Les comptes analytiques sont activés dans Comptabilité > Configuration > Paramètres.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-038",
     module: "sales",
     text: {
@@ -275,7 +275,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Construction Project) : En définissant le « produit » (architecte dans la vidéo) comme un service et la politique de facturation comme des feuilles de temps sur les tâches.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-039",
     module: "sales",
     text: {
@@ -296,7 +296,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Projet de construction) : 400$",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-040",
     module: "sales",
     text: {
@@ -317,7 +317,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Airproof) : Fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-041",
     module: "sales",
     text: {
@@ -338,7 +338,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Airproof) : Onglet Ventes > Vente incitative et vente croisée",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-042",
     module: "sales",
     text: {
@@ -359,7 +359,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Business Flow : Airproof) : publie le produit sur le site Web de l'entreprise",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-043",
     module: "sales",
     text: {
@@ -380,7 +380,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est commandé) : Oui, en cliquant sur l'onglet Quote Builder et en y sélectionnant n'importe quel document.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-044",
     module: "sales",
     text: {
@@ -401,7 +401,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est commandé) : Cliquez sur le bouton 'Catalogue'. Cela ouvre une vue dédiée où vous pouvez voir tous les produits et variantes à la fois et sélectionner plusieurs articles avant de revenir au devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-045",
     module: "sales",
     text: {
@@ -422,7 +422,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est commandé) : J'ai oublié d'activer les fonctionnalités « Remises » et « Promotions, fidélité et carte cadeau » dans les paramètres de l'application Ventes.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-046",
     module: "sales",
     text: {
@@ -443,7 +443,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est livré) : Après validation des quantités livrées.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-047",
     module: "sales",
     text: {
@@ -464,7 +464,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est livré) : Pour facturer les clients en fonction des quantités qu'ils reçoivent réellement.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-048",
     module: "sales",
     text: {
@@ -485,7 +485,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Facturation de ce qui est livré) : Odoo peut créer une commande en souffrance pour les produits restants.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-049",
     module: "sales",
     text: {
@@ -506,7 +506,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Vente de produits) : sur le formulaire de produit, définissez le « Type de produit » sur « Marchandises » et activez « Suivre l'inventaire ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-050",
     module: "sales",
     text: {
@@ -527,7 +527,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Vente de produits) : Créez sur Commande et Planifiez des Services.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-051",
     module: "sales",
     text: {
@@ -548,7 +548,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Vente de produits) : Produits optionnels.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-052",
     module: "sales",
     text: {
@@ -569,7 +569,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Ajout d'en-têtes et de pieds de page aux modèles de devis et aux produits) : ajoutez le PDF au formulaire de variante de produit et configurez-le pour qu'il s'affiche dans le devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-053",
     module: "sales",
     text: {
@@ -590,7 +590,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Ajout d'en-têtes et de pieds de page aux modèles de devis et aux produits) : Ajoutez et publiez le document à partir du formulaire produit afin qu'il soit disponible sur le site Web.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-054",
     module: "sales",
     text: {
@@ -611,7 +611,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Ajout d'en-têtes et de pieds de page aux modèles de devis et aux produits) : Non, cela contrôle uniquement les PDF disponibles pour la sélection dans l'onglet Quote Builder lorsque le modèle est appliqué.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-055",
     module: "sales",
     text: {
@@ -632,7 +632,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Bases de vente et votre premier devis) : Configuration > Paramètres",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-056",
     module: "sales",
     text: {
@@ -653,7 +653,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (bases de vente et votre premier devis) : variantes de produits, listes de prix, remises et fidélité, cartes cadeaux et portefeuille électronique",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-057",
     module: "sales",
     text: {
@@ -674,7 +674,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la vente et votre premier devis) : « Commandes à facturer » et « Commandes à vendre incitative »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-058",
     module: "sales",
     text: {
@@ -695,7 +695,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Votre première citation) : Citations",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-059",
     module: "sales",
     text: {
@@ -716,7 +716,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Votre premier devis) : Il n'y a pas de limite",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-060",
     module: "sales",
     text: {
@@ -737,7 +737,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Votre première citation) : Notes",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-061",
     module: "sales",
     text: {
@@ -758,7 +758,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des produits) : Champs liés à la finance, quel que soit le type de produit choisi",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-062",
     module: "sales",
     text: {
@@ -779,7 +779,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des produits) : Ajoutez des produits complémentaires qui seront recommandés au client lors du processus d'achat",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-063",
     module: "sales",
     text: {
@@ -800,7 +800,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des produits) : Accédez au bouton intelligent du site Web > Basculez de « Non publié » à « Publié »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-064",
     module: "sales",
     text: {
@@ -821,7 +821,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des variantes de produits) : sous forme de menu déroulant de choix",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-065",
     module: "sales",
     text: {
@@ -842,7 +842,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des variantes de produit) : Le mode de création de variantes ne peut pas être modifié",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-066",
     module: "sales",
     text: {
@@ -863,7 +863,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Créer des variantes de produits) : prix supplémentaire par défaut",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-067",
     module: "sales",
     text: {
@@ -884,7 +884,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de devis) : Via le lien « Modèles de devis » sur la page « Paramètres », ou « Configuration » > « Modèles de devis »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-068",
     module: "sales",
     text: {
@@ -905,7 +905,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de devis) : Plan récurrent",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-069",
     module: "sales",
     text: {
@@ -926,7 +926,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Modèles de devis) : Signature en ligne",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-070",
     module: "sales",
     text: {
@@ -947,7 +947,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (PDF Quote Builder) : « Configuration » > « En-têtes/pieds de page » ou en cliquant sur le lien « En-têtes/pieds de page » sur la page « Paramètres »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-071",
     module: "sales",
     text: {
@@ -968,7 +968,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (PDF Quote Builder) : entrez dans le « Mode développeur », passez le curseur sur l'icône « point d'interrogation » à côté d'un champ et recherchez la ligne intitulée « Champ »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-072",
     module: "sales",
     text: {
@@ -989,7 +989,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (PDF Quote Builder) : « Citation Builder »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-073",
     module: "sales",
     text: {
@@ -1010,7 +1010,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Documents produits) : Documents",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-074",
     module: "sales",
     text: {
@@ -1031,7 +1031,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Documents produits) : « Fichier » et « URL »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-075",
     module: "sales",
     text: {
@@ -1052,7 +1052,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Documents produits) : « Caché », « Sur devis », « Sur commande confirmée » et « Dans le devis PDF »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-076",
     module: "sales",
     text: {
@@ -1073,7 +1073,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Devis en ligne) : Ajoutez des produits dans l'onglet Produits optionnels du formulaire Modèle de devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-077",
     module: "sales",
     text: {
@@ -1094,7 +1094,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Citation en ligne) : Oui.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-078",
     module: "sales",
     text: {
@@ -1115,7 +1115,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Citation en ligne) : Site Internet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-079",
     module: "sales",
     text: {
@@ -1136,7 +1136,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Politiques de facturation) : Basé sur des feuilles de temps.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-080",
     module: "sales",
     text: {
@@ -1157,7 +1157,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Politiques de facturation) : Odoo crée automatiquement une facture lorsqu'un client confirme un paiement dans la boutique en ligne.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-081",
     module: "sales",
     text: {
@@ -1178,7 +1178,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Politiques de facturation) : Il met automatiquement à jour la quantité livrée sur la commande client en fonction des étapes franchies dans l'application Projet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-082",
     module: "sales",
     text: {
@@ -1199,7 +1199,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de pipeline pour un fournisseur d'équipement B2B) : Action",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-083",
     module: "sales",
     text: {
@@ -1220,7 +1220,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de Pipeline pour un Fournisseur d'Equipement B2B) : Nouvelle Devis",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-084",
     module: "sales",
     text: {
@@ -1241,7 +1241,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de pipeline pour un fournisseur d'équipement B2B) : Comptabilité",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-085",
     module: "sales",
     text: {
@@ -1262,7 +1262,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (bases de la promotion et réductions) : code de réduction",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-086",
     module: "sales",
     text: {
@@ -1283,7 +1283,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (bases de la promotion et réductions) : rendez-le disponible sur l'application du site Web.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-087",
     module: "sales",
     text: {
@@ -1304,7 +1304,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (bases de la promotion et réductions) : laissez le champ Validité vide.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-088",
     module: "sales",
     text: {
@@ -1325,7 +1325,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Coupons) : Promotions, Fidélité & Carte Cadeau",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-089",
     module: "sales",
     text: {
@@ -1346,7 +1346,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Coupons) : limite le nombre de coupons que les clients individuels peuvent utiliser.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-090",
     module: "sales",
     text: {
@@ -1367,7 +1367,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Coupons) : Règles conditionnelles",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-091",
     module: "sales",
     text: {
@@ -1388,7 +1388,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de fidélité) : permet aux clients d'accumuler des points sur leurs achats, qu'ils pourront utiliser lors de commandes futures.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-092",
     module: "sales",
     text: {
@@ -1409,7 +1409,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de fidélité) : sous « Règles conditionnelles », définissez « Quantité minimale » sur le montant minimum souhaité pour chaque commande.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-093",
     module: "sales",
     text: {
@@ -1430,7 +1430,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de fidélité) : Dans le devis de vente, cliquez sur le bouton « Récompenses » au-dessus du total.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-094",
     module: "sales",
     text: {
@@ -1451,7 +1451,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de cartes-cadeaux) : promotions, fidélité et carte-cadeau",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-095",
     module: "sales",
     text: {
@@ -1472,7 +1472,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de cartes cadeaux) : Odoo verrouille le champ Quantité à générer pour qu'il corresponde au nombre de clients sélectionnés",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-096",
     module: "sales",
     text: {
@@ -1493,7 +1493,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Programmes de cartes-cadeaux) : Le champ « Valide jusqu'à »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-097",
     module: "sales",
     text: {
@@ -1514,7 +1514,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 1) : Le pays sélectionné comme pays de l'entreprise lorsque vous créez pour la première fois une base de données Odoo.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-098",
     module: "sales",
     text: {
@@ -1535,7 +1535,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 1) : En multipliant un montant en pourcentage par le prix de vente du produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-099",
     module: "sales",
     text: {
@@ -1556,7 +1556,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Sales Tax: Part 1) : Le module « Définir les taxes en tant que code Python » doit être installé depuis l'application « Apps »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-100",
     module: "sales",
     text: {
@@ -1577,7 +1577,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 2) : Précisez un client sur le formulaire de situation fiscale.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-101",
     module: "sales",
     text: {
@@ -1598,7 +1598,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 2) : elle limitera la taxe configurée à *uniquement* être utilisée sur les « Biens » ou les « Services »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-102",
     module: "sales",
     text: {
@@ -1619,7 +1619,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 2) : Pour générer automatiquement des rapports fiscaux – selon les réglementations spécifiques du pays.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-103",
     module: "sales",
     text: {
@@ -1640,7 +1640,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 3) : Taxe par défaut",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-104",
     module: "sales",
     text: {
@@ -1661,7 +1661,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 3) : Cliquez sur le « X » à côté de la taxe indiquée.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-105",
     module: "sales",
     text: {
@@ -1682,7 +1682,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Taxe de vente : Partie 3) : Dans la section « Tarification ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-106",
     module: "sales",
     text: {
@@ -1703,7 +1703,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Tarifs de livraison) : Retrait en bureau de poste.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-107",
     module: "sales",
     text: {
@@ -1724,7 +1724,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Prix de livraison) : Configuration > Modes d'expédition > Produit de livraison.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-108",
     module: "sales",
     text: {
@@ -1745,7 +1745,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Prix de livraison) : Le poids du produit sur la fiche produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-109",
     module: "sales",
     text: {
@@ -1766,7 +1766,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Délai de livraison) : 0",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-110",
     module: "sales",
     text: {
@@ -1787,7 +1787,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Délai de livraison) : Sous l'onglet « Autres informations », dans la section « Livraison »",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-111",
     module: "sales",
     text: {
@@ -1808,7 +1808,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Délai de livraison) : Délai de sécurité pour les ventes",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-112",
     module: "sales",
     text: {
@@ -1829,7 +1829,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Dropshipping) : Achat > ​​Configuration > Paramètres > Activer « Dropshipping » > Enregistrer",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-113",
     module: "sales",
     text: {
@@ -1850,7 +1850,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Dropshipping) : activez l'itinéraire « Dropship » (dans l'onglet Inventaire) et configurez au moins un fournisseur (dans l'onglet Achat).",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-114",
     module: "sales",
     text: {
@@ -1871,7 +1871,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Dropshipping) : Odoo ira avec le fournisseur qui figure en premier sur la liste sur le formulaire produit (dans l'onglet Achat).",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-115",
     module: "sales",
     text: {
@@ -1892,7 +1892,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix : prix multiples par produit) : Groupes de pays",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-116",
     module: "sales",
     text: {
@@ -1913,7 +1913,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix : prix multiples par produit) : aucune limite",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-117",
     module: "sales",
     text: {
@@ -1934,7 +1934,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix : prix multiples par produit) : rend la liste de prix visible et sélectionnable pour les clients en ligne",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-118",
     module: "sales",
     text: {
@@ -1955,7 +1955,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix - Remises et marges) : Vous permet d'afficher les remises et les marges sur les commandes clients et les devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-119",
     module: "sales",
     text: {
@@ -1976,7 +1976,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix - Remises et marges) : Calcul : Formule > Méthode d'arrondi : 1 > Frais supplémentaires : -0,01 $.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-120",
     module: "sales",
     text: {
@@ -1997,7 +1997,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Listes de prix - Remises et marges) : La différence entre le coût et le prix de vente d'un produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-121",
     module: "sales",
     text: {
@@ -2018,7 +2018,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Plans de Commissions) : Responsables de l'équipe commerciale.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-122",
     module: "sales",
     text: {
@@ -2039,7 +2039,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Plans de commission) : les vendeurs gagnent des commissions en fonction de la part de leur objectif qu'ils atteignent.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-123",
     module: "sales",
     text: {
@@ -2060,7 +2060,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Plans de commission) : Ils gagnent un niveau de commission plus élevé, comme spécifié dans le plan.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-124",
     module: "sales",
     text: {
@@ -2081,7 +2081,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Connecteur Gelato) : order_status_updated",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-125",
     module: "sales",
     text: {
@@ -2102,7 +2102,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Gelato Connector) : ID du modèle de produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-126",
     module: "sales",
     text: {
@@ -2123,7 +2123,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Gelato Connector) : cliquez sur le bouton « Ajouter l'expédition » sur la commande client Odoo",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-127",
     module: "sales",
     text: {
@@ -2144,7 +2144,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Bases du calculateur de devis) : Une feuille de calcul qui communique avec différentes parties de l'application Odoo Sales pour calculer les coûts des biens et services dans les devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-128",
     module: "sales",
     text: {
@@ -2165,7 +2165,7 @@ export const salesLearnQuestions = [
       fr: "Source Odoo Learn (Bases du calculateur de devis) : Le devis doit utiliser un modèle de devis.",
     },
   }),
-  complexQ({
+complexQ({
     id: "sal-129",
     module: "sales",
     text: {
@@ -2184,6 +2184,69 @@ export const salesLearnQuestions = [
     explanation: {
       en: "Source Odoo Learn (Quote calculator Basics): Information on the products you sell, which a new quote calculator automatically accesses.",
       fr: "Source Odoo Learn (Bases du calculateur de devis) : Informations sur les produits que vous vendez, auxquelles accède automatiquement un nouveau calculateur de devis.",
+    },
+  }),
+complexQ({
+    id: "sal-130",
+    module: "sales",
+    text: {
+      en: "Which Odoo features can accelerate confirmations and facilitate uninterrupted cash flow for received payments and quotations? (Odoo Learn — Invoicing for what is ordered)",
+      fr: "Quelles fonctionnalités d'Odoo peuvent accélérer les confirmations et faciliter un flux de trésorerie ininterrompu pour les paiements et les devis reçus ? (Odoo Learn — Facturation de ce qui est commandé)",
+    },
+    correct: {
+      en: "Enable online signatures and online payments on quotations.",
+      fr: "Activez les signatures en ligne et les paiements en ligne sur les devis.",
+    },
+    distractors: [
+      { en: "Enable “Delivery Methods”.", fr: "Activez « Méthodes de livraison »." },
+      { en: "Use the “Invoice what is delivered” policy.", fr: "Utilisez la politique « Facturer ce qui est livré »." },
+      { en: "Add an expiration date to all invoices.", fr: "Ajoutez une date d'expiration à toutes les factures." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Invoicing for what is ordered): Enable online signatures and online payments on quotations.",
+      fr: "Source Odoo Learn (Facturation de ce qui est commandé) : Activez les signatures en ligne et les paiements en ligne sur les devis.",
+    },
+  }),
+complexQ({
+    id: "sal-131",
+    module: "sales",
+    text: {
+      en: "Which statement correctly describes the Payment Terms field on a quote in the Odoo Sales app? (Odoo Learn — Invoicing for what is ordered)",
+      fr: "Quelle déclaration décrit correctement le champ Conditions de paiement sur un devis dans l'application Odoo Sales ? (Odoo Learn — Facturation de ce qui est commandé)",
+    },
+    correct: {
+      en: "Payment terms determine how and when the customer pays the company, and Odoo has several default payment terms.",
+      fr: "Les conditions de paiement déterminent comment et quand le client paie l'entreprise, et Odoo dispose de plusieurs conditions de paiement par défaut.",
+    },
+    distractors: [
+      { en: "Payment terms are financial periods used by accounting and must be defined manually during the Invoicing app installation before any invoices can be created.", fr: "Les conditions de paiement sont des périodes financières utilisées par la comptabilité et doivent être définies manuellement lors de l'installation de l'application de facturation avant que des factures puissent être créées." },
+      { en: "Payment terms determine how and when the customer pays the company, and only one payment term is supported per database.", fr: "Les conditions de paiement déterminent comment et quand le client paie l'entreprise, et une seule condition de paiement est prise en charge par base de données." },
+      { en: "Payment terms determine how and when the customer pays the company and are automatically generated based on the customer's credit limits.", fr: "Les conditions de paiement déterminent comment et quand le client paie l'entreprise et sont automatiquement générées en fonction des limites de crédit du client." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Invoicing for what is ordered): Payment terms determine how and when the customer pays the company, and Odoo has several default payment terms.",
+      fr: "Source Odoo Learn (Facturation de ce qui est commandé) : Les conditions de paiement déterminent comment et quand le client paie l'entreprise, et Odoo dispose de plusieurs conditions de paiement par défaut.",
+    },
+  }),
+complexQ({
+    id: "sal-132",
+    module: "sales",
+    text: {
+      en: "Where can I find the online payment record for the sales order? (Odoo Learn — Invoicing for what is ordered)",
+      fr: "Où puis-je trouver le relevé de paiement en ligne de la commande client ? (Odoo Learn — Facturation de ce qui est commandé)",
+    },
+    correct: {
+      en: "The chatter of the Sales Order.",
+      fr: "Le bavardage de la commande client.",
+    },
+    distractors: [
+      { en: "The Invoice.", fr: "La facture." },
+      { en: "The customer profile.", fr: "Le profil client." },
+      { en: "The Invoice and the Sales Order.", fr: "La facture et le bon de commande." },
+    ],
+    explanation: {
+      en: "Source Odoo Learn (Invoicing for what is ordered): The chatter of the Sales Order.",
+      fr: "Source Odoo Learn (Facturation de ce qui est commandé) : Le bavardage de la Commande Client.",
     },
   }),
 ];

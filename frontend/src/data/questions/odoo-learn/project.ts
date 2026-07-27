@@ -2,7 +2,7 @@ import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const projectLearnQuestions = [
-  complexQ({
+complexQ({
     id: "prj-025",
     module: "project",
     text: {
@@ -23,7 +23,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Bases du projet et votre première tâche) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-026",
     module: "project",
     text: {
@@ -44,7 +44,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Bases du projet et votre première tâche) : les étapes Kanban et les statuts des tâches sont la même fonctionnalité",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-027",
     module: "project",
     text: {
@@ -65,7 +65,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Bases du projet et votre première tâche) : Un point d'état jaune apparaît sur la tâche pour signifier que la tâche nécessite un travail supplémentaire avant de passer à l'étape suivante",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-028",
     module: "project",
     text: {
@@ -86,7 +86,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Bases du projet et votre première tâche) : En changeant son statut en « Terminé » ou « Annulé »",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-029",
     module: "project",
     text: {
@@ -106,7 +106,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Étapes et statuts du projet) : Allez dans Projet → Configuration → Paramètres et activez les étapes du projet.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-031",
     module: "project",
     text: {
@@ -126,7 +126,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Étapes et statuts du projet) : Le nombre de projets avec chaque statut dans cette étape Kanban.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-032",
     module: "project",
     text: {
@@ -146,7 +146,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (étapes et statuts du projet) : l'état du projet est mis à jour au même état que celui indiqué dans la dernière mise à jour du projet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-033",
     module: "project",
     text: {
@@ -167,7 +167,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les projets) : Non, certains projets peuvent être internes et sans rapport avec un client.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-034",
     module: "project",
     text: {
@@ -188,7 +188,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les projets) : Dans le formulaire des paramètres du projet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-035",
     module: "project",
     text: {
@@ -209,7 +209,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les projets) : La description du projet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-036",
     module: "project",
     text: {
@@ -230,7 +230,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Personnaliser les projets) : Tags, couleurs ou/et définissez-les comme favoris.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-037",
     module: "project",
     text: {
@@ -250,7 +250,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (barre supérieure) : cliquez sur le bouton \"curseurs\" près du coin supérieur droit de la page.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-038",
     module: "project",
     text: {
@@ -270,7 +270,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (barre supérieure) : cliquez sur le bouton \"curseurs\" en haut de la barre de recherche.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-039",
     module: "project",
     text: {
@@ -291,7 +291,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (barre supérieure) : CRM.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-040",
     module: "project",
     text: {
@@ -311,7 +311,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (barre supérieure) : cliquez sur un bouton de la barre supérieure, personnalisez la vue avec des mots-clés, des filtres et des options de regroupement à l'aide de la barre de recherche, puis cliquez sur Enregistrer la vue.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-041",
     module: "project",
     text: {
@@ -332,7 +332,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir d'e-mails et de formulaires Web) : Vous pouvez avoir un alias d'e-mail pour chaque projet",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-042",
     module: "project",
     text: {
@@ -353,7 +353,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir d'e-mails et de formulaires Web) : Un e-mail basé sur le modèle sera envoyé au client dès qu'une tâche passe à cette étape",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-043",
     module: "project",
     text: {
@@ -374,7 +374,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir d'emails et de formulaires web) : Dans le projet qui a été sélectionné lors de la configuration du formulaire projet dans l'éditeur de site web",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-044",
     module: "project",
     text: {
@@ -395,7 +395,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir de commandes clients) : Facturable",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-045",
     module: "project",
     text: {
@@ -416,7 +416,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir des commandes clients) : Confirmé",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-046",
     module: "project",
     text: {
@@ -437,7 +437,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Création de tâches à partir de commandes clients) : Le service doit disposer d'un modèle de projet avec plusieurs tâches qui y sont liées.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-047",
     module: "project",
     text: {
@@ -458,7 +458,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Sous-tâches) : Les sous-tâches et leur statut d'achèvement sont indiqués sur la fiche de tâche au format x/x (par exemple 1/3).",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-048",
     module: "project",
     text: {
@@ -478,7 +478,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (sous-tâches) : Oui.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-049",
     module: "project",
     text: {
@@ -499,7 +499,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : définissez des priorités entre les tâches du projet pour vous assurer qu'elles sont effectuées dans l'ordre souhaité.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-050",
     module: "project",
     text: {
@@ -519,7 +519,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : Allez dans Projet ‣ Configuration ‣ Paramètres et activez les dépendances des tâches.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-051",
     module: "project",
     text: {
@@ -539,7 +539,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : Gantt",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-052",
     module: "project",
     text: {
@@ -560,7 +560,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : En survolant une tâche, puis en utilisant les flèches pour dessiner les dépendances avec une autre tâche.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-053",
     module: "project",
     text: {
@@ -581,7 +581,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : Allez dans Bloqué par ‣ Ajouter une ligne, et sélectionnez une tâche ou créez-en une nouvelle.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-054",
     module: "project",
     text: {
@@ -602,7 +602,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des tâches) : Par l'icône en forme de sablier bleu et la couleur correspondante dans la barre d'état Kanban.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-055",
     module: "project",
     text: {
@@ -622,7 +622,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Tâches récurrentes) : Vous devez l'activer dans les paramètres de chaque projet où vous souhaitez l'utiliser.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-056",
     module: "project",
     text: {
@@ -642,7 +642,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Tâches récurrentes) : Vous devez désactiver la récurrence en cliquant sur le bouton de récurrence dans la tâche.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-057",
     module: "project",
     text: {
@@ -663,7 +663,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Visibilité et collaboration) : Impact sur la partie de votre projet qu'un employé peut modifier et voir",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-058",
     module: "project",
     text: {
@@ -683,7 +683,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Visibilité et collaboration) : L'une ou l'autre de ces options est possible",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-059",
     module: "project",
     text: {
@@ -704,7 +704,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Automations) : Dans la vue Kanban de votre projet, vous devez cliquer sur l'icône d'engrenage à côté du nom de l'étape Kanban",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-060",
     module: "project",
     text: {
@@ -725,7 +725,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations) : Il planifie automatiquement une activité d'appel dans le chat de la tâche",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-061",
     module: "project",
     text: {
@@ -746,7 +746,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Automatisations) : L'action qui lance automatiquement une autre action",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-062",
     module: "project",
     text: {
@@ -767,7 +767,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Jalons) : Remplissez le champ « Jalon » sur le formulaire de tâche.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-063",
     module: "project",
     text: {
@@ -788,7 +788,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Jalons) : Le jalon est répertorié en vert pour signaler qu'il peut être marqué comme atteint.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-065",
     module: "project",
     text: {
@@ -808,7 +808,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Jalons) : créez une commande client pour un service avec la politique de facturation définie sur « Basée sur les jalons », puis marquez les jalons du projet correspondant comme atteints.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-066",
     module: "project",
     text: {
@@ -829,7 +829,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Facturation des tâches du projet) : Rien, le forfait n'est pas impacté par le temps passé sur la tâche.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-067",
     module: "project",
     text: {
@@ -849,7 +849,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Tâches du projet de facturation) : Cela dépend de la configuration de votre base de données.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-068",
     module: "project",
     text: {
@@ -869,7 +869,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Tâches du projet Facturation) : Cela signifie que la ligne de commande client est prête à être facturée.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-069",
     module: "project",
     text: {
@@ -889,7 +889,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (tableau de bord du projet) : Oui, vous pouvez l'ajouter à la barre supérieure, comme les autres types d'enregistrements.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-070",
     module: "project",
     text: {
@@ -909,7 +909,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Tableau de bord du projet) : Oui, vous cochez simplement le jalon pour le marquer comme atteint.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-071",
     module: "project",
     text: {
@@ -929,7 +929,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (tableau de bord du projet) : cela dépend de votre base de données et de la configuration de votre projet.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-072",
     module: "project",
     text: {
@@ -950,7 +950,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (tableau de bord du projet) : cliquer sur « Nouveau » pour créer une nouvelle mise à jour du projet capture automatiquement les données du tableau de bord du projet à ce stade.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-073",
     module: "project",
     text: {
@@ -970,7 +970,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Mesurer la rentabilité du projet) : Les enregistrements créés à l'aide de la barre supérieure sont automatiquement liés au compte analytique du projet et donc affichés sur le tableau de bord.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-074",
     module: "project",
     text: {
@@ -990,7 +990,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Mesurer la rentabilité du projet) : Dans l'onglet Paramètres du formulaire employé.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-075",
     module: "project",
     text: {
@@ -1010,7 +1010,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Mesure de la rentabilité du projet) : Incorrect.",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-076",
     module: "project",
     text: {
@@ -1031,7 +1031,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Évaluations clients) : Vous devez l'activer : Projet > Configuration > Paramètres > Évaluations clients",
     },
   }),
-  complexQ({
+complexQ({
     id: "prj-077",
     module: "project",
     text: {
@@ -1052,7 +1052,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (évaluations des clients) : lorsqu'une tâche passe à l'étape que vous avez sélectionnée",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "prj-078",
     module: "project",
     text: {
@@ -1072,7 +1072,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Évaluations clients) : C'est le taux de satisfaction moyen basé sur les enquêtes clients complétées",
     },
   }),
-  yesNoQ({
+yesNoQ({
     id: "prj-079",
     module: "project",
     text: {
@@ -1087,7 +1087,7 @@ export const projectLearnQuestions = [
       fr: "Source Odoo Learn (Étapes du projet) : Faux.",
     },
   }),
-  yesNoQ({
+yesNoQ({
     id: "prj-080",
     module: "project",
     text: {

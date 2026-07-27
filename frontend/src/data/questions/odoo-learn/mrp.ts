@@ -2,7 +2,7 @@ import { complexQ, mcq3Q } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const mrpLearnQuestions = [
-  complexQ({
+complexQ({
     id: "mrp-031",
     module: "mrp",
     text: {
@@ -23,7 +23,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Présentation MRP) : Pour décomposer la fabrication en tâches étape par étape",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-032",
     module: "mrp",
     text: {
@@ -44,7 +44,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu MRP) : Ordre de modification technique",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-033",
     module: "mrp",
     text: {
@@ -65,7 +65,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (MRP Overview) : Il centralise les opérations en temps réel, afin que chaque service travaille à partir des mêmes données à jour.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-034",
     module: "mrp",
     text: {
@@ -86,7 +86,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (bases des ordres de fabrication et des ordres de travail) : One",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-035",
     module: "mrp",
     text: {
@@ -107,7 +107,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases des ordres de fabrication et des ordres de travail) : Ajout de la « Durée prévue » de tous les bons de travail à la « Date planifiée »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-036",
     module: "mrp",
     text: {
@@ -128,7 +128,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases des ordres de fabrication et des ordres de travail) : Les composants sont en stock, mais doivent être transférés sur le lieu de production",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-037",
     module: "mrp",
     text: {
@@ -149,7 +149,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la nomenclature) : bons de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-038",
     module: "mrp",
     text: {
@@ -170,7 +170,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la nomenclature) : La nomenclature répertoriée en premier sur la page « Nomenclature » du produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-039",
     module: "mrp",
     text: {
@@ -191,7 +191,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases de la nomenclature) : L'onglet Feuille de calcul.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-040",
     module: "mrp",
     text: {
@@ -212,7 +212,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases du centre de travail) : Efficacité globale de l'équipement",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-041",
     module: "mrp",
     text: {
@@ -233,7 +233,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases du Work Center) : Tout le monde peut utiliser le centre de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-042",
     module: "mrp",
     text: {
@@ -254,7 +254,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Bases du centre de travail) : Nombre maximum de produits autorisés sur le centre de travail à la fois.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-043",
     module: "mrp",
     text: {
@@ -275,7 +275,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Centres de travail alternatifs) : bons de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-044",
     module: "mrp",
     text: {
@@ -296,7 +296,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Centres de travail alternatifs) : Il doit être suffisamment similaire pour que les mêmes tâches puissent être effectuées dans chaque centre de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-045",
     module: "mrp",
     text: {
@@ -317,7 +317,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Centres de travail alternatifs) : Le « Centre de travail alternatif » spécifié dans le formulaire du centre de travail est utilisé pour la planification s'il est disponible.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-046",
     module: "mrp",
     text: {
@@ -338,7 +338,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Paramètres du centre de travail) : application « Fabrication » -> « Configuration » -> « Centres de travail » -> sélectionnez le centre de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-047",
     module: "mrp",
     text: {
@@ -359,7 +359,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Paramètres du poste de travail) : L'onglet « Informations générales »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-048",
     module: "mrp",
     text: {
@@ -380,7 +380,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Paramètres du centre de travail) : Sur l'onglet « Ordres de travail », dans la colonne « Durée prévue »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-049",
     module: "mrp",
     text: {
@@ -401,7 +401,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des bons de travail) : « Bons de travail » et « Dépendances des bons de travail »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-050",
     module: "mrp",
     text: {
@@ -422,7 +422,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des bons de travail) : Cliquez sur l'onglet « Divers » et cochez la case « Dépendances des opérations »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-051",
     module: "mrp",
     text: {
@@ -443,7 +443,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Dépendances des bons de travail) : « Plan »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-052",
     module: "mrp",
     text: {
@@ -464,7 +464,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (De la commande client à la commande de fabrication) : A + B",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-053",
     module: "mrp",
     text: {
@@ -485,7 +485,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (De la commande client à la commande de fabrication) : Fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-054",
     module: "mrp",
     text: {
@@ -506,7 +506,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (De la commande client à la commande de fabrication) : Réapprovisionnement sur commande (MTO)",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-055",
     module: "mrp",
     text: {
@@ -527,7 +527,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Étapes de fabrication) : Trois",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-056",
     module: "mrp",
     text: {
@@ -548,7 +548,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (étapes de fabrication) : cliquez sur le bouton intelligent « Déplacements de produit » sur le MO.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-057",
     module: "mrp",
     text: {
@@ -569,7 +569,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Étapes de fabrication) : Inventaire",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-058",
     module: "mrp",
     text: {
@@ -590,7 +590,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Manufacturing Planning) : Modifier les horaires de travail du poste de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-059",
     module: "mrp",
     text: {
@@ -611,7 +611,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Manufacturing Planning) : Dès que le premier bon de travail est terminé et qu'un centre de travail a une capacité disponible.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-060",
     module: "mrp",
     text: {
@@ -632,7 +632,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Manufacturing Planning) : Cliquez sur l'erreur dans la vue liste et cliquez sur le bouton « Replanifier ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-061",
     module: "mrp",
     text: {
@@ -653,7 +653,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Délais de fabrication) : Nomenclature → Onglet Divers",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-062",
     module: "mrp",
     text: {
@@ -674,7 +674,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Délais de fabrication) : Jours nécessaires pour l'approvisionnement en matériaux ou sous-ensembles",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-063",
     module: "mrp",
     text: {
@@ -695,7 +695,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Délai de fabrication) : Prévisions de fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-064",
     module: "mrp",
     text: {
@@ -716,7 +716,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Diviser et fusionner les commandes de fabrication) : Sélectionnez un MO -> Bouton Actions -> « Split »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-065",
     module: "mrp",
     text: {
@@ -737,7 +737,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Split and Merge Manufacturing Orders) : Avec le numéro de référence d'origine, plus une étiquette numérotée supplémentaire",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-066",
     module: "mrp",
     text: {
@@ -758,7 +758,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Split and Merge Manufacturing Orders) : Le produit en cours de fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-067",
     module: "mrp",
     text: {
@@ -779,7 +779,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec lots et numéros de série) : Traçabilité",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-068",
     module: "mrp",
     text: {
@@ -800,7 +800,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec lots et numéros de série) : Le prochain numéro de série disponible pour ce produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-069",
     module: "mrp",
     text: {
@@ -821,7 +821,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec lots et numéros de série) : Traçabilité",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-070",
     module: "mrp",
     text: {
@@ -842,7 +842,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Demandes de maintenance) : Tout ce qui précède",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-071",
     module: "mrp",
     text: {
@@ -863,7 +863,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Demandes de maintenance) : Les ordres de travail ne peuvent pas être planifiés au poste de travail",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-072",
     module: "mrp",
     text: {
@@ -884,7 +884,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Demandes de maintenance) : application « Maintenance » -> bouton « Planifié » sur la carte de l'équipe de maintenance",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-073",
     module: "mrp",
     text: {
@@ -905,7 +905,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en une seule étape) : Zéro",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-074",
     module: "mrp",
     text: {
@@ -926,7 +926,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en une étape) : Inventaire > Configuration > Entrepôts > sélectionnez un entrepôt > sélectionnez « Fabrication (1 étape) » dans le champ Fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-075",
     module: "mrp",
     text: {
@@ -947,7 +947,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en une seule étape) : Un bouton « Fermer la production » apparaît qui ferme le MO lorsque vous cliquez dessus",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-076",
     module: "mrp",
     text: {
@@ -968,7 +968,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en 2 ou 3 Étapes) : Meilleur suivi des mouvements de matière et de produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-077",
     module: "mrp",
     text: {
@@ -989,7 +989,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en 2 ou 3 Étapes) : Sur la page entrepôt sous Configuration",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-078",
     module: "mrp",
     text: {
@@ -1010,7 +1010,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication en 2 ou 3 étapes) : vous amène à l'opération de picking des composants",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-079",
     module: "mrp",
     text: {
@@ -1031,7 +1031,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Manufacturing Backorders) : Cliquez sur « Enregistrer la production », saisissez la nouvelle quantité dans le champ « Quantité produite », puis cliquez sur « Valider ».",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-080",
     module: "mrp",
     text: {
@@ -1052,7 +1052,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Réponses de fabrication) : Immédiatement",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-081",
     module: "mrp",
     text: {
@@ -1073,7 +1073,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Manufacturing Backorders) : Le MO d'origine apparaît sous la forme de deux MO distincts dans l'application Fabrication et dans le module Shop Floor.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-082",
     module: "mrp",
     text: {
@@ -1094,7 +1094,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de la maintenance des équipements) : Maintenance préventive",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-083",
     module: "mrp",
     text: {
@@ -1115,7 +1115,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de la maintenance des équipements) : Temps moyen entre pannes (MTBF).",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-084",
     module: "mrp",
     text: {
@@ -1136,7 +1136,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gestion de la maintenance des équipements) : Calendrier de maintenance.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-085",
     module: "mrp",
     text: {
@@ -1157,7 +1157,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Make-to-Order Manufacturing (MTO)) : Un itinéraire qui déclenche le réapprovisionnement lorsqu'une commande client est confirmée",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-086",
     module: "mrp",
     text: {
@@ -1178,7 +1178,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication sur commande (MTO)) : Sous-traitant de fabrication, d'achat et de réapprovisionnement uniquement",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-087",
     module: "mrp",
     text: {
@@ -1199,7 +1199,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication sur commande (MTO)) : Accédez à Inventaire > Configuration > Entrepôts > Bouton intelligent Itinéraires > Filtre archivé > sélectionnez l'itinéraire MTO > Désarchiver",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-088",
     module: "mrp",
     text: {
@@ -1220,7 +1220,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-produits) : Sur l'onglet « Sous-produits »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-089",
     module: "mrp",
     text: {
@@ -1241,7 +1241,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-produits) : Sélectionnez une opération dans le champ « Produit en opération », à côté d'un sous-produit sur une nomenclature",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-090",
     module: "mrp",
     text: {
@@ -1262,7 +1262,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-produits) : La quantité disponible augmente",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-091",
     module: "mrp",
     text: {
@@ -1283,7 +1283,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Commandes de ferraille) : En attente",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-092",
     module: "mrp",
     text: {
@@ -1304,7 +1304,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Commandes de ferraille) : fermez le MO, cliquez sur le bouton « Rebut » et sélectionnez le produit fini dans le champ « Produit » de la fenêtre contextuelle",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-093",
     module: "mrp",
     text: {
@@ -1325,7 +1325,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Commandes de ferraille) : Transfert de picking",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-094",
     module: "mrp",
     text: {
@@ -1346,7 +1346,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec variantes de produit) : Utilisation du champ Variante de produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-095",
     module: "mrp",
     text: {
@@ -1367,7 +1367,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec variantes de produits) : Parce que la variante comprend un appui-tête",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-096",
     module: "mrp",
     text: {
@@ -1388,7 +1388,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Fabrication avec variantes de produits) : il automatise la sélection correcte des composants et des opérations en fonction de la variante",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-097",
     module: "mrp",
     text: {
@@ -1409,7 +1409,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réapprovisionnement pour la fabrication) : Le premier fournisseur répertorié sur le formulaire de produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-098",
     module: "mrp",
     text: {
@@ -1430,7 +1430,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réapprovisionnement pour la fabrication) : Vous ne pouvez pas créer automatiquement des RFQ sans l'itinéraire MTO.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-099",
     module: "mrp",
     text: {
@@ -1451,7 +1451,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Méthodes de réapprovisionnement pour la fabrication) : Le menu de configuration dans l'application Inventaire.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-100",
     module: "mrp",
     text: {
@@ -1472,7 +1472,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Consommation Flexible) : Si un MO est créé à l'aide de cette BoM, seul un manager peut le clôturer si les quantités des composants sont modifiées",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-101",
     module: "mrp",
     text: {
@@ -1493,7 +1493,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Consommation Flexible) : Réinitialise les quantités de composants consommées à ce qui est spécifié sur la BoM, et clôture le MO",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-102",
     module: "mrp",
     text: {
@@ -1514,7 +1514,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Consommation flexible) : configurer les QCP « Enregistrer les matériaux consommés » pour des produits spécifiques",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-103",
     module: "mrp",
     text: {
@@ -1535,7 +1535,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-Assemblages) : « Fabrication » et « Réapprovisionnement sur Commande (MTO) »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-104",
     module: "mrp",
     text: {
@@ -1556,7 +1556,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-Assemblages) : Le MO enfant est programmé avant le MO source",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-105",
     module: "mrp",
     text: {
@@ -1577,7 +1577,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-Assemblages) : Illimité",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-106",
     module: "mrp",
     text: {
@@ -1598,7 +1598,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Engineer To Order) : il permet d'organiser les coûts du projet",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-107",
     module: "mrp",
     text: {
@@ -1619,7 +1619,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Ingénieur sur commande) : Feuilles de temps",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-108",
     module: "mrp",
     text: {
@@ -1640,7 +1640,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Engineer To Order) : Ils prennent en compte le coût total de fabrication",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-109",
     module: "mrp",
     text: {
@@ -1661,7 +1661,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Kits de produits) : Sélectionnez « Kit » dans le champ « Type de nomenclature » de la nomenclature",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-110",
     module: "mrp",
     text: {
@@ -1682,7 +1682,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Kits de produits) : Le kit lui-même",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-111",
     module: "mrp",
     text: {
@@ -1703,7 +1703,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Kits de produits) : Les composants à l'intérieur du kit sont répertoriés dans l'onglet « Composants » du MO",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-112",
     module: "mrp",
     text: {
@@ -1724,7 +1724,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Efficacité de fabrication) : Rouge.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-113",
     module: "mrp",
     text: {
@@ -1745,7 +1745,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Efficacité de fabrication) : Vitesse réduite.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-114",
     module: "mrp",
     text: {
@@ -1766,7 +1766,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu de l'atelier) : il n'apparaît pas dans l'application Shop Floor.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-115",
     module: "mrp",
     text: {
@@ -1787,7 +1787,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu de l'atelier) : Mon WO",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-116",
     module: "mrp",
     text: {
@@ -1808,7 +1808,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Aperçu de l'atelier) : l'opérateur est mis en évidence comme l'opérateur actif et « Mon OT » est filtré selon ses tâches.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-117",
     module: "mrp",
     text: {
@@ -1829,7 +1829,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Traiter un MO) : Cliquez sur l'en-tête d'une carte de bon de travail.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-118",
     module: "mrp",
     text: {
@@ -1850,7 +1850,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Process an MO) : Pour enregistrer le nombre d'unités fabriquées.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-119",
     module: "mrp",
     text: {
@@ -1871,7 +1871,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Traiter un MO) : l'ordre de travail disparaît et le module Shop Floor passe à l'ordre de travail suivant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-120",
     module: "mrp",
     text: {
@@ -1892,7 +1892,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les composants) : Inventaire -> Entrepôts -> sélectionner l'entrepôt -> sélectionner l'option dans la section « Fabrication »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-121",
     module: "mrp",
     text: {
@@ -1913,7 +1913,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les composants) : Un transfert « Choisir les composants » est automatiquement créé pour remplacer le(s) composant(s) mis au rebut.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-122",
     module: "mrp",
     text: {
@@ -1934,7 +1934,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Gérer les composants) : Après avoir réapprovisionné un composant mis au rebut.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-123",
     module: "mrp",
     text: {
@@ -1955,7 +1955,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Processus réparations et retours) : Email client",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-124",
     module: "mrp",
     text: {
@@ -1976,7 +1976,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Processus Réparations et retours) : Exigence de disponibilité des stocks non satisfaite",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-125",
     module: "mrp",
     text: {
@@ -1997,7 +1997,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Processus réparations et retours) : Un reçu entrant",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-126",
     module: "mrp",
     text: {
@@ -2018,7 +2018,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Maintenance Récurrente) : Chaque requête de ce type est supprimée",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-127",
     module: "mrp",
     text: {
@@ -2039,7 +2039,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Maintenance Récurrente) : Toutes les requêtes futures sont supprimées, mais pas la requête initiale",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-128",
     module: "mrp",
     text: {
@@ -2060,7 +2060,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Maintenance Récurrente) : Uniquement la requête en cours",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-129",
     module: "mrp",
     text: {
@@ -2081,7 +2081,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Coûts de production) : Prix de vente du produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-130",
     module: "mrp",
     text: {
@@ -2102,7 +2102,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Coûts de production) : Un résumé des coûts de production sur tous les MO pour un produit",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-131",
     module: "mrp",
     text: {
@@ -2123,7 +2123,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Coûts de production) : bouton intelligent Aperçu de la nomenclature",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-132",
     module: "mrp",
     text: {
@@ -2144,7 +2144,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (FIFO, AVCO, Standard — Coûts de fabrication) : Comment Odoo sélectionne la valeur de coût à ajouter à l'inventaire",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-133",
     module: "mrp",
     text: {
@@ -2165,7 +2165,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (FIFO, AVCO, Standard — Coûts de fabrication) : extrait le coût des produits les plus anciens et en fait la moyenne",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-134",
     module: "mrp",
     text: {
@@ -2186,7 +2186,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (FIFO, AVCO, Standard — Coûts de fabrication) : Le produit est réajouté en stock à son coût d'origine",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-135",
     module: "mrp",
     text: {
@@ -2207,7 +2207,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Utiliser le calendrier principal de production) : Ajouter un produit > choisir le produit final et sélectionner la nomenclature du produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-136",
     module: "mrp",
     text: {
@@ -2228,7 +2228,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Utilisez le calendrier principal de production) : Jaune/Orange.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-137",
     module: "mrp",
     text: {
@@ -2249,7 +2249,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Utilisez le calendrier principal de production) : Assurez-vous qu'un fournisseur est répertorié sur le formulaire de produit du composant.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-138",
     module: "mrp",
     text: {
@@ -2270,7 +2270,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance Basique) : Sur la BoM du produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-139",
     module: "mrp",
     text: {
@@ -2291,7 +2291,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance de base) : Autant que vous le souhaitez.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-140",
     module: "mrp",
     text: {
@@ -2312,7 +2312,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance de base) : Vous n'avez pas besoin de préciser les composants, car le sous-traitant en est responsable.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-141",
     module: "mrp",
     text: {
@@ -2333,7 +2333,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Resupply Subcontractor) : Expédition de composants à un sous-traitant",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-142",
     module: "mrp",
     text: {
@@ -2354,7 +2354,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-Traitant Réapprovisionnement) : Sur l'onglet « Inventaire » des composants d'un produit sous-traité",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-143",
     module: "mrp",
     text: {
@@ -2375,7 +2375,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-Traitant Réapprovisionnement) : « Réapprovisionnement » et « Réception »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-144",
     module: "mrp",
     text: {
@@ -2396,7 +2396,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance : Dropshipping) : Activez le parcours « Fabrication » pour les composants et le produit final.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "mrp-145",
     module: "mrp",
     text: {
@@ -2416,7 +2416,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance : Dropshipping) : Pour tenir compte du temps nécessaire au sous-traitant pour recevoir les matériaux et fabriquer le produit.",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-146",
     module: "mrp",
     text: {
@@ -2437,7 +2437,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Sous-traitance : Dropshipping) : Application Fabrication > Configuration > Paramètres ET Application Achat > ​​Configuration > Paramètres",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-147",
     module: "mrp",
     text: {
@@ -2458,7 +2458,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Production Analysis) : Pour sélectionner l'ensemble de données affiché par le rapport",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-148",
     module: "mrp",
     text: {
@@ -2479,7 +2479,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Analyse de production) : Saisissez le nom du produit dans la barre de recherche",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-149",
     module: "mrp",
     text: {
@@ -2500,7 +2500,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Analyse de production) : Les données de deux périodes sont comparées",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-150",
     module: "mrp",
     text: {
@@ -2521,7 +2521,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Rapports d'allocation) : Les unités sont attribuées à chaque quantité du produit inclus dans la commande",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-151",
     module: "mrp",
     text: {
@@ -2542,7 +2542,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Rapports d'allocation) : Cliquez sur le bouton « Annuler l'attribution » qui apparaît après avoir cliqué sur « Attribuer »",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-152",
     module: "mrp",
     text: {
@@ -2563,7 +2563,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Rapports d'allocation) : Un PDF est généré et téléchargé, avec des étiquettes à coller sur les produits pour signifier qu'ils ont été réservés pour une commande spécifique",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-153",
     module: "mrp",
     text: {
@@ -2584,7 +2584,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Efficacité globale de l'équipement) : Le centre de travail traite un ordre de travail dans le délai prévu",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-154",
     module: "mrp",
     text: {
@@ -2605,7 +2605,7 @@ export const mrpLearnQuestions = [
       fr: "Source Odoo Learn (Efficacité globale des équipements) : Le centre de travail traite un ordre de travail qui a dépassé sa durée prévue",
     },
   }),
-  complexQ({
+complexQ({
     id: "mrp-155",
     module: "mrp",
     text: {

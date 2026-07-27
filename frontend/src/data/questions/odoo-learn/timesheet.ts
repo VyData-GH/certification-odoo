@@ -2,7 +2,7 @@ import { complexQ, mcq3Q } from "../helpers";
 
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const timesheetLearnQuestions = [
-  mcq3Q({
+mcq3Q({
     id: "ts-025",
     module: "timesheet",
     text: {
@@ -22,7 +22,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (bases des feuilles de temps) : il enregistre quinze minutes.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "ts-026",
     module: "timesheet",
     text: {
@@ -42,7 +42,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (bases des feuilles de temps) : Vous avez enregistré moins de temps que vos heures de travail contractuelles.",
     },
   }),
-  complexQ({
+complexQ({
     id: "ts-027",
     module: "timesheet",
     text: {
@@ -63,7 +63,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (bases des feuilles de temps) : Accédez à la vue Liste, sélectionnez les entrées de la feuille de temps et cliquez sur Valider.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "ts-028",
     module: "timesheet",
     text: {
@@ -83,7 +83,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (bases des feuilles de temps) : Appuyez sur la lettre à gauche d'une feuille de temps pour démarrer le chronomètre, et appuyez à nouveau dessus pour l'arrêter.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "ts-029",
     module: "timesheet",
     text: {
@@ -103,7 +103,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (configuration et classement des feuilles de temps) : à la fois un e-mail de rappel pour que les employés soumettent leurs feuilles de temps et un e-mail de rappel pour que les approbateurs valident les feuilles de temps de leur équipe.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "ts-030",
     module: "timesheet",
     text: {
@@ -123,7 +123,7 @@ export const timesheetLearnQuestions = [
       fr: "Source Odoo Learn (Configuration et classement des feuilles de temps) : Odoo > Feuilles de temps > Configuration > Paramètres > Indicateurs de taux de facturation.",
     },
   }),
-  mcq3Q({
+mcq3Q({
     id: "ts-031",
     module: "timesheet",
     text: {
