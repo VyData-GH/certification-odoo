@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { PageShell } from "@/components/PageShell";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { useAuth } from "@/context/AuthContext";
+import { notifyAdminPendingChanged } from "@/context/AdminPendingContext";
 import { useLanguage } from "@/context/LanguageContext";
 import type { AccessRecord } from "@/lib/access-types";
 
@@ -68,6 +69,7 @@ export default function AdminApprovalsPage() {
         throw new Error(body?.detail || "Error");
       }
       await load();
+      notifyAdminPendingChanged();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error");
     } finally {

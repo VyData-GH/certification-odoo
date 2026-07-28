@@ -4,6 +4,10 @@ import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
+import {
+  formatBadgeCount,
+  useAdminPendingCount,
+} from "@/context/AdminPendingContext";
 
 interface UserAvatarMenuProps {
   email: string;
@@ -19,13 +23,34 @@ function initialsFromEmail(email: string): string {
   return local.slice(0, 2).toUpperCase();
 }
 
+function PendingBadge({
+  count,
+  className = "",
+}: {
+  count: number;
+  className?: string;
+}) {
+  const label = formatBadgeCount(count);
+  if (!label) return null;
+  return (
+    <span
+      className={`inline-flex items-center justify-center min-w-[1.125rem] h-[1.125rem] px-1 rounded-full bg-red-500 text-[10px] font-bold leading-none text-white ${className}`}
+      aria-hidden
+    >
+      {label}
+    </span>
+  );
+}
+
 export function UserAvatarMenu({ email, onSignOut }: UserAvatarMenuProps) {
   const { tr } = useLanguage();
   const { isAdmin } = useAuth();
+  const pendingCount = useAdminPendingCount();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
   const initials = initialsFromEmail(email);
+  const badge = formatBadgeCount(pendingCount);
 
   useEffect(() => {
     if (!open) return;
@@ -52,14 +77,27 @@ export function UserAvatarMenu({ email, onSignOut }: UserAvatarMenuProps) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-xs font-semibold text-white ring-1 ring-white/30 hover:bg-white/30 transition-colors"
+        className="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-xs font-semibold text-white ring-1 ring-white/30 hover:bg-white/30 transition-colors"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
-        title={email}
-        aria-label={email}
+        title={
+          pendingCount > 0
+            ? `${email} — ${pendingCount} ${tr.admin.pendingBadgeHint}`
+            : email
+        }
+        aria-label={
+          pendingCount > 0
+            ? `${email}, ${pendingCount} ${tr.admin.pendingBadgeHint}`
+            : email
+        }
       >
         {initials}
+        {badge ? (
+          <span className="absolute -top-1 -right-1 inline-flex items-center justify-center min-w-[1.125rem] h-[1.125rem] px-1 rounded-full bg-red-500 text-[10px] font-bold leading-none text-white ring-2 ring-[#714B67]">
+            {badge}
+          </span>
+        ) : null}
       </button>
 
       {open && (
@@ -79,9 +117,10 @@ export function UserAvatarMenu({ email, onSignOut }: UserAvatarMenuProps) {
               href="/admin/approvals"
               role="menuitem"
               onClick={() => setOpen(false)}
-              className="block w-full text-left px-3 py-2.5 text-sm text-odoo-text hover:bg-gray-50 transition-colors no-underline"
+              className="flex items-center justify-between gap-2 w-full text-left px-3 py-2.5 text-sm text-odoo-text hover:bg-gray-50 transition-colors no-underline"
             >
-              {tr.nav.approvals}
+              <span>{tr.nav.approvals}</span>
+              <PendingBadge count={pendingCount} />
             </Link>
           )}
           <button

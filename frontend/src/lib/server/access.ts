@@ -110,6 +110,15 @@ export async function listPendingApprovals(): Promise<AccessRecord[]> {
   return (data as DbRow[]).map(mapRow);
 }
 
+export async function countPendingApprovals(): Promise<number> {
+  const { count, error } = await getSupabaseAdmin()
+    .from("account_approvals")
+    .select("*", { count: "exact", head: true })
+    .eq("status", "pending");
+  if (error) throw error;
+  return count ?? 0;
+}
+
 export async function listRecentApprovals(
   limit = 50
 ): Promise<AccessRecord[]> {

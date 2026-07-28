@@ -28,6 +28,7 @@ export const translations = {
       forbidden: "Admins only.",
       loading: "Loading requests…",
       decided: "Updated",
+      pendingBadgeHint: "pending approval(s)",
     },
     footer: {
       author: "Author:",
@@ -526,6 +527,7 @@ export const translations = {
       forbidden: "Réservé aux administrateurs.",
       loading: "Chargement des demandes…",
       decided: "Mis à jour",
+      pendingBadgeHint: "approbation(s) en attente",
     },
     footer: {
       author: "Auteur :",

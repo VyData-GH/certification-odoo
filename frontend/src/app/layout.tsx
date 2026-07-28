@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { AdminPendingProvider } from "@/context/AdminPendingContext";
 import { DemoProvider } from "@/context/DemoContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body className={`${lato.variable} antialiased`}>
         <LanguageProvider>
           <AuthProvider>
-            <DemoProvider>{children}</DemoProvider>
+            <DemoProvider>
+              <AdminPendingProvider>{children}</AdminPendingProvider>
+            </DemoProvider>
           </AuthProvider>
         </LanguageProvider>
       </body>
