@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { useLanguage } from "@/context/LanguageContext";
-import { formatTime } from "@/lib/exam-engine";
+import { formatTime } from "@/lib/exam-time";
 import { getSingleModuleId } from "@/lib/history-utils";
 import { ExamResult } from "@/types/exam";
 

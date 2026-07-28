@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/BrandLogo";
 import { UserAvatarMenu } from "@/components/UserAvatarMenu";
 import { useAuth } from "@/context/AuthContext";
+import { useDemo } from "@/context/DemoContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/i18n/translations";
 
@@ -34,13 +35,14 @@ function LanguageToggle() {
 export function OdooNavbar() {
   const { tr } = useLanguage();
   const { user, signOut, loading } = useAuth();
+  const { isDemo, exitDemo } = useDemo();
   const pathname = usePathname();
 
   const links = [
     { href: "/", label: tr.nav.home },
     { href: "/courses", label: tr.nav.courses },
     { href: "/modules", label: tr.nav.modules },
-    { href: "/history", label: tr.nav.history },
+    ...(!isDemo ? [{ href: "/history", label: tr.nav.history }] : []),
   ];
 
   return (
@@ -67,11 +69,37 @@ export function OdooNavbar() {
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageToggle />
-          <Link href="/exam?preset=full-exam" className="odoo-btn-primary text-sm">
-            {tr.nav.startExam}
-          </Link>
-          {!loading && user?.email && (
-            <UserAvatarMenu email={user.email} onSignOut={() => void signOut()} />
+          {isDemo ? (
+            <>
+              <span className="hidden sm:inline text-xs font-semibold uppercase tracking-wide text-amber-200/95">
+                {tr.demo.badge}
+              </span>
+              <Link href="/auth" className="odoo-btn-primary text-sm">
+                {tr.demo.createAccount}
+              </Link>
+              <button
+                type="button"
+                onClick={exitDemo}
+                className="text-sm text-white/80 hover:text-white underline"
+              >
+                {tr.demo.exit}
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/exam?preset=full-exam"
+                className="odoo-btn-primary text-sm"
+              >
+                {tr.nav.startExam}
+              </Link>
+              {!loading && user?.email && (
+                <UserAvatarMenu
+                  email={user.email}
+                  onSignOut={() => void signOut()}
+                />
+              )}
+            </>
           )}
         </div>
       </div>

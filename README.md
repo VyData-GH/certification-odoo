@@ -1,17 +1,35 @@
 # Odoo 19 Certification Trainer
 
-Application Next.js + Supabase pour s'entraîner à la certification Odoo 19.  
+Application Next.js + Supabase pour s'entraîner à la [certification fonctionnelle Odoo 19](https://www.odoo.com/fr_FR/slides/odoo-19-functional-certification-502).  
 Frontend, API et déploiement Vercel dans un seul projet — pas de serveur backend séparé.
+
+Simulateur **indépendant** (non affilié à Odoo SA) : examens blancs, quiz par module, readiness, historique cloud.
 
 ## Structure
 
 ```
 ├── frontend/                    # Next.js (UI, auth, examen, API routes)
-│   ├── src/app/api/             # API serverless (historique, health)
-│   └── src/lib/server/          # Logique serveur (auth JWT, Supabase admin)
-├── supabase/                    # Schéma SQL (exam_sessions)
+│   ├── src/app/api/             # API serverless (historique, access/approvals, health)
+│   └── src/lib/server/          # Logique serveur (auth JWT, accès, Supabase admin)
+├── supabase/                    # Schémas SQL (exam_sessions, account_approvals, …)
 └── package.json                 # Scripts racine (dev, build, lint)
 ```
+
+## Fonctionnalités (état actuel)
+
+- **Auth** e-mail / mot de passe (Supabase) + vérification e-mail obligatoire
+- **Approbation admin** des nouvelles inscriptions (`account_approvals`) — les comptes déjà existants restent utilisables
+- **Mode démo** lecture seule (pas de quiz / examen / historique ; banque de questions non chargée sur les pages browse)
+- Examens blancs (full, sample, module, review), readiness, plan d'étude, historique cloud
+- Liens vers le parcours **officiel** Odoo Learn (sample test, certif payante, tutoriels)
+
+### Liens officiels Odoo (aussi dans l'app, page d'accueil)
+
+| Objectif | Lien | Notes |
+|----------|------|--------|
+| Sample test | [Odoo Certification Sample Test](https://www.odoo.com/fr_FR/slides/odoo-certification-sample-test-50) | Tentatives illimitées |
+| Certification Odoo 19 | [Odoo 19 Functional Certification](https://www.odoo.com/fr_FR/slides/odoo-19-functional-certification-502) | US$ 150,00 · 2 tentatives (indicatif) |
+| Cours eLearning | [Odoo Tutorials](https://www.odoo.com/slides/tag/odoo-tutorials-9?prevent_redirect=True) | Catalogue Odoo Learn |
 
 ## Prérequis
 
@@ -22,13 +40,18 @@ Frontend, API et déploiement Vercel dans un seul projet — pas de serveur back
 
 ## 1. Supabase (une seule fois)
 
-1. Créer un projet Supabase
-2. **SQL Editor** → coller et exécuter `supabase/schema.sql`
-3. **Authentication** → activer Email / mot de passe
-4. Noter :
-   - `Project URL`
-   - `anon` key → variables publiques frontend
-   - `service_role` key → variable serveur uniquement (API routes)
+Dans le **SQL Editor**, exécuter dans l'ordre :
+
+1. `supabase/schema.sql` — table `exam_sessions` + RLS  
+2. Si base déjà créée auparavant : `supabase/migrate_production.sql` (et éventuellement `migrate_replay_columns.sql`, `migrate_sample_mode.sql`)  
+3. `supabase/account_approvals.sql` — approbation des nouveaux comptes + backfill des users existants en `approved`
+
+Optionnel : `supabase/drop_unused_tables.sql` **uniquement** si ce projet Supabase n'héberge pas d'autres apps (timesheets, partners, etc.).
+
+Puis :
+
+- **Authentication** → Email / mot de passe activé  
+- Noter `Project URL`, clé `anon`, clé `service_role`
 
 ---
 
@@ -38,13 +61,13 @@ Frontend, API et déploiement Vercel dans un seul projet — pas de serveur back
 cp frontend/.env.local.example frontend/.env.local
 ```
 
-Remplir `frontend/.env.local` :
-
 | Variable | Usage |
 |----------|-------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Client Supabase (navigateur) |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client Supabase (navigateur) |
 | `SUPABASE_SERVICE_ROLE_KEY` | API routes serveur — **ne jamais exposer au navigateur** |
+| `NEXT_PUBLIC_SITE_URL` | (optionnel) URL prod pour redirects e-mail auth |
+| `NEXT_PUBLIC_ADMIN_EMAILS` | (optionnel) e-mails admins qui approuvent les inscriptions |
 
 ```bash
 npm install --prefix frontend
@@ -63,52 +86,39 @@ npm run dev
 | URL | Description |
 |-----|-------------|
 | http://localhost:3000 | Application |
+| http://localhost:3000/auth | Connexion / inscription / démo |
+| http://localhost:3000/admin/approvals | File d'attente d'approbation (admins) |
 | http://localhost:3000/api/health | Health check → `{"status":"ok"}` |
-| http://localhost:3000/api/history | API historique (JWT Supabase requis) |
 
-### API historique
+### API principales
 
-Endpoints (header `Authorization: Bearer <token>`) :
+Header `Authorization: Bearer <token>` :
 
-- `GET /api/history` — liste les sessions
-- `POST /api/history` — enregistre une session
-- `DELETE /api/history` — efface tout l'historique
-- `DELETE /api/history/:id` — supprime une session
-
-Base existante : exécuter aussi `supabase/migrate_production.sql` dans le SQL Editor.
+- `GET/POST/DELETE /api/history` — historique (compte **approuvé** requis)
+- `GET /api/access/me` — statut d'approbation (e-mail vérifié)
+- `GET/POST /api/access/admin` — liste / décision (admins uniquement)
 
 ---
 
 ## 4. Déploiement Vercel
 
-1. Importer le repo GitHub
-2. **Root Directory** → `frontend`
-3. Ajouter les variables d'environnement (mêmes noms que `.env.local`)
-4. Deploy
+1. Importer le repo GitHub  
+2. **Root Directory** → `frontend`  
+3. Ajouter les variables d'environnement (mêmes noms que `.env.local`)  
+4. Deploy  
 
 Branches Git : `main` (production), `develop` (développement).
 
 ---
 
-## Protection par login (sans SSO)
+## Accès & sécurité
 
-L'application est **protégée** : toute page (`/`, `/exam`, `/modules`, `/history`) exige une connexion.
+- Pages app : compte **vérifié** + **approuvé**, **ou** mode démo (lecture seule)
+- Inscription ouverte → statut `pending` jusqu'à approbation par un admin (`/admin/approvals`)
+- Les utilisateurs déjà présents avant `account_approvals.sql` sont backfillés en `approved`
+- L'historique cloud est lié au `user_id` Supabase (`exam_sessions`)
 
-- **Authentification** : e-mail + mot de passe via [Supabase Auth](https://supabase.com/docs/guides/auth) — pas de Google/Microsoft/SAML
-- **Page publique** : `/auth` uniquement
-- **Déconnexion** → retour automatique vers `/auth`
-- Chaque utilisateur est identifié par un `user_id` (UUID) ; l'historique est lié à son compte dans Supabase
-
-### Restreindre qui peut s'inscrire (recommandé en production)
-
-Dans Supabase → **Authentication** → **Providers** → Email :
-
-1. Désactiver **Confirm email** si vous invitez vous-même les utilisateurs
-2. Ou désactiver les inscriptions publiques : **Authentication** → **Settings** → désactiver « Enable sign ups » et créer les comptes manuellement dans **Users**
-
-### Variables requises
-
-`frontend/.env.local` doit contenir les trois variables listées ci-dessus — sans `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_ANON_KEY`, la connexion est impossible ; sans `SUPABASE_SERVICE_ROLE_KEY`, l'historique cloud ne fonctionne pas.
+> La banque de questions est encore livrée dans le JS pour les sessions d'examen authentifiées. Une API `/api/exam/*` serveur-only reste une évolution anti-scraping possible.
 
 ---
 

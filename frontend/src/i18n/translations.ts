@@ -15,6 +15,19 @@ export const translations = {
       startExam: "Start Exam",
       login: "Sign in",
       logout: "Sign out",
+      approvals: "Approvals",
+    },
+    admin: {
+      title: "Account approvals",
+      subtitle: "Approve or reject new signup requests.",
+      pending: "Pending",
+      recent: "Recent decisions",
+      empty: "No pending requests.",
+      approve: "Approve",
+      reject: "Reject",
+      forbidden: "Admins only.",
+      loading: "Loading requests…",
+      decided: "Updated",
     },
     footer: {
       author: "Author:",
@@ -52,6 +65,17 @@ export const translations = {
         "An account with this email already exists. Sign in or use password recovery.",
       emailNotVerified:
         "Your email address has not been verified yet. Check your inbox and click the confirmation link before signing in.",
+      emailNotAllowed:
+        "This email is not authorized. Access is limited to approved accounts — use demo mode to browse, or contact the administrator.",
+      pendingTitle: "Awaiting admin approval",
+      pendingBody:
+        "Your email is verified. An administrator must approve your account before you can use quizzes and exams. You can browse in demo mode meanwhile.",
+      rejectedTitle: "Account not approved",
+      rejectedBody:
+        "Your access request was declined. Contact an administrator if you believe this is a mistake.",
+      pendingRefresh: "Check approval status",
+      signupPendingInfo:
+        "Account created. After email verification, an administrator must approve your access.",
       verifyEmailTitle: "Verify your email",
       verifyEmailBody:
         "We sent a confirmation link to {email}. Click the link in the email to activate your account, then sign in.",
@@ -60,6 +84,21 @@ export const translations = {
       verifyEmailResent: "Resend confirmation email",
       verifyEmailResentInfo: "A new confirmation email was sent to {email}.",
       verifyEmailBackToSignIn: "Back to sign in",
+    },
+    demo: {
+      badge: "Demo",
+      enter: "Enter demo mode",
+      exit: "Exit demo",
+      createAccount: "Create an account",
+      loginTitle: "Try a read-only demo",
+      loginBody:
+        "Browse courses, modules, and how the trainer works — without quizzes or the question bank.",
+      banner:
+        "Read-only preview. Quizzes, exams, and history stay locked until you create an account.",
+      lockedTitle: "Quizzes are locked in demo mode",
+      lockedBody:
+        "Create a free account to practice MCQs, run mock exams, and save your history. Question content is not available in demo.",
+      historyLocked: "History requires a signed-in account.",
     },
     home: {
       heroTitle: "Odoo 19 Functional Certification",
@@ -91,6 +130,26 @@ export const translations = {
       view360: "360° Coverage",
       view360Desc: "Questions span every functional area of Odoo 19",
       smartPathTitle: "First-try pass path",
+    },
+    officialOdoo: {
+      title: "Official Odoo path",
+      intro:
+        "This trainer prepares you. When you are ready, use the official Odoo Learn links below.",
+      sampleTitle: "Odoo Certification Sample Test",
+      sampleMeta: "Unlimited attempts · Free practice on Odoo Learn",
+      sampleDesc:
+        "Official sample exam on Odoo.com — same style as the real certification.",
+      certTitle: "Odoo 19 Functional Certification",
+      certMeta: "US$ 150.00 · 2 attempts",
+      certDesc:
+        "The real paid certification exam (nominative). Pass with ≥ 70%.",
+      coursesTitle: "Odoo Tutorials (eLearning)",
+      coursesMeta: "Odoo Learn · Courses & tutorials",
+      coursesDesc:
+        "Official e-learning catalog to study modules before mock exams here.",
+      open: "Open on Odoo →",
+      disclaimer:
+        "External links to odoo.com. Prices and conditions may change on Odoo’s side.",
     },
     guidelines: {
       title: "Tips & Guidelines for Your Upcoming Test",
@@ -454,6 +513,19 @@ export const translations = {
       startExam: "Lancer l'examen",
       login: "Connexion",
       logout: "Déconnexion",
+      approvals: "Approbations",
+    },
+    admin: {
+      title: "Approbations de comptes",
+      subtitle: "Approuver ou refuser les nouvelles inscriptions.",
+      pending: "En attente",
+      recent: "Décisions récentes",
+      empty: "Aucune demande en attente.",
+      approve: "Approuver",
+      reject: "Refuser",
+      forbidden: "Réservé aux administrateurs.",
+      loading: "Chargement des demandes…",
+      decided: "Mis à jour",
     },
     footer: {
       author: "Auteur :",
@@ -491,6 +563,17 @@ export const translations = {
         "Un compte existe déjà avec cet e-mail. Connectez-vous ou utilisez la récupération de mot de passe.",
       emailNotVerified:
         "Votre adresse e-mail n'est pas encore vérifiée. Consultez votre boîte mail et cliquez sur le lien de confirmation avant de vous connecter.",
+      emailNotAllowed:
+        "Cette adresse e-mail n'est pas autorisée. L'accès est réservé aux comptes approuvés — utilisez le mode démo pour parcourir, ou contactez l'administrateur.",
+      pendingTitle: "En attente d'approbation",
+      pendingBody:
+        "Votre e-mail est vérifié. Un administrateur doit approuver votre compte avant les quiz et examens. Vous pouvez utiliser le mode démo en attendant.",
+      rejectedTitle: "Compte non approuvé",
+      rejectedBody:
+        "Votre demande d'accès a été refusée. Contactez un administrateur si vous pensez qu'il s'agit d'une erreur.",
+      pendingRefresh: "Vérifier le statut",
+      signupPendingInfo:
+        "Compte créé. Après vérification de l'e-mail, un administrateur doit approuver votre accès.",
       verifyEmailTitle: "Vérifiez votre e-mail",
       verifyEmailBody:
         "Un lien de confirmation a été envoyé à {email}. Cliquez sur le lien dans l'e-mail pour activer votre compte, puis connectez-vous.",
@@ -499,6 +582,21 @@ export const translations = {
       verifyEmailResent: "Renvoyer l'e-mail de confirmation",
       verifyEmailResentInfo: "Un nouvel e-mail de confirmation a été envoyé à {email}.",
       verifyEmailBackToSignIn: "Retour à la connexion",
+    },
+    demo: {
+      badge: "Démo",
+      enter: "Entrer en mode démo",
+      exit: "Quitter la démo",
+      createAccount: "Créer un compte",
+      loginTitle: "Essayer une démo lecture seule",
+      loginBody:
+        "Parcourez les cours, modules et le fonctionnement de l'outil — sans quiz ni banque de questions.",
+      banner:
+        "Aperçu lecture seule. Quiz, examens et historique restent verrouillés tant que vous n'avez pas de compte.",
+      lockedTitle: "Les quiz sont verrouillés en mode démo",
+      lockedBody:
+        "Créez un compte gratuit pour pratiquer les QCM, lancer des examens blancs et sauvegarder votre historique. Le contenu des questions n'est pas disponible en démo.",
+      historyLocked: "L'historique nécessite un compte connecté.",
     },
     home: {
       heroTitle: "Certification Fonctionnelle Odoo 19",
@@ -532,6 +630,26 @@ export const translations = {
       view360Desc:
         "Des questions couvrant chaque domaine fonctionnel d'Odoo 19",
       smartPathTitle: "Parcours réussite du premier coup",
+    },
+    officialOdoo: {
+      title: "Parcours officiel Odoo",
+      intro:
+        "Cet outil vous prépare. Quand vous êtes prêt, utilisez les liens officiels Odoo Learn ci-dessous.",
+      sampleTitle: "Odoo Certification Sample Test",
+      sampleMeta: "Tentatives illimitées · Entraînement gratuit sur Odoo Learn",
+      sampleDesc:
+        "Examen blanc officiel sur Odoo.com — même style que la vraie certification.",
+      certTitle: "Certification fonctionnelle Odoo 19",
+      certMeta: "US$ 150,00 · 2 tentatives",
+      certDesc:
+        "Le vrai examen payant (nominatif). Réussite à ≥ 70 %.",
+      coursesTitle: "Tutoriels Odoo (eLearning)",
+      coursesMeta: "Odoo Learn · Cours et tutoriels",
+      coursesDesc:
+        "Catalogue e-learning officiel pour étudier les modules avant les examens blancs ici.",
+      open: "Ouvrir sur Odoo →",
+      disclaimer:
+        "Liens externes vers odoo.com. Les prix et conditions peuvent évoluer côté Odoo.",
     },
     guidelines: {
       title: "Conseils et consignes pour votre examen",

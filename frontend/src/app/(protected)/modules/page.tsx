@@ -4,7 +4,7 @@ import { ModuleCatalogSection } from "@/components/ModuleCatalogSection";
 import { PageShell } from "@/components/PageShell";
 import { useLanguage } from "@/context/LanguageContext";
 import { CERTIFICATION_MODULES, SUPPLEMENTARY_MODULES } from "@/types/exam";
-import { getQuestionStats } from "@/lib/exam-engine";
+import { getQuestionStats } from "@/data/question-stats";
 
 export default function ModulesPage() {
   const { tr } = useLanguage();

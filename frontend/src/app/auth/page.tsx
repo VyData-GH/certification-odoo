@@ -5,16 +5,29 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useAuth } from "@/context/AuthContext";
+import { useDemo } from "@/context/DemoContext";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   formatAuthError,
   isEmailNotVerifiedError,
-  isEmailVerified,
 } from "@/lib/auth";
 
 function AuthForm() {
   const { tr } = useLanguage();
-  const { signIn, signUp, resendVerificationEmail, configured, user } = useAuth();
+  const {
+    signIn,
+    signUp,
+    resendVerificationEmail,
+    signOut,
+    configured,
+    user,
+    emailVerified,
+    isApproved,
+    accessStatus,
+    accessLoading,
+    refreshAccess,
+  } = useAuth();
+  const { enterDemo, isDemo } = useDemo();
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextPath = searchParams.get("next") || "/";
@@ -29,12 +42,15 @@ function AuthForm() {
     string | null
   >(null);
   const [resendLoading, setResendLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
-    if (user && isEmailVerified(user)) {
+    if (user && emailVerified && isApproved) {
       router.replace(nextPath);
+    } else if (isDemo) {
+      router.replace("/");
     }
-  }, [user, router, nextPath]);
+  }, [user, emailVerified, isApproved, router, nextPath, isDemo]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -44,7 +60,6 @@ function AuthForm() {
     try {
       if (mode === "signin") {
         await signIn(email, password);
-        router.replace(nextPath);
       } else {
         const { needsEmailVerification } = await signUp(email, password);
         if (needsEmailVerification) {
@@ -53,7 +68,7 @@ function AuthForm() {
           setMode("signin");
           setPassword("");
         } else {
-          router.replace(nextPath);
+          setInfo(tr.auth.signupPendingInfo);
         }
       }
     } catch (err) {
@@ -79,6 +94,12 @@ function AuthForm() {
     } finally {
       setResendLoading(false);
     }
+  };
+
+  const handleRefreshAccess = async () => {
+    setRefreshing(true);
+    await refreshAccess();
+    setRefreshing(false);
   };
 
   if (pendingVerificationEmail) {
@@ -118,6 +139,9 @@ function AuthForm() {
                 pendingVerificationEmail
               )}
             </p>
+            <p className="text-sm text-odoo-text-muted">
+              {tr.auth.signupPendingInfo}
+            </p>
             {info && (
               <p className="text-sm text-green-700 bg-green-50 border border-green-200 px-3 py-2 rounded-sm">
                 {info}
@@ -141,6 +165,76 @@ function AuthForm() {
               className="text-sm text-odoo-brand underline"
             >
               {tr.auth.verifyEmailBackToSignIn}
+            </button>
+          </div>
+        </main>
+
+        <SiteFooter />
+      </div>
+    );
+  }
+
+  if (user && emailVerified && !accessLoading && !isApproved) {
+    const rejected = accessStatus === "rejected";
+    return (
+      <div className="min-h-screen bg-odoo-bg flex flex-col">
+        <header className="odoo-navbar">
+          <div className="max-w-6xl mx-auto px-4 h-11 flex items-center justify-center">
+            <a
+              href="https://virtuocode.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Virtuocode"
+            >
+              <Image
+                src="/brand/logo.webp"
+                alt="Virtuocode"
+                width={140}
+                height={36}
+                className="h-7 w-auto brand-logo-light"
+                priority
+              />
+            </a>
+          </div>
+        </header>
+
+        <main className="flex-1 max-w-md mx-auto w-full px-4 py-10 space-y-4">
+          <div className="odoo-card p-6 space-y-4 text-center">
+            <h1 className="text-xl font-normal text-odoo-text">
+              {rejected ? tr.auth.rejectedTitle : tr.auth.pendingTitle}
+            </h1>
+            <p className="text-sm text-odoo-text-muted">
+              {rejected ? tr.auth.rejectedBody : tr.auth.pendingBody}
+            </p>
+            {!rejected && (
+              <button
+                type="button"
+                onClick={() => void handleRefreshAccess()}
+                disabled={refreshing}
+                className="odoo-btn-secondary w-full disabled:opacity-50"
+              >
+                {tr.auth.pendingRefresh}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => void signOut()}
+              className="text-sm text-odoo-brand underline"
+            >
+              {tr.nav.logout}
+            </button>
+          </div>
+          <div className="odoo-card p-5 space-y-3">
+            <h2 className="text-base font-medium text-odoo-text">
+              {tr.demo.loginTitle}
+            </h2>
+            <p className="text-sm text-odoo-text-muted">{tr.demo.loginBody}</p>
+            <button
+              type="button"
+              onClick={enterDemo}
+              className="odoo-btn-secondary w-full"
+            >
+              {tr.demo.enter}
             </button>
           </div>
         </main>
@@ -242,6 +336,20 @@ function AuthForm() {
             </p>
           </form>
         )}
+
+        <div className="mt-6 odoo-card p-5 space-y-3">
+          <h2 className="text-base font-medium text-odoo-text">
+            {tr.demo.loginTitle}
+          </h2>
+          <p className="text-sm text-odoo-text-muted">{tr.demo.loginBody}</p>
+          <button
+            type="button"
+            onClick={enterDemo}
+            className="odoo-btn-secondary w-full"
+          >
+            {tr.demo.enter}
+          </button>
+        </div>
       </main>
 
       <SiteFooter />

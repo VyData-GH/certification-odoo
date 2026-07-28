@@ -5,6 +5,7 @@ type UserWithLegacyConfirm = User & { confirmed_at?: string | null };
 export type AuthErrorMessages = {
   error: string;
   emailNotVerified: string;
+  emailNotAllowed: string;
   errorEmailRateLimit: string;
   errorSignupRateLimit: string;
   errorTooManyRequests: string;
@@ -64,7 +65,11 @@ export function formatAuthError(
     return messages.errorUserAlreadyRegistered;
   }
 
-  if (err instanceof Error && err.message && err.message !== "Supabase not configured") {
+  if (
+    err instanceof Error &&
+    err.message &&
+    err.message !== "Supabase not configured"
+  ) {
     return err.message;
   }
 

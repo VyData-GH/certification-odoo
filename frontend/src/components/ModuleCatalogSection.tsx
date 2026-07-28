@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { DemoLockedNotice } from "@/components/DemoLockedNotice";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { ModuleQuizControls } from "@/components/ModuleQuizControls";
+import { useDemo } from "@/context/DemoContext";
 import { ModuleId } from "@/types/exam";
 
 interface ModuleCatalogItem {
@@ -26,6 +28,8 @@ export function ModuleCatalogSection({
   quizDesc,
   courseHref,
 }: ModuleCatalogSectionProps) {
+  const { isDemo } = useDemo();
+
   if (modules.length === 0) return null;
 
   return (
@@ -60,10 +64,14 @@ export function ModuleCatalogSection({
               {!courseHref && (
                 <p className="text-sm text-odoo-text-muted">{quizDesc}</p>
               )}
-              <ModuleQuizControls
-                moduleId={mod.id}
-                totalQuestions={mod.questionCount}
-              />
+              {isDemo ? (
+                <DemoLockedNotice compact />
+              ) : (
+                <ModuleQuizControls
+                  moduleId={mod.id}
+                  totalQuestions={mod.questionCount}
+                />
+              )}
             </div>
           </div>
         ))}

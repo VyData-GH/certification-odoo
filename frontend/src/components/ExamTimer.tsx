@@ -1,6 +1,6 @@
 "use client";
 
-import { formatTime } from "@/lib/exam-engine";
+import { formatTime } from "@/lib/exam-time";
 
 interface ExamTimerProps {
   remainingSeconds: number;

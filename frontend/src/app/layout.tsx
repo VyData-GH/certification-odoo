@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import { DemoProvider } from "@/context/DemoContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 const lato = Lato({
@@ -33,7 +34,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lato.variable} antialiased`}>
         <LanguageProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <DemoProvider>{children}</DemoProvider>
+          </AuthProvider>
         </LanguageProvider>
       </body>
     </html>

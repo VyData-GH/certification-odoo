@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { StudyPlanStep } from "@/lib/learning-analytics";
+import type { StudyPlanStep } from "@/lib/learning-analytics";
 
 interface StudyPlanPanelProps {
   steps: StudyPlanStep[];

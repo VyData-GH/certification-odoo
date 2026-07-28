@@ -1,11 +1,13 @@
 import { isDontKnow, isUnanswered } from "@/lib/answers";
 import { prepareQuestionForExam } from "@/lib/exam-present";
 import { allQuestions } from "@/data/questions";
+import {
+  getModuleQuestionCount as getPublicModuleQuestionCount,
+  getQuestionStats as getPublicQuestionStats,
+} from "@/data/question-stats";
 import { screenshotQuestions } from "@/data/questions/screenshot-questions";
 import {
   AnswerRecord,
-  CERTIFICATION_MODULES,
-  CertificationModuleId,
   ExamConfig,
   ExamResult,
   EXAM_RULES,
@@ -14,8 +16,9 @@ import {
   ModuleId,
   Question,
   SAMPLE_TEST_RULES,
-  SupplementaryModuleId,
 } from "@/types/exam";
+
+export { formatTime, secondsPerQuestion } from "@/lib/exam-time";
 
 /** Mirrors Odoo official sample test section mix (text questions only). */
 const SAMPLE_TEXT_SECTIONS: { modules: ModuleId[]; count: number }[] = [
@@ -245,14 +248,7 @@ export function shuffleAllQuestionOptions(
   );
 }
 
-/** Average seconds per question for a timed exam. */
-export function secondsPerQuestion(
-  durationMinutes: number,
-  questionCount: number
-): number {
-  if (questionCount <= 0 || durationMinutes <= 0) return 0;
-  return Math.round((durationMinutes * 60) / questionCount);
-}
+/** Average seconds per question for a timed exam — see @/lib/exam-time. */
 
 export function calculateScore(
   questions: Pick<
@@ -322,55 +318,12 @@ export function calculateScore(
   };
 }
 
-export function formatTime(seconds: number): string {
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = seconds % 60;
-  if (h > 0) {
-    return `${h}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-  }
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-}
-
 export function getQuestionStats() {
-  const byModule = {} as Record<ModuleId, number>;
-  const byCertification = {} as Record<CertificationModuleId, number>;
-  const bySupplementary = {} as Record<SupplementaryModuleId, number>;
-
-  for (const mod of CERTIFICATION_MODULES) {
-    byCertification[mod.id] = 0;
-  }
-
-  for (const q of allQuestions) {
-    byModule[q.module] = (byModule[q.module] ?? 0) + 1;
-    if (isCertificationModuleId(q.module)) {
-      byCertification[q.module] = (byCertification[q.module] ?? 0) + 1;
-    } else {
-      bySupplementary[q.module] = (bySupplementary[q.module] ?? 0) + 1;
-    }
-  }
-
-  const certificationTotal = Object.values(byCertification).reduce(
-    (a, b) => a + b,
-    0
-  );
-  const supplementaryTotal = Object.values(bySupplementary).reduce(
-    (a, b) => a + b,
-    0
-  );
-
-  return {
-    total: allQuestions.length,
-    certificationTotal,
-    supplementaryTotal,
-    byModule,
-    byCertification,
-    bySupplementary,
-  };
+  return getPublicQuestionStats();
 }
 
 export function getModuleQuestionCount(moduleId: ModuleId): number {
-  return allQuestions.filter((q) => q.module === moduleId).length;
+  return getPublicModuleQuestionCount(moduleId);
 }
 
 /** Parse ?count= from module quiz URLs; supports numeric values and "all". */

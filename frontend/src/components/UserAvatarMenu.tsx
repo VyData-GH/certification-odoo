@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Link from "next/link";
+import { useAuth } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface UserAvatarMenuProps {
@@ -19,6 +21,7 @@ function initialsFromEmail(email: string): string {
 
 export function UserAvatarMenu({ email, onSignOut }: UserAvatarMenuProps) {
   const { tr } = useLanguage();
+  const { isAdmin } = useAuth();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
@@ -71,6 +74,16 @@ export function UserAvatarMenu({ email, onSignOut }: UserAvatarMenuProps) {
               {email}
             </p>
           </div>
+          {isAdmin && (
+            <Link
+              href="/admin/approvals"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="block w-full text-left px-3 py-2.5 text-sm text-odoo-text hover:bg-gray-50 transition-colors no-underline"
+            >
+              {tr.nav.approvals}
+            </Link>
+          )}
           <button
             type="button"
             role="menuitem"

@@ -10,7 +10,7 @@ import {
   SUPPLEMENTARY_MODULES,
   ModuleId,
 } from "@/types/exam";
-import { formatTime } from "@/lib/exam-engine";
+import { formatTime } from "@/lib/exam-time";
 import { getSingleModuleId } from "@/lib/history-utils";
 import { useLanguage } from "@/context/LanguageContext";
 

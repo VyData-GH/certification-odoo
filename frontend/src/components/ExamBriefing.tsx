@@ -9,7 +9,7 @@ import {
   SAMPLE_TEST_MINUTES,
   SAMPLE_TEST_RULES,
 } from "@/types/exam";
-import { secondsPerQuestion } from "@/lib/exam-engine";
+import { secondsPerQuestion } from "@/lib/exam-time";
 
 interface ExamBriefingProps {
   config: ExamConfig;

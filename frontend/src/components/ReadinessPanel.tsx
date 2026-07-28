@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { useLanguage } from "@/context/LanguageContext";
-import { ReadinessReport } from "@/lib/learning-analytics";
+import type { ReadinessReport } from "@/lib/learning-analytics";
 
 interface ReadinessPanelProps {
   report: ReadinessReport;

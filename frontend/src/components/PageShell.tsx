@@ -1,3 +1,4 @@
+import { DemoBanner } from "@/components/DemoBanner";
 import { OdooNavbar, OdooPageHeader } from "@/components/OdooShell";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -21,6 +22,7 @@ export function PageShell({
   return (
     <div className="min-h-screen flex flex-col bg-odoo-bg">
       <OdooNavbar />
+      <DemoBanner />
       {showHeader && title && (
         <OdooPageHeader
           title={title}

@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { DemoLockedNotice } from "@/components/DemoLockedNotice";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
 import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
 import { SUPPLEMENTARY_COURSE_SUMMARIES } from "@/data/course-summaries-supplementary";
+import { useDemo } from "@/context/DemoContext";
 import { useLanguage } from "@/context/LanguageContext";
-import { getQuestionStats } from "@/lib/exam-engine";
+import { getQuestionStats } from "@/data/question-stats";
 import { isCertificationModuleId, isModuleId } from "@/types/exam";
 
 function getSummary(moduleId: string) {
@@ -22,6 +24,7 @@ export default function CourseModulePage() {
   const params = useParams();
   const moduleId = String(params.moduleId ?? "");
   const { tr, locale } = useLanguage();
+  const { isDemo } = useDemo();
   const stats = getQuestionStats();
 
   if (!isModuleId(moduleId)) {
@@ -117,7 +120,11 @@ export default function CourseModulePage() {
             <p className="text-sm text-odoo-text-muted">
               {count} {tr.home.questionsAvailable} — {tr.courses.practiceHint}
             </p>
-            <ModuleQuizControls moduleId={moduleId} totalQuestions={count} />
+            {isDemo ? (
+              <DemoLockedNotice />
+            ) : (
+              <ModuleQuizControls moduleId={moduleId} totalQuestions={count} />
+            )}
             <div className="pt-1">
               <Link href="/modules" className="odoo-btn-secondary text-sm">
                 {tr.courses.allModules}

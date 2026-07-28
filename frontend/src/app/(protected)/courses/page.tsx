@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
+import { OfficialOdooLinks } from "@/components/OfficialOdooLinks";
 import { PageShell } from "@/components/PageShell";
 import { CourseSummary } from "@/data/course-summaries";
 import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
@@ -14,7 +15,7 @@ import {
   SUPPLEMENTARY_MODULES,
   SupplementaryModuleId,
 } from "@/types/exam";
-import { getQuestionStats } from "@/lib/exam-engine";
+import { getQuestionStats } from "@/data/question-stats";
 
 export default function CoursesPage() {
   const { tr, locale } = useLanguage();
@@ -81,6 +82,8 @@ export default function CoursesPage() {
     >
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-8">
         <p className="text-sm text-odoo-text-muted">{tr.courses.intro}</p>
+
+        <OfficialOdooLinks />
 
         <section className="space-y-3">
           <h2 className="text-lg font-medium text-odoo-text">

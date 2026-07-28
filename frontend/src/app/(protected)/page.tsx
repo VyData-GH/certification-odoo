@@ -1,81 +1,95 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { AppLoading } from "@/components/AppLoading";
+import { DemoLockedNotice } from "@/components/DemoLockedNotice";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ModuleIcon } from "@/components/ModuleIcon";
+import { OfficialOdooLinks } from "@/components/OfficialOdooLinks";
 import { PageShell } from "@/components/PageShell";
 import { ReadinessPanel } from "@/components/ReadinessPanel";
 import { SmartTrainingLinks } from "@/components/SmartTrainingLinks";
 import { StudyPlanPanel } from "@/components/StudyPlanPanel";
 import { useAuth } from "@/context/AuthContext";
+import { useDemo } from "@/context/DemoContext";
 import { useLanguage } from "@/context/LanguageContext";
-import {
-  buildStudyPlan,
-  computeReadiness,
-  getMistakeQuestionIds,
-  getWeakModules,
+import { getQuestionStats } from "@/data/question-stats";
+import type {
+  ModuleStrength,
+  ReadinessReport,
+  StudyPlanStep,
 } from "@/lib/learning-analytics";
-import { getDueSrsCount, seedSrsFromMistakeIds } from "@/lib/spaced-repetition";
 import { loadHistory } from "@/services/historyService";
 import {
   EXAM_PRESETS,
   EXAM_RULES,
   formatExamDuration,
   CERTIFICATION_MODULES,
-  ExamResult,
 } from "@/types/exam";
-import { getQuestionStats } from "@/lib/exam-engine";
 
-export default function HomePage() {
+function HomePageContent() {
   const { tr, locale } = useLanguage();
   const { accessToken } = useAuth();
+  const { isDemo } = useDemo();
+  const searchParams = useSearchParams();
   const stats = getQuestionStats();
-  const [history, setHistory] = useState<ExamResult[]>([]);
-  const [dueCount, setDueCount] = useState(0);
-  const [loadedToken, setLoadedToken] = useState<string | null | undefined>(
-    undefined
-  );
+  const showDemoLockFlash = searchParams.get("demoLocked") === "1";
 
-  const analyticsLoading = loadedToken !== accessToken;
+  const [dueCount, setDueCount] = useState(0);
+  const [readiness, setReadiness] = useState<ReadinessReport | null>(null);
+  const [weakModules, setWeakModules] = useState<ModuleStrength[]>([]);
+  const [studyPlan, setStudyPlan] = useState<StudyPlanStep[]>([]);
+  const [analyticsReady, setAnalyticsReady] = useState(isDemo);
 
   useEffect(() => {
+    if (isDemo) {
+      setAnalyticsReady(true);
+      setDueCount(0);
+      setReadiness(null);
+      setWeakModules([]);
+      setStudyPlan([]);
+      return;
+    }
+
     let cancelled = false;
-    void loadHistory(accessToken)
-      .then(({ items }) => {
+    setAnalyticsReady(false);
+
+    void (async () => {
+      try {
+        const [{ items }, analytics, srs] = await Promise.all([
+          loadHistory(accessToken),
+          import("@/lib/learning-analytics"),
+          import("@/lib/spaced-repetition"),
+        ]);
         if (cancelled) return;
-        setHistory(items);
-        const mistakes = getMistakeQuestionIds(items, 80);
-        seedSrsFromMistakeIds(mistakes);
-        setDueCount(getDueSrsCount());
-        setLoadedToken(accessToken);
-      })
-      .catch(() => {
+        const mistakes = analytics.getMistakeQuestionIds(items, 80);
+        srs.seedSrsFromMistakeIds(mistakes);
+        const due = srs.getDueSrsCount();
+        setDueCount(due);
+        const weak = analytics.getWeakModules(items, 4, 3);
+        setWeakModules(weak);
+        setReadiness(analytics.computeReadiness(items, due));
+        setStudyPlan(analytics.buildStudyPlan(weak));
+      } catch {
         if (cancelled) return;
-        setHistory([]);
         setDueCount(0);
-        setLoadedToken(accessToken);
-      });
+        setReadiness(null);
+        setWeakModules([]);
+        setStudyPlan([]);
+      } finally {
+        if (!cancelled) setAnalyticsReady(true);
+      }
+    })();
+
     return () => {
       cancelled = true;
     };
-  }, [accessToken]);
-
-  const readiness = useMemo(
-    () => computeReadiness(history, dueCount),
-    [history, dueCount]
-  );
-  const weakModules = useMemo(() => getWeakModules(history, 4, 3), [history]);
-  const studyPlan = useMemo(() => buildStudyPlan(weakModules), [weakModules]);
-  const mistakeCount = readiness.mistakeCount;
-
+  }, [accessToken, isDemo]);
   const classicPresets = EXAM_PRESETS.filter(
     (p) =>
-      ![
-        "redo-mistakes",
-        "weak-modules",
-        "spaced-review",
-      ].includes(p.id)
+      !["redo-mistakes", "weak-modules", "spaced-review"].includes(p.id)
   );
 
   const guidelines = [
@@ -95,13 +109,17 @@ export default function HomePage() {
     tr.guidelines.luck,
   ];
 
+  const mistakeCount = readiness?.mistakeCount ?? 0;
+
   return (
     <PageShell
       title={tr.home.heroTitle}
       subtitle={`${tr.home.heroSubtitle} — ${tr.home.heroDesc}`}
     >
       <div className="max-w-6xl mx-auto px-4 py-6 space-y-5">
-        {analyticsLoading ? (
+        {(isDemo || showDemoLockFlash) && <DemoLockedNotice />}
+
+        {!isDemo && !analyticsReady ? (
           <section
             className="odoo-card"
             role="status"
@@ -112,26 +130,25 @@ export default function HomePage() {
             <div className="odoo-card-header">{tr.readiness.title}</div>
             <div className="odoo-card-body flex flex-col items-center justify-center gap-3 py-10">
               <LoadingSpinner size="md" />
-              <p className="text-sm text-odoo-text-muted">{tr.readiness.loading}</p>
+              <p className="text-sm text-odoo-text-muted">
+                {tr.readiness.loading}
+              </p>
             </div>
           </section>
-        ) : (
-          <>
-            <div className="odoo-content-reveal space-y-5">
-              <ReadinessPanel report={readiness} />
+        ) : null}
 
-              <SmartTrainingLinks
-                mistakeCount={mistakeCount}
-                dueCount={dueCount}
-                hasWeakModules={weakModules.length > 0}
-              />
+        {!isDemo && analyticsReady && readiness ? (
+          <div className="odoo-content-reveal space-y-5">
+            <ReadinessPanel report={readiness} />
+            <SmartTrainingLinks
+              mistakeCount={mistakeCount}
+              dueCount={dueCount}
+              hasWeakModules={weakModules.length > 0}
+            />
+            <StudyPlanPanel steps={studyPlan} />
+          </div>
+        ) : null}
 
-              <StudyPlanPanel steps={studyPlan} />
-            </div>
-          </>
-        )}
-
-        {/* Official guidelines — mirrors Odoo certification page */}
         <section className="odoo-guidelines odoo-card">
           <div className="odoo-card-header">{tr.guidelines.title}</div>
           <div className="odoo-card-body">
@@ -143,11 +160,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Stats row */}
+        <OfficialOdooLinks />
+
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {[
-            { label: tr.home.questions, value: String(EXAM_RULES.totalQuestions) },
-            { label: tr.home.duration, value: formatExamDuration(EXAM_RULES.durationMinutes) },
+            {
+              label: tr.home.questions,
+              value: String(EXAM_RULES.totalQuestions),
+            },
+            {
+              label: tr.home.duration,
+              value: formatExamDuration(EXAM_RULES.durationMinutes),
+            },
             {
               label: tr.home.passThreshold,
               value: `${EXAM_RULES.passPercentage}%`,
@@ -170,7 +194,6 @@ export default function HomePage() {
           ))}
         </section>
 
-        {/* 360 coverage */}
         <section className="odoo-card">
           <div className="odoo-card-header flex items-center justify-between">
             <span>{tr.home.view360}</span>
@@ -202,65 +225,81 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Classic training modes */}
         <section>
           <h2 className="text-base font-bold text-odoo-text mb-3">
             {tr.home.trainingModes}
           </h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {classicPresets.map((preset) => {
-              const presetTr =
-                tr.presets[preset.id as keyof typeof tr.presets];
-              const durationLabel =
-                preset.config.durationMinutes > 0
-                  ? formatExamDuration(preset.config.durationMinutes)
-                  : tr.exam.noTimer;
-              const description = `${preset.config.questionCount} ${tr.exam.questions} · ${durationLabel} · ${presetTr.description}`;
-              return (
-                <Link
-                  key={preset.id}
-                  href={`/exam?preset=${preset.id}`}
-                  className="odoo-card p-4 hover:shadow-md transition-shadow group block no-underline"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-semibold text-odoo-text group-hover:text-odoo-brand">
-                      {presetTr.title}
-                    </h3>
-                    {"badge" in presetTr && presetTr.badge && (
-                      <span className="odoo-badge odoo-badge-brand shrink-0">
-                        {presetTr.badge}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-odoo-text-muted mt-2">
-                    {description}
-                  </p>
-                  <span className="inline-block mt-3 text-sm font-medium text-odoo-brand">
-                    {tr.home.start}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+          {isDemo ? (
+            <DemoLockedNotice />
+          ) : (
+            <div className="grid sm:grid-cols-2 gap-3">
+              {classicPresets.map((preset) => {
+                const presetTr =
+                  tr.presets[preset.id as keyof typeof tr.presets];
+                const durationLabel =
+                  preset.config.durationMinutes > 0
+                    ? formatExamDuration(preset.config.durationMinutes)
+                    : tr.exam.noTimer;
+                const description = `${preset.config.questionCount} ${tr.exam.questions} · ${durationLabel} · ${presetTr.description}`;
+                return (
+                  <Link
+                    key={preset.id}
+                    href={`/exam?preset=${preset.id}`}
+                    className="odoo-card p-4 hover:shadow-md transition-shadow group block no-underline"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-semibold text-odoo-text group-hover:text-odoo-brand">
+                        {presetTr.title}
+                      </h3>
+                      {"badge" in presetTr && presetTr.badge && (
+                        <span className="odoo-badge odoo-badge-brand shrink-0">
+                          {presetTr.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-odoo-text-muted mt-2">
+                      {description}
+                    </p>
+                    <span className="inline-block mt-3 text-sm font-medium text-odoo-brand">
+                      {tr.home.start}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </section>
 
-        {/* Quick links */}
         <section className="grid sm:grid-cols-2 gap-3">
-          <Link href="/modules" className="odoo-card p-4 hover:shadow-md block no-underline">
+          <Link
+            href="/modules"
+            className="odoo-card p-4 hover:shadow-md block no-underline"
+          >
             <h3 className="font-semibold text-odoo-text">{tr.home.byModule}</h3>
             <p className="text-sm text-odoo-text-muted mt-1">
               {tr.home.byModuleDesc}
             </p>
           </Link>
-          <Link href="/history" className="odoo-card p-4 hover:shadow-md block no-underline">
-            <h3 className="font-semibold text-odoo-text">{tr.home.history}</h3>
-            <p className="text-sm text-odoo-text-muted mt-1">
-              {tr.home.historyDesc}
-            </p>
-          </Link>
+          {isDemo ? (
+            <div className="odoo-card p-4 opacity-70">
+              <h3 className="font-semibold text-odoo-text">{tr.home.history}</h3>
+              <p className="text-sm text-odoo-text-muted mt-1">
+                {tr.demo.historyLocked}
+              </p>
+            </div>
+          ) : (
+            <Link
+              href="/history"
+              className="odoo-card p-4 hover:shadow-md block no-underline"
+            >
+              <h3 className="font-semibold text-odoo-text">{tr.home.history}</h3>
+              <p className="text-sm text-odoo-text-muted mt-1">
+                {tr.home.historyDesc}
+              </p>
+            </Link>
+          )}
         </section>
 
-        {/* Tips */}
         <section className="odoo-card">
           <div className="odoo-card-header">{tr.home.tipsTitle}</div>
           <div className="odoo-card-body">
@@ -287,5 +326,14 @@ export default function HomePage() {
         </section>
       </div>
     </PageShell>
+  );
+}
+
+export default function HomePage() {
+  const { tr } = useLanguage();
+  return (
+    <Suspense fallback={<AppLoading message={tr.auth.loading} />}>
+      <HomePageContent />
+    </Suspense>
   );
 }
