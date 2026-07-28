@@ -1,13 +1,8 @@
 /**
- * Admin emails can approve/reject signup requests.
- * Override with NEXT_PUBLIC_ADMIN_EMAILS (comma-separated), or ADMIN_EMAILS on the server.
- * If both are unset, the built-in defaults below apply.
+ * Admin emails that can approve/reject signup requests.
+ * Set NEXT_PUBLIC_ADMIN_EMAILS in .env.local / Vercel (comma-separated).
+ * No real addresses are hardcoded in the repo.
  */
-const DEFAULT_ADMIN_EMAILS = [
-  "andrianantenainaangelo55@gmail.com",
-  "james@virtuology.com",
-] as const;
-
 function parseEnvList(raw: string | undefined): string[] {
   if (!raw?.trim()) return [];
   return raw
@@ -21,8 +16,7 @@ export function getAdminEmails(): string[] {
     ...parseEnvList(process.env.ADMIN_EMAILS),
     ...parseEnvList(process.env.NEXT_PUBLIC_ADMIN_EMAILS),
   ];
-  const merged = fromEnv.length > 0 ? fromEnv : [...DEFAULT_ADMIN_EMAILS];
-  return [...new Set(merged.map((e) => e.toLowerCase()))];
+  return [...new Set(fromEnv.map((e) => e.toLowerCase()))];
 }
 
 export function normalizeEmail(email: string): string {
@@ -31,5 +25,7 @@ export function normalizeEmail(email: string): string {
 
 export function isAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false;
-  return getAdminEmails().includes(normalizeEmail(email));
+  const admins = getAdminEmails();
+  if (admins.length === 0) return false;
+  return admins.includes(normalizeEmail(email));
 }

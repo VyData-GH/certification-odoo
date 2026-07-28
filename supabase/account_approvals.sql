@@ -34,6 +34,8 @@ from auth.users u
 on conflict (user_id) do nothing;
 
 -- New signups: pending by default; admin emails auto-approved.
+-- IMPORTANT: replace the placeholders below with your real admin emails BEFORE running
+-- (do not commit real addresses). Keep in sync with NEXT_PUBLIC_ADMIN_EMAILS in Vercel/.env.local.
 create or replace function public.handle_new_account_approval()
 returns trigger
 language plpgsql
@@ -42,8 +44,8 @@ set search_path = public
 as $$
 declare
   admin_emails text[] := array[
-    'andrianantenainaangelo55@gmail.com',
-    'james@virtuology.com'
+    'admin1@example.com',
+    'admin2@example.com'
   ];
   new_status text := 'pending';
 begin

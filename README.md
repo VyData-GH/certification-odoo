@@ -67,7 +67,7 @@ cp frontend/.env.local.example frontend/.env.local
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client Supabase (navigateur) |
 | `SUPABASE_SERVICE_ROLE_KEY` | API routes serveur — **ne jamais exposer au navigateur** |
 | `NEXT_PUBLIC_SITE_URL` | (optionnel) URL prod pour redirects e-mail auth |
-| `NEXT_PUBLIC_ADMIN_EMAILS` | (optionnel) e-mails admins qui approuvent les inscriptions |
+| `NEXT_PUBLIC_ADMIN_EMAILS` | E-mails admins (approbation) — **obligatoire en prod**, ne jamais committer les vraies adresses |
 
 ```bash
 npm install --prefix frontend
