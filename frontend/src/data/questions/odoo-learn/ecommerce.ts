@@ -1002,27 +1002,6 @@ mcq3Q({
     },
   }),
   complexQ({
-    id: "eco-075",
-    module: "ecommerce",
-    text: {
-      en: "Which of the following must be enabled in Odoo to use pricelists? (Odoo Learn — Pricing)",
-      fr: "Lequel des éléments suivants doit être activé dans Odoo pour utiliser les listes de prix ? (Odoo Learn — Tarifs)",
-    },
-    correct: {
-      en: "The Pricelists option in the eCommerce settings.",
-      fr: "L'option Listes de prix dans les paramètres de commerce électronique.",
-    },
-    distractors: [
-      { en: "The multi-company setting.", fr: "Le cadre multi-entreprises." },
-      { en: "The advanced inventory module.", fr: "Le module d'inventaire avancé." },
-      { en: "The Online payment option in the Sales settings.", fr: "L'option Paiement en ligne dans les paramètres Ventes." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Pricing): The Pricelists option in the eCommerce settings.",
-      fr: "Source Odoo Learn (Tarif) : L'option Listes de prix dans les paramètres du commerce électronique.",
-    },
-  }),
-  complexQ({
     id: "eco-076",
     module: "ecommerce",
     text: {
@@ -1490,66 +1469,6 @@ mcq3Q({
     },
   }),
   mcq3Q({
-    id: "eco-099",
-    module: "ecommerce",
-    text: {
-      en: "What happens when you set the sign-in or sign-up option to \"mandatory\" in the checkout settings? (Odoo Learn — Customer Portal and Account)",
-      fr: "Que se passe-t-il lorsque vous définissez l'option de connexion ou d'inscription sur « obligatoire » dans les paramètres de paiement ? (Odoo Learn — Customer Portal and Account)",
-    },
-    correct: {
-      en: "Customers must create an account or log in to complete their checkout.",
-      fr: "Les clients doivent créer un compte ou se connecter pour finaliser leur paiement.",
-    },
-    distractors: [
-      { en: "Customers can only check out as guests without creating an account.", fr: "Les clients ne peuvent payer qu'en tant qu'invités sans créer de compte." },
-      { en: "Customers can create an account only after their order is confirmed.", fr: "Les clients ne peuvent créer un compte qu'après confirmation de leur commande." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Customer Portal and Account): Customers must create an account or log in to complete their checkout.",
-      fr: "Source Odoo Learn (Portail client et compte) : Les clients doivent créer un compte ou se connecter pour finaliser leur commande.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-100",
-    module: "ecommerce",
-    text: {
-      en: "How can you grant a customer access to the customer portal? (Odoo Learn — Customer Portal and Account)",
-      fr: "Comment accorder à un client l’accès au portail client ? (Odoo Learn — Customer Portal and Account)",
-    },
-    correct: {
-      en: "Go to the customer’s profile and click on \"Grant access\" in the actions menu.",
-      fr: "Accédez au profil du client et cliquez sur « Accorder l'accès » dans le menu des actions.",
-    },
-    distractors: [
-      { en: "Send a request to the customer manually via email.", fr: "Envoyez une demande au client manuellement par e-mail." },
-      { en: "Add the customer to the “Portal Customers” group in the settings menu.", fr: "Ajoutez le client au groupe « Clients du portail » dans le menu des paramètres." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Customer Portal and Account): Go to the customer’s profile and click on \"Grant access\" in the actions menu.",
-      fr: "Source Odoo Learn (Portail et Compte Client) : Accédez au profil du client et cliquez sur « Accorder l'accès » dans le menu des actions.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-101",
-    module: "ecommerce",
-    text: {
-      en: "What can a customer access from their customer portal? (Odoo Learn — Customer Portal and Account)",
-      fr: "À quoi un client peut-il accéder depuis son portail client ? (Odoo Learn — Customer Portal and Account)",
-    },
-    correct: {
-      en: "Sales orders, invoices, bills, projects, and other account-related information.",
-      fr: "Bons de commande, factures, factures, projets et autres informations relatives au compte.",
-    },
-    distractors: [
-      { en: "Only their sales orders and invoices.", fr: "Uniquement leurs bons de commande et leurs factures." },
-      { en: "Only their account profile and personal details.", fr: "Uniquement leur profil de compte et leurs informations personnelles." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Customer Portal and Account): Sales orders, invoices, bills, projects, and other account-related information.",
-      fr: "Source Odoo Learn (portail client et compte) : bons de commande, factures, factures, projets et autres informations liées au compte.",
-    },
-  }),
-  mcq3Q({
     id: "eco-102",
     module: "ecommerce",
     text: {
@@ -1630,66 +1549,6 @@ mcq3Q({
     },
   }),
   mcq3Q({
-    id: "eco-106",
-    module: "ecommerce",
-    text: {
-      en: "What does the \"Quotation\" stage in Odoo signify? (Odoo Learn — Order Management)",
-      fr: "Que signifie l'étape « Devis » dans Odoo ? (Odoo Learn — Order Management)",
-    },
-    correct: {
-      en: "The customer has completed the checkout process but the payment isn’t confirmed.",
-      fr: "Le client a terminé le processus de paiement mais le paiement n’est pas confirmé.",
-    },
-    distractors: [
-      { en: "The product has been added to the cart, but the customer hasn’t completed the checkout process.", fr: "Le produit a été ajouté au panier, mais le client n'a pas terminé le processus de paiement." },
-      { en: "The payment has been confirmed, and the order is ready for delivery.", fr: "Le paiement a été confirmé et la commande est prête à être livrée." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Order Management): The customer has completed the checkout process but the payment isn’t confirmed.",
-      fr: "Source Odoo Learn (Gestion des commandes) : Le client a terminé le processus de paiement mais le paiement n'est pas confirmé.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-107",
-    module: "ecommerce",
-    text: {
-      en: "Where can you view all confirmed orders placed through the website? (Odoo Learn — Order Management)",
-      fr: "Où pouvez-vous consulter toutes les commandes confirmées passées via le site Web ? (Odoo Learn — Order Management)",
-    },
-    correct: {
-      en: "In the \"Orders\" section under the eCommerce tab.",
-      fr: "Dans la section \"Commandes\" sous l'onglet eCommerce.",
-    },
-    distractors: [
-      { en: "In the \"Invoices\" section under the Accounting tab.", fr: "Dans la section \"Factures\" sous l'onglet Comptabilité." },
-      { en: "In the \"Inventory\" section under the Inventory app.", fr: "Dans la section « Inventaire » sous l'application Inventaire." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Order Management): In the \"Orders\" section under the eCommerce tab.",
-      fr: "Source Odoo Learn (Gestion des commandes) : Dans la section « Commandes » sous l'onglet eCommerce.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-108",
-    module: "ecommerce",
-    text: {
-      en: "What happens when you activate the \"automatic invoice\" option in Odoo? (Odoo Learn — Order Management)",
-      fr: "Que se passe-t-il lorsque vous activez l'option « facture automatique » dans Odoo ? (Odoo Learn — Order Management)",
-    },
-    correct: {
-      en: "An invoice is generated manually by the salesperson.",
-      fr: "Une facture est générée manuellement par le vendeur.",
-    },
-    distractors: [
-      { en: "The system sends a reminder email for unpaid invoices.", fr: "Le système envoie un e-mail de rappel pour les factures impayées." },
-      { en: "An invoice is automatically created and sent to the customer when payment is confirmed.", fr: "Une facture est automatiquement créée et envoyée au client lorsque le paiement est confirmé." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Order Management): An invoice is generated manually by the salesperson.",
-      fr: "Source Odoo Learn (Gestion des commandes) : Une facture est générée manuellement par le vendeur.",
-    },
-  }),
-  mcq3Q({
     id: "eco-109",
     module: "ecommerce",
     text: {
@@ -1707,86 +1566,6 @@ mcq3Q({
     explanation: {
       en: "Source Odoo Learn (Order Management): The system automatically issues a cash refund.",
       fr: "Source Odoo Learn (Gestion des commandes) : Le système émet automatiquement un remboursement en espèces.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-110",
-    module: "ecommerce",
-    text: {
-      en: "What is the main difference between optional and accessory products in Odoo? (Odoo Learn — Selling Strategies)",
-      fr: "Quelle est la principale différence entre les produits optionnels et accessoires dans Odoo ? (Odoo Learn — Selling Strategies)",
-    },
-    correct: {
-      en: "Optional products are suggested when the customer clicks “add to cart,” while accessory products are suggested when the customer reviews their cart before payment.",
-      fr: "Les produits optionnels sont suggérés lorsque le client clique sur « Ajouter au panier », tandis que les produits accessoires sont suggérés lorsque le client examine son panier avant le paiement.",
-    },
-    distractors: [
-      { en: "Optional products are suggested during checkout, while accessory products are suggested before adding an item to the cart.", fr: "Les produits optionnels sont suggérés lors du paiement, tandis que les produits accessoires sont suggérés avant d'ajouter un article au panier." },
-      { en: "Optional products replace the initial product, while accessory products do not.", fr: "Les produits optionnels remplacent le produit initial, contrairement aux produits accessoires." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Selling Strategies): Optional products are suggested when the customer clicks “add to cart,” while accessory products are suggested when the customer reviews their cart before payment.",
-      fr: "Source Odoo Learn (Stratégies de vente) : les produits optionnels sont suggérés lorsque le client clique sur « Ajouter au panier », tandis que les produits accessoires sont suggérés lorsque le client examine son panier avant le paiement.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-111",
-    module: "ecommerce",
-    text: {
-      en: "How does upselling work in Odoo? (Odoo Learn — Selling Strategies)",
-      fr: "Comment fonctionne la vente incitative dans Odoo ? (Odoo Learn — Selling Strategies)",
-    },
-    correct: {
-      en: "It involves offering alternative upgraded versions of the product.",
-      fr: "Il s’agit de proposer des versions alternatives améliorées du produit.",
-    },
-    distractors: [
-      { en: "It involves suggesting additional products that complement the customer’s purchase.", fr: "Il s’agit de suggérer des produits complémentaires qui complètent l’achat du client." },
-      { en: "It allows customers to select accessory products before checkout.", fr: "Il permet aux clients de sélectionner des produits accessoires avant de passer à la caisse." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Selling Strategies): It involves offering alternative upgraded versions of the product.",
-      fr: "Source Odoo Learn (Stratégies de vente) : Il s'agit de proposer des versions alternatives améliorées du produit.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-112",
-    module: "ecommerce",
-    text: {
-      en: "Where can you configure cross-selling and upselling options for a product in Odoo? (Odoo Learn — Selling Strategies)",
-      fr: "Où pouvez-vous configurer les options de vente croisée et de vente incitative pour un produit dans Odoo ? (Odoo Learn — Selling Strategies)",
-    },
-    correct: {
-      en: "In the product's \"Sales\" tab within the eCommerce application.",
-      fr: "Dans l'onglet « Ventes » du produit au sein de l'application eCommerce.",
-    },
-    distractors: [
-      { en: "In the product's \"Inventory\" tab within the Inventory application.", fr: "Dans l'onglet « Inventaire » du produit au sein de l'application Inventaire." },
-      { en: "In the Website's settings under the eCommerce section.", fr: "Dans les paramètres du site Web sous la section eCommerce." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Selling Strategies): In the product's \"Sales\" tab within the eCommerce application.",
-      fr: "Source Odoo Learn (Stratégies de vente) : Dans l'onglet « Ventes » du produit au sein de l'application eCommerce.",
-    },
-  }),
-  mcq3Q({
-    id: "eco-113",
-    module: "ecommerce",
-    text: {
-      en: "What happens when a customer selects an optional product? (Odoo Learn — Selling Strategies)",
-      fr: "Que se passe-t-il lorsqu'un client sélectionne un produit optionnel ? (Odoo Learn — Selling Strategies)",
-    },
-    correct: {
-      en: "The optional product is added to the cart alongside the initial product.",
-      fr: "Le produit optionnel est ajouté au panier aux côtés du produit initial.",
-    },
-    distractors: [
-      { en: "The optional product substitutes the initial product in the cart.", fr: "Le produit optionnel remplace le produit initial dans le panier." },
-      { en: "The optional product appears only after the payment is completed.", fr: "Le produit optionnel n'apparaît qu'une fois le paiement effectué." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (Selling Strategies): The optional product is added to the cart alongside the initial product.",
-      fr: "Source Odoo Learn (Stratégies de vente) : Le produit optionnel est ajouté au panier à côté du produit initial.",
     },
   }),
 ];

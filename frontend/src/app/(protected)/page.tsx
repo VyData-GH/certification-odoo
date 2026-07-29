@@ -3,8 +3,10 @@
 import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { ActivityHeatmap } from "@/components/ActivityHeatmap";
 import { AppLoading } from "@/components/AppLoading";
 import { DemoLockedNotice } from "@/components/DemoLockedNotice";
+import { ExamProgressPanel } from "@/components/ExamProgressPanel";
 import { LoadingSpinner } from "@/components/LoadingSpinner";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { OfficialOdooLinks } from "@/components/OfficialOdooLinks";
@@ -28,6 +30,7 @@ import {
   formatExamDuration,
   CERTIFICATION_MODULES,
   ModuleId,
+  ExamResult,
 } from "@/types/exam";
 
 const EXAM_WEIGHTS: { modules: ModuleId[]; pct: number }[] = [
@@ -58,6 +61,7 @@ function HomePageContent() {
   const [weakModules, setWeakModules] = useState<ModuleStrength[]>([]);
   const [studyPlan, setStudyPlan] = useState<StudyPlanStep[]>([]);
   const [analyticsReady, setAnalyticsReady] = useState(isDemo);
+  const [historyItems, setHistoryItems] = useState<ExamResult[]>([]);
 
   useEffect(() => {
     if (isDemo) {
@@ -66,6 +70,7 @@ function HomePageContent() {
       setReadiness(null);
       setWeakModules([]);
       setStudyPlan([]);
+      setHistoryItems([]);
       return;
     }
 
@@ -80,6 +85,7 @@ function HomePageContent() {
           import("@/lib/spaced-repetition"),
         ]);
         if (cancelled) return;
+        setHistoryItems(items);
         const mistakes = analytics.getMistakeQuestionIds(items, 80);
         srs.seedSrsFromMistakeIds(mistakes);
         const due = srs.getDueSrsCount();
@@ -155,7 +161,15 @@ function HomePageContent() {
 
         {!isDemo && analyticsReady && readiness ? (
           <div className="odoo-content-reveal space-y-5">
-            <ReadinessPanel report={readiness} />
+            <div className="grid lg:grid-cols-3 gap-4">
+              <div className="lg:col-span-2">
+                <ReadinessPanel report={readiness} />
+              </div>
+              <div className="space-y-4">
+                <ExamProgressPanel history={historyItems} />
+              </div>
+            </div>
+            <ActivityHeatmap history={historyItems} />
             <SmartTrainingLinks
               mistakeCount={mistakeCount}
               dueCount={dueCount}
@@ -165,82 +179,7 @@ function HomePageContent() {
           </div>
         ) : null}
 
-        <section className="odoo-guidelines odoo-card">
-          <div className="odoo-card-header">{tr.guidelines.title}</div>
-          <div className="odoo-card-body">
-            <ul className="space-y-1 list-disc pl-5">
-              {guidelines.map((line, i) => (
-                <li key={i}>{line}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <OfficialOdooLinks />
-
-        <section className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          {[
-            {
-              label: tr.home.questions,
-              value: String(EXAM_RULES.totalQuestions),
-            },
-            {
-              label: tr.home.duration,
-              value: formatExamDuration(EXAM_RULES.durationMinutes),
-            },
-            {
-              label: tr.home.passThreshold,
-              value: `${EXAM_RULES.passPercentage}%`,
-            },
-            {
-              label: tr.home.scoring,
-              value: "+1 / −½ / 0",
-              sub: tr.home.scoringSub,
-            },
-          ].map((item) => (
-            <div key={item.label} className="odoo-stat-box">
-              <div className="odoo-stat-value">{item.value}</div>
-              <div className="odoo-stat-label">{item.label}</div>
-              {item.sub && (
-                <div className="text-xs text-odoo-text-muted mt-0.5">
-                  {item.sub}
-                </div>
-              )}
-            </div>
-          ))}
-        </section>
-
-        <section className="odoo-card">
-          <div className="odoo-card-header flex items-center justify-between">
-            <span>{tr.home.view360}</span>
-            <span className="font-normal text-odoo-text-muted">
-              {stats.total} {tr.home.questionsAvailable}
-            </span>
-          </div>
-          <div className="odoo-card-body">
-            <p className="text-sm text-odoo-text-muted mb-3">
-              {tr.home.view360Desc} — {tr.home.modulesCovered}:
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {CERTIFICATION_MODULES.map((m) => (
-                <span
-                  key={m.id}
-                  className="odoo-badge odoo-badge-brand inline-flex items-center gap-1.5"
-                  title={`${stats.byModule[m.id] ?? 0} Q`}
-                >
-                  <ModuleIcon moduleId={m.id} size={16} />
-                  <span>
-                    {tr.modules_labels[m.id] ?? m.label}
-                    <span className="ml-1 opacity-60">
-                      ({stats.byCertification[m.id] ?? 0})
-                    </span>
-                  </span>
-                </span>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        {/* --- Training Modes --- */}
         <section>
           <h2 className="text-base font-bold text-odoo-text mb-3">
             {tr.home.trainingModes}
@@ -286,6 +225,7 @@ function HomePageContent() {
           )}
         </section>
 
+        {/* --- By Module / History --- */}
         <section className="grid sm:grid-cols-2 gap-3">
           <Link
             href="/modules"
@@ -316,45 +256,72 @@ function HomePageContent() {
           )}
         </section>
 
+        {/* --- Exam Stats --- */}
+        <section className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          {[
+            {
+              label: tr.home.questions,
+              value: String(EXAM_RULES.totalQuestions),
+            },
+            {
+              label: tr.home.duration,
+              value: formatExamDuration(EXAM_RULES.durationMinutes),
+            },
+            {
+              label: tr.home.passThreshold,
+              value: `${EXAM_RULES.passPercentage}%`,
+            },
+            {
+              label: tr.home.scoring,
+              value: "+1 / −½ / 0",
+              sub: tr.home.scoringSub,
+            },
+          ].map((item) => (
+            <div key={item.label} className="odoo-stat-box">
+              <div className="odoo-stat-value">{item.value}</div>
+              <div className="odoo-stat-label">{item.label}</div>
+              {item.sub && (
+                <div className="text-xs text-odoo-text-muted mt-0.5">
+                  {item.sub}
+                </div>
+              )}
+            </div>
+          ))}
+        </section>
+
+        {/* --- 360° Coverage --- */}
         <section className="odoo-card">
-          <div className="odoo-card-header">{tr.home.tipsTitle}</div>
+          <div className="odoo-card-header flex items-center justify-between">
+            <span>{tr.home.view360}</span>
+            <span className="font-normal text-odoo-text-muted">
+              {stats.total} {tr.home.questionsAvailable}
+            </span>
+          </div>
           <div className="odoo-card-body">
-            <ul className="text-sm text-odoo-text space-y-2 list-disc pl-5">
-              <li>{tr.home.tip1}</li>
-              <li>{tr.home.tip2}</li>
-              <li>{tr.home.tip3}</li>
-              <li>{tr.home.tip4}</li>
-              <li>{tr.home.tip5}</li>
-            </ul>
-            {locale === "en" && (
-              <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
-                💡 The real exam is in English — use the English-only full mock
-                to practice exam vocabulary.
-              </p>
-            )}
-            {locale === "fr" && (
-              <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
-                💡 L&apos;examen réel est en anglais — utilisez l&apos;examen
-                blanc EN pour vous familiariser avec le vocabulaire.
-              </p>
-            )}
+            <p className="text-sm text-odoo-text-muted mb-3">
+              {tr.home.view360Desc} — {tr.home.modulesCovered}:
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {CERTIFICATION_MODULES.map((m) => (
+                <span
+                  key={m.id}
+                  className="odoo-badge odoo-badge-brand inline-flex items-center gap-1.5"
+                  title={`${stats.byModule[m.id] ?? 0} Q`}
+                >
+                  <ModuleIcon moduleId={m.id} size={16} />
+                  <span>
+                    {tr.modules_labels[m.id] ?? m.label}
+                    <span className="ml-1 opacity-60">
+                      ({stats.byCertification[m.id] ?? 0})
+                    </span>
+                  </span>
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="odoo-card">
-          <div className="odoo-card-header">{tr.home.strategyTitle}</div>
-          <div className="odoo-card-body">
-            <ul className="text-sm text-odoo-text space-y-2 list-decimal pl-5">
-              <li>{tr.home.strategy1}</li>
-              <li>{tr.home.strategy2}</li>
-              <li>{tr.home.strategy3}</li>
-              <li>{tr.home.strategy4}</li>
-              <li>{tr.home.strategy5}</li>
-              <li>{tr.home.strategy6}</li>
-            </ul>
-          </div>
-        </section>
-
+        {/* --- Exam Weights --- */}
         <section className="odoo-card">
           <div className="odoo-card-header">{tr.home.examWeightsTitle}</div>
           <div className="odoo-card-body space-y-2">
@@ -386,6 +353,62 @@ function HomePageContent() {
             </p>
           </div>
         </section>
+
+        {/* --- Strategy --- */}
+        <section className="odoo-card">
+          <div className="odoo-card-header">{tr.home.strategyTitle}</div>
+          <div className="odoo-card-body">
+            <ul className="text-sm text-odoo-text space-y-2 list-decimal pl-5">
+              <li>{tr.home.strategy1}</li>
+              <li>{tr.home.strategy2}</li>
+              <li>{tr.home.strategy3}</li>
+              <li>{tr.home.strategy4}</li>
+              <li>{tr.home.strategy5}</li>
+              <li>{tr.home.strategy6}</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* --- Tips to Pass --- */}
+        <section className="odoo-card">
+          <div className="odoo-card-header">{tr.home.tipsTitle}</div>
+          <div className="odoo-card-body">
+            <ul className="text-sm text-odoo-text space-y-2 list-disc pl-5">
+              <li>{tr.home.tip1}</li>
+              <li>{tr.home.tip2}</li>
+              <li>{tr.home.tip3}</li>
+              <li>{tr.home.tip4}</li>
+              <li>{tr.home.tip5}</li>
+            </ul>
+            {locale === "en" && (
+              <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
+                💡 The real exam is in English — use the English-only full mock
+                to practice exam vocabulary.
+              </p>
+            )}
+            {locale === "fr" && (
+              <p className="mt-3 text-xs text-odoo-text-muted border-t border-gray-200 pt-3">
+                💡 L&apos;examen réel est en anglais — utilisez l&apos;examen
+                blanc EN pour vous familiariser avec le vocabulaire.
+              </p>
+            )}
+          </div>
+        </section>
+
+        {/* --- Guidelines --- */}
+        <section className="odoo-guidelines odoo-card">
+          <div className="odoo-card-header">{tr.guidelines.title}</div>
+          <div className="odoo-card-body">
+            <ul className="space-y-1 list-disc pl-5">
+              {guidelines.map((line, i) => (
+                <li key={i}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* --- Official Odoo Links --- */}
+        <OfficialOdooLinks />
       </div>
     </PageShell>
   );

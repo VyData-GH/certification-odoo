@@ -1150,46 +1150,4 @@ complexQ({
       fr: "Source Odoo Learn (Règles d'approbation) : Un message d'erreur s'affiche au salarié, et une activité est créée pour l'approbateur désigné",
     },
   }),
-complexQ({
-    id: "stu-081",
-    module: "studio",
-    text: {
-      en: "How can you configure your database to work with IAP services? (Odoo Learn — In-App Services (Tokens and Credits))",
-      fr: "Comment pouvez-vous configurer votre base de données pour qu'elle fonctionne avec les services IAP ? (Odoo Learn — Services intégrés à l'application (jetons et crédits))",
-    },
-    correct: {
-      en: "IAP services are automatically integrated with all Odoo databases. No additional configuration is required for them to work.",
-      fr: "Les services IAP sont automatiquement intégrés à toutes les bases de données Odoo. Aucune configuration supplémentaire n'est requise pour qu'ils fonctionnent.",
-    },
-    distractors: [
-      { en: "IAP services are automatically integrated with all Odoo databases, but require app-specific configuration to work properly. You must go to the Configuration page for each app and manually enable “IAP functionality.”", fr: "Les services IAP sont automatiquement intégrés à toutes les bases de données Odoo, mais nécessitent une configuration spécifique à l'application pour fonctionner correctement. Vous devez accéder à la page de configuration de chaque application et activer manuellement la « fonctionnalité IAP »." },
-      { en: "Log into your database, go to the Settings app, search for “IAP services” and toggle the setting.", fr: "Connectez-vous à votre base de données, accédez à l'application Paramètres, recherchez « Services IAP » et modifiez le paramètre." },
-      { en: "To properly configure IAP services, you must reach out to Odoo customer support directly via phone or email.", fr: "Pour configurer correctement les services IAP, vous devez contacter le support client Odoo directement par téléphone ou par e-mail." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (In-App Services (Tokens and Credits)): IAP services are automatically integrated with all Odoo databases. No additional configuration is required for them to work.",
-      fr: "Source Odoo Learn (Services In-App (Jetons et Crédits)) : Les services IAP sont automatiquement intégrés à toutes les bases de données Odoo. Aucune configuration supplémentaire n'est requise pour qu'ils fonctionnent.",
-    },
-  }),
-complexQ({
-    id: "stu-082",
-    module: "studio",
-    text: {
-      en: "True or false: IAP services can be configured so that only certain companies in a multi-company database can use them? (Odoo Learn — In-App Services (Tokens and Credits))",
-      fr: "Vrai ou faux : les services IAP peuvent-ils être configurés pour que seules certaines entreprises d'une base de données multi-entreprises puissent les utiliser ? (Odoo Learn — Services intégrés à l'application (jetons et crédits))",
-    },
-    correct: {
-      en: "True. IAP services can be restricted by company within the Settings app.",
-      fr: "Vrai. Les services IAP peuvent être restreints par entreprise dans l'application Paramètres.",
-    },
-    distractors: [
-      { en: "True in most cases. By default, IAP services are only available to the main company in a multi-company database, but admin users can change this setting.", fr: "C'est vrai dans la plupart des cas. Par défaut, les services IAP ne sont disponibles que pour l'entreprise principale dans une base de données multi-entreprises, mais les utilisateurs administrateurs peuvent modifier ce paramètre." },
-      { en: "False. Due to their deep integration with Odoo databases, IAP services cannot be restricted from being used by all companies in a multi-company database.", fr: "FAUX. En raison de leur intégration profonde avec les bases de données Odoo, les services IAP ne peuvent être empêchés d'être utilisés par toutes les entreprises dans une base de données multi-entreprises." },
-      { en: "False in most cases. By default, IAP services are always available to all companies in a multi-company database, but you can contact Odoo customer support to enable some restrictions.", fr: "Faux dans la plupart des cas. Par défaut, les services IAP sont toujours disponibles pour toutes les entreprises dans une base de données multi-entreprises, mais vous pouvez contacter le support client Odoo pour activer certaines restrictions." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (In-App Services (Tokens and Credits)): True. IAP services can be restricted by company within the Settings app.",
-      fr: "Source Odoo Learn (services intégrés à l'application (jetons et crédits)) : vrai. Les services IAP peuvent être restreints par entreprise dans l'application Paramètres.",
-    },
-  }),
 ];

@@ -1,3995 +1,1600 @@
 import { complexQ } from "./helpers";
-import type { Question } from "@/types/exam";
 
-export const openExamPrepQuestions: Question[] = [
+export const openExamPrepQuestions = [
   complexQ({
     id: "oep-001",
     module: "accounting",
-    text: {
-      en: "A consultant is configuring the chart of accounts for a new company. In Odoo 19, where are the accounts stored as a technical model?",
-      fr: "A consultant is configuring the plan comptable for a new company. In Odoo 19, where are the accounts stored as a technical model?",
-    },
-    correct: {
-      en: "account.account",
-      fr: "account.account",
-    },
+    text: { en: "A consultant is configuring the chart of accounts for a new company. In Odoo 19, where are the accounts stored as a technical model?", fr: "Un consultant configure le plan comptable pour une nouvelle société. Dans Odoo 19, où les comptes sont-ils stockés en tant que modèle technique ?" },
+    correct: { en: "account.account", fr: "account.account" },
     distractors: [
-      {
-        en: "account.chart",
-        fr: "account.chart",
-      },
-      {
-        en: "account.coa (not applicable here)",
-        fr: "account.coa (not applicable here)",
-      },
-      {
-        en: "res.account (not applicable here)",
-        fr: "res.account (not applicable here)",
-      },
+      { en: "account.chart", fr: "account.chart" },
+      { en: "account.coa (not applicable here)", fr: "account.coa (non applicable ici)" },
+      { en: "res.account (not applicable here)", fr: "res.account (non applicable ici)" },
     ],
-    explanation: {
-      en: "All accounts in Odoo's chart of accounts are records of the technical model account.account. Each account has a code, a name, an account type (e.g., Receivable, Payable, Income, Expense), and is scoped to a company in multi-company setups. The chart of accounts itself is just the collection of account.account records assigned to a company.\n\nThere is no account.chart model; the chart is the set of account.account records, not a separate object. account.coa is not an Odoo model name; the correct technical name is account.account. res.* models are reserved for resources like users, partners, and companies — not accounts.",
-      fr: "All accounts in Odoo's plan comptable are records of the technical model account.account. Each account has a code, a name, an account type (e.g., Receivable, Payable, Income, note de frais), and is scoped to a company in multi-company setups. The plan comptable itself is just the collection of account.account records assigned to a company.\n\nThere is no account.chart model; the chart is the set of account.account records, not a separate object. account.coa is not an Odoo model name; the correct technical name is account.account. res.* models are reserved for resources like users, partners, and companies — not accounts.",
-    },
+    explanation: { en: "All accounts in Odoo's chart of accounts are records of the technical model account.account. Each account has a code, a name, an account type (e.g., Receivable, Payable, Income, Expense), and is scoped to a company in multi-company setups. The chart of accounts itself is just the collection of account.account records assigned to a company.\n\nWhy not \"account.chart\"? There is no account.chart model; the chart is the set of account.account records, not a separate object.\n\nWhy not \"account.coa (not applicable here)\"? account.coa is not an Odoo model name; the correct technical name is account.account.\n\nWhy not \"res.account (not applicable here)\"? res.* models are reserved for resources like users, partners, and companies — not accounts.", fr: "Tous les comptes du plan comptable sont des enregistrements du modèle technique account.account. Chaque compte possède un code, un nom, un type de compte (ex. : Créances, Dettes, Produits, Charges) et est rattaché à une société dans les configurations multi-sociétés. Le plan comptable est simplement la collection des enregistrements account.account attribués à une société." },
   }),
   complexQ({
     id: "oep-002",
     module: "accounting",
-    text: {
-      en: "In Odoo 19 Accounting, what is the correct sequence to record a customer payment that clears an outstanding invoice?",
-      fr: "In Odoo 19 Accounting, what is the correct sequence to record a customer payment that clears an outstanding facture?",
-    },
-    correct: {
-      en: "Register Payment from the invoice",
-      fr: "Register Payment from the facture",
-    },
+    text: { en: "In Odoo 19 Accounting, what is the correct sequence to record a customer payment that clears an outstanding invoice?", fr: "Dans Odoo 19 Comptabilité, quelle est la séquence correcte pour enregistrer un paiement client qui solde une facture en cours ?" },
+    correct: { en: "Register Payment from the invoice", fr: "Enregistrer le paiement depuis la facture" },
     distractors: [
-      {
-        en: "Create a journal entry manually crediting the receivable account",
-        fr: "Create a écriture comptable manually crediting the receivable account",
-      },
-      {
-        en: "Record the bank statement first, then create the invoice from the statement",
-        fr: "Record the bank statement first, then create the facture from the statement",
-      },
-      {
-        en: "Validate the invoice, then mark it as Paid from the action menu",
-        fr: "Validate the facture, then mark it as Paid from the action menu",
-      },
+      { en: "Create a journal entry manually crediting the receivable account", fr: "Créer une écriture comptable manuellement en créditant le compte de créances" },
+      { en: "Record the bank statement first, then create the invoice from the statement", fr: "Enregistrer d'abord le relevé bancaire, puis créer la facture à partir du relevé" },
+      { en: "Validate the invoice, then mark it as Paid from the action menu", fr: "Valider la facture, puis la marquer comme Payée depuis le menu d'actions" },
     ],
-    explanation: {
-      en: "The standard flow is: post the invoice, click Register Payment (which creates a payment in an outstanding receipts account), then reconcile that payment with the bank statement line when the bank import arrives. This two-step approach correctly separates the moment cash is recorded from the moment it clears the bank, which matters for cash-basis reporting and bank reconciliation accuracy.\n\nManual journal entries bypass the payment matching machinery and break the partner ledger and aged receivable reports. Creating an invoice from a statement line is possible but is the exception, not the rule, and does not reflect the standard order-to-cash flow. There is no 'Mark as Paid' action that bypasses the payment record; payments must be registered to update the GL.",
-      fr: "The standard flow is: post the facture, click Register Payment (which creates a payment in an outstanding receipts account), then reconcile that payment with the bank statement line when the bank import arrives. This two-step approach correctly separates the moment cash is recorded from the moment it clears the bank, which matters for cash-basis reporting and rapprochement bancaire accuracy.\n\nManual écritures comptables bypass the payment matching machinery and break the partner ledger and aged receivable reports. Creating an facture from a statement line is possible but is the exception, not the rule, and does not reflect the standard order-to-cash flow. There is no 'Mark as Paid' action that bypasses the payment record; payments must be registered to update the GL.",
-    },
+    explanation: { en: "The standard flow is: post the invoice, click Register Payment (which creates a payment in an outstanding receipts account), then reconcile that payment with the bank statement line when the bank import arrives. This two-step approach correctly separates the moment cash is recorded from the moment it clears the bank, which matters for cash-basis reporting and bank reconciliation accuracy.\n\nWhy not \"Create a journal entry manually crediting the receivable account\"? Manual journal entries bypass the payment matching machinery and break the partner ledger and aged receivable reports.\n\nWhy not \"Record the bank statement first, then create the invoice from the statement\"? Creating an invoice from a statement line is possible but is the exception, not the rule, and does not reflect the standard order-to-cash flow.\n\nWhy not \"Validate the invoice, then mark it as Paid from the action menu\"? There is no 'Mark as Paid' action that bypasses the payment record; payments must be registered to update the GL.", fr: "Le flux standard est : valider la facture, cliquer sur Enregistrer le paiement (ce qui crée un paiement dans un compte d'encaissements en attente), puis lettrer ce paiement avec la ligne du relevé bancaire lorsque l'import bancaire arrive. Cette approche en deux étapes sépare correctement le moment où l'encaissement est enregistré de celui où il passe en banque." },
   }),
   complexQ({
     id: "oep-003",
     module: "accounting",
-    text: {
-      en: "Which Odoo 19 feature allows a company to apply different tax rates and accounts automatically based on the customer's country or state?",
-      fr: "Which Odoo 19 feature allows a company to apply different taxe rates and accounts automatically based on the customer's country or state?",
-    },
-    correct: {
-      en: "Fiscal positions",
-      fr: "position fiscale",
-    },
+    text: { en: "Which Odoo 19 feature allows a company to apply different tax rates and accounts automatically based on the customer's country or state?", fr: "Quelle fonctionnalité d'Odoo 19 permet à une société d'appliquer automatiquement différents taux de taxe et comptes en fonction du pays ou de l'état du client ?" },
+    correct: { en: "Fiscal positions", fr: "Les positions fiscales" },
     distractors: [
-      {
-        en: "Analytic accounting",
-        fr: "Analytic accounting",
-      },
-      {
-        en: "Tax groups",
-        fr: "taxe groups",
-      },
-      {
-        en: "Multi-currency",
-        fr: "Multi-currency",
-      },
+      { en: "Analytic accounting", fr: "La comptabilité analytique" },
+      { en: "Tax groups", fr: "Les groupes de taxes" },
+      { en: "Multi-currency", fr: "Le multi-devises" },
     ],
-    explanation: {
-      en: "Fiscal positions map default taxes and accounts to alternates based on rules such as the customer's country, state, or VAT status. For example, a fiscal position for EU B2B customers can replace domestic VAT with the reverse-charge tax and swap the income account to an intra-community sales account, automatically applied at quotation and invoice creation.\n\nAnalytic accounting tracks cost centers and projects, not jurisdiction-based tax substitution. Tax groups aggregate taxes for reporting; they do not substitute taxes per customer. Multi-currency handles currency conversion, not tax/account remapping by location.",
-      fr: "position fiscale map default taxes and accounts to alternates based on rules such as the customer's country, state, or VAT status. For example, a position fiscale for EU B2B customers can replace domestic VAT with the reverse-charge taxe and swap the income account to an intra-community sales account, automatically applied at devis and facture creation.\n\nAnalytic accounting tracks cost centers and projects, not jurisdiction-based taxe substitution. taxe groups aggregate taxes for reporting; they do not substitute taxes per customer. Multi-currency handles currency conversion, not taxe/account remapping by location.",
-    },
+    explanation: { en: "Fiscal positions map default taxes and accounts to alternates based on rules such as the customer's country, state, or VAT status. For example, a fiscal position for EU B2B customers can replace domestic VAT with the reverse-charge tax and swap the income account to an intra-community sales account, automatically applied at quotation and invoice creation.\n\nWhy not \"Analytic accounting\"? Analytic accounting tracks cost centers and projects, not jurisdiction-based tax substitution.\n\nWhy not \"Tax groups\"? Tax groups aggregate taxes for reporting; they do not substitute taxes per customer.\n\nWhy not \"Multi-currency\"? Multi-currency handles currency conversion, not tax/account remapping by location.", fr: "Les positions fiscales associent les taxes et comptes par défaut à des alternatives en fonction de règles telles que le pays, l'état ou le statut TVA du client. Par exemple, une position fiscale pour les clients B2B de l'UE peut remplacer la TVA nationale par l'autoliquidation et changer le compte de produit en compte de ventes intracommunautaires." },
   }),
   complexQ({
     id: "oep-004",
     module: "accounting",
-    text: {
-      en: "A consultant must record monthly depreciation automatically for a fleet of vehicles. Which Odoo Enterprise application configures the depreciation schedule?",
-      fr: "A consultant must record monthly depreciation automatically for a fleet of vehicles. Which Odoo Enterprise application configures the depreciation schedule?",
-    },
-    correct: {
-      en: "Accounting > Assets",
-      fr: "Accounting > Assets",
-    },
+    text: { en: "A consultant must record monthly depreciation automatically for a fleet of vehicles. Which Odoo Enterprise application configures the depreciation schedule?", fr: "Un consultant doit enregistrer automatiquement l'amortissement mensuel d'une flotte de véhicules. Quelle application Odoo Enterprise configure le plan d'amortissement ?" },
+    correct: { en: "Accounting > Assets", fr: "Comptabilité > Immobilisations" },
     distractors: [
-      {
-        en: "Inventory > Valuation Adjustments",
-        fr: "Inventory > Valuation Adjustments",
-      },
-      {
-        en: "Fleet > Depreciation",
-        fr: "Fleet > Depreciation",
-      },
-      {
-        en: "Manufacturing > Equipment",
-        fr: "Manufacturing > Equipment",
-      },
+      { en: "Inventory > Valuation Adjustments", fr: "Inventaire > Ajustements de valorisation" },
+      { en: "Fleet > Depreciation", fr: "Parc automobile > Amortissement" },
+      { en: "Manufacturing > Equipment", fr: "Fabrication > Équipements" },
     ],
-    explanation: {
-      en: "Odoo Enterprise Accounting provides an Asset Management feature under Accounting > Accounting > Management > Assets. You define an asset model with method (linear/degressive), duration, prorata, and journal, and Odoo posts the monthly depreciation entries automatically. Asset records can be created from vendor bills by linking the expense account to an asset model.\n\nInventory valuation adjustments handle stock value changes, not fixed asset depreciation. Fleet tracks vehicles operationally (driver assignment, costs) but does not post depreciation entries. Manufacturing > Equipment relates to maintenance and OEE, not financial depreciation.",
-      fr: "Odoo Enterprise Accounting provides an Asset Management feature under Accounting > Accounting > Management > Assets. You define an asset model with method (linear/degressive), duration, prorata, and journal, and Odoo posts the monthly depreciation entries automatically. Asset records can be created from facture fournisseur by linking the note de frais account to an asset model.\n\nInventory valuation adjustments handle stock value changes, not fixed asset depreciation. Fleet tracks vehicles operationally (driver assignment, costs) but does not post depreciation entries. Manufacturing > Equipment relates to maintenance and OEE, not financial depreciation.",
-    },
+    explanation: { en: "Odoo Enterprise Accounting provides an Asset Management feature under Accounting > Accounting > Management > Assets. You define an asset model with method (linear/degressive), duration, prorata, and journal, and Odoo posts the monthly depreciation entries automatically. Asset records can be created from vendor bills by linking the expense account to an asset model.\n\nWhy not \"Inventory > Valuation Adjustments\"? Inventory valuation adjustments handle stock value changes, not fixed asset depreciation.\n\nWhy not \"Fleet > Depreciation\"? Fleet tracks vehicles operationally (driver assignment, costs) but does not post depreciation entries.\n\nWhy not \"Manufacturing > Equipment\"? Manufacturing > Equipment relates to maintenance and OEE, not financial depreciation.", fr: "Odoo Enterprise Comptabilité fournit une fonctionnalité de gestion des immobilisations sous Comptabilité > Comptabilité > Gestion > Immobilisations. On définit un modèle d'immobilisation avec la méthode (linéaire/dégressive), la durée, le prorata et le journal, et Odoo comptabilise automatiquement les écritures d'amortissement mensuelles." },
   }),
   complexQ({
     id: "oep-005",
     module: "accounting",
-    text: {
-      en: "A consultant needs the Odoo 19 system to track expenses per project for profitability reporting. Which feature should be configured?",
-      fr: "A consultant needs the Odoo 19 system to track note de frais per project for profitability reporting. Which feature should be configured?",
-    },
-    correct: {
-      en: "Analytic accounts and analytic distributions on journal items",
-      fr: "compte analytique and analytic distributions on journal items",
-    },
+    text: { en: "A consultant needs the Odoo 19 system to track expenses per project for profitability reporting. Which feature should be configured?", fr: "Un consultant a besoin que le système Odoo 19 suive les dépenses par projet pour le reporting de rentabilité. Quelle fonctionnalité doit être configurée ?" },
+    correct: { en: "Analytic accounts and analytic distributions on journal items", fr: "Les comptes analytiques et les distributions analytiques sur les écritures comptables" },
     distractors: [
-      {
-        en: "Cost centers via product categories in Odoo 19, but not for this workflow",
-        fr: "Cost centers via product categories in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Multi-company consolidation which confuses a related but distinct setting",
-        fr: "Multi-company consolidation which confuses a related but distinct setting",
-      },
-      {
-        en: "Tags on partners and is not the controlling configuration here",
-        fr: "Tags on partners and is not the controlling configuration here",
-      },
+      { en: "Cost centers via product categories in Odoo 19, but not for this workflow", fr: "Les centres de coûts via les catégories de produits dans Odoo 19, mais pas pour ce flux" },
+      { en: "Multi-company consolidation which confuses a related but distinct setting", fr: "La consolidation multi-sociétés, qui est un paramètre distinct mais lié" },
+      { en: "Tags on partners and is not the controlling configuration here", fr: "Les étiquettes sur les contacts, qui ne sont pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Analytic accounting in Odoo lets you tag any journal item with one or more analytic accounts via an analytic distribution (percentages summing to 100%). The same expense can be split across departments, projects, or customers without affecting the GL. The Project app can auto-create an analytic account per project and post project costs and revenue to it for the profitability report.\n\nProduct categories drive stock valuation accounts, not flexible cost-center reporting. Multi-company consolidation aggregates several companies; it does not provide per-project tagging. Partner tags help with marketing segmentation, not financial cost analysis.",
-      fr: "Analytic accounting in Odoo lets you tag any journal item with one or more compte analytique via an analytic distribution (percentages summing to 100%). The same note de frais can be split across departments, projects, or customers without affecting the GL. The Project app can auto-create an compte analytique per project and post project costs and revenue to it for the profitability report.\n\nProduct categories drive stock valuation accounts, not flexible cost-center reporting. Multi-company consolidation aggregates several companies; it does not provide per-project tagging. Partner tags help with marketing segmentation, not financial cost analysis.",
-    },
+    explanation: { en: "Analytic accounting in Odoo lets you tag any journal item with one or more analytic accounts via an analytic distribution (percentages summing to 100%). The same expense can be split across departments, projects, or customers without affecting the GL. The Project app can auto-create an analytic account per project and post project costs and revenue to it for the profitability report.\n\nWhy not \"Cost centers via product categories in Odoo 19, but not for this workflow\"? Product categories drive stock valuation accounts, not flexible cost-center reporting.\n\nWhy not \"Multi-company consolidation which confuses a related but distinct setting\"? Multi-company consolidation aggregates several companies; it does not provide per-project tagging.\n\nWhy not \"Tags on partners and is not the controlling configuration here\"? Partner tags help with marketing segmentation, not financial cost analysis.", fr: "La comptabilité analytique dans Odoo permet d'étiqueter toute écriture comptable avec un ou plusieurs comptes analytiques via une distribution analytique (pourcentages totalisant 100 %). La même charge peut être répartie entre départements, projets ou clients sans affecter le grand livre. L'application Projet peut créer automatiquement un compte analytique par projet." },
   }),
   complexQ({
     id: "oep-006",
     module: "accounting",
-    text: {
-      en: "In Odoo 19, what is the technical model name for journal entries (the document that contains debit and credit lines)?",
-      fr: "In Odoo 19, what is the technical model name for écritures comptables (the document that contains debit and credit lines)?",
-    },
-    correct: {
-      en: "account.move",
-      fr: "account.move",
-    },
+    text: { en: "In Odoo 19, what is the technical model name for journal entries (the document that contains debit and credit lines)?", fr: "Dans Odoo 19, quel est le nom technique du modèle pour les écritures comptables (le document qui contient les lignes de débit et crédit) ?" },
+    correct: { en: "account.move", fr: "account.move" },
     distractors: [
-      {
-        en: "account.journal",
-        fr: "account.journal",
-      },
-      {
-        en: "account.entry",
-        fr: "account.entry",
-      },
-      {
-        en: "account.transaction",
-        fr: "account.transaction",
-      },
+      { en: "account.journal", fr: "account.journal" },
+      { en: "account.entry", fr: "account.entry" },
+      { en: "account.transaction", fr: "account.transaction" },
     ],
-    explanation: {
-      en: "account.move is the journal entry header in Odoo. Its lines are stored in account.move.line. Customer invoices, vendor bills, payments, and miscellaneous entries are all account.move records distinguished by the move_type field (out_invoice, in_invoice, out_refund, in_refund, entry).\n\naccount.journal is the journal definition (e.g., Sales, Purchase, Bank), not the entries. account.entry is not a real Odoo model; the correct name is account.move. account.transaction is not the model used for journal entries.",
-      fr: "account.move is the écriture comptable header in Odoo. Its lines are stored in account.move.line. Customer facture, facture fournisseur, payments, and miscellaneous entries are all account.move records distinguished by the move_type field (out_invoice, in_invoice, out_refund, in_refund, entry).\n\naccount.journal is the journal definition (e.g., Sales, Purchase, Bank), not the entries. account.entry is not a real Odoo model; the correct name is account.move. account.transaction is not the model used for écritures comptables.",
-    },
+    explanation: { en: "account.move is the journal entry header in Odoo. Its lines are stored in account.move.line. Customer invoices, vendor bills, payments, and miscellaneous entries are all account.move records distinguished by the move_type field (out_invoice, in_invoice, out_refund, in_refund, entry).\n\nWhy not \"account.journal\"? account.journal is the journal definition (e.g., Sales, Purchase, Bank), not the entries.\n\nWhy not \"account.entry\"? account.entry is not a real Odoo model; the correct name is account.move.\n\nWhy not \"account.transaction\"? account.transaction is not the model used for journal entries.", fr: "account.move est l'en-tête de l'écriture comptable dans Odoo. Ses lignes sont stockées dans account.move.line. Les factures clients, factures fournisseur, paiements et écritures diverses sont tous des enregistrements account.move distingués par le champ move_type (out_invoice, in_invoice, out_refund, in_refund, entry)." },
   }),
   complexQ({
     id: "oep-007",
     module: "accounting",
-    text: {
-      en: "A multi-currency company in Odoo 19 sells in EUR but its main currency is USD. When an EUR invoice is posted, how does Odoo determine the USD amount on the GL?",
-      fr: "A multi-currency company in Odoo 19 sells in EUR but its main currency is USD. When an EUR facture is posted, how does Odoo determine the USD amount on the GL?",
-    },
-    correct: {
-      en: "Uses the exchange rate active on the invoice date from res.currency.rate",
-      fr: "Uses the exchange rate active on the facture date from res.currency.rate",
-    },
+    text: { en: "A multi-currency company in Odoo 19 sells in EUR but its main currency is USD. When an EUR invoice is posted, how does Odoo determine the USD amount on the GL?", fr: "Une société multi-devises dans Odoo 19 vend en EUR mais sa devise principale est l'USD. Lorsqu'une facture en EUR est validée, comment Odoo détermine-t-il le montant en USD dans le grand livre ?" },
+    correct: { en: "Uses the exchange rate active on the invoice date from res.currency.rate", fr: "Utilise le taux de change actif à la date de la facture depuis res.currency.rate" },
     distractors: [
-      {
-        en: "Uses the rate from the company preference page only (not applicable here)",
-        fr: "Uses the rate from the company preference page only (not applicable here)",
-      },
-      {
-        en: "Always uses the rate at the moment of payment (not applicable here)",
-        fr: "Always uses the rate at the moment of payment (not applicable here)",
-      },
-      {
-        en: "Forces the user to enter the rate manually (not applicable here)",
-        fr: "Forces the user to enter the rate manually (not applicable here)",
-      },
+      { en: "Uses the rate from the company preference page only (not applicable here)", fr: "Utilise le taux de la page de préférences de la société uniquement (non applicable ici)" },
+      { en: "Always uses the rate at the moment of payment (not applicable here)", fr: "Utilise toujours le taux au moment du paiement (non applicable ici)" },
+      { en: "Forces the user to enter the rate manually (not applicable here)", fr: "Oblige l'utilisateur à saisir le taux manuellement (non applicable ici)" },
     ],
-    explanation: {
-      en: "Odoo stores exchange rates as res.currency.rate records with effective dates. When a journal entry is posted, it looks up the most recent rate on or before the document date and converts foreign-currency amounts to the company currency for the GL columns (debit/credit). Rates can be updated manually or pulled from providers like ECB or Banxico via a scheduled action.\n\nThere is no single rate on a 'company preference page'; rates are dated records on the currency. Payment-date rates trigger an exchange-rate gain/loss entry separately; the invoice itself uses the invoice-date rate. The user is not forced to enter a rate manually if the rate table is populated.",
-      fr: "Odoo stores exchange rates as res.currency.rate records with effective dates. When a écriture comptable is posted, it looks up the most recent rate on or before the document date and converts foreign-currency amounts to the company currency for the GL columns (debit/credit). Rates can be updated manually or pulled from providers like ECB or Banxico via a scheduled action.\n\nThere is no single rate on a 'company preference page'; rates are dated records on the currency. Payment-date rates trigger an exchange-rate gain/loss entry separately; the facture itself uses the facture-date rate. The user is not forced to enter a rate manually if the rate table is populated.",
-    },
+    explanation: { en: "Odoo stores exchange rates as res.currency.rate records with effective dates. When a journal entry is posted, it looks up the most recent rate on or before the document date and converts foreign-currency amounts to the company currency for the GL columns (debit/credit). Rates can be updated manually or pulled from providers like ECB or Banxico via a scheduled action.\n\nWhy not \"Uses the rate from the company preference page only (not applicable here)\"? There is no single rate on a 'company preference page'; rates are dated records on the currency.\n\nWhy not \"Always uses the rate at the moment of payment (not applicable here)\"? Payment-date rates trigger an exchange-rate gain/loss entry separately; the invoice itself uses the invoice-date rate.\n\nWhy not \"Forces the user to enter the rate manually (not applicable here)\"? The user is not forced to enter a rate manually if the rate table is populated.", fr: "Odoo stocke les taux de change sous forme d'enregistrements res.currency.rate avec des dates d'effet. Lorsqu'une écriture comptable est validée, il recherche le taux le plus récent à la date du document ou avant et convertit les montants en devise étrangère vers la devise de la société pour les colonnes du grand livre." },
   }),
   complexQ({
     id: "oep-008",
     module: "accounting",
-    text: {
-      en: "A consultant configures a Bank Journal in Odoo 19. What does the 'Outstanding Receipts Account' do?",
-      fr: "A consultant configures a Bank Journal in Odoo 19. What does the 'Outstanding Receipts Account' do?",
-    },
-    correct: {
-      en: "Holds customer payments before they are reconciled with a bank statement line",
-      fr: "Holds customer payments before they are reconciled with a bank statement line",
-    },
+    text: { en: "A consultant configures a Bank Journal in Odoo 19. What does the 'Outstanding Receipts Account' do?", fr: "Un consultant configure un journal bancaire dans Odoo 19. Que fait le « Compte d'encaissements en attente » ?" },
+    correct: { en: "Holds customer payments before they are reconciled with a bank statement line", fr: "Conserve les paiements clients avant leur lettrage avec une ligne de relevé bancaire" },
     distractors: [
-      {
-        en: "Records bank fees automatically and belongs to a different Odoo application",
-        fr: "Records bank fees automatically and belongs to a different Odoo application",
-      },
-      {
-        en: "Stores foreign exchange differences which confuses a related but distinct setting",
-        fr: "Stores foreign exchange differences which confuses a related but distinct setting",
-      },
-      {
-        en: "Acts as the petty cash account and is not the controlling configuration here",
-        fr: "Acts as the petty cash account and is not the controlling configuration here",
-      },
+      { en: "Records bank fees automatically and belongs to a different Odoo application", fr: "Enregistre automatiquement les frais bancaires et appartient à une autre application Odoo" },
+      { en: "Stores foreign exchange differences which confuses a related but distinct setting", fr: "Stocke les écarts de change, ce qui est un paramètre distinct mais lié" },
+      { en: "Acts as the petty cash account and is not the controlling configuration here", fr: "Agit comme le compte de petite caisse, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Outstanding Receipts Account is an interim account used between Register Payment and bank reconciliation. When a customer payment is registered, it credits the receivable and debits Outstanding Receipts. When the bank statement line is reconciled with that payment, the entry transfers from Outstanding Receipts to the bank account. This separation is what enables the two-step payment flow.\n\nBank fees are posted via a reconciliation model or manual line, not through Outstanding Receipts. FX differences are posted to dedicated unrealized/realized FX gain/loss accounts. Petty cash uses a separate Cash journal, not Outstanding Receipts.",
-      fr: "The Outstanding Receipts Account is an interim account used between Register Payment and rapprochement bancaire. When a customer payment is registered, it credits the receivable and debits Outstanding Receipts. When the bank statement line is reconciled with that payment, the entry transfers from Outstanding Receipts to the bank account. This separation is what enables the two-step payment flow.\n\nBank fees are posted via a modèle de rapprochement or manual line, not through Outstanding Receipts. FX differences are posted to dedicated unrealized/realized FX gain/loss accounts. Petty cash uses a separate Cash journal, not Outstanding Receipts.",
-    },
+    explanation: { en: "The Outstanding Receipts Account is an interim account used between Register Payment and bank reconciliation. When a customer payment is registered, it credits the receivable and debits Outstanding Receipts. When the bank statement line is reconciled with that payment, the entry transfers from Outstanding Receipts to the bank account. This separation is what enables the two-step payment flow.\n\nWhy not \"Records bank fees automatically and belongs to a different Odoo application\"? Bank fees are posted via a reconciliation model or manual line, not through Outstanding Receipts.\n\nWhy not \"Stores foreign exchange differences which confuses a related but distinct setting\"? FX differences are posted to dedicated unrealized/realized FX gain/loss accounts.\n\nWhy not \"Acts as the petty cash account and is not the controlling configuration here\"? Petty cash uses a separate Cash journal, not Outstanding Receipts.", fr: "Le compte d'encaissements en attente est un compte transitoire utilisé entre l'enregistrement du paiement et le lettrage bancaire. Lorsqu'un paiement client est enregistré, il crédite le compte de créances et débite le compte d'encaissements en attente. Lors du lettrage de la ligne du relevé bancaire, l'écriture est transférée vers le compte bancaire." },
   }),
   complexQ({
     id: "oep-009",
     module: "accounting",
-    text: {
-      en: "Which Odoo 19 feature enables automatic reconciliation suggestions based on past matching patterns?",
-      fr: "Which Odoo 19 feature enables automatic reconciliation suggestions based on past matching patterns?",
-    },
-    correct: {
-      en: "Reconciliation models",
-      fr: "modèle de rapprochement",
-    },
+    text: { en: "Which Odoo 19 feature enables automatic reconciliation suggestions based on past matching patterns?", fr: "Quelle fonctionnalité d'Odoo 19 permet des suggestions de lettrage automatique basées sur les modèles de correspondance passés ?" },
+    correct: { en: "Reconciliation models", fr: "Les modèles de lettrage" },
     distractors: [
-      {
-        en: "Automated payment terms",
-        fr: "Automated condition de paiement",
-      },
-      {
-        en: "Asset models",
-        fr: "Asset models",
-      },
-      {
-        en: "Tax adjustments",
-        fr: "taxe adjustments",
-      },
+      { en: "Automated payment terms", fr: "Les conditions de paiement automatisées" },
+      { en: "Asset models", fr: "Les modèles d'immobilisations" },
+      { en: "Tax adjustments", fr: "Les ajustements de taxes" },
     ],
-    explanation: {
-      en: "Reconciliation models in Accounting > Configuration > Banks > Reconciliation Models let you define rules that auto-match or auto-create entries on bank statement lines. Examples: 'If memo contains BANK FEE, post to account 6210', or 'If counterpart matches an open invoice, propose it as the match'. Odoo 19 leverages prior reconciliations to refine suggestions.\n\nPayment terms define due dates and installments, not bank matching rules. Asset models drive depreciation, unrelated to bank reconciliation. Tax adjustments are manual corrections for tax reports, not reconciliation rules.",
-      fr: "modèle de rapprochement in Accounting > Configuration > Banks > modèle de rapprochement let you define rules that auto-match or auto-create entries on bank statement lines. Examples: 'If memo contains BANK FEE, post to account 6210', or 'If counterpart matches an open facture, propose it as the match'. Odoo 19 leverages prior reconciliations to refine suggestions.\n\ncondition de paiement define due dates and installments, not bank matching rules. Asset models drive depreciation, unrelated to rapprochement bancaire. taxe adjustments are manual corrections for taxe reports, not reconciliation rules.",
-    },
+    explanation: { en: "Reconciliation models in Accounting > Configuration > Banks > Reconciliation Models let you define rules that auto-match or auto-create entries on bank statement lines. Examples: 'If memo contains BANK FEE, post to account 6210', or 'If counterpart matches an open invoice, propose it as the match'. Odoo 19 leverages prior reconciliations to refine suggestions.\n\nWhy not \"Automated payment terms\"? Payment terms define due dates and installments, not bank matching rules.\n\nWhy not \"Asset models\"? Asset models drive depreciation, unrelated to bank reconciliation.\n\nWhy not \"Tax adjustments\"? Tax adjustments are manual corrections for tax reports, not reconciliation rules.", fr: "Les modèles de lettrage dans Comptabilité > Configuration > Banques > Modèles de lettrage permettent de définir des règles qui auto-lettrent ou auto-créent des écritures sur les lignes de relevé bancaire. Par exemple : « Si le mémo contient FRAIS BANCAIRE, imputer au compte 6210 »." },
   }),
   complexQ({
     id: "oep-010",
     module: "accounting",
-    text: {
-      en: "An accountant wants to lock all accounting entries before a specific date so they can no longer be modified. Where is this configured in Odoo 19?",
-      fr: "An accountant wants to lock all accounting entries before a specific date so they can no longer be modified. Where is this configured in Odoo 19?",
-    },
-    correct: {
-      en: "On the company under Accounting > Settings > Lock Date (Tax Lock + All Users Lock)",
-      fr: "On the company under Accounting > Settings > Lock Date (taxe Lock + All Users Lock)",
-    },
+    text: { en: "An accountant wants to lock all accounting entries before a specific date so they can no longer be modified. Where is this configured in Odoo 19?", fr: "Un comptable souhaite verrouiller toutes les écritures comptables avant une date spécifique pour qu'elles ne puissent plus être modifiées. Où cela se configure-t-il dans Odoo 19 ?" },
+    correct: { en: "On the company under Accounting > Settings > Lock Date (Tax Lock + All Users Lock)", fr: "Sur la société dans Comptabilité > Paramètres > Date de verrouillage (Verrouillage fiscal + Verrouillage tous utilisateurs)" },
     distractors: [
-      {
-        en: "On each journal individually under Sequence Lock",
-        fr: "On each journal individually under Sequence Lock",
-      },
-      {
-        en: "By archiving the fiscal year on res.company",
-        fr: "By archiving the fiscal year on res.company",
-      },
-      {
-        en: "Only by removing user posting rights and is not the controlling configuration here",
-        fr: "Only by removing user posting rights and is not the controlling configuration here",
-      },
+      { en: "On each journal individually under Sequence Lock", fr: "Sur chaque journal individuellement sous Verrouillage de séquence" },
+      { en: "By archiving the fiscal year on res.company", fr: "En archivant l'exercice fiscal sur res.company" },
+      { en: "Only by removing user posting rights and is not the controlling configuration here", fr: "Uniquement en retirant les droits de validation des utilisateurs, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Lock Dates are set on the company in Accounting > Settings. The 'Tax Return Lock Date' prevents changes to entries up to that date that would affect submitted tax returns; the 'Global Lock Date' (or 'All Users Lock') prevents any user — including advisors — from posting or modifying entries before that date. Both are essential for period closing integrity.\n\nLock dates are company-wide, not per journal. Archiving a fiscal year is not how Odoo locks entries; the lock is a date on the company. Removing posting rights is too broad and does not protect already-posted entries.",
-      fr: "Lock Dates are set on the company in Accounting > Settings. The 'taxe Return Lock Date' prevents changes to entries up to that date that would affect submitted taxe returns; the 'Global Lock Date' (or 'All Users Lock') prevents any user — including advisors — from posting or modifying entries before that date. Both are essential for period closing integrity.\n\nLock dates are company-wide, not per journal. Archiving a fiscal year is not how Odoo locks entries; the lock is a date on the company. Removing posting rights is too broad and does not protect already-posted entries.",
-    },
+    explanation: { en: "Lock Dates are set on the company in Accounting > Settings. The 'Tax Return Lock Date' prevents changes to entries up to that date that would affect submitted tax returns; the 'Global Lock Date' (or 'All Users Lock') prevents any user — including advisors — from posting or modifying entries before that date. Both are essential for period closing integrity.\n\nWhy not \"On each journal individually under Sequence Lock\"? Lock dates are company-wide, not per journal.\n\nWhy not \"By archiving the fiscal year on res.company\"? Archiving a fiscal year is not how Odoo locks entries; the lock is a date on the company.\n\nWhy not \"Only by removing user posting rights and is not the controlling configuration here\"? Removing posting rights is too broad and does not protect already-posted entries.", fr: "Les dates de verrouillage sont définies sur la société dans Comptabilité > Paramètres. La « Date de verrouillage de la déclaration de TVA » empêche les modifications d'écritures qui affecteraient les déclarations soumises ; la « Date de verrouillage globale » empêche tout utilisateur de modifier des écritures avant cette date." },
   }),
   complexQ({
     id: "oep-011",
     module: "accounting",
-    text: {
-      en: "What is the difference between a Customer Invoice (out_invoice) and a Vendor Bill (in_invoice) in Odoo 19?",
-      fr: "What is the difference between a Customer facture (out_invoice) and a facture fournisseur (in_invoice) in Odoo 19?",
-    },
-    correct: {
-      en: "They are the same model with different move_type values",
-      fr: "They are the same model with different move_type values",
-    },
+    text: { en: "What is the difference between a Customer Invoice (out_invoice) and a Vendor Bill (in_invoice) in Odoo 19?", fr: "Quelle est la différence entre une facture client (out_invoice) et une facture fournisseur (in_invoice) dans Odoo 19 ?" },
+    correct: { en: "They are the same model with different move_type values", fr: "C'est le même modèle avec des valeurs move_type différentes" },
     distractors: [
-      {
-        en: "Invoices use account.move; bills use a different model called account.bill",
-        fr: "facture use account.move; bills use a different model called account.bill",
-      },
-      {
-        en: "Bills cannot have multiple lines",
-        fr: "Bills cannot have multiple lines",
-      },
-      {
-        en: "Customer invoices cannot reference taxes",
-        fr: "Customer facture cannot reference taxes",
-      },
+      { en: "Invoices use account.move; bills use a different model called account.bill", fr: "Les factures utilisent account.move ; les factures fournisseur utilisent un modèle différent appelé account.bill" },
+      { en: "Bills cannot have multiple lines", fr: "Les factures fournisseur ne peuvent pas avoir plusieurs lignes" },
+      { en: "Customer invoices cannot reference taxes", fr: "Les factures clients ne peuvent pas référencer de taxes" },
     ],
-    explanation: {
-      en: "Both customer invoices and vendor bills are stored in account.move with different move_type values: out_invoice for customer invoices, in_invoice for vendor bills, out_refund/in_refund for credit notes. This unified model is why all invoice flows share the same posting, payment, and reconciliation logic.\n\nThere is no separate account.bill model; both are account.move records. Bills can have many lines, just like invoices. Customer invoices fully support taxes; that is one of their core uses.",
-      fr: "Both customer facture and facture fournisseur are stored in account.move with different move_type values: out_invoice for customer facture, in_invoice for facture fournisseur, out_refund/in_refund for credit notes. This unified model is why all facture flows share the same posting, payment, and reconciliation logic.\n\nThere is no separate account.bill model; both are account.move records. Bills can have many lines, just like facture. Customer facture fully support taxes; that is one of their core uses.",
-    },
+    explanation: { en: "Both customer invoices and vendor bills are stored in account.move with different move_type values: out_invoice for customer invoices, in_invoice for vendor bills, out_refund/in_refund for credit notes. This unified model is why all invoice flows share the same posting, payment, and reconciliation logic.\n\nWhy not \"Invoices use account.move; bills use a different model called account.bill\"? There is no separate account.bill model; both are account.move records.\n\nWhy not \"Bills cannot have multiple lines\"? Bills can have many lines, just like invoices.\n\nWhy not \"Customer invoices cannot reference taxes\"? Customer invoices fully support taxes; that is one of their core uses.", fr: "Les factures clients et les factures fournisseur sont toutes stockées dans account.move avec des valeurs move_type différentes : out_invoice pour les factures clients, in_invoice pour les factures fournisseur, out_refund/in_refund pour les avoirs. Ce modèle unifié permet à tous les flux de facturation de partager la même logique de validation, paiement et lettrage." },
   }),
   complexQ({
     id: "oep-012",
     module: "accounting",
-    text: {
-      en: "A consultant needs to issue a credit note for a posted customer invoice in Odoo 19. Which option is the standard approach?",
-      fr: "A consultant needs to issue a credit note for a posted customer facture in Odoo 19. Which option is the standard approach?",
-    },
-    correct: {
-      en: "Delete the posted invoice and recreate it with corrected line amounts",
-      fr: "Delete the posted facture and recreate it with corrected line amounts",
-    },
+    text: { en: "A consultant needs to issue a credit note for a posted customer invoice in Odoo 19. Which option is the standard approach?", fr: "Un consultant doit émettre un avoir pour une facture client validée dans Odoo 19. Quelle option est l'approche standard ?" },
+    correct: { en: "Delete the posted invoice and recreate it with corrected line amounts", fr: "Supprimer la facture validée et la recréer avec les montants de ligne corrigés" },
     distractors: [
-      {
-        en: "Credit Note action: partial, full refund, or full refund with new draft",
-        fr: "Credit Note action: partial, full refund, or full refund with new draft",
-      },
-      {
-        en: "Post manual reversing journal entries without linking a credit note",
-        fr: "Post manual reversing écritures comptables without linking a credit note",
-      },
-      {
-        en: "Reset posted invoice to draft and edit lines in place without reversal",
-        fr: "Reset posted facture to draft and edit lines in place without reversal",
-      },
+      { en: "Credit Note action: partial, full refund, or full refund with new draft", fr: "Action Avoir : remboursement partiel, total ou total avec nouveau brouillon" },
+      { en: "Post manual reversing journal entries without linking a credit note", fr: "Saisir des écritures de contrepassation manuelles sans lier d'avoir" },
+      { en: "Reset posted invoice to draft and edit lines in place without reversal", fr: "Remettre la facture validée en brouillon et modifier les lignes en place sans contrepassation" },
     ],
-    explanation: {
-      en: "Posted invoices cannot be deleted. The Credit Note action presents three options: 1) Partial Refund creates an empty credit note for editing, 2) Full Refund posts a complete reversal automatically, 3) Full Refund and New Draft Invoice reverses the original and creates a new draft so you can correct and re-issue. Choice depends on whether you need a partial or full reversal.\n\nPosted invoices cannot be deleted; this would also break the audit trail. Manual reversal entries bypass the credit note linkage and break payment matching with the original. Once posted with a sequence number, an invoice cannot be reset to draft without a Reset to Draft action that itself requires reversing it.",
-      fr: "Posted facture cannot be deleted. The Credit Note action presents three options: 1) Partial Refund creates an empty credit note for editing, 2) Full Refund posts a complete reversal automatically, 3) Full Refund and New Draft facture reverses the original and creates a new draft so you can correct and re-issue. Choice depends on whether you need a partial or full reversal.\n\nPosted facture cannot be deleted; this would also break the audit trail. Manual reversal entries bypass the credit note linkage and break payment matching with the original. Once posted with a sequence number, an facture cannot be reset to draft without a Reset to Draft action that itself requires reversing it.",
-    },
+    explanation: { en: "Posted invoices cannot be deleted. The Credit Note action presents three options: 1) Partial Refund creates an empty credit note for editing, 2) Full Refund posts a complete reversal automatically, 3) Full Refund and New Draft Invoice reverses the original and creates a new draft so you can correct and re-issue. Choice depends on whether you need a partial or full reversal.\n\nWhy not \"Credit Note action: partial, full refund, or full refund with new draft\"? Posted invoices cannot be deleted; this would also break the audit trail.\n\nWhy not \"Post manual reversing journal entries without linking a credit note\"? Manual reversal entries bypass the credit note linkage and break payment matching with the original.\n\nWhy not \"Reset posted invoice to draft and edit lines in place without reversal\"? Once posted with a sequence number, an invoice cannot be reset to draft without a Reset to Draft action that itself requires reversing it.", fr: "Les factures validées ne peuvent pas être supprimées. L'action Avoir présente trois options : 1) Remboursement partiel crée un avoir vide à modifier, 2) Remboursement total valide une contrepassation complète automatiquement, 3) Remboursement total et nouvelle facture brouillon contrepasse l'original et crée un nouveau brouillon pour correction." },
   }),
   complexQ({
     id: "oep-013",
     module: "accounting",
-    text: {
-      en: "Odoo 19 lets you import bank statements via OFX, QIF, CSV, or direct bank synchronization. Which feature enables real-time direct synchronization with banks?",
-      fr: "Odoo 19 lets you import bank statements via OFX, QIF, CSV, or direct bank synchronization. Which feature enables real-time direct synchronization with banks?",
-    },
-    correct: {
-      en: "Odoo Bank Sync (Plaid, Ponto, Yodlee, Salt Edge connectors)",
-      fr: "Odoo Bank Sync (Plaid, Ponto, Yodlee, Salt Edge connectors)",
-    },
+    text: { en: "Odoo 19 lets you import bank statements via OFX, QIF, CSV, or direct bank synchronization. Which feature enables real-time direct synchronization with banks?", fr: "Odoo 19 permet d'importer des relevés bancaires via OFX, QIF, CSV ou la synchronisation bancaire directe. Quelle fonctionnalité permet la synchronisation directe en temps réel avec les banques ?" },
+    correct: { en: "Odoo Bank Sync (Plaid, Ponto, Yodlee, Salt Edge connectors)", fr: "Odoo Bank Sync (connecteurs Plaid, Ponto, Yodlee, Salt Edge)" },
     distractors: [
-      {
-        en: "FTP file watcher and belongs to a different Odoo application",
-        fr: "FTP file watcher and belongs to a different Odoo application",
-      },
-      {
-        en: "Odoo IAP webhook which confuses a related but distinct setting",
-        fr: "Odoo IAP webhook which confuses a related but distinct setting",
-      },
-      {
-        en: "ICS feed and is not the controlling configuration here",
-        fr: "ICS feed and is not the controlling configuration here",
-      },
+      { en: "FTP file watcher and belongs to a different Odoo application", fr: "Observateur de fichiers FTP, qui appartient à une autre application Odoo" },
+      { en: "Odoo IAP webhook which confuses a related but distinct setting", fr: "Webhook Odoo IAP, ce qui est un paramètre distinct mais lié" },
+      { en: "ICS feed and is not the controlling configuration here", fr: "Flux ICS, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo provides bank synchronization through partners like Plaid (US/CA), Ponto (EU), Yodlee, and Salt Edge. Once enabled in Accounting > Configuration > Online Synchronization, statements are pulled automatically on a schedule. Manual import via OFX/QIF/CSV remains available for banks not supported by these connectors.\n\nThere is no built-in FTP watcher feature for bank statements in core Odoo. IAP webhooks are not the bank sync mechanism; Bank Sync uses dedicated partner APIs. ICS is a calendar feed format, unrelated to banking.",
-      fr: "Odoo provides bank synchronization through partners like Plaid (US/CA), Ponto (EU), Yodlee, and Salt Edge. Once enabled in Accounting > Configuration > Online Synchronization, statements are pulled automatically on a schedule. Manual import via OFX/QIF/CSV remains available for banks not supported by these connectors.\n\nThere is no built-in FTP watcher feature for bank statements in core Odoo. IAP webhooks are not the bank sync mechanism; Bank Sync uses dedicated partner APIs. ICS is a calendar feed format, unrelated to banking.",
-    },
+    explanation: { en: "Odoo provides bank synchronization through partners like Plaid (US/CA), Ponto (EU), Yodlee, and Salt Edge. Once enabled in Accounting > Configuration > Online Synchronization, statements are pulled automatically on a schedule. Manual import via OFX/QIF/CSV remains available for banks not supported by these connectors.\n\nWhy not \"FTP file watcher and belongs to a different Odoo application\"? There is no built-in FTP watcher feature for bank statements in core Odoo.\n\nWhy not \"Odoo IAP webhook which confuses a related but distinct setting\"? IAP webhooks are not the bank sync mechanism; Bank Sync uses dedicated partner APIs.\n\nWhy not \"ICS feed and is not the controlling configuration here\"? ICS is a calendar feed format, unrelated to banking.", fr: "Odoo fournit la synchronisation bancaire via des partenaires comme Plaid (US/CA), Ponto (UE), Yodlee et Salt Edge. Une fois activée dans Comptabilité > Configuration > Synchronisation en ligne, les relevés sont récupérés automatiquement selon un planning." },
   }),
   complexQ({
     id: "oep-014",
     module: "accounting",
-    text: {
-      en: "Which Odoo 19 report aggregates open customer balances by aging bucket (e.g., 0-30, 31-60, 61-90, 90+)?",
-      fr: "Which Odoo 19 report aggregates open customer balances by aging bucket (e.g., 0-30, 31-60, 61-90, 90+)?",
-    },
-    correct: {
-      en: "Aged Receivable",
-      fr: "Aged Receivable",
-    },
+    text: { en: "Which Odoo 19 report aggregates open customer balances by aging bucket (e.g., 0-30, 31-60, 61-90, 90+)?", fr: "Quel rapport Odoo 19 agrège les soldes clients ouverts par tranche d'ancienneté (ex. : 0-30, 31-60, 61-90, 90+) ?" },
+    correct: { en: "Aged Receivable", fr: "Balance âgée clients" },
     distractors: [
-      {
-        en: "Partner Ledger",
-        fr: "Partner Ledger",
-      },
-      {
-        en: "Trial Balance",
-        fr: "Trial Balance",
-      },
-      {
-        en: "General Ledger",
-        fr: "General Ledger",
-      },
+      { en: "Partner Ledger", fr: "Livre des tiers" },
+      { en: "Trial Balance", fr: "Balance des comptes" },
+      { en: "General Ledger", fr: "Grand livre" },
     ],
-    explanation: {
-      en: "The Aged Receivable report under Accounting > Reporting groups outstanding customer balances into aging buckets so the AR team can prioritize collections. Aged Payable does the same for vendor balances. Both are standard Odoo Accounting reports with drill-down to source documents.\n\nPartner Ledger lists every entry per partner without bucketing by age. Trial Balance lists account balances, not partner aging. General Ledger lists all journal items, not aged customer summaries.",
-      fr: "The Aged Receivable report under Accounting > Reporting groups outstanding customer balances into aging buckets so the AR team can prioritize collections. Aged Payable does the same for vendor balances. Both are standard Odoo Accounting reports with drill-down to source documents.\n\nPartner Ledger lists every entry per partner without bucketing by age. Trial Balance lists account balances, not partner aging. General Ledger lists all journal items, not aged customer summaries.",
-    },
+    explanation: { en: "The Aged Receivable report under Accounting > Reporting groups outstanding customer balances into aging buckets so the AR team can prioritize collections. Aged Payable does the same for vendor balances. Both are standard Odoo Accounting reports with drill-down to source documents.\n\nWhy not \"Partner Ledger\"? Partner Ledger lists every entry per partner without bucketing by age.\n\nWhy not \"Trial Balance\"? Trial Balance lists account balances, not partner aging.\n\nWhy not \"General Ledger\"? General Ledger lists all journal items, not aged customer summaries.", fr: "Le rapport Balance âgée clients sous Comptabilité > Reporting regroupe les soldes clients impayés par tranches d'ancienneté afin que l'équipe de recouvrement puisse prioriser les relances. La Balance âgée fournisseurs fait de même pour les soldes fournisseurs." },
   }),
   complexQ({
     id: "oep-015",
     module: "accounting",
-    text: {
-      en: "A consultant configures a payment term '30% advance, 70% net 60'. How does Odoo 19 split this on a posted invoice?",
-      fr: "A consultant configures a condition de paiement '30% advance, 70% net 60'. How does Odoo 19 split this on a posted facture?",
-    },
-    correct: {
-      en: "Two account.move.line records on the receivable account, each with its own due date",
-      fr: "Two account.move.line records on the receivable account, each with its own due date",
-    },
+    text: { en: "A consultant configures a payment term '30% advance, 70% net 60'. How does Odoo 19 split this on a posted invoice?", fr: "Un consultant configure une condition de paiement « 30 % d'acompte, 70 % net 60 ». Comment Odoo 19 répartit-il cela sur une facture validée ?" },
+    correct: { en: "Two account.move.line records on the receivable account, each with its own due date", fr: "Deux enregistrements account.move.line sur le compte de créances, chacun avec sa propre date d'échéance" },
     distractors: [
-      {
-        en: "Two separate invoices linked together and belongs to a different Odoo application",
-        fr: "Two separate facture linked together and belongs to a different Odoo application",
-      },
-      {
-        en: "A single line with a custom due date formula (not applicable here)",
-        fr: "A single line with a custom due date formula (not applicable here)",
-      },
-      {
-        en: "It is not possible without an addon and is not the controlling configuration here",
-        fr: "It is not possible without an addon and is not the controlling configuration here",
-      },
+      { en: "Two separate invoices linked together and belongs to a different Odoo application", fr: "Deux factures séparées liées entre elles, ce qui appartient à une autre application Odoo" },
+      { en: "A single line with a custom due date formula (not applicable here)", fr: "Une seule ligne avec une formule de date d'échéance personnalisée (non applicable ici)" },
+      { en: "It is not possible without an addon and is not the controlling configuration here", fr: "Ce n'est pas possible sans un module complémentaire, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Payment terms with multiple lines generate multiple receivable lines on the same account.move. Each line has its own date_maturity, so the Aged Receivable report shows each portion in the correct bucket. The total still equals the invoice total. This is native functionality, not requiring any addon.\n\nIt is one invoice with multiple receivable lines, not two invoices. A formula on a single line cannot capture two different due dates. Multi-line payment terms are core Accounting functionality.",
-      fr: "condition de paiement with multiple lines generate multiple receivable lines on the same account.move. Each line has its own date_maturity, so the Aged Receivable report shows each portion in the correct bucket. The total still equals the facture total. This is native functionality, not requiring any addon.\n\nIt is one facture with multiple receivable lines, not two facture. A formula on a single line cannot capture two different due dates. Multi-line condition de paiement are core Accounting functionality.",
-    },
+    explanation: { en: "Payment terms with multiple lines generate multiple receivable lines on the same account.move. Each line has its own date_maturity, so the Aged Receivable report shows each portion in the correct bucket. The total still equals the invoice total. This is native functionality, not requiring any addon.\n\nWhy not \"Two separate invoices linked together and belongs to a different Odoo application\"? It is one invoice with multiple receivable lines, not two invoices.\n\nWhy not \"A single line with a custom due date formula (not applicable here)\"? A formula on a single line cannot capture two different due dates.\n\nWhy not \"It is not possible without an addon and is not the controlling configuration here\"? Multi-line payment terms are core Accounting functionality.", fr: "Les conditions de paiement avec plusieurs lignes génèrent plusieurs lignes de créances sur le même account.move. Chaque ligne a sa propre date d'échéance (date_maturity), de sorte que le rapport de balance âgée affiche chaque portion dans la bonne tranche." },
   }),
   complexQ({
     id: "oep-016",
     module: "accounting",
-    text: {
-      en: "Odoo 19 supports e-invoicing standards such as Peppol BIS Billing 3.0, Factur-X, and country-specific EDI. Where is the e-invoicing format selected for a partner?",
-      fr: "Odoo 19 supports e-invoicing standards such as Peppol BIS Billing 3.0, Factur-X, and country-specific EDI. Where is the e-invoicing format selected for a partner?",
-    },
-    correct: {
-      en: "On the partner's Accounting tab as Electronic Invoicing format",
-      fr: "On the partner's Accounting tab as Electronic Invoicing format",
-    },
+    text: { en: "Odoo 19 supports e-invoicing standards such as Peppol BIS Billing 3.0, Factur-X, and country-specific EDI. Where is the e-invoicing format selected for a partner?", fr: "Odoo 19 prend en charge les normes de facturation électronique telles que Peppol BIS Billing 3.0, Factur-X et l'EDI spécifique par pays. Où le format de facturation électronique est-il sélectionné pour un partenaire ?" },
+    correct: { en: "On the partner's Accounting tab as Electronic Invoicing format", fr: "Sur l'onglet Comptabilité du partenaire en tant que format de facturation électronique" },
     distractors: [
-      {
-        en: "On every invoice manually before posting (not applicable here)",
-        fr: "On every facture manually before posting (not applicable here)",
-      },
-      {
-        en: "Globally for the entire database in General Settings only (not applicable here)",
-        fr: "Globally for the entire database in General Settings only (not applicable here)",
-      },
-      {
-        en: "Only on the company record (not applicable here)",
-        fr: "Only on the company record (not applicable here)",
-      },
+      { en: "On every invoice manually before posting (not applicable here)", fr: "Sur chaque facture manuellement avant validation (non applicable ici)" },
+      { en: "Globally for the entire database in General Settings only (not applicable here)", fr: "Globalement pour toute la base de données dans les Paramètres généraux uniquement (non applicable ici)" },
+      { en: "Only on the company record (not applicable here)", fr: "Uniquement sur la fiche société (non applicable ici)" },
     ],
-    explanation: {
-      en: "Each partner has an Accounting tab where the appropriate Electronic Invoicing formats are selected (e.g., Peppol BIS Billing 3.0, Factur-X, French Chorus Pro, Italian FatturaPA). When an invoice is posted to that partner, Odoo attaches the correct XML and routes it via Peppol or the country EDI gateway. Country-specific localizations install the right formats automatically.\n\nSetting per invoice would defeat automation; the format is configured per partner. There are global toggles, but the per-partner format selection is what determines which XML is produced. The company record holds sender configuration, not the recipient's format preference.",
-      fr: "Each partner has an Accounting tab where the appropriate Electronic Invoicing formats are selected (e.g., Peppol BIS Billing 3.0, Factur-X, French Chorus Pro, Italian FatturaPA). When an facture is posted to that partner, Odoo attaches the correct XML and routes it via Peppol or the country EDI gateway. Country-specific localizations install the right formats automatically.\n\nSetting per facture would defeat automation; the format is configured per partner. There are global toggles, but the per-partner format selection is what determines which XML is produced. The company record holds sender configuration, not the recipient's format preference.",
-    },
+    explanation: { en: "Each partner has an Accounting tab where the appropriate Electronic Invoicing formats are selected (e.g., Peppol BIS Billing 3.0, Factur-X, French Chorus Pro, Italian FatturaPA). When an invoice is posted to that partner, Odoo attaches the correct XML and routes it via Peppol or the country EDI gateway. Country-specific localizations install the right formats automatically.\n\nWhy not \"On every invoice manually before posting (not applicable here)\"? Setting per invoice would defeat automation; the format is configured per partner.\n\nWhy not \"Globally for the entire database in General Settings only (not applicable here)\"? There are global toggles, but the per-partner format selection is what determines which XML is produced.\n\nWhy not \"Only on the company record (not applicable here)\"? The company record holds sender configuration, not the recipient's format preference.", fr: "Chaque partenaire possède un onglet Comptabilité où les formats de facturation électronique appropriés sont sélectionnés (ex. : Peppol BIS Billing 3.0, Factur-X, Chorus Pro). Lorsqu'une facture est validée pour ce partenaire, Odoo joint le bon XML et l'achemine via Peppol ou la passerelle EDI du pays." },
   }),
   complexQ({
     id: "oep-017",
     module: "accounting",
-    text: {
-      en: "In Odoo 19, what does the 'Tax Grids' configuration control on a tax record?",
-      fr: "In Odoo 19, what does the 'taxe Grids' configuration control on a taxe record?",
-    },
-    correct: {
-      en: "Visual grid layout designer for customizing form view column widths",
-      fr: "Visual grid layout designer for customizing form view column widths",
-    },
+    text: { en: "In Odoo 19, what does the 'Tax Grids' configuration control on a tax record?", fr: "Dans Odoo 19, que contrôle la configuration « Grilles de taxes » sur un enregistrement de taxe ?" },
+    correct: { en: "Visual grid layout designer for customizing form view column widths", fr: "Le concepteur visuel de disposition en grille pour personnaliser les largeurs de colonnes de la vue formulaire" },
     distractors: [
-      {
-        en: "Tax grid boxes receiving base/tax amounts on statutory return forms",
-        fr: "taxe grid boxes receiving base/taxe amounts on statutory return forms",
-      },
-      {
-        en: "Country list controlling where a tax rate may appear on invoices",
-        fr: "Country list controlling where a taxe rate may appear on facture",
-      },
-      {
-        en: "Customer PDF grouping of tax lines on printed sales documents",
-        fr: "Customer PDF grouping of taxe lines on printed sales documents",
-      },
+      { en: "Tax grid boxes receiving base/tax amounts on statutory return forms", fr: "Les cases de la grille fiscale recevant les montants de base/taxe sur les formulaires de déclaration légale" },
+      { en: "Country list controlling where a tax rate may appear on invoices", fr: "La liste des pays contrôlant où un taux de taxe peut apparaître sur les factures" },
+      { en: "Customer PDF grouping of tax lines on printed sales documents", fr: "Le regroupement PDF client des lignes de taxe sur les documents de vente imprimés" },
     ],
-    explanation: {
-      en: "Tax Grids map a tax's base and tax amounts to specific boxes on the official tax return. For each tax, you assign grids for invoices and refunds (positive and negative side). When you run the Tax Report, Odoo aggregates entries by grid to populate the official return form. Localizations ship with country-specific grids matching the legal tax form.\n\nTax Grids are an accounting concept, not a UI grid. Country applicability is set via fiscal positions, not tax grids. Document grouping uses Tax Groups, not Tax Grids.",
-      fr: "taxe Grids map a taxe's base and taxe amounts to specific boxes on the official taxe return. For each taxe, you assign grids for facture and refunds (positive and negative side). When you run the taxe Report, Odoo aggregates entries by grid to populate the official return form. Localizations ship with country-specific grids matching the legal taxe form.\n\ntaxe Grids are an accounting concept, not a UI grid. Country applicability is set via position fiscale, not taxe grids. Document grouping uses taxe Groups, not taxe Grids.",
-    },
+    explanation: { en: "Tax Grids map a tax's base and tax amounts to specific boxes on the official tax return. For each tax, you assign grids for invoices and refunds (positive and negative side). When you run the Tax Report, Odoo aggregates entries by grid to populate the official return form. Localizations ship with country-specific grids matching the legal tax form.\n\nWhy not \"Tax grid boxes receiving base/tax amounts on statutory return forms\"? Tax Grids are an accounting concept, not a UI grid.\n\nWhy not \"Country list controlling where a tax rate may appear on invoices\"? Country applicability is set via fiscal positions, not tax grids.\n\nWhy not \"Customer PDF grouping of tax lines on printed sales documents\"? Document grouping uses Tax Groups, not Tax Grids.", fr: "Les grilles de taxes associent les montants de base et de taxe à des cases spécifiques de la déclaration fiscale officielle. Pour chaque taxe, on assigne des grilles pour les factures et les avoirs (côté positif et négatif). Lorsque vous exécutez le rapport de taxe, Odoo agrège les écritures par grille pour remplir le formulaire de déclaration officiel." },
   }),
   complexQ({
     id: "oep-018",
     module: "crm",
-    text: {
-      en: "A consultant must configure recurring monthly billing for a SaaS subscription. Which Odoo 19 application is purpose-built for this?",
-      fr: "A consultant must configure recurring monthly billing for a SaaS subscription. Which Odoo 19 application is purpose-built for this?",
-    },
-    correct: {
-      en: "Subscriptions",
-      fr: "Subscriptions",
-    },
+    text: { en: "A consultant must configure recurring monthly billing for a SaaS subscription. Which Odoo 19 application is purpose-built for this?", fr: "Un consultant doit configurer la facturation récurrente mensuelle pour un abonnement SaaS. Quelle application Odoo 19 est spécialement conçue pour cela ?" },
+    correct: { en: "Subscriptions", fr: "Abonnements" },
     distractors: [
-      {
-        en: "Sales",
-        fr: "Sales",
-      },
-      {
-        en: "Invoicing recurring template",
-        fr: "Invoicing recurring template",
-      },
-      {
-        en: "Helpdesk",
-        fr: "Helpdesk",
-      },
+      { en: "Sales", fr: "Ventes" },
+      { en: "Invoicing recurring template", fr: "Modèle récurrent de facturation" },
+      { en: "Helpdesk", fr: "Helpdesk" },
     ],
-    explanation: {
-      en: "The Subscriptions app (Enterprise) manages the full subscription lifecycle: recurring plans, MRR/ARR tracking, churn analysis, prorations, upsells, and automated invoicing/payment retries. A subscription is a sale.order with a plan, and Odoo creates invoices on schedule. Sales orders in the base Sales app do not have recurring logic on their own.\n\nSales handles one-off orders; recurring billing requires Subscriptions. There is no generic 'Invoicing recurring template' — the proper module is Subscriptions. Helpdesk is for support tickets, not billing.",
-      fr: "The Subscriptions app (Enterprise) manages the full subscription lifecycle: recurring plans, MRR/ARR tracking, churn analysis, prorations, upsells, and automated invoicing/payment retries. A subscription is a sale.order with a plan, and Odoo creates facture on schedule. Sales orders in the base Sales app do not have recurring logic on their own.\n\nSales handles one-off orders; recurring billing requires Subscriptions. There is no generic 'Invoicing recurring template' — the proper module is Subscriptions. Helpdesk is for support tickets, not billing.",
-    },
+    explanation: { en: "The Subscriptions app (Enterprise) manages the full subscription lifecycle: recurring plans, MRR/ARR tracking, churn analysis, prorations, upsells, and automated invoicing/payment retries. A subscription is a sale.order with a plan, and Odoo creates invoices on schedule. Sales orders in the base Sales app do not have recurring logic on their own.\n\nWhy not \"Sales\"? Sales handles one-off orders; recurring billing requires Subscriptions.\n\nWhy not \"Invoicing recurring template\"? There is no generic 'Invoicing recurring template' — the proper module is Subscriptions.\n\nWhy not \"Helpdesk\"? Helpdesk is for support tickets, not billing.", fr: "L'application Abonnements (Enterprise) gère le cycle de vie complet de l'abonnement : plans récurrents, suivi MRR/ARR, analyse du taux de désabonnement, prorata, ventes additionnelles et facturation/relance de paiement automatisées. Un abonnement est un sale.order avec un plan, et Odoo crée les factures selon le planning." },
   }),
   complexQ({
     id: "oep-019",
     module: "crm",
-    text: {
-      en: "In Odoo 19 CRM, what is the difference between a Lead and an Opportunity?",
-      fr: "In Odoo 19 CRM, what is the difference between a piste and an opportunité?",
-    },
-    correct: {
-      en: "A Lead is an unqualified contact request",
-      fr: "A piste is an unqualified contact request",
-    },
+    text: { en: "In Odoo 19 CRM, what is the difference between a Lead and an Opportunity?", fr: "Dans Odoo 19 CRM, quelle est la différence entre une piste et une opportunité ?" },
+    correct: { en: "A Lead is an unqualified contact request", fr: "Une piste est une demande de contact non qualifiée" },
     distractors: [
-      {
-        en: "A Lead has no monetary value; an Opportunity always has a closed deal",
-        fr: "A piste has no monetary value; an opportunité always has a closed deal",
-      },
-      {
-        en: "Leads are stored on res.partner; Opportunities are stored on crm.opportunity",
-        fr: "piste are stored on res.partner; opportunité are stored on crm.opportunité",
-      },
-      {
-        en: "Leads are restricted to website forms only",
-        fr: "piste are restricted to website forms only",
-      },
+      { en: "A Lead has no monetary value; an Opportunity always has a closed deal", fr: "Une piste n'a pas de valeur monétaire ; une opportunité a toujours une affaire conclue" },
+      { en: "Leads are stored on res.partner; Opportunities are stored on crm.opportunity", fr: "Les pistes sont stockées sur res.partner ; les opportunités sont stockées sur crm.opportunity" },
+      { en: "Leads are restricted to website forms only", fr: "Les pistes sont limitées aux formulaires du site web uniquement" },
     ],
-    explanation: {
-      en: "Both are stored on the same crm.lead model with type='lead' or type='opportunity'. The Lead stage represents an early, unqualified inquiry that may or may not convert. Once qualified (interest confirmed, budget identified), it is converted to an Opportunity that progresses through pipeline stages toward a Won/Lost outcome. The Lead step can be disabled in CRM settings if the team starts directly at Opportunity.\n\nOpportunities are not always closed deals — they can be Won or Lost; both have monetary values. There is no separate crm.opportunity model; both share crm.lead. Leads can come from any source: import, web form, email alias, or manual entry.",
-      fr: "Both are stored on the same crm.piste model with type='piste' or type='opportunité'. The piste stage represents an early, unqualified inquiry that may or may not convert. Once qualified (interest confirmed, budget identified), it is converted to an opportunité that progresses through pipeline stages toward a Won/Lost outcome. The piste step can be disabled in CRM settings if the team starts directly at opportunité.\n\nopportunité are not always closed deals — they can be Won or Lost; both have monetary values. There is no separate crm.opportunité model; both share crm.piste. piste can come from any source: import, web form, email alias, or manual entry.",
-    },
+    explanation: { en: "Both are stored on the same crm.lead model with type='lead' or type='opportunity'. The Lead stage represents an early, unqualified inquiry that may or may not convert. Once qualified (interest confirmed, budget identified), it is converted to an Opportunity that progresses through pipeline stages toward a Won/Lost outcome. The Lead step can be disabled in CRM settings if the team starts directly at Opportunity.\n\nWhy not \"A Lead has no monetary value; an Opportunity always has a closed deal\"? Opportunities are not always closed deals — they can be Won or Lost; both have monetary values.\n\nWhy not \"Leads are stored on res.partner; Opportunities are stored on crm.opportunity\"? There is no separate crm.opportunity model; both share crm.lead.\n\nWhy not \"Leads are restricted to website forms only\"? Leads can come from any source: import, web form, email alias, or manual entry.", fr: "Les deux sont stockées sur le même modèle crm.lead avec type='lead' ou type='opportunity'. L'étape Piste représente une demande précoce et non qualifiée qui peut ou non se convertir. Une fois qualifiée (intérêt confirmé, budget identifié), elle est convertie en opportunité qui progresse dans les étapes du pipeline vers un résultat Gagné/Perdu." },
   }),
   complexQ({
     id: "oep-020",
     module: "crm",
-    text: {
-      en: "In Odoo 19 Sales, which feature allows different prices to apply automatically based on customer segment, quantity, or date?",
-      fr: "In Odoo 19 Sales, which feature allows different prices to apply automatically based on customer segment, quantity, or date?",
-    },
-    correct: {
-      en: "Pricelists",
-      fr: "liste de prix",
-    },
+    text: { en: "In Odoo 19 Sales, which feature allows different prices to apply automatically based on customer segment, quantity, or date?", fr: "Dans Odoo 19 Ventes, quelle fonctionnalité permet d'appliquer automatiquement différents prix en fonction du segment client, de la quantité ou de la date ?" },
+    correct: { en: "Pricelists", fr: "Les listes de prix" },
     distractors: [
-      {
-        en: "Discount rules on partners",
-        fr: "Discount rules on partners",
-      },
-      {
-        en: "Promotions only",
-        fr: "Promotions only",
-      },
-      {
-        en: "Tax adjustments",
-        fr: "taxe adjustments",
-      },
+      { en: "Discount rules on partners", fr: "Les règles de remise sur les partenaires" },
+      { en: "Promotions only", fr: "Les promotions uniquement" },
+      { en: "Tax adjustments", fr: "Les ajustements de taxes" },
     ],
-    explanation: {
-      en: "Pricelists are the configurable engine for dynamic pricing. A pricelist contains rules that apply discounts or set fixed prices based on product category, specific products, quantity tiers, validity dates, and chained pricelists. Each customer can have a default pricelist; the order's pricelist drives quotation and SO unit prices.\n\nThere is no 'discount rule' feature on partners separate from pricelists. Promotions (eCommerce coupons) are different from B2B pricing logic and apply at checkout. Tax adjustments do not change prices; they change tax computation.",
-      fr: "liste de prix are the configurable engine for dynamic pricing. A liste de prix contains rules that apply discounts or set fixed prices based on product category, specific products, quantity tiers, validity dates, and chained liste de prix. Each customer can have a default liste de prix; the order's liste de prix drives devis and SO unit prices.\n\nThere is no 'discount rule' feature on partners separate from liste de prix. Promotions (eCommerce coupons) are different from B2B pricing logic and apply at checkout. taxe adjustments do not change prices; they change taxe computation.",
-    },
+    explanation: { en: "Pricelists are the configurable engine for dynamic pricing. A pricelist contains rules that apply discounts or set fixed prices based on product category, specific products, quantity tiers, validity dates, and chained pricelists. Each customer can have a default pricelist; the order's pricelist drives quotation and SO unit prices.\n\nWhy not \"Discount rules on partners\"? There is no 'discount rule' feature on partners separate from pricelists.\n\nWhy not \"Promotions only\"? Promotions (eCommerce coupons) are different from B2B pricing logic and apply at checkout.\n\nWhy not \"Tax adjustments\"? Tax adjustments do not change prices; they change tax computation.", fr: "Les listes de prix sont le moteur configurable pour la tarification dynamique. Une liste de prix contient des règles qui appliquent des remises ou fixent des prix en fonction de la catégorie de produit, des produits spécifiques, des paliers de quantité, des dates de validité et des listes de prix chaînées." },
   }),
   complexQ({
     id: "oep-021",
     module: "crm",
-    text: {
-      en: "What happens in Odoo 19 when a salesperson sends a quotation by email to the customer using the 'Send by Email' button?",
-      fr: "What happens in Odoo 19 when a salesperson sends a devis by email to the customer using the 'Send by Email' button?",
-    },
-    correct: {
-      en: "Quotation locks permanently and blocks all further line edits",
-      fr: "devis locks permanently and blocks all further line edits",
-    },
+    text: { en: "What happens in Odoo 19 when a salesperson sends a quotation by email to the customer using the 'Send by Email' button?", fr: "Que se passe-t-il dans Odoo 19 lorsqu'un commercial envoie un devis par e-mail au client en utilisant le bouton « Envoyer par e-mail » ?" },
+    correct: { en: "Quotation locks permanently and blocks all further line edits", fr: "Le devis est verrouillé définitivement et bloque toute modification ultérieure des lignes" },
     distractors: [
-      {
-        en: "Email queued; quote moves to Quotation Sent with portal link included",
-        fr: "Email queued; quote moves to devis Sent with portal link included",
-      },
-      {
-        en: "Customer auto-provisioned as internal website user with full ACL rights",
-        fr: "Customer auto-provisioned as internal website user with full ACL rights",
-      },
-      {
-        en: "Quotation auto-confirms to sales order without customer interaction",
-        fr: "devis auto-confirms to commande client without customer interaction",
-      },
+      { en: "Email queued; quote moves to Quotation Sent with portal link included", fr: "L'e-mail est mis en file d'attente ; le devis passe à Devis envoyé avec un lien portail inclus" },
+      { en: "Customer auto-provisioned as internal website user with full ACL rights", fr: "Le client est automatiquement provisionné comme utilisateur interne du site web avec tous les droits ACL" },
+      { en: "Quotation auto-confirms to sales order without customer interaction", fr: "Le devis se confirme automatiquement en bon de commande sans interaction du client" },
     ],
-    explanation: {
-      en: "Send by Email queues an email containing a portal link where the customer can review the quote, sign it (if e-signature is enabled), pay a deposit (if online payment is configured), and confirm. The quotation state transitions to 'Quotation Sent'. It can still be edited, and the customer's actions update the same record.\n\nQuotations remain editable in Sent state; they only lock on confirmation if 'Lock Confirmed Sales' is enabled. The customer does not auto-become a website user; they receive a token-based portal link. Conversion to a sales order happens only when the customer clicks Sign/Confirm or the salesperson clicks Confirm.",
-      fr: "Send by Email queues an email containing a portal link where the customer can review the quote, sign it (if e-signature is enabled), pay a deposit (if online payment is configured), and confirm. The devis state transitions to 'devis Sent'. It can still be edited, and the customer's actions update the same record.\n\nQuotations remain editable in Sent state; they only lock on confirmation if 'Lock Confirmed Sales' is enabled. The customer does not auto-become a website user; they receive a token-based portal link. Conversion to a commande client happens only when the customer clicks Sign/Confirm or the salesperson clicks Confirm.",
-    },
+    explanation: { en: "Send by Email queues an email containing a portal link where the customer can review the quote, sign it (if e-signature is enabled), pay a deposit (if online payment is configured), and confirm. The quotation state transitions to 'Quotation Sent'. It can still be edited, and the customer's actions update the same record.\n\nWhy not \"Email queued; quote moves to Quotation Sent with portal link included\"? Quotations remain editable in Sent state; they only lock on confirmation if 'Lock Confirmed Sales' is enabled.\n\nWhy not \"Customer auto-provisioned as internal website user with full ACL rights\"? The customer does not auto-become a website user; they receive a token-based portal link.\n\nWhy not \"Quotation auto-confirms to sales order without customer interaction\"? Conversion to a sales order happens only when the customer clicks Sign/Confirm or the salesperson clicks Confirm.", fr: "Envoyer par e-mail met en file d'attente un e-mail contenant un lien portail où le client peut consulter le devis, le signer (si la signature électronique est activée), payer un acompte (si le paiement en ligne est configuré) et confirmer. Le statut du devis passe à « Devis envoyé ». Il peut encore être modifié." },
   }),
   complexQ({
     id: "oep-022",
     module: "crm",
-    text: {
-      en: "A salesperson wants the customer to e-sign the quotation online before it is confirmed. What must be enabled in Odoo 19 Sales settings?",
-      fr: "A salesperson wants the customer to e-sign the devis online before it is confirmed. What must be enabled in Odoo 19 Sales settings?",
-    },
-    correct: {
-      en: "Online Signature in Sales > Configuration > Settings > Quotations & Orders",
-      fr: "Online Signature in Sales > Configuration > Settings > Quotations & Orders",
-    },
+    text: { en: "A salesperson wants the customer to e-sign the quotation online before it is confirmed. What must be enabled in Odoo 19 Sales settings?", fr: "Un commercial veut que le client signe électroniquement le devis en ligne avant sa confirmation. Que doit être activé dans les paramètres Odoo 19 Ventes ?" },
+    correct: { en: "Online Signature in Sales > Configuration > Settings > Quotations & Orders", fr: "Signature en ligne dans Ventes > Configuration > Paramètres > Devis et commandes" },
     distractors: [
-      {
-        en: "Online Payment only in Odoo 19, but not for this workflow (not applicable here)",
-        fr: "Online Payment only in Odoo 19, but not for this workflow (not applicable here)",
-      },
-      {
-        en: "Sign module replacement which confuses a related but distinct setting (not applicable here)",
-        fr: "Sign module replacement which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "Fleet integration and is not the controlling configuration here (not applicable here)",
-        fr: "Fleet integration and is not the controlling configuration here (not applicable here)",
-      },
+      { en: "Online Payment only in Odoo 19, but not for this workflow (not applicable here)", fr: "Paiement en ligne uniquement dans Odoo 19, mais pas pour ce flux (non applicable ici)" },
+      { en: "Sign module replacement which confuses a related but distinct setting (not applicable here)", fr: "Remplacement du module Sign, ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "Fleet integration and is not the controlling configuration here (not applicable here)", fr: "Intégration Parc automobile, ce qui n'est pas la configuration pertinente ici (non applicable ici)" },
     ],
-    explanation: {
-      en: "In Sales > Configuration > Settings, enabling 'Online Signature' adds a Sign button on the customer portal page for quotations. The customer types or draws their signature and the quote auto-converts to a confirmed sales order with the signature stored for audit. Online Payment is a separate adjacent option for collecting a deposit at signing.\n\nOnline Payment lets them pay; signing is its own toggle. The Sign app is for general document signing flows, not the quotation portal toggle. Fleet is unrelated to quotations.",
-      fr: "In Sales > Configuration > Settings, enabling 'Online Signature' adds a Sign button on the customer portal page for quotations. The customer types or draws their signature and the quote auto-converts to a confirmed commande client with the signature stored for audit. Online Payment is a separate adjacent option for collecting a deposit at signing.\n\nOnline Payment lets them pay; signing is its own toggle. The Sign app is for general document signing flows, not the devis portal toggle. Fleet is unrelated to quotations.",
-    },
+    explanation: { en: "In Sales > Configuration > Settings, enabling 'Online Signature' adds a Sign button on the customer portal page for quotations. The customer types or draws their signature and the quote auto-converts to a confirmed sales order with the signature stored for audit. Online Payment is a separate adjacent option for collecting a deposit at signing.\n\nWhy not \"Online Payment only in Odoo 19, but not for this workflow (not applicable here)\"? Online Payment lets them pay; signing is its own toggle.\n\nWhy not \"Sign module replacement which confuses a related but distinct setting (not applicable here)\"? The Sign app is for general document signing flows, not the quotation portal toggle.\n\nWhy not \"Fleet integration and is not the controlling configuration here (not applicable here)\"? Fleet is unrelated to quotations.", fr: "Dans Ventes > Configuration > Paramètres, l'activation de « Signature en ligne » ajoute un bouton Signer sur la page du portail client pour les devis. Le client tape ou dessine sa signature et le devis se convertit automatiquement en bon de commande confirmé avec la signature conservée pour l'audit." },
   }),
   complexQ({
     id: "oep-023",
     module: "crm",
-    text: {
-      en: "How does Odoo 19 model the difference between a product template and a product variant?",
-      fr: "How does Odoo 19 model the difference between a product template and a product variant?",
-    },
-    correct: {
-      en: "product.template holds shared attributes",
-      fr: "product.template holds shared attributes",
-    },
+    text: { en: "How does Odoo 19 model the difference between a product template and a product variant?", fr: "Comment Odoo 19 modélise-t-il la différence entre un modèle de produit et une variante de produit ?" },
+    correct: { en: "product.template holds shared attributes", fr: "product.template contient les attributs partagés" },
     distractors: [
-      {
-        en: "Both are the same model; variants are just tags",
-        fr: "Both are the same model; variants are just tags",
-      },
-      {
-        en: "Variants are stored as separate templates",
-        fr: "Variants are stored as separate templates",
-      },
-      {
-        en: "Variants only exist in eCommerce and is not the controlling configuration here",
-        fr: "Variants only exist in eCommerce and is not the controlling configuration here",
-      },
+      { en: "Both are the same model; variants are just tags", fr: "Les deux sont le même modèle ; les variantes sont juste des étiquettes" },
+      { en: "Variants are stored as separate templates", fr: "Les variantes sont stockées comme des modèles séparés" },
+      { en: "Variants only exist in eCommerce and is not the controlling configuration here", fr: "Les variantes n'existent que dans l'eCommerce, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "product.template is the shared definition (name, category, taxes, type). When attributes such as Color and Size are added to the template with values, Odoo generates one product.product per combination. Internal references, barcodes, prices, and stock levels can differ per variant. This template/variant split is core to all Odoo apps that use products.\n\nTemplates and variants are different models with a clear parent/child relationship. Variants are not separate templates; one template owns its variants. Variants are used everywhere products are: Sales, Purchase, Inventory, MRP, POS, eCommerce.",
-      fr: "product.template is the shared definition (name, category, taxes, type). When attributes such as Color and Size are added to the template with values, Odoo generates one product.product per combination. Internal references, barcodes, prices, and stock levels can differ per variant. This template/variant split is core to all Odoo apps that use products.\n\nTemplates and variants are different models with a clear parent/child relationship. Variants are not separate templates; one template owns its variants. Variants are used everywhere products are: Sales, Purchase, Inventory, MRP, POS, eCommerce.",
-    },
+    explanation: { en: "product.template is the shared definition (name, category, taxes, type). When attributes such as Color and Size are added to the template with values, Odoo generates one product.product per combination. Internal references, barcodes, prices, and stock levels can differ per variant. This template/variant split is core to all Odoo apps that use products.\n\nWhy not \"Both are the same model; variants are just tags\"? Templates and variants are different models with a clear parent/child relationship.\n\nWhy not \"Variants are stored as separate templates\"? Variants are not separate templates; one template owns its variants.\n\nWhy not \"Variants only exist in eCommerce and is not the controlling configuration here\"? Variants are used everywhere products are: Sales, Purchase, Inventory, MRP, POS, eCommerce.", fr: "product.template est la définition partagée (nom, catégorie, taxes, type). Lorsque des attributs comme Couleur et Taille sont ajoutés au modèle avec des valeurs, Odoo génère un product.product par combinaison. Les références internes, codes-barres, prix et niveaux de stock peuvent différer par variante." },
   }),
   complexQ({
     id: "oep-024",
     module: "crm",
-    text: {
-      en: "A sales manager wants automatic round-robin assignment of new leads to a team. Where is this configured in Odoo 19?",
-      fr: "A sales manager wants automatic round-robin assignment of new piste to a team. Where is this configured in Odoo 19?",
-    },
-    correct: {
-      en: "On the Sales Team (crm.team) with assignment rules and members",
-      fr: "On the Sales Team (crm.team) with assignment rules and members",
-    },
+    text: { en: "A sales manager wants automatic round-robin assignment of new leads to a team. Where is this configured in Odoo 19?", fr: "Un directeur commercial veut l'attribution automatique en tourniquet des nouvelles pistes à une équipe. Où cela se configure-t-il dans Odoo 19 ?" },
+    correct: { en: "On the Sales Team (crm.team) with assignment rules and members", fr: "Sur l'équipe commerciale (crm.team) avec les règles d'attribution et les membres" },
     distractors: [
-      {
-        en: "On res.users in Odoo 19, but not for this workflow",
-        fr: "On res.users in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Only via Studio automated actions which confuses a related but distinct setting",
-        fr: "Only via Studio action automatisée which confuses a related but distinct setting",
-      },
-      {
-        en: "It must be done in code and is not the controlling configuration here",
-        fr: "It must be done in code and is not the controlling configuration here",
-      },
+      { en: "On res.users in Odoo 19, but not for this workflow", fr: "Sur res.users dans Odoo 19, mais pas pour ce flux" },
+      { en: "Only via Studio automated actions which confuses a related but distinct setting", fr: "Uniquement via des actions automatisées Studio, ce qui est un paramètre distinct mais lié" },
+      { en: "It must be done in code and is not the controlling configuration here", fr: "Cela doit être fait en code, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Sales Teams (crm.team) define members, assignment rules (domain filter), and assignment frequency. Lead Assignment can be configured as Manual or Automated; with automated rules, leads matching the filter are distributed across team members based on their max-leads capacity. This is a standard CRM Enterprise feature, no code or Studio required.\n\nUser records do not control team assignment rules. Studio automations can assign records but are not the standard or required tool here. No code is needed; Sales Team configuration handles it.",
-      fr: "Sales Teams (crm.team) define members, assignment rules (domain filter), and assignment frequency. piste Assignment can be configured as Manual or Automated; with automated rules, piste matching the filter are distributed across team members based on their max-piste capacity. This is a standard CRM Enterprise feature, no code or Studio required.\n\nUser records do not control team assignment rules. Studio automations can assign records but are not the standard or required tool here. No code is needed; Sales Team configuration handles it.",
-    },
+    explanation: { en: "Sales Teams (crm.team) define members, assignment rules (domain filter), and assignment frequency. Lead Assignment can be configured as Manual or Automated; with automated rules, leads matching the filter are distributed across team members based on their max-leads capacity. This is a standard CRM Enterprise feature, no code or Studio required.\n\nWhy not \"On res.users in Odoo 19, but not for this workflow\"? User records do not control team assignment rules.\n\nWhy not \"Only via Studio automated actions which confuses a related but distinct setting\"? Studio automations can assign records but are not the standard or required tool here.\n\nWhy not \"It must be done in code and is not the controlling configuration here\"? No code is needed; Sales Team configuration handles it.", fr: "Les équipes commerciales (crm.team) définissent les membres, les règles d'attribution (filtre de domaine) et la fréquence d'attribution. L'attribution des pistes peut être configurée en Manuel ou Automatisé ; avec les règles automatisées, les pistes correspondant au filtre sont distribuées entre les membres selon leur capacité maximale de pistes." },
   }),
   complexQ({
     id: "oep-025",
     module: "crm",
-    text: {
-      en: "What is an Optional Product on a quotation in Odoo 19?",
-      fr: "What is an Optional Product on a devis in Odoo 19?",
-    },
-    correct: {
-      en: "A suggested add-on shown on the customer portal that they can add with one click",
-      fr: "A suggested add-on shown on the customer portal that they can add with one click",
-    },
+    text: { en: "What is an Optional Product on a quotation in Odoo 19?", fr: "Qu'est-ce qu'un produit optionnel sur un devis dans Odoo 19 ?" },
+    correct: { en: "A suggested add-on shown on the customer portal that they can add with one click", fr: "Un complément suggéré affiché sur le portail client que le client peut ajouter en un clic" },
     distractors: [
-      {
-        en: "A product that is automatically added to every quote (not applicable here)",
-        fr: "A product that is automatically added to every quote (not applicable here)",
-      },
-      {
-        en: "A free sample required by law which confuses a related but distinct setting (not applicable here)",
-        fr: "A free sample required by law which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "A product that cannot be invoiced and is not the controlling configuration here",
-        fr: "A product that cannot be invoiced and is not the controlling configuration here",
-      },
+      { en: "A product that is automatically added to every quote (not applicable here)", fr: "Un produit automatiquement ajouté à chaque devis (non applicable ici)" },
+      { en: "A free sample required by law which confuses a related but distinct setting (not applicable here)", fr: "Un échantillon gratuit exigé par la loi, ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "A product that cannot be invoiced and is not the controlling configuration here", fr: "Un produit qui ne peut pas être facturé, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Optional Products are upsell suggestions attached to a quotation line. On the customer portal, the customer sees them with an Add button. This is a low-friction upsell tool — a customer reviewing a laptop quote can self-add a warranty or carrying case without contacting sales. The salesperson can also configure default optional products on the product itself.\n\nThey are not auto-added; the customer must opt in. There is no legal-sample concept in Odoo Sales. Optional products, once added, are normal lines that can be invoiced.",
-      fr: "Optional Products are upsell suggestions attached to a devis line. On the customer portal, the customer sees them with an Add button. This is a low-friction upsell tool — a customer reviewing a laptop quote can self-add a warranty or carrying case without contacting sales. The salesperson can also configure default optional products on the product itself.\n\nThey are not auto-added; the customer must opt in. There is no legal-sample concept in Odoo Sales. Optional products, once added, are normal lines that can be invoiced.",
-    },
+    explanation: { en: "Optional Products are upsell suggestions attached to a quotation line. On the customer portal, the customer sees them with an Add button. This is a low-friction upsell tool — a customer reviewing a laptop quote can self-add a warranty or carrying case without contacting sales. The salesperson can also configure default optional products on the product itself.\n\nWhy not \"A product that is automatically added to every quote (not applicable here)\"? They are not auto-added; the customer must opt in.\n\nWhy not \"A free sample required by law which confuses a related but distinct setting (not applicable here)\"? There is no legal-sample concept in Odoo Sales.\n\nWhy not \"A product that cannot be invoiced and is not the controlling configuration here\"? Optional products, once added, are normal lines that can be invoiced.", fr: "Les produits optionnels sont des suggestions de vente additionnelle attachées à une ligne de devis. Sur le portail client, le client les voit avec un bouton Ajouter. C'est un outil de vente additionnelle à faible friction — un client consultant un devis pour un ordinateur portable peut ajouter lui-même une garantie ou un étui de transport." },
   }),
   complexQ({
     id: "oep-026",
     module: "crm",
-    text: {
-      en: "Odoo 19 introduced enhanced AI-assisted features in CRM. Which AI capability helps salespeople write follow-up emails or summarize opportunities?",
-      fr: "Odoo 19 introduced enhanced AI-assisted features in CRM. Which AI capability helps salespeople write follow-up emails or summarize opportunité?",
-    },
-    correct: {
-      en: "AI assistant integration in CRM (notes/email composition)",
-      fr: "AI assistant integration in CRM (notes/email composition)",
-    },
+    text: { en: "Odoo 19 introduced enhanced AI-assisted features in CRM. Which AI capability helps salespeople write follow-up emails or summarize opportunities?", fr: "Odoo 19 a introduit des fonctionnalités améliorées d'IA dans le CRM. Quelle capacité IA aide les commerciaux à rédiger des e-mails de suivi ou à résumer des opportunités ?" },
+    correct: { en: "AI assistant integration in CRM (notes/email composition)", fr: "Intégration d'un assistant IA dans le CRM (composition de notes/e-mails)" },
     distractors: [
-      {
-        en: "The Knowledge wiki in Odoo 19, but not for this workflow",
-        fr: "The Knowledge wiki in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "The Discuss app channel and belongs to a different Odoo application",
-        fr: "The Discuss app channel and belongs to a different Odoo application",
-      },
-      {
-        en: "The Sign module and is not the controlling configuration here",
-        fr: "The Sign module and is not the controlling configuration here",
-      },
+      { en: "The Knowledge wiki in Odoo 19, but not for this workflow", fr: "Le wiki Knowledge dans Odoo 19, mais pas pour ce flux" },
+      { en: "The Discuss app channel and belongs to a different Odoo application", fr: "L'application Discuss, qui appartient à une autre application Odoo" },
+      { en: "The Sign module and is not the controlling configuration here", fr: "Le module Sign, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo 19 integrates AI-assisted writing in the chatter and email composer in CRM and other apps, helping users draft replies, summarize long opportunity histories, and rewrite messages. This is part of Odoo's expansion of AI-assisted productivity features in the 19 release. Configuration of AI access is done in General Settings.\n\nKnowledge stores wiki articles but is not a writing assistant in CRM. Discuss is a chat tool, not an AI generator (though AI features can be added). Sign handles signatures, not AI text generation.",
-      fr: "Odoo 19 integrates AI-assisted writing in the chatter and email composer in CRM and other apps, helping users draft replies, summarize long opportunité histories, and rewrite messages. This is part of Odoo's expansion of AI-assisted productivity features in the 19 release. Configuration of AI access is done in General Settings.\n\nKnowledge stores wiki articles but is not a writing assistant in CRM. Discuss is a chat tool, not an AI generator (though AI features can be added). Sign handles signatures, not AI text generation.",
-    },
+    explanation: { en: "Odoo 19 integrates AI-assisted writing in the chatter and email composer in CRM and other apps, helping users draft replies, summarize long opportunity histories, and rewrite messages. This is part of Odoo's expansion of AI-assisted productivity features in the 19 release. Configuration of AI access is done in General Settings.\n\nWhy not \"The Knowledge wiki in Odoo 19, but not for this workflow\"? Knowledge stores wiki articles but is not a writing assistant in CRM.\n\nWhy not \"The Discuss app channel and belongs to a different Odoo application\"? Discuss is a chat tool, not an AI generator (though AI features can be added).\n\nWhy not \"The Sign module and is not the controlling configuration here\"? Sign handles signatures, not AI text generation.", fr: "Odoo 19 intègre la rédaction assistée par IA dans le chatter et le compositeur d'e-mails du CRM et d'autres applications, aidant les utilisateurs à rédiger des réponses, résumer de longs historiques d'opportunités et reformuler des messages. La configuration de l'accès IA se fait dans les Paramètres généraux." },
   }),
   complexQ({
     id: "oep-027",
     module: "crm",
-    text: {
-      en: "In Odoo 19 Sales, what does it mean when a quotation is set to 'Lock Confirmed Sales' (Lock Sales Orders) in the company settings?",
-      fr: "In Odoo 19 Sales, what does it mean when a devis is set to 'Lock Confirmed Sales' (Lock Sales Orders) in the company settings?",
-    },
-    correct: {
-      en: "Confirmed orders can no longer be edited and need a new revision to change",
-      fr: "Confirmed orders can no longer be edited and need a new revision to change",
-    },
+    text: { en: "In Odoo 19 Sales, what does it mean when a quotation is set to 'Lock Confirmed Sales' (Lock Sales Orders) in the company settings?", fr: "Dans Odoo 19 Ventes, que signifie le paramètre « Verrouiller les commandes confirmées » dans les paramètres de la société ?" },
+    correct: { en: "Confirmed orders can no longer be edited and need a new revision to change", fr: "Les commandes confirmées ne peuvent plus être modifiées et nécessitent une nouvelle révision pour être changées" },
     distractors: [
-      {
-        en: "Customers cannot view confirmed orders and belongs to a different Odoo application",
-        fr: "Customers cannot view confirmed orders and belongs to a different Odoo application",
-      },
-      {
-        en: "Orders cannot be cancelled which confuses a related but distinct setting",
-        fr: "Orders cannot be cancelled which confuses a related but distinct setting",
-      },
-      {
-        en: "Orders cannot be invoiced and is not the controlling configuration here",
-        fr: "Orders cannot be invoiced and is not the controlling configuration here",
-      },
+      { en: "Customers cannot view confirmed orders and belongs to a different Odoo application", fr: "Les clients ne peuvent pas voir les commandes confirmées, ce qui appartient à une autre application Odoo" },
+      { en: "Orders cannot be cancelled which confuses a related but distinct setting", fr: "Les commandes ne peuvent pas être annulées, ce qui est un paramètre distinct mais lié" },
+      { en: "Orders cannot be invoiced and is not the controlling configuration here", fr: "Les commandes ne peuvent pas être facturées, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Lock Confirmed Sales prevents accidental edits to confirmed sales orders. To change quantities or pricing, the salesperson must explicitly unlock or create a new sales order. This is a control aimed at preserving the customer-confirmed state of an order, especially important when integrated with manufacturing or shipping.\n\nCustomers can still see their confirmed orders in the portal. Cancellation is a separate workflow not affected by the lock. Locked orders are still invoiceable.",
-      fr: "Lock Confirmed Sales prevents accidental edits to confirmed sales orders. To change quantities or pricing, the salesperson must explicitly unlock or create a new commande client. This is a control aimed at preserving the customer-confirmed state of an order, especially important when integrated with manufacturing or shipping.\n\nCustomers can still see their confirmed orders in the portal. Cancellation is a separate workflow not affected by the lock. Locked orders are still invoiceable.",
-    },
+    explanation: { en: "Lock Confirmed Sales prevents accidental edits to confirmed sales orders. To change quantities or pricing, the salesperson must explicitly unlock or create a new sales order. This is a control aimed at preserving the customer-confirmed state of an order, especially important when integrated with manufacturing or shipping.\n\nWhy not \"Customers cannot view confirmed orders and belongs to a different Odoo application\"? Customers can still see their confirmed orders in the portal.\n\nWhy not \"Orders cannot be cancelled which confuses a related but distinct setting\"? Cancellation is a separate workflow not affected by the lock.\n\nWhy not \"Orders cannot be invoiced and is not the controlling configuration here\"? Locked orders are still invoiceable.", fr: "Le verrouillage des commandes confirmées empêche les modifications accidentelles des bons de commande confirmés. Pour modifier les quantités ou les prix, le commercial doit explicitement déverrouiller ou créer un nouveau bon de commande. Ce contrôle vise à préserver l'état confirmé par le client." },
   }),
   complexQ({
     id: "oep-028",
     module: "crm",
-    text: {
-      en: "A sales rep notices the same customer keeps creating duplicate leads via the website form. Which Odoo 19 CRM feature handles automatic duplicate detection?",
-      fr: "A sales rep notices the same customer keeps creating duplicate piste via the website form. Which Odoo 19 CRM feature handles automatic duplicate detection?",
-    },
-    correct: {
-      en: "Lead duplicate detection (merge suggestions in CRM)",
-      fr: "piste duplicate detection (merge suggestions in CRM)",
-    },
+    text: { en: "A sales rep notices the same customer keeps creating duplicate leads via the website form. Which Odoo 19 CRM feature handles automatic duplicate detection?", fr: "Un commercial remarque que le même client crée des pistes en double via le formulaire du site web. Quelle fonctionnalité CRM d'Odoo 19 gère la détection automatique des doublons ?" },
+    correct: { en: "Lead duplicate detection (merge suggestions in CRM)", fr: "Détection de pistes en double (suggestions de fusion dans le CRM)" },
     distractors: [
-      {
-        en: "Mass mailing and belongs to a different Odoo application",
-        fr: "Mass mailing and belongs to a different Odoo application",
-      },
-      {
-        en: "The Knowledge module which confuses a related but distinct setting",
-        fr: "The Knowledge module which confuses a related but distinct setting",
-      },
-      {
-        en: "Sign module and is not the controlling configuration here",
-        fr: "Sign module and is not the controlling configuration here",
-      },
+      { en: "Mass mailing and belongs to a different Odoo application", fr: "Le publipostage de masse, qui appartient à une autre application Odoo" },
+      { en: "The Knowledge module which confuses a related but distinct setting", fr: "Le module Knowledge, ce qui est un paramètre distinct mais lié" },
+      { en: "Sign module and is not the controlling configuration here", fr: "Le module Sign, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo CRM detects probable duplicates by matching email or phone and shows a 'Similar Leads' button on the lead form, allowing the salesperson to merge them. The merged lead consolidates messages, activities, and partner links. This is critical because duplicate leads inflate pipeline numbers and confuse outreach.\n\nMass mailing sends emails; it does not detect duplicates. Knowledge stores wiki articles, unrelated to leads. Sign manages e-signatures on documents; it does not detect duplicate CRM leads by email or phone.",
-      fr: "Odoo CRM detects probable duplicates by matching email or phone and shows a 'Similar piste' button on the piste form, allowing the salesperson to merge them. The merged piste consolidates messages, activities, and partner links. This is critical because duplicate piste inflate pipeline numbers and confuse outreach.\n\nMass mailing sends emails; it does not detect duplicates. Knowledge stores wiki articles, unrelated to piste. Sign manages e-signatures on documents; it does not detect duplicate CRM piste by email or phone.",
-    },
+    explanation: { en: "Odoo CRM detects probable duplicates by matching email or phone and shows a 'Similar Leads' button on the lead form, allowing the salesperson to merge them. The merged lead consolidates messages, activities, and partner links. This is critical because duplicate leads inflate pipeline numbers and confuse outreach.\n\nWhy not \"Mass mailing and belongs to a different Odoo application\"? Mass mailing sends emails; it does not detect duplicates.\n\nWhy not \"The Knowledge module which confuses a related but distinct setting\"? Knowledge stores wiki articles, unrelated to leads.\n\nWhy not \"Sign module and is not the controlling configuration here\"? Sign manages e-signatures on documents; it does not detect duplicate CRM leads by email or phone.", fr: "Le CRM Odoo détecte les doublons probables en comparant l'e-mail ou le téléphone et affiche un bouton « Pistes similaires » sur le formulaire de la piste, permettant au commercial de les fusionner. La piste fusionnée consolide les messages, activités et liens partenaires." },
   }),
   complexQ({
     id: "oep-029",
     module: "inventory",
-    text: {
-      en: "In Odoo 19 Inventory, what is the technical model for a transfer document like a delivery order, receipt, or internal transfer?",
-      fr: "In Odoo 19 Inventory, what is the technical model for a transfer document like a bon de livraison, receipt, or internal transfer?",
-    },
-    correct: {
-      en: "stock.picking",
-      fr: "stock.picking",
-    },
+    text: { en: "In Odoo 19 Inventory, what is the technical model for a transfer document like a delivery order, receipt, or internal transfer?", fr: "Dans Odoo 19 Inventaire, quel est le modèle technique pour un document de transfert comme un bon de livraison, une réception ou un transfert interne ?" },
+    correct: { en: "stock.picking", fr: "stock.picking" },
     distractors: [
-      {
-        en: "stock.transfer",
-        fr: "stock.transfer",
-      },
-      {
-        en: "stock.move.delivery",
-        fr: "stock.move.delivery",
-      },
-      {
-        en: "stock.warehouse.move",
-        fr: "stock.entrepôt.move",
-      },
+      { en: "stock.transfer", fr: "stock.transfer" },
+      { en: "stock.move.delivery", fr: "stock.move.delivery" },
+      { en: "stock.warehouse.move", fr: "stock.warehouse.move" },
     ],
-    explanation: {
-      en: "stock.picking is the parent document for any stock transfer. Each picking has a picking_type_id (Receipts, Delivery Orders, Internal, MO transfers, etc.) and lines stored in stock.move and stock.move.line. The state field tracks the picking through Draft → Waiting → Ready → Done.\n\nstock.transfer is not the canonical model name. stock.move.delivery is invented. stock.warehouse.move is not a real Odoo model.",
-      fr: "stock.picking is the parent document for any stock transfer. Each picking has a picking_type_id (Receipts, Delivery Orders, Internal, MO transfers, etc.) and lines stored in stock.move and stock.move.line. The state field tracks the picking through Draft → Waiting → Ready → Done.\n\nstock.transfer is not the canonical model name. stock.move.delivery is invented. stock.entrepôt.move is not a real Odoo model.",
-    },
+    explanation: { en: "stock.picking is the parent document for any stock transfer. Each picking has a picking_type_id (Receipts, Delivery Orders, Internal, MO transfers, etc.) and lines stored in stock.move and stock.move.line. The state field tracks the picking through Draft → Waiting → Ready → Done.\n\nWhy not \"stock.transfer\"? stock.transfer is not the canonical model name.\n\nWhy not \"stock.move.delivery\"? stock.move.delivery is invented.\n\nWhy not \"stock.warehouse.move\"? stock.warehouse.move is not a real Odoo model.", fr: "stock.picking est le document parent pour tout transfert de stock. Chaque picking a un picking_type_id (Réceptions, Bons de livraison, Internes, transferts OF, etc.) et des lignes stockées dans stock.move et stock.move.line. Le champ state suit le picking à travers Brouillon → En attente → Prêt → Fait." },
   }),
   complexQ({
     id: "oep-030",
     module: "inventory",
-    text: {
-      en: "A consultant configures inventory valuation in Odoo 19. Which method recalculates unit cost as a weighted average after each incoming shipment?",
-      fr: "A consultant configures inventory valuation in Odoo 19. Which method recalculates unit cost as a weighted average after each incoming shipment?",
-    },
-    correct: {
-      en: "AVCO (Average Cost)",
-      fr: "AVCO (Average Cost)",
-    },
+    text: { en: "A consultant configures inventory valuation in Odoo 19. Which method recalculates unit cost as a weighted average after each incoming shipment?", fr: "Un consultant configure la valorisation des stocks dans Odoo 19. Quelle méthode recalcule le coût unitaire en moyenne pondérée après chaque réception ?" },
+    correct: { en: "AVCO (Average Cost)", fr: "CMUP (Coût Moyen Unitaire Pondéré)" },
     distractors: [
-      {
-        en: "Standard Price",
-        fr: "Standard Price",
-      },
-      {
-        en: "FIFO (First In, First Out)",
-        fr: "FIFO (First In, First Out)",
-      },
-      {
-        en: "LIFO (Last In, First Out)",
-        fr: "LIFO (Last In, First Out)",
-      },
+      { en: "Standard Price", fr: "Prix standard" },
+      { en: "FIFO (First In, First Out)", fr: "FIFO (Premier Entré, Premier Sorti)" },
+      { en: "LIFO (Last In, First Out)", fr: "LIFO (Dernier Entré, Premier Sorti)" },
     ],
-    explanation: {
-      en: "AVCO (Average Cost) recalculates the average unit cost after each receipt: (current_qty × current_cost + new_qty × new_cost) ÷ (current_qty + new_qty). FIFO consumes oldest cost layers first. Standard Price keeps a manually maintained fixed cost. Odoo does not natively support LIFO because most accounting standards (IFRS) prohibit it.\n\nStandard Price uses a manually defined fixed cost, not a recalculated average. FIFO consumes oldest layers first; the cost reflects whichever layer was purchased first. LIFO is not natively supported in standard Odoo.",
-      fr: "AVCO (Average Cost) recalculates the average unit cost after each receipt: (current_qty × current_cost + new_qty × new_cost) ÷ (current_qty + new_qty). FIFO consumes oldest cost layers first. Standard Price keeps a manually maintained fixed cost. Odoo does not natively support LIFO because most accounting standards (IFRS) prohibit it.\n\nStandard Price uses a manually defined fixed cost, not a recalculated average. FIFO consumes oldest layers first; the cost reflects whichever layer was purchased first. LIFO is not natively supported in standard Odoo.",
-    },
+    explanation: { en: "AVCO (Average Cost) recalculates the average unit cost after each receipt: (current_qty × current_cost + new_qty × new_cost) ÷ (current_qty + new_qty). FIFO consumes oldest cost layers first. Standard Price keeps a manually maintained fixed cost. Odoo does not natively support LIFO because most accounting standards (IFRS) prohibit it.\n\nWhy not \"Standard Price\"? Standard Price uses a manually defined fixed cost, not a recalculated average.\n\nWhy not \"FIFO (First In, First Out)\"? FIFO consumes oldest layers first; the cost reflects whichever layer was purchased first.\n\nWhy not \"LIFO (Last In, First Out)\"? LIFO is not natively supported in standard Odoo.", fr: "Le CMUP (AVCO) recalcule le coût unitaire moyen après chaque réception : (qté_actuelle × coût_actuel + nouvelle_qté × nouveau_coût) ÷ (qté_actuelle + nouvelle_qté). Le FIFO consomme les couches les plus anciennes en premier. Le prix standard maintient un coût fixe défini manuellement. Odoo ne supporte pas nativement le LIFO car la plupart des normes comptables (IFRS) l'interdisent." },
   }),
   complexQ({
     id: "oep-031",
     module: "inventory",
-    text: {
-      en: "A warehouse uses lots to track expiration dates on pharmaceutical inventory. Which Inventory setting must be enabled?",
-      fr: "A entrepôt uses lots to track expiration dates on pharmaceutical inventory. Which Inventory setting must be enabled?",
-    },
-    correct: {
-      en: "Enable multi-step routes only without any lot or serial traceability",
-      fr: "Enable multi-step routes only without any lot or serial traceability",
-    },
+    text: { en: "A warehouse uses lots to track expiration dates on pharmaceutical inventory. Which Inventory setting must be enabled?", fr: "Un entrepôt utilise des lots pour suivre les dates d'expiration des stocks pharmaceutiques. Quel paramètre d'Inventaire doit être activé ?" },
+    correct: { en: "Enable multi-step routes only without any lot or serial traceability", fr: "Activer les routes multi-étapes uniquement sans aucune traçabilité par lot ou numéro de série" },
     distractors: [
-      {
-        en: "Enable Lots & Serial Numbers, then expiration dates on tracked products",
-        fr: "Enable Lots & Serial Numbers, then expiration dates on tracked products",
-      },
-      {
-        en: "Configure putaway rules directing pallets to cold-storage sub-locations",
-        fr: "Configure putaway rules directing pallets to cold-storage sub-locations",
-      },
-      {
-        en: "Define storage categories restricting hazardous goods to specific bins",
-        fr: "Define storage categories restricting hazardous goods to specific bins",
-      },
+      { en: "Enable Lots & Serial Numbers, then expiration dates on tracked products", fr: "Activer Lots et numéros de série, puis les dates d'expiration sur les produits suivis" },
+      { en: "Configure putaway rules directing pallets to cold-storage sub-locations", fr: "Configurer les règles de rangement dirigeant les palettes vers des sous-emplacements de stockage froid" },
+      { en: "Define storage categories restricting hazardous goods to specific bins", fr: "Définir des catégories de stockage restreignant les marchandises dangereuses à des casiers spécifiques" },
     ],
-    explanation: {
-      en: "Enable 'Lots & Serial Numbers' in Inventory > Settings > Traceability. Then on each tracked product, set Tracking to 'By Lots' and enable 'Expiration Date'. Each lot then carries best-before, expiration, removal, and alert dates. Odoo 19 will warn or block movements of expired lots based on settings, and FEFO removal can be configured to consume the closest-to-expire lot first.\n\nMulti-step routes determine flow steps, not lot tracking. Putaway rules direct stock to specific locations on receipt; they do not enable lot tracking. Storage categories restrict what products can go in which sub-locations; not lot tracking.",
-      fr: "Enable 'Lots & Serial Numbers' in Inventory > Settings > Traceability. Then on each tracked product, set Tracking to 'By Lots' and enable 'Expiration Date'. Each lot then carries best-before, expiration, removal, and alert dates. Odoo 19 will warn or block movements of expired lots based on settings, and FEFO removal can be configured to consume the closest-to-expire lot first.\n\nMulti-step routes determine flow steps, not lot tracking. Putaway rules direct stock to specific locations on receipt; they do not enable lot tracking. Storage categories restrict what products can go in which sub-locations; not lot tracking.",
-    },
+    explanation: { en: "Enable 'Lots & Serial Numbers' in Inventory > Settings > Traceability. Then on each tracked product, set Tracking to 'By Lots' and enable 'Expiration Date'. Each lot then carries best-before, expiration, removal, and alert dates. Odoo 19 will warn or block movements of expired lots based on settings, and FEFO removal can be configured to consume the closest-to-expire lot first.\n\nWhy not \"Enable Lots & Serial Numbers, then expiration dates on tracked products\"? Multi-step routes determine flow steps, not lot tracking.\n\nWhy not \"Configure putaway rules directing pallets to cold-storage sub-locations\"? Putaway rules direct stock to specific locations on receipt; they do not enable lot tracking.\n\nWhy not \"Define storage categories restricting hazardous goods to specific bins\"? Storage categories restrict what products can go in which sub-locations; not lot tracking.", fr: "Activer « Lots et numéros de série » dans Inventaire > Paramètres > Traçabilité. Puis sur chaque produit suivi, définir le suivi sur « Par lots » et activer « Date d'expiration ». Chaque lot porte alors des dates de péremption, d'expiration, de retrait et d'alerte. Odoo 19 avertira ou bloquera les mouvements de lots expirés." },
   }),
   complexQ({
     id: "oep-032",
     module: "inventory",
-    text: {
-      en: "What is the difference between Make-to-Stock (MTS) and Make-to-Order (MTO) routes in Odoo 19?",
-      fr: "What is the difference between Make-to-Stock (MTS) and Make-to-Order (MTO) routes in Odoo 19?",
-    },
-    correct: {
-      en: "MTS holds stock and reserves from on-hand inventory",
-      fr: "MTS holds stock and reserves from on-hand inventory",
-    },
+    text: { en: "What is the difference between Make-to-Stock (MTS) and Make-to-Order (MTO) routes in Odoo 19?", fr: "Quelle est la différence entre les routes Fabrication sur stock (MTS) et Fabrication à la commande (MTO) dans Odoo 19 ?" },
+    correct: { en: "MTS holds stock and reserves from on-hand inventory", fr: "MTS conserve du stock et réserve à partir de l'inventaire disponible" },
     distractors: [
-      {
-        en: "MTS produces or buys goods on demand for each sale; MTO holds inventory and reserves from stock",
-        fr: "MTS produces or buys goods on demand for each sale; MTO holds inventory and reserves from stock",
-      },
-      {
-        en: "They are synonyms which confuses a related but distinct setting",
-        fr: "They are synonyms which confuses a related but distinct setting",
-      },
-      {
-        en: "MTO only applies to services and is not the controlling configuration here",
-        fr: "MTO only applies to services and is not the controlling configuration here",
-      },
+      { en: "MTS produces or buys goods on demand for each sale; MTO holds inventory and reserves from stock", fr: "MTS produit ou achète des biens à la demande pour chaque vente ; MTO conserve l'inventaire et réserve depuis le stock" },
+      { en: "They are synonyms which confuses a related but distinct setting", fr: "Ce sont des synonymes, ce qui est un paramètre distinct mais lié" },
+      { en: "MTO only applies to services and is not the controlling configuration here", fr: "MTO ne s'applique qu'aux services, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "MTS (default) reserves goods from existing stock and replenishes via reordering rules. MTO chains a procurement directly to the sales order: for each SO line, Odoo creates an RFQ or MO linked to that line. MTO is suited for high-cost or customizable items where you want zero generic inventory; MTS is for fast-moving goods where availability matters more than per-order linkage.\n\nThe definitions are swapped in this option. They are opposite strategies, not synonyms. Services are not stocked; MTS/MTO apply to stockable products.",
-      fr: "MTS (default) reserves goods from existing stock and replenishes via règle de réapprovisionnement. MTO chains a procurement directly to the commande client: for each SO line, Odoo creates an RFQ or MO linked to that line. MTO is suited for high-cost or customizable items where you want zero generic inventory; MTS is for fast-moving goods where availability matters more than per-order linkage.\n\nThe definitions are swapped in this option. They are opposite strategies, not synonyms. Services are not stocked; MTS/MTO apply to stockable products.",
-    },
+    explanation: { en: "MTS (default) reserves goods from existing stock and replenishes via reordering rules. MTO chains a procurement directly to the sales order: for each SO line, Odoo creates an RFQ or MO linked to that line. MTO is suited for high-cost or customizable items where you want zero generic inventory; MTS is for fast-moving goods where availability matters more than per-order linkage.\n\nWhy not \"MTS produces or buys goods on demand for each sale; MTO holds inventory and reserves from stock\"? The definitions are swapped in this option.\n\nWhy not \"They are synonyms which confuses a related but distinct setting\"? They are opposite strategies, not synonyms.\n\nWhy not \"MTO only applies to services and is not the controlling configuration here\"? Services are not stocked; MTS/MTO apply to stockable products.", fr: "MTS (par défaut) réserve les marchandises depuis le stock existant et réapprovisionne via des règles de réapprovisionnement. MTO chaîne un approvisionnement directement à la commande client : pour chaque ligne de commande, Odoo crée une demande de prix ou un ordre de fabrication lié à cette ligne." },
   }),
   complexQ({
     id: "oep-033",
     module: "inventory",
-    text: {
-      en: "Reordering rules in Odoo 19 trigger procurement when stock falls below a minimum. What are the two key fields on a reordering rule?",
-      fr: "règle de réapprovisionnement in Odoo 19 trigger procurement when stock falls below a minimum. What are the two key fields on a règle de réapprovisionnement?",
-    },
-    correct: {
-      en: "Min Quantity and Max Quantity",
-      fr: "Min Quantity and Max Quantity",
-    },
+    text: { en: "Reordering rules in Odoo 19 trigger procurement when stock falls below a minimum. What are the two key fields on a reordering rule?", fr: "Les règles de réapprovisionnement dans Odoo 19 déclenchent l'approvisionnement lorsque le stock tombe en dessous d'un minimum. Quels sont les deux champs clés d'une règle de réapprovisionnement ?" },
+    correct: { en: "Min Quantity and Max Quantity", fr: "Quantité minimum et Quantité maximum" },
     distractors: [
-      {
-        en: "Cost and Price and belongs to a different Odoo application",
-        fr: "Cost and Price and belongs to a different Odoo application",
-      },
-      {
-        en: "Lead Time and Customer which confuses a related but distinct setting",
-        fr: "piste Time and Customer which confuses a related but distinct setting",
-      },
-      {
-        en: "Lot Size and Tolerance and is not the controlling configuration here",
-        fr: "Lot Size and Tolerance and is not the controlling configuration here",
-      },
+      { en: "Cost and Price and belongs to a different Odoo application", fr: "Coût et prix, ce qui appartient à une autre application Odoo" },
+      { en: "Lead Time and Customer which confuses a related but distinct setting", fr: "Délai de livraison et client, ce qui est un paramètre distinct mais lié" },
+      { en: "Lot Size and Tolerance and is not the controlling configuration here", fr: "Taille de lot et tolérance, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "A reordering rule has Min Quantity (the trigger threshold) and Max Quantity (the target stock level). When forecasted stock at the rule's location drops below Min, Odoo creates a procurement to bring stock back to Max. Multiple of (lot multiple) and lead time defaults from the supplier or BoM round up the procurement quantity.\n\nCost and Price live on the product, not the rule. Lead time can be displayed but is not the rule's defining pair; customer is unrelated. Lot Size and Tolerance are not the rule fields.",
-      fr: "A règle de réapprovisionnement has Min Quantity (the trigger threshold) and Max Quantity (the target stock level). When forecasted stock at the rule's location drops below Min, Odoo creates a procurement to bring stock back to Max. Multiple of (lot multiple) and piste time defaults from the supplier or NdM round up the procurement quantity.\n\nCost and Price live on the product, not the rule. piste time can be displayed but is not the rule's defining pair; customer is unrelated. Lot Size and Tolerance are not the rule fields.",
-    },
+    explanation: { en: "A reordering rule has Min Quantity (the trigger threshold) and Max Quantity (the target stock level). When forecasted stock at the rule's location drops below Min, Odoo creates a procurement to bring stock back to Max. Multiple of (lot multiple) and lead time defaults from the supplier or BoM round up the procurement quantity.\n\nWhy not \"Cost and Price and belongs to a different Odoo application\"? Cost and Price live on the product, not the rule.\n\nWhy not \"Lead Time and Customer which confuses a related but distinct setting\"? Lead time can be displayed but is not the rule's defining pair; customer is unrelated.\n\nWhy not \"Lot Size and Tolerance and is not the controlling configuration here\"? Lot Size and Tolerance are not the rule fields.", fr: "Une règle de réapprovisionnement a une quantité minimum (le seuil de déclenchement) et une quantité maximum (le niveau de stock cible). Lorsque le stock prévisionnel à l'emplacement de la règle descend en dessous du minimum, Odoo crée un approvisionnement pour ramener le stock au maximum." },
   }),
   complexQ({
     id: "oep-034",
     module: "inventory",
-    text: {
-      en: "An Odoo 19 warehouse is configured with 3-step receipts (Input → Quality → Stock). What is the primary purpose of this configuration?",
-      fr: "An Odoo 19 entrepôt is configured with 3-step receipts (Input → Quality → Stock). What is the primary purpose of this configuration?",
-    },
-    correct: {
-      en: "Insert a quality control step between vendor receipt and putaway to stock",
-      fr: "Insert a quality control step between vendor receipt and putaway to stock",
-    },
+    text: { en: "An Odoo 19 warehouse is configured with 3-step receipts (Input → Quality → Stock). What is the primary purpose of this configuration?", fr: "Un entrepôt Odoo 19 est configuré avec des réceptions en 3 étapes (Entrée → Qualité → Stock). Quel est l'objectif principal de cette configuration ?" },
+    correct: { en: "Insert a quality control step between vendor receipt and putaway to stock", fr: "Insérer une étape de contrôle qualité entre la réception fournisseur et le rangement en stock" },
     distractors: [
-      {
-        en: "Faster receipts in Odoo 19, but not for this workflow (not applicable here)",
-        fr: "Faster receipts in Odoo 19, but not for this workflow (not applicable here)",
-      },
-      {
-        en: "Multi-currency receipts which confuses a related but distinct setting (not applicable here)",
-        fr: "Multi-currency receipts which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "Consolidate multiple POs and is not the controlling configuration here (not applicable here)",
-        fr: "Consolidate multiple POs and is not the controlling configuration here (not applicable here)",
-      },
+      { en: "Faster receipts in Odoo 19, but not for this workflow (not applicable here)", fr: "Des réceptions plus rapides dans Odoo 19, mais pas pour ce flux (non applicable ici)" },
+      { en: "Multi-currency receipts which confuses a related but distinct setting (not applicable here)", fr: "Des réceptions multi-devises, ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "Consolidate multiple POs and is not the controlling configuration here (not applicable here)", fr: "Consolider plusieurs bons de commande fournisseur, ce qui n'est pas la configuration pertinente ici (non applicable ici)" },
     ],
-    explanation: {
-      en: "3-step receipts separate physical reception (vendor delivers to Input), quality inspection (move from Input to QC location), and putaway (move from QC to Stock once approved). Each step is a stock.picking with its own quality checks if the Quality module is installed. This pattern is common in regulated industries (pharma, food, electronics).\n\nMulti-step processes are slower per item but more controlled, not faster. Multi-currency is a finance feature, not a warehouse step model. PO consolidation is a procurement choice unrelated to step count.",
-      fr: "3-step receipts separate physical reception (vendor delivers to Input), quality inspection (move from Input to QC location), and putaway (move from QC to Stock once approved). Each step is a stock.picking with its own quality checks if the Quality module is installed. This pattern is common in regulated industries (pharma, food, electronics).\n\nMulti-step processes are slower per item but more controlled, not faster. Multi-currency is a finance feature, not a entrepôt step model. PO consolidation is a procurement choice unrelated to step count.",
-    },
+    explanation: { en: "3-step receipts separate physical reception (vendor delivers to Input), quality inspection (move from Input to QC location), and putaway (move from QC to Stock once approved). Each step is a stock.picking with its own quality checks if the Quality module is installed. This pattern is common in regulated industries (pharma, food, electronics).\n\nWhy not \"Faster receipts in Odoo 19, but not for this workflow (not applicable here)\"? Multi-step processes are slower per item but more controlled, not faster.\n\nWhy not \"Multi-currency receipts which confuses a related but distinct setting (not applicable here)\"? Multi-currency is a finance feature, not a warehouse step model.\n\nWhy not \"Consolidate multiple POs and is not the controlling configuration here (not applicable here)\"? PO consolidation is a procurement choice unrelated to step count.", fr: "Les réceptions en 3 étapes séparent la réception physique (le fournisseur livre à l'entrée), l'inspection qualité (transfert de l'entrée vers l'emplacement CQ) et le rangement (transfert du CQ vers le stock une fois approuvé). Chaque étape est un stock.picking avec ses propres contrôles qualité si le module Qualité est installé." },
   }),
   complexQ({
     id: "oep-035",
     module: "inventory",
-    text: {
-      en: "A consultant needs to handle drop-shipping where the vendor ships directly to the customer. Which Odoo 19 route is used?",
-      fr: "A consultant needs to handle drop-shipping where the vendor ships directly to the customer. Which Odoo 19 route is used?",
-    },
-    correct: {
-      en: "Dropship route on the product",
-      fr: "Dropship route on the product",
-    },
+    text: { en: "A consultant needs to handle drop-shipping where the vendor ships directly to the customer. Which Odoo 19 route is used?", fr: "Un consultant doit gérer le dropshipping où le fournisseur expédie directement au client. Quelle route Odoo 19 est utilisée ?" },
+    correct: { en: "Dropship route on the product", fr: "Route de livraison directe sur le produit" },
     distractors: [
-      {
-        en: "Buy + Manufacture in Odoo 19, but not for this workflow",
-        fr: "Buy + Manufacture in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Cross-Dock only which confuses a related but distinct setting",
-        fr: "Cross-Dock only which confuses a related but distinct setting",
-      },
-      {
-        en: "Internal Transfers and is not the controlling configuration here",
-        fr: "Internal Transfers and is not the controlling configuration here",
-      },
+      { en: "Buy + Manufacture in Odoo 19, but not for this workflow", fr: "Achat + Fabrication dans Odoo 19, mais pas pour ce flux" },
+      { en: "Cross-Dock only which confuses a related but distinct setting", fr: "Cross-dock uniquement, ce qui est un paramètre distinct mais lié" },
+      { en: "Internal Transfers and is not the controlling configuration here", fr: "Transferts internes, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Activate Dropshipping in Purchase > Settings, which adds a 'Dropship' route selectable on the product. When an SO line uses a Dropship product, Odoo creates a PO with the customer's shipping address as delivery, bypassing the warehouse entirely. No stock movement is recorded internally beyond the dropship transit.\n\nBuy + Manufacture combines production with purchasing but still involves your warehouse. Cross-Dock receives goods and immediately ships them out from the warehouse — different from direct vendor-to-customer. Internal Transfers move stock between own locations, not vendor-to-customer.",
-      fr: "Activate Dropshipping in Purchase > Settings, which adds a 'Dropship' route selectable on the product. When an SO line uses a Dropship product, Odoo creates a PO with the customer's shipping address as delivery, bypassing the entrepôt entirely. No stock movement is recorded internally beyond the dropship transit.\n\nBuy + Manufacture combines production with purchasing but still involves your entrepôt. Cross-Dock receives goods and immediately ships them out from the entrepôt — different from direct vendor-to-customer. Internal Transfers move stock between own locations, not vendor-to-customer.",
-    },
+    explanation: { en: "Activate Dropshipping in Purchase > Settings, which adds a 'Dropship' route selectable on the product. When an SO line uses a Dropship product, Odoo creates a PO with the customer's shipping address as delivery, bypassing the warehouse entirely. No stock movement is recorded internally beyond the dropship transit.\n\nWhy not \"Buy + Manufacture in Odoo 19, but not for this workflow\"? Buy + Manufacture combines production with purchasing but still involves your warehouse.\n\nWhy not \"Cross-Dock only which confuses a related but distinct setting\"? Cross-Dock receives goods and immediately ships them out from the warehouse — different from direct vendor-to-customer.\n\nWhy not \"Internal Transfers and is not the controlling configuration here\"? Internal Transfers move stock between own locations, not vendor-to-customer.", fr: "Activer la livraison directe dans Achats > Paramètres, ce qui ajoute une route « Livraison directe » sélectionnable sur le produit. Lorsqu'une ligne de commande client utilise un produit en livraison directe, Odoo crée un bon de commande fournisseur avec l'adresse de livraison du client, contournant entièrement l'entrepôt." },
   }),
   complexQ({
     id: "oep-036",
     module: "inventory",
-    text: {
-      en: "What does enabling 'Storage Locations' in Inventory > Settings allow a warehouse to do in Odoo 19?",
-      fr: "What does enabling 'Storage Locations' in Inventory > Settings allow a entrepôt to do in Odoo 19?",
-    },
-    correct: {
-      en: "Use sub-locations within a warehouse (aisles, shelves, bins)",
-      fr: "Use sub-locations within a entrepôt (aisles, shelves, bins)",
-    },
+    text: { en: "What does enabling 'Storage Locations' in Inventory > Settings allow a warehouse to do in Odoo 19?", fr: "Qu'est-ce que l'activation des « Emplacements de stockage » dans Inventaire > Paramètres permet à un entrepôt de faire dans Odoo 19 ?" },
+    correct: { en: "Use sub-locations within a warehouse (aisles, shelves, bins)", fr: "Utiliser des sous-emplacements au sein d'un entrepôt (allées, étagères, casiers)" },
     distractors: [
-      {
-        en: "Create multiple warehouses and belongs to a different Odoo application",
-        fr: "Create multiple warehouses and belongs to a different Odoo application",
-      },
-      {
-        en: "Track lots which confuses a related but distinct setting",
-        fr: "Track lots which confuses a related but distinct setting",
-      },
-      {
-        en: "Track ownership of stock and is not the controlling configuration here",
-        fr: "Track ownership of stock and is not the controlling configuration here",
-      },
+      { en: "Create multiple warehouses and belongs to a different Odoo application", fr: "Créer plusieurs entrepôts, ce qui appartient à une autre application Odoo" },
+      { en: "Track lots which confuses a related but distinct setting", fr: "Suivre les lots, ce qui est un paramètre distinct mais lié" },
+      { en: "Track ownership of stock and is not the controlling configuration here", fr: "Suivre la propriété du stock, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Storage Locations enables hierarchical sub-locations like WH/Stock/Aisle-A/Bin-12. Without it, a warehouse has only its top-level Stock location. Combined with putaway rules and storage categories, you can direct different products to different bins, support pick paths, and track stock at granular locations.\n\nMultiple warehouses are always supported; this toggle is for sub-locations within a warehouse. Lot tracking is a separate setting under Traceability. Stock ownership (consignment) is its own setting.",
-      fr: "Storage Locations enables hierarchical sub-locations like WH/Stock/Aisle-A/Bin-12. Without it, a entrepôt has only its top-level Stock location. Combined with putaway rules and storage categories, you can direct different products to different bins, support pick paths, and track stock at granular locations.\n\nMultiple warehouses are always supported; this toggle is for sub-locations within a entrepôt. Lot tracking is a separate setting under Traceability. Stock ownership (consignment) is its own setting.",
-    },
+    explanation: { en: "Storage Locations enables hierarchical sub-locations like WH/Stock/Aisle-A/Bin-12. Without it, a warehouse has only its top-level Stock location. Combined with putaway rules and storage categories, you can direct different products to different bins, support pick paths, and track stock at granular locations.\n\nWhy not \"Create multiple warehouses and belongs to a different Odoo application\"? Multiple warehouses are always supported; this toggle is for sub-locations within a warehouse.\n\nWhy not \"Track lots which confuses a related but distinct setting\"? Lot tracking is a separate setting under Traceability.\n\nWhy not \"Track ownership of stock and is not the controlling configuration here\"? Stock ownership (consignment) is its own setting.", fr: "Les emplacements de stockage permettent des sous-emplacements hiérarchiques comme WH/Stock/Allée-A/Casier-12. Sans cette option, un entrepôt n'a que son emplacement Stock de niveau supérieur. Combiné avec les règles de rangement et les catégories de stockage, vous pouvez diriger différents produits vers différents casiers." },
   }),
   complexQ({
     id: "oep-037",
     module: "inventory",
-    text: {
-      en: "An Odoo 19 user runs a physical inventory count. Which document records the discovered differences and posts them to inventory adjustments?",
-      fr: "An Odoo 19 user runs a physical inventory count. Which document records the discovered differences and posts them to inventory adjustments?",
-    },
-    correct: {
-      en: "Inventory Adjustment (under Operations > Physical Inventory)",
-      fr: "Inventory Adjustment (under Operations > Physical Inventory)",
-    },
+    text: { en: "An Odoo 19 user runs a physical inventory count. Which document records the discovered differences and posts them to inventory adjustments?", fr: "Un utilisateur Odoo 19 effectue un inventaire physique. Quel document enregistre les écarts constatés et les comptabilise en ajustements d'inventaire ?" },
+    correct: { en: "Inventory Adjustment (under Operations > Physical Inventory)", fr: "Ajustement d'inventaire (sous Opérations > Inventaire physique)" },
     distractors: [
-      {
-        en: "Stock Move in Odoo 19, but not for this workflow",
-        fr: "Stock Move in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Vendor Bill which confuses a related but distinct setting",
-        fr: "facture fournisseur which confuses a related but distinct setting",
-      },
-      {
-        en: "Manufacturing Order and is not the controlling configuration here",
-        fr: "ordre de fabrication and is not the controlling configuration here",
-      },
+      { en: "Stock Move in Odoo 19, but not for this workflow", fr: "Mouvement de stock dans Odoo 19, mais pas pour ce flux" },
+      { en: "Vendor Bill which confuses a related but distinct setting", fr: "Facture fournisseur, ce qui est un paramètre distinct mais lié" },
+      { en: "Manufacturing Order and is not the controlling configuration here", fr: "Ordre de fabrication, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Operations > Physical Inventory lets users enter Counted Quantities by location/product/lot. Validating creates inventory adjustment moves between the location and the Inventory Adjustment virtual location, accounting for shrinkage, miscounts, or breakage. Each adjustment generates standard stock.move records and, with continuous valuation, journal entries.\n\nStock Move is the underlying record; Inventory Adjustment is the user-facing document. Vendor Bills are for AP, not for inventory counts. MOs produce goods from BoMs, unrelated to count corrections.",
-      fr: "Operations > Physical Inventory lets users enter Counted Quantities by location/product/lot. Validating creates inventory adjustment moves between the location and the Inventory Adjustment virtual location, accounting for shrinkage, miscounts, or breakage. Each adjustment generates standard stock.move records and, with continuous valuation, écritures comptables.\n\nStock Move is the underlying record; Inventory Adjustment is the user-facing document. facture fournisseur are for AP, not for inventory counts. MOs produce goods from BoMs, unrelated to count corrections.",
-    },
+    explanation: { en: "Operations > Physical Inventory lets users enter Counted Quantities by location/product/lot. Validating creates inventory adjustment moves between the location and the Inventory Adjustment virtual location, accounting for shrinkage, miscounts, or breakage. Each adjustment generates standard stock.move records and, with continuous valuation, journal entries.\n\nWhy not \"Stock Move in Odoo 19, but not for this workflow\"? Stock Move is the underlying record; Inventory Adjustment is the user-facing document.\n\nWhy not \"Vendor Bill which confuses a related but distinct setting\"? Vendor Bills are for AP, not for inventory counts.\n\nWhy not \"Manufacturing Order and is not the controlling configuration here\"? MOs produce goods from BoMs, unrelated to count corrections.", fr: "Opérations > Inventaire physique permet aux utilisateurs de saisir les quantités comptées par emplacement/produit/lot. La validation crée des mouvements d'ajustement d'inventaire entre l'emplacement et l'emplacement virtuel d'ajustement d'inventaire, comptabilisant les pertes, erreurs de comptage ou casses." },
   }),
   complexQ({
     id: "oep-038",
     module: "inventory",
-    text: {
-      en: "A consultant must configure a product so that one unit equals 12 pieces (a dozen) for purchase but is sold and stocked as a single piece. Which Odoo 19 feature handles this?",
-      fr: "A consultant must configure a product so that one unit equals 12 pieces (a dozen) for purchase but is sold and stocked as a single piece. Which Odoo 19 feature handles this?",
-    },
-    correct: {
-      en: "Units of Measure (UoM)",
-      fr: "Units of Measure (UoM)",
-    },
+    text: { en: "A consultant must configure a product so that one unit equals 12 pieces (a dozen) for purchase but is sold and stocked as a single piece. Which Odoo 19 feature handles this?", fr: "Un consultant doit configurer un produit pour qu'une unité équivaille à 12 pièces (une douzaine) à l'achat, mais soit vendu et stocké à la pièce. Quelle fonctionnalité Odoo 19 gère cela ?" },
+    correct: { en: "Units of Measure (UoM)", fr: "Unités de mesure (UdM)" },
     distractors: [
-      {
-        en: "Variants in Odoo 19, but not for this workflow",
-        fr: "Variants in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Pricelists with quantity tiers which confuses a related but distinct setting",
-        fr: "liste de prix with quantity tiers which confuses a related but distinct setting",
-      },
-      {
-        en: "Putaway rules and is not the controlling configuration here",
-        fr: "Putaway rules and is not the controlling configuration here",
-      },
+      { en: "Variants in Odoo 19, but not for this workflow", fr: "Les variantes dans Odoo 19, mais pas pour ce flux" },
+      { en: "Pricelists with quantity tiers which confuses a related but distinct setting", fr: "Les listes de prix avec paliers de quantité, ce qui est un paramètre distinct mais lié" },
+      { en: "Putaway rules and is not the controlling configuration here", fr: "Les règles de rangement, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Activate Units of Measure in Inventory > Settings. Define the Piece UoM and Dozen UoM in the same UoM category with conversion factor 12. On the product, set Unit of Measure = Piece (base for stock and sales) and Purchase UoM = Dozen. When a PO of 1 Dozen is received, stock is updated by 12 Pieces.\n\nVariants are size/color combinations, not different units of the same product. Pricelists tier prices but do not convert quantities into different units. Putaway rules direct stock to locations; not conversion.",
-      fr: "Activate Units of Measure in Inventory > Settings. Define the Piece UoM and Dozen UoM in the same UoM category with conversion factor 12. On the product, set Unit of Measure = Piece (base for stock and sales) and Purchase UoM = Dozen. When a PO of 1 Dozen is received, stock is updated by 12 Pieces.\n\nVariants are size/color combinations, not different units of the same product. liste de prix tier prices but do not convert quantities into different units. Putaway rules direct stock to locations; not conversion.",
-    },
+    explanation: { en: "Activate Units of Measure in Inventory > Settings. Define the Piece UoM and Dozen UoM in the same UoM category with conversion factor 12. On the product, set Unit of Measure = Piece (base for stock and sales) and Purchase UoM = Dozen. When a PO of 1 Dozen is received, stock is updated by 12 Pieces.\n\nWhy not \"Variants in Odoo 19, but not for this workflow\"? Variants are size/color combinations, not different units of the same product.\n\nWhy not \"Pricelists with quantity tiers which confuses a related but distinct setting\"? Pricelists tier prices but do not convert quantities into different units.\n\nWhy not \"Putaway rules and is not the controlling configuration here\"? Putaway rules direct stock to locations; not conversion.", fr: "Activer les unités de mesure dans Inventaire > Paramètres. Définir l'UdM Pièce et l'UdM Douzaine dans la même catégorie d'UdM avec un facteur de conversion de 12. Sur le produit, définir l'unité de mesure = Pièce (base pour le stock et les ventes) et l'UdM d'achat = Douzaine." },
   }),
   complexQ({
     id: "oep-039",
     module: "inventory",
-    text: {
-      en: "What is consignment stock in Odoo 19 Inventory and how is it modeled?",
-      fr: "What is consignment stock in Odoo 19 Inventory and how is it modeled?",
-    },
-    correct: {
-      en: "Stock at the company location but owned by a third party (vendor)",
-      fr: "Stock at the company location but owned by a third party (vendor)",
-    },
+    text: { en: "What is consignment stock in Odoo 19 Inventory and how is it modeled?", fr: "Qu'est-ce que le stock en consignation dans Odoo 19 Inventaire et comment est-il modélisé ?" },
+    correct: { en: "Stock at the company location but owned by a third party (vendor)", fr: "Stock situé dans l'emplacement de la société mais appartenant à un tiers (fournisseur)" },
     distractors: [
-      {
-        en: "Stock owned by the company at a customer site, with a special transfer type",
-        fr: "Stock owned by the company at a customer site, with a special transfer type",
-      },
-      {
-        en: "Stock that is awaiting destruction which confuses a related but distinct setting",
-        fr: "Stock that is awaiting destruction which confuses a related but distinct setting",
-      },
-      {
-        en: "Stock blocked from sale and is not the controlling configuration here",
-        fr: "Stock blocked from sale and is not the controlling configuration here",
-      },
+      { en: "Stock owned by the company at a customer site, with a special transfer type", fr: "Stock appartenant à la société chez un client, avec un type de transfert spécial" },
+      { en: "Stock that is awaiting destruction which confuses a related but distinct setting", fr: "Stock en attente de destruction, ce qui est un paramètre distinct mais lié" },
+      { en: "Stock blocked from sale and is not the controlling configuration here", fr: "Stock bloqué à la vente, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Consignment lets a vendor own physical stock that resides at your warehouse. Enable Consignment in Inventory > Settings, which exposes an Owner field on stock moves and on-hand records. You only purchase the consigned items when you actually consume or sell them, decoupling physical possession from inventory ownership for accounting.\n\nThat direction is reverse consignment / VMI variants; the standard consignment in Odoo is vendor-owned at your site. Destruction stock uses scrap moves, not consignment. Blocked stock is achieved via location/lot blocking, not consignment.",
-      fr: "Consignment lets a vendor own physical stock that resides at your entrepôt. Enable Consignment in Inventory > Settings, which exposes an Owner field on stock moves and on-hand records. You only purchase the consigned items when you actually consume or sell them, decoupling physical possession from inventory ownership for accounting.\n\nThat direction is reverse consignment / VMI variants; the standard consignment in Odoo is vendor-owned at your site. Destruction stock uses scrap moves, not consignment. Blocked stock is achieved via location/lot blocking, not consignment.",
-    },
+    explanation: { en: "Consignment lets a vendor own physical stock that resides at your warehouse. Enable Consignment in Inventory > Settings, which exposes an Owner field on stock moves and on-hand records. You only purchase the consigned items when you actually consume or sell them, decoupling physical possession from inventory ownership for accounting.\n\nWhy not \"Stock owned by the company at a customer site, with a special transfer type\"? That direction is reverse consignment / VMI variants; the standard consignment in Odoo is vendor-owned at your site.\n\nWhy not \"Stock that is awaiting destruction which confuses a related but distinct setting\"? Destruction stock uses scrap moves, not consignment.\n\nWhy not \"Stock blocked from sale and is not the controlling configuration here\"? Blocked stock is achieved via location/lot blocking, not consignment.", fr: "La consignation permet à un fournisseur de posséder du stock physiquement présent dans votre entrepôt. Activer la consignation dans Inventaire > Paramètres, ce qui expose un champ Propriétaire sur les mouvements de stock et les enregistrements en stock. Vous n'achetez les articles consignés que lorsque vous les consommez ou les vendez réellement." },
   }),
   complexQ({
     id: "oep-040",
     module: "inventory",
-    text: {
-      en: "A consultant enables Multi-Step Routes and configures pull rules. Pull rules in Odoo 19 are triggered when:",
-      fr: "A consultant enables Multi-Step Routes and configures pull rules. Pull rules in Odoo 19 are triggered when:",
-    },
-    correct: {
-      en: "A demand at the destination location pulls stock from a source location",
-      fr: "A demand at the destination location pulls stock from a source location",
-    },
+    text: { en: "A consultant enables Multi-Step Routes and configures pull rules. Pull rules in Odoo 19 are triggered when:", fr: "Un consultant active les routes multi-étapes et configure des règles de tirage. Les règles de tirage dans Odoo 19 sont déclenchées quand :" },
+    correct: { en: "A demand at the destination location pulls stock from a source location", fr: "Une demande à l'emplacement de destination tire le stock depuis un emplacement source" },
     distractors: [
-      {
-        en: "A purchase is created in Odoo 19, but not for this workflow",
-        fr: "A purchase is created in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Stock is received in a warehouse which confuses a related but distinct setting",
-        fr: "Stock is received in a entrepôt which confuses a related but distinct setting",
-      },
-      {
-        en: "An MO is validated and is not the controlling configuration here",
-        fr: "An MO is validated and is not the controlling configuration here",
-      },
+      { en: "A purchase is created in Odoo 19, but not for this workflow", fr: "Un achat est créé dans Odoo 19, mais pas pour ce flux" },
+      { en: "Stock is received in a warehouse which confuses a related but distinct setting", fr: "Du stock est reçu dans un entrepôt, ce qui est un paramètre distinct mais lié" },
+      { en: "An MO is validated and is not the controlling configuration here", fr: "Un OF est validé, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Pull rules (procurement rules) are triggered when there is unmet demand at a destination location. Odoo searches for a rule whose destination matches and creates moves from the configured source. They are how routes such as MTO, multi-step delivery, and dropship are wired. Push rules instead react when stock arrives at a source location and proactively move it forward.\n\nPOs are an effect of pull rules in some routes, not the trigger of the rule itself. Receipt arrival is what triggers push rules, not pull rules. MO validation produces stock; it is not what triggers pull rules.",
-      fr: "Pull rules (procurement rules) are triggered when there is unmet demand at a destination location. Odoo searches for a rule whose destination matches and creates moves from the configured source. They are how routes such as MTO, multi-step delivery, and dropship are wired. Push rules instead react when stock arrives at a source location and proactively move it forward.\n\nPOs are an effect of pull rules in some routes, not the trigger of the rule itself. Receipt arrival is what triggers push rules, not pull rules. MO validation produces stock; it is not what triggers pull rules.",
-    },
+    explanation: { en: "Pull rules (procurement rules) are triggered when there is unmet demand at a destination location. Odoo searches for a rule whose destination matches and creates moves from the configured source. They are how routes such as MTO, multi-step delivery, and dropship are wired. Push rules instead react when stock arrives at a source location and proactively move it forward.\n\nWhy not \"A purchase is created in Odoo 19, but not for this workflow\"? POs are an effect of pull rules in some routes, not the trigger of the rule itself.\n\nWhy not \"Stock is received in a warehouse which confuses a related but distinct setting\"? Receipt arrival is what triggers push rules, not pull rules.\n\nWhy not \"An MO is validated and is not the controlling configuration here\"? MO validation produces stock; it is not what triggers pull rules.", fr: "Les règles de tirage (règles d'approvisionnement) sont déclenchées lorsqu'il y a une demande non satisfaite à un emplacement de destination. Odoo recherche une règle dont la destination correspond et crée des mouvements depuis la source configurée. C'est ainsi que les routes comme MTO, la livraison multi-étapes et la livraison directe sont câblées." },
   }),
   complexQ({
     id: "oep-041",
     module: "inventory",
-    text: {
-      en: "Which Odoo 19 module lets you scan barcodes on receipts, deliveries, and manufacturing operations using a phone or scanner?",
-      fr: "Which Odoo 19 module lets you scan barcodes on receipts, deliveries, and manufacturing operations using a phone or scanner?",
-    },
-    correct: {
-      en: "Barcode (stock_barcode)",
-      fr: "Barcode (stock_barcode)",
-    },
+    text: { en: "Which Odoo 19 module lets you scan barcodes on receipts, deliveries, and manufacturing operations using a phone or scanner?", fr: "Quel module Odoo 19 permet de scanner des codes-barres sur les réceptions, livraisons et opérations de fabrication à l'aide d'un téléphone ou d'un scanner ?" },
+    correct: { en: "Barcode (stock_barcode)", fr: "Code-barres (stock_barcode)" },
     distractors: [
-      {
-        en: "Studio in Odoo 19, but not for this workflow",
-        fr: "Studio in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "POS which confuses a related but distinct setting",
-        fr: "POS which confuses a related but distinct setting",
-      },
-      {
-        en: "Sign and is not the controlling configuration here",
-        fr: "Sign and is not the controlling configuration here",
-      },
+      { en: "Studio in Odoo 19, but not for this workflow", fr: "Studio dans Odoo 19, mais pas pour ce flux" },
+      { en: "POS which confuses a related but distinct setting", fr: "PDV, ce qui est un paramètre distinct mais lié" },
+      { en: "Sign and is not the controlling configuration here", fr: "Sign, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Barcode app provides a tablet/phone-friendly UI for warehouse operators to scan items, locations, and lots during receipts, deliveries, internal transfers, and manufacturing operations. It supports common 1D and 2D barcodes and uses the device's camera or any USB/Bluetooth scanner.\n\nStudio customizes apps; it is not a barcode UI. POS uses barcodes for sales at retail, not warehouse operations. Sign handles signatures, not barcodes.",
-      fr: "The Barcode app provides a tablet/phone-friendly UI for entrepôt operators to scan items, locations, and lots during receipts, deliveries, internal transfers, and manufacturing operations. It supports common 1D and 2D barcodes and uses the device's camera or any USB/Bluetooth scanner.\n\nStudio customizes apps; it is not a barcode UI. POS uses barcodes for sales at retail, not entrepôt operations. Sign handles signatures, not barcodes.",
-    },
+    explanation: { en: "The Barcode app provides a tablet/phone-friendly UI for warehouse operators to scan items, locations, and lots during receipts, deliveries, internal transfers, and manufacturing operations. It supports common 1D and 2D barcodes and uses the device's camera or any USB/Bluetooth scanner.\n\nWhy not \"Studio in Odoo 19, but not for this workflow\"? Studio customizes apps; it is not a barcode UI.\n\nWhy not \"POS which confuses a related but distinct setting\"? POS uses barcodes for sales at retail, not warehouse operations.\n\nWhy not \"Sign and is not the controlling configuration here\"? Sign handles signatures, not barcodes.", fr: "L'application Code-barres fournit une interface adaptée aux tablettes/téléphones pour les opérateurs d'entrepôt afin de scanner les articles, emplacements et lots lors des réceptions, livraisons, transferts internes et opérations de fabrication. Elle prend en charge les codes-barres 1D et 2D courants." },
   }),
   complexQ({
     id: "oep-042",
     module: "purchases",
-    text: {
-      en: "A consultant wants to receive a shipment that includes products not on the original PO. What is the standard Odoo 19 way to handle this?",
-      fr: "A consultant wants to receive a shipment that includes products not on the original PO. What is the standard Odoo 19 way to handle this?",
-    },
-    correct: {
-      en: "Edit the receipt to add the missing line, then validate",
-      fr: "Edit the receipt to add the missing line, then validate",
-    },
+    text: { en: "A consultant wants to receive a shipment that includes products not on the original PO. What is the standard Odoo 19 way to handle this?", fr: "Un consultant veut recevoir un envoi qui inclut des produits absents du bon de commande fournisseur d'origine. Quelle est la méthode standard d'Odoo 19 pour gérer cela ?" },
+    correct: { en: "Edit the receipt to add the missing line, then validate", fr: "Modifier la réception pour ajouter la ligne manquante, puis valider" },
     distractors: [
-      {
-        en: "Discard the entire receipt and create a new PO",
-        fr: "Discard the entire receipt and create a new PO",
-      },
-      {
-        en: "Use a backorder for the missing line which confuses a related but distinct setting",
-        fr: "Use a backorder for the missing line which confuses a related but distinct setting",
-      },
-      {
-        en: "It is not possible and is not the controlling configuration here",
-        fr: "It is not possible and is not the controlling configuration here",
-      },
+      { en: "Discard the entire receipt and create a new PO", fr: "Annuler la réception entière et créer un nouveau bon de commande fournisseur" },
+      { en: "Use a backorder for the missing line which confuses a related but distinct setting", fr: "Utiliser un reliquat pour la ligne manquante, ce qui est un paramètre distinct mais lié" },
+      { en: "It is not possible and is not the controlling configuration here", fr: "Ce n'est pas possible, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "On a draft receipt, a user with appropriate rights can add a stock.move.line for the unexpected product, validate the receipt, and the corresponding PO can be amended afterward (or a vendor bill match drives the linkage). For governance, many configurations require strict 1:1 PO/receipt; in that case, you would refuse the items or create a new PO. Default behavior allows over-receipt with a confirmation dialog.\n\nDiscarding is wasteful; Odoo supports adjustments on the receipt. Backorders handle missing quantities, not missing line items. It is supported with appropriate rights.",
-      fr: "On a draft receipt, a user with appropriate rights can add a stock.move.line for the unexpected product, validate the receipt, and the corresponding PO can be amended afterward (or a facture fournisseur match drives the linkage). For governance, many configurations require strict 1:1 PO/receipt; in that case, you would refuse the items or create a new PO. Default behavior allows over-receipt with a confirmation dialog.\n\nDiscarding is wasteful; Odoo supports adjustments on the receipt. Backorders handle missing quantities, not missing line items. It is supported with appropriate rights.",
-    },
+    explanation: { en: "On a draft receipt, a user with appropriate rights can add a stock.move.line for the unexpected product, validate the receipt, and the corresponding PO can be amended afterward (or a vendor bill match drives the linkage). For governance, many configurations require strict 1:1 PO/receipt; in that case, you would refuse the items or create a new PO. Default behavior allows over-receipt with a confirmation dialog.\n\nWhy not \"Discard the entire receipt and create a new PO\"? Discarding is wasteful; Odoo supports adjustments on the receipt.\n\nWhy not \"Use a backorder for the missing line which confuses a related but distinct setting\"? Backorders handle missing quantities, not missing line items.\n\nWhy not \"It is not possible and is not the controlling configuration here\"? It is supported with appropriate rights.", fr: "Sur une réception en brouillon, un utilisateur avec les droits appropriés peut ajouter un stock.move.line pour le produit inattendu, valider la réception, et le bon de commande fournisseur correspondant peut être modifié par la suite. Le comportement par défaut autorise les sur-réceptions avec un dialogue de confirmation." },
   }),
   complexQ({
     id: "oep-043",
     module: "purchases",
-    text: {
-      en: "A buyer needs to negotiate competitive quotes from three vendors before placing a PO. Which Odoo 19 Purchase feature streamlines this?",
-      fr: "A buyer needs to negotiate competitive quotes from three vendors before placing a PO. Which Odoo 19 Purchase feature streamlines this?",
-    },
-    correct: {
-      en: "Purchase Agreements (Calls for Tender)",
-      fr: "Purchase Agreements (Calls for Tender)",
-    },
+    text: { en: "A buyer needs to negotiate competitive quotes from three vendors before placing a PO. Which Odoo 19 Purchase feature streamlines this?", fr: "Un acheteur a besoin de négocier des devis compétitifs auprès de trois fournisseurs avant de passer un bon de commande. Quelle fonctionnalité Odoo 19 Achats facilite cela ?" },
+    correct: { en: "Purchase Agreements (Calls for Tender)", fr: "Contrats d'achat (Appels d'offres)" },
     distractors: [
-      {
-        en: "Vendor Bill Matching and belongs to a different Odoo application",
-        fr: "facture fournisseur Matching and belongs to a different Odoo application",
-      },
-      {
-        en: "Subscription Templates which confuses a related but distinct setting",
-        fr: "Subscription Templates which confuses a related but distinct setting",
-      },
-      {
-        en: "Reordering Rules and is not the controlling configuration here",
-        fr: "règle de réapprovisionnement and is not the controlling configuration here",
-      },
+      { en: "Vendor Bill Matching and belongs to a different Odoo application", fr: "Le rapprochement de factures fournisseur, qui appartient à une autre application Odoo" },
+      { en: "Subscription Templates which confuses a related but distinct setting", fr: "Les modèles d'abonnement, ce qui est un paramètre distinct mais lié" },
+      { en: "Reordering Rules and is not the controlling configuration here", fr: "Les règles de réapprovisionnement, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Purchase Agreements in Purchase > Orders include 'Call for Tenders' (also called Purchase Tenders or Blanket Order). For tenders, you select multiple vendors, send each an RFQ, compare the responses side-by-side, and confirm one winning RFQ into a PO. Blanket Orders set a recurring purchase contract with one vendor instead.\n\nBill Matching is for accounting reconciliation of vendor invoices. Subscriptions are sales-side recurring sales. Reordering rules trigger replenishment but do not handle competitive bidding.",
-      fr: "Purchase Agreements in Purchase > Orders include 'Call for Tenders' (also called Purchase Tenders or Blanket Order). For tenders, you select multiple vendors, send each an RFQ, compare the responses side-by-side, and confirm one winning RFQ into a PO. Blanket Orders set a recurring purchase contract with one vendor instead.\n\nBill Matching is for accounting reconciliation of vendor facture. Subscriptions are sales-side recurring sales. règle de réapprovisionnement trigger replenishment but do not handle competitive bidding.",
-    },
+    explanation: { en: "Purchase Agreements in Purchase > Orders include 'Call for Tenders' (also called Purchase Tenders or Blanket Order). For tenders, you select multiple vendors, send each an RFQ, compare the responses side-by-side, and confirm one winning RFQ into a PO. Blanket Orders set a recurring purchase contract with one vendor instead.\n\nWhy not \"Vendor Bill Matching and belongs to a different Odoo application\"? Bill Matching is for accounting reconciliation of vendor invoices.\n\nWhy not \"Subscription Templates which confuses a related but distinct setting\"? Subscriptions are sales-side recurring sales.\n\nWhy not \"Reordering Rules and is not the controlling configuration here\"? Reordering rules trigger replenishment but do not handle competitive bidding.", fr: "Les contrats d'achat dans Achats > Commandes incluent les « Appels d'offres ». Pour les appels d'offres, vous sélectionnez plusieurs fournisseurs, envoyez à chacun une demande de prix, comparez les réponses côte à côte et confirmez la demande de prix gagnante en bon de commande." },
   }),
   complexQ({
     id: "oep-044",
     module: "purchases",
-    text: {
-      en: "What is 3-way matching in Odoo 19 Purchase/Accounting?",
-      fr: "What is 3-way matching in Odoo 19 Purchase/Accounting?",
-    },
-    correct: {
-      en: "Match vendor bill to PO and receipt before payment",
-      fr: "Match facture fournisseur to PO and receipt before payment",
-    },
+    text: { en: "What is 3-way matching in Odoo 19 Purchase/Accounting?", fr: "Qu'est-ce que le rapprochement à 3 voies dans Odoo 19 Achats/Comptabilité ?" },
+    correct: { en: "Match vendor bill to PO and receipt before payment", fr: "Rapprocher la facture fournisseur avec le bon de commande et la réception avant paiement" },
     distractors: [
-      {
-        en: "Match three different journals and belongs to a different Odoo application",
-        fr: "Match three different journals and belongs to a different Odoo application",
-      },
-      {
-        en: "Match purchase, sale, and inventory which confuses a related but distinct setting",
-        fr: "Match purchase, sale, and inventory which confuses a related but distinct setting",
-      },
-      {
-        en: "Match vendor, PO, and customer and is not the controlling configuration here",
-        fr: "Match vendor, PO, and customer and is not the controlling configuration here",
-      },
+      { en: "Match three different journals and belongs to a different Odoo application", fr: "Rapprocher trois journaux différents, ce qui appartient à une autre application Odoo" },
+      { en: "Match purchase, sale, and inventory which confuses a related but distinct setting", fr: "Rapprocher achat, vente et inventaire, ce qui est un paramètre distinct mais lié" },
+      { en: "Match vendor, PO, and customer and is not the controlling configuration here", fr: "Rapprocher fournisseur, bon de commande et client, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "3-way matching ensures the vendor bill agrees with the PO (what was ordered) and the receipt (what was actually received) before the bill is paid. Enabled in Accounting > Settings, Odoo flags bills that do not pass the check, preventing payment of items not received or quantities exceeding the PO. This is a core internal control in AP.\n\nIt is not about journals. It is not about cross-app entity matching. Vendors and customers are unrelated entities; the three documents are PO, receipt, and bill.",
-      fr: "3-way matching ensures the facture fournisseur agrees with the PO (what was ordered) and the receipt (what was actually received) before the bill is paid. Enabled in Accounting > Settings, Odoo flags bills that do not pass the check, preventing payment of items not received or quantities exceeding the PO. This is a core internal control in AP.\n\nIt is not about journals. It is not about cross-app entity matching. Vendors and customers are unrelated entities; the three documents are PO, receipt, and bill.",
-    },
+    explanation: { en: "3-way matching ensures the vendor bill agrees with the PO (what was ordered) and the receipt (what was actually received) before the bill is paid. Enabled in Accounting > Settings, Odoo flags bills that do not pass the check, preventing payment of items not received or quantities exceeding the PO. This is a core internal control in AP.\n\nWhy not \"Match three different journals and belongs to a different Odoo application\"? It is not about journals.\n\nWhy not \"Match purchase, sale, and inventory which confuses a related but distinct setting\"? It is not about cross-app entity matching.\n\nWhy not \"Match vendor, PO, and customer and is not the controlling configuration here\"? Vendors and customers are unrelated entities; the three documents are PO, receipt, and bill.", fr: "Le rapprochement à 3 voies garantit que la facture fournisseur correspond au bon de commande (ce qui a été commandé) et à la réception (ce qui a été effectivement reçu) avant que la facture soit payée. Activé dans Comptabilité > Paramètres, Odoo signale les factures qui ne passent pas le contrôle." },
   }),
   complexQ({
     id: "oep-045",
     module: "purchases",
-    text: {
-      en: "A buyer wants to create a vendor bill from an incoming PDF emailed to bills@company.odoo.com. Which Odoo 19 feature processes this?",
-      fr: "A buyer wants to create a facture fournisseur from an incoming PDF emailed to bills@company.odoo.com. Which Odoo 19 feature processes this?",
-    },
-    correct: {
-      en: "Email alias on the Purchase journal",
-      fr: "Email alias on the Purchase journal",
-    },
+    text: { en: "A buyer wants to create a vendor bill from an incoming PDF emailed to bills@company.odoo.com. Which Odoo 19 feature processes this?", fr: "Un acheteur veut créer une facture fournisseur à partir d'un PDF entrant envoyé par e-mail à factures@company.odoo.com. Quelle fonctionnalité Odoo 19 traite cela ?" },
+    correct: { en: "Email alias on the Purchase journal", fr: "Alias e-mail sur le journal d'achat" },
     distractors: [
-      {
-        en: "Studio automated action only and belongs to a different Odoo application",
-        fr: "Studio action automatisée only and belongs to a different Odoo application",
-      },
-      {
-        en: "Discuss channel webhook which confuses a related but distinct setting",
-        fr: "Discuss channel webhook which confuses a related but distinct setting",
-      },
-      {
-        en: "Manual data entry only and is not the controlling configuration here",
-        fr: "Manual data entry only and is not the controlling configuration here",
-      },
+      { en: "Studio automated action only and belongs to a different Odoo application", fr: "Action automatisée Studio uniquement, ce qui appartient à une autre application Odoo" },
+      { en: "Discuss channel webhook which confuses a related but distinct setting", fr: "Webhook de canal Discuss, ce qui est un paramètre distinct mais lié" },
+      { en: "Manual data entry only and is not the controlling configuration here", fr: "Saisie manuelle uniquement, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Each Vendor Bill journal supports an email alias and OCR-based digitization via Odoo IAP credits. Forward or have the vendor send a PDF to the alias; Odoo extracts vendor, total, due date, lines, and creates a draft vendor bill ready for review. Accuracy improves with prior bills from the same vendor.\n\nStudio automations cannot OCR PDFs without the digitization service. Discuss is for chat, not document processing. Manual entry works but is not the streamlined feature being asked about.",
-      fr: "Each facture fournisseur journal supports an email alias and OCR-based digitization via Odoo IAP credits. Forward or have the vendor send a PDF to the alias; Odoo extracts vendor, total, due date, lines, and creates a draft facture fournisseur ready for review. Accuracy improves with prior bills from the same vendor.\n\nStudio automations cannot OCR PDFs without the digitization service. Discuss is for chat, not document processing. Manual entry works but is not the streamlined feature being asked about.",
-    },
+    explanation: { en: "Each Vendor Bill journal supports an email alias and OCR-based digitization via Odoo IAP credits. Forward or have the vendor send a PDF to the alias; Odoo extracts vendor, total, due date, lines, and creates a draft vendor bill ready for review. Accuracy improves with prior bills from the same vendor.\n\nWhy not \"Studio automated action only and belongs to a different Odoo application\"? Studio automations cannot OCR PDFs without the digitization service.\n\nWhy not \"Discuss channel webhook which confuses a related but distinct setting\"? Discuss is for chat, not document processing.\n\nWhy not \"Manual data entry only and is not the controlling configuration here\"? Manual entry works but is not the streamlined feature being asked about.", fr: "Chaque journal de factures fournisseur prend en charge un alias e-mail et la numérisation OCR via les crédits Odoo IAP. Le fournisseur envoie un PDF à l'alias ; Odoo extrait le fournisseur, le total, la date d'échéance, les lignes et crée un brouillon de facture fournisseur prêt à être vérifié." },
   }),
   complexQ({
     id: "oep-046",
     module: "purchases",
-    text: {
-      en: "On a purchase.order in Odoo 19, what is the difference between an RFQ and a PO?",
-      fr: "On a purchase.order in Odoo 19, what is the difference between an RFQ and a PO?",
-    },
-    correct: {
-      en: "RFQ is a draft state where the document is a Request for Quotation",
-      fr: "RFQ is a draft state where the document is a Request for devis",
-    },
+    text: { en: "On a purchase.order in Odoo 19, what is the difference between an RFQ and a PO?", fr: "Sur un purchase.order dans Odoo 19, quelle est la différence entre une demande de prix et un bon de commande fournisseur ?" },
+    correct: { en: "RFQ is a draft state where the document is a Request for Quotation", fr: "La demande de prix est un état brouillon où le document est une demande de prix" },
     distractors: [
-      {
-        en: "RFQ is for services only and belongs to a different Odoo application",
-        fr: "RFQ is for services only and belongs to a different Odoo application",
-      },
-      {
-        en: "PO is for blanket orders only which confuses a related but distinct setting",
-        fr: "PO is for blanket orders only which confuses a related but distinct setting",
-      },
-      {
-        en: "There is no difference and is not the controlling configuration here",
-        fr: "There is no difference and is not the controlling configuration here",
-      },
+      { en: "RFQ is for services only and belongs to a different Odoo application", fr: "La demande de prix est réservée aux services uniquement, ce qui appartient à une autre application Odoo" },
+      { en: "PO is for blanket orders only which confuses a related but distinct setting", fr: "Le bon de commande est réservé aux ordres ouverts uniquement, ce qui est un paramètre distinct mais lié" },
+      { en: "There is no difference and is not the controlling configuration here", fr: "Il n'y a pas de différence, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Both share the purchase.order model. While in 'RFQ' state, the document is a request you send to the vendor for pricing. After confirmation, it becomes a Purchase Order with state='purchase' and Odoo creates the linked receipt(s). The label visible to users (RFQ vs PO) depends on the state, not on a different model.\n\nBoth products and services can be on RFQs and POs. Blanket orders are a separate Purchase Agreement type. There is a clear lifecycle difference between the two states.",
-      fr: "Both share the purchase.order model. While in 'RFQ' state, the document is a request you send to the vendor for pricing. After confirmation, it becomes a bon de commande with state='purchase' and Odoo creates the linked receipt(s). The label visible to users (RFQ vs PO) depends on the state, not on a different model.\n\nBoth products and services can be on RFQs and POs. Blanket orders are a separate Purchase Agreement type. There is a clear lifecycle difference between the two states.",
-    },
+    explanation: { en: "Both share the purchase.order model. While in 'RFQ' state, the document is a request you send to the vendor for pricing. After confirmation, it becomes a Purchase Order with state='purchase' and Odoo creates the linked receipt(s). The label visible to users (RFQ vs PO) depends on the state, not on a different model.\n\nWhy not \"RFQ is for services only and belongs to a different Odoo application\"? Both products and services can be on RFQs and POs.\n\nWhy not \"PO is for blanket orders only which confuses a related but distinct setting\"? Blanket orders are a separate Purchase Agreement type.\n\nWhy not \"There is no difference and is not the controlling configuration here\"? There is a clear lifecycle difference between the two states.", fr: "Les deux partagent le modèle purchase.order. À l'état « Demande de prix », le document est une demande envoyée au fournisseur pour obtenir un devis. Après confirmation, il devient un bon de commande fournisseur avec state='purchase' et Odoo crée les réceptions liées." },
   }),
   complexQ({
     id: "oep-047",
     module: "purchases",
-    text: {
-      en: "A consultant configures a vendor pricelist (vendor info) on a product. Which fields drive automatic procurement decisions in Odoo 19?",
-      fr: "A consultant configures a vendor liste de prix (vendor info) on a product. Which fields drive automatic procurement decisions in Odoo 19?",
-    },
-    correct: {
-      en: "Vendor, Min Qty, Price, Delivery Lead Time, Validity",
-      fr: "Vendor, Min Qty, Price, Delivery piste Time, Validity",
-    },
+    text: { en: "A consultant configures a vendor pricelist (vendor info) on a product. Which fields drive automatic procurement decisions in Odoo 19?", fr: "Un consultant configure une liste de prix fournisseur (infos fournisseur) sur un produit. Quels champs pilotent les décisions d'approvisionnement automatique dans Odoo 19 ?" },
+    correct: { en: "Vendor, Min Qty, Price, Delivery Lead Time, Validity", fr: "Fournisseur, Qté minimum, Prix, Délai de livraison, Validité" },
     distractors: [
-      {
-        en: "Only the vendor name and belongs to a different Odoo application",
-        fr: "Only the vendor name and belongs to a different Odoo application",
-      },
-      {
-        en: "Only the price which confuses a related but distinct setting",
-        fr: "Only the price which confuses a related but distinct setting",
-      },
-      {
-        en: "Only the lead time and is not the controlling configuration here",
-        fr: "Only the piste time and is not the controlling configuration here",
-      },
+      { en: "Only the vendor name and belongs to a different Odoo application", fr: "Uniquement le nom du fournisseur, ce qui appartient à une autre application Odoo" },
+      { en: "Only the price which confuses a related but distinct setting", fr: "Uniquement le prix, ce qui est un paramètre distinct mais lié" },
+      { en: "Only the lead time and is not the controlling configuration here", fr: "Uniquement le délai de livraison, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Vendor Pricelist line under product > Purchase tab includes Vendor, Min Quantity (price applies above this qty), Price, Delivery Lead Time (for procurement scheduling), and Validity dates. The first valid line drives RFQs created by reordering rules and MTO. Multiple vendors can be ranked by sequence so Odoo picks the preferred one.\n\nJust the vendor is insufficient; price/lead time are required to drive procurement. Price alone is not enough; lead time and qty matter. Lead time alone does not drive pricing or vendor choice.",
-      fr: "The Vendor liste de prix line under product > Purchase tab includes Vendor, Min Quantity (price applies above this qty), Price, Delivery piste Time (for procurement scheduling), and Validity dates. The first valid line drives RFQs created by règle de réapprovisionnement and MTO. Multiple vendors can be ranked by sequence so Odoo picks the preferred one.\n\nJust the vendor is insufficient; price/piste time are required to drive procurement. Price alone is not enough; piste time and qty matter. piste time alone does not drive pricing or vendor choice.",
-    },
+    explanation: { en: "The Vendor Pricelist line under product > Purchase tab includes Vendor, Min Quantity (price applies above this qty), Price, Delivery Lead Time (for procurement scheduling), and Validity dates. The first valid line drives RFQs created by reordering rules and MTO. Multiple vendors can be ranked by sequence so Odoo picks the preferred one.\n\nWhy not \"Only the vendor name and belongs to a different Odoo application\"? Just the vendor is insufficient; price/lead time are required to drive procurement.\n\nWhy not \"Only the price which confuses a related but distinct setting\"? Price alone is not enough; lead time and qty matter.\n\nWhy not \"Only the lead time and is not the controlling configuration here\"? Lead time alone does not drive pricing or vendor choice.", fr: "La ligne de liste de prix fournisseur sous produit > onglet Achat inclut le fournisseur, la quantité minimum (le prix s'applique au-dessus de cette quantité), le prix, le délai de livraison (pour la planification d'approvisionnement) et les dates de validité. La première ligne valide pilote les demandes de prix créées par les règles de réapprovisionnement." },
   }),
   complexQ({
     id: "oep-048",
     module: "purchases",
-    text: {
-      en: "A buyer wants automated approval thresholds where POs over $10,000 require manager approval. How is this configured in Odoo 19?",
-      fr: "A buyer wants automated approval thresholds where POs over $10,000 require manager approval. How is this configured in Odoo 19?",
-    },
-    correct: {
-      en: "Activate Purchase Order Approval in Purchase > Settings, set the threshold",
-      fr: "Activate bon de commande Approval in Purchase > Settings, set the threshold",
-    },
+    text: { en: "A buyer wants automated approval thresholds where POs over $10,000 require manager approval. How is this configured in Odoo 19?", fr: "Un acheteur veut des seuils d'approbation automatiques où les bons de commande supérieurs à 10 000 $ nécessitent l'approbation d'un responsable. Comment cela se configure-t-il dans Odoo 19 ?" },
+    correct: { en: "Activate Purchase Order Approval in Purchase > Settings, set the threshold", fr: "Activer l'approbation des bons de commande dans Achats > Paramètres, définir le seuil" },
     distractors: [
-      {
-        en: "Use a Studio automation only and belongs to a different Odoo application",
-        fr: "Use a Studio automation only and belongs to a different Odoo application",
-      },
-      {
-        en: "Modify res.users which confuses a related but distinct setting",
-        fr: "Modify res.users which confuses a related but distinct setting",
-      },
-      {
-        en: "Use an analytic distribution rule and is not the controlling configuration here",
-        fr: "Use an analytic distribution rule and is not the controlling configuration here",
-      },
+      { en: "Use a Studio automation only and belongs to a different Odoo application", fr: "Utiliser uniquement une automatisation Studio, ce qui appartient à une autre application Odoo" },
+      { en: "Modify res.users which confuses a related but distinct setting", fr: "Modifier res.users, ce qui est un paramètre distinct mais lié" },
+      { en: "Use an analytic distribution rule and is not the controlling configuration here", fr: "Utiliser une règle de distribution analytique, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Purchase > Configuration > Settings has 'Purchase Order Approval' with a Minimum Amount field. POs above this amount require explicit manager approval before they can be confirmed. The required approver is a user with the Purchase Manager role (purchase.group_purchase_manager).\n\nA Studio automation could replicate this, but the standard built-in feature is the toggle in Purchase Settings. User records define identity and access, not threshold rules. Analytic distributions tag costs, not approval thresholds.",
-      fr: "Purchase > Configuration > Settings has 'bon de commande Approval' with a Minimum Amount field. POs above this amount require explicit manager approval before they can be confirmed. The required approver is a user with the Purchase Manager role (purchase.group_purchase_manager).\n\nA Studio automation could replicate this, but the standard built-in feature is the toggle in Purchase Settings. User records define identity and access, not threshold rules. Analytic distributions tag costs, not approval thresholds.",
-    },
+    explanation: { en: "Purchase > Configuration > Settings has 'Purchase Order Approval' with a Minimum Amount field. POs above this amount require explicit manager approval before they can be confirmed. The required approver is a user with the Purchase Manager role (purchase.group_purchase_manager).\n\nWhy not \"Use a Studio automation only and belongs to a different Odoo application\"? A Studio automation could replicate this, but the standard built-in feature is the toggle in Purchase Settings.\n\nWhy not \"Modify res.users which confuses a related but distinct setting\"? User records define identity and access, not threshold rules.\n\nWhy not \"Use an analytic distribution rule and is not the controlling configuration here\"? Analytic distributions tag costs, not approval thresholds.", fr: "Achats > Configuration > Paramètres dispose d'un paramètre « Approbation des bons de commande » avec un champ Montant minimum. Les bons de commande au-dessus de ce montant nécessitent l'approbation explicite d'un responsable avant de pouvoir être confirmés." },
   }),
   complexQ({
     id: "oep-049",
     module: "mrp",
-    text: {
-      en: "In Odoo 19 Manufacturing, what is the technical model for a Bill of Materials?",
-      fr: "In Odoo 19 Manufacturing, what is the technical model for a nomenclature?",
-    },
-    correct: {
-      en: "mrp.bom",
-      fr: "mrp.bom",
-    },
+    text: { en: "In Odoo 19 Manufacturing, what is the technical model for a Bill of Materials?", fr: "Dans Odoo 19 Fabrication, quel est le modèle technique pour une nomenclature ?" },
+    correct: { en: "mrp.bom", fr: "mrp.bom" },
     distractors: [
-      {
-        en: "mrp.recipe",
-        fr: "mrp.recipe",
-      },
-      {
-        en: "mrp.formula",
-        fr: "mrp.formula",
-      },
-      {
-        en: "manufacturing.bom",
-        fr: "manufacturing.bom",
-      },
+      { en: "mrp.recipe", fr: "mrp.recipe" },
+      { en: "mrp.formula", fr: "mrp.formula" },
+      { en: "manufacturing.bom", fr: "manufacturing.bom" },
     ],
-    explanation: {
-      en: "The Bill of Materials is the mrp.bom model, with components in mrp.bom.line and operations (if any) in mrp.routing.workcenter. A BoM links a product (or template), an output quantity, and the required components and operations needed to produce it.\n\nmrp.recipe is not the model name. mrp.formula is not the model name. manufacturing.bom is not the namespace; Odoo uses mrp.*.",
-      fr: "The nomenclature is the mrp.bom model, with components in mrp.bom.line and operations (if any) in mrp.routing.workcenter. A NdM links a product (or template), an output quantity, and the required components and operations needed to produce it.\n\nmrp.recipe is not the model name. mrp.formula is not the model name. manufacturing.bom is not the namespace; Odoo uses mrp.*.",
-    },
+    explanation: { en: "The Bill of Materials is the mrp.bom model, with components in mrp.bom.line and operations (if any) in mrp.routing.workcenter. A BoM links a product (or template), an output quantity, and the required components and operations needed to produce it.\n\nWhy not \"mrp.recipe\"? mrp.recipe is not the model name.\n\nWhy not \"mrp.formula\"? mrp.formula is not the model name.\n\nWhy not \"manufacturing.bom\"? manufacturing.bom is not the namespace; Odoo uses mrp.*.", fr: "La nomenclature est le modèle mrp.bom, avec les composants dans mrp.bom.line et les opérations (le cas échéant) dans mrp.routing.workcenter. Une nomenclature lie un produit (ou modèle), une quantité de sortie et les composants et opérations nécessaires pour le produire." },
   }),
   complexQ({
     id: "oep-050",
     module: "mrp",
-    text: {
-      en: "What is the difference between a Kit BoM and a Manufacturing BoM in Odoo 19?",
-      fr: "What is the difference between a Kit NdM and a Manufacturing NdM in Odoo 19?",
-    },
-    correct: {
-      en: "Kit BoM explodes components on delivery; no stocked finished product",
-      fr: "Kit NdM explodes components on delivery; no stocked finished product",
-    },
+    text: { en: "What is the difference between a Kit BoM and a Manufacturing BoM in Odoo 19?", fr: "Quelle est la différence entre une nomenclature de type Kit et une nomenclature de fabrication dans Odoo 19 ?" },
+    correct: { en: "Kit BoM explodes components on delivery; no stocked finished product", fr: "La nomenclature Kit éclate les composants à la livraison ; pas de produit fini en stock" },
     distractors: [
-      {
-        en: "Kit and Manufacture BoMs behave identically on every sales workflow",
-        fr: "Kit and Manufacture BoMs behave identically on every sales workflow",
-      },
-      {
-        en: "Kit BoM requires a work center and shop-floor work order sequence (not applicable here)",
-        fr: "Kit NdM requires a poste de charge and shop-floor ordre de travail sequence (not applicable here)",
-      },
-      {
-        en: "Kit BoM products cannot be sold on quotations or sales orders (not applicable here)",
-        fr: "Kit NdM products cannot be sold on quotations or sales orders (not applicable here)",
-      },
+      { en: "Kit and Manufacture BoMs behave identically on every sales workflow", fr: "Les nomenclatures Kit et Fabrication se comportent de manière identique dans tous les flux de vente" },
+      { en: "Kit BoM requires a work center and shop-floor work order sequence (not applicable here)", fr: "La nomenclature Kit nécessite un poste de charge et une séquence d'ordres de travail (non applicable ici)" },
+      { en: "Kit BoM products cannot be sold on quotations or sales orders (not applicable here)", fr: "Les produits avec nomenclature Kit ne peuvent pas être vendus sur les devis ou bons de commande (non applicable ici)" },
     ],
-    explanation: {
-      en: "BoM Type 'Kit' means the parent product itself is not stocked or manufactured; instead, when sold or delivered, Odoo replaces the kit line with its component lines on the picking. BoM Type 'Manufacture this product' creates an MO that consumes components and produces the stocked finished product. Phantom (kit) BoMs are common for bundled SKUs sold as one but shipped as parts.\n\nThey are different BoM types with very different behavior. Kits do not use work centers; manufacturing BoMs may. Kits are sold all the time — that is their main use.",
-      fr: "NdM Type 'Kit' means the parent product itself is not stocked or manufactured; instead, when sold or delivered, Odoo replaces the kit line with its component lines on the picking. NdM Type 'Manufacture this product' creates an MO that consumes components and produces the stocked finished product. Phantom (kit) BoMs are common for bundled SKUs sold as one but shipped as parts.\n\nThey are different NdM types with very different behavior. Kits do not use work centers; manufacturing BoMs may. Kits are sold all the time — that is their main use.",
-    },
+    explanation: { en: "BoM Type 'Kit' means the parent product itself is not stocked or manufactured; instead, when sold or delivered, Odoo replaces the kit line with its component lines on the picking. BoM Type 'Manufacture this product' creates an MO that consumes components and produces the stocked finished product. Phantom (kit) BoMs are common for bundled SKUs sold as one but shipped as parts.\n\nWhy not \"Kit and Manufacture BoMs behave identically on every sales workflow\"? They are different BoM types with very different behavior.\n\nWhy not \"Kit BoM requires a work center and shop-floor work order sequence (not applicable here)\"? Kits do not use work centers; manufacturing BoMs may.\n\nWhy not \"Kit BoM products cannot be sold on quotations or sales orders (not applicable here)\"? Kits are sold all the time — that is their main use.", fr: "Le type de nomenclature « Kit » signifie que le produit parent lui-même n'est pas stocké ni fabriqué ; au lieu de cela, lors de la vente ou de la livraison, Odoo remplace la ligne du kit par ses lignes de composants sur le bon de livraison. Le type « Fabriquer ce produit » crée un OF qui consomme les composants et produit le produit fini stocké." },
   }),
   complexQ({
     id: "oep-051",
     module: "mrp",
-    text: {
-      en: "An MO in Odoo 19 has 4 work orders across 3 work centers. What is the effect of confirming the MO?",
-      fr: "An MO in Odoo 19 has 4 work orders across 3 work centers. What is the effect of confirming the MO?",
-    },
-    correct: {
-      en: "The work orders are scheduled on the work center calendars based on capacity and lead time",
-      fr: "The work orders are scheduled on the poste de charge calendars based on capacity and piste time",
-    },
+    text: { en: "An MO in Odoo 19 has 4 work orders across 3 work centers. What is the effect of confirming the MO?", fr: "Un OF dans Odoo 19 a 4 ordres de travail répartis sur 3 postes de charge. Quel est l'effet de la confirmation de l'OF ?" },
+    correct: { en: "The work orders are scheduled on the work center calendars based on capacity and lead time", fr: "Les ordres de travail sont planifiés sur les calendriers des postes de charge en fonction de la capacité et du délai" },
     distractors: [
-      {
-        en: "All work orders start immediately regardless of capacity (not applicable here)",
-        fr: "All work orders start immediately regardless of capacity (not applicable here)",
-      },
-      {
-        en: "Components are shipped to the customer which confuses a related but distinct setting (not applicable here)",
-        fr: "Components are shipped to the customer which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "An invoice is created and is not the controlling configuration here (not applicable here)",
-        fr: "An facture is created and is not the controlling configuration here (not applicable here)",
-      },
+      { en: "All work orders start immediately regardless of capacity (not applicable here)", fr: "Tous les ordres de travail démarrent immédiatement indépendamment de la capacité (non applicable ici)" },
+      { en: "Components are shipped to the customer which confuses a related but distinct setting (not applicable here)", fr: "Les composants sont expédiés au client, ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "An invoice is created and is not the controlling configuration here (not applicable here)", fr: "Une facture est créée, ce qui n'est pas la configuration pertinente ici (non applicable ici)" },
     ],
-    explanation: {
-      en: "On MO confirmation, Odoo creates the work orders and uses each work center's working hours and capacity to schedule start/finish times. Operators see the queue in the Manufacturing Shop Floor view, and they record start, pause, and finish to update real time and OEE statistics on the work center.\n\nCapacity and dependency constraints respect the schedule; not everything starts at once. Customer shipping is unrelated to MO confirmation. Invoices are created from sales/purchase, not MOs directly.",
-      fr: "On MO confirmation, Odoo creates the work orders and uses each poste de charge's working hours and capacity to schedule start/finish times. Operators see the queue in the Manufacturing Shop Floor view, and they record start, pause, and finish to update real time and OEE statistics on the poste de charge.\n\nCapacity and dependency constraints respect the schedule; not everything starts at once. Customer shipping is unrelated to MO confirmation. facture are created from sales/purchase, not MOs directly.",
-    },
+    explanation: { en: "On MO confirmation, Odoo creates the work orders and uses each work center's working hours and capacity to schedule start/finish times. Operators see the queue in the Manufacturing Shop Floor view, and they record start, pause, and finish to update real time and OEE statistics on the work center.\n\nWhy not \"All work orders start immediately regardless of capacity (not applicable here)\"? Capacity and dependency constraints respect the schedule; not everything starts at once.\n\nWhy not \"Components are shipped to the customer which confuses a related but distinct setting (not applicable here)\"? Customer shipping is unrelated to MO confirmation.\n\nWhy not \"An invoice is created and is not the controlling configuration here (not applicable here)\"? Invoices are created from sales/purchase, not MOs directly.", fr: "Lors de la confirmation de l'OF, Odoo crée les ordres de travail et utilise les heures de travail et la capacité de chaque poste de charge pour planifier les heures de début/fin. Les opérateurs voient la file d'attente dans la vue Atelier de fabrication." },
   }),
   complexQ({
     id: "oep-052",
     module: "mrp",
-    text: {
-      en: "A consultant wants to outsource an operation (e.g., heat treatment) to a partner. Which Odoo 19 feature handles this?",
-      fr: "A consultant wants to outsource an operation (e.g., heat treatment) to a partner. Which Odoo 19 feature handles this?",
-    },
-    correct: {
-      en: "Subcontracting on the BoM with a vendor and components",
-      fr: "Subcontracting on the NdM with a vendor and components",
-    },
+    text: { en: "A consultant wants to outsource an operation (e.g., heat treatment) to a partner. Which Odoo 19 feature handles this?", fr: "Un consultant veut sous-traiter une opération (ex. : traitement thermique) à un partenaire. Quelle fonctionnalité Odoo 19 gère cela ?" },
+    correct: { en: "Subcontracting on the BoM with a vendor and components", fr: "Sous-traitance sur la nomenclature avec un fournisseur et des composants" },
     distractors: [
-      {
-        en: "Drop-shipping and belongs to a different Odoo application",
-        fr: "Drop-shipping and belongs to a different Odoo application",
-      },
-      {
-        en: "Cross-docking which confuses a related but distinct setting",
-        fr: "Cross-docking which confuses a related but distinct setting",
-      },
-      {
-        en: "Internal Transfer route and is not the controlling configuration here",
-        fr: "Internal Transfer route and is not the controlling configuration here",
-      },
+      { en: "Drop-shipping and belongs to a different Odoo application", fr: "La livraison directe, qui appartient à une autre application Odoo" },
+      { en: "Cross-docking which confuses a related but distinct setting", fr: "Le cross-dock, ce qui est un paramètre distinct mais lié" },
+      { en: "Internal Transfer route and is not the controlling configuration here", fr: "La route de transfert interne, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Subcontracting in Manufacturing lets you specify on a BoM that the product is produced by a Subcontractor (vendor). Odoo creates a PO for the subcontract product when needed, ships components to the vendor, receives the finished product, and tracks costs. Two flows are supported: Subcontracting and Subcontracting with Resupplied components.\n\nDropshipping ships from vendor to customer without manufacturing. Cross-docking moves received goods straight to outbound, no manufacturing. Internal Transfer is location-to-location, not vendor manufacturing.",
-      fr: "Subcontracting in Manufacturing lets you specify on a NdM that the product is produced by a Subcontractor (vendor). Odoo creates a PO for the subcontract product when needed, ships components to the vendor, receives the finished product, and tracks costs. Two flows are supported: Subcontracting and Subcontracting with Resupplied components.\n\nDropshipping ships from vendor to customer without manufacturing. Cross-docking moves received goods straight to outbound, no manufacturing. Internal Transfer is location-to-location, not vendor manufacturing.",
-    },
+    explanation: { en: "Subcontracting in Manufacturing lets you specify on a BoM that the product is produced by a Subcontractor (vendor). Odoo creates a PO for the subcontract product when needed, ships components to the vendor, receives the finished product, and tracks costs. Two flows are supported: Subcontracting and Subcontracting with Resupplied components.\n\nWhy not \"Drop-shipping and belongs to a different Odoo application\"? Dropshipping ships from vendor to customer without manufacturing.\n\nWhy not \"Cross-docking which confuses a related but distinct setting\"? Cross-docking moves received goods straight to outbound, no manufacturing.\n\nWhy not \"Internal Transfer route and is not the controlling configuration here\"? Internal Transfer is location-to-location, not vendor manufacturing.", fr: "La sous-traitance en Fabrication permet de spécifier sur une nomenclature que le produit est fabriqué par un sous-traitant (fournisseur). Odoo crée un bon de commande fournisseur pour le produit sous-traité quand nécessaire, expédie les composants au fournisseur, reçoit le produit fini et suit les coûts." },
   }),
   complexQ({
     id: "oep-053",
     module: "mrp",
-    text: {
-      en: "What is the role of the Manufacturing Shop Floor module in Odoo 19?",
-      fr: "What is the role of the Manufacturing Shop Floor module in Odoo 19?",
-    },
-    correct: {
-      en: "Tablet UI for operators to start/stop work orders and log quantities",
-      fr: "Tablet UI for operators to start/stop work orders and log quantities",
-    },
+    text: { en: "What is the role of the Manufacturing Shop Floor module in Odoo 19?", fr: "Quel est le rôle du module Atelier de fabrication dans Odoo 19 ?" },
+    correct: { en: "Tablet UI for operators to start/stop work orders and log quantities", fr: "Interface tablette pour les opérateurs pour démarrer/arrêter les ordres de travail et enregistrer les quantités" },
     distractors: [
-      {
-        en: "Payroll module computing employee wages from attendance clock events",
-        fr: "Payroll module computing employé wages from attendance clock events",
-      },
-      {
-        en: "Purchase RFQ comparison grid for competitive vendor quote evaluation",
-        fr: "Purchase RFQ comparison grid for competitive vendor quote evaluation",
-      },
-      {
-        en: "Inventory module replacement with no manufacturing shop-floor interface",
-        fr: "Inventory module replacement with no manufacturing shop-floor interface",
-      },
+      { en: "Payroll module computing employee wages from attendance clock events", fr: "Module de paie calculant les salaires des employés à partir des événements de pointage" },
+      { en: "Purchase RFQ comparison grid for competitive vendor quote evaluation", fr: "Grille de comparaison de demandes de prix fournisseur pour l'évaluation compétitive" },
+      { en: "Inventory module replacement with no manufacturing shop-floor interface", fr: "Remplacement du module Inventaire sans interface d'atelier de fabrication" },
     ],
-    explanation: {
-      en: "Shop Floor is a dedicated tablet/touch interface where operators see their queued work orders per work center, log start/pause/finish times, register produced and scrap quantities, and perform inline quality checks. Time logged updates the work center's OEE and the MO's actual cost.\n\nPayroll is the HR Payroll module's job. Purchase handles RFQs and vendor orders; Shop Floor is the manufacturing operator interface. Inventory is a separate app and is not replaced.",
-      fr: "Shop Floor is a dedicated tablet/touch interface where operators see their queued work orders per poste de charge, log start/pause/finish times, register produced and scrap quantities, and perform inline quality checks. Time logged updates the poste de charge's OEE and the MO's actual cost.\n\nPayroll is the HR Payroll module's job. Purchase handles RFQs and vendor orders; Shop Floor is the manufacturing operator interface. Inventory is a separate app and is not replaced.",
-    },
+    explanation: { en: "Shop Floor is a dedicated tablet/touch interface where operators see their queued work orders per work center, log start/pause/finish times, register produced and scrap quantities, and perform inline quality checks. Time logged updates the work center's OEE and the MO's actual cost.\n\nWhy not \"Payroll module computing employee wages from attendance clock events\"? Payroll is the HR Payroll module's job.\n\nWhy not \"Purchase RFQ comparison grid for competitive vendor quote evaluation\"? Purchase handles RFQs and vendor orders; Shop Floor is the manufacturing operator interface.\n\nWhy not \"Inventory module replacement with no manufacturing shop-floor interface\"? Inventory is a separate app and is not replaced.", fr: "L'Atelier est une interface dédiée tablette/tactile où les opérateurs voient leurs ordres de travail en file par poste de charge, enregistrent les heures de début/pause/fin, les quantités produites et les rebuts, et effectuent des contrôles qualité en ligne." },
   }),
   complexQ({
     id: "oep-054",
     module: "mrp",
-    text: {
-      en: "A consultant configures a quality check that triggers automatically on every receipt of a specific product. Which Odoo 19 module is required?",
-      fr: "A consultant configures a quality check that triggers automatically on every receipt of a specific product. Which Odoo 19 module is required?",
-    },
-    correct: {
-      en: "Quality (quality_control)",
-      fr: "Quality (quality_control)",
-    },
+    text: { en: "A consultant configures a quality check that triggers automatically on every receipt of a specific product. Which Odoo 19 module is required?", fr: "Un consultant configure un contrôle qualité qui se déclenche automatiquement à chaque réception d'un produit spécifique. Quel module Odoo 19 est nécessaire ?" },
+    correct: { en: "Quality (quality_control)", fr: "Qualité (quality_control)" },
     distractors: [
-      {
-        en: "Studio only in Odoo 19, but not for this workflow",
-        fr: "Studio only in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Field Service which confuses a related but distinct setting",
-        fr: "Field Service which confuses a related but distinct setting",
-      },
-      {
-        en: "Knowledge and is not the controlling configuration here",
-        fr: "Knowledge and is not the controlling configuration here",
-      },
+      { en: "Studio only in Odoo 19, but not for this workflow", fr: "Studio uniquement dans Odoo 19, mais pas pour ce flux" },
+      { en: "Field Service which confuses a related but distinct setting", fr: "Field Service, ce qui est un paramètre distinct mais lié" },
+      { en: "Knowledge and is not the controlling configuration here", fr: "Knowledge, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Quality module provides Quality Control Points (QCPs) bound to operations (receipts, transfers, MOs, work orders) and products. Each QCP defines test type (Pass/Fail, Measure, Take a Picture, Print Label) and trigger (every transfer, % of transfers, periodic). Failed checks generate Quality Alerts for follow-up.\n\nStudio cannot replicate the QCP and Quality Alert workflow on its own. Field Service is for on-site service tasks, not warehouse QC. Knowledge stores documentation.",
-      fr: "The Quality module provides Quality Control Points (QCPs) bound to operations (receipts, transfers, MOs, work orders) and products. Each QCP defines test type (Pass/Fail, Measure, Take a Picture, Print Label) and trigger (every transfer, % of transfers, periodic). Failed checks generate Quality Alerts for follow-up.\n\nStudio cannot replicate the QCP and Quality Alert workflow on its own. Field Service is for on-site service tasks, not entrepôt QC. Knowledge stores documentation.",
-    },
+    explanation: { en: "The Quality module provides Quality Control Points (QCPs) bound to operations (receipts, transfers, MOs, work orders) and products. Each QCP defines test type (Pass/Fail, Measure, Take a Picture, Print Label) and trigger (every transfer, % of transfers, periodic). Failed checks generate Quality Alerts for follow-up.\n\nWhy not \"Studio only in Odoo 19, but not for this workflow\"? Studio cannot replicate the QCP and Quality Alert workflow on its own.\n\nWhy not \"Field Service which confuses a related but distinct setting\"? Field Service is for on-site service tasks, not warehouse QC.\n\nWhy not \"Knowledge and is not the controlling configuration here\"? Knowledge stores documentation.", fr: "Le module Qualité fournit des points de contrôle qualité (PCQ) liés aux opérations (réceptions, transferts, OF, ordres de travail) et aux produits. Chaque PCQ définit un type de test (Réussi/Échoué, Mesure, Prendre une photo, Imprimer une étiquette) et un déclencheur." },
   }),
   complexQ({
     id: "oep-055",
     module: "mrp",
-    text: {
-      en: "In Odoo 19 Manufacturing, what is the purpose of a 'work center' (mrp.workcenter)?",
-      fr: "In Odoo 19 Manufacturing, what is the purpose of a 'poste de charge' (mrp.workcenter)?",
-    },
-    correct: {
-      en: "Production resource with calendar",
-      fr: "Production resource with calendar",
-    },
+    text: { en: "In Odoo 19 Manufacturing, what is the purpose of a 'work center' (mrp.workcenter)?", fr: "Dans Odoo 19 Fabrication, quel est le rôle d'un « poste de charge » (mrp.workcenter) ?" },
+    correct: { en: "Production resource with calendar", fr: "Ressource de production avec calendrier" },
     distractors: [
-      {
-        en: "Employee HR profile storing payroll contract and leave allocations",
-        fr: "employé HR profile storing payroll contract and leave allocations",
-      },
-      {
-        en: "BoM header storing component lines and manufacturing operations",
-        fr: "NdM header storing component lines and manufacturing operations",
-      },
-      {
-        en: "Stock location bin replacing warehouse rack and aisle hierarchy",
-        fr: "Stock location bin replacing entrepôt rack and aisle hierarchy",
-      },
+      { en: "Employee HR profile storing payroll contract and leave allocations", fr: "Profil RH de l'employé stockant le contrat de paie et les allocations de congés" },
+      { en: "BoM header storing component lines and manufacturing operations", fr: "En-tête de nomenclature stockant les lignes de composants et les opérations de fabrication" },
+      { en: "Stock location bin replacing warehouse rack and aisle hierarchy", fr: "Casier d'emplacement de stock remplaçant la hiérarchie de racks et allées de l'entrepôt" },
     ],
-    explanation: {
-      en: "A work center represents a production resource: a machine, an assembly station, or a manual workstation. It has a working calendar, an hourly cost (used in MO costing), a capacity (parallel productions allowed), efficiency, and OEE statistics. Operations on a BoM are dispatched to work centers, which in turn create work orders.\n\nEmployees are tracked in HR; work centers are resources, though they can have an employee link. BoMs are stored in mrp.bom, not work centers. Stock locations are stock.location, not work centers.",
-      fr: "A poste de charge represents a production resource: a machine, an assembly station, or a manual workstation. It has a working calendar, an hourly cost (used in MO costing), a capacity (parallel productions allowed), efficiency, and OEE statistics. Operations on a NdM are dispatched to work centers, which in turn create work orders.\n\nemployé are tracked in HR; work centers are resources, though they can have an employé link. BoMs are stored in mrp.bom, not work centers. Stock locations are stock.location, not work centers.",
-    },
+    explanation: { en: "A work center represents a production resource: a machine, an assembly station, or a manual workstation. It has a working calendar, an hourly cost (used in MO costing), a capacity (parallel productions allowed), efficiency, and OEE statistics. Operations on a BoM are dispatched to work centers, which in turn create work orders.\n\nWhy not \"Employee HR profile storing payroll contract and leave allocations\"? Employees are tracked in HR; work centers are resources, though they can have an employee link.\n\nWhy not \"BoM header storing component lines and manufacturing operations\"? BoMs are stored in mrp.bom, not work centers.\n\nWhy not \"Stock location bin replacing warehouse rack and aisle hierarchy\"? Stock locations are stock.location, not work centers.", fr: "Un poste de charge représente une ressource de production : une machine, un poste d'assemblage ou un poste de travail manuel. Il a un calendrier de travail, un coût horaire (utilisé dans le calcul du coût de l'OF), une capacité (productions parallèles autorisées), une efficacité et des statistiques TRS." },
   }),
   complexQ({
     id: "oep-056",
     module: "mrp",
-    text: {
-      en: "In Odoo 19 Manufacturing, the 'Manufacturing Readiness' setting on a BoM controls when an MO is marked Ready. Which two options does it offer?",
-      fr: "In Odoo 19 Manufacturing, the 'Manufacturing Readiness' setting on a NdM controls when an MO is marked Ready. Which two options does it offer?",
-    },
-    correct: {
-      en: "'When all components are available' versus 'When components for the 1st operation are available'",
-      fr: "'When all components are available' versus 'When components for the 1st operation are available'",
-    },
+    text: { en: "In Odoo 19 Manufacturing, the 'Manufacturing Readiness' setting on a BoM controls when an MO is marked Ready. Which two options does it offer?", fr: "Dans Odoo 19 Fabrication, le paramètre « Disponibilité pour fabrication » sur une nomenclature contrôle quand un OF est marqué Prêt. Quelles deux options propose-t-il ?" },
+    correct: { en: "'When all components are available' versus 'When components for the 1st operation are available'", fr: "« Quand tous les composants sont disponibles » vs « Quand les composants de la 1ère opération sont disponibles »" },
     distractors: [
-      {
-        en: "'Flexible' versus 'Strict' and belongs to a different Odoo application (not applicable here)",
-        fr: "'Flexible' versus 'Strict' and belongs to a different Odoo application (not applicable here)",
-      },
-      {
-        en: "'Make to Stock' versus 'Make to Order' which confuses a related but distinct setting (not applicable here)",
-        fr: "'Make to Stock' versus 'Make to Order' which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "'Push' versus 'Pull' and is not the controlling configuration here (not applicable here)",
-        fr: "'Push' versus 'Pull' and is not the controlling configuration here (not applicable here)",
-      },
+      { en: "'Flexible' versus 'Strict' and belongs to a different Odoo application (not applicable here)", fr: "« Flexible » vs « Strict », ce qui appartient à une autre application Odoo (non applicable ici)" },
+      { en: "'Make to Stock' versus 'Make to Order' which confuses a related but distinct setting (not applicable here)", fr: "« Fabrication sur stock » vs « Fabrication à la commande », ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "'Push' versus 'Pull' and is not the controlling configuration here (not applicable here)", fr: "« Push » vs « Pull », ce qui n'est pas la configuration pertinente ici (non applicable ici)" },
     ],
-    explanation: {
-      en: "Manufacturing Readiness on the BoM determines when an MO becomes Ready: 'When all components are available' requires every component to be in stock first, while 'When components for the 1st operation are available' lets the MO start as soon as the parts needed for the first operation are on hand. This is distinct from 'Flexible Consumption' (Blocked / Allowed / Allowed with Warning), which governs whether consumed quantities may deviate from the BoM.\n\n'Flexible'/'Strict' is not the Manufacturing Readiness wording in Odoo 19; the related Flexible Consumption setting uses Blocked / Allowed / Allowed with Warning. MTS vs MTO are replenishment routes, not the MO readiness rule. Push vs Pull describes route rule directions, not BoM readiness.",
-      fr: "Manufacturing Readiness on the NdM determines when an MO becomes Ready: 'When all components are available' requires every component to be in stock first, while 'When components for the 1st operation are available' lets the MO start as soon as the parts needed for the first operation are on hand. This is distinct from 'Flexible Consumption' (Blocked / Allowed / Allowed with Warning), which governs whether consumed quantities may deviate from the NdM.\n\n'Flexible'/'Strict' is not the Manufacturing Readiness wording in Odoo 19; the related Flexible Consumption setting uses Blocked / Allowed / Allowed with Warning. MTS vs MTO are replenishment routes, not the MO readiness rule. Push vs Pull describes route rule directions, not NdM readiness.",
-    },
+    explanation: { en: "Manufacturing Readiness on the BoM determines when an MO becomes Ready: 'When all components are available' requires every component to be in stock first, while 'When components for the 1st operation are available' lets the MO start as soon as the parts needed for the first operation are on hand. This is distinct from 'Flexible Consumption' (Blocked / Allowed / Allowed with Warning), which governs whether consumed quantities may deviate from the BoM.\n\nWhy not \"'Flexible' versus 'Strict' and belongs to a different Odoo application (not applicable here)\"? 'Flexible'/'Strict' is not the Manufacturing Readiness wording in Odoo 19; the related Flexible Consumption setting uses Blocked / Allowed / Allowed with Warning.\n\nWhy not \"'Make to Stock' versus 'Make to Order' which confuses a related but distinct setting (not applicable here)\"? MTS vs MTO are replenishment routes, not the MO readiness rule.\n\nWhy not \"'Push' versus 'Pull' and is not the controlling configuration here (not applicable here)\"? Push vs Pull describes route rule directions, not BoM readiness.", fr: "La disponibilité pour fabrication sur la nomenclature détermine quand un OF devient Prêt : « Quand tous les composants sont disponibles » exige que chaque composant soit en stock, tandis que « Quand les composants de la 1ère opération sont disponibles » permet à l'OF de démarrer dès que les pièces nécessaires à la première opération sont disponibles." },
   }),
   complexQ({
     id: "oep-057",
     module: "mrp",
-    text: {
-      en: "Odoo 19 introduced enhancements to the MRP scheduler. What is the role of the MRP Scheduler (Run Scheduler)?",
-      fr: "Odoo 19 introduced enhancements to the MRP scheduler. What is the role of the MRP Scheduler (Run Scheduler)?",
-    },
-    correct: {
-      en: "Periodically processes reordering rules and MTO procurements to create needed RFQs and MOs",
-      fr: "Periodically processes règle de réapprovisionnement and MTO procurements to create needed RFQs and MOs",
-    },
+    text: { en: "Odoo 19 introduced enhancements to the MRP scheduler. What is the role of the MRP Scheduler (Run Scheduler)?", fr: "Odoo 19 a introduit des améliorations au planificateur MRP. Quel est le rôle du planificateur MRP (Exécuter le planificateur) ?" },
+    correct: { en: "Periodically processes reordering rules and MTO procurements to create needed RFQs and MOs", fr: "Traite périodiquement les règles de réapprovisionnement et les approvisionnements MTO pour créer les demandes de prix et OF nécessaires" },
     distractors: [
-      {
-        en: "Sends emails to vendors and belongs to a different Odoo application (not applicable here)",
-        fr: "Sends emails to vendors and belongs to a different Odoo application (not applicable here)",
-      },
-      {
-        en: "Posts journal entries which confuses a related but distinct setting (not applicable here)",
-        fr: "Posts écritures comptables which confuses a related but distinct setting (not applicable here)",
-      },
-      {
-        en: "Generates customer invoices and is not the controlling configuration here (not applicable here)",
-        fr: "Generates customer facture and is not the controlling configuration here (not applicable here)",
-      },
+      { en: "Sends emails to vendors and belongs to a different Odoo application (not applicable here)", fr: "Envoie des e-mails aux fournisseurs, ce qui appartient à une autre application Odoo (non applicable ici)" },
+      { en: "Posts journal entries which confuses a related but distinct setting (not applicable here)", fr: "Comptabilise des écritures comptables, ce qui est un paramètre distinct mais lié (non applicable ici)" },
+      { en: "Generates customer invoices and is not the controlling configuration here (not applicable here)", fr: "Génère des factures clients, ce qui n'est pas la configuration pertinente ici (non applicable ici)" },
     ],
-    explanation: {
-      en: "The Run Scheduler action (or scheduled cron) walks through reordering rules and unmet procurement demands and creates the corresponding RFQs, MOs, or transfers needed to keep stock at the configured level. It is essential to keep the supply chain in sync without manual intervention. In Odoo 19, scheduling logic continues to be refined for performance with larger catalogs.\n\nEmail is handled by mail/queue, not the MRP scheduler. Accounting entries are posted by accounting flows, not the scheduler. Invoices are generated from sales/manufacturing/inventory linkages, not directly by the scheduler.",
-      fr: "The Run Scheduler action (or scheduled cron) walks through règle de réapprovisionnement and unmet procurement demands and creates the corresponding RFQs, MOs, or transfers needed to keep stock at the configured level. It is essential to keep the supply chain in sync without manual intervention. In Odoo 19, scheduling logic continues to be refined for performance with larger catalogs.\n\nEmail is handled by mail/queue, not the MRP scheduler. Accounting entries are posted by accounting flows, not the scheduler. facture are generated from sales/manufacturing/inventory linkages, not directly by the scheduler.",
-    },
+    explanation: { en: "The Run Scheduler action (or scheduled cron) walks through reordering rules and unmet procurement demands and creates the corresponding RFQs, MOs, or transfers needed to keep stock at the configured level. It is essential to keep the supply chain in sync without manual intervention. In Odoo 19, scheduling logic continues to be refined for performance with larger catalogs.\n\nWhy not \"Sends emails to vendors and belongs to a different Odoo application (not applicable here)\"? Email is handled by mail/queue, not the MRP scheduler.\n\nWhy not \"Posts journal entries which confuses a related but distinct setting (not applicable here)\"? Accounting entries are posted by accounting flows, not the scheduler.\n\nWhy not \"Generates customer invoices and is not the controlling configuration here (not applicable here)\"? Invoices are generated from sales/manufacturing/inventory linkages, not directly by the scheduler.", fr: "L'action Exécuter le planificateur (ou cron planifié) parcourt les règles de réapprovisionnement et les demandes d'approvisionnement non satisfaites et crée les demandes de prix, OF ou transferts correspondants nécessaires pour maintenir le stock au niveau configuré." },
   }),
   complexQ({
     id: "oep-058",
     module: "mrp",
-    text: {
-      en: "A consultant configures by-products on a BoM (e.g., scrap metal generated when producing a chair). How does Odoo 19 record by-products?",
-      fr: "A consultant configures by-products on a NdM (e.g., scrap metal generated when producing a chair). How does Odoo 19 record by-products?",
-    },
-    correct: {
-      en: "BoM By-products tab posts extra output quantities to stock on MO close",
-      fr: "NdM By-products tab posts extra output quantities to stock on MO close",
-    },
+    text: { en: "A consultant configures by-products on a BoM (e.g., scrap metal generated when producing a chair). How does Odoo 19 record by-products?", fr: "Un consultant configure des sous-produits sur une nomenclature (ex. : ferraille métallique générée lors de la production d'une chaise). Comment Odoo 19 enregistre-t-il les sous-produits ?" },
+    correct: { en: "BoM By-products tab posts extra output quantities to stock on MO close", fr: "L'onglet Sous-produits de la nomenclature comptabilise les quantités de sortie supplémentaires en stock à la clôture de l'OF" },
     distractors: [
-      {
-        en: "By-products are scrapped automatically and removed from inventory",
-        fr: "By-products are scrapped automatically and removed from inventory",
-      },
-      {
-        en: "Odoo cannot record secondary outputs from a manufacturing process",
-        fr: "Odoo cannot record secondary outputs from a manufacturing process",
-      },
-      {
-        en: "By-products post only to analytic accounts without stock quant changes",
-        fr: "By-products post only to compte analytique without stock quant changes",
-      },
+      { en: "By-products are scrapped automatically and removed from inventory", fr: "Les sous-produits sont automatiquement mis au rebut et retirés de l'inventaire" },
+      { en: "Odoo cannot record secondary outputs from a manufacturing process", fr: "Odoo ne peut pas enregistrer de sorties secondaires d'un processus de fabrication" },
+      { en: "By-products post only to analytic accounts without stock quant changes", fr: "Les sous-produits ne sont comptabilisés que sur les comptes analytiques sans changements de quants en stock" },
     ],
-    explanation: {
-      en: "BoMs have a By-products tab. When the MO is completed, by-product quantities are received into the stock location, valued at their cost (configurable), and available for sale or further use. This is distinct from scrap, which is a destruction. Common examples: sawdust from cutting, scrap metal, secondary outputs in chemical processes.\n\nScrap is its own concept (consumed and removed); by-products are produced outputs. By-products are fully supported. Analytic accounting is for cost tracking, not for stocking by-products.",
-      fr: "BoMs have a By-products tab. When the MO is completed, by-product quantities are received into the stock location, valued at their cost (configurable), and available for sale or further use. This is distinct from scrap, which is a destruction. Common examples: sawdust from cutting, scrap metal, secondary outputs in chemical processes.\n\nScrap is its own concept (consumed and removed); by-products are produced outputs. By-products are fully supported. Analytic accounting is for cost tracking, not for stocking by-products.",
-    },
+    explanation: { en: "BoMs have a By-products tab. When the MO is completed, by-product quantities are received into the stock location, valued at their cost (configurable), and available for sale or further use. This is distinct from scrap, which is a destruction. Common examples: sawdust from cutting, scrap metal, secondary outputs in chemical processes.\n\nWhy not \"By-products are scrapped automatically and removed from inventory\"? Scrap is its own concept (consumed and removed); by-products are produced outputs.\n\nWhy not \"Odoo cannot record secondary outputs from a manufacturing process\"? By-products are fully supported.\n\nWhy not \"By-products post only to analytic accounts without stock quant changes\"? Analytic accounting is for cost tracking, not for stocking by-products.", fr: "Les nomenclatures ont un onglet Sous-produits. Lorsque l'OF est terminé, les quantités de sous-produits sont reçues dans l'emplacement de stock, valorisées à leur coût (configurable) et disponibles pour la vente ou une utilisation ultérieure." },
   }),
   complexQ({
     id: "oep-059",
     module: "mrp",
-    text: {
-      en: "A consultant must track maintenance for shop equipment in Odoo 19. Which module integrates with Manufacturing for preventive and corrective maintenance?",
-      fr: "A consultant must track maintenance for shop equipment in Odoo 19. Which module integrates with Manufacturing for preventive and corrective maintenance?",
-    },
-    correct: {
-      en: "Maintenance (maintenance app)",
-      fr: "Maintenance (maintenance app)",
-    },
+    text: { en: "A consultant must track maintenance for shop equipment in Odoo 19. Which module integrates with Manufacturing for preventive and corrective maintenance?", fr: "Un consultant doit suivre la maintenance des équipements d'atelier dans Odoo 19. Quel module s'intègre à la Fabrication pour la maintenance préventive et corrective ?" },
+    correct: { en: "Maintenance (maintenance app)", fr: "Maintenance (application maintenance)" },
     distractors: [
-      {
-        en: "Helpdesk and belongs to a different Odoo application",
-        fr: "Helpdesk and belongs to a different Odoo application",
-      },
-      {
-        en: "Subscriptions which confuses a related but distinct setting",
-        fr: "Subscriptions which confuses a related but distinct setting",
-      },
-      {
-        en: "Field Service and is not the controlling configuration here",
-        fr: "Field Service and is not the controlling configuration here",
-      },
+      { en: "Helpdesk and belongs to a different Odoo application", fr: "Helpdesk, qui appartient à une autre application Odoo" },
+      { en: "Subscriptions which confuses a related but distinct setting", fr: "Abonnements, ce qui est un paramètre distinct mais lié" },
+      { en: "Field Service and is not the controlling configuration here", fr: "Field Service, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Maintenance app links to mrp.workcenter via the equipment record. Preventive maintenance is scheduled by frequency or meter reading; corrective maintenance is triggered when equipment breaks down or a quality alert is created. The MTBF/MTTR statistics inform reliability dashboards, and downtime can be reflected in OEE.\n\nHelpdesk is for customer support tickets. Subscriptions handle recurring sales billing. Field Service is for on-site customer service tasks, not internal equipment maintenance.",
-      fr: "The Maintenance app links to mrp.workcenter via the equipment record. Preventive maintenance is scheduled by frequency or meter reading; corrective maintenance is triggered when equipment breaks down or a quality alert is created. The MTBF/MTTR statistics inform reliability dashboards, and downtime can be reflected in OEE.\n\nHelpdesk is for customer support tickets. Subscriptions handle recurring sales billing. Field Service is for on-site customer service tasks, not internal equipment maintenance.",
-    },
+    explanation: { en: "The Maintenance app links to mrp.workcenter via the equipment record. Preventive maintenance is scheduled by frequency or meter reading; corrective maintenance is triggered when equipment breaks down or a quality alert is created. The MTBF/MTTR statistics inform reliability dashboards, and downtime can be reflected in OEE.\n\nWhy not \"Helpdesk and belongs to a different Odoo application\"? Helpdesk is for customer support tickets.\n\nWhy not \"Subscriptions which confuses a related but distinct setting\"? Subscriptions handle recurring sales billing.\n\nWhy not \"Field Service and is not the controlling configuration here\"? Field Service is for on-site customer service tasks, not internal equipment maintenance.", fr: "L'application Maintenance se lie à mrp.workcenter via l'enregistrement d'équipement. La maintenance préventive est planifiée par fréquence ou lecture de compteur ; la maintenance corrective est déclenchée lorsque l'équipement tombe en panne. Les statistiques MTBF/MTTR alimentent les tableaux de bord de fiabilité." },
   }),
   complexQ({
     id: "oep-060",
     module: "mrp",
-    text: {
-      en: "What is the relationship between a Manufacturing Order and the underlying stock movements in Odoo 19?",
-      fr: "What is the relationship between a ordre de fabrication and the underlying stock movements in Odoo 19?",
-    },
-    correct: {
-      en: "MO pickings consume components and receive finished goods via stock moves",
-      fr: "MO pickings consume components and receive finished goods via stock moves",
-    },
+    text: { en: "What is the relationship between a Manufacturing Order and the underlying stock movements in Odoo 19?", fr: "Quelle est la relation entre un ordre de fabrication et les mouvements de stock sous-jacents dans Odoo 19 ?" },
+    correct: { en: "MO pickings consume components and receive finished goods via stock moves", fr: "Les transferts de l'OF consomment les composants et reçoivent les produits finis via des mouvements de stock" },
     distractors: [
-      {
-        en: "The MO is accounting-only and never creates inventory transactions (not applicable here)",
-        fr: "The MO is accounting-only and never creates inventory transactions (not applicable here)",
-      },
-      {
-        en: "The MO ships finished goods directly to the customer delivery address (not applicable here)",
-        fr: "The MO ships finished goods directly to the customer delivery address (not applicable here)",
-      },
-      {
-        en: "The MO reuses the same picking document as the linked sales order (not applicable here)",
-        fr: "The MO reuses the same picking document as the linked commande client (not applicable here)",
-      },
+      { en: "The MO is accounting-only and never creates inventory transactions (not applicable here)", fr: "L'OF est purement comptable et ne crée jamais de transactions d'inventaire (non applicable ici)" },
+      { en: "The MO ships finished goods directly to the customer delivery address (not applicable here)", fr: "L'OF expédie les produits finis directement à l'adresse de livraison du client (non applicable ici)" },
+      { en: "The MO reuses the same picking document as the linked sales order (not applicable here)", fr: "L'OF réutilise le même document de transfert que la commande client liée (non applicable ici)" },
     ],
-    explanation: {
-      en: "An MO drives two virtual transfers: one consuming components from a source location to the production location, and one producing the finished product from the production location to a stock location. These are stock.picking records distinguished by picking type. The valuation impact follows the company's costing method.\n\nMOs absolutely move stock — they consume components and produce finished goods. MOs do not ship to customers; that is the delivery order's job. Sales-order pickings are separate from MO pickings.",
-      fr: "An MO drives two virtual transfers: one consuming components from a source location to the production location, and one producing the finished product from the production location to a stock location. These are stock.picking records distinguished by picking type. The valuation impact follows the company's costing method.\n\nMOs absolutely move stock — they consume components and produce finished goods. MOs do not ship to customers; that is the bon de livraison's job. Sales-order pickings are separate from MO pickings.",
-    },
+    explanation: { en: "An MO drives two virtual transfers: one consuming components from a source location to the production location, and one producing the finished product from the production location to a stock location. These are stock.picking records distinguished by picking type. The valuation impact follows the company's costing method.\n\nWhy not \"The MO is accounting-only and never creates inventory transactions (not applicable here)\"? MOs absolutely move stock — they consume components and produce finished goods.\n\nWhy not \"The MO ships finished goods directly to the customer delivery address (not applicable here)\"? MOs do not ship to customers; that is the delivery order's job.\n\nWhy not \"The MO reuses the same picking document as the linked sales order (not applicable here)\"? Sales-order pickings are separate from MO pickings.", fr: "Un OF pilote deux transferts virtuels : un consommant les composants d'un emplacement source vers l'emplacement de production, et un produisant le produit fini de l'emplacement de production vers un emplacement de stock. Ce sont des enregistrements stock.picking distingués par le type de transfert." },
   }),
   complexQ({
     id: "oep-061",
     module: "hr",
-    text: {
-      en: "In Odoo 19 HR, what is an Employee Contract used for?",
-      fr: "In Odoo 19 HR, what is an employé Contract used for?",
-    },
-    correct: {
-      en: "hr.contract stores wage, schedule, dates, and payroll structure terms",
-      fr: "hr.contract stores wage, schedule, dates, and payroll structure terms",
-    },
+    text: { en: "In Odoo 19 HR, what is an Employee Contract used for?", fr: "Dans Odoo 19 RH, à quoi sert un contrat employé ?" },
+    correct: { en: "hr.contract stores wage, schedule, dates, and payroll structure terms", fr: "hr.contract stocke le salaire, le planning, les dates et les termes de la structure de paie" },
     distractors: [
-      {
-        en: "Purchase Agreement storing negotiated vendor pricing and lead times",
-        fr: "Purchase Agreement storing negotiated vendor pricing and piste times",
-      },
-      {
-        en: "mrp.workcenter defining machine capacity and hourly production cost",
-        fr: "mrp.workcenter defining machine capacity and hourly production cost",
-      },
-      {
-        en: "sale.order template with default quotation sections and legal terms",
-        fr: "sale.order template with default devis sections and legal terms",
-      },
+      { en: "Purchase Agreement storing negotiated vendor pricing and lead times", fr: "Contrat d'achat stockant les prix négociés fournisseur et les délais de livraison" },
+      { en: "mrp.workcenter defining machine capacity and hourly production cost", fr: "mrp.workcenter définissant la capacité machine et le coût de production horaire" },
+      { en: "sale.order template with default quotation sections and legal terms", fr: "Modèle de sale.order avec sections de devis par défaut et conditions légales" },
     ],
-    explanation: {
-      en: "An hr.contract record holds the employment terms: wage, working schedule (resource.calendar), structure (for payroll), start/end dates, trial period, and notes. Multiple contracts can exist over an employee's tenure. Payroll uses the active contract to compute payslips. Alerts notify HR before expiry to renew contracts.\n\nVendor contracts are in Purchase Agreements, not HR. Work centers belong to Manufacturing. Sales orders are in Sales.",
-      fr: "An hr.contract record holds the employment terms: wage, working schedule (resource.calendar), structure (for payroll), start/end dates, trial period, and notes. Multiple contracts can exist over an employé's tenure. Payroll uses the active contract to compute payslips. Alerts notify HR before expiry to renew contracts.\n\nVendor contracts are in Purchase Agreements, not HR. Work centers belong to Manufacturing. Sales orders are in Sales.",
-    },
+    explanation: { en: "An hr.contract record holds the employment terms: wage, working schedule (resource.calendar), structure (for payroll), start/end dates, trial period, and notes. Multiple contracts can exist over an employee's tenure. Payroll uses the active contract to compute payslips. Alerts notify HR before expiry to renew contracts.\n\nWhy not \"Purchase Agreement storing negotiated vendor pricing and lead times\"? Vendor contracts are in Purchase Agreements, not HR.\n\nWhy not \"mrp.workcenter defining machine capacity and hourly production cost\"? Work centers belong to Manufacturing.\n\nWhy not \"sale.order template with default quotation sections and legal terms\"? Sales orders are in Sales.", fr: "Un enregistrement hr.contract contient les termes d'emploi : salaire, planning de travail (resource.calendar), structure (pour la paie), dates de début/fin, période d'essai et notes. Plusieurs contrats peuvent exister au cours de la carrière d'un employé. La paie utilise le contrat actif pour calculer les bulletins de paie." },
   }),
   complexQ({
     id: "oep-062",
     module: "hr",
-    text: {
-      en: "A consultant configures Time Off in Odoo 19. What is the difference between an Allocation and a Leave (Time Off Request)?",
-      fr: "A consultant configures congé in Odoo 19. What is the difference between an Allocation and a Leave (congé Request)?",
-    },
-    correct: {
-      en: "Allocation grants a balance (e.g., 20 vacation days/year)",
-      fr: "Allocation grants a balance (e.g., 20 vacation days/year)",
-    },
+    text: { en: "A consultant configures Time Off in Odoo 19. What is the difference between an Allocation and a Leave (Time Off Request)?", fr: "Un consultant configure les congés dans Odoo 19. Quelle est la différence entre une allocation et un congé (demande de congé) ?" },
+    correct: { en: "Allocation grants a balance (e.g., 20 vacation days/year)", fr: "L'allocation accorde un solde (ex. : 20 jours de vacances/an)" },
     distractors: [
-      {
-        en: "They are the same record and belongs to a different Odoo application",
-        fr: "They are the same record and belongs to a different Odoo application",
-      },
-      {
-        en: "Allocation is for managers only which confuses a related but distinct setting",
-        fr: "Allocation is for managers only which confuses a related but distinct setting",
-      },
-      {
-        en: "Leave requests run payroll automatically",
-        fr: "Leave requests run payroll automatically",
-      },
+      { en: "They are the same record and belongs to a different Odoo application", fr: "Ce sont le même enregistrement, ce qui appartient à une autre application Odoo" },
+      { en: "Allocation is for managers only which confuses a related but distinct setting", fr: "L'allocation est réservée aux responsables uniquement, ce qui est un paramètre distinct mais lié" },
+      { en: "Leave requests run payroll automatically", fr: "Les demandes de congé exécutent automatiquement la paie" },
     ],
-    explanation: {
-      en: "Allocations (hr.leave.allocation) grant employees a balance of a specific time-off type (Paid Time Off, Sick Leave, Comp Time). Leaves (hr.leave) are the requests employees submit, which consume from the allocation. Some leave types can be set to auto-allocate (e.g., per pay period accrual) or unlimited (e.g., unpaid leave).\n\nThey are clearly different records with different lifecycles. Both are visible to employees according to access rights. Leave approvals do not directly trigger payroll runs; they affect attendance and worked-day computation.",
-      fr: "Allocations (hr.leave.allocation) grant employé a balance of a specific time-off type (Paid congé, Sick Leave, Comp Time). Leaves (hr.leave) are the requests employé submit, which consume from the allocation. Some leave types can be set to auto-allocate (e.g., per pay period accrual) or unlimited (e.g., unpaid leave).\n\nThey are clearly different records with different lifecycles. Both are visible to employé according to droit d'accès. Leave approvals do not directly trigger payroll runs; they affect attendance and worked-day computation.",
-    },
+    explanation: { en: "Allocations (hr.leave.allocation) grant employees a balance of a specific time-off type (Paid Time Off, Sick Leave, Comp Time). Leaves (hr.leave) are the requests employees submit, which consume from the allocation. Some leave types can be set to auto-allocate (e.g., per pay period accrual) or unlimited (e.g., unpaid leave).\n\nWhy not \"They are the same record and belongs to a different Odoo application\"? They are clearly different records with different lifecycles.\n\nWhy not \"Allocation is for managers only which confuses a related but distinct setting\"? Both are visible to employees according to access rights.\n\nWhy not \"Leave requests run payroll automatically\"? Leave approvals do not directly trigger payroll runs; they affect attendance and worked-day computation.", fr: "Les allocations (hr.leave.allocation) accordent aux employés un solde d'un type de congé spécifique (congés payés, congé maladie, récupération). Les congés (hr.leave) sont les demandes soumises par les employés, qui consomment l'allocation. Certains types de congé peuvent être configurés pour s'allouer automatiquement." },
   }),
   complexQ({
     id: "oep-063",
     module: "hr",
-    text: {
-      en: "Where do employees in Odoo 19 submit their expense reports?",
-      fr: "Where do employé in Odoo 19 submit their note de frais reports?",
-    },
-    correct: {
-      en: "Expenses module (hr_expense)",
-      fr: "note de frais module (hr_expense)",
-    },
+    text: { en: "Where do employees in Odoo 19 submit their expense reports?", fr: "Où les employés dans Odoo 19 soumettent-ils leurs notes de frais ?" },
+    correct: { en: "Expenses module (hr_expense)", fr: "Module Notes de frais (hr_expense)" },
     distractors: [
-      {
-        en: "Sales > New Quotation in Odoo 19, but not for this workflow",
-        fr: "Sales > New devis in Odoo 19, but not for this workflow",
-      },
-      {
-        en: "Accounting > Bank Statement which confuses a related but distinct setting",
-        fr: "Accounting > Bank Statement which confuses a related but distinct setting",
-      },
-      {
-        en: "Inventory > Receipt and is not the controlling configuration here",
-        fr: "Inventory > Receipt and is not the controlling configuration here",
-      },
+      { en: "Sales > New Quotation in Odoo 19, but not for this workflow", fr: "Ventes > Nouveau devis dans Odoo 19, mais pas pour ce flux" },
+      { en: "Accounting > Bank Statement which confuses a related but distinct setting", fr: "Comptabilité > Relevé bancaire, ce qui est un paramètre distinct mais lié" },
+      { en: "Inventory > Receipt and is not the controlling configuration here", fr: "Inventaire > Réception, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "The Expenses app lets employees record expenses (with receipt photos), submit a report grouping them, route to manager approval, then to accounting where the report is posted as a vendor bill payable to the employee. Reimbursement is paid out of an Outstanding Payments / payable account. Per-diem and mileage are supported.\n\nSales is for customer quotations. Bank statements record transactions, not employee expense submissions. Inventory receipts are for goods, not expense reports.",
-      fr: "The note de frais app lets employé record note de frais (with receipt photos), submit a report grouping them, route to manager approval, then to accounting where the report is posted as a facture fournisseur payable to the employé. Reimbursement is paid out of an Outstanding Payments / payable account. Per-diem and mileage are supported.\n\nSales is for customer quotations. Bank statements record transactions, not employé note de frais submissions. Inventory receipts are for goods, not note de frais reports.",
-    },
+    explanation: { en: "The Expenses app lets employees record expenses (with receipt photos), submit a report grouping them, route to manager approval, then to accounting where the report is posted as a vendor bill payable to the employee. Reimbursement is paid out of an Outstanding Payments / payable account. Per-diem and mileage are supported.\n\nWhy not \"Sales > New Quotation in Odoo 19, but not for this workflow\"? Sales is for customer quotations.\n\nWhy not \"Accounting > Bank Statement which confuses a related but distinct setting\"? Bank statements record transactions, not employee expense submissions.\n\nWhy not \"Inventory > Receipt and is not the controlling configuration here\"? Inventory receipts are for goods, not expense reports.", fr: "L'application Notes de frais permet aux employés d'enregistrer des dépenses (avec photos de reçus), de soumettre un rapport les regroupant, de l'acheminer vers l'approbation du responsable, puis vers la comptabilité où le rapport est comptabilisé comme une facture fournisseur payable à l'employé." },
   }),
   complexQ({
     id: "oep-064",
     module: "hr",
-    text: {
-      en: "A consultant sets up Recruitment in Odoo 19. What is the purpose of the Kanban stages on the Recruitment pipeline?",
-      fr: "A consultant sets up Recruitment in Odoo 19. What is the purpose of the Kanban stages on the Recruitment pipeline?",
-    },
-    correct: {
-      en: "Kanban stages moving applicants from screening through offer and hire",
-      fr: "Kanban stages moving applicants from screening through offer and hire",
-    },
+    text: { en: "A consultant sets up Recruitment in Odoo 19. What is the purpose of the Kanban stages on the Recruitment pipeline?", fr: "Un consultant met en place le Recrutement dans Odoo 19. Quel est le rôle des étapes Kanban dans le pipeline de Recrutement ?" },
+    correct: { en: "Kanban stages moving applicants from screening through offer and hire", fr: "Étapes Kanban déplaçant les candidats de la sélection à l'offre et l'embauche" },
     distractors: [
-      {
-        en: "Payroll structure types defining employee salary rules and deductions",
-        fr: "Payroll structure types defining employé salary rules and deductions",
-      },
-      {
-        en: "Vendor payment batch processing outgoing AP transfers to suppliers",
-        fr: "Vendor payment batch processing outgoing AP transfers to suppliers",
-      },
-      {
-        en: "Time-off allocation granting annual PTO balances to existing staff",
-        fr: "Time-off allocation granting annual PTO balances to existing staff",
-      },
+      { en: "Payroll structure types defining employee salary rules and deductions", fr: "Types de structure de paie définissant les règles salariales et déductions des employés" },
+      { en: "Vendor payment batch processing outgoing AP transfers to suppliers", fr: "Traitement par lots des paiements fournisseurs pour les transferts AP sortants" },
+      { en: "Time-off allocation granting annual PTO balances to existing staff", fr: "Allocation de congés accordant les soldes de congés annuels au personnel existant" },
     ],
-    explanation: {
-      en: "Recruitment uses a Kanban pipeline per Job Position. Default stages move applicants from Initial Qualification through Interview rounds to Offer and Contract Proposal, ending at Hired. Each stage can require certain actions, send templated emails, and trigger handover to HR onboarding flows.\n\nPayroll is its own module, not recruitment stages. Vendor payment is in Accounting. Time off is in the Time Off module.",
-      fr: "Recruitment uses a Kanban pipeline per Job Position. Default stages move applicants from Initial Qualification through Interview rounds to Offer and Contract Proposal, ending at Hired. Each stage can require certain actions, send templated emails, and trigger handover to HR onboarding flows.\n\nPayroll is its own module, not recruitment stages. Vendor payment is in Accounting. congé is in the congé module.",
-    },
+    explanation: { en: "Recruitment uses a Kanban pipeline per Job Position. Default stages move applicants from Initial Qualification through Interview rounds to Offer and Contract Proposal, ending at Hired. Each stage can require certain actions, send templated emails, and trigger handover to HR onboarding flows.\n\nWhy not \"Payroll structure types defining employee salary rules and deductions\"? Payroll is its own module, not recruitment stages.\n\nWhy not \"Vendor payment batch processing outgoing AP transfers to suppliers\"? Vendor payment is in Accounting.\n\nWhy not \"Time-off allocation granting annual PTO balances to existing staff\"? Time off is in the Time Off module.", fr: "Le Recrutement utilise un pipeline Kanban par poste. Les étapes par défaut déplacent les candidats de la qualification initiale aux entretiens jusqu'à l'offre et la proposition de contrat, aboutissant à l'embauche." },
   }),
   complexQ({
     id: "oep-065",
     module: "hr",
-    text: {
-      en: "An employee uses the Odoo 19 Attendances app with kiosk mode. How does kiosk mode work?",
-      fr: "An employé uses the Odoo 19 Attendances app with kiosk mode. How does kiosk mode work?",
-    },
-    correct: {
-      en: "Shared tablet clock-in via PIN, badge, or RFID without personal login",
-      fr: "Shared tablet clock-in via PIN, badge, or RFID without personal login",
-    },
+    text: { en: "An employee uses the Odoo 19 Attendances app with kiosk mode. How does kiosk mode work?", fr: "Un employé utilise l'application Pointage d'Odoo 19 avec le mode kiosque. Comment fonctionne le mode kiosque ?" },
+    correct: { en: "Shared tablet clock-in via PIN, badge, or RFID without personal login", fr: "Pointage sur tablette partagée via code PIN, badge ou RFID sans connexion personnelle" },
     distractors: [
-      {
-        en: "Locks the tablet for IT administrators during server maintenance windows",
-        fr: "Locks the tablet for IT administrators during server maintenance windows",
-      },
-      {
-        en: "Registers visitor badges at the front desk reception module only",
-        fr: "Registers visitor badges at the front desk reception module only",
-      },
-      {
-        en: "Records continuous workplace surveillance video on the kiosk device",
-        fr: "Records continuous workplace surveillance video on the kiosk device",
-      },
+      { en: "Locks the tablet for IT administrators during server maintenance windows", fr: "Verrouille la tablette pour les administrateurs IT pendant les fenêtres de maintenance serveur" },
+      { en: "Registers visitor badges at the front desk reception module only", fr: "Enregistre les badges visiteurs à la réception uniquement" },
+      { en: "Records continuous workplace surveillance video on the kiosk device", fr: "Enregistre une vidéosurveillance continue du lieu de travail sur le kiosque" },
     ],
-    explanation: {
-      en: "Kiosk mode in Attendances is designed for shared devices in factories or offices. The tablet shows a clock-in screen where employees swipe a badge, scan a barcode, type a PIN, or use facial recognition (where configured) to clock in or out. Each scan creates an hr.attendance record without requiring a personal Odoo login.\n\nKiosk mode is an end-user feature, not IT lock. Visitors have their own Frontdesk module. Kiosk mode records check-in/out times, not video.",
-      fr: "Kiosk mode in Attendances is designed for shared devices in factories or offices. The tablet shows a clock-in screen where employé swipe a badge, scan a barcode, type a PIN, or use facial recognition (where configured) to clock in or out. Each scan creates an hr.attendance record without requiring a personal Odoo login.\n\nKiosk mode is an end-user feature, not IT lock. Visitors have their own Frontdesk module. Kiosk mode records check-in/out times, not video.",
-    },
+    explanation: { en: "Kiosk mode in Attendances is designed for shared devices in factories or offices. The tablet shows a clock-in screen where employees swipe a badge, scan a barcode, type a PIN, or use facial recognition (where configured) to clock in or out. Each scan creates an hr.attendance record without requiring a personal Odoo login.\n\nWhy not \"Locks the tablet for IT administrators during server maintenance windows\"? Kiosk mode is an end-user feature, not IT lock.\n\nWhy not \"Registers visitor badges at the front desk reception module only\"? Visitors have their own Frontdesk module.\n\nWhy not \"Records continuous workplace surveillance video on the kiosk device\"? Kiosk mode records check-in/out times, not video.", fr: "Le mode kiosque dans Pointage est conçu pour les appareils partagés dans les usines ou bureaux. La tablette affiche un écran de pointage où les employés scannent un badge, un code-barres, saisissent un code PIN ou utilisent la reconnaissance faciale pour pointer à l'entrée ou à la sortie." },
   }),
   complexQ({
     id: "oep-066",
     module: "hr",
-    text: {
-      en: "What is the difference between an Employee record (hr.employee) and a User record (res.users) in Odoo 19?",
-      fr: "What is the difference between an employé record (hr.employé) and a User record (res.users) in Odoo 19?",
-    },
-    correct: {
-      en: "An Employee is an HR record (can exist without login)",
-      fr: "An employé is an HR record (can exist without login)",
-    },
+    text: { en: "What is the difference between an Employee record (hr.employee) and a User record (res.users) in Odoo 19?", fr: "Quelle est la différence entre un enregistrement employé (hr.employee) et un enregistrement utilisateur (res.users) dans Odoo 19 ?" },
+    correct: { en: "An Employee is an HR record (can exist without login)", fr: "Un employé est un enregistrement RH (peut exister sans connexion)" },
     distractors: [
-      {
-        en: "They are the same and belongs to a different Odoo application",
-        fr: "They are the same and belongs to a different Odoo application",
-      },
-      {
-        en: "Only users can submit time off which confuses a related but distinct setting",
-        fr: "Only users can submit congé which confuses a related but distinct setting",
-      },
-      {
-        en: "Employees are for vendors only and is not the controlling configuration here",
-        fr: "employé are for vendors only and is not the controlling configuration here",
-      },
+      { en: "They are the same and belongs to a different Odoo application", fr: "Ce sont la même chose, ce qui appartient à une autre application Odoo" },
+      { en: "Only users can submit time off which confuses a related but distinct setting", fr: "Seuls les utilisateurs peuvent soumettre des congés, ce qui est un paramètre distinct mais lié" },
+      { en: "Employees are for vendors only and is not the controlling configuration here", fr: "Les employés sont uniquement pour les fournisseurs, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "hr.employee is an HR profile and can exist for staff who never log in to Odoo (e.g., shop floor workers using only Attendances kiosk). res.users is a login account, typically linked one-to-one with an Employee for self-service (timesheets, expenses, time off). User access defines what data they can see and edit.\n\nThey are clearly different concepts. Time off can be submitted on behalf of any employee by a manager; the employee themselves needs a user only for self-service. Employees are HR concepts, not vendor records.",
-      fr: "hr.employé is an HR profile and can exist for staff who never log in to Odoo (e.g., shop floor workers using only Attendances kiosk). res.users is a login account, typically linked one-to-one with an employé for self-service (feuille de temps, note de frais, congé). User access defines what data they can see and edit.\n\nThey are clearly different concepts. congé can be submitted on behalf of any employé by a manager; the employé themselves needs a user only for self-service. employé are HR concepts, not vendor records.",
-    },
+    explanation: { en: "hr.employee is an HR profile and can exist for staff who never log in to Odoo (e.g., shop floor workers using only Attendances kiosk). res.users is a login account, typically linked one-to-one with an Employee for self-service (timesheets, expenses, time off). User access defines what data they can see and edit.\n\nWhy not \"They are the same and belongs to a different Odoo application\"? They are clearly different concepts.\n\nWhy not \"Only users can submit time off which confuses a related but distinct setting\"? Time off can be submitted on behalf of any employee by a manager; the employee themselves needs a user only for self-service.\n\nWhy not \"Employees are for vendors only and is not the controlling configuration here\"? Employees are HR concepts, not vendor records.", fr: "hr.employee est un profil RH et peut exister pour du personnel qui ne se connecte jamais à Odoo (ex. : opérateurs d'atelier utilisant uniquement le kiosque de Pointage). res.users est un compte de connexion, généralement lié un-pour-un avec un employé pour le libre-service." },
   }),
   complexQ({
     id: "oep-067",
     module: "project",
-    text: {
-      en: "In Odoo 19 Project, what is the difference between a Task and a Milestone?",
-      fr: "In Odoo 19 Project, what is the difference between a Task and a Milestone?",
-    },
-    correct: {
-      en: "Tasks are individual work items with assignees and deadlines",
-      fr: "Tasks are individual work items with assignees and deadlines",
-    },
+    text: { en: "In Odoo 19 Project, what is the difference between a Task and a Milestone?", fr: "Dans Odoo 19 Projet, quelle est la différence entre une tâche et un jalon ?" },
+    correct: { en: "Tasks are individual work items with assignees and deadlines", fr: "Les tâches sont des éléments de travail individuels avec des responsables et des échéances" },
     distractors: [
-      {
-        en: "They are the same and belongs to a different Odoo application",
-        fr: "They are the same and belongs to a different Odoo application",
-      },
-      {
-        en: "Milestones cannot have a date which confuses a related but distinct setting",
-        fr: "Milestones cannot have a date which confuses a related but distinct setting",
-      },
-      {
-        en: "Tasks cannot be billed and is not the controlling configuration here",
-        fr: "Tasks cannot be billed and is not the controlling configuration here",
-      },
+      { en: "They are the same and belongs to a different Odoo application", fr: "Ce sont la même chose, ce qui appartient à une autre application Odoo" },
+      { en: "Milestones cannot have a date which confuses a related but distinct setting", fr: "Les jalons ne peuvent pas avoir de date, ce qui est un paramètre distinct mais lié" },
+      { en: "Tasks cannot be billed and is not the controlling configuration here", fr: "Les tâches ne peuvent pas être facturées, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Tasks (project.task) are the executable work items with stages, assignees, and timesheets. Milestones (project.milestone) are project-level checkpoints (e.g., 'Design Approved', 'UAT Complete') that can be linked to multiple tasks. Milestones can be billed separately if the project's billing type is Milestone-based.\n\nThey are different objects with different roles. Milestones can have target and actual dates. Tasks can be billed (via timesheets or task-based billing) when the project is configured for it.",
-      fr: "Tasks (project.task) are the executable work items with stages, assignees, and feuille de temps. Milestones (project.milestone) are project-level checkpoints (e.g., 'Design Approved', 'UAT Complete') that can be linked to multiple tasks. Milestones can be billed separately if the project's billing type is Milestone-based.\n\nThey are different objects with different roles. Milestones can have target and actual dates. Tasks can be billed (via feuille de temps or task-based billing) when the project is configured for it.",
-    },
+    explanation: { en: "Tasks (project.task) are the executable work items with stages, assignees, and timesheets. Milestones (project.milestone) are project-level checkpoints (e.g., 'Design Approved', 'UAT Complete') that can be linked to multiple tasks. Milestones can be billed separately if the project's billing type is Milestone-based.\n\nWhy not \"They are the same and belongs to a different Odoo application\"? They are different objects with different roles.\n\nWhy not \"Milestones cannot have a date which confuses a related but distinct setting\"? Milestones can have target and actual dates.\n\nWhy not \"Tasks cannot be billed and is not the controlling configuration here\"? Tasks can be billed (via timesheets or task-based billing) when the project is configured for it.", fr: "Les tâches (project.task) sont les éléments de travail exécutables avec des étapes, des responsables et des feuilles de temps. Les jalons (project.milestone) sont des points de contrôle au niveau du projet (ex. : « Design approuvé », « Recette terminée ») qui peuvent être liés à plusieurs tâches." },
   }),
   complexQ({
     id: "oep-068",
     module: "project",
-    text: {
-      en: "A consultant configures a project with billing type 'Based on Timesheets'. What does this mean in Odoo 19?",
-      fr: "A consultant configures a project with billing type 'Based on feuille de temps'. What does this mean in Odoo 19?",
-    },
-    correct: {
-      en: "Timesheet hours on project tasks become billable SO lines at the set rate",
-      fr: "feuille de temps hours on project tasks become billable SO lines at the set rate",
-    },
+    text: { en: "A consultant configures a project with billing type 'Based on Timesheets'. What does this mean in Odoo 19?", fr: "Un consultant configure un projet avec le type de facturation « Basé sur les feuilles de temps ». Que signifie cela dans Odoo 19 ?" },
+    correct: { en: "Timesheet hours on project tasks become billable SO lines at the set rate", fr: "Les heures de feuille de temps sur les tâches du projet deviennent des lignes de commande facturables au tarif défini" },
     distractors: [
-      {
-        en: "The project is non-billable and excludes all timesheet-based invoicing (not applicable here)",
-        fr: "The project is non-billable and excludes all feuille de temps-based invoicing (not applicable here)",
-      },
-      {
-        en: "Only fixed-price contracts apply; timesheets are hidden from billing (not applicable here)",
-        fr: "Only fixed-price contracts apply; feuille de temps are hidden from billing (not applicable here)",
-      },
-      {
-        en: "Timesheets are disabled entirely for service projects in Enterprise (not applicable here)",
-        fr: "feuille de temps are disabled entirely for service projects in Enterprise (not applicable here)",
-      },
+      { en: "The project is non-billable and excludes all timesheet-based invoicing (not applicable here)", fr: "Le projet est non facturable et exclut toute facturation basée sur les feuilles de temps (non applicable ici)" },
+      { en: "Only fixed-price contracts apply; timesheets are hidden from billing (not applicable here)", fr: "Seuls les contrats à prix fixe s'appliquent ; les feuilles de temps sont masquées de la facturation (non applicable ici)" },
+      { en: "Timesheets are disabled entirely for service projects in Enterprise (not applicable here)", fr: "Les feuilles de temps sont entièrement désactivées pour les projets de services dans Enterprise (non applicable ici)" },
     ],
-    explanation: {
-      en: "With Timesheets billing, the linked sales order's product is service with 'invoice based on timesheets'. Hours logged on tasks of that project flow to the SO as deliverable quantities. When invoiced, those hours become invoice lines at the SO's unit price. Billable vs non-billable timesheet entries can be filtered to control what is invoiced.\n\nIt is billable — that is the definition. Fixed price is a different billing type (Fixed Price / Milestones). Timesheets are visible and central to this model.",
-      fr: "With feuille de temps billing, the linked commande client's product is service with 'facture based on feuille de temps'. Hours logged on tasks of that project flow to the SO as deliverable quantities. When invoiced, those hours become facture lines at the SO's unit price. Billable vs non-billable feuille de temps entries can be filtered to control what is invoiced.\n\nIt is billable — that is the definition. Fixed price is a different billing type (Fixed Price / Milestones). feuille de temps are visible and central to this model.",
-    },
+    explanation: { en: "With Timesheets billing, the linked sales order's product is service with 'invoice based on timesheets'. Hours logged on tasks of that project flow to the SO as deliverable quantities. When invoiced, those hours become invoice lines at the SO's unit price. Billable vs non-billable timesheet entries can be filtered to control what is invoiced.\n\nWhy not \"The project is non-billable and excludes all timesheet-based invoicing (not applicable here)\"? It is billable — that is the definition.\n\nWhy not \"Only fixed-price contracts apply; timesheets are hidden from billing (not applicable here)\"? Fixed price is a different billing type (Fixed Price / Milestones).\n\nWhy not \"Timesheets are disabled entirely for service projects in Enterprise (not applicable here)\"? Timesheets are visible and central to this model.", fr: "Avec la facturation sur feuilles de temps, le produit du bon de commande lié est un service avec « facturer sur la base des feuilles de temps ». Les heures enregistrées sur les tâches de ce projet alimentent la commande en quantités livrables. Lors de la facturation, ces heures deviennent des lignes de facture au prix unitaire de la commande." },
   }),
   complexQ({
     id: "oep-069",
     module: "project",
-    text: {
-      en: "How does Odoo 19 measure project profitability?",
-      fr: "How does Odoo 19 measure project profitability?",
-    },
-    correct: {
-      en: "Analytic revenue minus timesheet cost, expenses, and consumed materials",
-      fr: "Analytic revenue minus feuille de temps cost, note de frais, and consumed materials",
-    },
+    text: { en: "How does Odoo 19 measure project profitability?", fr: "Comment Odoo 19 mesure-t-il la rentabilité d'un projet ?" },
+    correct: { en: "Analytic revenue minus timesheet cost, expenses, and consumed materials", fr: "Revenus analytiques moins coûts de feuilles de temps, notes de frais et matériaux consommés" },
     distractors: [
-      {
-        en: "Only the static budget field on the project form with no actual postings",
-        fr: "Only the static budget field on the project form with no actual postings",
-      },
-      {
-        en: "Only external SQL reports; Odoo has no built-in profitability analysis",
-        fr: "Only external SQL reports; Odoo has no built-in profitability analysis",
-      },
-      {
-        en: "Profitability is not measured; projects track tasks without financial KPIs",
-        fr: "Profitability is not measured; projects track tasks without financial KPIs",
-      },
+      { en: "Only the static budget field on the project form with no actual postings", fr: "Uniquement le champ budget statique sur le formulaire du projet sans aucune écriture réelle" },
+      { en: "Only external SQL reports; Odoo has no built-in profitability analysis", fr: "Uniquement des rapports SQL externes ; Odoo n'a pas d'analyse de rentabilité intégrée" },
+      { en: "Profitability is not measured; projects track tasks without financial KPIs", fr: "La rentabilité n'est pas mesurée ; les projets suivent les tâches sans KPI financiers" },
     ],
-    explanation: {
-      en: "Each project gets an analytic account. Revenue lines (invoices, planned SO amounts) and cost lines (timesheets at employee hourly cost, employee expenses, vendor bills, sold/consumed materials) post analytic items to that account. The Project Profitability report aggregates them into Margin = Revenue - Cost. This is standard in Odoo Enterprise.\n\nProfitability vs budget is a different metric. Standard reports cover this; custom reports are not required. It is a core feature of Project.",
-      fr: "Each project gets an compte analytique. Revenue lines (facture, planned SO amounts) and cost lines (feuille de temps at employé hourly cost, employé note de frais, facture fournisseur, sold/consumed materials) post analytic items to that account. The Project Profitability report aggregates them into Margin = Revenue - Cost. This is standard in Odoo Enterprise.\n\nProfitability vs budget is a different metric. Standard reports cover this; custom reports are not required. It is a core feature of Project.",
-    },
+    explanation: { en: "Each project gets an analytic account. Revenue lines (invoices, planned SO amounts) and cost lines (timesheets at employee hourly cost, employee expenses, vendor bills, sold/consumed materials) post analytic items to that account. The Project Profitability report aggregates them into Margin = Revenue - Cost. This is standard in Odoo Enterprise.\n\nWhy not \"Only the static budget field on the project form with no actual postings\"? Profitability vs budget is a different metric.\n\nWhy not \"Only external SQL reports; Odoo has no built-in profitability analysis\"? Standard reports cover this; custom reports are not required.\n\nWhy not \"Profitability is not measured; projects track tasks without financial KPIs\"? It is a core feature of Project.", fr: "Chaque projet obtient un compte analytique. Les lignes de revenus (factures, montants de commandes planifiés) et les lignes de coûts (feuilles de temps au coût horaire de l'employé, notes de frais, factures fournisseur, matériaux vendus/consommés) comptabilisent des écritures analytiques sur ce compte. Le rapport de rentabilité du projet les agrège en Marge = Revenus - Coûts." },
   }),
   complexQ({
     id: "oep-070",
     module: "project",
-    text: {
-      en: "An Odoo 19 consultant sets up Sub-tasks under a parent task. What is the main benefit of using sub-tasks?",
-      fr: "An Odoo 19 consultant sets up Sub-tasks under a parent task. What is the main benefit of using sub-tasks?",
-    },
-    correct: {
-      en: "Decompose work under a parent while preserving grouped reporting",
-      fr: "Decompose work under a parent while preserving grouped reporting",
-    },
+    text: { en: "An Odoo 19 consultant sets up Sub-tasks under a parent task. What is the main benefit of using sub-tasks?", fr: "Un consultant Odoo 19 configure des sous-tâches sous une tâche parente. Quel est le principal avantage d'utiliser les sous-tâches ?" },
+    correct: { en: "Decompose work under a parent while preserving grouped reporting", fr: "Décomposer le travail sous un parent tout en préservant le reporting groupé" },
     distractors: [
-      {
-        en: "Sub-tasks always bill at half the parent task hourly rate automatically",
-        fr: "Sub-tasks always bill at half the parent task hourly rate automatically",
-      },
-      {
-        en: "Sub-tasks ignore deadlines and never appear on Gantt or Kanban views",
-        fr: "Sub-tasks ignore deadlines and never appear on Gantt or Kanban views",
-      },
-      {
-        en: "Every project must define at least one sub-task before going live",
-        fr: "Every project must define at least one sub-task before going live",
-      },
+      { en: "Sub-tasks always bill at half the parent task hourly rate automatically", fr: "Les sous-tâches sont toujours facturées à la moitié du tarif horaire de la tâche parente automatiquement" },
+      { en: "Sub-tasks ignore deadlines and never appear on Gantt or Kanban views", fr: "Les sous-tâches ignorent les échéances et n'apparaissent jamais dans les vues Gantt ou Kanban" },
+      { en: "Every project must define at least one sub-task before going live", fr: "Chaque projet doit définir au moins une sous-tâche avant la mise en production" },
     ],
-    explanation: {
-      en: "Sub-tasks let you decompose work without losing the relationship to the parent. They appear under the parent task, contribute to its overall hour roll-up, and can be assigned to different team members. This pattern fits Agile-style story-to-subtask breakdowns or large deliverables divided into checkpoints.\n\nRates depend on the SO/employee, not parent/sub-task hierarchy. Sub-tasks have their own deadlines, just like tasks. Sub-tasks are optional; the benefit is structured decomposition under a parent task for reporting.",
-      fr: "Sub-tasks let you decompose work without losing the relationship to the parent. They appear under the parent task, contribute to its overall hour roll-up, and can be assigned to different team members. This pattern fits Agile-style story-to-subtask breakdowns or large deliverables divided into checkpoints.\n\nRates depend on the SO/employé, not parent/sub-task hierarchy. Sub-tasks have their own deadlines, just like tasks. Sub-tasks are optional; the benefit is structured decomposition under a parent task for reporting.",
-    },
+    explanation: { en: "Sub-tasks let you decompose work without losing the relationship to the parent. They appear under the parent task, contribute to its overall hour roll-up, and can be assigned to different team members. This pattern fits Agile-style story-to-subtask breakdowns or large deliverables divided into checkpoints.\n\nWhy not \"Sub-tasks always bill at half the parent task hourly rate automatically\"? Rates depend on the SO/employee, not parent/sub-task hierarchy.\n\nWhy not \"Sub-tasks ignore deadlines and never appear on Gantt or Kanban views\"? Sub-tasks have their own deadlines, just like tasks.\n\nWhy not \"Every project must define at least one sub-task before going live\"? Sub-tasks are optional; the benefit is structured decomposition under a parent task for reporting.", fr: "Les sous-tâches permettent de décomposer le travail sans perdre la relation avec le parent. Elles apparaissent sous la tâche parente, contribuent au cumul global des heures et peuvent être assignées à différents membres de l'équipe." },
   }),
   complexQ({
     id: "oep-071",
     module: "project",
-    text: {
-      en: "What is the purpose of the Planning module in Odoo 19, and how does it relate to Project?",
-      fr: "What is the purpose of the Planning module in Odoo 19, and how does it relate to Project?",
-    },
-    correct: {
-      en: "Planning lets managers schedule resources (employees",
-      fr: "Planning lets managers schedule resources (employé",
-    },
+    text: { en: "What is the purpose of the Planning module in Odoo 19, and how does it relate to Project?", fr: "Quel est le rôle du module Planification dans Odoo 19, et comment se rapporte-t-il au Projet ?" },
+    correct: { en: "Planning lets managers schedule resources (employees", fr: "Planification permet aux responsables de planifier les ressources (employés" },
     distractors: [
-      {
-        en: "Planning replaces the Calendar app and belongs to a different Odoo application",
-        fr: "Planning replaces the Calendar app and belongs to a different Odoo application",
-      },
-      {
-        en: "Planning is for HR payroll only which confuses a related but distinct setting",
-        fr: "Planning is for HR payroll only which confuses a related but distinct setting",
-      },
-      {
-        en: "Planning is identical to Project and is not the controlling configuration here",
-        fr: "Planning is identical to Project and is not the controlling configuration here",
-      },
+      { en: "Planning replaces the Calendar app and belongs to a different Odoo application", fr: "Planification remplace l'application Calendrier, ce qui appartient à une autre application Odoo" },
+      { en: "Planning is for HR payroll only which confuses a related but distinct setting", fr: "Planification est uniquement pour la paie RH, ce qui est un paramètre distinct mais lié" },
+      { en: "Planning is identical to Project and is not the controlling configuration here", fr: "Planification est identique au Projet, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Planning manages shift-based resource scheduling (who works when, on what role/role template). Shifts can be linked to projects/tasks to show planned hours alongside availability. Conflicts (overlaps with time off, double-booking) are flagged. Used heavily in agencies and services to plan billable utilization in advance.\n\nCalendar is a personal calendar; Planning is resource scheduling. Planning schedules shifts and roles; payroll computation belongs to the Payroll application. It complements Project; it does not replace it.",
-      fr: "Planning manages shift-based resource scheduling (who works when, on what role/role template). Shifts can be linked to projects/tasks to show planned hours alongside availability. Conflicts (overlaps with congé, double-booking) are flagged. Used heavily in agencies and services to plan billable utilization in advance.\n\nCalendar is a personal calendar; Planning is resource scheduling. Planning schedules shifts and roles; payroll computation belongs to the Payroll application. It complements Project; it does not replace it.",
-    },
+    explanation: { en: "Planning manages shift-based resource scheduling (who works when, on what role/role template). Shifts can be linked to projects/tasks to show planned hours alongside availability. Conflicts (overlaps with time off, double-booking) are flagged. Used heavily in agencies and services to plan billable utilization in advance.\n\nWhy not \"Planning replaces the Calendar app and belongs to a different Odoo application\"? Calendar is a personal calendar; Planning is resource scheduling.\n\nWhy not \"Planning is for HR payroll only which confuses a related but distinct setting\"? Planning schedules shifts and roles; payroll computation belongs to the Payroll application.\n\nWhy not \"Planning is identical to Project and is not the controlling configuration here\"? It complements Project; it does not replace it.", fr: "Planification gère la planification des ressources basée sur les créneaux (qui travaille quand, sur quel rôle). Les créneaux peuvent être liés aux projets/tâches pour afficher les heures planifiées aux côtés de la disponibilité. Les conflits (chevauchements avec les congés, double réservation) sont signalés." },
   }),
   complexQ({
     id: "oep-072",
     module: "website",
-    text: {
-      en: "A consultant publishes a website built with Odoo 19. Which technology powers the page builder?",
-      fr: "A consultant publishes a website built with Odoo 19. Which technology powers the page builder?",
-    },
-    correct: {
-      en: "A drag-and-drop block editor with snippets stored in QWeb templates",
-      fr: "A drag-and-drop block editor with snippets stored in QWeb templates",
-    },
+    text: { en: "A consultant publishes a website built with Odoo 19. Which technology powers the page builder?", fr: "Un consultant publie un site web construit avec Odoo 19. Quelle technologie alimente le constructeur de pages ?" },
+    correct: { en: "A drag-and-drop block editor with snippets stored in QWeb templates", fr: "Un éditeur de blocs glisser-déposer avec des snippets stockés dans des templates QWeb" },
     distractors: [
-      {
-        en: "Pure plain HTML edited in code and belongs to a different Odoo application",
-        fr: "Pure plain HTML edited in code and belongs to a different Odoo application",
-      },
-      {
-        en: "WordPress under the hood which confuses a related but distinct setting",
-        fr: "WordPress under the hood which confuses a related but distinct setting",
-      },
-      {
-        en: "Static site generator only and is not the controlling configuration here",
-        fr: "Static site generator only and is not the controlling configuration here",
-      },
+      { en: "Pure plain HTML edited in code and belongs to a different Odoo application", fr: "Du HTML pur édité en code, ce qui appartient à une autre application Odoo" },
+      { en: "WordPress under the hood which confuses a related but distinct setting", fr: "WordPress sous le capot, ce qui est un paramètre distinct mais lié" },
+      { en: "Static site generator only and is not the controlling configuration here", fr: "Uniquement un générateur de site statique, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo Website uses QWeb templates and a Snippet-based block editor. Editors drag/drop snippets (hero, features, gallery, testimonials), customize text, images, animations, and visibility per device. Templates are versioned and can be reverted. The same QWeb engine serves products, blog posts, and custom pages.\n\nPlain HTML editing is possible but is not how the standard page builder works. Odoo's Website is its own framework, not WordPress. Pages are dynamic, not statically generated.",
-      fr: "Odoo Website uses QWeb templates and a Snippet-based block editor. Editors drag/drop snippets (hero, features, gallery, testimonials), customize text, images, animations, and visibility per device. Templates are versioned and can be reverted. The same QWeb engine serves products, blog posts, and custom pages.\n\nPlain HTML editing is possible but is not how the standard page builder works. Odoo's Website is its own framework, not WordPress. Pages are dynamic, not statically generated.",
-    },
+    explanation: { en: "Odoo Website uses QWeb templates and a Snippet-based block editor. Editors drag/drop snippets (hero, features, gallery, testimonials), customize text, images, animations, and visibility per device. Templates are versioned and can be reverted. The same QWeb engine serves products, blog posts, and custom pages.\n\nWhy not \"Pure plain HTML edited in code and belongs to a different Odoo application\"? Plain HTML editing is possible but is not how the standard page builder works.\n\nWhy not \"WordPress under the hood which confuses a related but distinct setting\"? Odoo's Website is its own framework, not WordPress.\n\nWhy not \"Static site generator only and is not the controlling configuration here\"? Pages are dynamic, not statically generated.", fr: "Le Site Web Odoo utilise des templates QWeb et un éditeur basé sur des blocs (snippets). Les éditeurs glissent/déposent des snippets (héros, fonctionnalités, galerie, témoignages), personnalisent le texte, les images, les animations et la visibilité par appareil." },
   }),
   complexQ({
     id: "oep-073",
     module: "website",
-    text: {
-      en: "What is the difference between a Product (in Sales) and an eCommerce Product in Odoo 19?",
-      fr: "What is the difference between a Product (in Sales) and an eCommerce Product in Odoo 19?",
-    },
-    correct: {
-      en: "Same product.template published to eCommerce with website fields and SEO",
-      fr: "Same product.template published to eCommerce with website fields and SEO",
-    },
+    text: { en: "What is the difference between a Product (in Sales) and an eCommerce Product in Odoo 19?", fr: "Quelle est la différence entre un produit (dans Ventes) et un produit eCommerce dans Odoo 19 ?" },
+    correct: { en: "Same product.template published to eCommerce with website fields and SEO", fr: "Le même product.template publié sur l'eCommerce avec des champs site web et SEO" },
     distractors: [
-      {
-        en: "Separate website.product model unrelated to Sales catalog records (not applicable here)",
-        fr: "Separate website.product model unrelated to Sales catalog records (not applicable here)",
-      },
-      {
-        en: "Sales catalog products cannot appear on the public website storefront (not applicable here)",
-        fr: "Sales catalog products cannot appear on the public website storefront (not applicable here)",
-      },
-      {
-        en: "eCommerce supports downloadable services only, not physical goods (not applicable here)",
-        fr: "eCommerce supports downloadable services only, not physical goods (not applicable here)",
-      },
+      { en: "Separate website.product model unrelated to Sales catalog records (not applicable here)", fr: "Un modèle website.product séparé sans lien avec les produits du catalogue Ventes (non applicable ici)" },
+      { en: "Sales catalog products cannot appear on the public website storefront (not applicable here)", fr: "Les produits du catalogue Ventes ne peuvent pas apparaître sur la vitrine publique du site web (non applicable ici)" },
+      { en: "eCommerce supports downloadable services only, not physical goods (not applicable here)", fr: "L'eCommerce ne prend en charge que les services téléchargeables, pas les biens physiques (non applicable ici)" },
     ],
-    explanation: {
-      en: "Odoo uses one product.template across Sales, Purchase, Inventory, and Website. Toggling 'Is Published' / 'Available on eCommerce' on a product exposes it to the website with its eCommerce-specific fields (description for the page, image, SEO meta, ribbon, alternative products). One source of truth avoids data duplication.\n\nThere is no website.product model. Sales products absolutely can be sold online. eCommerce supports goods and services.",
-      fr: "Odoo uses one product.template across Sales, Purchase, Inventory, and Website. Toggling 'Is Published' / 'Available on eCommerce' on a product exposes it to the website with its eCommerce-specific fields (description for the page, image, SEO meta, ribbon, alternative products). One source of truth avoids data duplication.\n\nThere is no website.product model. Sales products absolutely can be sold online. eCommerce supports goods and services.",
-    },
+    explanation: { en: "Odoo uses one product.template across Sales, Purchase, Inventory, and Website. Toggling 'Is Published' / 'Available on eCommerce' on a product exposes it to the website with its eCommerce-specific fields (description for the page, image, SEO meta, ribbon, alternative products). One source of truth avoids data duplication.\n\nWhy not \"Separate website.product model unrelated to Sales catalog records (not applicable here)\"? There is no website.product model.\n\nWhy not \"Sales catalog products cannot appear on the public website storefront (not applicable here)\"? Sales products absolutely can be sold online.\n\nWhy not \"eCommerce supports downloadable services only, not physical goods (not applicable here)\"? eCommerce supports goods and services.", fr: "Odoo utilise un seul product.template dans Ventes, Achats, Inventaire et Site Web. Activer « Est publié » sur un produit l'expose au site web avec ses champs spécifiques eCommerce (description de la page, image, méta SEO, ruban, produits alternatifs). Une seule source de vérité évite la duplication des données." },
   }),
   complexQ({
     id: "oep-074",
     module: "website",
-    text: {
-      en: "A consultant configures Stripe as a payment provider in Odoo 19 eCommerce. Where is this set up?",
-      fr: "A consultant configures Stripe as a payment provider in Odoo 19 eCommerce. Where is this set up?",
-    },
-    correct: {
-      en: "Accounting or Website > Payment Providers",
-      fr: "Accounting or Website > Payment Providers",
-    },
+    text: { en: "A consultant configures Stripe as a payment provider in Odoo 19 eCommerce. Where is this set up?", fr: "Un consultant configure Stripe comme fournisseur de paiement dans l'eCommerce Odoo 19. Où cela se configure-t-il ?" },
+    correct: { en: "Accounting or Website > Payment Providers", fr: "Comptabilité ou Site Web > Fournisseurs de paiement" },
     distractors: [
-      {
-        en: "Inventory settings for stock accounts without any payment gateway setup",
-        fr: "Inventory settings for stock accounts without any payment gateway setup",
-      },
-      {
-        en: "HR payroll configuration for employee reimbursement workflows",
-        fr: "HR payroll configuration for employé reimbursement workflows",
-      },
-      {
-        en: "Studio custom fields only, with no payment.provider records",
-        fr: "Studio champ personnalisé only, with no payment.provider records",
-      },
+      { en: "Inventory settings for stock accounts without any payment gateway setup", fr: "Paramètres d'inventaire pour les comptes de stock sans configuration de passerelle de paiement" },
+      { en: "HR payroll configuration for employee reimbursement workflows", fr: "Configuration de la paie RH pour les flux de remboursement des employés" },
+      { en: "Studio custom fields only, with no payment.provider records", fr: "Champs personnalisés Studio uniquement, sans enregistrements payment.provider" },
     ],
-    explanation: {
-      en: "Payment Providers (payment.provider) include Stripe, PayPal, Adyen, Authorize.Net, Mercado Pago, Razorpay, and many more. You enter API keys, choose Test or Production mode, configure the linked journal where successful payments post, and select which payment methods (cards, wallets) to enable. Once set to Enabled, the provider appears on website checkout.\n\nInventory does not handle payment providers. HR does not handle payment providers. Studio cannot configure provider credentials by itself.",
-      fr: "Payment Providers (payment.provider) include Stripe, PayPal, Adyen, Authorize.Net, Mercado Pago, Razorpay, and many more. You enter API keys, choose Test or Production mode, configure the linked journal where successful payments post, and select which payment methods (cards, wallets) to enable. Once set to Enabled, the provider appears on website checkout.\n\nInventory does not handle payment providers. HR does not handle payment providers. Studio cannot configure provider credentials by itself.",
-    },
+    explanation: { en: "Payment Providers (payment.provider) include Stripe, PayPal, Adyen, Authorize.Net, Mercado Pago, Razorpay, and many more. You enter API keys, choose Test or Production mode, configure the linked journal where successful payments post, and select which payment methods (cards, wallets) to enable. Once set to Enabled, the provider appears on website checkout.\n\nWhy not \"Inventory settings for stock accounts without any payment gateway setup\"? Inventory does not handle payment providers.\n\nWhy not \"HR payroll configuration for employee reimbursement workflows\"? HR does not handle payment providers.\n\nWhy not \"Studio custom fields only, with no payment.provider records\"? Studio cannot configure provider credentials by itself.", fr: "Les fournisseurs de paiement (payment.provider) incluent Stripe, PayPal, Adyen, Authorize.Net, Mercado Pago, Razorpay et bien d'autres. Vous saisissez les clés API, choisissez le mode Test ou Production, configurez le journal lié où les paiements réussis sont comptabilisés, et sélectionnez les méthodes de paiement à activer." },
   }),
   complexQ({
     id: "oep-075",
     module: "website",
-    text: {
-      en: "A consultant must enable B2B mode on the Odoo 19 website so prices display tax-excluded and login is required to see prices. Which combination of settings achieves this?",
-      fr: "A consultant must enable B2B mode on the Odoo 19 website so prices display taxe-excluded and login is required to see prices. Which combination of settings achieves this?",
-    },
-    correct: {
-      en: "Tax-excluded pricelists, mandatory login, and B2B customer account rules",
-      fr: "taxe-excluded liste de prix, mandatory login, and B2B customer account rules",
-    },
+    text: { en: "A consultant must enable B2B mode on the Odoo 19 website so prices display tax-excluded and login is required to see prices. Which combination of settings achieves this?", fr: "Un consultant doit activer le mode B2B sur le site Odoo 19 pour que les prix s'affichent hors taxes et qu'une connexion soit requise pour voir les prix. Quelle combinaison de paramètres permet cela ?" },
+    correct: { en: "Tax-excluded pricelists, mandatory login, and B2B customer account rules", fr: "Listes de prix hors taxes, connexion obligatoire et règles de compte client B2B" },
     distractors: [
-      {
-        en: "Disable Sales entirely and record revenue only via manual journal entries",
-        fr: "Disable Sales entirely and record revenue only via manual écritures comptables",
-      },
-      {
-        en: "Configure POS exclusively with no website or eCommerce storefront",
-        fr: "Configure POS exclusively with no website or eCommerce storefront",
-      },
-      {
-        en: "Enable multi-currency without changing tax display or login requirements",
-        fr: "Enable multi-currency without changing taxe display or login requirements",
-      },
+      { en: "Disable Sales entirely and record revenue only via manual journal entries", fr: "Désactiver entièrement les Ventes et enregistrer les revenus uniquement via des écritures comptables manuelles" },
+      { en: "Configure POS exclusively with no website or eCommerce storefront", fr: "Configurer uniquement le PDV sans site web ni vitrine eCommerce" },
+      { en: "Enable multi-currency without changing tax display or login requirements", fr: "Activer le multi-devises sans changer l'affichage des taxes ni les exigences de connexion" },
     ],
-    explanation: {
-      en: "B2B mode is a combination of: pricelists with 'Tax Excluded' display, customer account settings requiring login before checkout (or before pricing), private categories or login-protected products, and possibly assigning a default pricelist by partner. Each customer can have a specific pricelist negotiated by sales. This is configurable via Website Settings without code.\n\nSales is required, not disabled. POS is unrelated to website B2B configuration. Multi-currency does not control tax display or login gating.",
-      fr: "B2B mode is a combination of: liste de prix with 'taxe Excluded' display, customer account settings requiring login before checkout (or before pricing), private categories or login-protected products, and possibly assigning a default liste de prix by partner. Each customer can have a specific liste de prix negotiated by sales. This is configurable via Website Settings without code.\n\nSales is required, not disabled. POS is unrelated to website B2B configuration. Multi-currency does not control taxe display or login gating.",
-    },
+    explanation: { en: "B2B mode is a combination of: pricelists with 'Tax Excluded' display, customer account settings requiring login before checkout (or before pricing), private categories or login-protected products, and possibly assigning a default pricelist by partner. Each customer can have a specific pricelist negotiated by sales. This is configurable via Website Settings without code.\n\nWhy not \"Disable Sales entirely and record revenue only via manual journal entries\"? Sales is required, not disabled.\n\nWhy not \"Configure POS exclusively with no website or eCommerce storefront\"? POS is unrelated to website B2B configuration.\n\nWhy not \"Enable multi-currency without changing tax display or login requirements\"? Multi-currency does not control tax display or login gating.", fr: "Le mode B2B est une combinaison de : listes de prix avec affichage « Hors taxes », paramètres de compte client exigeant la connexion avant la commande (ou avant de voir les prix), catégories privées ou produits protégés par connexion, et possiblement l'attribution d'une liste de prix par défaut par partenaire." },
   }),
   complexQ({
     id: "oep-076",
     module: "website",
-    text: {
-      en: "How are shipping methods integrated with carriers in Odoo 19?",
-      fr: "How are shipping methods integrated with carriers in Odoo 19?",
-    },
-    correct: {
-      en: "Delivery > Shipping Methods with carrier API",
-      fr: "Delivery > Shipping Methods with carrier API",
-    },
+    text: { en: "How are shipping methods integrated with carriers in Odoo 19?", fr: "Comment les méthodes de livraison sont-elles intégrées aux transporteurs dans Odoo 19 ?" },
+    correct: { en: "Delivery > Shipping Methods with carrier API", fr: "Livraison > Méthodes de livraison avec API transporteur" },
     distractors: [
-      {
-        en: "Hardcoded shipping rates embedded only in custom Python modules",
-        fr: "Hardcoded shipping rates embedded only in custom Python modules",
-      },
-      {
-        en: "Studio form designer without any delivery.carrier integration",
-        fr: "Studio form designer without any delivery.carrier integration",
-      },
-      {
-        en: "Inventory module alone with no shipping method configuration menu",
-        fr: "Inventory module alone with no shipping method configuration menu",
-      },
+      { en: "Hardcoded shipping rates embedded only in custom Python modules", fr: "Tarifs de livraison codés en dur uniquement dans des modules Python personnalisés" },
+      { en: "Studio form designer without any delivery.carrier integration", fr: "Concepteur de formulaire Studio sans intégration delivery.carrier" },
+      { en: "Inventory module alone with no shipping method configuration menu", fr: "Module Inventaire seul sans menu de configuration des méthodes de livraison" },
     ],
-    explanation: {
-      en: "Shipping methods (delivery.carrier) wrap a provider integration. Manual provider lets you set fixed or rule-based rates. Real-time carrier integrations (FedEx, UPS, DHL, USPS, EasyPost, Sendcloud, Bpost) call the carrier's API at quotation/delivery time to fetch rates and generate shipping labels. Packaging dimensions and weight on products feed the rate calculation.\n\nCarrier integrations are configurable, not hardcoded. Studio cannot configure carrier credentials by itself. Inventory hosts the picking; carrier setup is in Inventory > Configuration > Shipping Methods or directly under Delivery.",
-      fr: "Shipping methods (delivery.carrier) wrap a provider integration. Manual provider lets you set fixed or rule-based rates. Real-time carrier integrations (FedEx, UPS, DHL, USPS, EasyPost, Sendcloud, Bpost) call the carrier's API at devis/delivery time to fetch rates and generate shipping labels. Packaging dimensions and weight on products feed the rate calculation.\n\nCarrier integrations are configurable, not hardcoded. Studio cannot configure carrier credentials by itself. Inventory hosts the picking; carrier setup is in Inventory > Configuration > Shipping Methods or directly under Delivery.",
-    },
+    explanation: { en: "Shipping methods (delivery.carrier) wrap a provider integration. Manual provider lets you set fixed or rule-based rates. Real-time carrier integrations (FedEx, UPS, DHL, USPS, EasyPost, Sendcloud, Bpost) call the carrier's API at quotation/delivery time to fetch rates and generate shipping labels. Packaging dimensions and weight on products feed the rate calculation.\n\nWhy not \"Hardcoded shipping rates embedded only in custom Python modules\"? Carrier integrations are configurable, not hardcoded.\n\nWhy not \"Studio form designer without any delivery.carrier integration\"? Studio cannot configure carrier credentials by itself.\n\nWhy not \"Inventory module alone with no shipping method configuration menu\"? Inventory hosts the picking; carrier setup is in Inventory > Configuration > Shipping Methods or directly under Delivery.", fr: "Les méthodes de livraison (delivery.carrier) encapsulent une intégration de fournisseur. Le fournisseur manuel permet de définir des tarifs fixes ou basés sur des règles. Les intégrations de transporteurs en temps réel (FedEx, UPS, DHL, USPS, EasyPost, Sendcloud, Bpost) appellent l'API du transporteur au moment du devis/de la livraison pour obtenir les tarifs et générer les étiquettes." },
   }),
   complexQ({
     id: "oep-077",
     module: "website",
-    text: {
-      en: "A customer abandons their cart on the Odoo 19 eCommerce site. What feature can automatically follow up?",
-      fr: "A customer abandons their cart on the Odoo 19 eCommerce site. What feature can automatically follow up?",
-    },
-    correct: {
-      en: "Automated abandoned-cart email after delay with cart recovery deep link",
-      fr: "Automated abandoned-cart email after delay with cart recovery deep link",
-    },
+    text: { en: "A customer abandons their cart on the Odoo 19 eCommerce site. What feature can automatically follow up?", fr: "Un client abandonne son panier sur le site eCommerce Odoo 19. Quelle fonctionnalité peut automatiquement assurer le suivi ?" },
+    correct: { en: "Automated abandoned-cart email after delay with cart recovery deep link", fr: "E-mail automatisé de panier abandonné après un délai avec un lien de récupération du panier" },
     distractors: [
-      {
-        en: "Manual phone follow-up only; Odoo provides no cart recovery tooling",
-        fr: "Manual phone follow-up only; Odoo provides no cart recovery tooling",
-      },
-      {
-        en: "Abandoned carts deleted nightly with no retention or email option",
-        fr: "Abandoned carts deleted nightly with no retention or email option",
-      },
-      {
-        en: "Requires Marketing Automation exclusively; eCommerce has no built-in mail",
-        fr: "Requires Marketing Automation exclusively; eCommerce has no built-in mail",
-      },
+      { en: "Manual phone follow-up only; Odoo provides no cart recovery tooling", fr: "Suivi téléphonique manuel uniquement ; Odoo ne fournit aucun outil de récupération de panier" },
+      { en: "Abandoned carts deleted nightly with no retention or email option", fr: "Les paniers abandonnés sont supprimés chaque nuit sans rétention ni option d'e-mail" },
+      { en: "Requires Marketing Automation exclusively; eCommerce has no built-in mail", fr: "Nécessite exclusivement l'Automatisation Marketing ; l'eCommerce n'a pas d'e-mail intégré" },
     ],
-    explanation: {
-      en: "eCommerce settings include automated emails for abandoned carts: after X hours of inactivity, the customer receives a templated email with a deep link back to their cart. Combined with discounts or coupons, this is a high-leverage recovery channel. Marketing Automation can extend the sequence with multi-touch campaigns.\n\nA manual call is one option but not the standard automation answer. Carts are not deleted automatically; they persist for the configured time. Marketing Automation can extend it but the basic email is built into eCommerce.",
-      fr: "eCommerce settings include automated emails for abandoned carts: after X hours of inactivity, the customer receives a templated email with a deep link back to their cart. Combined with discounts or coupons, this is a high-leverage recovery channel. Marketing Automation can extend the sequence with multi-touch campaigns.\n\nA manual call is one option but not the standard automation answer. Carts are not deleted automatically; they persist for the configured time. Marketing Automation can extend it but the basic email is built into eCommerce.",
-    },
+    explanation: { en: "eCommerce settings include automated emails for abandoned carts: after X hours of inactivity, the customer receives a templated email with a deep link back to their cart. Combined with discounts or coupons, this is a high-leverage recovery channel. Marketing Automation can extend the sequence with multi-touch campaigns.\n\nWhy not \"Manual phone follow-up only; Odoo provides no cart recovery tooling\"? A manual call is one option but not the standard automation answer.\n\nWhy not \"Abandoned carts deleted nightly with no retention or email option\"? Carts are not deleted automatically; they persist for the configured time.\n\nWhy not \"Requires Marketing Automation exclusively; eCommerce has no built-in mail\"? Marketing Automation can extend it but the basic email is built into eCommerce.", fr: "Les paramètres eCommerce incluent des e-mails automatisés pour les paniers abandonnés : après X heures d'inactivité, le client reçoit un e-mail modèle avec un lien direct vers son panier. Combiné avec des remises ou coupons, c'est un canal de récupération à fort levier." },
   }),
   complexQ({
     id: "oep-078",
     module: "website",
-    text: {
-      en: "A consultant configures eCommerce Tax Display in Odoo 19. Which company-level setting controls whether prices on the website show tax-included or tax-excluded?",
-      fr: "A consultant configures eCommerce taxe Display in Odoo 19. Which company-level setting controls whether prices on the website show taxe-included or taxe-excluded?",
-    },
-    correct: {
-      en: "The pricelist's 'Display Type' field combined",
-      fr: "The liste de prix's 'Display Type' field combined",
-    },
+    text: { en: "A consultant configures eCommerce Tax Display in Odoo 19. Which company-level setting controls whether prices on the website show tax-included or tax-excluded?", fr: "Un consultant configure l'affichage des taxes eCommerce dans Odoo 19. Quel paramètre au niveau de la société contrôle si les prix sur le site affichent TTC ou HT ?" },
+    correct: { en: "The pricelist's 'Display Type' field combined", fr: "Le champ « Type d'affichage » de la liste de prix combiné" },
     distractors: [
-      {
-        en: "The journal default and belongs to a different Odoo application",
-        fr: "The journal default and belongs to a different Odoo application",
-      },
-      {
-        en: "The currency which confuses a related but distinct setting",
-        fr: "The currency which confuses a related but distinct setting",
-      },
-      {
-        en: "The fiscal position alone and is not the controlling configuration here",
-        fr: "The position fiscale alone and is not the controlling configuration here",
-      },
+      { en: "The journal default and belongs to a different Odoo application", fr: "Le journal par défaut, ce qui appartient à une autre application Odoo" },
+      { en: "The currency which confuses a related but distinct setting", fr: "La devise, ce qui est un paramètre distinct mais lié" },
+      { en: "The fiscal position alone and is not the controlling configuration here", fr: "La position fiscale seule, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Tax display is determined by the Pricelist's display type (tax-included vs tax-excluded) and the website's default pricelist. Often B2C sites show tax-included prices and B2B sites show tax-excluded with VAT applied at checkout based on the customer's fiscal position. Country localizations may set different defaults.\n\nJournals control accounting, not display. Currency controls money formatting, not tax display. Fiscal positions remap taxes/accounts but do not control include/exclude display directly.",
-      fr: "taxe display is determined by the liste de prix's display type (taxe-included vs taxe-excluded) and the website's default liste de prix. Often B2C sites show taxe-included prices and B2B sites show taxe-excluded with VAT applied at checkout based on the customer's position fiscale. Country localizations may set different defaults.\n\nJournals control accounting, not display. Currency controls money formatting, not taxe display. position fiscale remap taxes/accounts but do not control include/exclude display directly.",
-    },
+    explanation: { en: "Tax display is determined by the Pricelist's display type (tax-included vs tax-excluded) and the website's default pricelist. Often B2C sites show tax-included prices and B2B sites show tax-excluded with VAT applied at checkout based on the customer's fiscal position. Country localizations may set different defaults.\n\nWhy not \"The journal default and belongs to a different Odoo application\"? Journals control accounting, not display.\n\nWhy not \"The currency which confuses a related but distinct setting\"? Currency controls money formatting, not tax display.\n\nWhy not \"The fiscal position alone and is not the controlling configuration here\"? Fiscal positions remap taxes/accounts but do not control include/exclude display directly.", fr: "L'affichage des taxes est déterminé par le type d'affichage de la liste de prix (TTC vs HT) et la liste de prix par défaut du site web. Souvent, les sites B2C affichent les prix TTC et les sites B2B affichent les prix HT avec la TVA appliquée au paiement selon la position fiscale du client." },
   }),
   complexQ({
     id: "oep-079",
     module: "website",
-    text: {
-      en: "What is the role of Odoo Forum/Live Chat/Knowledge in supporting an eCommerce site?",
-      fr: "What is the role of Odoo Forum/Live Chat/Knowledge in supporting an eCommerce site?",
-    },
-    correct: {
-      en: "Forum Q&A, Live Chat widgets, and Knowledge self-service articles",
-      fr: "Forum Q&A, Live Chat widgets, and Knowledge self-service articles",
-    },
+    text: { en: "What is the role of Odoo Forum/Live Chat/Knowledge in supporting an eCommerce site?", fr: "Quel est le rôle d'Odoo Forum/Chat en direct/Knowledge pour soutenir un site eCommerce ?" },
+    correct: { en: "Forum Q&A, Live Chat widgets, and Knowledge self-service articles", fr: "Forum Q&R, widgets de chat en direct et articles Knowledge en libre-service" },
     distractors: [
-      {
-        en: "They replace the Website Builder and remove all product catalog pages",
-        fr: "They replace the Website Builder and remove all product catalog pages",
-      },
-      {
-        en: "They operate only on POS terminals during active cashier sessions",
-        fr: "They operate only on POS terminals during active cashier sessions",
-      },
-      {
-        en: "They are HR modules for payroll, contracts, and employee onboarding",
-        fr: "They are HR modules for payroll, contracts, and employé onboarding",
-      },
+      { en: "They replace the Website Builder and remove all product catalog pages", fr: "Ils remplacent le constructeur de site web et suppriment toutes les pages du catalogue produits" },
+      { en: "They operate only on POS terminals during active cashier sessions", fr: "Ils fonctionnent uniquement sur les terminaux PDV pendant les sessions de caisse actives" },
+      { en: "They are HR modules for payroll, contracts, and employee onboarding", fr: "Ce sont des modules RH pour la paie, les contrats et l'intégration des employés" },
     ],
-    explanation: {
-      en: "Live Chat (im_livechat) enables real-time support widgets on the website with channels and operator routing. Forum lets a community discuss topics with reputation/karma. Knowledge (Enterprise) is a wiki for internal docs and customer-facing articles. Together they support pre-sale and post-sale interactions on the eCommerce site.\n\nThey complement, not replace, the website. They are website/CRM/Helpdesk-related, not POS. Forum, Live Chat, and Knowledge support website engagement, not HR employee records.",
-      fr: "Live Chat (im_livechat) enables real-time support widgets on the website with channels and operator routing. Forum lets a community discuss topics with reputation/karma. Knowledge (Enterprise) is a wiki for internal docs and customer-facing articles. Together they support pre-sale and post-sale interactions on the eCommerce site.\n\nThey complement, not replace, the website. They are website/CRM/Helpdesk-related, not POS. Forum, Live Chat, and Knowledge support website engagement, not HR employé records.",
-    },
+    explanation: { en: "Live Chat (im_livechat) enables real-time support widgets on the website with channels and operator routing. Forum lets a community discuss topics with reputation/karma. Knowledge (Enterprise) is a wiki for internal docs and customer-facing articles. Together they support pre-sale and post-sale interactions on the eCommerce site.\n\nWhy not \"They replace the Website Builder and remove all product catalog pages\"? They complement, not replace, the website.\n\nWhy not \"They operate only on POS terminals during active cashier sessions\"? They are website/CRM/Helpdesk-related, not POS.\n\nWhy not \"They are HR modules for payroll, contracts, and employee onboarding\"? Forum, Live Chat, and Knowledge support website engagement, not HR employee records.", fr: "Le Chat en direct (im_livechat) permet des widgets de support en temps réel sur le site web avec des canaux et le routage d'opérateurs. Le Forum permet à une communauté de discuter de sujets avec réputation/karma. Knowledge (Enterprise) est un wiki pour les documents internes et les articles destinés aux clients." },
   }),
   complexQ({
     id: "oep-080",
     module: "pos",
-    text: {
-      en: "A consultant configures Odoo 19 POS for a retail store. Which configuration object groups payment methods, the linked journal, and an outstanding account?",
-      fr: "A consultant configures Odoo 19 POS for a retail store. Which configuration object groups payment methods, the linked journal, and an outstanding account?",
-    },
-    correct: {
-      en: "pos.payment.method",
-      fr: "pos.payment.method",
-    },
+    text: { en: "A consultant configures Odoo 19 POS for a retail store. Which configuration object groups payment methods, the linked journal, and an outstanding account?", fr: "Un consultant configure le PDV Odoo 19 pour un magasin de détail. Quel objet de configuration regroupe les méthodes de paiement, le journal lié et un compte d'attente ?" },
+    correct: { en: "pos.payment.method", fr: "pos.payment.method" },
     distractors: [
-      {
-        en: "pos.config (not applicable here)",
-        fr: "pos.config (not applicable here)",
-      },
-      {
-        en: "pos.session (not applicable here)",
-        fr: "pos.session (not applicable here)",
-      },
-      {
-        en: "account.payment (not applicable here)",
-        fr: "account.payment (not applicable here)",
-      },
+      { en: "pos.config (not applicable here)", fr: "pos.config (non applicable ici)" },
+      { en: "pos.session (not applicable here)", fr: "pos.session (non applicable ici)" },
+      { en: "account.payment (not applicable here)", fr: "account.payment (non applicable ici)" },
     ],
-    explanation: {
-      en: "pos.payment.method defines a payment method (Cash, Bank, Custom) used at the POS. Each method links to a journal, an outstanding receipts account, and a label. Multiple methods can be enabled in a POS Config (pos.config). The session (pos.session) is opened/closed per shift and reconciles cash drawer to expected balance.\n\npos.config is the overall POS configuration; payment methods are linked to it but live in pos.payment.method. pos.session is per-shift, not a method definition. account.payment is in Accounting, not POS.",
-      fr: "pos.payment.method defines a payment method (Cash, Bank, Custom) used at the POS. Each method links to a journal, an outstanding receipts account, and a label. Multiple methods can be enabled in a POS Config (pos.config). The session (pos.session) is opened/closed per shift and reconciles cash drawer to expected balance.\n\npos.config is the overall POS configuration; payment methods are linked to it but live in pos.payment.method. pos.session is per-shift, not a method definition. account.payment is in Accounting, not POS.",
-    },
+    explanation: { en: "pos.payment.method defines a payment method (Cash, Bank, Custom) used at the POS. Each method links to a journal, an outstanding receipts account, and a label. Multiple methods can be enabled in a POS Config (pos.config). The session (pos.session) is opened/closed per shift and reconciles cash drawer to expected balance.\n\nWhy not \"pos.config (not applicable here)\"? pos.config is the overall POS configuration; payment methods are linked to it but live in pos.payment.method.\n\nWhy not \"pos.session (not applicable here)\"? pos.session is per-shift, not a method definition.\n\nWhy not \"account.payment (not applicable here)\"? account.payment is in Accounting, not POS.", fr: "pos.payment.method définit une méthode de paiement (Espèces, Banque, Personnalisée) utilisée au PDV. Chaque méthode est liée à un journal, un compte d'encaissements en attente et un libellé. Plusieurs méthodes peuvent être activées dans une configuration PDV (pos.config)." },
   }),
   complexQ({
     id: "oep-081",
     module: "pos",
-    text: {
-      en: "Odoo 19 POS has a Restaurant feature. What does this enable?",
-      fr: "Odoo 19 POS has a Restaurant feature. What does this enable?",
-    },
-    correct: {
-      en: "Table maps, bill splitting, course sequencing, and kitchen print/KDS",
-      fr: "Table maps, bill splitting, course sequencing, and kitchen print/KDS",
-    },
+    text: { en: "Odoo 19 POS has a Restaurant feature. What does this enable?", fr: "Le PDV Odoo 19 a une fonctionnalité Restaurant. Qu'est-ce que cela active ?" },
+    correct: { en: "Table maps, bill splitting, course sequencing, and kitchen print/KDS", fr: "Plans de table, partage de l'addition, séquencement des plats et impression cuisine/KDS" },
     distractors: [
-      {
-        en: "Wholesale B2B catalog ordering without table or course management",
-        fr: "Wholesale B2B catalog ordering without table or course management",
-      },
-      {
-        en: "Simple street-market cash sales with no restaurant floor plan features",
-        fr: "Simple street-market cash sales with no restaurant floor plan features",
-      },
-      {
-        en: "Online eLearning course pages published through the Website app",
-        fr: "Online eLearning course pages published through the Website app",
-      },
+      { en: "Wholesale B2B catalog ordering without table or course management", fr: "Commande catalogue B2B grossiste sans gestion de table ni de plats" },
+      { en: "Simple street-market cash sales with no restaurant floor plan features", fr: "Ventes simples au comptant en marché sans fonctionnalités de plan de salle" },
+      { en: "Online eLearning course pages published through the Website app", fr: "Pages de cours eLearning en ligne publiées via l'application Site Web" },
     ],
-    explanation: {
-      en: "Restaurant mode in POS adds floor plans (tables on a canvas), table service (assign waiter, hold/transfer tables), bill splitting (by item, by share, by customer), course management (entrée → main → dessert sequencing), and integrated kitchen printing or KDS (Kitchen Display System). It is widely used for cafes, bars, and full-service restaurants.\n\nWholesale is a different B2B pattern. Street market POS is just standard POS. Online courses live in eLearning.",
-      fr: "Restaurant mode in POS adds floor plans (tables on a canvas), table service (assign waiter, hold/transfer tables), bill splitting (by item, by share, by customer), course management (entrée → main → dessert sequencing), and integrated kitchen printing or KDS (Kitchen Display System). It is widely used for cafes, bars, and full-service restaurants.\n\nWholesale is a different B2B pattern. Street market POS is just standard POS. Online courses live in eLearning.",
-    },
+    explanation: { en: "Restaurant mode in POS adds floor plans (tables on a canvas), table service (assign waiter, hold/transfer tables), bill splitting (by item, by share, by customer), course management (entrée → main → dessert sequencing), and integrated kitchen printing or KDS (Kitchen Display System). It is widely used for cafes, bars, and full-service restaurants.\n\nWhy not \"Wholesale B2B catalog ordering without table or course management\"? Wholesale is a different B2B pattern.\n\nWhy not \"Simple street-market cash sales with no restaurant floor plan features\"? Street market POS is just standard POS.\n\nWhy not \"Online eLearning course pages published through the Website app\"? Online courses live in eLearning.", fr: "Le mode Restaurant dans le PDV ajoute des plans de salle (tables sur un canvas), le service en salle (assigner un serveur, mettre en attente/transférer les tables), le partage de l'addition (par article, par part, par client), la gestion des plats (entrée → plat → dessert) et l'impression cuisine intégrée ou KDS." },
   }),
   complexQ({
     id: "oep-082",
     module: "pos",
-    text: {
-      en: "What is the purpose of the Kitchen Display System (KDS) connected to Odoo 19 POS?",
-      fr: "What is the purpose of the Kitchen Display System (KDS) connected to Odoo 19 POS?",
-    },
-    correct: {
-      en: "Screen shows kitchen orders; cooks mark items done for waiter updates",
-      fr: "Screen shows kitchen orders; cooks mark items done for waiter updates",
-    },
+    text: { en: "What is the purpose of the Kitchen Display System (KDS) connected to Odoo 19 POS?", fr: "Quel est le rôle du système d'affichage cuisine (KDS) connecté au PDV Odoo 19 ?" },
+    correct: { en: "Screen shows kitchen orders; cooks mark items done for waiter updates", fr: "L'écran affiche les commandes cuisine ; les cuisiniers marquent les articles terminés pour informer les serveurs" },
     distractors: [
-      {
-        en: "Tracks employee attendance hours from a kitchen tablet interface (not applicable here)",
-        fr: "Tracks employé attendance hours from a kitchen tablet interface (not applicable here)",
-      },
-      {
-        en: "Replaces Accounting for posting restaurant revenue journal entries (not applicable here)",
-        fr: "Replaces Accounting for posting restaurant revenue écritures comptables (not applicable here)",
-      },
-      {
-        en: "Disables tipping and removes all payment methods from the POS config",
-        fr: "Disables tipping and removes all payment methods from the POS config",
-      },
+      { en: "Tracks employee attendance hours from a kitchen tablet interface (not applicable here)", fr: "Suit les heures de présence des employés depuis une interface tablette cuisine (non applicable ici)" },
+      { en: "Replaces Accounting for posting restaurant revenue journal entries (not applicable here)", fr: "Remplace la Comptabilité pour comptabiliser les écritures de revenus du restaurant (non applicable ici)" },
+      { en: "Disables tipping and removes all payment methods from the POS config", fr: "Désactive les pourboires et supprime toutes les méthodes de paiement de la configuration PDV" },
     ],
-    explanation: {
-      en: "The Kitchen Display System (KDS) is a screen in the kitchen showing live orders broken into preparation lanes. Cooks acknowledge items as they begin and finish, which signals the front-of-house. This reduces lost paper tickets, helps track preparation times, and integrates seamlessly with course management for proper meal pacing.\n\nEmployee tracking is in HR/Attendances. Accounting records revenue and payments; KDS only displays kitchen preparation queues. Tipping is configured separately at POS, unaffected by KDS.",
-      fr: "The Kitchen Display System (KDS) is a screen in the kitchen showing live orders broken into preparation lanes. Cooks acknowledge items as they begin and finish, which signals the front-of-house. This reduces lost paper tickets, helps track preparation times, and integrates seamlessly with course management for proper meal pacing.\n\nemployé tracking is in HR/Attendances. Accounting records revenue and payments; KDS only displays kitchen preparation queues. Tipping is configured separately at POS, unaffected by KDS.",
-    },
+    explanation: { en: "The Kitchen Display System (KDS) is a screen in the kitchen showing live orders broken into preparation lanes. Cooks acknowledge items as they begin and finish, which signals the front-of-house. This reduces lost paper tickets, helps track preparation times, and integrates seamlessly with course management for proper meal pacing.\n\nWhy not \"Tracks employee attendance hours from a kitchen tablet interface (not applicable here)\"? Employee tracking is in HR/Attendances.\n\nWhy not \"Replaces Accounting for posting restaurant revenue journal entries (not applicable here)\"? Accounting records revenue and payments; KDS only displays kitchen preparation queues.\n\nWhy not \"Disables tipping and removes all payment methods from the POS config\"? Tipping is configured separately at POS, unaffected by KDS.", fr: "Le système d'affichage cuisine (KDS) est un écran en cuisine affichant les commandes en direct réparties en lignes de préparation. Les cuisiniers accusent réception des articles au début et à la fin, ce qui signale la salle. Cela réduit les tickets papier perdus et aide à suivre les temps de préparation." },
   }),
   complexQ({
     id: "oep-083",
     module: "pos",
-    text: {
-      en: "A POS session is closed at the end of the day in Odoo 19. What happens with the cash count?",
-      fr: "A POS session is closed at the end of the day in Odoo 19. What happens with the cash count?",
-    },
-    correct: {
-      en: "The cashier enters counted cash",
-      fr: "The cashier enters counted cash",
-    },
+    text: { en: "A POS session is closed at the end of the day in Odoo 19. What happens with the cash count?", fr: "Une session PDV est clôturée en fin de journée dans Odoo 19. Que se passe-t-il avec le comptage de caisse ?" },
+    correct: { en: "The cashier enters counted cash", fr: "Le caissier saisit le montant compté en caisse" },
     distractors: [
-      {
-        en: "Cash is automatically deposited and belongs to a different Odoo application",
-        fr: "Cash is automatically deposited and belongs to a different Odoo application",
-      },
-      {
-        en: "The session cannot be closed without a sale",
-        fr: "The session cannot be closed without a sale",
-      },
-      {
-        en: "Cash is ignored and is not the controlling configuration here",
-        fr: "Cash is ignored and is not the controlling configuration here",
-      },
+      { en: "Cash is automatically deposited and belongs to a different Odoo application", fr: "L'argent est automatiquement déposé, ce qui appartient à une autre application Odoo" },
+      { en: "The session cannot be closed without a sale", fr: "La session ne peut pas être clôturée sans vente" },
+      { en: "Cash is ignored and is not the controlling configuration here", fr: "L'argent liquide est ignoré, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Closing a POS session shows expected balance per payment method (cash, card, etc.) vs counted balance. The cashier records the count; any difference posts to a configured Difference account (e.g., Cash Over/Short). Odoo creates the corresponding accounting entries to move cash from the POS journal to the bank, ensuring cashier cash is reconciled with the GL daily.\n\nThere is no automatic deposit; it is a manual count and post. Sessions can be closed even with zero sales, e.g., a closed day. Cash differences are tracked, not ignored.",
-      fr: "Closing a POS session shows expected balance per payment method (cash, card, etc.) vs counted balance. The cashier records the count; any difference posts to a configured Difference account (e.g., Cash Over/Short). Odoo creates the corresponding accounting entries to move cash from the POS journal to the bank, ensuring cashier cash is reconciled with the GL daily.\n\nThere is no automatic deposit; it is a manual count and post. Sessions can be closed even with zero sales, e.g., a closed day. Cash differences are tracked, not ignored.",
-    },
+    explanation: { en: "Closing a POS session shows expected balance per payment method (cash, card, etc.) vs counted balance. The cashier records the count; any difference posts to a configured Difference account (e.g., Cash Over/Short). Odoo creates the corresponding accounting entries to move cash from the POS journal to the bank, ensuring cashier cash is reconciled with the GL daily.\n\nWhy not \"Cash is automatically deposited and belongs to a different Odoo application\"? There is no automatic deposit; it is a manual count and post.\n\nWhy not \"The session cannot be closed without a sale\"? Sessions can be closed even with zero sales, e.g., a closed day.\n\nWhy not \"Cash is ignored and is not the controlling configuration here\"? Cash differences are tracked, not ignored.", fr: "La clôture d'une session PDV affiche le solde attendu par méthode de paiement (espèces, carte, etc.) vs le solde compté. Le caissier enregistre le comptage ; tout écart est comptabilisé sur un compte d'écart configuré (ex. : Surplus/Déficit de caisse). Odoo crée les écritures comptables correspondantes." },
   }),
   complexQ({
     id: "oep-084",
     module: "pos",
-    text: {
-      en: "A consultant wants the POS to integrate with Inventory so each sale reduces stock in real time in Odoo 19. What ensures this?",
-      fr: "A consultant wants the POS to integrate with Inventory so each sale reduces stock in real time in Odoo 19. What ensures this?",
-    },
-    correct: {
-      en: "POS source location on stock; moves post on session close or per order",
-      fr: "POS source location on stock; moves post on session close or per order",
-    },
+    text: { en: "A consultant wants the POS to integrate with Inventory so each sale reduces stock in real time in Odoo 19. What ensures this?", fr: "Un consultant veut que le PDV s'intègre à l'Inventaire pour que chaque vente réduise le stock en temps réel dans Odoo 19. Qu'est-ce qui garantit cela ?" },
+    correct: { en: "POS source location on stock; moves post on session close or per order", fr: "Emplacement source PDV sur le stock ; les mouvements sont comptabilisés à la clôture de session ou par commande" },
     distractors: [
-      {
-        en: "POS sales never touch inventory; stock is adjusted manually each week",
-        fr: "POS sales never touch inventory; stock is adjusted manually each week",
-      },
-      {
-        en: "Only Studio automations can decrement inventory after POS checkout (not applicable here)",
-        fr: "Only Studio automations can decrement inventory after POS checkout (not applicable here)",
-      },
-      {
-        en: "Cashiers must validate a delivery order after every POS transaction (not applicable here)",
-        fr: "Cashiers must validate a bon de livraison after every POS transaction (not applicable here)",
-      },
+      { en: "POS sales never touch inventory; stock is adjusted manually each week", fr: "Les ventes PDV ne touchent jamais l'inventaire ; le stock est ajusté manuellement chaque semaine" },
+      { en: "Only Studio automations can decrement inventory after POS checkout (not applicable here)", fr: "Seules les automatisations Studio peuvent décrémenter l'inventaire après un passage en caisse PDV (non applicable ici)" },
+      { en: "Cashiers must validate a delivery order after every POS transaction (not applicable here)", fr: "Les caissiers doivent valider un bon de livraison après chaque transaction PDV (non applicable ici)" },
     ],
-    explanation: {
-      en: "POS sales generate stock moves that reduce inventory at the configured POS source location. Depending on the configuration, moves are posted per order or aggregated when the session closes. The Anglo-Saxon vs Continental valuation method affects whether COGS lines are posted to the GL. Cross-checks against Inventory keep on-hand data accurate.\n\nPOS does affect stock by default. Studio is not required for stock integration. It happens automatically, not manually.",
-      fr: "POS sales generate stock moves that reduce inventory at the configured POS source location. Depending on the configuration, moves are posted per order or aggregated when the session closes. The Anglo-Saxon vs Continental valuation method affects whether COGS lines are posted to the GL. Cross-checks against Inventory keep on-hand data accurate.\n\nPOS does affect stock by default. Studio is not required for stock integration. It happens automatically, not manually.",
-    },
+    explanation: { en: "POS sales generate stock moves that reduce inventory at the configured POS source location. Depending on the configuration, moves are posted per order or aggregated when the session closes. The Anglo-Saxon vs Continental valuation method affects whether COGS lines are posted to the GL. Cross-checks against Inventory keep on-hand data accurate.\n\nWhy not \"POS sales never touch inventory; stock is adjusted manually each week\"? POS does affect stock by default.\n\nWhy not \"Only Studio automations can decrement inventory after POS checkout (not applicable here)\"? Studio is not required for stock integration.\n\nWhy not \"Cashiers must validate a delivery order after every POS transaction (not applicable here)\"? It happens automatically, not manually.", fr: "Les ventes PDV génèrent des mouvements de stock qui réduisent l'inventaire à l'emplacement source PDV configuré. Selon la configuration, les mouvements sont comptabilisés par commande ou agrégés à la clôture de session." },
   }),
   complexQ({
     id: "oep-085",
     module: "studio",
-    text: {
-      en: "A consultant wants to add a custom field 'Customer Loyalty Tier' on the partner form without writing code. Which Odoo 19 Enterprise tool is used?",
-      fr: "A consultant wants to add a champ personnalisé 'Customer Loyalty Tier' on the partner form without writing code. Which Odoo 19 Enterprise tool is used?",
-    },
-    correct: {
-      en: "Studio",
-      fr: "Studio",
-    },
+    text: { en: "A consultant wants to add a custom field 'Customer Loyalty Tier' on the partner form without writing code. Which Odoo 19 Enterprise tool is used?", fr: "Un consultant veut ajouter un champ personnalisé « Niveau de fidélité client » sur le formulaire de contact sans écrire de code. Quel outil Odoo 19 Enterprise est utilisé ?" },
+    correct: { en: "Studio", fr: "Studio" },
     distractors: [
-      {
-        en: "Discuss",
-        fr: "Discuss",
-      },
-      {
-        en: "Sign",
-        fr: "Sign",
-      },
-      {
-        en: "Knowledge",
-        fr: "Knowledge",
-      },
+      { en: "Discuss", fr: "Discuss" },
+      { en: "Sign", fr: "Sign" },
+      { en: "Knowledge", fr: "Knowledge" },
     ],
-    explanation: {
-      en: "Studio (Enterprise) is the no-code customization tool. With Studio, you can add fields to any form, change layouts, build new menus and reports, customize automated actions, and modify access. Studio writes the changes as XML data into the database without altering source code, making them upgrade-friendly.\n\nDiscuss provides team messaging channels, not no-code form customization through Studio. Sign handles document signatures, not adding custom fields on partner forms. Knowledge is for wiki articles.",
-      fr: "Studio (Enterprise) is the no-code customization tool. With Studio, you can add fields to any form, change layouts, build new menus and reports, customize action automatisée, and modify access. Studio writes the changes as XML data into the database without altering source code, making them upgrade-friendly.\n\nDiscuss provides team messaging channels, not no-code form customization through Studio. Sign handles document signatures, not adding champ personnalisé on partner forms. Knowledge is for wiki articles.",
-    },
+    explanation: { en: "Studio (Enterprise) is the no-code customization tool. With Studio, you can add fields to any form, change layouts, build new menus and reports, customize automated actions, and modify access. Studio writes the changes as XML data into the database without altering source code, making them upgrade-friendly.\n\nWhy not \"Discuss\"? Discuss provides team messaging channels, not no-code form customization through Studio.\n\nWhy not \"Sign\"? Sign handles document signatures, not adding custom fields on partner forms.\n\nWhy not \"Knowledge\"? Knowledge is for wiki articles.", fr: "Studio (Enterprise) est l'outil de personnalisation sans code. Avec Studio, vous pouvez ajouter des champs à n'importe quel formulaire, modifier les dispositions, créer de nouveaux menus et rapports, personnaliser les actions automatisées et modifier les droits d'accès." },
   }),
   complexQ({
     id: "oep-086",
     module: "studio",
-    text: {
-      en: "Studio in Odoo 19 lets you create Automated Actions. What is the difference between a Server Action and an Automated Action?",
-      fr: "Studio in Odoo 19 lets you create action automatisée. What is the difference between a Server Action and an action automatisée?",
-    },
-    correct: {
-      en: "Server Actions run on demand; Automated Actions add creation/time triggers",
-      fr: "Server Actions run on demand; action automatisée add creation/time triggers",
-    },
+    text: { en: "Studio in Odoo 19 lets you create Automated Actions. What is the difference between a Server Action and an Automated Action?", fr: "Studio dans Odoo 19 permet de créer des actions automatisées. Quelle est la différence entre une action serveur et une action automatisée ?" },
+    correct: { en: "Server Actions run on demand; Automated Actions add creation/time triggers", fr: "Les actions serveur s'exécutent à la demande ; les actions automatisées ajoutent des déclencheurs de création/temps" },
     distractors: [
-      {
-        en: "They are the same object with no difference in trigger or execution model",
-        fr: "They are the same object with no difference in trigger or execution model",
-      },
-      {
-        en: "Automated Actions cannot run Python code under any security configuration",
-        fr: "action automatisée cannot run Python code under any security configuration",
-      },
-      {
-        en: "Server Actions were removed in Odoo 19 and replaced entirely by Studio (not applicable here)",
-        fr: "Server Actions were removed in Odoo 19 and replaced entirely by Studio (not applicable here)",
-      },
+      { en: "They are the same object with no difference in trigger or execution model", fr: "C'est le même objet sans différence de déclencheur ni de modèle d'exécution" },
+      { en: "Automated Actions cannot run Python code under any security configuration", fr: "Les actions automatisées ne peuvent pas exécuter de code Python quelle que soit la configuration de sécurité" },
+      { en: "Server Actions were removed in Odoo 19 and replaced entirely by Studio (not applicable here)", fr: "Les actions serveur ont été supprimées dans Odoo 19 et entièrement remplacées par Studio (non applicable ici)" },
     ],
-    explanation: {
-      en: "ir.actions.server is the Server Action — it can be called explicitly from a button, menu, or automated action. base.automation (Automated Actions) wraps a server action with a trigger (record created/written/deleted, time-based, on tag added/removed, on state change). Both can run Python code if user has the right permissions.\n\nThey serve different roles in the architecture. Both can run Python code (with appropriate access). Server Actions are core and not deprecated.",
-      fr: "ir.actions.server is the Server Action — it can be called explicitly from a button, menu, or action automatisée. base.automation (action automatisée) wraps a server action with a trigger (record created/written/deleted, time-based, on tag added/removed, on state change). Both can run Python code if user has the right permissions.\n\nThey serve different roles in the architecture. Both can run Python code (with appropriate access). Server Actions are core and not deprecated.",
-    },
+    explanation: { en: "ir.actions.server is the Server Action — it can be called explicitly from a button, menu, or automated action. base.automation (Automated Actions) wraps a server action with a trigger (record created/written/deleted, time-based, on tag added/removed, on state change). Both can run Python code if user has the right permissions.\n\nWhy not \"They are the same object with no difference in trigger or execution model\"? They serve different roles in the architecture.\n\nWhy not \"Automated Actions cannot run Python code under any security configuration\"? Both can run Python code (with appropriate access).\n\nWhy not \"Server Actions were removed in Odoo 19 and replaced entirely by Studio (not applicable here)\"? Server Actions are core and not deprecated.", fr: "ir.actions.server est l'action serveur — elle peut être appelée explicitement depuis un bouton, un menu ou une action automatisée. base.automation (Actions automatisées) encapsule une action serveur avec un déclencheur (enregistrement créé/modifié/supprimé, basé sur le temps, sur l'ajout/suppression d'étiquette, sur le changement d'état)." },
   }),
   complexQ({
     id: "oep-087",
     module: "studio",
-    text: {
-      en: "A consultant uses Studio to add a new menu under Sales with a custom kanban view of opportunities. What does Studio create technically?",
-      fr: "A consultant uses Studio to add a new menu under Sales with a custom kanban view of opportunité. What does Studio create technically?",
-    },
-    correct: {
-      en: "XML records (ir.ui.menu",
-      fr: "XML records (ir.ui.menu",
-    },
+    text: { en: "A consultant uses Studio to add a new menu under Sales with a custom kanban view of opportunities. What does Studio create technically?", fr: "Un consultant utilise Studio pour ajouter un nouveau menu sous Ventes avec une vue kanban personnalisée des opportunités. Que crée Studio techniquement ?" },
+    correct: { en: "XML records (ir.ui.menu", fr: "Des enregistrements XML (ir.ui.menu" },
     distractors: [
-      {
-        en: "A new Python module installed dynamically",
-        fr: "A new Python module installed dynamically",
-      },
-      {
-        en: "A separate server which confuses a related but distinct setting",
-        fr: "A separate server which confuses a related but distinct setting",
-      },
-      {
-        en: "Nothing — only display tweaks and is not the controlling configuration here",
-        fr: "Nothing — only display tweaks and is not the controlling configuration here",
-      },
+      { en: "A new Python module installed dynamically", fr: "Un nouveau module Python installé dynamiquement" },
+      { en: "A separate server which confuses a related but distinct setting", fr: "Un serveur séparé, ce qui est un paramètre distinct mais lié" },
+      { en: "Nothing — only display tweaks and is not the controlling configuration here", fr: "Rien — uniquement des ajustements d'affichage, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Studio writes its customizations as XML records in the database: menus, actions, and views. These are versioned and can be exported to a custom module for migration to other databases. Studio does not require server restart or module installation; everything happens in the running database.\n\nNo new Python module is installed; XML records are written. Studio works on the same server. Studio creates real records that drive functionality, not just visual tweaks.",
-      fr: "Studio writes its customizations as XML records in the database: menus, actions, and views. These are versioned and can be exported to a custom module for migration to other databases. Studio does not require server restart or module installation; everything happens in the running database.\n\nNo new Python module is installed; XML records are written. Studio works on the same server. Studio creates real records that drive functionality, not just visual tweaks.",
-    },
+    explanation: { en: "Studio writes its customizations as XML records in the database: menus, actions, and views. These are versioned and can be exported to a custom module for migration to other databases. Studio does not require server restart or module installation; everything happens in the running database.\n\nWhy not \"A new Python module installed dynamically\"? No new Python module is installed; XML records are written.\n\nWhy not \"A separate server which confuses a related but distinct setting\"? Studio works on the same server.\n\nWhy not \"Nothing — only display tweaks and is not the controlling configuration here\"? Studio creates real records that drive functionality, not just visual tweaks.", fr: "Studio écrit ses personnalisations sous forme d'enregistrements XML dans la base de données : menus, actions et vues. Ceux-ci sont versionnés et peuvent être exportés vers un module personnalisé pour migration vers d'autres bases de données. Studio ne nécessite pas de redémarrage du serveur." },
   }),
   complexQ({
     id: "oep-088",
     module: "studio",
-    text: {
-      en: "Studio Reports in Odoo 19 let users design a printable PDF. What underlying engine renders the PDF?",
-      fr: "Studio Reports in Odoo 19 let users design a printable PDF. What underlying engine renders the PDF?",
-    },
-    correct: {
-      en: "QWeb templates rendered to HTML",
-      fr: "QWeb templates rendered to HTML",
-    },
+    text: { en: "Studio Reports in Odoo 19 let users design a printable PDF. What underlying engine renders the PDF?", fr: "Les rapports Studio dans Odoo 19 permettent de concevoir un PDF imprimable. Quel moteur sous-jacent rend le PDF ?" },
+    correct: { en: "QWeb templates rendered to HTML", fr: "Templates QWeb rendus en HTML" },
     distractors: [
-      {
-        en: "LaTeX and belongs to a different Odoo application",
-        fr: "LaTeX and belongs to a different Odoo application",
-      },
-      {
-        en: "Microsoft Word integration only which confuses a related but distinct setting",
-        fr: "Microsoft Word integration only which confuses a related but distinct setting",
-      },
-      {
-        en: "JasperReports and is not the controlling configuration here",
-        fr: "JasperReports and is not the controlling configuration here",
-      },
+      { en: "LaTeX and belongs to a different Odoo application", fr: "LaTeX, ce qui appartient à une autre application Odoo" },
+      { en: "Microsoft Word integration only which confuses a related but distinct setting", fr: "Intégration Microsoft Word uniquement, ce qui est un paramètre distinct mais lié" },
+      { en: "JasperReports and is not the controlling configuration here", fr: "JasperReports, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo's reporting engine uses QWeb templates to produce HTML, which is then converted to PDF by wkhtmltopdf (or an alternative renderer). Studio Report Designer offers a drag-and-drop UI on top of QWeb so users can place fields, headers, footers, and conditional sections without writing XML.\n\nOdoo renders PDFs from QWeb HTML; LaTeX is not part of the reporting engine. Word is not the rendering engine. JasperReports is not Odoo's engine.",
-      fr: "Odoo's reporting engine uses QWeb templates to produce HTML, which is then converted to PDF by wkhtmltopdf (or an alternative renderer). Studio Report Designer offers a drag-and-drop UI on top of QWeb so users can place fields, headers, footers, and conditional sections without writing XML.\n\nOdoo renders PDFs from QWeb HTML; LaTeX is not part of the reporting engine. Word is not the rendering engine. JasperReports is not Odoo's engine.",
-    },
+    explanation: { en: "Odoo's reporting engine uses QWeb templates to produce HTML, which is then converted to PDF by wkhtmltopdf (or an alternative renderer). Studio Report Designer offers a drag-and-drop UI on top of QWeb so users can place fields, headers, footers, and conditional sections without writing XML.\n\nWhy not \"LaTeX and belongs to a different Odoo application\"? Odoo renders PDFs from QWeb HTML; LaTeX is not part of the reporting engine.\n\nWhy not \"Microsoft Word integration only which confuses a related but distinct setting\"? Word is not the rendering engine.\n\nWhy not \"JasperReports and is not the controlling configuration here\"? JasperReports is not Odoo's engine.", fr: "Le moteur de rapports d'Odoo utilise des templates QWeb pour produire du HTML, qui est ensuite converti en PDF par wkhtmltopdf (ou un moteur alternatif). Le concepteur de rapports Studio offre une interface glisser-déposer par-dessus QWeb." },
   }),
   complexQ({
     id: "oep-089",
     module: "studio",
-    text: {
-      en: "A consultant wants to extend a model in Studio to add a Many2one field linking customers to a custom 'Industry Vertical' lookup. Which Odoo 19 step is correct?",
-      fr: "A consultant wants to extend a model in Studio to add a Many2one field linking customers to a custom 'Industry Vertical' lookup. Which Odoo 19 step is correct?",
-    },
-    correct: {
-      en: "Studio on res.partner: add Many2one to x_industry_vertical model and save",
-      fr: "Studio on res.partner: add Many2one to x_industry_vertical model and save",
-    },
+    text: { en: "A consultant wants to extend a model in Studio to add a Many2one field linking customers to a custom 'Industry Vertical' lookup. Which Odoo 19 step is correct?", fr: "Un consultant veut étendre un modèle dans Studio pour ajouter un champ Many2one liant les clients à un référentiel personnalisé « Secteur d'activité ». Quelle étape Odoo 19 est correcte ?" },
+    correct: { en: "Studio on res.partner: add Many2one to x_industry_vertical model and save", fr: "Studio sur res.partner : ajouter un Many2one vers le modèle x_industry_vertical et sauvegarder" },
     distractors: [
-      {
-        en: "Edit PostgreSQL tables directly with ALTER TABLE in production SQL (not applicable here)",
-        fr: "Edit PostgreSQL tables directly with ALTER TABLE in production SQL (not applicable here)",
-      },
-      {
-        en: "Translate labels only in base.po without creating any new field (not applicable here)",
-        fr: "Translate labels only in base.po without creating any new field (not applicable here)",
-      },
-      {
-        en: "Override the Python res.partner class in Odoo core source code (not applicable here)",
-        fr: "Override the Python res.partner class in Odoo core source code (not applicable here)",
-      },
+      { en: "Edit PostgreSQL tables directly with ALTER TABLE in production SQL (not applicable here)", fr: "Modifier les tables PostgreSQL directement avec ALTER TABLE en SQL de production (non applicable ici)" },
+      { en: "Translate labels only in base.po without creating any new field (not applicable here)", fr: "Traduire les libellés uniquement dans base.po sans créer de nouveau champ (non applicable ici)" },
+      { en: "Override the Python res.partner class in Odoo core source code (not applicable here)", fr: "Surcharger la classe Python res.partner dans le code source Odoo (non applicable ici)" },
     ],
-    explanation: {
-      en: "In Studio, you add a Many2one field by selecting the field type, choosing/creating the target model (Studio prefixes custom models with x_), labeling it, and saving. Studio creates the column and metadata automatically. Direct SQL is unsafe and bypasses ORM rules; modifying core code is unnecessary for this simple extension.\n\nSQL bypasses ORM, breaking constraints, audit, and migration. base.po is for translations. Studio handles this without core overrides.",
-      fr: "In Studio, you add a Many2one field by selecting the field type, choosing/creating the target model (Studio prefixes custom models with x_), labeling it, and saving. Studio creates the column and metadata automatically. Direct SQL is unsafe and bypasses ORM rules; modifying core code is unnecessary for this simple extension.\n\nSQL bypasses ORM, breaking constraints, audit, and migration. base.po is for translations. Studio handles this without core overrides.",
-    },
+    explanation: { en: "In Studio, you add a Many2one field by selecting the field type, choosing/creating the target model (Studio prefixes custom models with x_), labeling it, and saving. Studio creates the column and metadata automatically. Direct SQL is unsafe and bypasses ORM rules; modifying core code is unnecessary for this simple extension.\n\nWhy not \"Edit PostgreSQL tables directly with ALTER TABLE in production SQL (not applicable here)\"? SQL bypasses ORM, breaking constraints, audit, and migration.\n\nWhy not \"Translate labels only in base.po without creating any new field (not applicable here)\"? base.po is for translations.\n\nWhy not \"Override the Python res.partner class in Odoo core source code (not applicable here)\"? Studio handles this without core overrides.", fr: "Dans Studio, vous ajoutez un champ Many2one en sélectionnant le type de champ, en choisissant/créant le modèle cible (Studio préfixe les modèles personnalisés avec x_), en le nommant et en sauvegardant. Studio crée automatiquement la colonne et les métadonnées." },
   }),
   complexQ({
     id: "oep-090",
     module: "studio",
-    text: {
-      en: "A consultant wants to require a manager's approval before a Purchase Order can be confirmed in Odoo 19. Which no-code feature handles this?",
-      fr: "A consultant wants to require a manager's approval before a bon de commande can be confirmed in Odoo 19. Which no-code feature handles this?",
-    },
-    correct: {
-      en: "Studio Approval rules with amount conditions and approver user groups",
-      fr: "Studio Approval rules with amount conditions and approver user groups",
-    },
+    text: { en: "A consultant wants to require a manager's approval before a Purchase Order can be confirmed in Odoo 19. Which no-code feature handles this?", fr: "Un consultant veut exiger l'approbation d'un responsable avant qu'un bon de commande fournisseur puisse être confirmé dans Odoo 19. Quelle fonctionnalité sans code gère cela ?" },
+    correct: { en: "Studio Approval rules with amount conditions and approver user groups", fr: "Règles d'approbation Studio avec conditions de montant et groupes d'approbateurs" },
     distractors: [
-      {
-        en: "A custom Python module overriding purchase.order confirm in core",
-        fr: "A custom Python module overriding purchase.order confirm in core",
-      },
-      {
-        en: "An external webhook with no in-Odoo approval dialog or notification",
-        fr: "An external webhook with no in-Odoo approval dialog or notification",
-      },
-      {
-        en: "Studio cannot gate confirmations; only Purchase Settings thresholds apply",
-        fr: "Studio cannot gate confirmations; only Purchase Settings thresholds apply",
-      },
+      { en: "A custom Python module overriding purchase.order confirm in core", fr: "Un module Python personnalisé surchargeant le confirm de purchase.order dans le code source" },
+      { en: "An external webhook with no in-Odoo approval dialog or notification", fr: "Un webhook externe sans dialogue ni notification d'approbation dans Odoo" },
+      { en: "Studio cannot gate confirmations; only Purchase Settings thresholds apply", fr: "Studio ne peut pas bloquer les confirmations ; seuls les seuils des Paramètres d'achat s'appliquent" },
     ],
-    explanation: {
-      en: "Studio Approvals (Enterprise) lets you define approval rules tied to a model and operation. For example, on purchase.order confirm, require approval from the Purchase Manager group when the amount exceeds $10K. The user clicking confirm sees an approval dialog; the approver receives a notification. All without writing code.\n\nCustom Python is not required for standard approvals. Webhooks are unrelated to approval gates. Studio supports approvals natively.",
-      fr: "Studio Approvals (Enterprise) lets you define approval rules tied to a model and operation. For example, on purchase.order confirm, require approval from the Purchase Manager group when the amount exceeds $10K. The user clicking confirm sees an approval dialog; the approver receives a notification. All without writing code.\n\nCustom Python is not required for standard approvals. Webhooks are unrelated to approval gates. Studio supports approvals natively.",
-    },
+    explanation: { en: "Studio Approvals (Enterprise) lets you define approval rules tied to a model and operation. For example, on purchase.order confirm, require approval from the Purchase Manager group when the amount exceeds $10K. The user clicking confirm sees an approval dialog; the approver receives a notification. All without writing code.\n\nWhy not \"A custom Python module overriding purchase.order confirm in core\"? Custom Python is not required for standard approvals.\n\nWhy not \"An external webhook with no in-Odoo approval dialog or notification\"? Webhooks are unrelated to approval gates.\n\nWhy not \"Studio cannot gate confirmations; only Purchase Settings thresholds apply\"? Studio supports approvals natively.", fr: "Les approbations Studio (Enterprise) permettent de définir des règles d'approbation liées à un modèle et une opération. Par exemple, sur purchase.order confirm, exiger l'approbation du groupe Responsable des achats lorsque le montant dépasse 10K $. L'utilisateur cliquant sur confirmer voit un dialogue d'approbation." },
   }),
   complexQ({
     id: "oep-091",
     module: "studio",
-    text: {
-      en: "What is the function of access groups in Odoo 19 (e.g., Sales / User: All Documents vs Sales / User: Own Documents only)?",
-      fr: "What is the function of access groups in Odoo 19 (e.g., Sales / User: All Documents vs Sales / User: Own Documents only)?",
-    },
-    correct: {
-      en: "Groups bind sets of permissions and record rules to users",
-      fr: "Groups bind sets of permissions and règle d'enregistrement to users",
-    },
+    text: { en: "What is the function of access groups in Odoo 19 (e.g., Sales / User: All Documents vs Sales / User: Own Documents only)?", fr: "Quelle est la fonction des groupes d'accès dans Odoo 19 (ex. : Ventes / Utilisateur : Tous les documents vs Ventes / Utilisateur : Documents personnels uniquement) ?" },
+    correct: { en: "Groups bind sets of permissions and record rules to users", fr: "Les groupes lient des ensembles de permissions et des règles d'enregistrement aux utilisateurs" },
     distractors: [
-      {
-        en: "Groups are only labels and belongs to a different Odoo application",
-        fr: "Groups are only labels and belongs to a different Odoo application",
-      },
-      {
-        en: "Groups cannot restrict records which confuses a related but distinct setting",
-        fr: "Groups cannot restrict records which confuses a related but distinct setting",
-      },
-      {
-        en: "Groups apply only to inventory and is not the controlling configuration here",
-        fr: "Groups apply only to inventory and is not the controlling configuration here",
-      },
+      { en: "Groups are only labels and belongs to a different Odoo application", fr: "Les groupes sont uniquement des étiquettes, ce qui appartient à une autre application Odoo" },
+      { en: "Groups cannot restrict records which confuses a related but distinct setting", fr: "Les groupes ne peuvent pas restreindre les enregistrements, ce qui est un paramètre distinct mais lié" },
+      { en: "Groups apply only to inventory and is not the controlling configuration here", fr: "Les groupes s'appliquent uniquement à l'inventaire, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "res.groups is the security group model. Groups are linked to model access rights (CRUD per model) and to record rules (filters that constrain which records a user can read/write). The 'Own Documents Only' vs 'All Documents' pattern in Sales is a record rule that restricts a user to their own opportunities/quotations unless they are in the all-documents group.\n\nGroups are functional, not just labels. Record rules attached to groups absolutely restrict records. Groups apply to every model, not just inventory.",
-      fr: "res.groups is the security group model. Groups are linked to model droit d'accès (CRUD per model) and to règle d'enregistrement (filters that constrain which records a user can read/write). The 'Own Documents Only' vs 'All Documents' pattern in Sales is a règle d'enregistrement that restricts a user to their own opportunité/quotations unless they are in the all-documents group.\n\nGroups are functional, not just labels. règle d'enregistrement attached to groups absolutely restrict records. Groups apply to every model, not just inventory.",
-    },
+    explanation: { en: "res.groups is the security group model. Groups are linked to model access rights (CRUD per model) and to record rules (filters that constrain which records a user can read/write). The 'Own Documents Only' vs 'All Documents' pattern in Sales is a record rule that restricts a user to their own opportunities/quotations unless they are in the all-documents group.\n\nWhy not \"Groups are only labels and belongs to a different Odoo application\"? Groups are functional, not just labels.\n\nWhy not \"Groups cannot restrict records which confuses a related but distinct setting\"? Record rules attached to groups absolutely restrict records.\n\nWhy not \"Groups apply only to inventory and is not the controlling configuration here\"? Groups apply to every model, not just inventory.", fr: "res.groups est le modèle de groupe de sécurité. Les groupes sont liés aux droits d'accès par modèle (CRUD par modèle) et aux règles d'enregistrement (filtres qui restreignent quels enregistrements un utilisateur peut lire/écrire). Le modèle « Documents personnels uniquement » vs « Tous les documents » dans Ventes est une règle d'enregistrement." },
   }),
   complexQ({
     id: "oep-092",
     module: "studio",
-    text: {
-      en: "Multi-company in Odoo 19 lets one database serve multiple legal entities. How is data isolated between companies?",
-      fr: "Multi-company in Odoo 19 lets one database serve multiple legal entities. How is data isolated between companies?",
-    },
-    correct: {
-      en: "Many models include a company_id field",
-      fr: "Many models include a company_id field",
-    },
+    text: { en: "Multi-company in Odoo 19 lets one database serve multiple legal entities. How is data isolated between companies?", fr: "Le multi-sociétés dans Odoo 19 permet à une seule base de données de servir plusieurs entités juridiques. Comment les données sont-elles isolées entre les sociétés ?" },
+    correct: { en: "Many models include a company_id field", fr: "De nombreux modèles incluent un champ company_id" },
     distractors: [
-      {
-        en: "By creating multiple databases and belongs to a different Odoo application",
-        fr: "By creating multiple databases and belongs to a different Odoo application",
-      },
-      {
-        en: "Only via separate servers which confuses a related but distinct setting",
-        fr: "Only via separate servers which confuses a related but distinct setting",
-      },
-      {
-        en: "It is not supported and is not the controlling configuration here",
-        fr: "It is not supported and is not the controlling configuration here",
-      },
+      { en: "By creating multiple databases and belongs to a different Odoo application", fr: "En créant plusieurs bases de données, ce qui appartient à une autre application Odoo" },
+      { en: "Only via separate servers which confuses a related but distinct setting", fr: "Uniquement via des serveurs séparés, ce qui est un paramètre distinct mais lié" },
+      { en: "It is not supported and is not the controlling configuration here", fr: "Ce n'est pas supporté, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Multi-company uses a company_id field on records (most models include it) and security rules that limit each user to their assigned companies. Users select an active company via the company switcher in the navbar. Shared resources (catalog, partners) can be company-scoped or global. Inter-company rules can automate transactions like inter-company sales/purchases.\n\nMultiple databases is multi-database, not multi-company. One Odoo server can host many companies. It is fully supported and widely used.",
-      fr: "Multi-company uses a company_id field on records (most models include it) and security rules that limit each user to their assigned companies. Users select an active company via the company switcher in the navbar. Shared resources (catalog, partners) can be company-scoped or global. Inter-company rules can automate transactions like inter-company sales/purchases.\n\nMultiple databases is multi-database, not multi-company. One Odoo server can host many companies. It is fully supported and widely used.",
-    },
+    explanation: { en: "Multi-company uses a company_id field on records (most models include it) and security rules that limit each user to their assigned companies. Users select an active company via the company switcher in the navbar. Shared resources (catalog, partners) can be company-scoped or global. Inter-company rules can automate transactions like inter-company sales/purchases.\n\nWhy not \"By creating multiple databases and belongs to a different Odoo application\"? Multiple databases is multi-database, not multi-company.\n\nWhy not \"Only via separate servers which confuses a related but distinct setting\"? One Odoo server can host many companies.\n\nWhy not \"It is not supported and is not the controlling configuration here\"? It is fully supported and widely used.", fr: "Le multi-sociétés utilise un champ company_id sur les enregistrements (la plupart des modèles l'incluent) et des règles de sécurité qui limitent chaque utilisateur à ses sociétés assignées. Les utilisateurs sélectionnent une société active via le sélecteur de société dans la barre de navigation." },
   }),
   complexQ({
     id: "oep-093",
     module: "studio",
-    text: {
-      en: "A consultant must make Odoo 19 available in French and Spanish for users in the same company. Which step is required?",
-      fr: "A consultant must make Odoo 19 available in French and Spanish for users in the same company. Which step is required?",
-    },
-    correct: {
-      en: "Settings > Translations > Load a Translation; set user preferred language",
-      fr: "Settings > Translations > Load a Translation; set user preferred language",
-    },
+    text: { en: "A consultant must make Odoo 19 available in French and Spanish for users in the same company. Which step is required?", fr: "Un consultant doit rendre Odoo 19 disponible en français et en espagnol pour les utilisateurs d'une même société. Quelle étape est nécessaire ?" },
+    correct: { en: "Settings > Translations > Load a Translation; set user preferred language", fr: "Paramètres > Traductions > Charger une traduction ; définir la langue préférée de l'utilisateur" },
     distractors: [
-      {
-        en: "Modify core Python translation files and redeploy the Odoo server code (not applicable here)",
-        fr: "Modify core Python translation files and redeploy the Odoo server code (not applicable here)",
-      },
-      {
-        en: "Provision a separate Odoo database for each language your company uses (not applicable here)",
-        fr: "Provision a separate Odoo database for each language your company uses (not applicable here)",
-      },
-      {
-        en: "Odoo user interface supports English only with no translation packs (not applicable here)",
-        fr: "Odoo user interface supports English only with no translation packs (not applicable here)",
-      },
+      { en: "Modify core Python translation files and redeploy the Odoo server code (not applicable here)", fr: "Modifier les fichiers de traduction Python de base et redéployer le code du serveur Odoo (non applicable ici)" },
+      { en: "Provision a separate Odoo database for each language your company uses (not applicable here)", fr: "Provisionner une base de données Odoo séparée pour chaque langue utilisée par la société (non applicable ici)" },
+      { en: "Odoo user interface supports English only with no translation packs (not applicable here)", fr: "L'interface utilisateur Odoo ne supporte que l'anglais sans packs de traduction (non applicable ici)" },
     ],
-    explanation: {
-      en: "Languages are installed via Settings > Translations > Load a Translation (or General Settings > Languages section). Once installed, each user can pick their preferred language in their preferences; the UI and many emails switch instantly. Translatable fields (product names, descriptions) can carry per-language values. Country localizations may install their primary language automatically.\n\nNo source-code change is needed. One database supports many languages. Odoo supports dozens of languages.",
-      fr: "Languages are installed via Settings > Translations > Load a Translation (or General Settings > Languages section). Once installed, each user can pick their preferred language in their preferences; the UI and many emails switch instantly. Translatable fields (product names, descriptions) can carry per-language values. Country localizations may install their primary language automatically.\n\nNo source-code change is needed. One database supports many languages. Odoo supports dozens of languages.",
-    },
+    explanation: { en: "Languages are installed via Settings > Translations > Load a Translation (or General Settings > Languages section). Once installed, each user can pick their preferred language in their preferences; the UI and many emails switch instantly. Translatable fields (product names, descriptions) can carry per-language values. Country localizations may install their primary language automatically.\n\nWhy not \"Modify core Python translation files and redeploy the Odoo server code (not applicable here)\"? No source-code change is needed.\n\nWhy not \"Provision a separate Odoo database for each language your company uses (not applicable here)\"? One database supports many languages.\n\nWhy not \"Odoo user interface supports English only with no translation packs (not applicable here)\"? Odoo supports dozens of languages.", fr: "Les langues sont installées via Paramètres > Traductions > Charger une traduction (ou la section Langues des Paramètres généraux). Une fois installée, chaque utilisateur peut choisir sa langue préférée dans ses préférences ; l'interface et de nombreux e-mails changent instantanément." },
   }),
   complexQ({
     id: "oep-094",
     module: "studio",
-    text: {
-      en: "A consultant wants to send templated emails (e.g., quotation sent, invoice due reminder) in Odoo 19. Which mechanism is used?",
-      fr: "A consultant wants to send templated emails (e.g., devis sent, facture due reminder) in Odoo 19. Which mechanism is used?",
-    },
-    correct: {
-      en: "mail.template records with QWeb body and dynamic field placeholders",
-      fr: "mail.template records with QWeb body and dynamic field placeholders",
-    },
+    text: { en: "A consultant wants to send templated emails (e.g., quotation sent, invoice due reminder) in Odoo 19. Which mechanism is used?", fr: "Un consultant veut envoyer des e-mails modèles (ex. : devis envoyé, rappel de facture due) dans Odoo 19. Quel mécanisme est utilisé ?" },
+    correct: { en: "mail.template records with QWeb body and dynamic field placeholders", fr: "Enregistrements mail.template avec corps QWeb et champs dynamiques de fusion" },
     distractors: [
-      {
-        en: "Studio PDF report layouts without any mail.template email definitions",
-        fr: "Studio PDF report layouts without any mail.template email definitions",
-      },
-      {
-        en: "Sign documents for legally binding signatures on outbound messages",
-        fr: "Sign documents for legally binding signatures on outbound messages",
-      },
-      {
-        en: "Discuss channels for ad-hoc chat without reusable email templates",
-        fr: "Discuss channels for ad-hoc chat without reusable email templates",
-      },
+      { en: "Studio PDF report layouts without any mail.template email definitions", fr: "Mises en page de rapports PDF Studio sans aucune définition d'e-mail mail.template" },
+      { en: "Sign documents for legally binding signatures on outbound messages", fr: "Documents Sign pour des signatures juridiquement contraignantes sur les messages sortants" },
+      { en: "Discuss channels for ad-hoc chat without reusable email templates", fr: "Canaux Discuss pour du chat ad-hoc sans modèles d'e-mails réutilisables" },
     ],
-    explanation: {
-      en: "Email templates (mail.template) define a subject line, body (QWeb / HTML), recipients, and attachments. Placeholders use Jinja-like / QWeb syntax to inject record data. Templates are bound to a model (e.g., sale.order) and can be triggered manually (Send by Email button) or by automated actions (e.g., reminder X days before due date).\n\nStudio reports produce PDFs, not email content directly. Sign is for e-signature workflows, not defining reusable outbound email templates. Discuss handles internal chat, not templated emails.",
-      fr: "Email templates (mail.template) define a subject line, body (QWeb / HTML), recipients, and attachments. Placeholders use Jinja-like / QWeb syntax to inject record data. Templates are bound to a model (e.g., sale.order) and can be triggered manually (Send by Email button) or by action automatisée (e.g., reminder X days before due date).\n\nStudio reports produce PDFs, not email content directly. Sign is for e-signature workflows, not defining reusable outbound email templates. Discuss handles internal chat, not templated emails.",
-    },
+    explanation: { en: "Email templates (mail.template) define a subject line, body (QWeb / HTML), recipients, and attachments. Placeholders use Jinja-like / QWeb syntax to inject record data. Templates are bound to a model (e.g., sale.order) and can be triggered manually (Send by Email button) or by automated actions (e.g., reminder X days before due date).\n\nWhy not \"Studio PDF report layouts without any mail.template email definitions\"? Studio reports produce PDFs, not email content directly.\n\nWhy not \"Sign documents for legally binding signatures on outbound messages\"? Sign is for e-signature workflows, not defining reusable outbound email templates.\n\nWhy not \"Discuss channels for ad-hoc chat without reusable email templates\"? Discuss handles internal chat, not templated emails.", fr: "Les modèles d'e-mails (mail.template) définissent un objet, un corps (QWeb / HTML), des destinataires et des pièces jointes. Les champs dynamiques utilisent la syntaxe Jinja/QWeb pour injecter les données de l'enregistrement. Les modèles sont liés à un modèle (ex. : sale.order)." },
   }),
   complexQ({
     id: "oep-095",
     module: "studio",
-    text: {
-      en: "What is a Scheduled Action (ir.cron) in Odoo 19?",
-      fr: "What is a Scheduled Action (ir.cron) in Odoo 19?",
-    },
-    correct: {
-      en: "ir.cron scheduled job executing a server action on a recurring interval",
-      fr: "ir.cron scheduled job executing a server action on a recurring interval",
-    },
+    text: { en: "What is a Scheduled Action (ir.cron) in Odoo 19?", fr: "Qu'est-ce qu'une action planifiée (ir.cron) dans Odoo 19 ?" },
+    correct: { en: "ir.cron scheduled job executing a server action on a recurring interval", fr: "Tâche planifiée ir.cron exécutant une action serveur à intervalle récurrent" },
     distractors: [
-      {
-        en: "A one-time manual action with no database scheduler backing it (not applicable here)",
-        fr: "A one-time manual action with no database scheduler backing it (not applicable here)",
-      },
-      {
-        en: "A personal calendar reminder visible only in the user agenda view (not applicable here)",
-        fr: "A personal calendar reminder visible only in the user agenda view (not applicable here)",
-      },
-      {
-        en: "A Discuss meeting invite sent to channel participants (not applicable here)",
-        fr: "A Discuss meeting invite sent to channel participants (not applicable here)",
-      },
+      { en: "A one-time manual action with no database scheduler backing it (not applicable here)", fr: "Une action manuelle ponctuelle sans planificateur de base de données (non applicable ici)" },
+      { en: "A personal calendar reminder visible only in the user agenda view (not applicable here)", fr: "Un rappel de calendrier personnel visible uniquement dans la vue agenda de l'utilisateur (non applicable ici)" },
+      { en: "A Discuss meeting invite sent to channel participants (not applicable here)", fr: "Une invitation de réunion Discuss envoyée aux participants du canal (non applicable ici)" },
     ],
-    explanation: {
-      en: "Scheduled Actions (ir.cron) execute Python code or method calls on a configured frequency. Many built-in features rely on them: MRP/procurement scheduler, expired pricelist refresh, queue retries, recurring invoices, automated follow-ups. Admins can pause, force-run, or change frequency. Developers can add new cron jobs via XML data files.\n\nThey are recurring by definition. Calendar reminders are calendar.event-related. Meeting invites are different objects.",
-      fr: "Scheduled Actions (ir.cron) execute Python code or method calls on a configured frequency. Many built-in features rely on them: MRP/procurement scheduler, expired liste de prix refresh, queue retries, recurring facture, automated follow-ups. Admins can pause, force-run, or change frequency. Developers can add new cron jobs via XML data files.\n\nThey are recurring by definition. Calendar reminders are calendar.event-related. Meeting invites are different objects.",
-    },
+    explanation: { en: "Scheduled Actions (ir.cron) execute Python code or method calls on a configured frequency. Many built-in features rely on them: MRP/procurement scheduler, expired pricelist refresh, queue retries, recurring invoices, automated follow-ups. Admins can pause, force-run, or change frequency. Developers can add new cron jobs via XML data files.\n\nWhy not \"A one-time manual action with no database scheduler backing it (not applicable here)\"? They are recurring by definition.\n\nWhy not \"A personal calendar reminder visible only in the user agenda view (not applicable here)\"? Calendar reminders are calendar.event-related.\n\nWhy not \"A Discuss meeting invite sent to channel participants (not applicable here)\"? Meeting invites are different objects.", fr: "Les actions planifiées (ir.cron) exécutent du code Python ou des appels de méthode selon une fréquence configurée. De nombreuses fonctionnalités intégrées en dépendent : planificateur MRP/approvisionnement, rafraîchissement des listes de prix expirées, relances de file d'attente, factures récurrentes, relances automatisées." },
   }),
   complexQ({
     id: "oep-096",
     module: "studio",
-    text: {
-      en: "Odoo 19 was released by Odoo S.A. as a new major version. Approximately when was Odoo 19 released?",
-      fr: "Odoo 19 was released by Odoo S.A. as a new major version. Approximately when was Odoo 19 released?",
-    },
-    correct: {
-      en: "September 2025 at Odoo Experience",
-      fr: "September 2025 at Odoo Experience",
-    },
+    text: { en: "Odoo 19 was released by Odoo S.A. as a new major version. Approximately when was Odoo 19 released?", fr: "Odoo 19 a été publié par Odoo S.A. comme nouvelle version majeure. Quand environ Odoo 19 a-t-il été publié ?" },
+    correct: { en: "September 2025 at Odoo Experience", fr: "Septembre 2025 lors de l'Odoo Experience" },
     distractors: [
-      {
-        en: "January 2024 and belongs to a different Odoo application",
-        fr: "January 2024 and belongs to a different Odoo application",
-      },
-      {
-        en: "Late 2023 which confuses a related but distinct setting",
-        fr: "Late 2023 which confuses a related but distinct setting",
-      },
-      {
-        en: "It is not released yet and is not the controlling configuration here",
-        fr: "It is not released yet and is not the controlling configuration here",
-      },
+      { en: "January 2024 and belongs to a different Odoo application", fr: "Janvier 2024, ce qui appartient à une autre application Odoo" },
+      { en: "Late 2023 which confuses a related but distinct setting", fr: "Fin 2023, ce qui est un paramètre distinct mais lié" },
+      { en: "It is not released yet and is not the controlling configuration here", fr: "Il n'est pas encore sorti, ce qui n'est pas la configuration pertinente ici" },
     ],
-    explanation: {
-      en: "Odoo 19 was announced and released around Odoo Experience in September 2025, the company's annual conference where new versions are traditionally launched. Each major release brings updated apps, performance improvements, and new features such as enhanced AI integrations and refreshed UI elements compared to Odoo 18.\n\nJanuary 2024 was the era of v17. Late 2023 corresponds to the Odoo 17 release window, not the Odoo 19 major version. Odoo 19 is the current LTS as of 2026.",
-      fr: "Odoo 19 was announced and released around Odoo Experience in September 2025, the company's annual conference where new versions are traditionally launched. Each major release brings updated apps, performance improvements, and new features such as enhanced AI integrations and refreshed UI elements compared to Odoo 18.\n\nJanuary 2024 was the era of v17. Late 2023 corresponds to the Odoo 17 release window, not the Odoo 19 major version. Odoo 19 is the current LTS as of 2026.",
-    },
+    explanation: { en: "Odoo 19 was announced and released around Odoo Experience in September 2025, the company's annual conference where new versions are traditionally launched. Each major release brings updated apps, performance improvements, and new features such as enhanced AI integrations and refreshed UI elements compared to Odoo 18.\n\nWhy not \"January 2024 and belongs to a different Odoo application\"? January 2024 was the era of v17.\n\nWhy not \"Late 2023 which confuses a related but distinct setting\"? Late 2023 corresponds to the Odoo 17 release window, not the Odoo 19 major version.\n\nWhy not \"It is not released yet and is not the controlling configuration here\"? Odoo 19 is the current LTS as of 2026.", fr: "Odoo 19 a été annoncé et publié autour de l'Odoo Experience en septembre 2025, la conférence annuelle de l'entreprise où les nouvelles versions sont traditionnellement lancées." },
   }),
   complexQ({
     id: "oep-097",
     module: "studio",
-    text: {
-      en: "A new consultant must understand the difference between Odoo Community and Enterprise. Which capability is Enterprise-only?",
-      fr: "A new consultant must understand the difference between Odoo Community and Enterprise. Which capability is Enterprise-only?",
-    },
-    correct: {
-      en: "Studio, Documents, Helpdesk, and advanced Accounting (Enterprise add-ons)",
-      fr: "Studio, Documents, Helpdesk, and advanced Accounting (Enterprise add-ons)",
-    },
+    text: { en: "A new consultant must understand the difference between Odoo Community and Enterprise. Which capability is Enterprise-only?", fr: "Un nouveau consultant doit comprendre la différence entre Odoo Community et Enterprise. Quelle capacité est exclusivement Enterprise ?" },
+    correct: { en: "Studio, Documents, Helpdesk, and advanced Accounting (Enterprise add-ons)", fr: "Studio, Documents, Helpdesk et la Comptabilité avancée (modules complémentaires Enterprise)" },
     distractors: [
-      {
-        en: "Sales quotations and orders (available in Community and Enterprise)",
-        fr: "Sales quotations and orders (available in Community and Enterprise)",
-      },
-      {
-        en: "CRM pipelines and lead tracking (available in Community and Enterprise)",
-        fr: "CRM pipelines and piste tracking (available in Community and Enterprise)",
-      },
-      {
-        en: "Inventory routes and stock valuation (available in Community and Enterprise)",
-        fr: "Inventory routes and stock valuation (available in Community and Enterprise)",
-      },
+      { en: "Sales quotations and orders (available in Community and Enterprise)", fr: "Devis et commandes de ventes (disponibles dans Community et Enterprise)" },
+      { en: "CRM pipelines and lead tracking (available in Community and Enterprise)", fr: "Pipelines CRM et suivi des pistes (disponibles dans Community et Enterprise)" },
+      { en: "Inventory routes and stock valuation (available in Community and Enterprise)", fr: "Routes d'inventaire et valorisation des stocks (disponibles dans Community et Enterprise)" },
     ],
-    explanation: {
-      en: "Community (open source) covers Sales, CRM, Inventory, Purchase, Manufacturing (basic), Project, Website, eCommerce. Enterprise adds Studio, Documents, Helpdesk, advanced Accounting (with full reporting and bank sync), Marketing Automation, Field Service, Subscriptions, Planning, Quality, native iOS/Android apps, IoT integrations, and more. Many implementations need Enterprise for accounting localizations and customization.\n\nSales is in both editions. CRM is included in both Community and Enterprise; it is not Enterprise-only. Inventory is in both editions.",
-      fr: "Community (open source) covers Sales, CRM, Inventory, Purchase, Manufacturing (basic), Project, Website, eCommerce. Enterprise adds Studio, Documents, Helpdesk, advanced Accounting (with full reporting and bank sync), Marketing Automation, Field Service, Subscriptions, Planning, Quality, native iOS/Android apps, IoT integrations, and more. Many implementations need Enterprise for accounting localizations and customization.\n\nSales is in both editions. CRM is included in both Community and Enterprise; it is not Enterprise-only. Inventory is in both editions.",
-    },
+    explanation: { en: "Community (open source) covers Sales, CRM, Inventory, Purchase, Manufacturing (basic), Project, Website, eCommerce. Enterprise adds Studio, Documents, Helpdesk, advanced Accounting (with full reporting and bank sync), Marketing Automation, Field Service, Subscriptions, Planning, Quality, native iOS/Android apps, IoT integrations, and more. Many implementations need Enterprise for accounting localizations and customization.\n\nWhy not \"Sales quotations and orders (available in Community and Enterprise)\"? Sales is in both editions.\n\nWhy not \"CRM pipelines and lead tracking (available in Community and Enterprise)\"? CRM is included in both Community and Enterprise; it is not Enterprise-only.\n\nWhy not \"Inventory routes and stock valuation (available in Community and Enterprise)\"? Inventory is in both editions.", fr: "Community (open source) couvre Ventes, CRM, Inventaire, Achats, Fabrication (basique), Projet, Site Web, eCommerce. Enterprise ajoute Studio, Documents, Helpdesk, Comptabilité avancée (avec reporting complet et synchronisation bancaire), Automatisation Marketing, Field Service, Abonnements, Planification, Qualité, et plus encore." },
   }),
   complexQ({
     id: "oep-098",
     module: "studio",
-    text: {
-      en: "A consultant configures a sequence on a custom model in Odoo 19 so each new record auto-numbers as INV/2026/00001. Which model holds sequence definitions?",
-      fr: "A consultant configures a sequence on a custom model in Odoo 19 so each new record auto-numbers as INV/2026/00001. Which model holds sequence definitions?",
-    },
-    correct: {
-      en: "ir.sequence",
-      fr: "ir.sequence",
-    },
+    text: { en: "A consultant configures a sequence on a custom model in Odoo 19 so each new record auto-numbers as INV/2026/00001. Which model holds sequence definitions?", fr: "Un consultant configure une séquence sur un modèle personnalisé dans Odoo 19 pour que chaque nouvel enregistrement soit auto-numéroté comme INV/2026/00001. Quel modèle stocke les définitions de séquence ?" },
+    correct: { en: "ir.sequence", fr: "ir.sequence" },
     distractors: [
-      {
-        en: "res.sequence",
-        fr: "res.sequence",
-      },
-      {
-        en: "model.sequence",
-        fr: "model.sequence",
-      },
-      {
-        en: "auto.number",
-        fr: "auto.number",
-      },
+      { en: "res.sequence", fr: "res.sequence" },
+      { en: "model.sequence", fr: "model.sequence" },
+      { en: "auto.number", fr: "auto.number" },
     ],
-    explanation: {
-      en: "ir.sequence stores sequence definitions: code (used to fetch the next value), prefix (with date variables like %(year)s), padding, and increment. Models like sale.order, account.move, and stock.picking call ir.sequence.next_by_code() to get the next value. Sequences can reset yearly/monthly with date_range entries.\n\nres.sequence is not the model. model.sequence is not real. auto.number is not a real Odoo model; sequence definitions live in ir.sequence.",
-      fr: "ir.sequence stores sequence definitions: code (used to fetch the next value), prefix (with date variables like %(year)s), padding, and increment. Models like sale.order, account.move, and stock.picking call ir.sequence.next_by_code() to get the next value. Sequences can reset yearly/monthly with date_range entries.\n\nres.sequence is not the model. model.sequence is not real. auto.number is not a real Odoo model; sequence definitions live in ir.sequence.",
-    },
+    explanation: { en: "ir.sequence stores sequence definitions: code (used to fetch the next value), prefix (with date variables like %(year)s), padding, and increment. Models like sale.order, account.move, and stock.picking call ir.sequence.next_by_code() to get the next value. Sequences can reset yearly/monthly with date_range entries.\n\nWhy not \"res.sequence\"? res.sequence is not the model.\n\nWhy not \"model.sequence\"? model.sequence is not real.\n\nWhy not \"auto.number\"? auto.number is not a real Odoo model; sequence definitions live in ir.sequence.", fr: "ir.sequence stocke les définitions de séquence : code (utilisé pour récupérer la prochaine valeur), préfixe (avec des variables de date comme %(year)s), complément de zéros et incrément. Les modèles comme sale.order, account.move et stock.picking appellent ir.sequence.next_by_code() pour obtenir la prochaine valeur." },
   }),
   complexQ({
     id: "oep-099",
     module: "studio",
-    text: {
-      en: "A consultant wants to take advantage of Odoo 19's improved UI. Compared to Odoo 18, Odoo 19 generally:",
-      fr: "A consultant wants to take advantage of Odoo 19's improved UI. Compared to Odoo 18, Odoo 19 generally:",
-    },
-    correct: {
-      en: "Refined UI tokens, faster list/kanban views, broader AI-assisted features",
-      fr: "Refined UI tokens, faster list/kanban views, broader AI-assisted features",
-    },
+    text: { en: "A consultant wants to take advantage of Odoo 19's improved UI. Compared to Odoo 18, Odoo 19 generally:", fr: "Un consultant veut tirer parti de l'interface utilisateur améliorée d'Odoo 19. Par rapport à Odoo 18, Odoo 19 offre généralement :" },
+    correct: { en: "Refined UI tokens, faster list/kanban views, broader AI-assisted features", fr: "Des tokens d'interface affinés, des vues liste/kanban plus rapides, des fonctionnalités IA plus étendues" },
     distractors: [
-      {
-        en: "Kanban view removed entirely from all Odoo 19 applications (not applicable here)",
-        fr: "Kanban view removed entirely from all Odoo 19 applications (not applicable here)",
-      },
-      {
-        en: "Studio module discontinued and replaced by external customization SaaS (not applicable here)",
-        fr: "Studio module discontinued and replaced by external customization SaaS (not applicable here)",
-      },
-      {
-        en: "Multi-company support removed from the Odoo 19 platform architecture (not applicable here)",
-        fr: "Multi-company support removed from the Odoo 19 platform architecture (not applicable here)",
-      },
+      { en: "Kanban view removed entirely from all Odoo 19 applications (not applicable here)", fr: "La vue kanban entièrement supprimée de toutes les applications Odoo 19 (non applicable ici)" },
+      { en: "Studio module discontinued and replaced by external customization SaaS (not applicable here)", fr: "Le module Studio abandonné et remplacé par un SaaS de personnalisation externe (non applicable ici)" },
+      { en: "Multi-company support removed from the Odoo 19 platform architecture (not applicable here)", fr: "Le support multi-sociétés supprimé de l'architecture de la plateforme Odoo 19 (non applicable ici)" },
     ],
-    explanation: {
-      en: "Odoo 19's release notes emphasize a refined visual language, performance improvements (especially on large list/kanban renders), enhanced AI-assisted writing and suggestions across apps, deeper Spreadsheet capabilities, and continued localization improvements. Major architectural pillars (multi-company, Studio, kanban, Enterprise apps) remain — they are typically extended, not removed.\n\nKanban views remain a core layout. Studio is a flagship Enterprise module and is retained. Multi-company is foundational and supported.",
-      fr: "Odoo 19's release notes emphasize a refined visual language, performance improvements (especially on large list/kanban renders), enhanced AI-assisted writing and suggestions across apps, deeper Spreadsheet capabilities, and continued localization improvements. Major architectural pillars (multi-company, Studio, kanban, Enterprise apps) remain — they are typically extended, not removed.\n\nKanban views remain a core layout. Studio is a flagship Enterprise module and is retained. Multi-company is foundational and supported.",
-    },
+    explanation: { en: "Odoo 19's release notes emphasize a refined visual language, performance improvements (especially on large list/kanban renders), enhanced AI-assisted writing and suggestions across apps, deeper Spreadsheet capabilities, and continued localization improvements. Major architectural pillars (multi-company, Studio, kanban, Enterprise apps) remain — they are typically extended, not removed.\n\nWhy not \"Kanban view removed entirely from all Odoo 19 applications (not applicable here)\"? Kanban views remain a core layout.\n\nWhy not \"Studio module discontinued and replaced by external customization SaaS (not applicable here)\"? Studio is a flagship Enterprise module and is retained.\n\nWhy not \"Multi-company support removed from the Odoo 19 platform architecture (not applicable here)\"? Multi-company is foundational and supported.", fr: "Les notes de version d'Odoo 19 mettent l'accent sur un langage visuel affiné, des améliorations de performance (surtout sur les rendus de grandes listes/kanban), la rédaction et les suggestions assistées par IA dans toutes les applications, des capacités de tableur étendues et des améliorations continues de localisation." },
   }),
   complexQ({
     id: "oep-100",
     module: "studio",
-    text: {
-      en: "An Odoo 19 functional consultant prepares a go-live. Which sequence is the recommended approach when migrating data into a fresh Odoo database?",
-      fr: "An Odoo 19 functional consultant prepares a go-live. Which sequence is the recommended approach when migrating data into a fresh Odoo database?",
-    },
-    correct: {
-      en: "Configure COA/taxes, import masters, open balances, opening entry, go-live",
-      fr: "Configure COA/taxes, import masters, open balances, opening entry, go-live",
-    },
+    text: { en: "An Odoo 19 functional consultant prepares a go-live. Which sequence is the recommended approach when migrating data into a fresh Odoo database?", fr: "Un consultant fonctionnel Odoo 19 prépare une mise en production. Quelle séquence est l'approche recommandée pour migrer des données dans une nouvelle base Odoo ?" },
+    correct: { en: "Configure COA/taxes, import masters, open balances, opening entry, go-live", fr: "Configurer le plan comptable/taxes, importer les données maîtres, soldes d'ouverture, écriture d'ouverture, mise en production" },
     distractors: [
-      {
-        en: "Import partners, products, and transactions in one unordered CSV batch",
-        fr: "Import partners, products, and transactions in one unordered CSV batch",
-      },
-      {
-        en: "Build Studio customizations before defining chart of accounts or taxes",
-        fr: "Build Studio customizations before defining plan comptable or taxes",
-      },
-      {
-        en: "Skip master configuration and begin daily transactions on a blank database",
-        fr: "Skip master configuration and begin daily transactions on a blank database",
-      },
+      { en: "Import partners, products, and transactions in one unordered CSV batch", fr: "Importer les partenaires, produits et transactions dans un seul lot CSV non ordonné" },
+      { en: "Build Studio customizations before defining chart of accounts or taxes", fr: "Construire les personnalisations Studio avant de définir le plan comptable ou les taxes" },
+      { en: "Skip master configuration and begin daily transactions on a blank database", fr: "Ignorer la configuration maître et commencer les transactions quotidiennes sur une base vierge" },
     ],
-    explanation: {
-      en: "A standard Odoo go-live follows: configuration first (so taxes/accounts exist for transaction imports), then master data, then open transactional balances at cutover, then opening trial balance, then user training. Imports use Odoo's Import tool (CSV/XLSX) with external IDs to maintain relationships. Skipping order leads to broken references and re-imports.\n\nOrder matters — imports without configuration fail or import partial data. Customizations should layer on top of standard processes, not before configuration. Skipping configuration leads to non-functional accounting and broken workflows.",
-      fr: "A standard Odoo go-live follows: configuration first (so taxes/accounts exist for transaction imports), then master data, then open transactional balances at cutover, then opening trial balance, then user training. Imports use Odoo's Import tool (CSV/XLSX) with external IDs to maintain relationships. Skipping order piste to broken references and re-imports.\n\nOrder matters — imports without configuration fail or import partial data. Customizations should layer on top of standard processes, not before configuration. Skipping configuration piste to non-functional accounting and broken workflows.",
-    },
+    explanation: { en: "A standard Odoo go-live follows: configuration first (so taxes/accounts exist for transaction imports), then master data, then open transactional balances at cutover, then opening trial balance, then user training. Imports use Odoo's Import tool (CSV/XLSX) with external IDs to maintain relationships. Skipping order leads to broken references and re-imports.\n\nWhy not \"Import partners, products, and transactions in one unordered CSV batch\"? Order matters — imports without configuration fail or import partial data.\n\nWhy not \"Build Studio customizations before defining chart of accounts or taxes\"? Customizations should layer on top of standard processes, not before configuration.\n\nWhy not \"Skip master configuration and begin daily transactions on a blank database\"? Skipping configuration leads to non-functional accounting and broken workflows.", fr: "Une mise en production Odoo standard suit : configuration d'abord (pour que les taxes/comptes existent pour les imports de transactions), puis les données maîtres, puis les soldes transactionnels ouverts au basculement, puis la balance de vérification d'ouverture, puis la formation des utilisateurs." },
   }),
   complexQ({
     id: "oep-101",
     module: "marketing",
-    text: {
-      en: "A marketing manager wants to test two email subject lines on a campaign in Odoo 19. Which Email Marketing feature supports this?",
-      fr: "A marketing manager wants to test two email subject lines on a campaign in Odoo 19. Which Email Marketing feature supports this?",
-    },
-    correct: {
-      en: "A/B testing with a sample percentage and winner selection metric",
-      fr: "A/B testing with a sample percentage and winner selection metric",
-    },
+    text: { en: "A marketing manager wants to test two email subject lines on a campaign in Odoo 19. Which Email Marketing feature supports this?", fr: "Un responsable marketing veut tester deux objets d'e-mail sur une campagne dans Odoo 19. Quelle fonctionnalité d'Email Marketing supporte cela ?" },
+    correct: { en: "A/B testing with a sample percentage and winner selection metric", fr: "Tests A/B avec un pourcentage d'échantillon et une métrique de sélection du gagnant" },
     distractors: [
-      {
-        en: "Survey scoring with pass/fail thresholds on responses (not applicable here)",
-        fr: "Survey scoring with pass/fail thresholds on responses (not applicable here)",
-      },
-      {
-        en: "POS loyalty point accrual rules on checkout (not applicable here)",
-        fr: "POS loyalty point accrual rules on checkout (not applicable here)",
-      },
-      {
-        en: "Studio approval gates before an email is sent (not applicable here)",
-        fr: "Studio approval gates before an email is sent (not applicable here)",
-      },
+      { en: "Survey scoring with pass/fail thresholds on responses (not applicable here)", fr: "Scoring d'enquête avec seuils de réussite/échec sur les réponses (non applicable ici)" },
+      { en: "POS loyalty point accrual rules on checkout (not applicable here)", fr: "Règles d'accumulation de points de fidélité PDV au passage en caisse (non applicable ici)" },
+      { en: "Studio approval gates before an email is sent (not applicable here)", fr: "Portes d'approbation Studio avant l'envoi d'un e-mail (non applicable ici)" },
     ],
-    explanation: {
-      en: "Email Marketing supports A/B tests on subject lines (and sometimes content). You send variants to a sample, wait for opens/clicks, then mail the winning version to the remainder. This is native to the Marketing app, not Studio or POS.\n\nSurvey scoring evaluates quiz answers, not email subject-line performance. POS loyalty rules apply at retail checkout, not to mass email campaigns. Studio approvals gate business documents; they are not the Email Marketing A/B test tool.",
-      fr: "Email Marketing supports A/B tests on subject lines (and sometimes content). You send variants to a sample, wait for opens/clicks, then mail the winning version to the remainder. This is native to the Marketing app, not Studio or POS.\n\nSurvey scoring evaluates quiz answers, not email subject-line performance. POS loyalty rules apply at retail checkout, not to mass email campaigns. Studio approvals gate business documents; they are not the Email Marketing A/B test tool.",
-    },
+    explanation: { en: "Email Marketing supports A/B tests on subject lines (and sometimes content). You send variants to a sample, wait for opens/clicks, then mail the winning version to the remainder. This is native to the Marketing app, not Studio or POS.\n\nWhy not \"Survey scoring with pass/fail thresholds on responses (not applicable here)\"? Survey scoring evaluates quiz answers, not email subject-line performance.\n\nWhy not \"POS loyalty point accrual rules on checkout (not applicable here)\"? POS loyalty rules apply at retail checkout, not to mass email campaigns.\n\nWhy not \"Studio approval gates before an email is sent (not applicable here)\"? Studio approvals gate business documents; they are not the Email Marketing A/B test tool.", fr: "Email Marketing prend en charge les tests A/B sur les objets d'e-mail (et parfois le contenu). Vous envoyez les variantes à un échantillon, attendez les ouvertures/clics, puis envoyez la version gagnante au reste." },
   }),
   complexQ({
     id: "oep-102",
     module: "marketing",
-    text: {
-      en: "In Odoo 19 Marketing Automation, what starts a workflow when a contact downloads a specific whitepaper from the website?",
-      fr: "In Odoo 19 Marketing Automation, what starts a workflow when a contact downloads a specific whitepaper from the website?",
-    },
-    correct: {
-      en: "A trigger such as \"Page visited\" or a tracked link/UTM tied to the campaign",
-      fr: "A trigger such as \"Page visited\" or a tracked link/UTM tied to the campaign",
-    },
+    text: { en: "In Odoo 19 Marketing Automation, what starts a workflow when a contact downloads a specific whitepaper from the website?", fr: "Dans l'Automatisation Marketing Odoo 19, qu'est-ce qui démarre un workflow lorsqu'un contact télécharge un livre blanc spécifique depuis le site web ?" },
+    correct: { en: "A trigger such as \"Page visited\" or a tracked link/UTM tied to the campaign", fr: "Un déclencheur tel que « Page visitée » ou un lien suivi/UTM lié à la campagne" },
     distractors: [
-      {
-        en: "A manufacturing reordering rule on the product template (not applicable here)",
-        fr: "A manufacturing règle de réapprovisionnement on the product template (not applicable here)",
-      },
-      {
-        en: "A bank reconciliation model matching statement lines (not applicable here)",
-        fr: "A rapprochement bancaire model matching statement lines (not applicable here)",
-      },
-      {
-        en: "A POS session opening cash count (not applicable here)",
-        fr: "A POS session opening cash count (not applicable here)",
-      },
+      { en: "A manufacturing reordering rule on the product template (not applicable here)", fr: "Une règle de réapprovisionnement de fabrication sur le modèle de produit (non applicable ici)" },
+      { en: "A bank reconciliation model matching statement lines (not applicable here)", fr: "Un modèle de lettrage bancaire correspondant aux lignes de relevé (non applicable ici)" },
+      { en: "A POS session opening cash count (not applicable here)", fr: "Un comptage de caisse d'ouverture de session PDV (non applicable ici)" },
     ],
-    explanation: {
-      en: "Marketing Automation workflows begin on triggers like page visits, link clicks, form submissions, or time delays. A whitepaper download is typically tracked via a campaign link or website page rule that enrolls the contact in the workflow.\n\nReordering rules replenish stock; they do not enroll marketing contacts. Reconciliation models match bank transactions, not website downloads. POS session opening records cashier cash, unrelated to marketing enrollment.",
-      fr: "Marketing Automation workflows begin on triggers like page visits, link clicks, form submissions, or time delays. A whitepaper download is typically tracked via a campaign link or website page rule that enrolls the contact in the workflow.\n\nrègle de réapprovisionnement replenish stock; they do not enroll marketing contacts. modèle de rapprochement match bank transactions, not website downloads. POS session opening records cashier cash, unrelated to marketing enrollment.",
-    },
+    explanation: { en: "Marketing Automation workflows begin on triggers like page visits, link clicks, form submissions, or time delays. A whitepaper download is typically tracked via a campaign link or website page rule that enrolls the contact in the workflow.\n\nWhy not \"A manufacturing reordering rule on the product template (not applicable here)\"? Reordering rules replenish stock; they do not enroll marketing contacts.\n\nWhy not \"A bank reconciliation model matching statement lines (not applicable here)\"? Reconciliation models match bank transactions, not website downloads.\n\nWhy not \"A POS session opening cash count (not applicable here)\"? POS session opening records cashier cash, unrelated to marketing enrollment.", fr: "Les workflows d'automatisation marketing démarrent sur des déclencheurs comme les visites de page, les clics sur liens, les soumissions de formulaire ou les délais. Un téléchargement de livre blanc est généralement suivi via un lien de campagne ou une règle de page web qui inscrit le contact dans le workflow." },
   }),
   complexQ({
     id: "oep-103",
     module: "marketing",
-    text: {
-      en: "Which Odoo 19 app sends bulk promotional text messages to opted-in contacts?",
-      fr: "Which Odoo 19 app sends bulk promotional text messages to opted-in contacts?",
-    },
-    correct: {
-      en: "SMS Marketing with recipient lists and compliance opt-out handling",
-      fr: "SMS Marketing with recipient lists and compliance opt-out handling",
-    },
+    text: { en: "Which Odoo 19 app sends bulk promotional text messages to opted-in contacts?", fr: "Quelle application Odoo 19 envoie des SMS promotionnels en masse aux contacts ayant donné leur consentement ?" },
+    correct: { en: "SMS Marketing with recipient lists and compliance opt-out handling", fr: "SMS Marketing avec listes de destinataires et gestion de la conformité de désinscription" },
     distractors: [
-      {
-        en: "Knowledge articles shared as SMS from the wiki editor (not applicable here)",
-        fr: "Knowledge articles shared as SMS from the wiki editor (not applicable here)",
-      },
-      {
-        en: "Inventory barcode transfers pushed as text alerts (not applicable here)",
-        fr: "Inventory barcode transfers pushed as text alerts (not applicable here)",
-      },
-      {
-        en: "Discuss channels broadcasting internal chat only (not applicable here)",
-        fr: "Discuss channels broadcasting internal chat only (not applicable here)",
-      },
+      { en: "Knowledge articles shared as SMS from the wiki editor (not applicable here)", fr: "Articles Knowledge partagés par SMS depuis l'éditeur wiki (non applicable ici)" },
+      { en: "Inventory barcode transfers pushed as text alerts (not applicable here)", fr: "Transferts de code-barres d'inventaire envoyés comme alertes texte (non applicable ici)" },
+      { en: "Discuss channels broadcasting internal chat only (not applicable here)", fr: "Canaux Discuss diffusant uniquement du chat interne (non applicable ici)" },
     ],
-    explanation: {
-      en: "SMS Marketing sends campaigns to mailing lists with provider credits (IAP). Opt-out links and blacklist rules keep compliance. It is separate from Discuss internal chat and from Knowledge documentation.\n\nKnowledge publishes articles; it is not a bulk SMS campaign tool. Barcode operations update stock moves, not customer SMS campaigns. Discuss handles team chat, not promotional SMS to external contacts.",
-      fr: "SMS Marketing sends campaigns to mailing lists with provider credits (IAP). Opt-out links and blacklist rules keep compliance. It is separate from Discuss internal chat and from Knowledge documentation.\n\nKnowledge publishes articles; it is not a bulk SMS campaign tool. Barcode operations update stock moves, not customer SMS campaigns. Discuss handles team chat, not promotional SMS to external contacts.",
-    },
+    explanation: { en: "SMS Marketing sends campaigns to mailing lists with provider credits (IAP). Opt-out links and blacklist rules keep compliance. It is separate from Discuss internal chat and from Knowledge documentation.\n\nWhy not \"Knowledge articles shared as SMS from the wiki editor (not applicable here)\"? Knowledge publishes articles; it is not a bulk SMS campaign tool.\n\nWhy not \"Inventory barcode transfers pushed as text alerts (not applicable here)\"? Barcode operations update stock moves, not customer SMS campaigns.\n\nWhy not \"Discuss channels broadcasting internal chat only (not applicable here)\"? Discuss handles team chat, not promotional SMS to external contacts.", fr: "SMS Marketing envoie des campagnes à des listes de diffusion avec des crédits fournisseur (IAP). Les liens de désinscription et les règles de liste noire assurent la conformité." },
   }),
   complexQ({
     id: "oep-104",
     module: "marketing",
-    text: {
-      en: "A trainer builds a certification quiz in Odoo 19 Surveys. How can a passing score be enforced?",
-      fr: "A trainer builds a certification quiz in Odoo 19 Surveys. How can a passing score be enforced?",
-    },
-    correct: {
-      en: "Set scoring on questions and define a minimum % to pass on the survey",
-      fr: "Set scoring on questions and define a minimum % to pass on the survey",
-    },
+    text: { en: "A trainer builds a certification quiz in Odoo 19 Surveys. How can a passing score be enforced?", fr: "Un formateur construit un quiz de certification dans Odoo 19 Enquêtes. Comment un score de passage peut-il être imposé ?" },
+    correct: { en: "Set scoring on questions and define a minimum % to pass on the survey", fr: "Définir le scoring sur les questions et définir un pourcentage minimum pour réussir l'enquête" },
     distractors: [
-      {
-        en: "Require a POS payment before the survey opens (not applicable here)",
-        fr: "Require a POS payment before the survey opens (not applicable here)",
-      },
-      {
-        en: "Use a fiscal position to map taxes on answers (not applicable here)",
-        fr: "Use a position fiscale to map taxes on answers (not applicable here)",
-      },
-      {
-        en: "Lock the survey until a manufacturing order completes (not applicable here)",
-        fr: "Lock the survey until a ordre de fabrication completes (not applicable here)",
-      },
+      { en: "Require a POS payment before the survey opens (not applicable here)", fr: "Exiger un paiement PDV avant l'ouverture de l'enquête (non applicable ici)" },
+      { en: "Use a fiscal position to map taxes on answers (not applicable here)", fr: "Utiliser une position fiscale pour mapper les taxes sur les réponses (non applicable ici)" },
+      { en: "Lock the survey until a manufacturing order completes (not applicable here)", fr: "Verrouiller l'enquête jusqu'à ce qu'un ordre de fabrication soit terminé (non applicable ici)" },
     ],
-    explanation: {
-      en: "Surveys support scored questions (single/multiple choice with points). You configure a passing score percentage; respondents see pass/fail and can be limited on retries depending on settings.\n\nPOS payments are unrelated to survey scoring logic. Fiscal positions remap taxes on transactions, not survey grades. Manufacturing orders produce goods; they do not gate survey access.",
-      fr: "Surveys support scored questions (single/multiple choice with points). You configure a passing score percentage; respondents see pass/fail and can be limited on retries depending on settings.\n\nPOS payments are unrelated to survey scoring logic. position fiscale remap taxes on transactions, not survey grades. Manufacturing orders produce goods; they do not gate survey access.",
-    },
+    explanation: { en: "Surveys support scored questions (single/multiple choice with points). You configure a passing score percentage; respondents see pass/fail and can be limited on retries depending on settings.\n\nWhy not \"Require a POS payment before the survey opens (not applicable here)\"? POS payments are unrelated to survey scoring logic.\n\nWhy not \"Use a fiscal position to map taxes on answers (not applicable here)\"? Fiscal positions remap taxes on transactions, not survey grades.\n\nWhy not \"Lock the survey until a manufacturing order completes (not applicable here)\"? Manufacturing orders produce goods; they do not gate survey access.", fr: "Les enquêtes supportent des questions avec score (choix simple/multiple avec points). Vous configurez un pourcentage de passage ; les répondants voient réussi/échoué et peuvent être limités en tentatives selon les paramètres." },
   }),
   complexQ({
     id: "oep-105",
     module: "marketing",
-    text: {
-      en: "Which Surveys question type collects a matrix of ratings (rows vs columns) in Odoo 19?",
-      fr: "Which Surveys question type collects a matrix of ratings (rows vs columns) in Odoo 19?",
-    },
-    correct: {
-      en: "Matrix question type with row labels and column scale values",
-      fr: "Matrix question type with row labels and column scale values",
-    },
+    text: { en: "Which Surveys question type collects a matrix of ratings (rows vs columns) in Odoo 19?", fr: "Quel type de question d'Enquête collecte une matrice de notations (lignes vs colonnes) dans Odoo 19 ?" },
+    correct: { en: "Matrix question type with row labels and column scale values", fr: "Type de question Matrice avec libellés de lignes et valeurs d'échelle en colonnes" },
     distractors: [
-      {
-        en: "Simple Textbox for one-line free text only (not applicable here)",
-        fr: "Simple Textbox for one-line free text only (not applicable here)",
-      },
-      {
-        en: "Numerical Value with a single integer input (not applicable here)",
-        fr: "Numerical Value with a single integer input (not applicable here)",
-      },
-      {
-        en: "File Upload for attaching a PDF response (not applicable here)",
-        fr: "File Upload for attaching a PDF response (not applicable here)",
-      },
+      { en: "Simple Textbox for one-line free text only (not applicable here)", fr: "Zone de texte simple pour du texte libre sur une seule ligne uniquement (non applicable ici)" },
+      { en: "Numerical Value with a single integer input (not applicable here)", fr: "Valeur numérique avec une saisie d'entier unique (non applicable ici)" },
+      { en: "File Upload for attaching a PDF response (not applicable here)", fr: "Téléchargement de fichier pour joindre une réponse PDF (non applicable ici)" },
     ],
-    explanation: {
-      en: "The Matrix question type lets you define rows (statements) and columns (rating scale). Respondents pick one column per row, ideal for satisfaction grids or skills assessments.\n\nTextbox captures a single text answer, not a row/column grid. Numerical Value is one number, not a multi-row rating matrix. File Upload stores attachments; it does not render rating grids.",
-      fr: "The Matrix question type lets you define rows (statements) and columns (rating scale). Respondents pick one column per row, ideal for satisfaction grids or skills assessments.\n\nTextbox captures a single text answer, not a row/column grid. Numerical Value is one number, not a multi-row rating matrix. File Upload stores attachments; it does not render rating grids.",
-    },
+    explanation: { en: "The Matrix question type lets you define rows (statements) and columns (rating scale). Respondents pick one column per row, ideal for satisfaction grids or skills assessments.\n\nWhy not \"Simple Textbox for one-line free text only (not applicable here)\"? Textbox captures a single text answer, not a row/column grid.\n\nWhy not \"Numerical Value with a single integer input (not applicable here)\"? Numerical Value is one number, not a multi-row rating matrix.\n\nWhy not \"File Upload for attaching a PDF response (not applicable here)\"? File Upload stores attachments; it does not render rating grids.", fr: "Le type de question Matrice permet de définir des lignes (affirmations) et des colonnes (échelle de notation). Les répondants choisissent une colonne par ligne, idéal pour les grilles de satisfaction ou les évaluations de compétences." },
   }),
   complexQ({
     id: "oep-106",
     module: "spreadsheet",
-    text: {
-      en: "A CFO wants a live inventory valuation pivot inside Odoo 19 without exporting to Excel. Which tool is designed for this?",
-      fr: "A CFO wants a live inventory valuation pivot inside Odoo 19 without exporting to Excel. Which tool is designed for this?",
-    },
-    correct: {
-      en: "Odoo Spreadsheet inserting a pivot/list from Inventory reporting data",
-      fr: "Odoo Spreadsheet inserting a pivot/list from Inventory reporting data",
-    },
+    text: { en: "A CFO wants a live inventory valuation pivot inside Odoo 19 without exporting to Excel. Which tool is designed for this?", fr: "Un directeur financier veut un tableau croisé dynamique de valorisation des stocks en direct dans Odoo 19 sans exporter vers Excel. Quel outil est conçu pour cela ?" },
+    correct: { en: "Odoo Spreadsheet inserting a pivot/list from Inventory reporting data", fr: "Tableur Odoo insérant un tableau croisé/une liste depuis les données de reporting d'Inventaire" },
     distractors: [
-      {
-        en: "Sign module for PDF signature capture on stock counts (not applicable here)",
-        fr: "Sign module for PDF signature capture on stock counts (not applicable here)",
-      },
-      {
-        en: "POS closing journal for end-of-day cash differences (not applicable here)",
-        fr: "POS closing journal for end-of-day cash differences (not applicable here)",
-      },
-      {
-        en: "Discuss channel pinned messages for warehouse notes (not applicable here)",
-        fr: "Discuss channel pinned messages for entrepôt notes (not applicable here)",
-      },
+      { en: "Sign module for PDF signature capture on stock counts (not applicable here)", fr: "Module Sign pour la capture de signature PDF sur les comptages de stock (non applicable ici)" },
+      { en: "POS closing journal for end-of-day cash differences (not applicable here)", fr: "Journal de clôture PDV pour les écarts de caisse en fin de journée (non applicable ici)" },
+      { en: "Discuss channel pinned messages for warehouse notes (not applicable here)", fr: "Messages épinglés de canal Discuss pour les notes d'entrepôt (non applicable ici)" },
     ],
-    explanation: {
-      en: "Odoo Spreadsheet connects to live Odoo data. You insert pivots or lists from reports (e.g., stock valuation) and refresh values in place, optionally on dashboards.\n\nSign handles signatures, not live analytical pivots. POS session closing reconciles cash, not inventory valuation pivots. Discuss stores chat messages, not spreadsheet analytics.",
-      fr: "Odoo Spreadsheet connects to live Odoo data. You insert pivots or lists from reports (e.g., stock valuation) and refresh values in place, optionally on dashboards.\n\nSign handles signatures, not live analytical pivots. POS session closing reconciles cash, not inventory valuation pivots. Discuss stores chat messages, not spreadsheet analytics.",
-    },
+    explanation: { en: "Odoo Spreadsheet connects to live Odoo data. You insert pivots or lists from reports (e.g., stock valuation) and refresh values in place, optionally on dashboards.\n\nWhy not \"Sign module for PDF signature capture on stock counts (not applicable here)\"? Sign handles signatures, not live analytical pivots.\n\nWhy not \"POS closing journal for end-of-day cash differences (not applicable here)\"? POS session closing reconciles cash, not inventory valuation pivots.\n\nWhy not \"Discuss channel pinned messages for warehouse notes (not applicable here)\"? Discuss stores chat messages, not spreadsheet analytics.", fr: "Le tableur Odoo se connecte aux données Odoo en direct. Vous insérez des tableaux croisés dynamiques ou des listes depuis les rapports (ex. : valorisation des stocks) et rafraîchissez les valeurs en place, éventuellement sur des tableaux de bord." },
   }),
   complexQ({
     id: "oep-107",
     module: "spreadsheet",
-    text: {
-      en: "In Odoo 19 Spreadsheet, what happens when you click \"Insert\" > \"List\" from a filtered sales report?",
-      fr: "In Odoo 19 Spreadsheet, what happens when you click \"Insert\" > \"List\" from a filtered sales report?",
-    },
-    correct: {
-      en: "A linked list of records appears in the sheet and can refresh from live data",
-      fr: "A linked list of records appears in the sheet and can refresh from live data",
-    },
+    text: { en: "In Odoo 19 Spreadsheet, what happens when you click \"Insert\" > \"List\" from a filtered sales report?", fr: "Dans le Tableur Odoo 19, que se passe-t-il lorsque vous cliquez sur « Insérer » > « Liste » depuis un rapport de ventes filtré ?" },
+    correct: { en: "A linked list of records appears in the sheet and can refresh from live data", fr: "Une liste liée d'enregistrements apparaît dans la feuille et peut être rafraîchie depuis les données en direct" },
     distractors: [
-      {
-        en: "A static PNG screenshot is pasted with no data connection (not applicable here)",
-        fr: "A static PNG screenshot is pasted with no data connection (not applicable here)",
-      },
-      {
-        en: "A new sales order is created for each visible row (not applicable here)",
-        fr: "A new commande client is created for each visible row (not applicable here)",
-      },
-      {
-        en: "The underlying report filter is deleted permanently (not applicable here)",
-        fr: "The underlying report filter is deleted permanently (not applicable here)",
-      },
+      { en: "A static PNG screenshot is pasted with no data connection (not applicable here)", fr: "Une capture d'écran PNG statique est collée sans connexion aux données (non applicable ici)" },
+      { en: "A new sales order is created for each visible row (not applicable here)", fr: "Un nouveau bon de commande est créé pour chaque ligne visible (non applicable ici)" },
+      { en: "The underlying report filter is deleted permanently (not applicable here)", fr: "Le filtre du rapport sous-jacent est supprimé définitivement (non applicable ici)" },
     ],
-    explanation: {
-      en: "Insert List pulls the current report dataset into the spreadsheet as a linked data region. Refresh updates figures when underlying transactions change, preserving filters defined at insert time.\n\nSpreadsheet lists are data-linked, not static image captures. Insert List does not create sales orders; it imports data for analysis. Inserting a list does not delete the source report or its filters.",
-      fr: "Insert List pulls the current report dataset into the spreadsheet as a linked data region. Refresh updates figures when underlying transactions change, preserving filters defined at insert time.\n\nSpreadsheet lists are data-linked, not static image captures. Insert List does not create sales orders; it imports data for analysis. Inserting a list does not delete the source report or its filters.",
-    },
+    explanation: { en: "Insert List pulls the current report dataset into the spreadsheet as a linked data region. Refresh updates figures when underlying transactions change, preserving filters defined at insert time.\n\nWhy not \"A static PNG screenshot is pasted with no data connection (not applicable here)\"? Spreadsheet lists are data-linked, not static image captures.\n\nWhy not \"A new sales order is created for each visible row (not applicable here)\"? Insert List does not create sales orders; it imports data for analysis.\n\nWhy not \"The underlying report filter is deleted permanently (not applicable here)\"? Inserting a list does not delete the source report or its filters.", fr: "Insérer une Liste extrait le jeu de données du rapport actuel dans le tableur en tant que zone de données liée. Le rafraîchissement met à jour les chiffres lorsque les transactions sous-jacentes changent, en préservant les filtres définis à l'insertion." },
   }),
   complexQ({
     id: "oep-108",
     module: "spreadsheet",
-    text: {
-      en: "A manager pins a Spreadsheet dashboard to the Accounting app home screen in Odoo 19. What does this provide?",
-      fr: "A manager pins a Spreadsheet dashboard to the Accounting app home screen in Odoo 19. What does this provide?",
-    },
-    correct: {
-      en: "A shared live dashboard tile users open without rebuilding the sheet",
-      fr: "A shared live dashboard tile users open without rebuilding the sheet",
-    },
+    text: { en: "A manager pins a Spreadsheet dashboard to the Accounting app home screen in Odoo 19. What does this provide?", fr: "Un responsable épingle un tableau de bord Tableur sur l'écran d'accueil de l'application Comptabilité dans Odoo 19. Qu'est-ce que cela fournit ?" },
+    correct: { en: "A shared live dashboard tile users open without rebuilding the sheet", fr: "Une tuile de tableau de bord en direct partagée que les utilisateurs ouvrent sans reconstruire la feuille" },
     distractors: [
-      {
-        en: "A one-time PDF export that never updates after publishing (not applicable here)",
-        fr: "A one-time PDF export that never updates after publishing (not applicable here)",
-      },
-      {
-        en: "A Studio custom model replacing account.move entirely (not applicable here)",
-        fr: "A Studio custom model replacing account.move entirely (not applicable here)",
-      },
-      {
-        en: "A POS config for retail cash control only (not applicable here)",
-        fr: "A POS config for retail cash control only (not applicable here)",
-      },
+      { en: "A one-time PDF export that never updates after publishing (not applicable here)", fr: "Un export PDF ponctuel qui ne se met jamais à jour après publication (non applicable ici)" },
+      { en: "A Studio custom model replacing account.move entirely (not applicable here)", fr: "Un modèle personnalisé Studio remplaçant entièrement account.move (non applicable ici)" },
+      { en: "A POS config for retail cash control only (not applicable here)", fr: "Une configuration PDV pour le contrôle de caisse de détail uniquement (non applicable ici)" },
     ],
-    explanation: {
-      en: "Spreadsheet dashboards can be shared and pinned to app menus. Authorized users open the live dashboard with refreshed figures from connected Odoo data sources.\n\nDashboards remain linked to live data, unlike a static PDF snapshot. Studio extends models; it does not replace account.move with a dashboard tile. POS config manages registers and payment methods, not spreadsheet dashboards.",
-      fr: "Spreadsheet dashboards can be shared and pinned to app menus. Authorized users open the live dashboard with refreshed figures from connected Odoo data sources.\n\nDashboards remain linked to live data, unlike a static PDF snapshot. Studio extends models; it does not replace account.move with a dashboard tile. POS config manages registers and payment methods, not spreadsheet dashboards.",
-    },
+    explanation: { en: "Spreadsheet dashboards can be shared and pinned to app menus. Authorized users open the live dashboard with refreshed figures from connected Odoo data sources.\n\nWhy not \"A one-time PDF export that never updates after publishing (not applicable here)\"? Dashboards remain linked to live data, unlike a static PDF snapshot.\n\nWhy not \"A Studio custom model replacing account.move entirely (not applicable here)\"? Studio extends models; it does not replace account.move with a dashboard tile.\n\nWhy not \"A POS config for retail cash control only (not applicable here)\"? POS config manages registers and payment methods, not spreadsheet dashboards.", fr: "Les tableaux de bord de tableur peuvent être partagés et épinglés aux menus d'applications. Les utilisateurs autorisés ouvrent le tableau de bord en direct avec des chiffres rafraîchis depuis les sources de données Odoo connectées." },
   }),
   complexQ({
     id: "oep-109",
     module: "spreadsheet",
-    text: {
-      en: "Which Odoo 19 app hosts collaborative internal playbooks with nested articles and @mentions?",
-      fr: "Which Odoo 19 app hosts collaborative internal playbooks with nested articles and @mentions?",
-    },
-    correct: {
-      en: "Knowledge with workspaces, articles, and permission levels",
-      fr: "Knowledge with workspaces, articles, and permission levels",
-    },
+    text: { en: "Which Odoo 19 app hosts collaborative internal playbooks with nested articles and @mentions?", fr: "Quelle application Odoo 19 héberge des guides collaboratifs internes avec des articles imbriqués et des @mentions ?" },
+    correct: { en: "Knowledge with workspaces, articles, and permission levels", fr: "Knowledge avec espaces de travail, articles et niveaux de permission" },
     distractors: [
-      {
-        en: "Inventory > Operations > Transfers for stock pickings (not applicable here)",
-        fr: "Inventory > Operations > Transfers for stock pickings (not applicable here)",
-      },
-      {
-        en: "Purchase > RFQ list for vendor quotations (not applicable here)",
-        fr: "Purchase > RFQ list for vendor quotations (not applicable here)",
-      },
-      {
-        en: "Maintenance equipment records for work centers (not applicable here)",
-        fr: "Maintenance equipment records for work centers (not applicable here)",
-      },
+      { en: "Inventory > Operations > Transfers for stock pickings (not applicable here)", fr: "Inventaire > Opérations > Transferts pour les bons de transfert de stock (non applicable ici)" },
+      { en: "Purchase > RFQ list for vendor quotations (not applicable here)", fr: "Achats > Liste des demandes de prix pour les devis fournisseurs (non applicable ici)" },
+      { en: "Maintenance equipment records for work centers (not applicable here)", fr: "Enregistrements d'équipement de maintenance pour les postes de charge (non applicable ici)" },
     ],
-    explanation: {
-      en: "Knowledge (Enterprise) provides workspaces, hierarchical articles, templates, and collaboration features like mentions and favorites. It is the wiki/playbook app referenced on the certification syllabus.\n\nTransfers move stock; they do not store collaborative documentation articles. RFQs negotiate vendor pricing, not internal knowledge bases. Maintenance tracks equipment reliability, not wiki-style playbooks.",
-      fr: "Knowledge (Enterprise) provides workspaces, hierarchical articles, templates, and collaboration features like mentions and favorites. It is the wiki/playbook app referenced on the certification syllabus.\n\nTransfers move stock; they do not store collaborative documentation articles. RFQs negotiate vendor pricing, not internal knowledge bases. Maintenance tracks equipment reliability, not wiki-style playbooks.",
-    },
+    explanation: { en: "Knowledge (Enterprise) provides workspaces, hierarchical articles, templates, and collaboration features like mentions and favorites. It is the wiki/playbook app referenced on the certification syllabus.\n\nWhy not \"Inventory > Operations > Transfers for stock pickings (not applicable here)\"? Transfers move stock; they do not store collaborative documentation articles.\n\nWhy not \"Purchase > RFQ list for vendor quotations (not applicable here)\"? RFQs negotiate vendor pricing, not internal knowledge bases.\n\nWhy not \"Maintenance equipment records for work centers (not applicable here)\"? Maintenance tracks equipment reliability, not wiki-style playbooks.", fr: "Knowledge (Enterprise) fournit des espaces de travail, des articles hiérarchiques, des modèles et des fonctionnalités de collaboration comme les mentions et les favoris. C'est l'application wiki/guide référencée dans le programme de certification." },
   }),
   complexQ({
     id: "oep-110",
     module: "spreadsheet",
-    text: {
-      en: "A support lead links a Knowledge article to a Helpdesk ticket in Odoo 19. What is the typical purpose?",
-      fr: "A support piste links a Knowledge article to a Helpdesk ticket in Odoo 19. What is the typical purpose?",
-    },
-    correct: {
-      en: "Give agents a vetted troubleshooting procedure without leaving the ticket",
-      fr: "Give agents a vetted troubleshooting procedure without leaving the ticket",
-    },
+    text: { en: "A support lead links a Knowledge article to a Helpdesk ticket in Odoo 19. What is the typical purpose?", fr: "Un responsable support lie un article Knowledge à un ticket Helpdesk dans Odoo 19. Quel est le but typique ?" },
+    correct: { en: "Give agents a vetted troubleshooting procedure without leaving the ticket", fr: "Donner aux agents une procédure de dépannage validée sans quitter le ticket" },
     distractors: [
-      {
-        en: "Post the ticket total to the general ledger as revenue (not applicable here)",
-        fr: "Post the ticket total to the general ledger as revenue (not applicable here)",
-      },
-      {
-        en: "Create a manufacturing order from the article BOM (not applicable here)",
-        fr: "Create a ordre de fabrication from the article BOM (not applicable here)",
-      },
-      {
-        en: "Replace the customer portal quotation signature flow (not applicable here)",
-        fr: "Replace the customer portal devis signature flow (not applicable here)",
-      },
+      { en: "Post the ticket total to the general ledger as revenue (not applicable here)", fr: "Comptabiliser le total du ticket dans le grand livre comme revenu (non applicable ici)" },
+      { en: "Create a manufacturing order from the article BOM (not applicable here)", fr: "Créer un ordre de fabrication à partir de la nomenclature de l'article (non applicable ici)" },
+      { en: "Replace the customer portal quotation signature flow (not applicable here)", fr: "Remplacer le flux de signature de devis du portail client (non applicable ici)" },
     ],
-    explanation: {
-      en: "Linking Knowledge articles to Helpdesk tickets surfaces standard operating procedures, policies, or FAQs inside the ticket form so agents follow consistent resolution steps.\n\nHelpdesk tickets are not posted as revenue journal entries by linking articles. Manufacturing orders come from BoMs, not Knowledge article links. Portal quotation signing is a Sales workflow unrelated to Helpdesk article links.",
-      fr: "Linking Knowledge articles to Helpdesk tickets surfaces standard operating procedures, policies, or FAQs inside the ticket form so agents follow consistent resolution steps.\n\nHelpdesk tickets are not posted as revenue écritures comptables by linking articles. Manufacturing orders come from BoMs, not Knowledge article links. Portal devis signing is a Sales workflow unrelated to Helpdesk article links.",
-    },
+    explanation: { en: "Linking Knowledge articles to Helpdesk tickets surfaces standard operating procedures, policies, or FAQs inside the ticket form so agents follow consistent resolution steps.\n\nWhy not \"Post the ticket total to the general ledger as revenue (not applicable here)\"? Helpdesk tickets are not posted as revenue journal entries by linking articles.\n\nWhy not \"Create a manufacturing order from the article BOM (not applicable here)\"? Manufacturing orders come from BoMs, not Knowledge article links.\n\nWhy not \"Replace the customer portal quotation signature flow (not applicable here)\"? Portal quotation signing is a Sales workflow unrelated to Helpdesk article links.", fr: "Lier des articles Knowledge aux tickets Helpdesk fait apparaître les procédures opérationnelles standard, politiques ou FAQ dans le formulaire du ticket afin que les agents suivent des étapes de résolution cohérentes." },
   }),
   complexQ({
     id: "oep-111",
     module: "crm",
-    text: {
-      en: "A sales order requires a 30% down payment before production starts in Odoo 19. Which invoicing policy supports this?",
-      fr: "A commande client requires a 30% down payment before production starts in Odoo 19. Which invoicing policy supports this?",
-    },
-    correct: {
-      en: "Down payment invoice from the sales order (percentage or fixed amount)",
-      fr: "Down payment facture from the commande client (percentage or fixed amount)",
-    },
+    text: { en: "A sales order requires a 30% down payment before production starts in Odoo 19. Which invoicing policy supports this?", fr: "Un bon de commande nécessite un acompte de 30 % avant le début de la production dans Odoo 19. Quelle politique de facturation supporte cela ?" },
+    correct: { en: "Down payment invoice from the sales order (percentage or fixed amount)", fr: "Facture d'acompte depuis le bon de commande (pourcentage ou montant fixe)" },
     distractors: [
-      {
-        en: "Invoice on delivery only with no deposit capability (not applicable here)",
-        fr: "facture on delivery only with no deposit capability (not applicable here)",
-      },
-      {
-        en: "Vendor bill three-way matching on the sales quotation (not applicable here)",
-        fr: "facture fournisseur three-way matching on the sales devis (not applicable here)",
-      },
-      {
-        en: "POS session cash difference posting at day end (not applicable here)",
-        fr: "POS session cash difference posting at day end (not applicable here)",
-      },
+      { en: "Invoice on delivery only with no deposit capability (not applicable here)", fr: "Facturer à la livraison uniquement sans possibilité d'acompte (non applicable ici)" },
+      { en: "Vendor bill three-way matching on the sales quotation (not applicable here)", fr: "Rapprochement à 3 voies de la facture fournisseur sur le devis (non applicable ici)" },
+      { en: "POS session cash difference posting at day end (not applicable here)", fr: "Comptabilisation de l'écart de caisse de la session PDV en fin de journée (non applicable ici)" },
     ],
-    explanation: {
-      en: "Sales orders support down payment invoices (percentage or fixed). Odoo creates a deposit invoice, tracks the down payment on the SO, and deducts it from the final invoice.\n\nDelivered-quantity invoicing bills after shipment, not an upfront deposit. Three-way matching applies to vendor bills, not customer down payments. POS cash differences reconcile registers; they are not sales deposits.",
-      fr: "Sales orders support down payment facture (percentage or fixed). Odoo creates a deposit facture, tracks the down payment on the SO, and deducts it from the final facture.\n\nDelivered-quantity invoicing bills after shipment, not an upfront deposit. Three-way matching applies to facture fournisseur, not customer down payments. POS cash differences reconcile registers; they are not sales deposits.",
-    },
+    explanation: { en: "Sales orders support down payment invoices (percentage or fixed). Odoo creates a deposit invoice, tracks the down payment on the SO, and deducts it from the final invoice.\n\nWhy not \"Invoice on delivery only with no deposit capability (not applicable here)\"? Delivered-quantity invoicing bills after shipment, not an upfront deposit.\n\nWhy not \"Vendor bill three-way matching on the sales quotation (not applicable here)\"? Three-way matching applies to vendor bills, not customer down payments.\n\nWhy not \"POS session cash difference posting at day end (not applicable here)\"? POS cash differences reconcile registers; they are not sales deposits.", fr: "Les bons de commande supportent les factures d'acompte (pourcentage ou montant fixe). Odoo crée une facture d'acompte, suit l'acompte sur la commande et le déduit de la facture finale." },
   }),
   complexQ({
     id: "oep-112",
     module: "crm",
-    text: {
-      en: "A storable product should invoice when quantities are delivered, not when the order is confirmed. Where is this set in Odoo 19?",
-      fr: "A storable product should facture when quantities are delivered, not when the order is confirmed. Where is this set in Odoo 19?",
-    },
-    correct: {
-      en: "Product invoicing policy: Ordered quantities vs Delivered quantities",
-      fr: "Product invoicing policy: Ordered quantities vs Delivered quantities",
-    },
+    text: { en: "A storable product should invoice when quantities are delivered, not when the order is confirmed. Where is this set in Odoo 19?", fr: "Un produit stockable doit être facturé lorsque les quantités sont livrées, pas lorsque la commande est confirmée. Où cela se paramètre-t-il dans Odoo 19 ?" },
+    correct: { en: "Product invoicing policy: Ordered quantities vs Delivered quantities", fr: "Politique de facturation du produit : Quantités commandées vs Quantités livrées" },
     distractors: [
-      {
-        en: "Warehouse route Make-to-Order on the vendor pricelist (not applicable here)",
-        fr: "entrepôt route Make-to-Order on the vendor liste de prix (not applicable here)",
-      },
-      {
-        en: "Fiscal position mapping on the payment provider (not applicable here)",
-        fr: "position fiscale mapping on the payment provider (not applicable here)",
-      },
-      {
-        en: "POS config outstanding receipts account (not applicable here)",
-        fr: "POS config outstanding receipts account (not applicable here)",
-      },
+      { en: "Warehouse route Make-to-Order on the vendor pricelist (not applicable here)", fr: "Route d'entrepôt Fabrication à la commande sur la liste de prix fournisseur (non applicable ici)" },
+      { en: "Fiscal position mapping on the payment provider (not applicable here)", fr: "Mapping de position fiscale sur le fournisseur de paiement (non applicable ici)" },
+      { en: "POS config outstanding receipts account (not applicable here)", fr: "Compte d'encaissements en attente de la configuration PDV (non applicable ici)" },
     ],
-    explanation: {
-      en: "On the product (or service), Invoicing Policy controls whether invoice lines follow ordered or delivered quantities. Delivered is standard for storable goods where revenue aligns with shipment.\n\nMTO routes drive procurement linkage, not customer invoice timing. Fiscal positions remap taxes/accounts, not invoice-on-delivery policy. POS outstanding accounts handle register payments, not SO invoice policy.",
-      fr: "On the product (or service), Invoicing Policy controls whether facture lines follow ordered or delivered quantities. Delivered is standard for storable goods where revenue aligns with shipment.\n\nMTO routes drive procurement linkage, not customer facture timing. position fiscale remap taxes/accounts, not facture-on-delivery policy. POS outstanding accounts handle register payments, not SO facture policy.",
-    },
+    explanation: { en: "On the product (or service), Invoicing Policy controls whether invoice lines follow ordered or delivered quantities. Delivered is standard for storable goods where revenue aligns with shipment.\n\nWhy not \"Warehouse route Make-to-Order on the vendor pricelist (not applicable here)\"? MTO routes drive procurement linkage, not customer invoice timing.\n\nWhy not \"Fiscal position mapping on the payment provider (not applicable here)\"? Fiscal positions remap taxes/accounts, not invoice-on-delivery policy.\n\nWhy not \"POS config outstanding receipts account (not applicable here)\"? POS outstanding accounts handle register payments, not SO invoice policy.", fr: "Sur le produit (ou service), la politique de facturation contrôle si les lignes de facture suivent les quantités commandées ou livrées. « Livrées » est standard pour les biens stockables où le revenu s'aligne avec l'expédition." },
   }),
   complexQ({
     id: "oep-113",
     module: "crm",
-    text: {
-      en: "A sales team reuses a standard quotation layout with default sections and terms in Odoo 19. Which object stores this?",
-      fr: "A sales team reuses a standard devis layout with default sections and terms in Odoo 19. Which object stores this?",
-    },
-    correct: {
-      en: "Quotation Template (sale.order.template) applied on new quotations",
-      fr: "devis Template (sale.order.template) applied on new quotations",
-    },
+    text: { en: "A sales team reuses a standard quotation layout with default sections and terms in Odoo 19. Which object stores this?", fr: "Une équipe commerciale réutilise une mise en page de devis standard avec des sections par défaut et des conditions dans Odoo 19. Quel objet stocke cela ?" },
+    correct: { en: "Quotation Template (sale.order.template) applied on new quotations", fr: "Modèle de devis (sale.order.template) appliqué sur les nouveaux devis" },
     distractors: [
-      {
-        en: "Purchase Agreement blanket order for vendor tenders (not applicable here)",
-        fr: "Purchase Agreement blanket order for vendor tenders (not applicable here)",
-      },
-      {
-        en: "mrp.bom kit explosion on delivery orders (not applicable here)",
-        fr: "mrp.bom kit explosion on delivery orders (not applicable here)",
-      },
-      {
-        en: "ir.cron scheduled action for mail queue (not applicable here)",
-        fr: "ir.cron scheduled action for mail queue (not applicable here)",
-      },
+      { en: "Purchase Agreement blanket order for vendor tenders (not applicable here)", fr: "Contrat d'achat (ordre ouvert) pour les appels d'offres fournisseurs (non applicable ici)" },
+      { en: "mrp.bom kit explosion on delivery orders (not applicable here)", fr: "Éclatement de nomenclature Kit mrp.bom sur les bons de livraison (non applicable ici)" },
+      { en: "ir.cron scheduled action for mail queue (not applicable here)", fr: "Action planifiée ir.cron pour la file d'attente des e-mails (non applicable ici)" },
     ],
-    explanation: {
-      en: "Quotation Templates define default lines, sections, terms, and optional products. Salespeople start from a template to speed quoting while keeping consistent structure and legal text.\n\nBlanket orders are purchase-side contracts with vendors, not sales quote layouts. Kit BoMs explode components on pickings, not quotation document structure. Scheduled actions run background jobs; they do not store quote layouts.",
-      fr: "devis Templates define default lines, sections, terms, and optional products. Salespeople start from a template to speed quoting while keeping consistent structure and legal text.\n\nBlanket orders are purchase-side contracts with vendors, not sales quote layouts. Kit BoMs explode components on pickings, not devis document structure. Scheduled actions run background jobs; they do not store quote layouts.",
-    },
+    explanation: { en: "Quotation Templates define default lines, sections, terms, and optional products. Salespeople start from a template to speed quoting while keeping consistent structure and legal text.\n\nWhy not \"Purchase Agreement blanket order for vendor tenders (not applicable here)\"? Blanket orders are purchase-side contracts with vendors, not sales quote layouts.\n\nWhy not \"mrp.bom kit explosion on delivery orders (not applicable here)\"? Kit BoMs explode components on pickings, not quotation document structure.\n\nWhy not \"ir.cron scheduled action for mail queue (not applicable here)\"? Scheduled actions run background jobs; they do not store quote layouts.", fr: "Les modèles de devis définissent les lignes par défaut, les sections, les conditions et les produits optionnels. Les commerciaux démarrent depuis un modèle pour accélérer l'établissement des devis tout en gardant une structure et un texte juridique cohérents." },
   }),
   complexQ({
     id: "oep-114",
     module: "crm",
-    text: {
-      en: "A consultant sells consulting hours in Days but stocks materials in Units. Which Odoo 19 feature manages both on one product catalog?",
-      fr: "A consultant sells consulting hours in Days but stocks materials in Units. Which Odoo 19 feature manages both on one product catalog?",
-    },
-    correct: {
-      en: "Units of Measure categories with conversion between related UoMs",
-      fr: "Units of Measure categories with conversion between related UoMs",
-    },
+    text: { en: "A consultant sells consulting hours in Days but stocks materials in Units. Which Odoo 19 feature manages both on one product catalog?", fr: "Un consultant vend des heures de conseil en Jours mais stocke des matériaux en Unités. Quelle fonctionnalité Odoo 19 gère les deux sur un même catalogue de produits ?" },
+    correct: { en: "Units of Measure categories with conversion between related UoMs", fr: "Catégories d'unités de mesure avec conversion entre UdM apparentées" },
     distractors: [
-      {
-        en: "Separate databases per unit type with no shared products (not applicable here)",
-        fr: "Separate databases per unit type with no shared products (not applicable here)",
-      },
-      {
-        en: "POS-only UoM definitions unavailable to Sales orders (not applicable here)",
-        fr: "POS-only UoM definitions unavailable to Sales orders (not applicable here)",
-      },
-      {
-        en: "Analytic tags replacing all UoM configuration (not applicable here)",
-        fr: "Analytic tags replacing all UoM configuration (not applicable here)",
-      },
+      { en: "Separate databases per unit type with no shared products (not applicable here)", fr: "Des bases de données séparées par type d'unité sans produits partagés (non applicable ici)" },
+      { en: "POS-only UoM definitions unavailable to Sales orders (not applicable here)", fr: "Des définitions d'UdM réservées au PDV non disponibles pour les bons de commande (non applicable ici)" },
+      { en: "Analytic tags replacing all UoM configuration (not applicable here)", fr: "Des étiquettes analytiques remplaçant toute la configuration d'UdM (non applicable ici)" },
     ],
-    explanation: {
-      en: "UoM categories group compatible units (Unit, Dozen, kg, Day, Hour). Products reference a base UoM; alternate UoMs convert within the category for sales, purchase, and inventory.\n\nOne Odoo database supports multiple UoM categories on a shared product catalog. POS uses the same product UoM definitions as Sales and Inventory. Analytic tags track dimensions; they do not replace unit-of-measure setup.",
-      fr: "UoM categories group compatible units (Unit, Dozen, kg, Day, Hour). Products reference a base UoM; alternate UoMs convert within the category for sales, purchase, and inventory.\n\nOne Odoo database supports multiple UoM categories on a shared product catalog. POS uses the same product UoM definitions as Sales and Inventory. Analytic tags track dimensions; they do not replace unit-of-measure setup.",
-    },
+    explanation: { en: "UoM categories group compatible units (Unit, Dozen, kg, Day, Hour). Products reference a base UoM; alternate UoMs convert within the category for sales, purchase, and inventory.\n\nWhy not \"Separate databases per unit type with no shared products (not applicable here)\"? One Odoo database supports multiple UoM categories on a shared product catalog.\n\nWhy not \"POS-only UoM definitions unavailable to Sales orders (not applicable here)\"? POS uses the same product UoM definitions as Sales and Inventory.\n\nWhy not \"Analytic tags replacing all UoM configuration (not applicable here)\"? Analytic tags track dimensions; they do not replace unit-of-measure setup.", fr: "Les catégories d'UdM regroupent les unités compatibles (Unité, Douzaine, kg, Jour, Heure). Les produits référencent une UdM de base ; les UdM alternatives convertissent au sein de la catégorie pour les ventes, achats et inventaire." },
   }),
   complexQ({
     id: "oep-115",
     module: "project",
-    text: {
-      en: "A billable support ticket should auto-create a project task when confirmed in Odoo 19. Which linkage enables this?",
-      fr: "A billable support ticket should auto-create a project task when confirmed in Odoo 19. Which linkage enables this?",
-    },
-    correct: {
-      en: "Helpdesk team/track settings",
-      fr: "Helpdesk team/track settings",
-    },
+    text: { en: "A billable support ticket should auto-create a project task when confirmed in Odoo 19. Which linkage enables this?", fr: "Un ticket de support facturable doit créer automatiquement une tâche de projet lorsqu'il est confirmé dans Odoo 19. Quel lien permet cela ?" },
+    correct: { en: "Helpdesk team/track settings", fr: "Paramètres de l'équipe Helpdesk/suivi" },
     distractors: [
-      {
-        en: "Inventory reordering rule on the ticket priority field",
-        fr: "Inventory règle de réapprovisionnement on the ticket priority field",
-      },
-      {
-        en: "Vendor three-way matching on helpdesk SLA timers",
-        fr: "Vendor three-way matching on helpdesk SLA timers",
-      },
-      {
-        en: "POS restaurant course management on table orders",
-        fr: "POS restaurant course management on table orders",
-      },
+      { en: "Inventory reordering rule on the ticket priority field", fr: "Règle de réapprovisionnement d'inventaire sur le champ priorité du ticket" },
+      { en: "Vendor three-way matching on helpdesk SLA timers", fr: "Rapprochement à 3 voies fournisseur sur les chronomètres SLA Helpdesk" },
+      { en: "POS restaurant course management on table orders", fr: "Gestion des plats du PDV restaurant sur les commandes de table" },
     ],
-    explanation: {
-      en: "Helpdesk can be configured to create project tasks (and timesheets) from tickets, tying support work to project profitability and billing. This is a standard Enterprise integration tested on the functional exam.\n\nReordering rules replenish stock; they do not spawn helpdesk project tasks. Three-way matching validates vendor bills against PO/receipts, not ticket SLAs. Restaurant course management sequences kitchen meals, not helpdesk projects.",
-      fr: "Helpdesk can be configured to create project tasks (and feuille de temps) from tickets, tying support work to project profitability and billing. This is a standard Enterprise integration tested on the functional exam.\n\nrègle de réapprovisionnement replenish stock; they do not spawn helpdesk project tasks. Three-way matching validates facture fournisseur against PO/receipts, not ticket SLAs. Restaurant course management sequences kitchen meals, not helpdesk projects.",
-    },
+    explanation: { en: "Helpdesk can be configured to create project tasks (and timesheets) from tickets, tying support work to project profitability and billing. This is a standard Enterprise integration tested on the functional exam.\n\nWhy not \"Inventory reordering rule on the ticket priority field\"? Reordering rules replenish stock; they do not spawn helpdesk project tasks.\n\nWhy not \"Vendor three-way matching on helpdesk SLA timers\"? Three-way matching validates vendor bills against PO/receipts, not ticket SLAs.\n\nWhy not \"POS restaurant course management on table orders\"? Restaurant course management sequences kitchen meals, not helpdesk projects.", fr: "Helpdesk peut être configuré pour créer des tâches de projet (et des feuilles de temps) à partir des tickets, liant le travail de support à la rentabilité du projet et à la facturation. C'est une intégration Enterprise standard testée à l'examen fonctionnel." },
   }),
   complexQ({
     id: "oep-116",
     module: "project",
-    text: {
-      en: "Project managers compare planned hours on tasks against timesheet hours logged in Odoo 19. Which view highlights the gap?",
-      fr: "Project managers compare planned hours on tasks against feuille de temps hours logged in Odoo 19. Which view highlights the gap?",
-    },
-    correct: {
-      en: "Project profitability / planned vs actual reporting on tasks and timesheets",
-      fr: "Project profitability / planned vs actual reporting on tasks and feuille de temps",
-    },
+    text: { en: "Project managers compare planned hours on tasks against timesheet hours logged in Odoo 19. Which view highlights the gap?", fr: "Les chefs de projet comparent les heures planifiées sur les tâches aux heures de feuille de temps enregistrées dans Odoo 19. Quelle vue met en évidence l'écart ?" },
+    correct: { en: "Project profitability / planned vs actual reporting on tasks and timesheets", fr: "Rentabilité du projet / reporting planifié vs réalisé sur les tâches et feuilles de temps" },
     distractors: [
-      {
-        en: "Aged receivable buckets by customer overdue days (not applicable here)",
-        fr: "Aged receivable buckets by customer overdue days (not applicable here)",
-      },
-      {
-        en: "POS session cash difference report by payment method (not applicable here)",
-        fr: "POS session cash difference report by payment method (not applicable here)",
-      },
-      {
-        en: "Tax grid report mapping to statutory return boxes (not applicable here)",
-        fr: "taxe grid report mapping to statutory return boxes (not applicable here)",
-      },
+      { en: "Aged receivable buckets by customer overdue days (not applicable here)", fr: "Tranches de balance âgée clients par jours de retard client (non applicable ici)" },
+      { en: "POS session cash difference report by payment method (not applicable here)", fr: "Rapport d'écart de caisse de session PDV par méthode de paiement (non applicable ici)" },
+      { en: "Tax grid report mapping to statutory return boxes (not applicable here)", fr: "Rapport de grille de taxe mappant vers les cases de déclaration légale (non applicable ici)" },
     ],
-    explanation: {
-      en: "Project reporting compares allocated/planned hours on tasks to timesheet entries actually logged. Variance feeds utilization and profitability analysis alongside billed amounts.\n\nAged receivable tracks customer balances, not project hour variance. POS cash difference reconciles registers, not project planning hours. Tax grids populate VAT returns, unrelated to project hour tracking.",
-      fr: "Project reporting compares allocated/planned hours on tasks to feuille de temps entries actually logged. Variance feeds utilization and profitability analysis alongside billed amounts.\n\nAged receivable tracks customer balances, not project hour variance. POS cash difference reconciles registers, not project planning hours. taxe grids populate VAT returns, unrelated to project hour tracking.",
-    },
+    explanation: { en: "Project reporting compares allocated/planned hours on tasks to timesheet entries actually logged. Variance feeds utilization and profitability analysis alongside billed amounts.\n\nWhy not \"Aged receivable buckets by customer overdue days (not applicable here)\"? Aged receivable tracks customer balances, not project hour variance.\n\nWhy not \"POS session cash difference report by payment method (not applicable here)\"? POS cash difference reconciles registers, not project planning hours.\n\nWhy not \"Tax grid report mapping to statutory return boxes (not applicable here)\"? Tax grids populate VAT returns, unrelated to project hour tracking.", fr: "Le reporting de projet compare les heures allouées/planifiées sur les tâches aux écritures de feuille de temps réellement enregistrées. L'écart alimente l'analyse d'utilisation et de rentabilité aux côtés des montants facturés." },
   }),
   complexQ({
     id: "oep-117",
     module: "project",
-    text: {
-      en: "A service product is configured to create a project and task on sales order confirmation in Odoo 19. Which product setting drives this?",
-      fr: "A service product is configured to create a project and task on commande client confirmation in Odoo 19. Which product setting drives this?",
-    },
-    correct: {
-      en: "Service tracking: Create a task in an existing project or new project",
-      fr: "Service tracking: Create a task in an existing project or new project",
-    },
+    text: { en: "A service product is configured to create a project and task on sales order confirmation in Odoo 19. Which product setting drives this?", fr: "Un produit de service est configuré pour créer un projet et une tâche à la confirmation du bon de commande dans Odoo 19. Quel paramètre du produit pilote cela ?" },
+    correct: { en: "Service tracking: Create a task in an existing project or new project", fr: "Suivi de service : Créer une tâche dans un projet existant ou un nouveau projet" },
     distractors: [
-      {
-        en: "Inventory route Dropship on the product category (not applicable here)",
-        fr: "Inventory route Dropship on the product category (not applicable here)",
-      },
-      {
-        en: "BoM type Kit on the product template (not applicable here)",
-        fr: "NdM type Kit on the product template (not applicable here)",
-      },
-      {
-        en: "POS config payment method outstanding account (not applicable here)",
-        fr: "POS config payment method outstanding account (not applicable here)",
-      },
+      { en: "Inventory route Dropship on the product category (not applicable here)", fr: "Route d'inventaire Livraison directe sur la catégorie de produit (non applicable ici)" },
+      { en: "BoM type Kit on the product template (not applicable here)", fr: "Type de nomenclature Kit sur le modèle de produit (non applicable ici)" },
+      { en: "POS config payment method outstanding account (not applicable here)", fr: "Compte en attente de la méthode de paiement PDV (non applicable ici)" },
     ],
-    explanation: {
-      en: "On service products, Service Tracking defines whether confirming an SO creates a project, a task, or only timesheet entries. This links Sales to Project delivery automatically.\n\nDropship routes vendor-to-customer fulfillment, not project task creation. Kit BoMs explode components on deliveries, not service project tasks. POS payment methods handle register tenders, not SO service tracking.",
-      fr: "On service products, Service Tracking defines whether confirming an SO creates a project, a task, or only feuille de temps entries. This links Sales to Project delivery automatically.\n\nDropship routes vendor-to-customer fulfillment, not project task creation. Kit BoMs explode components on deliveries, not service project tasks. POS payment methods handle register tenders, not SO service tracking.",
-    },
+    explanation: { en: "On service products, Service Tracking defines whether confirming an SO creates a project, a task, or only timesheet entries. This links Sales to Project delivery automatically.\n\nWhy not \"Inventory route Dropship on the product category (not applicable here)\"? Dropship routes vendor-to-customer fulfillment, not project task creation.\n\nWhy not \"BoM type Kit on the product template (not applicable here)\"? Kit BoMs explode components on deliveries, not service project tasks.\n\nWhy not \"POS config payment method outstanding account (not applicable here)\"? POS payment methods handle register tenders, not SO service tracking.", fr: "Sur les produits de service, le suivi de service définit si la confirmation d'une commande crée un projet, une tâche ou uniquement des écritures de feuille de temps. Cela lie automatiquement les Ventes à la livraison de Projet." },
   }),
   complexQ({
     id: "oep-118",
     module: "pos",
-    text: {
-      en: "A retailer enables loyalty points redeemable on future POS orders in Odoo 19. Where is this configured?",
-      fr: "A retailer enables loyalty points redeemable on future POS orders in Odoo 19. Where is this configured?",
-    },
-    correct: {
-      en: "POS > Configuration > Loyalty Programs with rules and rewards",
-      fr: "POS > Configuration > Loyalty Programs with rules and rewards",
-    },
+    text: { en: "A retailer enables loyalty points redeemable on future POS orders in Odoo 19. Where is this configured?", fr: "Un détaillant active des points de fidélité échangeables sur de futures commandes PDV dans Odoo 19. Où cela se configure-t-il ?" },
+    correct: { en: "POS > Configuration > Loyalty Programs with rules and rewards", fr: "PDV > Configuration > Programmes de fidélité avec règles et récompenses" },
     distractors: [
-      {
-        en: "Purchase > Vendor pricelist minimum quantity tiers (not applicable here)",
-        fr: "Purchase > Vendor liste de prix minimum quantity tiers (not applicable here)",
-      },
-      {
-        en: "Accounting > Asset models for depreciation schedules (not applicable here)",
-        fr: "Accounting > Asset models for depreciation schedules (not applicable here)",
-      },
-      {
-        en: "MRP > Work center capacity calendars only (not applicable here)",
-        fr: "MRP > poste de charge capacity calendars only (not applicable here)",
-      },
+      { en: "Purchase > Vendor pricelist minimum quantity tiers (not applicable here)", fr: "Achats > Paliers de quantité minimum de la liste de prix fournisseur (non applicable ici)" },
+      { en: "Accounting > Asset models for depreciation schedules (not applicable here)", fr: "Comptabilité > Modèles d'immobilisations pour les plans d'amortissement (non applicable ici)" },
+      { en: "MRP > Work center capacity calendars only (not applicable here)", fr: "Fabrication > Calendriers de capacité des postes de charge uniquement (non applicable ici)" },
     ],
-    explanation: {
-      en: "POS Loyalty Programs define accrual rules (per order, per product) and rewards (discount, free product, points). Programs attach to POS configs and can integrate with eCommerce loyalty in omnichannel setups.\n\nVendor pricelists negotiate purchase pricing, not customer loyalty points. Asset models post depreciation entries, unrelated to POS loyalty. Work center calendars schedule manufacturing capacity, not retail loyalty.",
-      fr: "POS Loyalty Programs define accrual rules (per order, per product) and rewards (discount, free product, points). Programs attach to POS configs and can integrate with eCommerce loyalty in omnichannel setups.\n\nVendor liste de prix negotiate purchase pricing, not customer loyalty points. Asset models post depreciation entries, unrelated to POS loyalty. poste de charge calendars schedule manufacturing capacity, not retail loyalty.",
-    },
+    explanation: { en: "POS Loyalty Programs define accrual rules (per order, per product) and rewards (discount, free product, points). Programs attach to POS configs and can integrate with eCommerce loyalty in omnichannel setups.\n\nWhy not \"Purchase > Vendor pricelist minimum quantity tiers (not applicable here)\"? Vendor pricelists negotiate purchase pricing, not customer loyalty points.\n\nWhy not \"Accounting > Asset models for depreciation schedules (not applicable here)\"? Asset models post depreciation entries, unrelated to POS loyalty.\n\nWhy not \"MRP > Work center capacity calendars only (not applicable here)\"? Work center calendars schedule manufacturing capacity, not retail loyalty.", fr: "Les programmes de fidélité PDV définissent des règles d'accumulation (par commande, par produit) et des récompenses (remise, produit gratuit, points). Les programmes sont attachés aux configurations PDV et peuvent s'intégrer à la fidélité eCommerce en omnicanal." },
   }),
   complexQ({
     id: "oep-119",
     module: "pos",
-    text: {
-      en: "A customer pays a café bill with cash and card on one Odoo 19 POS order. Which feature supports this?",
-      fr: "A customer pays a café bill with cash and card on one Odoo 19 POS order. Which feature supports this?",
-    },
-    correct: {
-      en: "Split payment / multiple payment methods on the same order",
-      fr: "Split payment / multiple payment methods on the same order",
-    },
+    text: { en: "A customer pays a café bill with cash and card on one Odoo 19 POS order. Which feature supports this?", fr: "Un client paie une addition de café avec de l'argent liquide et une carte sur une même commande PDV Odoo 19. Quelle fonctionnalité supporte cela ?" },
+    correct: { en: "Split payment / multiple payment methods on the same order", fr: "Paiement fractionné / plusieurs méthodes de paiement sur la même commande" },
     distractors: [
-      {
-        en: "Single payment method locked per POS config session (not applicable here)",
-        fr: "Single payment method locked per POS config session (not applicable here)",
-      },
-      {
-        en: "Vendor bill three-way matching on the receipt (not applicable here)",
-        fr: "facture fournisseur three-way matching on the receipt (not applicable here)",
-      },
-      {
-        en: "Manufacturing order component consumption only (not applicable here)",
-        fr: "ordre de fabrication component consumption only (not applicable here)",
-      },
+      { en: "Single payment method locked per POS config session (not applicable here)", fr: "Méthode de paiement unique verrouillée par session de configuration PDV (non applicable ici)" },
+      { en: "Vendor bill three-way matching on the receipt (not applicable here)", fr: "Rapprochement à 3 voies de facture fournisseur sur le reçu (non applicable ici)" },
+      { en: "Manufacturing order component consumption only (not applicable here)", fr: "Consommation de composants d'ordre de fabrication uniquement (non applicable ici)" },
     ],
-    explanation: {
-      en: "POS allows multiple payments on one order (split tender). Each line posts to its payment method/journal while the order total is fully paid before validation.\n\nPOS configs can enable several payment methods; split tender is supported. Three-way matching is an accounts payable control, not POS checkout. MO component consumption is manufacturing inventory, not split POS payment.",
-      fr: "POS allows multiple payments on one order (split tender). Each line posts to its payment method/journal while the order total is fully paid before validation.\n\nPOS configs can enable several payment methods; split tender is supported. Three-way matching is an accounts payable control, not POS checkout. MO component consumption is manufacturing inventory, not split POS payment.",
-    },
+    explanation: { en: "POS allows multiple payments on one order (split tender). Each line posts to its payment method/journal while the order total is fully paid before validation.\n\nWhy not \"Single payment method locked per POS config session (not applicable here)\"? POS configs can enable several payment methods; split tender is supported.\n\nWhy not \"Vendor bill three-way matching on the receipt (not applicable here)\"? Three-way matching is an accounts payable control, not POS checkout.\n\nWhy not \"Manufacturing order component consumption only (not applicable here)\"? MO component consumption is manufacturing inventory, not split POS payment.", fr: "Le PDV permet plusieurs paiements sur une même commande (paiement fractionné). Chaque ligne est comptabilisée dans sa méthode de paiement/journal pendant que le total de la commande est entièrement réglé avant validation." },
   }),
   complexQ({
     id: "oep-120",
     module: "purchases",
-    text: {
-      en: "A buyer should be billed for received quantities only, not the full PO amount ordered. Which Purchase setting controls this in Odoo 19?",
-      fr: "A buyer should be billed for received quantities only, not the full PO amount ordered. Which Purchase setting controls this in Odoo 19?",
-    },
-    correct: {
-      en: "Bill Control: Received quantities vs Ordered quantities on the product/category",
-      fr: "Bill Control: Received quantities vs Ordered quantities on the product/category",
-    },
+    text: { en: "A buyer should be billed for received quantities only, not the full PO amount ordered. Which Purchase setting controls this in Odoo 19?", fr: "Un acheteur ne doit être facturé que pour les quantités reçues, pas pour le montant total commandé. Quel paramètre d'Achats contrôle cela dans Odoo 19 ?" },
+    correct: { en: "Bill Control: Received quantities vs Ordered quantities on the product/category", fr: "Contrôle de facturation : Quantités reçues vs Quantités commandées sur le produit/catégorie" },
     distractors: [
-      {
-        en: "Inventory valuation FIFO vs AVCO on the warehouse (not applicable here)",
-        fr: "Inventory valuation FIFO vs AVCO on the entrepôt (not applicable here)",
-      },
-      {
-        en: "CRM pipeline stage probability percentages (not applicable here)",
-        fr: "CRM pipeline stage probability percentages (not applicable here)",
-      },
-      {
-        en: "Website snippet animation on the homepage hero block (not applicable here)",
-        fr: "Website snippet animation on the homepage hero block (not applicable here)",
-      },
+      { en: "Inventory valuation FIFO vs AVCO on the warehouse (not applicable here)", fr: "Valorisation d'inventaire FIFO vs CMUP sur l'entrepôt (non applicable ici)" },
+      { en: "CRM pipeline stage probability percentages (not applicable here)", fr: "Pourcentages de probabilité d'étape du pipeline CRM (non applicable ici)" },
+      { en: "Website snippet animation on the homepage hero block (not applicable here)", fr: "Animation de snippet site web sur le bloc héros de la page d'accueil (non applicable ici)" },
     ],
-    explanation: {
-      en: "Bill Control on products/categories determines whether vendor bills default to ordered or received quantities. Received is common when payment follows physical receipt and three-way matching.\n\nValuation methods affect inventory cost, not vendor bill quantity basis. Pipeline probability forecasts deals, not purchase billing policy. Website snippets control page design, not purchase bill control.",
-      fr: "Bill Control on products/categories determines whether facture fournisseur default to ordered or received quantities. Received is common when payment follows physical receipt and three-way matching.\n\nValuation methods affect inventory cost, not facture fournisseur quantity basis. Pipeline probability forecasts deals, not purchase billing policy. Website snippets control page design, not purchase bill control.",
-    },
+    explanation: { en: "Bill Control on products/categories determines whether vendor bills default to ordered or received quantities. Received is common when payment follows physical receipt and three-way matching.\n\nWhy not \"Inventory valuation FIFO vs AVCO on the warehouse (not applicable here)\"? Valuation methods affect inventory cost, not vendor bill quantity basis.\n\nWhy not \"CRM pipeline stage probability percentages (not applicable here)\"? Pipeline probability forecasts deals, not purchase billing policy.\n\nWhy not \"Website snippet animation on the homepage hero block (not applicable here)\"? Website snippets control page design, not purchase bill control.", fr: "Le contrôle de facturation sur les produits/catégories détermine si les factures fournisseur utilisent par défaut les quantités commandées ou reçues. « Reçues » est courant lorsque le paiement suit la réception physique et le rapprochement à 3 voies." },
   }),
   complexQ({
     id: "oep-121",
     module: "purchases",
-    text: {
-      en: "A company negotiates a year-long unit price with one vendor for recurring purchases in Odoo 19. Which Purchase object fits this?",
-      fr: "A company negotiates a year-long unit price with one vendor for recurring purchases in Odoo 19. Which Purchase object fits this?",
-    },
-    correct: {
-      en: "Blanket Purchase Agreement with agreed terms and call-off POs",
-      fr: "Blanket Purchase Agreement with agreed terms and call-off POs",
-    },
+    text: { en: "A company negotiates a year-long unit price with one vendor for recurring purchases in Odoo 19. Which Purchase object fits this?", fr: "Une entreprise négocie un prix unitaire annuel avec un seul fournisseur pour des achats récurrents dans Odoo 19. Quel objet d'Achats correspond ?" },
+    correct: { en: "Blanket Purchase Agreement with agreed terms and call-off POs", fr: "Contrat d'achat ouvert avec conditions convenues et bons de commande d'appel" },
     distractors: [
-      {
-        en: "Kit BoM exploding components on customer deliveries (not applicable here)",
-        fr: "Kit NdM exploding components on customer deliveries (not applicable here)",
-      },
-      {
-        en: "POS loyalty reward granting discount points (not applicable here)",
-        fr: "POS loyalty reward granting discount points (not applicable here)",
-      },
-      {
-        en: "Survey matrix question with row and column labels (not applicable here)",
-        fr: "Survey matrix question with row and column labels (not applicable here)",
-      },
+      { en: "Kit BoM exploding components on customer deliveries (not applicable here)", fr: "Nomenclature Kit éclatant les composants sur les livraisons client (non applicable ici)" },
+      { en: "POS loyalty reward granting discount points (not applicable here)", fr: "Récompense de fidélité PDV accordant des points de remise (non applicable ici)" },
+      { en: "Survey matrix question with row and column labels (not applicable here)", fr: "Question matrice d'enquête avec libellés de lignes et colonnes (non applicable ici)" },
     ],
-    explanation: {
-      en: "Blanket Orders (Purchase Agreements type Blanket) set negotiated terms, validity, and pricing with a vendor. Users create call-off POs against the blanket until quantity or date limits are reached.\n\nKit BoMs bundle sellable products; they are not vendor blanket contracts. POS loyalty manages customer rewards, not vendor pricing agreements. Survey matrix questions collect responses, not purchase contract terms.",
-      fr: "Blanket Orders (Purchase Agreements type Blanket) set negotiated terms, validity, and pricing with a vendor. Users create call-off POs against the blanket until quantity or date limits are reached.\n\nKit BoMs bundle sellable products; they are not vendor blanket contracts. POS loyalty manages customer rewards, not vendor pricing agreements. Survey matrix questions collect responses, not purchase contract terms.",
-    },
+    explanation: { en: "Blanket Orders (Purchase Agreements type Blanket) set negotiated terms, validity, and pricing with a vendor. Users create call-off POs against the blanket until quantity or date limits are reached.\n\nWhy not \"Kit BoM exploding components on customer deliveries (not applicable here)\"? Kit BoMs bundle sellable products; they are not vendor blanket contracts.\n\nWhy not \"POS loyalty reward granting discount points (not applicable here)\"? POS loyalty manages customer rewards, not vendor pricing agreements.\n\nWhy not \"Survey matrix question with row and column labels (not applicable here)\"? Survey matrix questions collect responses, not purchase contract terms.", fr: "Les ordres ouverts (Contrats d'achat de type Ordre ouvert) définissent les conditions négociées, la validité et les prix avec un fournisseur. Les utilisateurs créent des bons de commande d'appel contre l'ordre ouvert jusqu'à ce que les limites de quantité ou de date soient atteintes." },
   }),
   complexQ({
     id: "oep-122",
     module: "inventory",
-    text: {
-      en: "Fast-moving SKUs should land in aisle bins automatically on receipt in Odoo 19. Which feature directs putaway?",
-      fr: "Fast-moving SKUs should land in aisle bins automatically on receipt in Odoo 19. Which feature directs putaway?",
-    },
-    correct: {
-      en: "Putaway rules mapping product/category to destination sub-locations",
-      fr: "Putaway rules mapping product/category to destination sub-locations",
-    },
+    text: { en: "Fast-moving SKUs should land in aisle bins automatically on receipt in Odoo 19. Which feature directs putaway?", fr: "Les références à rotation rapide doivent atterrir automatiquement dans les casiers d'allée à la réception dans Odoo 19. Quelle fonctionnalité dirige le rangement ?" },
+    correct: { en: "Putaway rules mapping product/category to destination sub-locations", fr: "Règles de rangement associant le produit/catégorie aux sous-emplacements de destination" },
     distractors: [
-      {
-        en: "Fiscal positions remapping tax accounts by customer country (not applicable here)",
-        fr: "position fiscale remapping taxe accounts by customer country (not applicable here)",
-      },
-      {
-        en: "Email Marketing A/B tests on campaign subject lines (not applicable here)",
-        fr: "Email Marketing A/B tests on campaign subject lines (not applicable here)",
-      },
-      {
-        en: "HR appraisal templates for annual performance reviews (not applicable here)",
-        fr: "HR appraisal templates for annual performance reviews (not applicable here)",
-      },
+      { en: "Fiscal positions remapping tax accounts by customer country (not applicable here)", fr: "Positions fiscales remappant les comptes de taxe par pays client (non applicable ici)" },
+      { en: "Email Marketing A/B tests on campaign subject lines (not applicable here)", fr: "Tests A/B d'Email Marketing sur les objets de campagne (non applicable ici)" },
+      { en: "HR appraisal templates for annual performance reviews (not applicable here)", fr: "Modèles d'évaluation RH pour les revues annuelles de performance (non applicable ici)" },
     ],
-    explanation: {
-      en: "Putaway rules (stock.putaway.rule) assign incoming products to specific sub-locations based on product, category, or storage category. They require Storage Locations enabled on the warehouse.\n\nFiscal positions change taxes/accounts, not physical bin putaway. Email A/B tests optimize campaigns, not warehouse slotting. Appraisal templates evaluate employees, not inventory locations.",
-      fr: "Putaway rules (stock.putaway.rule) assign incoming products to specific sub-locations based on product, category, or storage category. They require Storage Locations enabled on the entrepôt.\n\nposition fiscale change taxes/accounts, not physical bin putaway. Email A/B tests optimize campaigns, not entrepôt slotting. Appraisal templates evaluate employé, not inventory locations.",
-    },
+    explanation: { en: "Putaway rules (stock.putaway.rule) assign incoming products to specific sub-locations based on product, category, or storage category. They require Storage Locations enabled on the warehouse.\n\nWhy not \"Fiscal positions remapping tax accounts by customer country (not applicable here)\"? Fiscal positions change taxes/accounts, not physical bin putaway.\n\nWhy not \"Email Marketing A/B tests on campaign subject lines (not applicable here)\"? Email A/B tests optimize campaigns, not warehouse slotting.\n\nWhy not \"HR appraisal templates for annual performance reviews (not applicable here)\"? Appraisal templates evaluate employees, not inventory locations.", fr: "Les règles de rangement (stock.putaway.rule) assignent les produits entrants à des sous-emplacements spécifiques en fonction du produit, de la catégorie ou de la catégorie de stockage. Elles nécessitent l'activation des emplacements de stockage sur l'entrepôt." },
   }),
   complexQ({
     id: "oep-123",
     module: "inventory",
-    text: {
-      en: "Warehouse A runs low on stock and should pull replenishment from Warehouse B in Odoo 19. What enables this?",
-      fr: "entrepôt A runs low on stock and should pull replenishment from entrepôt B in Odoo 19. What enables this?",
-    },
-    correct: {
-      en: "Resupply from another warehouse configured on the warehouse record",
-      fr: "Resupply from another entrepôt configured on the entrepôt record",
-    },
+    text: { en: "Warehouse A runs low on stock and should pull replenishment from Warehouse B in Odoo 19. What enables this?", fr: "L'entrepôt A est en rupture de stock et doit tirer le réapprovisionnement de l'entrepôt B dans Odoo 19. Qu'est-ce qui active cela ?" },
+    correct: { en: "Resupply from another warehouse configured on the warehouse record", fr: "Réapprovisionnement depuis un autre entrepôt configuré sur la fiche entrepôt" },
     distractors: [
-      {
-        en: "POS split payment across cash and card on one receipt (not applicable here)",
-        fr: "POS split payment across cash and card on one receipt (not applicable here)",
-      },
-      {
-        en: "Deferred revenue schedule on a SaaS subscription invoice (not applicable here)",
-        fr: "Deferred revenue schedule on a SaaS subscription facture (not applicable here)",
-      },
-      {
-        en: "Knowledge article @mentions in internal playbooks (not applicable here)",
-        fr: "Knowledge article @mentions in internal playbooks (not applicable here)",
-      },
+      { en: "POS split payment across cash and card on one receipt (not applicable here)", fr: "Paiement fractionné PDV entre espèces et carte sur un même reçu (non applicable ici)" },
+      { en: "Deferred revenue schedule on a SaaS subscription invoice (not applicable here)", fr: "Planning de produits constatés d'avance sur une facture d'abonnement SaaS (non applicable ici)" },
+      { en: "Knowledge article @mentions in internal playbooks (not applicable here)", fr: "@mentions d'articles Knowledge dans les guides internes (non applicable ici)" },
     ],
-    explanation: {
-      en: "Multi-warehouse setups can define resupply routes between warehouses. Reordering rules on the destination warehouse can trigger inter-warehouse transfers or procurements from the supplying warehouse.\n\nSplit POS payments settle customer tenders, not inter-warehouse replenishment. Deferred revenue spreads recognition over time, unrelated to stock resupply. Knowledge mentions collaborate on docs; they do not move inventory.",
-      fr: "Multi-entrepôt setups can define resupply routes between warehouses. règle de réapprovisionnement on the destination entrepôt can trigger inter-entrepôt transfers or procurements from the supplying entrepôt.\n\nSplit POS payments settle customer tenders, not inter-entrepôt replenishment. Deferred revenue spreads recognition over time, unrelated to stock resupply. Knowledge mentions collaborate on docs; they do not move inventory.",
-    },
+    explanation: { en: "Multi-warehouse setups can define resupply routes between warehouses. Reordering rules on the destination warehouse can trigger inter-warehouse transfers or procurements from the supplying warehouse.\n\nWhy not \"POS split payment across cash and card on one receipt (not applicable here)\"? Split POS payments settle customer tenders, not inter-warehouse replenishment.\n\nWhy not \"Deferred revenue schedule on a SaaS subscription invoice (not applicable here)\"? Deferred revenue spreads recognition over time, unrelated to stock resupply.\n\nWhy not \"Knowledge article @mentions in internal playbooks (not applicable here)\"? Knowledge mentions collaborate on docs; they do not move inventory.", fr: "Les configurations multi-entrepôts peuvent définir des routes de réapprovisionnement entre entrepôts. Les règles de réapprovisionnement sur l'entrepôt de destination peuvent déclencher des transferts inter-entrepôts ou des approvisionnements depuis l'entrepôt fournisseur." },
   }),
   complexQ({
     id: "oep-124",
     module: "mrp",
-    text: {
-      en: "A planner uses Odoo 19 to forecast finished goods demand and propose manufacturing/purchase orders. Which app supports this?",
-      fr: "A planner uses Odoo 19 to forecast finished goods demand and propose manufacturing/purchase orders. Which app supports this?",
-    },
-    correct: {
-      en: "Master Production Schedule (MPS) in Manufacturing planning views",
-      fr: "Master Production Schedule (MPS) in Manufacturing planning views",
-    },
+    text: { en: "A planner uses Odoo 19 to forecast finished goods demand and propose manufacturing/purchase orders. Which app supports this?", fr: "Un planificateur utilise Odoo 19 pour prévoir la demande de produits finis et proposer des ordres de fabrication/achat. Quelle application supporte cela ?" },
+    correct: { en: "Master Production Schedule (MPS) in Manufacturing planning views", fr: "Plan Directeur de Production (PDP) dans les vues de planification Fabrication" },
     distractors: [
-      {
-        en: "Email Marketing mass mailing A/B winner selection (not applicable here)",
-        fr: "Email Marketing mass mailing A/B winner selection (not applicable here)",
-      },
-      {
-        en: "Website abandoned cart recovery automation emails (not applicable here)",
-        fr: "Website abandoned cart recovery automation emails (not applicable here)",
-      },
-      {
-        en: "Sign document signature request on vendor contracts (not applicable here)",
-        fr: "Sign document signature request on vendor contracts (not applicable here)",
-      },
+      { en: "Email Marketing mass mailing A/B winner selection (not applicable here)", fr: "Sélection du gagnant du test A/B de publipostage Email Marketing (non applicable ici)" },
+      { en: "Website abandoned cart recovery automation emails (not applicable here)", fr: "E-mails d'automatisation de récupération de panier abandonné du site web (non applicable ici)" },
+      { en: "Sign document signature request on vendor contracts (not applicable here)", fr: "Demande de signature Sign sur les contrats fournisseurs (non applicable ici)" },
     ],
-    explanation: {
-      en: "MPS lets planners enter demand forecasts by product/period and generates proposed MOs/RFQs after comparing forecast, on-hand, and incoming supply. It is part of the Manufacturing planning toolkit on the exam.\n\nEmail A/B tests optimize campaigns, not production/material planning. Abandoned cart emails recover eCommerce sales, not MRP forecasts. Sign collects signatures; it does not schedule manufacturing proposals.",
-      fr: "MPS lets planners enter demand forecasts by product/period and generates proposed MOs/RFQs after comparing forecast, on-hand, and incoming supply. It is part of the Manufacturing planning toolkit on the exam.\n\nEmail A/B tests optimize campaigns, not production/material planning. Abandoned cart emails recover eCommerce sales, not MRP forecasts. Sign collects signatures; it does not schedule manufacturing proposals.",
-    },
+    explanation: { en: "MPS lets planners enter demand forecasts by product/period and generates proposed MOs/RFQs after comparing forecast, on-hand, and incoming supply. It is part of the Manufacturing planning toolkit on the exam.\n\nWhy not \"Email Marketing mass mailing A/B winner selection (not applicable here)\"? Email A/B tests optimize campaigns, not production/material planning.\n\nWhy not \"Website abandoned cart recovery automation emails (not applicable here)\"? Abandoned cart emails recover eCommerce sales, not MRP forecasts.\n\nWhy not \"Sign document signature request on vendor contracts (not applicable here)\"? Sign collects signatures; it does not schedule manufacturing proposals.", fr: "Le PDP permet aux planificateurs de saisir des prévisions de demande par produit/période et génère des OF/demandes de prix proposés après comparaison entre prévision, stock en main et approvisionnements entrants. Il fait partie de la boîte à outils de planification Fabrication à l'examen." },
   }),
   complexQ({
     id: "oep-125",
     module: "accounting",
-    text: {
-      en: "A SaaS vendor must spread annual subscription revenue across 12 months in Odoo 19. Which Accounting feature handles this?",
-      fr: "A SaaS vendor must spread annual subscription revenue across 12 months in Odoo 19. Which Accounting feature handles this?",
-    },
-    correct: {
-      en: "Deferred revenue models generating periodic recognition entries",
-      fr: "Deferred revenue models generating periodic recognition entries",
-    },
+    text: { en: "A SaaS vendor must spread annual subscription revenue across 12 months in Odoo 19. Which Accounting feature handles this?", fr: "Un fournisseur SaaS doit étaler le revenu d'abonnement annuel sur 12 mois dans Odoo 19. Quelle fonctionnalité comptable gère cela ?" },
+    correct: { en: "Deferred revenue models generating periodic recognition entries", fr: "Modèles de produits constatés d'avance générant des écritures de reconnaissance périodiques" },
     distractors: [
-      {
-        en: "POS cash over/short difference account on session close (not applicable here)",
-        fr: "POS cash over/short difference account on session close (not applicable here)",
-      },
-      {
-        en: "Inventory consignment owner field on stock moves (not applicable here)",
-        fr: "Inventory consignment owner field on stock moves (not applicable here)",
-      },
-      {
-        en: "CRM lead assignment round-robin on sales teams (not applicable here)",
-        fr: "CRM piste assignment round-robin on sales teams (not applicable here)",
-      },
+      { en: "POS cash over/short difference account on session close (not applicable here)", fr: "Compte d'écart de caisse en surplus/déficit PDV à la clôture de session (non applicable ici)" },
+      { en: "Inventory consignment owner field on stock moves (not applicable here)", fr: "Champ propriétaire de consignation d'inventaire sur les mouvements de stock (non applicable ici)" },
+      { en: "CRM lead assignment round-robin on sales teams (not applicable here)", fr: "Attribution de pistes CRM en tourniquet sur les équipes commerciales (non applicable ici)" },
     ],
-    explanation: {
-      en: "Deferred Revenue (and Deferred Expense) models create an initial balance sheet entry on invoice and auto-post periodic recognition entries to income over the defined duration.\n\nPOS cash differences reconcile registers, not subscription revenue timing. Consignment tracks vendor-owned stock, not revenue deferral schedules. Lead assignment distributes CRM records, unrelated to deferred revenue.",
-      fr: "Deferred Revenue (and Deferred note de frais) models create an initial balance sheet entry on facture and auto-post periodic recognition entries to income over the defined duration.\n\nPOS cash differences reconcile registers, not subscription revenue timing. Consignment tracks vendor-owned stock, not revenue deferral schedules. piste assignment distributes CRM records, unrelated to deferred revenue.",
-    },
+    explanation: { en: "Deferred Revenue (and Deferred Expense) models create an initial balance sheet entry on invoice and auto-post periodic recognition entries to income over the defined duration.\n\nWhy not \"POS cash over/short difference account on session close (not applicable here)\"? POS cash differences reconcile registers, not subscription revenue timing.\n\nWhy not \"Inventory consignment owner field on stock moves (not applicable here)\"? Consignment tracks vendor-owned stock, not revenue deferral schedules.\n\nWhy not \"CRM lead assignment round-robin on sales teams (not applicable here)\"? Lead assignment distributes CRM records, unrelated to deferred revenue.", fr: "Les produits constatés d'avance (et les charges constatées d'avance) créent une écriture initiale au bilan à la facturation et comptabilisent automatiquement des écritures de reconnaissance périodiques en produits sur la durée définie." },
   }),
   complexQ({
     id: "oep-126",
     module: "hr",
-    text: {
-      en: "HR wants structured annual reviews with goals and manager feedback in Odoo 19. Which module provides this?",
-      fr: "HR wants structured annual reviews with goals and manager feedback in Odoo 19. Which module provides this?",
-    },
-    correct: {
-      en: "Appraisals with templates, schedules, and employee/manager surveys",
-      fr: "Appraisals with templates, schedules, and employé/manager surveys",
-    },
+    text: { en: "HR wants structured annual reviews with goals and manager feedback in Odoo 19. Which module provides this?", fr: "La RH veut des revues annuelles structurées avec objectifs et retour du responsable dans Odoo 19. Quel module fournit cela ?" },
+    correct: { en: "Appraisals with templates, schedules, and employee/manager surveys", fr: "Évaluations avec modèles, plannings et enquêtes employé/responsable" },
     distractors: [
-      {
-        en: "Barcode app scanning pickings on the warehouse floor (not applicable here)",
-        fr: "Barcode app scanning pickings on the entrepôt floor (not applicable here)",
-      },
-      {
-        en: "Purchase Calls for Tender comparing vendor RFQ responses (not applicable here)",
-        fr: "Purchase Calls for Tender comparing vendor RFQ responses (not applicable here)",
-      },
-      {
-        en: "Website SEO metadata fields on product pages (not applicable here)",
-        fr: "Website SEO metadata fields on product pages (not applicable here)",
-      },
+      { en: "Barcode app scanning pickings on the warehouse floor (not applicable here)", fr: "Application Code-barres scannant les transferts sur le sol de l'entrepôt (non applicable ici)" },
+      { en: "Purchase Calls for Tender comparing vendor RFQ responses (not applicable here)", fr: "Appels d'offres d'achat comparant les réponses de demandes de prix fournisseurs (non applicable ici)" },
+      { en: "Website SEO metadata fields on product pages (not applicable here)", fr: "Champs de métadonnées SEO du site web sur les pages produits (non applicable ici)" },
     ],
-    explanation: {
-      en: "Appraisals lets HR define review cycles, templates, goals, and 360° feedback. Completed appraisals attach to employee records and can trigger follow-up activities.\n\nBarcode operations execute warehouse transfers, not performance reviews. Purchase tenders compare vendor quotes, not employee appraisals. Website SEO fields optimize search snippets, unrelated to HR reviews.",
-      fr: "Appraisals lets HR define review cycles, templates, goals, and 360° feedback. Completed appraisals attach to employé records and can trigger follow-up activities.\n\nBarcode operations execute entrepôt transfers, not performance reviews. Purchase tenders compare vendor quotes, not employé appraisals. Website SEO fields optimize search snippets, unrelated to HR reviews.",
-    },
+    explanation: { en: "Appraisals lets HR define review cycles, templates, goals, and 360° feedback. Completed appraisals attach to employee records and can trigger follow-up activities.\n\nWhy not \"Barcode app scanning pickings on the warehouse floor (not applicable here)\"? Barcode operations execute warehouse transfers, not performance reviews.\n\nWhy not \"Purchase Calls for Tender comparing vendor RFQ responses (not applicable here)\"? Purchase tenders compare vendor quotes, not employee appraisals.\n\nWhy not \"Website SEO metadata fields on product pages (not applicable here)\"? Website SEO fields optimize search snippets, unrelated to HR reviews.", fr: "Les Évaluations permettent à la RH de définir des cycles d'évaluation, des modèles, des objectifs et du feedback 360°. Les évaluations complétées sont attachées aux fiches employés et peuvent déclencher des activités de suivi." },
   }),
   complexQ({
     id: "oep-127",
     module: "hr",
-    text: {
-      en: "An employee contract references standard 40-hour weeks with two days off in Odoo 19. Which object defines working hours?",
-      fr: "An employé contract references standard 40-hour weeks with two days off in Odoo 19. Which object defines working hours?",
-    },
-    correct: {
-      en: "Working Schedule (resource.calendar) linked on hr.contract",
-      fr: "Working Schedule (resource.calendar) linked on hr.contract",
-    },
+    text: { en: "An employee contract references standard 40-hour weeks with two days off in Odoo 19. Which object defines working hours?", fr: "Un contrat employé référence une semaine standard de 40 heures avec deux jours de repos dans Odoo 19. Quel objet définit les heures de travail ?" },
+    correct: { en: "Working Schedule (resource.calendar) linked on hr.contract", fr: "Horaire de travail (resource.calendar) lié sur hr.contract" },
     distractors: [
-      {
-        en: "POS payment method outstanding receipts account (not applicable here)",
-        fr: "POS payment method outstanding receipts account (not applicable here)",
-      },
-      {
-        en: "Stock putaway rule destination sub-location (not applicable here)",
-        fr: "Stock putaway rule destination sub-location (not applicable here)",
-      },
-      {
-        en: "Survey passing score percentage threshold (not applicable here)",
-        fr: "Survey passing score percentage threshold (not applicable here)",
-      },
+      { en: "POS payment method outstanding receipts account (not applicable here)", fr: "Compte d'encaissements en attente de la méthode de paiement PDV (non applicable ici)" },
+      { en: "Stock putaway rule destination sub-location (not applicable here)", fr: "Sous-emplacement de destination de la règle de rangement en stock (non applicable ici)" },
+      { en: "Survey passing score percentage threshold (not applicable here)", fr: "Seuil de pourcentage de score de passage d'enquête (non applicable ici)" },
     ],
-    explanation: {
-      en: "resource.calendar defines working hours, breaks, and time zones. Contracts link a working schedule used by Attendances, Planning, and Payroll to compute expected vs actual time.\n\nPOS outstanding accounts handle register payments, not employee work hours. Putaway rules direct products to bins, not employee weekly schedules. Survey passing scores grade respondents, unrelated to working time calendars.",
-      fr: "resource.calendar defines working hours, breaks, and time zones. Contracts link a working schedule used by Attendances, Planning, and Payroll to compute expected vs actual time.\n\nPOS outstanding accounts handle register payments, not employé work hours. Putaway rules direct products to bins, not employé weekly schedules. Survey passing scores grade respondents, unrelated to working time calendars.",
-    },
+    explanation: { en: "resource.calendar defines working hours, breaks, and time zones. Contracts link a working schedule used by Attendances, Planning, and Payroll to compute expected vs actual time.\n\nWhy not \"POS payment method outstanding receipts account (not applicable here)\"? POS outstanding accounts handle register payments, not employee work hours.\n\nWhy not \"Stock putaway rule destination sub-location (not applicable here)\"? Putaway rules direct products to bins, not employee weekly schedules.\n\nWhy not \"Survey passing score percentage threshold (not applicable here)\"? Survey passing scores grade respondents, unrelated to working time calendars.", fr: "resource.calendar définit les heures de travail, les pauses et les fuseaux horaires. Les contrats lient un horaire de travail utilisé par Pointage, Planification et Paie pour calculer le temps attendu vs réel." },
   }),
   complexQ({
     id: "oep-128",
     module: "studio",
-    text: {
-      en: "A functional consultant restricts sales users to opportunities in their own country using Odoo 19 security. Which mechanism applies the filter?",
-      fr: "A functional consultant restricts sales users to opportunité in their own country using Odoo 19 security. Which mechanism applies the filter?",
-    },
-    correct: {
-      en: "Record rule (ir.rule) domain on crm.lead scoped to the user group",
-      fr: "règle d'enregistrement (ir.rule) domain on crm.piste scoped to the user group",
-    },
+    text: { en: "A functional consultant restricts sales users to opportunities in their own country using Odoo 19 security. Which mechanism applies the filter?", fr: "Un consultant fonctionnel restreint les utilisateurs commerciaux aux opportunités de leur propre pays en utilisant la sécurité Odoo 19. Quel mécanisme applique le filtre ?" },
+    correct: { en: "Record rule (ir.rule) domain on crm.lead scoped to the user group", fr: "Règle d'enregistrement (ir.rule) avec domaine sur crm.lead rattachée au groupe d'utilisateurs" },
     distractors: [
-      {
-        en: "Email template QWeb placeholder replacing merge fields (not applicable here)",
-        fr: "Email template QWeb placeholder replacing merge fields (not applicable here)",
-      },
-      {
-        en: "Inventory AVCO average cost recalculation on receipts (not applicable here)",
-        fr: "Inventory AVCO average cost recalculation on receipts (not applicable here)",
-      },
-      {
-        en: "Website snippet drag-and-drop block layout editor (not applicable here)",
-        fr: "Website snippet drag-and-drop block layout editor (not applicable here)",
-      },
+      { en: "Email template QWeb placeholder replacing merge fields (not applicable here)", fr: "Champ dynamique de fusion de template d'e-mail QWeb (non applicable ici)" },
+      { en: "Inventory AVCO average cost recalculation on receipts (not applicable here)", fr: "Recalcul du coût moyen CMUP d'inventaire sur les réceptions (non applicable ici)" },
+      { en: "Website snippet drag-and-drop block layout editor (not applicable here)", fr: "Éditeur de disposition de blocs glisser-déposer de snippets du site web (non applicable ici)" },
     ],
-    explanation: {
-      en: "Record rules add domain filters per model and security group (e.g., country_id = user country). Combined with access rights, they constrain which records users can read or write.\n\nEmail templates format outbound messages; they do not enforce record-level security. AVCO valuation recalculates inventory cost, unrelated to CRM record access. Website snippets design pages; they do not filter CRM opportunity records.",
-      fr: "règle d'enregistrement add domain filters per model and security group (e.g., country_id = user country). Combined with droit d'accès, they constrain which records users can read or write.\n\nEmail templates format outbound messages; they do not enforce record-level security. AVCO valuation recalculates inventory cost, unrelated to CRM record access. Website snippets design pages; they do not filter CRM opportunité records.",
-    },
+    explanation: { en: "Record rules add domain filters per model and security group (e.g., country_id = user country). Combined with access rights, they constrain which records users can read or write.\n\nWhy not \"Email template QWeb placeholder replacing merge fields (not applicable here)\"? Email templates format outbound messages; they do not enforce record-level security.\n\nWhy not \"Inventory AVCO average cost recalculation on receipts (not applicable here)\"? AVCO valuation recalculates inventory cost, unrelated to CRM record access.\n\nWhy not \"Website snippet drag-and-drop block layout editor (not applicable here)\"? Website snippets design pages; they do not filter CRM opportunity records.", fr: "Les règles d'enregistrement ajoutent des filtres de domaine par modèle et groupe de sécurité (ex. : country_id = pays de l'utilisateur). Combinées aux droits d'accès, elles restreignent quels enregistrements les utilisateurs peuvent lire ou écrire." },
   }),
   complexQ({
     id: "oep-129",
     module: "studio",
-    text: {
-      en: "A consultant must inspect model fields and XML views while troubleshooting in Odoo 19. What must be enabled first?",
-      fr: "A consultant must inspect model fields and XML views while troubleshooting in Odoo 19. What must be enabled first?",
-    },
-    correct: {
-      en: "Developer mode (debug assets) from Settings or the user menu",
-      fr: "Developer mode (debug assets) from Settings or the user menu",
-    },
+    text: { en: "A consultant must inspect model fields and XML views while troubleshooting in Odoo 19. What must be enabled first?", fr: "Un consultant doit inspecter les champs d'un modèle et les vues XML lors du dépannage dans Odoo 19. Que faut-il activer en premier ?" },
+    correct: { en: "Developer mode (debug assets) from Settings or the user menu", fr: "Mode développeur (debug assets) depuis les Paramètres ou le menu utilisateur" },
     distractors: [
-      {
-        en: "POS restaurant floor plan and table management (not applicable here)",
-        fr: "POS restaurant floor plan and table management (not applicable here)",
-      },
-      {
-        en: "Manufacturing subcontracting resupply route on the BoM (not applicable here)",
-        fr: "Manufacturing subcontracting resupply route on the NdM (not applicable here)",
-      },
-      {
-        en: "Survey matrix question with weighted scoring columns (not applicable here)",
-        fr: "Survey matrix question with weighted scoring columns (not applicable here)",
-      },
+      { en: "POS restaurant floor plan and table management (not applicable here)", fr: "Plan de salle restaurant PDV et gestion des tables (non applicable ici)" },
+      { en: "Manufacturing subcontracting resupply route on the BoM (not applicable here)", fr: "Route de sous-traitance avec réapprovisionnement sur la nomenclature de Fabrication (non applicable ici)" },
+      { en: "Survey matrix question with weighted scoring columns (not applicable here)", fr: "Question matrice d'enquête avec colonnes de scoring pondéré (non applicable ici)" },
     ],
-    explanation: {
-      en: "Developer mode exposes technical menus, view metadata, field names, and automated action definitions. It is required for advanced configuration and is part of the Studio/customization domain on the exam.\n\nRestaurant floor plans configure table service POS, not technical debugging tools. Subcontracting routes vendor manufacturing; they do not enable developer menus. Survey matrix questions collect responses, unrelated to debug mode.",
-      fr: "Developer mode exposes technical menus, view metadata, field names, and action automatisée definitions. It is required for advanced configuration and is part of the Studio/customization domain on the exam.\n\nRestaurant floor plans configure table service POS, not technical debugging tools. Subcontracting routes vendor manufacturing; they do not enable developer menus. Survey matrix questions collect responses, unrelated to debug mode.",
-    },
+    explanation: { en: "Developer mode exposes technical menus, view metadata, field names, and automated action definitions. It is required for advanced configuration and is part of the Studio/customization domain on the exam.\n\nWhy not \"POS restaurant floor plan and table management (not applicable here)\"? Restaurant floor plans configure table service POS, not technical debugging tools.\n\nWhy not \"Manufacturing subcontracting resupply route on the BoM (not applicable here)\"? Subcontracting routes vendor manufacturing; they do not enable developer menus.\n\nWhy not \"Survey matrix question with weighted scoring columns (not applicable here)\"? Survey matrix questions collect responses, unrelated to debug mode.", fr: "Le mode développeur expose les menus techniques, les métadonnées de vue, les noms de champs et les définitions d'actions automatisées. Il est nécessaire pour la configuration avancée et fait partie du domaine Studio/personnalisation à l'examen." },
   }),
   complexQ({
     id: "oep-130",
     module: "studio",
-    text: {
-      en: "When importing partners from a legacy system into Odoo 19, which column preserves relationships for later updates?",
-      fr: "When importing partners from a legacy system into Odoo 19, which column preserves relationships for later updates?",
-    },
-    correct: {
-      en: "External ID (id column) using module.name syntax in the import file",
-      fr: "External ID (id column) using module.name syntax in the import file",
-    },
+    text: { en: "When importing partners from a legacy system into Odoo 19, which column preserves relationships for later updates?", fr: "Lors de l'importation de partenaires depuis un système existant dans Odoo 19, quelle colonne préserve les relations pour les mises à jour ultérieures ?" },
+    correct: { en: "External ID (id column) using module.name syntax in the import file", fr: "ID externe (colonne id) utilisant la syntaxe module.name dans le fichier d'import" },
     distractors: [
-      {
-        en: "POS session name generated at register opening (not applicable here)",
-        fr: "POS session name generated at register opening (not applicable here)",
-      },
-      {
-        en: "Tax grid code on the statutory VAT return form (not applicable here)",
-        fr: "taxe grid code on the statutory VAT return form (not applicable here)",
-      },
-      {
-        en: "Work center OEE efficiency percentage field (not applicable here)",
-        fr: "poste de charge OEE efficiency percentage field (not applicable here)",
-      },
+      { en: "POS session name generated at register opening (not applicable here)", fr: "Nom de session PDV généré à l'ouverture de la caisse (non applicable ici)" },
+      { en: "Tax grid code on the statutory VAT return form (not applicable here)", fr: "Code de grille de taxe sur le formulaire de déclaration de TVA légale (non applicable ici)" },
+      { en: "Work center OEE efficiency percentage field (not applicable here)", fr: "Champ de pourcentage d'efficacité TRS du poste de charge (non applicable ici)" },
     ],
-    explanation: {
-      en: "Odoo imports use External IDs (XML IDs) in the id column (e.g., __import__.legacy_partner_001) so re-imports update the same res.partner instead of creating duplicates. This is standard go-live/data migration practice.\n\nPOS session names identify register shifts, not import record keys. Tax grid codes map VAT boxes, not CSV import identity for partners. Work center OEE tracks equipment performance, unrelated to data import IDs.",
-      fr: "Odoo imports use External IDs (XML IDs) in the id column (e.g., __import__.legacy_partner_001) so re-imports update the same res.partner instead of creating duplicates. This is standard go-live/data migration practice.\n\nPOS session names identify register shifts, not import record keys. taxe grid codes map VAT boxes, not CSV import identity for partners. poste de charge OEE tracks equipment performance, unrelated to data import IDs.",
-    },
+    explanation: { en: "Odoo imports use External IDs (XML IDs) in the id column (e.g., __import__.legacy_partner_001) so re-imports update the same res.partner instead of creating duplicates. This is standard go-live/data migration practice.\n\nWhy not \"POS session name generated at register opening (not applicable here)\"? POS session names identify register shifts, not import record keys.\n\nWhy not \"Tax grid code on the statutory VAT return form (not applicable here)\"? Tax grid codes map VAT boxes, not CSV import identity for partners.\n\nWhy not \"Work center OEE efficiency percentage field (not applicable here)\"? Work center OEE tracks equipment performance, unrelated to data import IDs.", fr: "Les imports Odoo utilisent des ID externes (XML IDs) dans la colonne id (ex. : __import__.legacy_partner_001) afin que les ré-importations mettent à jour le même res.partner au lieu de créer des doublons. C'est une pratique standard de mise en production/migration de données." },
   }),
   complexQ({
     id: "oep-131",
     module: "crm",
-    text: {
-      en: "A CRM manager wants lost reasons captured when an opportunity is marked Lost in Odoo 19. Where is this configured?",
-      fr: "A CRM manager wants lost reasons captured when an opportunité is marked Lost in Odoo 19. Where is this configured?",
-    },
-    correct: {
-      en: "CRM > Configuration > Lost Reasons, then select one when marking Lost",
-      fr: "CRM > Configuration > Lost Reasons, then select one when marking Lost",
-    },
+    text: { en: "A CRM manager wants lost reasons captured when an opportunity is marked Lost in Odoo 19. Where is this configured?", fr: "Un responsable CRM veut que les motifs de perte soient capturés lorsqu'une opportunité est marquée Perdue dans Odoo 19. Où cela se configure-t-il ?" },
+    correct: { en: "CRM > Configuration > Lost Reasons, then select one when marking Lost", fr: "CRM > Configuration > Motifs de perte, puis en sélectionner un lors du marquage Perdu" },
     distractors: [
-      {
-        en: "Inventory > Routes > Make-to-Order on the opportunity product",
-        fr: "Inventory > Routes > Make-to-Order on the opportunité product",
-      },
-      {
-        en: "Accounting > Lock Dates on the company fiscal period settings",
-        fr: "Accounting > Lock Dates on the company fiscal period settings",
-      },
-      {
-        en: "POS > Payment Methods outstanding receipts account mapping",
-        fr: "POS > Payment Methods outstanding receipts account mapping",
-      },
+      { en: "Inventory > Routes > Make-to-Order on the opportunity product", fr: "Inventaire > Routes > Fabrication à la commande sur le produit de l'opportunité" },
+      { en: "Accounting > Lock Dates on the company fiscal period settings", fr: "Comptabilité > Dates de verrouillage sur les paramètres de période fiscale de la société" },
+      { en: "POS > Payment Methods outstanding receipts account mapping", fr: "PDV > Mapping du compte d'encaissements en attente des méthodes de paiement" },
     ],
-    explanation: {
-      en: "Lost Reasons are maintained under CRM configuration. When a salesperson marks an opportunity Lost, they pick a reason, enabling pipeline analytics on why deals fail.\n\nMTO routes drive procurement; they do not record why a CRM deal was lost. Lock dates prevent editing past accounting entries, unrelated to CRM loss reasons. POS payment methods handle register tenders, not opportunity loss tracking.",
-      fr: "Lost Reasons are maintained under CRM configuration. When a salesperson marks an opportunité Lost, they pick a reason, enabling pipeline analytics on why deals fail.\n\nMTO routes drive procurement; they do not record why a CRM deal was lost. Lock dates prevent editing past accounting entries, unrelated to CRM loss reasons. POS payment methods handle register tenders, not opportunité loss tracking.",
-    },
+    explanation: { en: "Lost Reasons are maintained under CRM configuration. When a salesperson marks an opportunity Lost, they pick a reason, enabling pipeline analytics on why deals fail.\n\nWhy not \"Inventory > Routes > Make-to-Order on the opportunity product\"? MTO routes drive procurement; they do not record why a CRM deal was lost.\n\nWhy not \"Accounting > Lock Dates on the company fiscal period settings\"? Lock dates prevent editing past accounting entries, unrelated to CRM loss reasons.\n\nWhy not \"POS > Payment Methods outstanding receipts account mapping\"? POS payment methods handle register tenders, not opportunity loss tracking.", fr: "Les motifs de perte sont maintenus dans la configuration CRM. Lorsqu'un commercial marque une opportunité comme Perdue, il choisit un motif, permettant l'analyse du pipeline sur les raisons d'échec des affaires." },
   }),
   complexQ({
     id: "oep-132",
     module: "crm",
-    text: {
-      en: "An opportunity reaches the Won stage in Odoo 19 CRM. What is the typical next step to bill the customer?",
-      fr: "An opportunité reaches the Won stage in Odoo 19 CRM. What is the typical next step to bill the customer?",
-    },
-    correct: {
-      en: "Create a quotation or sales order from the opportunity and confirm invoicing flow",
-      fr: "Create a devis or commande client from the opportunité and confirm invoicing flow",
-    },
+    text: { en: "An opportunity reaches the Won stage in Odoo 19 CRM. What is the typical next step to bill the customer?", fr: "Une opportunité atteint l'étape Gagnée dans le CRM Odoo 19. Quelle est l'étape suivante typique pour facturer le client ?" },
+    correct: { en: "Create a quotation or sales order from the opportunity and confirm invoicing flow", fr: "Créer un devis ou un bon de commande depuis l'opportunité et confirmer le flux de facturation" },
     distractors: [
-      {
-        en: "Post a vendor bill directly from the opportunity kanban card",
-        fr: "Post a facture fournisseur directly from the opportunité kanban card",
-      },
-      {
-        en: "Run the MRP scheduler to replenish components from the pipeline stage",
-        fr: "Run the MRP scheduler to replenish components from the pipeline stage",
-      },
-      {
-        en: "Open a POS session and scan the opportunity barcode at checkout",
-        fr: "Open a POS session and scan the opportunité barcode at checkout",
-      },
+      { en: "Post a vendor bill directly from the opportunity kanban card", fr: "Comptabiliser une facture fournisseur directement depuis la carte kanban de l'opportunité" },
+      { en: "Run the MRP scheduler to replenish components from the pipeline stage", fr: "Exécuter le planificateur MRP pour réapprovisionner les composants depuis l'étape du pipeline" },
+      { en: "Open a POS session and scan the opportunity barcode at checkout", fr: "Ouvrir une session PDV et scanner le code-barres de l'opportunité au passage en caisse" },
     ],
-    explanation: {
-      en: "Winning an opportunity usually converts to a quotation or sales order (New Quotation button). From the confirmed SO, delivery and customer invoicing follow the product invoicing policy.\n\nVendor bills are accounts payable documents, not created from won CRM deals. The MRP scheduler processes stock rules, not customer billing from CRM wins. POS sessions sell at retail registers; CRM opportunities are not POS transactions.",
-      fr: "Winning an opportunité usually converts to a devis or commande client (New devis button). From the confirmed SO, delivery and customer invoicing follow the product invoicing policy.\n\nfacture fournisseur are accounts payable documents, not created from won CRM deals. The MRP scheduler processes stock rules, not customer billing from CRM wins. POS sessions sell at retail registers; CRM opportunité are not POS transactions.",
-    },
+    explanation: { en: "Winning an opportunity usually converts to a quotation or sales order (New Quotation button). From the confirmed SO, delivery and customer invoicing follow the product invoicing policy.\n\nWhy not \"Post a vendor bill directly from the opportunity kanban card\"? Vendor bills are accounts payable documents, not created from won CRM deals.\n\nWhy not \"Run the MRP scheduler to replenish components from the pipeline stage\"? The MRP scheduler processes stock rules, not customer billing from CRM wins.\n\nWhy not \"Open a POS session and scan the opportunity barcode at checkout\"? POS sessions sell at retail registers; CRM opportunities are not POS transactions.", fr: "Gagner une opportunité mène généralement à la conversion en devis ou bon de commande (bouton Nouveau devis). Depuis la commande confirmée, la livraison et la facturation client suivent la politique de facturation du produit." },
   }),
   complexQ({
     id: "oep-133",
     module: "crm",
-    text: {
-      en: "A sales team uses predictive lead scoring in Odoo 19 CRM. What data primarily feeds the score?",
-      fr: "A sales team uses predictive piste scoring in Odoo 19 CRM. What data primarily feeds the score?",
-    },
-    correct: {
-      en: "Historical won/lost patterns and lead field values used by the scoring model",
-      fr: "Historical won/lost patterns and piste field values used by the scoring model",
-    },
+    text: { en: "A sales team uses predictive lead scoring in Odoo 19 CRM. What data primarily feeds the score?", fr: "Une équipe commerciale utilise le scoring prédictif des pistes dans le CRM Odoo 19. Quelles données alimentent principalement le score ?" },
+    correct: { en: "Historical won/lost patterns and lead field values used by the scoring model", fr: "Les modèles historiques gagné/perdu et les valeurs des champs de la piste utilisés par le modèle de scoring" },
     distractors: [
-      {
-        en: "Warehouse on-hand quantity from stock quants per product variant",
-        fr: "entrepôt on-hand quantity from stock quants per product variant",
-      },
-      {
-        en: "Bank statement reconciliation model regex rules on memo text",
-        fr: "Bank statement modèle de rapprochement regex rules on memo text",
-      },
-      {
-        en: "Manufacturing work center OEE downtime percentages per shift",
-        fr: "Manufacturing poste de charge OEE downtime percentages per shift",
-      },
+      { en: "Warehouse on-hand quantity from stock quants per product variant", fr: "La quantité en stock de l'entrepôt depuis les quants de stock par variante de produit" },
+      { en: "Bank statement reconciliation model regex rules on memo text", fr: "Les règles regex du modèle de lettrage de relevé bancaire sur le texte du mémo" },
+      { en: "Manufacturing work center OEE downtime percentages per shift", fr: "Les pourcentages de temps d'arrêt TRS du poste de charge de fabrication par poste" },
     ],
-    explanation: {
-      en: "Predictive lead scoring (where enabled) learns from past opportunities—fields like country, industry, source, and stage outcomes—to rank new leads by likelihood to convert.\n\nStock on-hand drives inventory replenishment, not CRM predictive lead scores. Reconciliation models match bank lines, unrelated to lead scoring algorithms. Work center OEE tracks equipment efficiency, not CRM lead probability.",
-      fr: "Predictive piste scoring (where enabled) learns from past opportunité—fields like country, industry, source, and stage outcomes—to rank new piste by likelihood to convert.\n\nStock on-hand drives inventory replenishment, not CRM predictive piste scores. modèle de rapprochement match bank lines, unrelated to piste scoring algorithms. poste de charge OEE tracks equipment efficiency, not CRM piste probability.",
-    },
+    explanation: { en: "Predictive lead scoring (where enabled) learns from past opportunities—fields like country, industry, source, and stage outcomes—to rank new leads by likelihood to convert.\n\nWhy not \"Warehouse on-hand quantity from stock quants per product variant\"? Stock on-hand drives inventory replenishment, not CRM predictive lead scores.\n\nWhy not \"Bank statement reconciliation model regex rules on memo text\"? Reconciliation models match bank lines, unrelated to lead scoring algorithms.\n\nWhy not \"Manufacturing work center OEE downtime percentages per shift\"? Work center OEE tracks equipment efficiency, not CRM lead probability.", fr: "Le scoring prédictif des pistes (lorsqu'il est activé) apprend des opportunités passées — champs comme le pays, le secteur, la source et les résultats d'étape — pour classer les nouvelles pistes par probabilité de conversion." },
   }),
 ];

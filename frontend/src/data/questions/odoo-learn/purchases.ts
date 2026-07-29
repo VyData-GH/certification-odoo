@@ -3,27 +3,6 @@ import { complexQ, mcq3Q, yesNoQ } from "../helpers";
 /** Questions extraites d'Odoo Learn — généré automatiquement */
 export const purchasesLearnQuestions = [
 complexQ({
-    id: "pur-026",
-    module: "purchases",
-    text: {
-      en: "You’ve bought in-app purchase (IAP) credits for Document Digitization and want to use them with the Lead Generation service. How do you do this? (Odoo Learn — In-App Services (Tokens and Credits))",
-      fr: "Vous avez acheté des crédits d'achat in-app (IAP) pour la numérisation de documents et souhaitez les utiliser avec le service Lead Generation. Comment faites-vous cela ? (Odoo Learn — Services intégrés à l'application (jetons et crédits))",
-    },
-    correct: {
-      en: "This can’t be done. IAP credits are not interchangeable.",
-      fr: "Cela ne peut pas être fait. Les crédits IAP ne sont pas interchangeables.",
-    },
-    distractors: [
-      { en: "Log into your database, go to the Settings app, search for “credit refund” and follow the process.The IAP funds this refund generates can then be used to purchase Lead Generation credits.", fr: "Connectez-vous à votre base de données, accédez à l'application Paramètres, recherchez « remboursement de crédit » et suivez le processus. Les fonds IAP générés par ce remboursement peuvent ensuite être utilisés pour acheter des crédits de génération de leads." },
-      { en: "Log into your database, go to the Settings app, search for “credit exchange” and follow the process. IAP credits may be exchanged for different kinds of credits at varying conversion rates.", fr: "Connectez-vous à votre base de données, accédez à l'application Paramètres, recherchez « échange de crédits » et suivez le processus. Les crédits IAP peuvent être échangés contre différents types de crédits à différents taux de conversion." },
-      { en: "IAP credits are a fungible currency. You can simply purchase credits and spend them on any service you like.", fr: "Les crédits IAP sont une monnaie fongible. Vous pouvez simplement acheter des crédits et les dépenser pour le service de votre choix." },
-    ],
-    explanation: {
-      en: "Source Odoo Learn (In-App Services (Tokens and Credits)): This can’t be done. IAP credits are not interchangeable.",
-      fr: "Source Odoo Learn (services intégrés à l'application (jetons et crédits)) : cela ne peut pas être fait. Les crédits IAP ne sont pas interchangeables.",
-    },
-  }),
-complexQ({
     id: "pur-027",
     module: "purchases",
     text: {

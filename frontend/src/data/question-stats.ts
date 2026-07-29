@@ -15,8 +15,8 @@ export interface QuestionStats {
 }
 
 export const QUESTION_STATS: QuestionStats = {
-  "total": 2379,
-  "certificationTotal": 1952,
+  "total": 2307,
+  "certificationTotal": 1880,
   "supplementaryTotal": 427,
   "byModule": {
     "accounting": 176,
@@ -27,7 +27,7 @@ export const QUESTION_STATS: QuestionStats = {
     "business-cases": 12,
     "crm": 157,
     "documents": 3,
-    "ecommerce": 115,
+    "ecommerce": 104,
     "elearning": 8,
     "events": 45,
     "field-service": 16,
@@ -43,39 +43,39 @@ export const QUESTION_STATS: QuestionStats = {
     "plm": 7,
     "pos": 124,
     "project": 93,
-    "purchases": 71,
+    "purchases": 70,
     "quality": 36,
     "rental": 20,
     "sales": 134,
     "sign": 4,
-    "spreadsheet": 73,
-    "studio": 106,
+    "spreadsheet": 56,
+    "studio": 104,
     "subscription": 34,
     "survey": 35,
     "technical-training": 71,
     "timesheet": 33,
     "voip": 36,
-    "website": 120
+    "website": 79
   },
   "byCertification": {
-    "website": 120,
-    "ecommerce": 115,
+    "website": 79,
+    "ecommerce": 104,
     "survey": 35,
     "marketing": 85,
     "ai": 20,
     "crm": 157,
     "sales": 134,
-    "purchases": 71,
+    "purchases": 70,
     "project": 93,
     "timesheet": 33,
     "accounting": 176,
     "inventory": 167,
     "mrp": 174,
     "hr": 224,
-    "spreadsheet": 73,
+    "spreadsheet": 56,
     "knowledge": 45,
     "pos": 124,
-    "studio": 106
+    "studio": 104
   },
   "bySupplementary": {
     "sign": 4,
