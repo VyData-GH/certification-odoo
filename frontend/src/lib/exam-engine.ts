@@ -1,5 +1,6 @@
 import { isDontKnow, isUnanswered } from "@/lib/answers";
 import { prepareQuestionForExam } from "@/lib/exam-present";
+import { allocateByWeight } from "@/lib/exam-weights";
 import { allQuestions } from "@/data/questions";
 import {
   getModuleQuestionCount as getPublicModuleQuestionCount,
@@ -19,21 +20,6 @@ import {
 } from "@/types/exam";
 
 export { formatTime, secondsPerQuestion } from "@/lib/exam-time";
-
-/** Mirrors Odoo official sample test section mix (text questions only). */
-const SAMPLE_TEXT_SECTIONS: { modules: ModuleId[]; count: number }[] = [
-  { modules: ["studio", "knowledge", "survey", "ai"], count: 2 },
-  { modules: ["crm"], count: 2 },
-  { modules: ["inventory"], count: 2 },
-  { modules: ["mrp"], count: 2 },
-  { modules: ["website", "ecommerce"], count: 2 },
-  { modules: ["hr"], count: 2 },
-  { modules: ["timesheet"], count: 1 },
-  { modules: ["project"], count: 2 },
-  { modules: ["accounting"], count: 2 },
-  { modules: ["purchases"], count: 2 },
-  { modules: ["sales"], count: 1 },
-];
 
 function seededRandom(seed: number) {
   let s = seed;
@@ -92,7 +78,7 @@ export function selectQuestions(config: ExamConfig): Question[] {
   return shuffle(pool, random).slice(0, count);
 }
 
-/** Full mock: balanced modules + screenshots + yes/no like the real exam mix. */
+/** Full mock: official module weights + screenshots + yes/no. */
 function selectFullExamQuestions(
   pool: Question[],
   count: number,
@@ -129,41 +115,46 @@ function selectFullExamQuestions(
   const textPool = pool.filter(
     (q) => !usedIds.has(q.id) && !q.image && q.questionType !== "yesno"
   );
-  selected.push(...selectBalancedQuestions(textPool, remainingSlots, random));
+  selected.push(
+    ...selectWeightedQuestions(textPool, remainingSlots, random)
+  );
 
   return shuffle(selected, random).slice(0, count);
 }
 
-function selectBalancedQuestions(
+/** Pick questions following official exam module weights. */
+function selectWeightedQuestions(
   pool: Question[],
   count: number,
   random: () => number
 ): Question[] {
-  const byModule = new Map<ModuleId, Question[]>();
-  for (const q of pool) {
-    const list = byModule.get(q.module) ?? [];
-    list.push(q);
-    byModule.set(q.module, list);
-  }
+  if (count <= 0 || pool.length === 0) return [];
 
-  const modules = shuffle([...byModule.keys()], random);
-  const perModule = Math.floor(count / modules.length);
-  const remainder = count % modules.length;
+  const allocations = allocateByWeight(count);
+  const usedIds = new Set<string>();
   const selected: Question[] = [];
 
-  modules.forEach((mod, i) => {
-    const modQuestions = shuffle(byModule.get(mod) ?? [], random);
-    const take = perModule + (i < remainder ? 1 : 0);
-    selected.push(...modQuestions.slice(0, take));
-  });
+  for (const { modules, count: target } of allocations) {
+    if (target <= 0) continue;
+    const sectionPool = shuffle(
+      pool.filter((q) => modules.includes(q.module) && !usedIds.has(q.id)),
+      random
+    );
+    for (const q of sectionPool.slice(0, target)) {
+      selected.push(q);
+      usedIds.add(q.id);
+    }
+  }
 
   if (selected.length < count) {
-    const usedIds = new Set(selected.map((q) => q.id));
     const remaining = shuffle(
       pool.filter((q) => !usedIds.has(q.id)),
       random
     );
-    selected.push(...remaining.slice(0, count - selected.length));
+    for (const q of remaining.slice(0, count - selected.length)) {
+      selected.push(q);
+      usedIds.add(q.id);
+    }
   }
 
   return shuffle(selected, random);
@@ -173,6 +164,7 @@ function selectSampleTestQuestions(seed: number): Question[] {
   const random = seededRandom(seed);
   const usedIds = new Set<string>();
   const selected: Question[] = [];
+  const target = SAMPLE_TEST_RULES.questionCount;
 
   for (const q of shuffle(screenshotQuestions, random).slice(
     0,
@@ -182,36 +174,25 @@ function selectSampleTestQuestions(seed: number): Question[] {
     usedIds.add(q.id);
   }
 
-  const textPool = allQuestions.filter((q) => !q.image);
-
-  for (const section of SAMPLE_TEXT_SECTIONS) {
-    const sectionPool = shuffle(
-      textPool.filter(
-        (q) =>
-          section.modules.includes(q.module) &&
-          !usedIds.has(q.id) &&
-          q.questionType !== "yesno"
-      ),
-      random
-    );
-    for (const q of sectionPool.slice(0, section.count)) {
-      selected.push(q);
-      usedIds.add(q.id);
-    }
-  }
-
-  const target = SAMPLE_TEST_RULES.questionCount;
-  if (selected.length < target) {
-    const remaining = shuffle(
-      textPool.filter((q) => !usedIds.has(q.id)),
-      random
-    );
-    selected.push(...remaining.slice(0, target - selected.length));
-  }
+  const textSlots = Math.max(0, target - selected.length);
+  const textPool = allQuestions.filter(
+    (q) =>
+      !q.image &&
+      !usedIds.has(q.id) &&
+      isCertificationModuleId(q.module) &&
+      q.questionType !== "yesno"
+  );
+  selected.push(...selectWeightedQuestions(textPool, textSlots, random));
+  for (const q of selected) usedIds.add(q.id);
 
   // Mix in yes/no questions (official exam includes them)
   const yesNoPool = shuffle(
-    textPool.filter((q) => q.questionType === "yesno" && !usedIds.has(q.id)),
+    allQuestions.filter(
+      (q) =>
+        q.questionType === "yesno" &&
+        !usedIds.has(q.id) &&
+        isCertificationModuleId(q.module)
+    ),
     random
   );
   for (const yn of yesNoPool.slice(0, 4)) {

@@ -29,24 +29,9 @@ import {
   EXAM_RULES,
   formatExamDuration,
   CERTIFICATION_MODULES,
-  ModuleId,
   ExamResult,
 } from "@/types/exam";
-
-const EXAM_WEIGHTS: { modules: ModuleId[]; pct: number }[] = [
-  { modules: ["accounting"], pct: 14 },
-  { modules: ["crm", "sales"], pct: 14 },
-  { modules: ["inventory"], pct: 13 },
-  { modules: ["studio"], pct: 11 },
-  { modules: ["mrp"], pct: 10 },
-  { modules: ["purchases"], pct: 7 },
-  { modules: ["project", "timesheet"], pct: 7 },
-  { modules: ["hr"], pct: 6 },
-  { modules: ["website", "ecommerce"], pct: 6 },
-  { modules: ["pos"], pct: 6 },
-  { modules: ["spreadsheet", "knowledge"], pct: 4 },
-  { modules: ["marketing", "survey"], pct: 4 },
-];
+import { OFFICIAL_EXAM_WEIGHTS } from "@/lib/exam-weights";
 
 function HomePageContent() {
   const { tr, locale } = useLanguage();
@@ -325,7 +310,7 @@ function HomePageContent() {
         <section className="odoo-card">
           <div className="odoo-card-header">{tr.home.examWeightsTitle}</div>
           <div className="odoo-card-body space-y-2">
-            {EXAM_WEIGHTS.map((w) => (
+            {OFFICIAL_EXAM_WEIGHTS.map((w) => (
               <div key={w.modules.join("-")} className="flex items-center gap-3">
                 <div className="flex items-center gap-1.5 min-w-0 flex-1">
                   {w.modules.map((m) => (

@@ -130,6 +130,8 @@ export interface ExamSessionMeta {
   durationMinutes: number;
   sessionSeed: number;
   questionIds: string[];
+  /** Locale used when questions/options were shown (keeps review shuffle in sync). */
+  locale?: "en" | "fr";
 }
 
 export interface ExamPreset {
@@ -140,9 +142,22 @@ export interface ExamPreset {
   badge?: string;
 }
 
+export type AnswerOutcome = "correct" | "wrong" | "unanswered" | "dontKnow";
+
 export interface AnswerRecord {
   questionId: string;
   selectedIndex: number | null;
+  /** Snapshot at submit — review must not re-derive from shuffle (avoids locale/bank drift). */
+  outcome?: AnswerOutcome;
+  /** Correct option index as shown during the exam (after shuffle). */
+  correctIndex?: number;
+  /** Options exactly as shown during the exam (incl. « I don't know »). */
+  options?: string[];
+  /** Question text as shown during the exam. */
+  text?: string;
+  /** Explanation snapshot for review if bank changes. */
+  explanation?: string;
+  dontKnowIndex?: number | null;
 }
 
 export interface ExamResult {

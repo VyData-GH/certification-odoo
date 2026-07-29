@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { WeakQuestionsModal } from "@/components/WeakQuestionsModal";
 import {
@@ -73,6 +73,12 @@ export function ExamResultSummary({
   const { tr, locale } = useLanguage();
   const [reviewOpen, setReviewOpen] = useState(false);
   const [reviewFilter, setReviewFilter] = useState<ReviewFilter>("weak");
+
+  // Isolate review state per session — avoid mixing answers across quizzes
+  useEffect(() => {
+    setReviewOpen(false);
+    setReviewFilter("weak");
+  }, [result.id]);
   const examScoreLabel = tr.results.examScoreOfficial
     .replace("{score}", result.score.toFixed(1));
   const singleModuleId = getSingleModuleId(result);
@@ -355,6 +361,7 @@ export function ExamResultSummary({
       )}
     </div>
     <WeakQuestionsModal
+      key={result.id}
       result={result}
       open={reviewOpen}
       initialFilter={reviewFilter}

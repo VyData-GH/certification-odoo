@@ -121,7 +121,7 @@ export function getWeakModules(
 
 /**
  * Collect wrong / unanswered / « I don't know » question IDs across sessions.
- * « I don't know » counts as unanswered for smart redo (gap to close).
+ * Prefers outcome snapshot saved at submit (avoids shuffle/locale drift).
  */
 export function collectMistakeStats(sessions: ExamResult[]): MistakeStat[] {
   const byId = new Map<string, MistakeStat>();
@@ -131,53 +131,92 @@ export function collectMistakeStats(sessions: ExamResult[]): MistakeStat[] {
     const answers = session.answers;
     if (!ids?.length || !answers?.length) continue;
 
-    const questions = loadQuestionsByIds(ids);
-    if (questions.length === 0) continue;
+    // Skip perfect sessions entirely (guards old sessions with drifted reconstruction)
+    if (
+      session.correct === session.totalQuestions &&
+      session.wrong === 0 &&
+      (session.unanswered ?? 0) === 0 &&
+      (session.dontKnow ?? 0) === 0
+    ) {
+      continue;
+    }
 
-    const shuffled = shuffleAllQuestionOptions(
-      questions.map((q) => ({
-        id: q.id,
-        module: q.module,
-        text: q.text.en,
-        options: [...q.options.en],
-        correctIndex: q.correctIndex,
-        dontKnowIndex: null,
-        explanation: q.explanation.en,
-        questionType: q.questionType,
-      })),
-      session.sessionMeta!.sessionSeed,
-      t("en").exam.dontKnow
-    );
+    const answerById = new Map(answers.map((a) => [a.questionId, a]));
+    const hasOutcomes = answers.some((a) => a.outcome);
 
-    const answerMap = new Map(
-      answers.map((a) => [a.questionId, a.selectedIndex])
-    );
+    let resolved: Array<{
+      questionId: string;
+      wrong: number;
+      unanswered: number;
+    }> = [];
 
-    for (const q of shuffled) {
-      const selected = answerMap.get(q.id) ?? null;
-      let wrong = 0;
-      let unanswered = 0;
-
-      if (selected === null || selected === undefined) {
-        unanswered = 1;
-      } else if (isDontKnow(selected, q.dontKnowIndex)) {
-        unanswered = 1;
-      } else if (selected !== q.correctIndex) {
-        wrong = 1;
-      } else {
-        continue;
+    if (hasOutcomes) {
+      for (const id of ids) {
+        const a = answerById.get(id);
+        const outcome = a?.outcome;
+        if (!outcome || outcome === "correct") continue;
+        resolved.push({
+          questionId: id,
+          wrong: outcome === "wrong" ? 1 : 0,
+          unanswered:
+            outcome === "unanswered" || outcome === "dontKnow" ? 1 : 0,
+        });
       }
+    } else {
+      const questions = loadQuestionsByIds(ids);
+      if (questions.length === 0) continue;
 
-      const prev = byId.get(q.id);
+      const examLocale = session.sessionMeta!.locale ?? "en";
+      const byQ = new Map(questions.map((q) => [q.id, q]));
+      const inOrder = ids
+        .map((id) => byQ.get(id))
+        .filter(Boolean) as typeof questions;
+
+      const shuffled = shuffleAllQuestionOptions(
+        inOrder.map((q) => ({
+          id: q.id,
+          module: q.module,
+          text: q.text[examLocale],
+          options: [...q.options[examLocale]],
+          correctIndex: q.correctIndex,
+          dontKnowIndex: null,
+          explanation: q.explanation[examLocale],
+          questionType: q.questionType,
+        })),
+        session.sessionMeta!.sessionSeed,
+        t(examLocale).exam.dontKnow
+      );
+
+      for (const q of shuffled) {
+        const a = answerById.get(q.id);
+        const selected = a?.selectedIndex ?? null;
+        let wrong = 0;
+        let unanswered = 0;
+
+        if (selected === null || selected === undefined) {
+          unanswered = 1;
+        } else if (isDontKnow(selected, q.dontKnowIndex)) {
+          unanswered = 1;
+        } else if (selected !== q.correctIndex) {
+          wrong = 1;
+        } else {
+          continue;
+        }
+        resolved.push({ questionId: q.id, wrong, unanswered });
+      }
+    }
+
+    for (const row of resolved) {
+      const prev = byId.get(row.questionId);
       if (prev) {
-        prev.wrongCount += wrong;
-        prev.unansweredCount += unanswered;
+        prev.wrongCount += row.wrong;
+        prev.unansweredCount += row.unanswered;
         prev.lastSeenAt = session.date;
       } else {
-        byId.set(q.id, {
-          questionId: q.id,
-          wrongCount: wrong,
-          unansweredCount: unanswered,
+        byId.set(row.questionId, {
+          questionId: row.questionId,
+          wrongCount: row.wrong,
+          unansweredCount: row.unanswered,
           lastSeenAt: session.date,
         });
       }

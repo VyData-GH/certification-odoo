@@ -250,10 +250,32 @@ function ExamContent() {
   const handleSubmit = useCallback(() => {
     if (!config || !startedAt || sessionSeed === null) return;
 
-    const answerRecords: AnswerRecord[] = questions.map((q, i) => ({
-      questionId: q.id,
-      selectedIndex: answers[i],
-    }));
+    const examLocale: "en" | "fr" =
+      config.forceEnglish ? "en" : locale;
+
+    const answerRecords: AnswerRecord[] = questions.map((q, i) => {
+      const selected = answers[i];
+      let outcome: AnswerRecord["outcome"] = "unanswered";
+      if (isUnanswered(selected)) {
+        outcome = "unanswered";
+      } else if (isDontKnow(selected, q.dontKnowIndex)) {
+        outcome = "dontKnow";
+      } else if (selected === q.correctIndex) {
+        outcome = "correct";
+      } else {
+        outcome = "wrong";
+      }
+      return {
+        questionId: q.id,
+        selectedIndex: selected,
+        outcome,
+        correctIndex: q.correctIndex,
+        options: [...q.options],
+        text: q.text,
+        explanation: q.explanation,
+        dontKnowIndex: q.dontKnowIndex,
+      };
+    });
 
     const scoreData = calculateScore(questions, answerRecords);
     const examResult: ExamResult = {
@@ -269,6 +291,7 @@ function ExamContent() {
         durationMinutes: config.durationMinutes,
         sessionSeed,
         questionIds: questions.map((q) => q.id),
+        locale: examLocale,
       },
       answers: answerRecords,
       ...scoreData,
@@ -281,7 +304,7 @@ function ExamContent() {
       .then(({ updateSrsFromResult }) => updateSrsFromResult(examResult))
       .catch(() => undefined);
     setShowConfirm(false);
-  }, [config, startedAt, sessionSeed, questions, answers, accessToken]);
+  }, [config, startedAt, sessionSeed, questions, answers, accessToken, locale]);
 
   useEffect(() => {
     if (!config || !examStarted || submitted || isReviewMode || remainingSeconds <= 0) {

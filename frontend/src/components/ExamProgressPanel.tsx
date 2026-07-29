@@ -45,10 +45,7 @@ export function ExamProgressPanel({ history }: Props) {
 
   return (
     <section className="odoo-card">
-      <div className="odoo-card-header flex items-center gap-2">
-        <span className="text-lg">📖</span>
-        <span>{tr.home.examProgressTitle ?? "Progression par examen"}</span>
-      </div>
+      <div className="odoo-card-header">{tr.home.examProgressTitle}</div>
       <div className="odoo-card-body">
         {!hasData ? (
           <p className="text-sm text-odoo-text-muted">

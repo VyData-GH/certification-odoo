@@ -151,6 +151,9 @@ export const translations = {
       activityActiveDays: "Active Days",
       activityColorQ: "Questions",
       activityColorAcc: "Accuracy",
+      activityTooltipEmpty: "No activity",
+      activityTooltipQuestions: "{n} questions answered",
+      activityTooltipAccuracy: "{n} questions · {pct}% correct",
       examProgressTitle: "Exam Progress",
       examProgressFull: "Full Exam (120Q)",
       examProgressSample: "Sample Test (30Q)",
@@ -495,6 +498,10 @@ export const translations = {
       backToList: "← Back to list",
       tabCertification: "Certification (Full exam & Sample)",
       tabTraining: "Training & quizzes",
+      paginationPrev: "Previous",
+      paginationNext: "Next",
+      paginationPage: "{page} / {pages}",
+      paginationRange: "{from}–{to} of {total}",
       certIntro:
         "Attempts until your first score of 70% or higher. Download a certificate when you pass.",
       certStats: {
@@ -705,6 +712,9 @@ export const translations = {
       activityActiveDays: "Jours actifs",
       activityColorQ: "Questions",
       activityColorAcc: "Précision",
+      activityTooltipEmpty: "Aucune activité",
+      activityTooltipQuestions: "{n} questions répondues",
+      activityTooltipAccuracy: "{n} questions · {pct}% correctes",
       examProgressTitle: "Progression par examen",
       examProgressFull: "Examen complet (120Q)",
       examProgressSample: "Sample Test (30Q)",
@@ -1056,6 +1066,10 @@ export const translations = {
       backToList: "← Retour à la liste",
       tabCertification: "Certification (Examen blanc & Sample)",
       tabTraining: "Entraînement & quiz",
+      paginationPrev: "Précédent",
+      paginationNext: "Suivant",
+      paginationPage: "{page} / {pages}",
+      paginationRange: "{from}–{to} sur {total}",
       certIntro:
         "Nombre de tentatives avant d'atteindre 70 % ou plus. Téléchargez un certificat après réussite.",
       certStats: {

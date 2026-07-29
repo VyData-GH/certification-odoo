@@ -1,6 +1,8 @@
 import { allQuestions } from "@/data/questions";
+import { archivedQuestions } from "@/data/questions/question-archive";
 import { localizeQuestions } from "@/lib/localize";
 import {
+  AnswerOutcome,
   ExamConfig,
   ExamResult,
   EXAM_PRESETS,
@@ -22,9 +24,32 @@ export interface ExamReplayPayload {
   questionIds: string[];
 }
 
+/** Active bank + archive (for historical review/replay of removed duplicates). */
+function questionBankById(): Map<string, Question> {
+  return new Map(
+    [...allQuestions, ...archivedQuestions].map((q) => [q.id, q])
+  );
+}
+
 export function loadQuestionsByIds(ids: string[]): Question[] {
-  const byId = new Map(allQuestions.map((q) => [q.id, q]));
+  const byId = questionBankById();
   return ids.map((id) => byId.get(id)).filter(Boolean) as Question[];
+}
+
+/** Load preserving session order; keeps slots aligned with answers even if some IDs are gone. */
+export function loadQuestionsByIdsStrict(ids: string[]): {
+  questions: Question[];
+  missingIds: string[];
+} {
+  const byId = questionBankById();
+  const questions: Question[] = [];
+  const missingIds: string[] = [];
+  for (const id of ids) {
+    const q = byId.get(id);
+    if (q) questions.push(q);
+    else missingIds.push(id);
+  }
+  return { questions, missingIds };
 }
 
 export function prepareExamReplay(result: ExamResult): void {
@@ -37,6 +62,7 @@ export function prepareExamReplay(result: ExamResult): void {
       modules: result.sessionMeta.modules,
       presetId: result.sessionMeta.presetId,
       showExplanations: result.mode === "review",
+      forceEnglish: result.sessionMeta.locale === "en",
     },
     sessionSeed: result.sessionMeta.sessionSeed,
     questionIds: result.sessionMeta.questionIds,
@@ -121,7 +147,7 @@ export function startExamRetry(
   navigate(inferRetryUrl(result));
 }
 
-export type ReviewItemStatus = "wrong" | "unanswered" | "dontKnow" | "correct";
+export type ReviewItemStatus = AnswerOutcome;
 
 export interface ReviewItem {
   question: LocalizedQuestion;
@@ -137,33 +163,90 @@ export function hasStoredAnswers(result: ExamResult): boolean {
 
 export type ReviewFilter = "weak" | "all";
 
+function sessionIsPerfect(result: ExamResult): boolean {
+  return (
+    result.totalQuestions > 0 &&
+    result.correct === result.totalQuestions &&
+    result.wrong === 0 &&
+    (result.unanswered ?? 0) === 0 &&
+    (result.dontKnow ?? 0) === 0
+  );
+}
+
 function buildShuffledSessionQuestions(
   result: ExamResult,
-  locale: "en" | "fr"
+  uiLocale: "en" | "fr"
 ): LocalizedQuestion[] | null {
   const { sessionMeta, answers } = result;
   if (!sessionMeta?.questionIds?.length || !answers?.length) {
     return null;
   }
 
-  const ordered = loadQuestionsByIds(sessionMeta.questionIds);
-  if (ordered.length === 0) return null;
+  const examLocale = sessionMeta.locale ?? uiLocale;
+  const { questions, missingIds } = loadQuestionsByIdsStrict(
+    sessionMeta.questionIds
+  );
 
-  const localized = localizeQuestions(ordered, locale);
+  // Shuffle RNG only stays valid if EVERY session question is available
+  if (missingIds.length > 0 || questions.length !== sessionMeta.questionIds.length) {
+    return null;
+  }
+
+  const localized = localizeQuestions(questions, examLocale);
   return shuffleAllQuestionOptions(
     localized,
     sessionMeta.sessionSeed,
-    t(locale).exam.dontKnow
+    t(examLocale).exam.dontKnow
   );
+}
+
+function reviewItemFromSnapshot(
+  record: NonNullable<ExamResult["answers"]>[number],
+  moduleFallback: string
+): ReviewItem | null {
+  if (!record.options?.length || record.text == null) return null;
+
+  const correctIndex =
+    record.correctIndex ??
+    (record.outcome === "correct" && record.selectedIndex != null
+      ? record.selectedIndex
+      : 0);
+
+  const question: LocalizedQuestion = {
+    id: record.questionId,
+    module: moduleFallback as LocalizedQuestion["module"],
+    text: record.text,
+    options: [...record.options],
+    correctIndex,
+    dontKnowIndex: record.dontKnowIndex ?? record.options.length - 1,
+    explanation: record.explanation ?? "",
+  };
+
+  const status: ReviewItemStatus =
+    record.outcome ??
+    statusForAnswer(question, record.selectedIndex, undefined, correctIndex);
+
+  return {
+    question,
+    selectedIndex: record.selectedIndex,
+    status,
+  };
 }
 
 function statusForAnswer(
   question: LocalizedQuestion,
-  selected: number | null | undefined
+  selected: number | null | undefined,
+  storedOutcome?: AnswerOutcome,
+  storedCorrectIndex?: number
 ): ReviewItemStatus {
+  if (storedOutcome) return storedOutcome;
+
   if (selected === null || selected === undefined) return "unanswered";
   if (isDontKnow(selected, question.dontKnowIndex)) return "dontKnow";
-  if (selected !== question.correctIndex) return "wrong";
+
+  const correctIdx =
+    storedCorrectIndex != null ? storedCorrectIndex : question.correctIndex;
+  if (selected !== correctIdx) return "wrong";
   return "correct";
 }
 
@@ -175,25 +258,112 @@ export function getReviewItems(
   return getSessionReviewItems(result, locale, "weak");
 }
 
-/** Full submitted answer sheet, or weak items only. */
+/** Full submitted answer sheet, or weak items only — scoped to this session only. */
 export function getSessionReviewItems(
   result: ExamResult,
   locale: "en" | "fr",
   filter: ReviewFilter = "weak"
 ): ReviewItem[] {
-  const shuffled = buildShuffledSessionQuestions(result, locale);
-  if (!shuffled) return [];
+  if (filter === "weak" && sessionIsPerfect(result)) {
+    return [];
+  }
 
-  const answerMap = new Map(
-    (result.answers ?? []).map((a) => [a.questionId, a.selectedIndex])
+  const sessionIds = result.sessionMeta?.questionIds ?? [];
+  if (!sessionIds.length || !result.answers?.length) return [];
+
+  const answerById = new Map(
+    result.answers
+      .filter((a) => sessionIds.includes(a.questionId))
+      .map((a) => [a.questionId, a])
   );
 
-  const items: ReviewItem[] = [];
-  for (const question of shuffled) {
-    const selected = answerMap.get(question.id) ?? null;
-    const status = statusForAnswer(question, selected);
-    if (filter === "weak" && status === "correct") continue;
-    items.push({ question, selectedIndex: selected, status });
+  const moduleFallback =
+    result.sessionMeta?.modules?.[0] ??
+    (Object.keys(result.moduleBreakdown ?? [])[0] as string) ??
+    "website";
+
+  const hasFullSnapshots = result.answers.every(
+    (a) => a.options?.length && a.text != null && a.outcome
+  );
+
+  let items: ReviewItem[] = [];
+
+  if (hasFullSnapshots) {
+    // Gold path: display exactly what the user saw, no bank/shuffle needed
+    for (const id of sessionIds) {
+      const record = answerById.get(id);
+      if (!record) continue;
+      const item = reviewItemFromSnapshot(record, moduleFallback);
+      if (item) items.push(item);
+    }
+  } else {
+    const shuffled = buildShuffledSessionQuestions(result, locale);
+    const perfect = sessionIsPerfect(result);
+    const hasOutcomes = result.answers.some((a) => a.outcome);
+
+    if (shuffled && shuffled.length === sessionIds.length) {
+      const byId = new Map(shuffled.map((q) => [q.id, q]));
+      for (const id of sessionIds) {
+        const question = byId.get(id);
+        const record = answerById.get(id);
+        if (!question || !record) continue;
+
+        let status = statusForAnswer(
+          question,
+          record.selectedIndex,
+          record.outcome,
+          record.correctIndex
+        );
+        if (perfect && !hasOutcomes) status = "correct";
+
+        const displayQuestion =
+          record.correctIndex != null
+            ? { ...question, correctIndex: record.correctIndex }
+            : question;
+
+        items.push({
+          question: displayQuestion,
+          selectedIndex: record.selectedIndex,
+          status,
+        });
+      }
+    } else {
+      // Partial bank (should be rare now with archive): still list what we can
+      // using per-answer outcome when present, else skip unreliable shuffle.
+      for (const id of sessionIds) {
+        const record = answerById.get(id);
+        if (!record) continue;
+
+        const snap = reviewItemFromSnapshot(record, moduleFallback);
+        if (snap) {
+          items.push(snap);
+          continue;
+        }
+
+        if (record.outcome) {
+          const { questions } = loadQuestionsByIdsStrict([id]);
+          const q = questions[0];
+          if (!q) continue;
+          const examLocale = result.sessionMeta?.locale ?? locale;
+          const localized = localizeQuestions([q], examLocale)[0];
+          items.push({
+            question: {
+              ...localized,
+              correctIndex: record.correctIndex ?? localized.correctIndex,
+              options: localized.options,
+            },
+            selectedIndex: record.selectedIndex,
+            status:
+              perfect && !hasOutcomes ? "correct" : record.outcome,
+          });
+        }
+      }
+    }
   }
+
+  if (filter === "weak") {
+    items = items.filter((i) => i.status !== "correct");
+  }
+
   return items;
 }

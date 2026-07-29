@@ -79,32 +79,54 @@ export function updateSrsFromResult(result: ExamResult): void {
   const answers = result.answers;
   if (!ids?.length || !answers?.length) return;
 
+  const answerById = new Map(answers.map((a) => [a.questionId, a]));
+  const cards = loadAll();
+  const at = result.date;
+  const hasOutcomes = answers.some((a) => a.outcome);
+
+  if (hasOutcomes) {
+    for (const id of ids) {
+      const a = answerById.get(id);
+      const outcome = a?.outcome;
+      if (!outcome) continue;
+      if (outcome === "correct") {
+        if (cards[id]) upsertCorrect(cards, id, at);
+      } else if (outcome === "wrong") {
+        upsertWrong(cards, id, at, "wrong");
+      } else {
+        upsertWrong(cards, id, at, "unanswered");
+      }
+    }
+    saveAll(cards);
+    return;
+  }
+
   const questions = loadQuestionsByIds(ids);
   if (questions.length === 0) return;
 
+  const examLocale = result.sessionMeta!.locale ?? "en";
+  const byQ = new Map(questions.map((q) => [q.id, q]));
+  const inOrder = ids
+    .map((id) => byQ.get(id))
+    .filter(Boolean) as typeof questions;
+
   const shuffled = shuffleAllQuestionOptions(
-    questions.map((q) => ({
+    inOrder.map((q) => ({
       id: q.id,
       module: q.module,
-      text: q.text.en,
-      options: [...q.options.en],
+      text: q.text[examLocale],
+      options: [...q.options[examLocale]],
       correctIndex: q.correctIndex,
       dontKnowIndex: null,
-      explanation: q.explanation.en,
+      explanation: q.explanation[examLocale],
       questionType: q.questionType,
     })),
     result.sessionMeta!.sessionSeed,
-    t("en").exam.dontKnow
+    t(examLocale).exam.dontKnow
   );
-
-  const answerMap = new Map(
-    answers.map((a) => [a.questionId, a.selectedIndex])
-  );
-  const cards = loadAll();
-  const at = result.date;
 
   for (const q of shuffled) {
-    const selected = answerMap.get(q.id) ?? null;
+    const selected = answerById.get(q.id)?.selectedIndex ?? null;
     if (selected === null || selected === undefined) {
       upsertWrong(cards, q.id, at, "unanswered");
     } else if (isDontKnow(selected, q.dontKnowIndex)) {

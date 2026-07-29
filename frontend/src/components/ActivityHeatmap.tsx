@@ -10,12 +10,28 @@ interface Props {
 
 type ColorMode = "questions" | "accuracy";
 
+interface DayCell {
+  date: Date;
+  value: number;
+  questions: number;
+  correct: number;
+}
+
 function getWeekday(date: Date): number {
   return (date.getDay() + 6) % 7;
 }
 
 function dateKey(d: Date): string {
   return d.toISOString().slice(0, 10);
+}
+
+function formatDisplayDate(d: Date, locale: "en" | "fr"): string {
+  return d.toLocaleDateString(locale === "fr" ? "fr-FR" : "en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 }
 
 function getColor(value: number, mode: ColorMode): string {
@@ -33,8 +49,13 @@ function getColor(value: number, mode: ColorMode): string {
 }
 
 export function ActivityHeatmap({ history }: Props) {
-  const { tr } = useLanguage();
+  const { tr, locale } = useLanguage();
   const [colorMode, setColorMode] = useState<ColorMode>("questions");
+  const [tooltip, setTooltip] = useState<{
+    x: number;
+    y: number;
+    cell: DayCell;
+  } | null>(null);
 
   const { grid, months, totalQ, correctRate, activeDays } = useMemo(() => {
     const byDay = new Map<string, { questions: number; correct: number }>();
@@ -58,8 +79,8 @@ export function ActivityHeatmap({ history }: Props) {
     const end = new Date(dec31);
     end.setDate(end.getDate() + endOffset);
 
-    const weeks: { date: Date; value: number }[][] = [];
-    let week: { date: Date; value: number }[] = [];
+    const weeks: DayCell[][] = [];
+    let week: DayCell[] = [];
     const monthSet = new Map<number, number>();
     let d = new Date(start);
     let weekIdx = 0;
@@ -67,14 +88,21 @@ export function ActivityHeatmap({ history }: Props) {
     while (d <= end) {
       const key = dateKey(d);
       const entry = byDay.get(key);
+      const questions = entry?.questions ?? 0;
+      const correct = entry?.correct ?? 0;
       const val =
         colorMode === "questions"
-          ? entry?.questions ?? 0
-          : entry && entry.questions > 0
-            ? Math.round((entry.correct / entry.questions) * 100)
+          ? questions
+          : questions > 0
+            ? Math.round((correct / questions) * 100)
             : 0;
 
-      week.push({ date: new Date(d), value: val });
+      week.push({
+        date: new Date(d),
+        value: val,
+        questions,
+        correct,
+      });
 
       if (week.length === 7) {
         weeks.push(week);
@@ -89,26 +117,32 @@ export function ActivityHeatmap({ history }: Props) {
     }
     if (week.length > 0) weeks.push(week);
 
-    let totalQ = 0;
-    let totalC = 0;
-    let activeDays = 0;
+    let tQ = 0;
+    let tC = 0;
+    let aDays = 0;
     for (const [, v] of byDay) {
-      totalQ += v.questions;
-      totalC += v.correct;
-      if (v.questions > 0) activeDays++;
+      tQ += v.questions;
+      tC += v.correct;
+      if (v.questions > 0) aDays++;
     }
-    const correctRate = totalQ > 0 ? Math.round((totalC / totalQ) * 100) : 0;
+    const rate = tQ > 0 ? Math.round((tC / tQ) * 100) : 0;
 
-    const monthNames = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-    ];
-    const months = [...monthSet.entries()]
+    const monthNames =
+      locale === "fr"
+        ? ["Jan", "Fév", "Mar", "Avr", "Mai", "Jun", "Jul", "Aoû", "Sep", "Oct", "Nov", "Déc"]
+        : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const monthsList = [...monthSet.entries()]
       .sort((a, b) => a[0] - b[0])
       .map(([m, w]) => ({ label: monthNames[m], weekIdx: w }));
 
-    return { grid: weeks, months, totalQ, correctRate, activeDays };
-  }, [history, colorMode]);
+    return {
+      grid: weeks,
+      months: monthsList,
+      totalQ: tQ,
+      correctRate: rate,
+      activeDays: aDays,
+    };
+  }, [history, colorMode, locale]);
 
   const cellSize = 11;
   const gap = 2;
@@ -118,29 +152,29 @@ export function ActivityHeatmap({ history }: Props) {
   const svgW = rowLabelW + grid.length * step;
   const svgH = headerH + 7 * step;
 
-  const dayLabels = ["Mon", "", "Wed", "", "Fri", "", ""];
+  const dayLabels =
+    locale === "fr"
+      ? ["Lun", "", "Mer", "", "Ven", "", ""]
+      : ["Mon", "", "Wed", "", "Fri", "", ""];
 
   return (
     <section className="odoo-card">
-      <div className="odoo-card-header flex items-center gap-2">
-        <span className="text-lg">📈</span>
-        <span>{tr.home.activityTitle ?? "Your Activity"}</span>
-      </div>
+      <div className="odoo-card-header">{tr.home.activityTitle}</div>
       <div className="odoo-card-body">
         <div className="flex flex-wrap gap-4 text-sm text-odoo-text mb-3">
           <span>
             <span className="font-semibold">{totalQ}</span>{" "}
-            {tr.home.activityTotalQ ?? "Total Questions"}
+            {tr.home.activityTotalQ}
           </span>
           <span>
             <span className="font-semibold">
               {totalQ > 0 ? `${correctRate}%` : "--"}
             </span>{" "}
-            {tr.home.activityCorrectRate ?? "Correct Rate"}
+            {tr.home.activityCorrectRate}
           </span>
           <span>
             <span className="font-semibold">{activeDays}</span>{" "}
-            {tr.home.activityActiveDays ?? "Active Days"}
+            {tr.home.activityActiveDays}
           </span>
         </div>
 
@@ -157,13 +191,16 @@ export function ActivityHeatmap({ history }: Props) {
               }`}
             >
               {m === "questions"
-                ? (tr.home.activityColorQ ?? "Questions")
-                : (tr.home.activityColorAcc ?? "Accuracy")}
+                ? tr.home.activityColorQ
+                : tr.home.activityColorAcc}
             </button>
           ))}
         </div>
 
-        <div className="overflow-x-auto">
+        <div
+          className="overflow-x-auto relative"
+          onMouseLeave={() => setTooltip(null)}
+        >
           <svg width={svgW} height={svgH + 20} className="block">
             {months.map((m) => (
               <text
@@ -199,12 +236,30 @@ export function ActivityHeatmap({ history }: Props) {
                   height={cellSize}
                   rx={2}
                   fill={getColor(cell.value, colorMode)}
-                >
-                  <title>
-                    {dateKey(cell.date)}: {cell.value}{" "}
-                    {colorMode === "questions" ? "Q" : "%"}
-                  </title>
-                </rect>
+                  className="cursor-pointer"
+                  onMouseEnter={(e) => {
+                    const parent = (e.target as SVGRectElement).ownerSVGElement
+                      ?.parentElement;
+                    const rect = parent?.getBoundingClientRect();
+                    if (!rect) return;
+                    setTooltip({
+                      x: e.clientX - rect.left,
+                      y: e.clientY - rect.top,
+                      cell,
+                    });
+                  }}
+                  onMouseMove={(e) => {
+                    const parent = (e.target as SVGRectElement).ownerSVGElement
+                      ?.parentElement;
+                    const rect = parent?.getBoundingClientRect();
+                    if (!rect) return;
+                    setTooltip({
+                      x: e.clientX - rect.left,
+                      y: e.clientY - rect.top,
+                      cell,
+                    });
+                  }}
+                />
               ))
             )}
             <g transform={`translate(${svgW / 2 - 60}, ${svgH + 6})`}>
@@ -236,6 +291,38 @@ export function ActivityHeatmap({ history }: Props) {
               </text>
             </g>
           </svg>
+
+          {tooltip && (
+            <div
+              className="pointer-events-none absolute z-20 rounded-sm bg-odoo-text text-white text-xs px-2.5 py-1.5 shadow-md whitespace-nowrap"
+              style={{
+                left: Math.min(tooltip.x + 12, svgW - 160),
+                top: Math.max(tooltip.y - 44, 0),
+              }}
+            >
+              <div className="font-medium">
+                {formatDisplayDate(tooltip.cell.date, locale)}
+              </div>
+              <div className="opacity-90 mt-0.5">
+                {tooltip.cell.questions === 0
+                  ? tr.home.activityTooltipEmpty
+                  : colorMode === "questions"
+                    ? tr.home.activityTooltipQuestions
+                        .replace("{n}", String(tooltip.cell.questions))
+                    : tr.home.activityTooltipAccuracy
+                        .replace("{n}", String(tooltip.cell.questions))
+                        .replace(
+                          "{pct}",
+                          String(
+                            Math.round(
+                              (tooltip.cell.correct / tooltip.cell.questions) *
+                                100
+                            )
+                          )
+                        )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
