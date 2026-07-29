@@ -691,4 +691,64 @@ export const posQuestions = [
       fr: "Le POS accepte plusieurs lignes de paiement jusqu'à couvrir le total de la commande.",
     },
   }),
+  complexQ({
+    id: "pos-gap-01",
+    module: "pos",
+    text: {
+      en: "What happens during the Open and Close flow of a POS session in Odoo 19?",
+      fr: "Que se passe-t-il lors du flux Ouverture et Fermeture d'une session POS dans Odoo 19 ?",
+    },
+    correct: {
+      en: "Opening sets the starting cash balance; closing requires counting cash, reconciling payments, and posts all session entries to accounting",
+      fr: "L'ouverture définit le solde de caisse initial ; la fermeture exige le comptage de caisse, la réconciliation des paiements et enregistre toutes les écritures de session en comptabilité",
+    },
+    distractors: [
+      {
+        en: "Opening automatically prints all pending receipts; closing just logs the user out",
+        fr: "L'ouverture imprime automatiquement tous les tickets en attente ; la fermeture déconnecte simplement l'utilisateur",
+      },
+      {
+        en: "Sessions do not need to be opened or closed — orders are posted in real time",
+        fr: "Les sessions n'ont pas besoin d'être ouvertes ou fermées — les commandes sont enregistrées en temps réel",
+      },
+      {
+        en: "Only managers can open sessions; closing is done automatically every midnight",
+        fr: "Seuls les responsables peuvent ouvrir des sessions ; la fermeture se fait automatiquement à minuit",
+      },
+    ],
+    explanation: {
+      en: "POS → Open Session sets the opening balance. On Close, the cashier enters counted cash; Odoo shows differences. Closing posts a single journal entry summarizing all orders and payments for that session.",
+      fr: "POS → Ouvrir la session définit le solde d'ouverture. À la fermeture, le caissier saisit le montant compté ; Odoo affiche les écarts. La fermeture enregistre une écriture comptable unique résumant toutes les commandes et paiements de la session.",
+    },
+  }),
+  complexQ({
+    id: "pos-gap-02",
+    module: "pos",
+    text: {
+      en: "How does Table Management work in Odoo 19 POS Restaurant mode?",
+      fr: "Comment fonctionne la Gestion des tables en mode Restaurant du POS Odoo 19 ?",
+    },
+    correct: {
+      en: "Enable 'Is a Bar/Restaurant' in POS settings to access a floor plan where tables can be created, assigned to orders, transferred, and merged",
+      fr: "Activez 'Est un Bar/Restaurant' dans les paramètres POS pour accéder à un plan de salle où les tables peuvent être créées, assignées aux commandes, transférées et fusionnées",
+    },
+    distractors: [
+      {
+        en: "Table management requires the Events app to define seating arrangements",
+        fr: "La gestion des tables nécessite l'application Événements pour définir les plans de places",
+      },
+      {
+        en: "Tables are only visual indicators; they do not link to actual POS orders",
+        fr: "Les tables ne sont que des indicateurs visuels ; elles ne sont pas liées aux commandes POS réelles",
+      },
+      {
+        en: "Each table must be pre-assigned to a specific waiter and cannot be reassigned during service",
+        fr: "Chaque table doit être pré-assignée à un serveur spécifique et ne peut être réassignée pendant le service",
+      },
+    ],
+    explanation: {
+      en: "In POS → Configuration → Settings, enable restaurant features. Then define Floor Plans with table shapes/seats. Waiters tap a table to start an order; orders can be split, transferred, or merged between tables.",
+      fr: "Dans POS → Configuration → Paramètres, activez les fonctionnalités restaurant. Puis définissez des Plans de salle avec formes/places. Les serveurs tapent une table pour commencer une commande ; les commandes peuvent être fractionnées, transférées ou fusionnées entre tables.",
+    },
+  }),
 ];

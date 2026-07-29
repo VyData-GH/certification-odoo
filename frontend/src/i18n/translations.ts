@@ -126,6 +126,20 @@ export const translations = {
       tip3: "Take the full mock exam in English when readiness is above 75%",
       tip4: "Watch the scoring: a wrong answer costs ½ point — use « I don't know » when unsure (0 pts)",
       tip5: "Stay on certification modules for first-try pass — supplementary apps are optional extras",
+      strategyTitle: "Exam Strategy",
+      strategy1:
+        "Practice the full quotation → sales order → delivery → invoice cycle with pricelists and fiscal positions.",
+      strategy2:
+        "Master Inventory routes: know when a reordering rule on Buy creates an RFQ vs Manufacture creates an MO, and how MTO and Dropship differ.",
+      strategy3:
+        "Build each BoM type once (Manufacture, Kit, Subcontracting) — know which creates an MO and which explodes into components.",
+      strategy4:
+        "Run a bank reconciliation and a reconciliation model end to end — understand payment terms, deferred revenue, and fiscal position tax mapping.",
+      strategy5:
+        "Set up access rights + record rules: what operations a group can do vs which records they can do them on.",
+      strategy6:
+        "Budget ~45 s per question. When you're truly unsure, leave blank (0 pts) — a wrong guess costs −0.5 pts.",
+      examWeightsTitle: "Official Exam Weight by Module",
       footer:
         "Independent simulator — not affiliated with Odoo SA. Based on the official Odoo 19 Functional Certification program.",
       view360: "360° Coverage",
@@ -651,6 +665,20 @@ export const translations = {
       tip3: "Passez l'examen blanc complet en anglais quand la readiness dépasse 75%",
       tip4: "Attention au barème : une mauvaise réponse coûte ½ point — utilisez « Je ne sais pas » si vous hésitez (0 pt)",
       tip5: "Restez sur les modules certification pour le premier coup — les modules complémentaires sont optionnels",
+      strategyTitle: "Stratégie d'examen",
+      strategy1:
+        "Pratiquez le cycle complet devis → commande → livraison → facture avec listes de prix et positions fiscales.",
+      strategy2:
+        "Maîtrisez les routes Inventaire : quand une règle de réapprovisionnement sur Buy crée un DdP vs Manufacture crée un OF, et comment MTO et Dropship diffèrent.",
+      strategy3:
+        "Construisez chaque type de nomenclature une fois (Fabrication, Kit, Sous-traitance) — sachez lequel crée un OF et lequel éclate en composants.",
+      strategy4:
+        "Faites un rapprochement bancaire et un modèle de rapprochement de bout en bout — comprenez conditions de paiement, produits constatés d'avance et mapping fiscal.",
+      strategy5:
+        "Configurez droits d'accès + règles d'enregistrement : quelles opérations un groupe peut faire vs quels enregistrements il peut les faire.",
+      strategy6:
+        "Visez ~45 s par question. Si vous ne savez vraiment pas, laissez vide (0 pt) — deviner coûte −0,5 pt.",
+      examWeightsTitle: "Pondération officielle par module",
       footer:
         "Simulateur indépendant — non affilié à Odoo SA. Basé sur le programme officiel Odoo 19 Functional Certification.",
       view360: "Couverture 360°",

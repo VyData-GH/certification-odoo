@@ -901,4 +901,64 @@ export const mrpQuestions = [
       fr: "Les règles Auto avec la route Acheter créent des demandes de prix sans MTO ; le MTO est une stratégie distincte.",
     },
   }),
+  complexQ({
+    id: "mrp-gap-01",
+    module: "mrp",
+    text: {
+      en: "What are the three Bill of Materials types in Odoo 19 and when is each used?",
+      fr: "Quels sont les trois types de Nomenclature dans Odoo 19 et quand chacun est-il utilisé ?",
+    },
+    correct: {
+      en: "Manufacture (produces a finished product via MO), Kit (auto-explodes into components on SO without MO), and Subcontracting (sent to an external partner for production)",
+      fr: "Fabrication (produit un article fini via un OF), Kit (éclate automatiquement en composants sur la commande sans OF) et Sous-traitance (envoyé à un partenaire externe pour production)",
+    },
+    distractors: [
+      {
+        en: "Assembly, Disassembly, and Repair — all three create manufacturing orders",
+        fr: "Assemblage, Désassemblage et Réparation — les trois créent des ordres de fabrication",
+      },
+      {
+        en: "Standard, Phantom, and Outsourced — Phantom creates an MO but skips work orders",
+        fr: "Standard, Fantôme et Externalisé — Fantôme crée un OF mais saute les ordres de travail",
+      },
+      {
+        en: "There are only two types: Manufacture and Kit; subcontracting requires a separate app",
+        fr: "Il n'y a que deux types : Fabrication et Kit ; la sous-traitance nécessite une application séparée",
+      },
+    ],
+    explanation: {
+      en: "Set BoM Type in Manufacturing → Bills of Materials → form. 'Manufacture' triggers MOs, 'Kit' delivers components directly (no MO), 'Subcontracting' creates a receipt from the subcontractor after sending components.",
+      fr: "Définissez le type de nomenclature dans Fabrication → Nomenclatures → formulaire. 'Fabrication' déclenche des OF, 'Kit' livre les composants directement (pas d'OF), 'Sous-traitance' crée une réception du sous-traitant après envoi des composants.",
+    },
+  }),
+  complexQ({
+    id: "mrp-gap-02",
+    module: "mrp",
+    text: {
+      en: "How does BoM cost roll-up work in Odoo 19 Manufacturing?",
+      fr: "Comment fonctionne le calcul cumulé du coût de nomenclature dans Odoo 19 Fabrication ?",
+    },
+    correct: {
+      en: "The BoM cost sums up component costs (from their product cost) and operation costs (work center cost per hour × expected duration)",
+      fr: "Le coût de nomenclature additionne les coûts des composants (depuis leur coût produit) et les coûts d'opération (coût horaire du poste de charge × durée prévue)",
+    },
+    distractors: [
+      {
+        en: "BoM cost is always manually entered and never calculated from components",
+        fr: "Le coût de nomenclature est toujours saisi manuellement et jamais calculé depuis les composants",
+      },
+      {
+        en: "It uses the sales price of components, not their cost price",
+        fr: "Il utilise le prix de vente des composants, pas leur prix de revient",
+      },
+      {
+        en: "Cost roll-up only works with FIFO valuation and is ignored for Standard and AVCO",
+        fr: "Le calcul cumulé ne fonctionne qu'avec la valorisation FIFO et est ignoré pour Standard et AVCO",
+      },
+    ],
+    explanation: {
+      en: "View BoM cost via the BoM Overview report (Manufacturing → Reporting → BoM Overview). It recursively computes sub-BoM costs + operation costs to give the total unit cost of the finished product.",
+      fr: "Consultez le coût via le rapport Vue d'ensemble des nomenclatures (Fabrication → Rapports → Vue d'ensemble). Il calcule récursivement les coûts des sous-nomenclatures + opérations pour donner le coût unitaire total du produit fini.",
+    },
+  }),
 ];

@@ -901,4 +901,154 @@ export const inventoryQuestions = [
       fr: "Les règles manuelles affichent les besoins sur le tableau Réapprovisionnement quand le prévu passe sous le Min ; l'utilisateur clique Commander pour générer les demandes de prix.",
     },
   }),
+  complexQ({
+    id: "inv-gap-01",
+    module: "inventory",
+    text: {
+      en: "What are the three product types available in Odoo 19 and how do they differ?",
+      fr: "Quels sont les trois types de produits disponibles dans Odoo 19 et en quoi diffèrent-ils ?",
+    },
+    correct: {
+      en: "Goods (tracked in stock), Services (no stock management), and Combo (bundle sold as one but components managed separately)",
+      fr: "Biens (suivis en stock), Services (pas de gestion de stock) et Combo (ensemble vendu comme un tout mais composants gérés séparément)",
+    },
+    distractors: [
+      {
+        en: "Storable, Consumable, and Digital — all tracked in warehouse",
+        fr: "Stockable, Consommable et Numérique — tous suivis en entrepôt",
+      },
+      {
+        en: "Physical, Virtual, and Kit — only Physical creates stock moves",
+        fr: "Physique, Virtuel et Kit — seul Physique crée des mouvements de stock",
+      },
+      {
+        en: "Standard, Perishable, and Serialized — differentiated only by tracking method",
+        fr: "Standard, Périssable et Sérialisé — différenciés uniquement par la méthode de suivi",
+      },
+    ],
+    explanation: {
+      en: "In Odoo 19, product types are Goods (inventory tracked), Service (no stock), and Combo (introduced to replace kits at sales level). Set on product form → General Information.",
+      fr: "Dans Odoo 19, les types sont Biens (inventaire suivi), Service (pas de stock) et Combo (remplace les kits au niveau vente). Défini sur la fiche produit → Informations générales.",
+    },
+  }),
+  complexQ({
+    id: "inv-gap-02",
+    module: "inventory",
+    text: {
+      en: "What is the multi-step receipt route 'Input → Quality → Stock' used for?",
+      fr: "À quoi sert la route de réception multi-étapes 'Réception → Qualité → Stock' ?",
+    },
+    correct: {
+      en: "Goods arrive in an input zone, undergo quality inspection, then are moved to the main stock location",
+      fr: "Les marchandises arrivent en zone de réception, passent une inspection qualité, puis sont déplacées vers le stock principal",
+    },
+    distractors: [
+      {
+        en: "It sends goods directly to customers after a quality check, bypassing stock",
+        fr: "Elle envoie les marchandises directement aux clients après contrôle qualité, sans passer par le stock",
+      },
+      {
+        en: "It is a manufacturing route that checks raw materials before production",
+        fr: "C'est une route de fabrication qui vérifie les matières premières avant production",
+      },
+      {
+        en: "It automatically returns defective goods to the supplier without manual intervention",
+        fr: "Elle retourne automatiquement les marchandises défectueuses au fournisseur sans intervention manuelle",
+      },
+    ],
+    explanation: {
+      en: "Configure in Inventory → Settings → Warehouse → Incoming Shipments = 3 steps. Creates two internal transfers: Input→Quality and Quality→Stock, enabling inspection workflows.",
+      fr: "Configurez dans Inventaire → Paramètres → Entrepôt → Réceptions = 3 étapes. Crée deux transferts internes : Réception→Qualité et Qualité→Stock, permettant les flux d'inspection.",
+    },
+  }),
+  complexQ({
+    id: "inv-gap-03",
+    module: "inventory",
+    text: {
+      en: "What does the 'Pick → Pack → Ship' delivery route involve?",
+      fr: "Que comprend la route de livraison 'Picking → Colisage → Expédition' ?",
+    },
+    correct: {
+      en: "Products are picked from shelves, packed into parcels, then shipped from the output area to the customer",
+      fr: "Les produits sont prélevés des étagères, emballés en colis, puis expédiés depuis la zone de sortie vers le client",
+    },
+    distractors: [
+      {
+        en: "It processes three separate sales orders simultaneously in one delivery",
+        fr: "Elle traite trois commandes distinctes simultanément en une seule livraison",
+      },
+      {
+        en: "Pick, Pack, and Ship are three quality control stages before goods leave the warehouse",
+        fr: "Picking, Colisage et Expédition sont trois étapes de contrôle qualité avant que les biens quittent l'entrepôt",
+      },
+      {
+        en: "It is only available when using third-party shipping connectors",
+        fr: "Elle n'est disponible qu'avec des connecteurs d'expédition tiers",
+      },
+    ],
+    explanation: {
+      en: "Set Outgoing Shipments to 3 steps in Inventory → Settings → Warehouse. This creates Pick (Stock→Pack zone), Pack (Pack→Output), and Ship (Output→Customer) operations.",
+      fr: "Réglez Expéditions sortantes à 3 étapes dans Inventaire → Paramètres → Entrepôt. Cela crée les opérations Picking (Stock→Zone colisage), Colisage (Colisage→Sortie) et Expédition (Sortie→Client).",
+    },
+  }),
+  complexQ({
+    id: "inv-gap-04",
+    module: "inventory",
+    text: {
+      en: "When is the 'Manufacture' route used on a product in Odoo 19?",
+      fr: "Quand la route 'Fabriquer' est-elle utilisée sur un produit dans Odoo 19 ?",
+    },
+    correct: {
+      en: "When demand for the product should be fulfilled by creating a Manufacturing Order instead of purchasing it",
+      fr: "Quand la demande pour le produit doit être satisfaite par la création d'un Ordre de fabrication au lieu de l'acheter",
+    },
+    distractors: [
+      {
+        en: "When the product is a service that requires time tracking in Timesheets",
+        fr: "Quand le produit est un service nécessitant un suivi du temps dans les Feuilles de temps",
+      },
+      {
+        en: "Only when the product has a serial number and is tracked by lot",
+        fr: "Uniquement quand le produit a un numéro de série et est suivi par lot",
+      },
+      {
+        en: "When the product must be dropshipped directly from the supplier to the customer",
+        fr: "Quand le produit doit être livré directement du fournisseur au client (dropshipping)",
+      },
+    ],
+    explanation: {
+      en: "Set Manufacture route on the product Inventory tab. When replenishment triggers (manual or reordering rule), Odoo creates an MO using the product's Bill of Materials.",
+      fr: "Définissez la route Fabriquer sur l'onglet Inventaire du produit. Quand le réapprovisionnement se déclenche (manuel ou règle), Odoo crée un OF utilisant la Nomenclature du produit.",
+    },
+  }),
+  complexQ({
+    id: "inv-gap-05",
+    module: "inventory",
+    text: {
+      en: "What are the three inventory valuation methods available in Odoo 19?",
+      fr: "Quelles sont les trois méthodes de valorisation de stock disponibles dans Odoo 19 ?",
+    },
+    correct: {
+      en: "Standard Price (fixed cost), AVCO (Average Cost, recalculated on each receipt), and FIFO (First In First Out)",
+      fr: "Prix standard (coût fixe), AVCO (Coût moyen, recalculé à chaque réception) et FIFO (Premier entré, premier sorti)",
+    },
+    distractors: [
+      {
+        en: "LIFO (Last In First Out), Weighted Average, and Replacement Cost",
+        fr: "LIFO (Dernier entré, premier sorti), Moyenne pondérée et Coût de remplacement",
+      },
+      {
+        en: "Market Value, Book Value, and Historical Cost — set on the accounting journal",
+        fr: "Valeur de marché, Valeur comptable et Coût historique — définis sur le journal comptable",
+      },
+      {
+        en: "There is only one method: Standard Price; others require custom development",
+        fr: "Il n'y a qu'une seule méthode : Prix standard ; les autres nécessitent un développement spécifique",
+      },
+    ],
+    explanation: {
+      en: "Costing Method is set per product category (Inventory → Configuration → Product Categories). Standard uses a fixed cost, AVCO recalculates average on receipt, FIFO uses the oldest purchase cost for outgoing moves.",
+      fr: "La méthode de coût est définie par catégorie de produit (Inventaire → Configuration → Catégories de produits). Standard utilise un coût fixe, AVCO recalcule la moyenne à réception, FIFO utilise le coût d'achat le plus ancien pour les mouvements sortants.",
+    },
+  }),
 ];

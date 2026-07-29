@@ -751,4 +751,124 @@ export const studioQuestions = [
       fr: "Les champs Studio existent sur le modèle et apparaissent sous Champs existants pour glisser-déposer sur les vues.",
     },
   }),
+  complexQ({
+    id: "stu-gap-01",
+    module: "studio",
+    text: {
+      en: "What types of views can be edited directly in Odoo 19 Studio?",
+      fr: "Quels types de vues peuvent être édités directement dans Odoo 19 Studio ?",
+    },
+    correct: {
+      en: "Form, List, Kanban, Search, and other standard views — Studio allows drag-and-drop field placement and layout changes",
+      fr: "Formulaire, Liste, Kanban, Recherche et autres vues standard — Studio permet le glisser-déposer de champs et la modification de la mise en page",
+    },
+    distractors: [
+      {
+        en: "Only Form views can be edited; List and Kanban require XML development",
+        fr: "Seules les vues Formulaire peuvent être éditées ; Liste et Kanban nécessitent du développement XML",
+      },
+      {
+        en: "Studio can only add new views, not modify existing ones",
+        fr: "Studio ne peut qu'ajouter de nouvelles vues, pas modifier celles existantes",
+      },
+      {
+        en: "Views edited in Studio are temporary and reset after each server restart",
+        fr: "Les vues éditées dans Studio sont temporaires et se réinitialisent à chaque redémarrage du serveur",
+      },
+    ],
+    explanation: {
+      en: "Open Studio (gear icon or Settings → Studio), then navigate to any app view. Studio supports editing Form, List, Kanban, Calendar, Graph, Pivot, Map, and Search views via a visual drag-and-drop interface.",
+      fr: "Ouvrez Studio (icône engrenage ou Paramètres → Studio), puis naviguez vers toute vue d'application. Studio supporte l'édition des vues Formulaire, Liste, Kanban, Calendrier, Graphique, Pivot, Carte et Recherche via une interface visuelle glisser-déposer.",
+    },
+  }),
+  complexQ({
+    id: "stu-gap-02",
+    module: "studio",
+    text: {
+      en: "What are Record Rules in Odoo 19 and how do they control data access?",
+      fr: "Que sont les Règles d'enregistrement dans Odoo 19 et comment contrôlent-elles l'accès aux données ?",
+    },
+    correct: {
+      en: "Record Rules define domain filters that restrict which records a user/group can read, write, create, or delete on a given model",
+      fr: "Les Règles d'enregistrement définissent des filtres de domaine qui restreignent quels enregistrements un utilisateur/groupe peut lire, modifier, créer ou supprimer sur un modèle donné",
+    },
+    distractors: [
+      {
+        en: "Record Rules only control visibility in reports but not actual CRUD access to records",
+        fr: "Les Règles d'enregistrement ne contrôlent que la visibilité dans les rapports, pas l'accès CRUD réel aux enregistrements",
+      },
+      {
+        en: "They are set per individual user only and cannot be applied to security groups",
+        fr: "Elles ne sont définies que par utilisateur individuel et ne peuvent pas être appliquées aux groupes de sécurité",
+      },
+      {
+        en: "Record Rules replace Access Control Lists entirely and make ACLs unnecessary",
+        fr: "Les Règles d'enregistrement remplacent entièrement les Listes de contrôle d'accès et rendent les ACL inutiles",
+      },
+    ],
+    explanation: {
+      en: "Configure Record Rules in Settings → Technical → Security → Record Rules. They add a WHERE-like domain to queries. ACLs grant model-level access; Record Rules refine it at the record level.",
+      fr: "Configurez les Règles d'enregistrement dans Paramètres → Technique → Sécurité → Règles d'enregistrement. Elles ajoutent un domaine (type WHERE) aux requêtes. Les ACL donnent l'accès au niveau modèle ; les Règles d'enregistrement l'affinent au niveau enregistrement.",
+    },
+  }),
+  complexQ({
+    id: "stu-gap-03",
+    module: "studio",
+    text: {
+      en: "What is Developer Mode in Odoo 19 and how do you activate it?",
+      fr: "Qu'est-ce que le Mode développeur dans Odoo 19 et comment l'activer ?",
+    },
+    correct: {
+      en: "A debug mode that reveals technical fields, model names, and advanced menus — activated via Settings → General Settings → Developer Tools or adding ?debug=1 to the URL",
+      fr: "Un mode debug qui révèle les champs techniques, noms de modèles et menus avancés — activé via Paramètres → Paramètres généraux → Outils développeur ou en ajoutant ?debug=1 à l'URL",
+    },
+    distractors: [
+      {
+        en: "Developer Mode is a paid add-on that enables Studio and is not available in the Community edition",
+        fr: "Le Mode développeur est un module payant qui active Studio et n'est pas disponible dans l'édition Community",
+      },
+      {
+        en: "It gives write access to Python source code directly from the browser interface",
+        fr: "Il donne un accès en écriture au code source Python directement depuis l'interface navigateur",
+      },
+      {
+        en: "It can only be activated by the system administrator via the command line",
+        fr: "Il ne peut être activé que par l'administrateur système via la ligne de commande",
+      },
+    ],
+    explanation: {
+      en: "Developer Mode (Settings → General Settings → Activate Developer Mode) shows field technical names, provides access to Technical menus, and enables 'Edit View: Form/List' options. Use '?debug=assets' for JS debugging.",
+      fr: "Le Mode développeur (Paramètres → Paramètres généraux → Activer le mode développeur) affiche les noms techniques des champs, donne accès aux menus Technique, et active les options 'Modifier la vue'. Utilisez '?debug=assets' pour le débogage JS.",
+    },
+  }),
+  complexQ({
+    id: "stu-gap-04",
+    module: "studio",
+    text: {
+      en: "What file formats does Odoo 19 support for data import and what tool is used?",
+      fr: "Quels formats de fichiers Odoo 19 supporte-t-il pour l'import de données et quel outil est utilisé ?",
+    },
+    correct: {
+      en: "CSV and Excel (XLSX) files can be imported using the Import Records feature available via the gear/action menu on list views",
+      fr: "Les fichiers CSV et Excel (XLSX) peuvent être importés via la fonctionnalité Importer des enregistrements accessible depuis le menu engrenage/action sur les vues liste",
+    },
+    distractors: [
+      {
+        en: "Only XML files are supported for import; CSV requires conversion via a third-party tool",
+        fr: "Seuls les fichiers XML sont supportés pour l'import ; le CSV nécessite une conversion via un outil tiers",
+      },
+      {
+        en: "Data import is only available through the command line using odoo-bin scripts",
+        fr: "L'import de données n'est disponible que via la ligne de commande avec les scripts odoo-bin",
+      },
+      {
+        en: "Imports are limited to the Contacts model and cannot be used for other records",
+        fr: "Les imports sont limités au modèle Contacts et ne peuvent être utilisés pour d'autres enregistrements",
+      },
+    ],
+    explanation: {
+      en: "On any list view, Gear icon → Import Records. Map CSV/XLSX columns to Odoo fields. Use External ID for updates. Preview before importing. Available on most models including Products, Contacts, Journal Entries, etc.",
+      fr: "Sur toute vue liste, icône Engrenage → Importer des enregistrements. Mappez les colonnes CSV/XLSX aux champs Odoo. Utilisez l'ID externe pour les mises à jour. Prévisualisez avant d'importer. Disponible sur la plupart des modèles : Produits, Contacts, Écritures, etc.",
+    },
+  }),
 ];

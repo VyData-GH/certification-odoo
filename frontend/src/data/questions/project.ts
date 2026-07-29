@@ -721,4 +721,94 @@ export const projectQuestions = [
       fr: "Chaque Mise à jour projet définit l'état de santé affiché sur la carte et le tableau de bord projet.",
     },
   }),
+  complexQ({
+    id: "proj-gap-01",
+    module: "project",
+    text: {
+      en: "What are the Service Tracking options available on a service product in Odoo 19?",
+      fr: "Quelles sont les options de Suivi de service disponibles sur un produit de type service dans Odoo 19 ?",
+    },
+    correct: {
+      en: "Task, Project & Task, or Milestone — each defines what is created when the product is sold",
+      fr: "Tâche, Projet & Tâche, ou Jalon — chacun définit ce qui est créé lorsque le produit est vendu",
+    },
+    distractors: [
+      {
+        en: "Timesheet, Invoice, and Delivery — controlling how time is billed",
+        fr: "Feuille de temps, Facture et Livraison — contrôlant comment le temps est facturé",
+      },
+      {
+        en: "Manual, Automatic, and Hybrid — referring to task assignment methods",
+        fr: "Manuel, Automatique et Hybride — se référant aux méthodes d'assignation de tâches",
+      },
+      {
+        en: "There is no service tracking; tasks must always be created manually in Project",
+        fr: "Il n'y a pas de suivi de service ; les tâches doivent toujours être créées manuellement dans Projet",
+      },
+    ],
+    explanation: {
+      en: "On the product form (Sales tab), Service Tracking defines automation: 'Task' creates a task in an existing project, 'Project & Task' creates both, 'Milestone' links the SO line to a project milestone.",
+      fr: "Sur la fiche produit (onglet Ventes), le Suivi de service définit l'automatisation : 'Tâche' crée une tâche dans un projet existant, 'Projet & Tâche' crée les deux, 'Jalon' lie la ligne de commande à un jalon projet.",
+    },
+  }),
+  complexQ({
+    id: "proj-gap-02",
+    module: "project",
+    text: {
+      en: "How does timesheet-based invoicing work in Odoo 19 Project?",
+      fr: "Comment fonctionne la facturation basée sur les feuilles de temps dans Odoo 19 Projet ?",
+    },
+    correct: {
+      en: "Timesheets logged on tasks are invoiced based on the SO line's product price when using 'Delivered quantities' invoicing policy",
+      fr: "Les feuilles de temps saisies sur les tâches sont facturées selon le prix du produit de la ligne de commande avec la politique 'Quantités livrées'",
+    },
+    distractors: [
+      {
+        en: "Timesheets are always invoiced at a fixed company-wide hourly rate regardless of product",
+        fr: "Les feuilles de temps sont toujours facturées à un taux horaire fixe pour toute l'entreprise, quel que soit le produit",
+      },
+      {
+        en: "Timesheet invoicing requires the Accounting app but not a Sales Order",
+        fr: "La facturation des feuilles de temps nécessite l'application Comptabilité mais pas de Commande de vente",
+      },
+      {
+        en: "Only approved timesheets generate invoices, and approval is mandatory with no option to disable it",
+        fr: "Seules les feuilles de temps approuvées génèrent des factures, et l'approbation est obligatoire sans option de la désactiver",
+      },
+    ],
+    explanation: {
+      en: "Set the service product's invoicing policy to 'Timesheets' (delivered qty based on logged hours). When you invoice the SO, only recorded timesheet hours are billed at the product's unit price.",
+      fr: "Définissez la politique de facturation du service sur 'Feuilles de temps' (qté livrée basée sur les heures saisies). En facturant la commande, seules les heures enregistrées sont facturées au prix unitaire du produit.",
+    },
+  }),
+  complexQ({
+    id: "proj-gap-03",
+    module: "project",
+    text: {
+      en: "What is the purpose of Planned Hours on a project task in Odoo 19?",
+      fr: "Quel est l'objectif des Heures planifiées sur une tâche projet dans Odoo 19 ?",
+    },
+    correct: {
+      en: "They set the estimated time budget for the task, enabling progress tracking by comparing planned vs. logged timesheet hours",
+      fr: "Elles définissent le budget de temps estimé pour la tâche, permettant le suivi d'avancement en comparant heures planifiées et heures saisies",
+    },
+    distractors: [
+      {
+        en: "They automatically block the task when the timesheet hours exceed the planned amount",
+        fr: "Elles bloquent automatiquement la tâche quand les heures de feuille de temps dépassent le montant planifié",
+      },
+      {
+        en: "They are used solely for employee payroll calculations in the HR module",
+        fr: "Elles ne sont utilisées que pour les calculs de paie dans le module RH",
+      },
+      {
+        en: "Planned Hours replace deadlines and cannot coexist with a task deadline date",
+        fr: "Les Heures planifiées remplacent les échéances et ne peuvent coexister avec une date limite de tâche",
+      },
+    ],
+    explanation: {
+      en: "Planned Hours appear on the task form and feed the Progress bar (%) and the project's Allocated vs. Remaining hours dashboard. They do not block timesheets if exceeded.",
+      fr: "Les Heures planifiées apparaissent sur la fiche tâche et alimentent la barre de Progression (%) et le tableau Heures allouées vs Restantes du projet. Elles ne bloquent pas les feuilles de temps en cas de dépassement.",
+    },
+  }),
 ];

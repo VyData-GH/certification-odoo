@@ -751,4 +751,34 @@ export const purchasesQuestions = [
       fr: "Le fournisseur par défaut sur la fiche produit alimente les demandes de prix de réapprovisionnement sauf autre fournisseur sur la règle.",
     },
   }),
+  complexQ({
+    id: "pur-gap-01",
+    module: "purchases",
+    text: {
+      en: "How do Purchase Approvals work in Odoo 19?",
+      fr: "Comment fonctionnent les Approbations d'achat dans Odoo 19 ?",
+    },
+    correct: {
+      en: "When enabled, purchase orders exceeding a defined minimum amount require approval by an authorized user before confirmation",
+      fr: "Lorsqu'elles sont activées, les commandes d'achat dépassant un montant minimum défini nécessitent l'approbation d'un utilisateur autorisé avant confirmation",
+    },
+    distractors: [
+      {
+        en: "Approvals are mandatory for all POs regardless of amount and cannot be configured",
+        fr: "Les approbations sont obligatoires pour toutes les commandes quel que soit le montant et ne sont pas configurables",
+      },
+      {
+        en: "They automatically cancel orders not approved within 48 hours",
+        fr: "Elles annulent automatiquement les commandes non approuvées dans les 48 heures",
+      },
+      {
+        en: "Purchase approvals only apply to blanket orders, not standard purchase orders",
+        fr: "Les approbations d'achat ne s'appliquent qu'aux accords-cadres, pas aux commandes standard",
+      },
+    ],
+    explanation: {
+      en: "Enable in Purchase → Settings → Purchase Approvals. Set the minimum amount threshold. POs above the limit show 'To Approve' status; a Purchase Manager must click Approve before the order can be confirmed and sent to the vendor.",
+      fr: "Activez dans Achats → Paramètres → Approbations d'achat. Définissez le seuil de montant. Les commandes au-dessus affichent le statut 'À approuver' ; un Responsable Achats doit cliquer Approuver avant confirmation et envoi au fournisseur.",
+    },
+  }),
 ];

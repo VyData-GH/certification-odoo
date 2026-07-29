@@ -27,7 +27,23 @@ import {
   EXAM_RULES,
   formatExamDuration,
   CERTIFICATION_MODULES,
+  ModuleId,
 } from "@/types/exam";
+
+const EXAM_WEIGHTS: { modules: ModuleId[]; pct: number }[] = [
+  { modules: ["accounting"], pct: 14 },
+  { modules: ["crm", "sales"], pct: 14 },
+  { modules: ["inventory"], pct: 13 },
+  { modules: ["studio"], pct: 11 },
+  { modules: ["mrp"], pct: 10 },
+  { modules: ["purchases"], pct: 7 },
+  { modules: ["project", "timesheet"], pct: 7 },
+  { modules: ["hr"], pct: 6 },
+  { modules: ["website", "ecommerce"], pct: 6 },
+  { modules: ["pos"], pct: 6 },
+  { modules: ["spreadsheet", "knowledge"], pct: 4 },
+  { modules: ["marketing", "survey"], pct: 4 },
+];
 
 function HomePageContent() {
   const { tr, locale } = useLanguage();
@@ -322,6 +338,52 @@ function HomePageContent() {
                 blanc EN pour vous familiariser avec le vocabulaire.
               </p>
             )}
+          </div>
+        </section>
+
+        <section className="odoo-card">
+          <div className="odoo-card-header">{tr.home.strategyTitle}</div>
+          <div className="odoo-card-body">
+            <ul className="text-sm text-odoo-text space-y-2 list-decimal pl-5">
+              <li>{tr.home.strategy1}</li>
+              <li>{tr.home.strategy2}</li>
+              <li>{tr.home.strategy3}</li>
+              <li>{tr.home.strategy4}</li>
+              <li>{tr.home.strategy5}</li>
+              <li>{tr.home.strategy6}</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="odoo-card">
+          <div className="odoo-card-header">{tr.home.examWeightsTitle}</div>
+          <div className="odoo-card-body space-y-2">
+            {EXAM_WEIGHTS.map((w) => (
+              <div key={w.modules.join("-")} className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                  {w.modules.map((m) => (
+                    <ModuleIcon key={m} moduleId={m} size={18} />
+                  ))}
+                  <span className="text-sm text-odoo-text truncate">
+                    {w.modules.map((m) => tr.modules_labels[m] ?? m).join(" / ")}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  <div
+                    className="h-2.5 bg-odoo-brand rounded-sm"
+                    style={{ width: `${Math.max(w.pct * 3, 8)}px` }}
+                  />
+                  <span className="text-xs font-medium text-odoo-text-muted tabular-nums w-8 text-right">
+                    ~{w.pct}%
+                  </span>
+                </div>
+              </div>
+            ))}
+            <p className="text-xs text-odoo-text-muted pt-2 border-t border-gray-200 mt-3">
+              {locale === "fr"
+                ? "Pondération approximative basée sur le programme officiel Odoo 19 (source : odoo.com)."
+                : "Approximate weight based on the official Odoo 19 syllabus (source: odoo.com)."}
+            </p>
           </div>
         </section>
       </div>

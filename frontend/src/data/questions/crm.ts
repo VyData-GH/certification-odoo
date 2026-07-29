@@ -751,4 +751,214 @@ export const crmQuestions = [
       fr: "Le CRM inclut six types d'activités standard ; d'autres types peuvent être configurés si besoin.",
     },
   }),
+  complexQ({
+    id: "crm-gap-01",
+    module: "crm",
+    text: {
+      en: "What is the purpose of Quotation Templates in Odoo 19 Sales?",
+      fr: "Quel est l'objectif des Modèles de devis dans Odoo 19 Ventes ?",
+    },
+    correct: {
+      en: "They pre-fill quotation lines, optional products, and terms to speed up sales order creation",
+      fr: "Ils pré-remplissent les lignes de devis, produits optionnels et conditions pour accélérer la création de commandes",
+    },
+    distractors: [
+      {
+        en: "They automatically send quotes to leads without salesperson intervention",
+        fr: "Ils envoient automatiquement les devis aux prospects sans intervention du commercial",
+      },
+      {
+        en: "They replace the need for products in the catalog entirely",
+        fr: "Ils remplacent entièrement le besoin de produits dans le catalogue",
+      },
+      {
+        en: "They are PDF layouts used only for printing, not for order content",
+        fr: "Ce sont des mises en page PDF utilisées uniquement pour l'impression, pas pour le contenu",
+      },
+    ],
+    explanation: {
+      en: "Quotation Templates (Sales → Configuration → Quotation Templates) define reusable line sets, optional products, and confirmation settings to standardize proposals.",
+      fr: "Les Modèles de devis (Ventes → Configuration → Modèles de devis) définissent des ensembles de lignes réutilisables, produits optionnels et paramètres de confirmation pour standardiser les propositions.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-02",
+    module: "crm",
+    text: {
+      en: "How do Pricelists work in Odoo 19 Sales?",
+      fr: "Comment fonctionnent les Listes de prix dans Odoo 19 Ventes ?",
+    },
+    correct: {
+      en: "They apply price rules (discount, formula, or fixed price) based on conditions like quantity, date, or customer group",
+      fr: "Elles appliquent des règles de prix (remise, formule ou prix fixe) selon des conditions comme la quantité, la date ou le groupe client",
+    },
+    distractors: [
+      {
+        en: "They only set a single fixed price per product with no conditional logic",
+        fr: "Elles ne définissent qu'un seul prix fixe par produit sans logique conditionnelle",
+      },
+      {
+        en: "They are applied only at invoicing, not at quotation stage",
+        fr: "Elles ne s'appliquent qu'à la facturation, pas au stade du devis",
+      },
+      {
+        en: "They require the Accounting app to function and cannot work with Sales alone",
+        fr: "Elles nécessitent l'application Comptabilité et ne peuvent fonctionner avec Ventes seul",
+      },
+    ],
+    explanation: {
+      en: "Enable Pricelists in Sales → Settings. Rules can be percentage discounts, formulas based on cost/other pricelist, or fixed amounts. Assign pricelists to customers or select them on quotations.",
+      fr: "Activez les Listes de prix dans Ventes → Paramètres. Les règles peuvent être des remises en %, des formules basées sur le coût/autre liste, ou des montants fixes. Assignez-les aux clients ou sélectionnez-les sur les devis.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-03",
+    module: "crm",
+    text: {
+      en: "What is the role of Fiscal Positions in Odoo 19?",
+      fr: "Quel est le rôle des Positions fiscales dans Odoo 19 ?",
+    },
+    correct: {
+      en: "They automatically map default taxes and accounts to the correct ones based on customer location or tax status",
+      fr: "Elles associent automatiquement les taxes et comptes par défaut aux bons selon la localisation ou le statut fiscal du client",
+    },
+    distractors: [
+      {
+        en: "They determine the currency used on each invoice",
+        fr: "Elles déterminent la devise utilisée sur chaque facture",
+      },
+      {
+        en: "They set the payment terms for each sales order",
+        fr: "Elles définissent les conditions de paiement pour chaque commande",
+      },
+      {
+        en: "They are used only for intra-company transactions between branches",
+        fr: "Elles ne sont utilisées que pour les transactions inter-sociétés entre succursales",
+      },
+    ],
+    explanation: {
+      en: "Fiscal Positions (Accounting → Configuration → Fiscal Positions) replace taxes/accounts on invoices. They can be auto-detected based on country/VAT or manually set on partner/order.",
+      fr: "Les Positions fiscales (Comptabilité → Configuration → Positions fiscales) remplacent taxes/comptes sur les factures. Elles peuvent être détectées automatiquement selon le pays/TVA ou définies manuellement sur le partenaire/commande.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-04",
+    module: "crm",
+    text: {
+      en: "How do Down Payments work on Sales Orders in Odoo 19?",
+      fr: "Comment fonctionnent les Acomptes sur les Commandes de vente dans Odoo 19 ?",
+    },
+    correct: {
+      en: "A down payment invoice is created for a fixed amount or percentage before delivering the goods, then deducted from the final invoice",
+      fr: "Une facture d'acompte est créée pour un montant fixe ou un pourcentage avant la livraison, puis déduite de la facture finale",
+    },
+    distractors: [
+      {
+        en: "Down payments are recorded as manual journal entries unlinked to the sales order",
+        fr: "Les acomptes sont enregistrés comme écritures manuelles non liées à la commande",
+      },
+      {
+        en: "Down payments can only be collected via the POS terminal, not through Sales",
+        fr: "Les acomptes ne peuvent être encaissés que via le terminal POS, pas via Ventes",
+      },
+      {
+        en: "They automatically cancel the sales order if the customer does not pay within 7 days",
+        fr: "Ils annulent automatiquement la commande si le client ne paie pas sous 7 jours",
+      },
+    ],
+    explanation: {
+      en: "Use the Create Invoice button on a confirmed SO, choose 'Down payment (percentage)' or 'Down payment (fixed amount)'. The amount is deducted when creating the final invoice.",
+      fr: "Utilisez le bouton Créer facture sur une commande confirmée, choisissez 'Acompte (pourcentage)' ou 'Acompte (montant fixe)'. Le montant est déduit lors de la facture finale.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-05",
+    module: "crm",
+    text: {
+      en: "What is the difference between 'Ordered quantities' and 'Delivered quantities' invoicing policies?",
+      fr: "Quelle est la différence entre les politiques de facturation 'Quantités commandées' et 'Quantités livrées' ?",
+    },
+    correct: {
+      en: "'Ordered quantities' allows invoicing immediately upon confirmation; 'Delivered quantities' requires goods to be shipped first",
+      fr: "'Quantités commandées' permet de facturer dès la confirmation ; 'Quantités livrées' exige que les marchandises soient expédiées d'abord",
+    },
+    distractors: [
+      {
+        en: "Both policies invoice at the same time but differ in the accounting journal used",
+        fr: "Les deux politiques facturent au même moment mais diffèrent par le journal comptable utilisé",
+      },
+      {
+        en: "'Delivered quantities' only applies to service products, never to storable goods",
+        fr: "'Quantités livrées' ne s'applique qu'aux produits de type service, jamais aux stockables",
+      },
+      {
+        en: "'Ordered quantities' creates a draft invoice that cannot be validated until delivery",
+        fr: "'Quantités commandées' crée un brouillon qui ne peut être validé qu'après livraison",
+      },
+    ],
+    explanation: {
+      en: "Set the invoicing policy per product (Sales tab). 'Ordered quantities' invoices the full SO qty on confirmation. 'Delivered quantities' invoices only what has been delivered/received.",
+      fr: "Définissez la politique par produit (onglet Ventes). 'Quantités commandées' facture la totalité à la confirmation. 'Quantités livrées' ne facture que ce qui a été livré/reçu.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-06",
+    module: "crm",
+    text: {
+      en: "Where are Units of Measure configured and what do they affect in Odoo 19?",
+      fr: "Où sont configurées les Unités de mesure et qu'affectent-elles dans Odoo 19 ?",
+    },
+    correct: {
+      en: "Enabled in Sales/Inventory settings; they allow selling in one UoM and stocking in another with automatic conversion",
+      fr: "Activées dans les paramètres Ventes/Inventaire ; elles permettent de vendre dans une UdM et stocker dans une autre avec conversion automatique",
+    },
+    distractors: [
+      {
+        en: "Units of Measure are fixed per product category and cannot be changed after creation",
+        fr: "Les UdM sont fixes par catégorie de produit et ne peuvent être modifiées après création",
+      },
+      {
+        en: "They only affect reporting dashboards, not actual stock calculations",
+        fr: "Elles n'affectent que les tableaux de bord de reporting, pas les calculs de stock réels",
+      },
+      {
+        en: "They require a third-party module and are not available in standard Odoo",
+        fr: "Elles nécessitent un module tiers et ne sont pas disponibles dans Odoo standard",
+      },
+    ],
+    explanation: {
+      en: "Activate UoM in Inventory → Settings. Define categories (e.g., Weight) with conversion ratios. Products can have a Purchase UoM different from Sales UoM; Odoo converts automatically.",
+      fr: "Activez les UdM dans Inventaire → Paramètres. Définissez des catégories (ex. Poids) avec ratios de conversion. Les produits peuvent avoir une UdM d'achat différente de celle de vente ; Odoo convertit automatiquement.",
+    },
+  }),
+  complexQ({
+    id: "crm-gap-07",
+    module: "crm",
+    text: {
+      en: "How does the Subscriptions feature work in Odoo 19 Sales?",
+      fr: "Comment fonctionne la fonctionnalité Abonnements dans Odoo 19 Ventes ?",
+    },
+    correct: {
+      en: "Recurring products on a sales order generate automatic invoices at defined intervals until the subscription is closed",
+      fr: "Les produits récurrents sur une commande génèrent des factures automatiques à intervalles définis jusqu'à la clôture de l'abonnement",
+    },
+    distractors: [
+      {
+        en: "Subscriptions require a separate Subscriptions app unrelated to Sales orders",
+        fr: "Les abonnements nécessitent une application Abonnements séparée sans lien avec les commandes",
+      },
+      {
+        en: "They can only be managed through the Website app, not from the backend",
+        fr: "Ils ne peuvent être gérés que via l'application Site web, pas depuis le backend",
+      },
+      {
+        en: "Subscription invoices must be manually created each period by the salesperson",
+        fr: "Les factures d'abonnement doivent être créées manuellement chaque période par le commercial",
+      },
+    ],
+    explanation: {
+      en: "In Odoo 19, subscriptions are managed directly within Sales. Set a Recurring Plan on products; confirmed SOs with recurring lines become subscriptions invoiced automatically via a cron job.",
+      fr: "Dans Odoo 19, les abonnements sont gérés directement dans Ventes. Définissez un Plan récurrent sur les produits ; les commandes confirmées avec lignes récurrentes deviennent des abonnements facturés automatiquement via un cron.",
+    },
+  }),
 ];
