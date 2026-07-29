@@ -125,12 +125,18 @@ export function QuestionCard({
 
         {showResult && (
           <div className="mt-5 p-3 rounded-sm bg-blue-50 border border-blue-200">
-            <p className="text-xs font-bold text-blue-800 uppercase tracking-wide mb-1">
+            <p className="text-xs font-bold text-blue-800 uppercase tracking-wide mb-2">
               {tr.exam.explanation}
             </p>
-            <p className="text-sm text-blue-900 leading-relaxed">
-              {question.explanation}
-            </p>
+            <div className="text-sm text-blue-900 leading-relaxed space-y-2">
+              {question.explanation
+                .split(/\n\n+/)
+                .map((para) => para.trim())
+                .filter(Boolean)
+                .map((para, paraIdx) => (
+                  <p key={paraIdx}>{para}</p>
+                ))}
+            </div>
           </div>
         )}
       </div>

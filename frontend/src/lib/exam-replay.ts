@@ -13,6 +13,9 @@ import { t } from "@/i18n/translations";
 
 const REPLAY_STORAGE_KEY = "odoo-exam-replay";
 
+/** Survives React Strict Mode remounts after sessionStorage was cleared. */
+let memoryReplay: ExamReplayPayload | null = null;
+
 export interface ExamReplayPayload {
   config: ExamConfig;
   sessionSeed: number;
@@ -38,21 +41,34 @@ export function prepareExamReplay(result: ExamResult): void {
     sessionSeed: result.sessionMeta.sessionSeed,
     questionIds: result.sessionMeta.questionIds,
   };
+  memoryReplay = payload;
   sessionStorage.setItem(REPLAY_STORAGE_KEY, JSON.stringify(payload));
 }
 
 export function peekExamReplay(): ExamReplayPayload | null {
-  if (typeof window === "undefined") return null;
-  const raw = sessionStorage.getItem(REPLAY_STORAGE_KEY);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as ExamReplayPayload;
-  } catch {
-    return null;
+  if (typeof window !== "undefined") {
+    const raw = sessionStorage.getItem(REPLAY_STORAGE_KEY);
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw) as ExamReplayPayload;
+        memoryReplay = parsed;
+        return parsed;
+      } catch {
+        /* fall through to memory */
+      }
+    }
   }
+  return memoryReplay;
 }
 
 export function clearExamReplay(): void {
+  memoryReplay = null;
+  if (typeof window === "undefined") return;
+  sessionStorage.removeItem(REPLAY_STORAGE_KEY);
+}
+
+/** Clears sessionStorage only — keeps in-memory copy for Strict Mode remount. */
+export function dismissExamReplayStorage(): void {
   if (typeof window === "undefined") return;
   sessionStorage.removeItem(REPLAY_STORAGE_KEY);
 }
@@ -89,19 +105,23 @@ export function inferRetryUrl(result: ExamResult): string {
   return "/";
 }
 
+/**
+ * Retake the exact same question set (same IDs + same option shuffle seed).
+ * Uses a unique `t` query param so Next.js remounts even when already on /exam?replay=….
+ */
 export function startExamRetry(
   result: ExamResult,
   navigate: (url: string) => void
 ): void {
   if (result.sessionMeta?.questionIds?.length) {
     prepareExamReplay(result);
-    navigate("/exam?replay=1");
+    navigate(`/exam?replay=1&t=${Date.now()}`);
     return;
   }
   navigate(inferRetryUrl(result));
 }
 
-export type ReviewItemStatus = "wrong" | "unanswered";
+export type ReviewItemStatus = "wrong" | "unanswered" | "dontKnow" | "correct";
 
 export interface ReviewItem {
   question: LocalizedQuestion;
@@ -109,38 +129,71 @@ export interface ReviewItem {
   status: ReviewItemStatus;
 }
 
-export function getReviewItems(
+export function hasStoredAnswers(result: ExamResult): boolean {
+  return Boolean(
+    result.sessionMeta?.questionIds?.length && result.answers?.length
+  );
+}
+
+export type ReviewFilter = "weak" | "all";
+
+function buildShuffledSessionQuestions(
   result: ExamResult,
   locale: "en" | "fr"
-): ReviewItem[] {
+): LocalizedQuestion[] | null {
   const { sessionMeta, answers } = result;
   if (!sessionMeta?.questionIds?.length || !answers?.length) {
-    return [];
+    return null;
   }
 
   const ordered = loadQuestionsByIds(sessionMeta.questionIds);
-  if (ordered.length === 0) return [];
+  if (ordered.length === 0) return null;
 
   const localized = localizeQuestions(ordered, locale);
-  const shuffled = shuffleAllQuestionOptions(
+  return shuffleAllQuestionOptions(
     localized,
     sessionMeta.sessionSeed,
     t(locale).exam.dontKnow
   );
+}
+
+function statusForAnswer(
+  question: LocalizedQuestion,
+  selected: number | null | undefined
+): ReviewItemStatus {
+  if (selected === null || selected === undefined) return "unanswered";
+  if (isDontKnow(selected, question.dontKnowIndex)) return "dontKnow";
+  if (selected !== question.correctIndex) return "wrong";
+  return "correct";
+}
+
+/** Wrong, blank, and « I don't know » — the items to revise. */
+export function getReviewItems(
+  result: ExamResult,
+  locale: "en" | "fr"
+): ReviewItem[] {
+  return getSessionReviewItems(result, locale, "weak");
+}
+
+/** Full submitted answer sheet, or weak items only. */
+export function getSessionReviewItems(
+  result: ExamResult,
+  locale: "en" | "fr",
+  filter: ReviewFilter = "weak"
+): ReviewItem[] {
+  const shuffled = buildShuffledSessionQuestions(result, locale);
+  if (!shuffled) return [];
+
   const answerMap = new Map(
-    answers.map((a) => [a.questionId, a.selectedIndex])
+    (result.answers ?? []).map((a) => [a.questionId, a.selectedIndex])
   );
 
   const items: ReviewItem[] = [];
   for (const question of shuffled) {
     const selected = answerMap.get(question.id) ?? null;
-    if (selected === null || selected === undefined) {
-      items.push({ question, selectedIndex: null, status: "unanswered" });
-    } else if (isDontKnow(selected, question.dontKnowIndex)) {
-      continue;
-    } else if (selected !== question.correctIndex) {
-      items.push({ question, selectedIndex: selected, status: "wrong" });
-    }
+    const status = statusForAnswer(question, selected);
+    if (filter === "weak" && status === "correct") continue;
+    items.push({ question, selectedIndex: selected, status });
   }
   return items;
 }

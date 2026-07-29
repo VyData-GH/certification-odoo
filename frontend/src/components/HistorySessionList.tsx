@@ -86,11 +86,16 @@ export function HistorySessionList({
                       {item.percentage.toFixed(0)}%
                     </span>
                     {singleModuleId ? (
-                      <ModuleIcon
-                        moduleId={singleModuleId}
-                        size={22}
-                        title={moduleLabel ?? undefined}
-                      />
+                      <span className="flex items-center gap-1.5 min-w-0">
+                        <ModuleIcon
+                          moduleId={singleModuleId}
+                          size={22}
+                          title={moduleLabel ?? undefined}
+                        />
+                        <span className="text-sm text-odoo-text truncate">
+                          {moduleLabel}
+                        </span>
+                      </span>
                     ) : (
                       <span className="odoo-badge odoo-badge-brand truncate">
                         {modeLabel(item.mode, item)}
@@ -104,6 +109,11 @@ export function HistorySessionList({
                 <div className="text-sm text-odoo-text-muted mt-1">
                   {new Date(item.date).toLocaleString()} · {item.correct}/
                   {item.totalQuestions} · {formatTime(item.durationUsedSeconds)}
+                  {item.totalQuestions > 0 && item.durationUsedSeconds > 0
+                    ? ` · ~${Math.round(
+                        (item.durationUsedSeconds / item.totalQuestions) * 10
+                      ) / 10}s/Q`
+                    : ""}
                 </div>
               </button>
               <button

@@ -19,6 +19,7 @@ import {
 } from "@/lib/exam-engine";
 import {
   clearExamReplay,
+  dismissExamReplayStorage,
   loadQuestionsByIds,
   peekExamReplay,
   startExamRetry,
@@ -76,7 +77,7 @@ function ExamContent() {
       let selected;
       let seed: number;
 
-      if (replayParam === "1") {
+      if (replayParam) {
         const replay = peekExamReplay();
         if (!replay) {
           router.replace("/");
@@ -90,7 +91,6 @@ function ExamContent() {
           router.replace("/");
           return;
         }
-        clearExamReplay();
       } else if (moduleParam) {
         const questionCount = parseModuleQuizCount(moduleParam, countParam);
         if (questionCount === 0) {
@@ -224,6 +224,15 @@ function ExamContent() {
       setTotalSeconds(duration);
       setExamStarted(false);
       setStartedAt(null);
+      setSubmitted(false);
+      setResult(null);
+      setCurrentIndex(0);
+      setReviewRevealed(false);
+      if (replayParam) {
+        dismissExamReplayStorage();
+      } else {
+        clearExamReplay();
+      }
     }
 
     void boot();
@@ -233,6 +242,7 @@ function ExamContent() {
   }, [searchParams, router, locale, tr.exam.dontKnow, accessToken]);
 
   const handleStartExam = useCallback(() => {
+    clearExamReplay();
     setExamStarted(true);
     setStartedAt(Date.now());
   }, []);

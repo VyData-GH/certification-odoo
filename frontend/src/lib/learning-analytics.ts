@@ -120,8 +120,8 @@ export function getWeakModules(
 }
 
 /**
- * Collect wrong / unanswered question IDs across all sessions
- * (excludes « I don't know »).
+ * Collect wrong / unanswered / « I don't know » question IDs across sessions.
+ * « I don't know » counts as unanswered for smart redo (gap to close).
  */
 export function collectMistakeStats(sessions: ExamResult[]): MistakeStat[] {
   const byId = new Map<string, MistakeStat>();
@@ -161,7 +161,7 @@ export function collectMistakeStats(sessions: ExamResult[]): MistakeStat[] {
       if (selected === null || selected === undefined) {
         unanswered = 1;
       } else if (isDontKnow(selected, q.dontKnowIndex)) {
-        continue;
+        unanswered = 1;
       } else if (selected !== q.correctIndex) {
         wrong = 1;
       } else {

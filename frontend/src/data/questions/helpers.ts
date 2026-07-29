@@ -1,4 +1,5 @@
 import { ModuleId, Question } from "@/types/exam";
+import { enrichExplanation } from "./explanation-enrichment";
 
 type Bilingual = { en: string; fr: string };
 type DistractorTriple = [Bilingual, Bilingual, Bilingual];
@@ -42,9 +43,25 @@ function assertPlausibleDistractors(distractors: Bilingual[], questionId: string
   }
 }
 
+function enrichedExplanation(
+  input: QBase & {
+    correct: Bilingual;
+    distractors?: Bilingual[];
+  }
+): Bilingual {
+  return enrichExplanation({
+    explanation: input.explanation,
+    text: input.text,
+    correct: input.correct,
+    distractors: input.distractors,
+    module: input.module,
+  });
+}
+
 /**
  * Certification-style question: 4 real choices (shuffled at exam runtime).
  * « I don't know » is appended automatically when the exam starts.
+ * Thin Odoo Learn explanations are enriched for the review popup.
  */
 export function complexQ(
   input: QBase & {
@@ -72,7 +89,10 @@ export function complexQ(
       ],
     },
     correctIndex: 0,
-    explanation: input.explanation,
+    explanation: enrichedExplanation({
+      ...input,
+      distractors: [...input.distractors],
+    }),
     questionType: "mcq",
   };
 }
@@ -94,7 +114,10 @@ export function mcq3Q(
       fr: [input.correct.fr, input.distractors[0].fr, input.distractors[1].fr],
     },
     correctIndex: 0,
-    explanation: input.explanation,
+    explanation: enrichedExplanation({
+      ...input,
+      distractors: [...input.distractors],
+    }),
     questionType: "mcq",
   };
 }
@@ -109,6 +132,8 @@ export function yesNoQ(
 ): Question {
   const yes = input.yes ?? { en: "Yes", fr: "Oui" };
   const no = input.no ?? { en: "No", fr: "Non" };
+  const correct = input.correctIsYes ? yes : no;
+  const wrong = input.correctIsYes ? no : yes;
   return {
     id: input.id,
     module: input.module,
@@ -118,7 +143,14 @@ export function yesNoQ(
       fr: [yes.fr, no.fr],
     },
     correctIndex: input.correctIsYes ? 0 : 1,
-    explanation: input.explanation,
+    explanation: enrichedExplanation({
+      id: input.id,
+      module: input.module,
+      text: input.text,
+      explanation: input.explanation,
+      correct,
+      distractors: [wrong],
+    }),
     questionType: "yesno",
   };
 }

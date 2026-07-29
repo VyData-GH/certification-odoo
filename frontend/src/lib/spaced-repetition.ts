@@ -108,7 +108,7 @@ export function updateSrsFromResult(result: ExamResult): void {
     if (selected === null || selected === undefined) {
       upsertWrong(cards, q.id, at, "unanswered");
     } else if (isDontKnow(selected, q.dontKnowIndex)) {
-      continue;
+      upsertWrong(cards, q.id, at, "unanswered");
     } else if (selected !== q.correctIndex) {
       upsertWrong(cards, q.id, at, "wrong");
     } else if (cards[q.id]) {

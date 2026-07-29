@@ -12,7 +12,13 @@ import {
 } from "@/types/exam";
 import { formatTime } from "@/lib/exam-time";
 import { getSingleModuleId } from "@/lib/history-utils";
+import {
+  computeSessionStats,
+  ModuleFocusLevel,
+} from "@/lib/session-stats";
+import { getSessionReviewItems, hasStoredAnswers } from "@/lib/exam-replay";
 import { useLanguage } from "@/context/LanguageContext";
+import type { ReviewFilter } from "@/lib/exam-replay";
 
 function progressBarColor(pct: number): string {
   if (pct >= 70) return "var(--odoo-success)";
@@ -21,6 +27,35 @@ function progressBarColor(pct: number): string {
 }
 
 const ALL_MODULES = [...CERTIFICATION_MODULES, ...SUPPLEMENTARY_MODULES];
+
+function focusLevelLabel(
+  level: ModuleFocusLevel,
+  tr: ReturnType<typeof useLanguage>["tr"]
+): string {
+  switch (level) {
+    case "study":
+      return tr.results.focusStudy;
+    case "practice":
+      return tr.results.focusPractice;
+    case "verify":
+      return tr.results.focusVerify;
+    default:
+      return tr.results.focusStrong;
+  }
+}
+
+function focusLevelClass(level: ModuleFocusLevel): string {
+  switch (level) {
+    case "study":
+      return "bg-red-50 text-odoo-danger border-red-200";
+    case "practice":
+      return "bg-amber-50 text-amber-900 border-amber-200";
+    case "verify":
+      return "bg-blue-50 text-blue-900 border-blue-200";
+    default:
+      return "bg-green-50 text-odoo-success border-green-200";
+  }
+}
 
 interface ExamResultSummaryProps {
   result: ExamResult;
@@ -35,11 +70,22 @@ export function ExamResultSummary({
   showActions = true,
   compact = false,
 }: ExamResultSummaryProps) {
-  const { tr } = useLanguage();
+  const { tr, locale } = useLanguage();
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [reviewFilter, setReviewFilter] = useState<ReviewFilter>("weak");
   const examScoreLabel = tr.results.examScoreOfficial
     .replace("{score}", result.score.toFixed(1));
   const singleModuleId = getSingleModuleId(result);
+  const stored = hasStoredAnswers(result);
+  const weakCount = stored
+    ? getSessionReviewItems(result, locale, "weak").length
+    : 0;
+  const sessionStats = computeSessionStats(result, tr.modules_labels);
+
+  const openReview = (filter: ReviewFilter) => {
+    setReviewFilter(filter);
+    setReviewOpen(true);
+  };
 
   const moduleResults = ALL_MODULES.map((mod) => {
     const data = result.moduleBreakdown[mod.id];
@@ -55,7 +101,6 @@ export function ExamResultSummary({
     pct: number;
   }>;
 
-  // Modules présents dans le breakdown mais absents du catalogue (sécurité)
   for (const [id, data] of Object.entries(result.moduleBreakdown ?? {}) as Array<
     [ModuleId, { correct: number; total: number }]
   >) {
@@ -68,6 +113,10 @@ export function ExamResultSummary({
       pct: (data.correct / data.total) * 100,
     });
   }
+
+  const focusTips = sessionStats.moduleTips.filter(
+    (tip) => tip.level !== "strong"
+  );
 
   return (
     <>
@@ -144,6 +193,72 @@ export function ExamResultSummary({
         ))}
       </div>
 
+      {(sessionStats.avgSecondsPerQuestion != null || focusTips.length > 0) && (
+        <div className="odoo-card">
+          <div className="odoo-card-header">{tr.results.sessionStatsTitle}</div>
+          <div className="odoo-card-body space-y-4">
+            {sessionStats.avgSecondsPerQuestion != null && (
+              <div className="grid grid-cols-2 gap-3">
+                <div className="odoo-stat-box">
+                  <div className="odoo-stat-value text-odoo-text tabular-nums">
+                    {sessionStats.avgSecondsPerQuestion}s
+                  </div>
+                  <div className="odoo-stat-label">
+                    {tr.results.avgSecondsPerQuestion}
+                  </div>
+                </div>
+                <div className="odoo-stat-box">
+                  <div className="odoo-stat-value text-odoo-text tabular-nums">
+                    {sessionStats.officialSecondsPerQuestion}s
+                  </div>
+                  <div className="odoo-stat-label">
+                    {tr.results.officialPace}
+                  </div>
+                </div>
+              </div>
+            )}
+            {sessionStats.paceDeltaSeconds != null && (
+              <p className="text-xs text-odoo-text-muted">
+                {sessionStats.paceDeltaSeconds > 2
+                  ? tr.results.paceSlower.replace(
+                      "{seconds}",
+                      String(Math.abs(sessionStats.paceDeltaSeconds))
+                    )
+                  : sessionStats.paceDeltaSeconds < -2
+                    ? tr.results.paceFaster.replace(
+                        "{seconds}",
+                        String(Math.abs(sessionStats.paceDeltaSeconds))
+                      )
+                    : tr.results.paceOnTarget}
+              </p>
+            )}
+            {focusTips.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-xs font-bold uppercase tracking-wide text-odoo-text-muted">
+                  {tr.results.moduleFocusTitle}
+                </p>
+                {focusTips.map((tip) => (
+                  <div
+                    key={tip.moduleId}
+                    className={`flex items-center justify-between gap-2 text-sm px-3 py-2 rounded-sm border ${focusLevelClass(
+                      tip.level
+                    )}`}
+                  >
+                    <span className="flex items-center gap-2 min-w-0">
+                      <ModuleIcon moduleId={tip.moduleId} size={20} />
+                      <span className="truncate font-medium">{tip.label}</span>
+                    </span>
+                    <span className="shrink-0 text-xs text-right">
+                      {tip.correct}/{tip.total} · {focusLevelLabel(tip.level, tr)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {moduleResults.length > 0 && (
         <div className="odoo-card">
           <div className="odoo-card-header">{tr.results.byModule}</div>
@@ -207,19 +322,42 @@ export function ExamResultSummary({
               ↻ {tr.results.retryQuiz}
             </button>
           )}
-          <button
-            type="button"
-            onClick={() => setReviewOpen(true)}
-            className="odoo-btn-secondary w-full py-2.5"
-          >
-            {tr.results.reviewWeak} ↗
-          </button>
+          {stored && weakCount === 0 ? (
+            <button
+              type="button"
+              onClick={() => openReview("all")}
+              className="odoo-btn-secondary w-full py-2.5"
+            >
+              {tr.results.reviewAllAnswers} ↗
+            </button>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => openReview("weak")}
+                className="odoo-btn-secondary w-full py-2.5"
+              >
+                {tr.results.reviewWeak}
+                {weakCount > 0 ? ` (${weakCount})` : ""} ↗
+              </button>
+              {stored && (
+                <button
+                  type="button"
+                  onClick={() => openReview("all")}
+                  className="odoo-btn-secondary w-full py-2.5"
+                >
+                  {tr.results.reviewAllAnswers} ↗
+                </button>
+              )}
+            </>
+          )}
         </div>
       )}
     </div>
     <WeakQuestionsModal
       result={result}
       open={reviewOpen}
+      initialFilter={reviewFilter}
       onClose={() => setReviewOpen(false)}
     />
     </>
