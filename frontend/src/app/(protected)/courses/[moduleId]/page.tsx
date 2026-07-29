@@ -6,6 +6,8 @@ import { DemoLockedNotice } from "@/components/DemoLockedNotice";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
+import { COURSE_DOC_LINKS } from "@/data/course-doc-links";
+import { COURSE_STUDY_BLOCKS } from "@/data/course-study-blocks";
 import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
 import { SUPPLEMENTARY_COURSE_SUMMARIES } from "@/data/course-summaries-supplementary";
 import { useDemo } from "@/context/DemoContext";
@@ -55,9 +57,19 @@ export default function CourseModulePage() {
     locale === "fr" ? summary.keyTopics.fr : summary.keyTopics.en;
   const mustKnow =
     locale === "fr" ? summary.mustKnow.fr : summary.mustKnow.en;
+  const studyBlocks = isCert ? COURSE_STUDY_BLOCKS[moduleId] : [];
+  const docLinks = isCert ? COURSE_DOC_LINKS[moduleId] : [];
+  const studyWords = studyBlocks.reduce((n, b) => {
+    const body = locale === "fr" ? b.body.fr : b.body.en;
+    return n + body.split(/\s+/).filter(Boolean).length;
+  }, 0);
+  const estimatedMinutes = Math.max(
+    summary.readMinutes,
+    summary.readMinutes + Math.round(studyWords / 180)
+  );
   const readTime = tr.courses.readTime.replace(
     "{min}",
-    String(summary.readMinutes)
+    String(estimatedMinutes)
   );
 
   return (
@@ -113,6 +125,61 @@ export default function CourseModulePage() {
             </ul>
           </div>
         </section>
+
+        {studyBlocks.length > 0 && (
+          <section className="odoo-card">
+            <div className="odoo-card-header">{tr.courses.studyDeep}</div>
+            <div className="odoo-card-body space-y-4">
+              <p className="text-sm text-odoo-text-muted">
+                {tr.courses.studyDeepHint}
+              </p>
+              {studyBlocks.map((block) => {
+                const title =
+                  locale === "fr" ? block.title.fr : block.title.en;
+                const body = locale === "fr" ? block.body.fr : block.body.en;
+                return (
+                  <div key={title} className="space-y-1.5">
+                    <h3 className="text-sm font-semibold text-odoo-text">
+                      {title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-odoo-text">
+                      {body}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {docLinks.length > 0 && (
+          <section className="odoo-card">
+            <div className="odoo-card-header">{tr.courses.officialDocs}</div>
+            <div className="odoo-card-body space-y-3">
+              <p className="text-sm text-odoo-text-muted">
+                {tr.courses.officialDocsHint}
+              </p>
+              <ul className="space-y-2">
+                {docLinks.map((link) => {
+                  const linkLabel =
+                    locale === "fr" ? link.label.fr : link.label.en;
+                  return (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-odoo-brand hover:underline"
+                      >
+                        {linkLabel} ↗
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </section>
+        )}
 
         <section className="odoo-card">
           <div className="odoo-card-header">{tr.courses.readyToPractice}</div>

@@ -461,6 +461,11 @@ export const translations = {
       readMore: "Study module",
       keyTopics: "Everything to cover",
       examFocus: "Exam traps & distinctions",
+      studyDeep: "Study notes (no UI needed)",
+      studyDeepHint:
+        "Expanded notes from Odoo 19 docs / eLearning — flows, config traps and exam distinctions. Read here first; open official docs only for deeper detail.",
+      officialDocs: "Official Odoo 19 documentation",
+      officialDocsHint: "Chapter links on odoo.com (new tab) — follow after the study notes.",
       readyToPractice: "Ready to practice?",
       practiceHint: "Start with a short quiz, then try the sample test or full exam from Home.",
       quiz10: "Quiz — 10 Q",
@@ -1026,6 +1031,11 @@ export const translations = {
       readMore: "Étudier le module",
       keyTopics: "Tout ce qu'il faut couvrir",
       examFocus: "Pièges & distinctions examen",
+      studyDeep: "Notes d'étude (sans ouvrir Odoo)",
+      studyDeepHint:
+        "Notes enrichies depuis la doc Odoo 19 / eLearning — flux, pièges de config et distinctions d'examen. Lisez d'abord ici ; ouvrez la doc officielle seulement pour approfondir.",
+      officialDocs: "Documentation officielle Odoo 19",
+      officialDocsHint: "Liens de chapitres sur odoo.com (nouvel onglet) — à suivre après les notes.",
       readyToPractice: "Prêt à vous entraîner ?",
       practiceHint:
         "Commencez par un quiz court, puis essayez l'examen blanc ou l'examen complet depuis l'accueil.",
