@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 
-import { authenticate } from "@/lib/server/auth";
+import { authenticate, authenticateAdmin } from "@/lib/server/auth";
 import {
   clearHistory,
   listHistory,
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  const auth = await authenticate(request);
+  const auth = await authenticateAdmin(request);
   if (!auth.ok) return auth.response;
 
   try {

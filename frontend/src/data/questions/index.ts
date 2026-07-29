@@ -22,6 +22,7 @@ import { yesNoQuestions } from "./yesno-questions";
 import { sampleCertQuestions } from "./sample-cert-questions";
 import { odooLearnQuestions } from "./odoo-learn";
 import { odooLearnSupplementaryQuestions } from "./odoo-learn-supplementary";
+import { openExamPrepQuestions } from "./open-exam-prep";
 
 export const allQuestions: Question[] = [
   ...yesNoQuestions,
@@ -47,4 +48,5 @@ export const allQuestions: Question[] = [
   ...studioQuestions,
   ...odooLearnQuestions,
   ...odooLearnSupplementaryQuestions,
+  ...openExamPrepQuestions,
 ];

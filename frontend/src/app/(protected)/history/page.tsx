@@ -38,7 +38,7 @@ function recipientNameFromUser(user: { email?: string | null; user_metadata?: Re
 export default function HistoryPage() {
   const router = useRouter();
   const { tr } = useLanguage();
-  const { accessToken, user } = useAuth();
+  const { accessToken, user, isAdmin } = useAuth();
   const [history, setHistory] = useState<ExamResult[]>([]);
   const [source, setSource] = useState<HistorySource>("local");
   const [loading, setLoading] = useState(true);
@@ -160,7 +160,7 @@ export default function HistoryPage() {
         onDelete={handleDeleteSession}
         modeLabel={modeLabel}
       />
-      {history.length > 0 && (
+      {history.length > 0 && isAdmin && (
         <button
           type="button"
           onClick={() => setShowClearConfirm(true)}
