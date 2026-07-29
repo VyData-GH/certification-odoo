@@ -6,7 +6,9 @@ import {
   ExamConfig,
   ExamResult,
   EXAM_PRESETS,
+  isCertificationModuleId,
   LocalizedQuestion,
+  ModuleId,
   Question,
 } from "@/types/exam";
 import { isDontKnow } from "@/lib/answers";
@@ -200,6 +202,21 @@ function buildShuffledSessionQuestions(
   );
 }
 
+function resolveQuestionModule(
+  questionId: string,
+  recordModule?: ModuleId,
+  fallback?: string
+): ModuleId {
+  if (recordModule) return recordModule;
+  const fromBank = questionBankById().get(questionId);
+  if (fromBank) return fromBank.module;
+  if (fallback && isCertificationModuleId(fallback as ModuleId)) {
+    return fallback as ModuleId;
+  }
+  // Last resort: still better than hardcoding a single wrong module
+  return (fallback as ModuleId) || "studio";
+}
+
 function reviewItemFromSnapshot(
   record: NonNullable<ExamResult["answers"]>[number],
   moduleFallback: string
@@ -212,9 +229,15 @@ function reviewItemFromSnapshot(
       ? record.selectedIndex
       : 0);
 
+  const moduleId = resolveQuestionModule(
+    record.questionId,
+    record.module,
+    moduleFallback
+  );
+
   const question: LocalizedQuestion = {
     id: record.questionId,
-    module: moduleFallback as LocalizedQuestion["module"],
+    module: moduleId,
     text: record.text,
     options: [...record.options],
     correctIndex,
@@ -279,8 +302,8 @@ export function getSessionReviewItems(
 
   const moduleFallback =
     result.sessionMeta?.modules?.[0] ??
-    (Object.keys(result.moduleBreakdown ?? [])[0] as string) ??
-    "website";
+    (Object.keys(result.moduleBreakdown ?? {})[0] as string) ??
+    "studio";
 
   const hasFullSnapshots = result.answers.every(
     (a) => a.options?.length && a.text != null && a.outcome
@@ -289,7 +312,7 @@ export function getSessionReviewItems(
   let items: ReviewItem[] = [];
 
   if (hasFullSnapshots) {
-    // Gold path: display exactly what the user saw, no bank/shuffle needed
+    // Prefer per-answer module; fall back to bank lookup by questionId
     for (const id of sessionIds) {
       const record = answerById.get(id);
       if (!record) continue;

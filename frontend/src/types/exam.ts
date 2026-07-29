@@ -151,6 +151,8 @@ export interface AnswerRecord {
   outcome?: AnswerOutcome;
   /** Correct option index as shown during the exam (after shuffle). */
   correctIndex?: number;
+  /** Module of the question (required for multi-module sessions like redo-mistakes). */
+  module?: ModuleId;
   /** Options exactly as shown during the exam (incl. « I don't know »). */
   options?: string[];
   /** Question text as shown during the exam. */

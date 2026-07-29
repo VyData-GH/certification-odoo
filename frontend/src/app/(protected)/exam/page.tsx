@@ -270,6 +270,7 @@ function ExamContent() {
         selectedIndex: selected,
         outcome,
         correctIndex: q.correctIndex,
+        module: q.module,
         options: [...q.options],
         text: q.text,
         explanation: q.explanation,
