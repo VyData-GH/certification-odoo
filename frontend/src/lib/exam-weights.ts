@@ -2,7 +2,8 @@ import { ModuleId } from "@/types/exam";
 
 /**
  * Official Odoo 19 Functional Certification approximate weights
- * (source: odoo.com / OpenExamPrep outline).
+ * (source: odoo.com syllabus — all 18 certification apps including AI).
+ * Percentages sum to 100.
  */
 export const OFFICIAL_EXAM_WEIGHTS: {
   modules: ModuleId[];
@@ -10,15 +11,15 @@ export const OFFICIAL_EXAM_WEIGHTS: {
 }[] = [
   { modules: ["accounting"], pct: 14 },
   { modules: ["crm", "sales"], pct: 14 },
-  { modules: ["inventory"], pct: 13 },
-  { modules: ["studio"], pct: 11 },
+  { modules: ["inventory"], pct: 12 },
+  { modules: ["studio"], pct: 10 },
   { modules: ["mrp"], pct: 10 },
   { modules: ["purchases"], pct: 7 },
   { modules: ["project", "timesheet"], pct: 7 },
   { modules: ["hr"], pct: 6 },
   { modules: ["website", "ecommerce"], pct: 6 },
-  { modules: ["pos"], pct: 6 },
-  { modules: ["spreadsheet", "knowledge"], pct: 4 },
+  { modules: ["pos"], pct: 5 },
+  { modules: ["spreadsheet", "knowledge", "ai"], pct: 5 },
   { modules: ["marketing", "survey"], pct: 4 },
 ];
 
