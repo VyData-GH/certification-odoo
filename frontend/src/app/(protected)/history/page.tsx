@@ -173,7 +173,7 @@ export default function HistoryPage() {
   );
 
   const sessionDetail = selected ? (
-    <div ref={detailRef}>
+    <div ref={detailRef} key={selected.id}>
       <div className="flex items-center justify-between mb-3 lg:hidden">
         <h2 className="text-sm font-semibold text-odoo-text">
           {tr.historyPage.analysisTitle}
@@ -187,6 +187,7 @@ export default function HistoryPage() {
         </button>
       </div>
       <ExamResultSummary
+        key={selected.id}
         result={selected}
         showActions
         onRetry={() => startExamRetry(selected, router.push)}
@@ -229,6 +230,7 @@ export default function HistoryPage() {
               type="button"
               onClick={() => {
                 setTab(t.id);
+                setPreferredSelectedId(null);
                 setMobileShowDetail(false);
               }}
               className={`px-4 py-2 text-sm font-medium border-b-2 -mb-px transition-colors ${
@@ -253,18 +255,24 @@ export default function HistoryPage() {
           </div>
         ) : (
           <>
-            <div className="hidden lg:grid lg:grid-cols-5 gap-4">
-              <div className="lg:col-span-2">{sessionList}</div>
-              <div className="lg:col-span-3">
-                <h2 className="text-sm font-semibold text-odoo-text mb-3">
+            <div className="lg:grid lg:grid-cols-5 gap-4">
+              <div
+                className={`lg:col-span-2 ${
+                  mobileShowDetail ? "hidden lg:block" : ""
+                }`}
+              >
+                {sessionList}
+              </div>
+              <div
+                className={`lg:col-span-3 ${
+                  !mobileShowDetail ? "hidden lg:block" : ""
+                }`}
+              >
+                <h2 className="text-sm font-semibold text-odoo-text mb-3 hidden lg:block">
                   {tr.historyPage.analysisTitle}
                 </h2>
                 {sessionDetail}
               </div>
-            </div>
-
-            <div className="lg:hidden">
-              {!mobileShowDetail ? sessionList : sessionDetail}
             </div>
           </>
         )}

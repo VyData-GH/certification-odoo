@@ -134,12 +134,26 @@ export function ReadinessPanel({ report }: ReadinessPanelProps) {
           </div>
         )}
 
-        <Link
-          href={recommendation.href}
-          className="odoo-btn-primary inline-flex w-full sm:w-auto justify-center no-underline"
-        >
-          {recommendation.label}
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <Link
+            href={recommendation.href}
+            className="odoo-btn-primary inline-flex w-full sm:w-auto justify-center no-underline"
+          >
+            {recommendation.label}
+          </Link>
+          {report.mistakeCount > 0 &&
+            report.recommendation !== "redo-mistakes" && (
+              <Link
+                href="/exam?preset=redo-mistakes"
+                className="odoo-btn-secondary inline-flex w-full sm:w-auto justify-center no-underline"
+              >
+                {r.recMistakesWithCount.replace(
+                  "{n}",
+                  String(report.mistakeCount)
+                )}
+              </Link>
+            )}
+        </div>
       </div>
     </section>
   );

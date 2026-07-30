@@ -16,7 +16,7 @@ import {
   computeSessionStats,
   ModuleFocusLevel,
 } from "@/lib/session-stats";
-import { getSessionReviewItems, hasStoredAnswers } from "@/lib/exam-replay";
+import { getSessionWeakCount, hasStoredAnswers } from "@/lib/exam-replay";
 import { useLanguage } from "@/context/LanguageContext";
 import type { ReviewFilter } from "@/lib/exam-replay";
 
@@ -70,7 +70,7 @@ export function ExamResultSummary({
   showActions = true,
   compact = false,
 }: ExamResultSummaryProps) {
-  const { tr, locale } = useLanguage();
+  const { tr } = useLanguage();
   const [reviewOpen, setReviewOpen] = useState(false);
   const [reviewFilter, setReviewFilter] = useState<ReviewFilter>("weak");
 
@@ -83,9 +83,7 @@ export function ExamResultSummary({
     .replace("{score}", result.score.toFixed(1));
   const singleModuleId = getSingleModuleId(result);
   const stored = hasStoredAnswers(result);
-  const weakCount = stored
-    ? getSessionReviewItems(result, locale, "weak").length
-    : 0;
+  const weakCount = getSessionWeakCount(result);
   const sessionStats = computeSessionStats(result, tr.modules_labels);
 
   const openReview = (filter: ReviewFilter) => {

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import {
   getSessionReviewItems,
+  getSessionWeakCount,
   hasStoredAnswers,
   ReviewFilter,
   ReviewItem,
@@ -106,10 +107,8 @@ export function WeakQuestionsModal({
   const items = stored
     ? getSessionReviewItems(result, locale, filter)
     : [];
-  const weakCount = stored
-    ? getSessionReviewItems(result, locale, "weak").length
-    : 0;
-  const noWeakLeft = stored && weakCount === 0;
+  const weakCount = getSessionWeakCount(result);
+  const noWeakLeft = weakCount === 0;
 
   let emptyMessage: string = tr.results.reviewNoData;
   if (noWeakLeft) {

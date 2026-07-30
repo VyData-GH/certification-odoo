@@ -300,7 +300,14 @@ export function computeReadiness(
   let recommendation: ReadinessReport["recommendation"] = "train";
   if (level === "ready") recommendation = "go";
   else if (mistakeCount >= 8) recommendation = "redo-mistakes";
-  else if (weakModules.length >= 2 && weakModules[0].percentage < 60) {
+  else if (
+    mistakeCount >= 1 &&
+    recent.length === 0 &&
+    score < 45
+  ) {
+    // Clear open mistakes before the first full mock when readiness is still low
+    recommendation = "redo-mistakes";
+  } else if (weakModules.length >= 2 && weakModules[0].percentage < 60) {
     recommendation = "focus-weak";
   } else if (recent.length === 0 || (recentAvg ?? 0) < 70) {
     recommendation = "full-mock";

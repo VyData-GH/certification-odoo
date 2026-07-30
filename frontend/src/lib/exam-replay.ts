@@ -175,6 +175,37 @@ function sessionIsPerfect(result: ExamResult): boolean {
   );
 }
 
+/**
+ * Weak-item count for THIS session only (frozen at submit).
+ * Uses the scorecard first so later quizzes cannot shrink an older session's badge.
+ * Outcome snapshots may raise the count when `dontKnow` was not persisted on the row.
+ */
+export function getSessionWeakCount(result: ExamResult): number {
+  const fromScores =
+    (result.wrong ?? 0) +
+    (result.unanswered ?? 0) +
+    (result.dontKnow ?? 0);
+
+  const ids = result.sessionMeta?.questionIds;
+  const answers = result.answers;
+  if (!ids?.length || !answers?.length) return fromScores;
+
+  const byId = new Map(answers.map((a) => [a.questionId, a]));
+  let fromOutcomes = 0;
+  let covered = 0;
+  for (const id of ids) {
+    const a = byId.get(id);
+    if (!a?.outcome) continue;
+    covered++;
+    if (a.outcome !== "correct") fromOutcomes++;
+  }
+
+  if (covered !== ids.length) return fromScores;
+
+  // Prefer the higher count: scorecard resists answer drift; outcomes recover lost dontKnow.
+  return Math.max(fromScores, fromOutcomes);
+}
+
 function buildShuffledSessionQuestions(
   result: ExamResult,
   uiLocale: "en" | "fr"
@@ -305,19 +336,49 @@ export function getSessionReviewItems(
     (Object.keys(result.moduleBreakdown ?? {})[0] as string) ??
     "studio";
 
-  const hasFullSnapshots = result.answers.every(
-    (a) => a.options?.length && a.text != null && a.outcome
+  // Outcome alone is enough to classify weak vs correct for THIS session
+  // (do not require options/text — avoids falling into shuffle drift).
+  const hasOutcomesForAll = sessionIds.every(
+    (id) => Boolean(answerById.get(id)?.outcome)
   );
+  const hasFullSnapshots = sessionIds.every((id) => {
+    const a = answerById.get(id);
+    return Boolean(a?.options?.length && a.text != null && a.outcome);
+  });
 
   let items: ReviewItem[] = [];
 
-  if (hasFullSnapshots) {
+  if (hasFullSnapshots || hasOutcomesForAll) {
     // Prefer per-answer module; fall back to bank lookup by questionId
     for (const id of sessionIds) {
       const record = answerById.get(id);
       if (!record) continue;
       const item = reviewItemFromSnapshot(record, moduleFallback);
-      if (item) items.push(item);
+      if (item) {
+        items.push(item);
+        continue;
+      }
+      // Outcome without option snapshot: rebuild display from bank, keep stored outcome
+      if (record.outcome) {
+        const { questions } = loadQuestionsByIdsStrict([id]);
+        const q = questions[0];
+        if (!q) continue;
+        const examLocale = result.sessionMeta?.locale ?? locale;
+        const localized = localizeQuestions([q], examLocale)[0];
+        items.push({
+          question: {
+            ...localized,
+            correctIndex: record.correctIndex ?? localized.correctIndex,
+            module: resolveQuestionModule(
+              id,
+              record.module,
+              moduleFallback
+            ),
+          },
+          selectedIndex: record.selectedIndex,
+          status: record.outcome,
+        });
+      }
     }
   } else {
     const shuffled = buildShuffledSessionQuestions(result, locale);
