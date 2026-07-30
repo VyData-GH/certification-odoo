@@ -28,11 +28,11 @@ export const COURSE_DOC_LINKS: Record<
     },
     {
       label: { en: "Taxes", fr: "Taxes" },
-      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/taxation/taxes.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/taxes.html",
     },
     {
       label: { en: "Fiscal positions", fr: "Positions fiscales" },
-      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/taxation/fiscal_positions.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/taxes/fiscal_positions.html",
     },
     {
       label: { en: "Assets", fr: "Immobilisations" },
@@ -40,11 +40,11 @@ export const COURSE_DOC_LINKS: Record<
     },
     {
       label: { en: "Deferred revenues", fr: "Produits constatés d'avance" },
-      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/reporting/revenue_recognition.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/customer_invoices/deferred_revenues.html",
     },
     {
       label: { en: "Inventory valuation (Accounting)", fr: "Valorisation stock (Compta)" },
-      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/inventory.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/finance/accounting/get_started/inventory_valuation.html",
     },
   ],
   crm: [
@@ -62,11 +62,11 @@ export const COURSE_DOC_LINKS: Record<
     },
     {
       label: { en: "Activities & activity plans", fr: "Activités & plans d'activités" },
-      href: "https://www.odoo.com/documentation/19.0/applications/sales/crm/optimize/activities.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/sales/crm/optimize/utilize_activities.html",
     },
     {
       label: { en: "Lead scoring", fr: "Scoring des pistes" },
-      href: "https://www.odoo.com/documentation/19.0/applications/sales/crm/acquire_leads/lead_scoring.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/sales/crm/track_leads/lead_scoring.html",
     },
     {
       label: { en: "Marketing attribution", fr: "Attribution marketing" },
@@ -192,8 +192,8 @@ export const COURSE_DOC_LINKS: Record<
       href: "https://www.odoo.com/documentation/19.0/applications/services/timesheets/billing_rates.html",
     },
     {
-      label: { en: "Record timesheets", fr: "Encoder les temps" },
-      href: "https://www.odoo.com/documentation/19.0/applications/services/timesheets/time_management.html",
+      label: { en: "Time off entries", fr: "Entrées de congés" },
+      href: "https://www.odoo.com/documentation/19.0/applications/services/timesheets/time_off.html",
     },
   ],
   hr: [
@@ -346,8 +346,8 @@ export const COURSE_DOC_LINKS: Record<
       href: "https://www.odoo.com/documentation/19.0/applications/productivity/knowledge.html",
     },
     {
-      label: { en: "Articles", fr: "Articles" },
-      href: "https://www.odoo.com/documentation/19.0/applications/productivity/knowledge/articles.html",
+      label: { en: "Article management", fr: "Gestion des articles" },
+      href: "https://www.odoo.com/documentation/19.0/applications/productivity/knowledge/management.html",
     },
   ],
   ai: [
@@ -361,7 +361,7 @@ export const COURSE_DOC_LINKS: Record<
     },
     {
       label: { en: "Write & improve text", fr: "Rédiger & améliorer le texte" },
-      href: "https://www.odoo.com/documentation/19.0/applications/productivity/ai/write.html",
+      href: "https://www.odoo.com/documentation/19.0/applications/productivity/ai/improve_text.html",
     },
   ],
 };
