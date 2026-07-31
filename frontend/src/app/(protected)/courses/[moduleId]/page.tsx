@@ -7,6 +7,7 @@ import { ModuleIcon } from "@/components/ModuleIcon";
 import { ModuleQuizControls } from "@/components/ModuleQuizControls";
 import { PageShell } from "@/components/PageShell";
 import { COURSE_DOC_LINKS } from "@/data/course-doc-links";
+import { COURSE_CONFIG_HINTS } from "@/data/course-config-hints";
 import { COURSE_STUDY_BLOCKS } from "@/data/course-study-blocks";
 import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
 import { SUPPLEMENTARY_COURSE_SUMMARIES } from "@/data/course-summaries-supplementary";
@@ -57,15 +58,24 @@ export default function CourseModulePage() {
     locale === "fr" ? summary.keyTopics.fr : summary.keyTopics.en;
   const mustKnow =
     locale === "fr" ? summary.mustKnow.fr : summary.mustKnow.en;
+  const configHints = isCert
+    ? locale === "fr"
+      ? COURSE_CONFIG_HINTS[moduleId].fr
+      : COURSE_CONFIG_HINTS[moduleId].en
+    : [];
   const studyBlocks = isCert ? COURSE_STUDY_BLOCKS[moduleId] : [];
   const docLinks = isCert ? COURSE_DOC_LINKS[moduleId] : [];
   const studyWords = studyBlocks.reduce((n, b) => {
     const body = locale === "fr" ? b.body.fr : b.body.en;
     return n + body.split(/\s+/).filter(Boolean).length;
   }, 0);
+  const configWords = configHints.reduce(
+    (n, tip) => n + tip.split(/\s+/).filter(Boolean).length,
+    0
+  );
   const estimatedMinutes = Math.max(
     summary.readMinutes,
-    summary.readMinutes + Math.round(studyWords / 180)
+    summary.readMinutes + Math.round((studyWords + configWords) / 180)
   );
   const readTime = tr.courses.readTime.replace(
     "{min}",
@@ -114,6 +124,22 @@ export default function CourseModulePage() {
             </ul>
           </div>
         </section>
+
+        {configHints.length > 0 && (
+          <section className="odoo-card">
+            <div className="odoo-card-header">{tr.courses.configHints}</div>
+            <div className="odoo-card-body space-y-2">
+              <p className="text-sm text-odoo-text-muted">
+                {tr.courses.configHintsHint}
+              </p>
+              <ul className="space-y-1.5 list-disc pl-5 text-sm text-odoo-text">
+                {configHints.map((hint) => (
+                  <li key={hint}>{hint}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         <section className="odoo-card border-l-4 border-l-odoo-brand">
           <div className="odoo-card-header">{tr.courses.examFocus}</div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ModuleIcon } from "@/components/ModuleIcon";
 import { OfficialOdooLinks } from "@/components/OfficialOdooLinks";
 import { PageShell } from "@/components/PageShell";
+import { COURSE_EXAM_TIPS } from "@/data/course-exam-tips";
 import { CourseSummary } from "@/data/course-summaries";
 import { CERTIFICATION_COURSE_SUMMARIES } from "@/data/course-summaries";
 import { SUPPLEMENTARY_COURSE_SUMMARIES } from "@/data/course-summaries-supplementary";
@@ -84,6 +85,41 @@ export default function CoursesPage() {
         <p className="text-sm text-odoo-text-muted">{tr.courses.intro}</p>
 
         <OfficialOdooLinks />
+
+        <section className="odoo-card border-l-4 border-l-odoo-brand">
+          <div className="odoo-card-header flex items-center justify-between gap-2">
+            <span>{tr.courses.examTipsTitle}</span>
+            <span className="text-xs text-odoo-text-muted font-normal">
+              {tr.courses.readTime.replace(
+                "{min}",
+                String(COURSE_EXAM_TIPS.readMinutes)
+              )}
+            </span>
+          </div>
+          <div className="odoo-card-body space-y-3">
+            <p className="text-sm text-odoo-text-muted">
+              {locale === "fr"
+                ? COURSE_EXAM_TIPS.overview.fr
+                : COURSE_EXAM_TIPS.overview.en}
+            </p>
+            <ul className="space-y-1 text-sm text-odoo-text list-disc pl-5">
+              {(locale === "fr"
+                ? COURSE_EXAM_TIPS.blocks[0].bullets.fr
+                : COURSE_EXAM_TIPS.blocks[0].bullets.en
+              )
+                .slice(0, 3)
+                .map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+            </ul>
+            <Link
+              href="/courses/exam-tips"
+              className="text-sm text-odoo-brand inline-block"
+            >
+              {tr.courses.examTipsReadMore} →
+            </Link>
+          </div>
+        </section>
 
         <section className="space-y-3">
           <h2 className="text-lg font-medium text-odoo-text">

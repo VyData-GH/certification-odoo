@@ -17,8 +17,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Documents & modèles techniques",
       },
       body: {
-        en: "Customer invoices, vendor bills, credit notes, payments and miscellaneous entries are all account.move records; lines live in account.move.line. The chart of accounts is account.account. Journals (account.journal) define sequences, default debit/credit accounts and which document types they accept. Memorize move_type: out_invoice, in_invoice, out_refund, in_refund, entry. Draft → Posted → (optional) Reset to draft if the period is unlocked. Analytic accounts / plans split P&L by project, department or product.",
-        fr: "Factures client, factures fournisseur, avoirs, paiements et OD sont des account.move ; les lignes sont dans account.move.line. Le plan comptable = account.account. Les journaux (account.journal) définissent séquences, comptes par défaut et types de documents. Retenez move_type : out_invoice, in_invoice, out_refund, in_refund, entry. Brouillon → Comptabilisé → (optionnel) Remettre en brouillon si la période est ouverte. Comptes / plans analytiques découpent le P&L par projet, département ou produit.",
+        en: "Customer invoices, vendor bills, credit notes, debit notes (v19 dedicated flow), payments and miscellaneous entries are all account.move records; lines live in account.move.line. The chart of accounts is account.account. Journals (account.journal) define sequences, default debit/credit accounts and which document types they accept. Memorize move_type: out_invoice, in_invoice, out_refund, in_refund, entry. Draft → Posted → (optional) Reset to draft if the period is unlocked. Analytic accounts / plans split P&L by project, department or product — distinct from the general CoA.",
+        fr: "Factures client, factures fournisseur, avoirs, notes de débit (flux dédié v19), paiements et OD sont des account.move ; les lignes sont dans account.move.line. Le plan comptable = account.account. Les journaux (account.journal) définissent séquences, comptes par défaut et types de documents. Retenez move_type : out_invoice, in_invoice, out_refund, in_refund, entry. Brouillon → Comptabilisé → (optionnel) Remettre en brouillon si la période est ouverte. Comptes / plans analytiques découpent le P&L par projet, département ou produit — distincts du plan général.",
       },
     },
     {
@@ -27,8 +27,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Taxes, positions fiscales & multi-devise",
       },
       body: {
-        en: "Taxes can be included or excluded in prices; tax groups and grids feed VAT returns. Fiscal positions remap taxes and accounts when the partner’s country, VAT status or e-commerce fiscal position differs from the company default (e.g. EU B2B reverse charge). Cash basis vs accrual changes when tax is recognized. Multi-currency: company currency is the reporting base; exchange differences post on payment/revaluation. Cash rounding and payment terms affect the residual amount on invoices.",
-        fr: "Taxes incluses ou exclues ; groupes et grilles alimentent les déclarations TVA. Les positions fiscales remappent taxes et comptes selon pays, statut TVA ou position e-commerce (ex. autoliquidation B2B UE). TVA sur encaissements vs engagements. Multi-devise : la devise société est la base ; les écarts de change se postent au paiement / à la réévaluation. Arrondi monétaire et conditions de paiement influencent le résiduel.",
+        en: "Taxes can be included or excluded in prices; v19 adds a clearer tax include/exclude toggle on quotes and invoices. Tax groups and grids feed VAT returns. Fiscal positions remap taxes and accounts when the partner’s country, VAT status or e-commerce fiscal position differs from the company default (e.g. EU B2B reverse charge). Cash basis vs accrual changes when tax is recognized. Multi-currency: company currency is the reporting base; exchange differences post on payment/revaluation. e-Invoicing formats (Peppol, Factur-X, localization XML) are a strong European theme.",
+        fr: "Taxes incluses ou exclues ; v19 clarifie la bascule TTC/HT sur devis et factures. Groupes et grilles alimentent les déclarations TVA. Les positions fiscales remappent taxes et comptes selon pays, statut TVA ou position e-commerce (ex. autoliquidation B2B UE). TVA sur encaissements vs engagements. Multi-devise : la devise société est la base ; les écarts de change se postent au paiement / à la réévaluation. E-facturation (Peppol, Factur-X, XML localisation) = thème fort en Europe.",
       },
     },
     {
@@ -88,8 +88,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Devis → commande → facture",
       },
       body: {
-        en: "Create a quotation (from CRM, manually or online), apply template/pricelist/fiscal position, send by email or Sign. Customer acceptance → Confirm Order creates a Sales Order. Deliver goods or record services, then invoice according to policy. Register payment and reconcile in Accounting. Cancellation / credit notes reverse posted invoices.",
-        fr: "Créer un devis (CRM, manuel ou en ligne), appliquer modèle / liste de prix / position fiscale, envoyer par e-mail ou Sign. Acceptation → Confirmer crée la commande. Livrer ou enregistrer les prestations, puis facturer selon la politique. Paiement + lettrage en Comptabilité. Annulation / avoirs pour inverser.",
+        en: "Create a quotation (from CRM, manually or online), apply template/pricelist/fiscal position, send by email or Sign. v19 can show real-time stock availability on the quote and optionally hide unit prices (common in construction). Customer acceptance → Confirm Order creates a Sales Order. Deliver goods or record services, then invoice according to policy. Register payment and reconcile in Accounting. Cancellation / credit notes reverse posted invoices.",
+        fr: "Créer un devis (CRM, manuel ou en ligne), appliquer modèle / liste de prix / position fiscale, envoyer par e-mail ou Sign. v19 : dispo stock temps réel sur le devis et masquage optionnel des prix unitaires (fréquent en BTP). Acceptation → Confirmer crée la commande. Livrer ou enregistrer les prestations, puis facturer selon la politique. Paiement + lettrage en Comptabilité. Annulation / avoirs pour inverser.",
       },
     },
     {
@@ -203,8 +203,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Projets, tâches & étapes",
       },
       body: {
-        en: "Projects contain tasks organized in Kanban stages (or list/gantt). Sub-tasks and dependencies structure work. Milestones mark contractual checkpoints. Project templates clone structure for recurring engagements. Customer rating and project updates set health (On Track / At Risk / Off Track).",
-        fr: "Un projet contient des tâches en Kanban (ou liste/gantt). Sous-tâches et dépendances. Les jalons marquent les échéances contractuelles. Les modèles de projet clonent la structure. Notes client et mises à jour définissent la santé (Dans les clous / À risque / Hors piste).",
+        en: "Projects contain tasks organized in Kanban stages (or list/gantt). Sub-tasks and dependencies structure work. Milestones mark contractual checkpoints. Project templates clone structure for recurring engagements; v19 also lets you save a single task as a reusable task template. Customer rating and project updates set health (On Track / At Risk / Off Track).",
+        fr: "Un projet contient des tâches en Kanban (ou liste/gantt). Sous-tâches et dépendances. Les jalons marquent les échéances contractuelles. Les modèles de projet clonent la structure ; v19 permet aussi de sauvegarder une tâche comme modèle réutilisable. Notes client et mises à jour définissent la santé (Dans les clous / À risque / Hors piste).",
       },
     },
     {
@@ -213,8 +213,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Services, facturation & rentabilité",
       },
       body: {
-        en: "Service products can create a project and/or tasks when the SO is confirmed (service tracking). Timesheets on tasks feed billable hours. Planned hours vs timesheeted hours measure progress. Analytic accounts per project feed the profitability report (revenues from SO/invoices minus costs/timesheets/expenses). Billable vs non-billable tasks matter for reinvoicing.",
-        fr: "Un produit service peut créer projet et/ou tâches à la confirmation SO. Les feuilles de temps alimentent les heures facturables. Heures planifiées vs saisies = avancement. Compte analytique → rapport de rentabilité (CA − coûts/temps/frais). Tâches facturables vs non pour la refacturation.",
+        en: "Service products can create a project and/or tasks when the SO is confirmed (service tracking). Timesheets on tasks feed billable hours. Planned hours vs timesheeted hours measure progress; progress reporting (v19) may require validation before milestone invoicing. Analytic accounts per project feed the profitability report (revenues from SO/invoices minus costs/timesheets/expenses). Billable vs non-billable tasks matter for reinvoicing.",
+        fr: "Un produit service peut créer projet et/ou tâches à la confirmation SO. Les feuilles de temps alimentent les heures facturables. Heures planifiées vs saisies = avancement ; le rapport d'avancement (v19) peut exiger une validation avant facturation des jalons. Compte analytique → rapport de rentabilité (CA − coûts/temps/frais). Tâches facturables vs non pour la refacturation.",
       },
     },
   ],
@@ -279,18 +279,18 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Builder, thèmes & pages",
       },
       body: {
-        en: "Website builder uses drag-and-drop snippets (structure, features, dynamic content). Themes control colors, fonts and layout presets. Pages are draft or published; menus link pages. Multi-website can share or separate domains/companies. Restrict pages to logged-in portal users when needed.",
-        fr: "Le builder empile des snippets (structure, fonctionnalités, contenu dynamique). Thèmes = couleurs, polices, presets. Pages brouillon ou publiées ; menus. Multi-sites : domaines/sociétés partagés ou séparés. Restreindre aux utilisateurs portail si besoin.",
+        en: "Website builder uses drag-and-drop snippets (structure, features, dynamic content). Themes control colors, fonts and layout presets. Pages are draft or published; menus link pages. Multi-website can share or separate domains/companies. Restrict pages to logged-in portal users when needed. v19: edit text inline with a floating toolbar while the side panel handles theme/styles.",
+        fr: "Le builder empile des snippets (structure, fonctionnalités, contenu dynamique). Thèmes = couleurs, polices, presets. Pages brouillon ou publiées ; menus. Multi-sites : domaines/sociétés partagés ou séparés. Restreindre aux utilisateurs portail si besoin. v19 : édition inline avec barre d'outils flottante ; panneau latéral pour thème/styles.",
       },
     },
     {
       title: {
-        en: "Forms, SEO & tracking",
-        fr: "Formulaires, SEO & tracking",
+        en: "Static vs dynamic & SEO",
+        fr: "Statique vs dynamique & SEO",
       },
       body: {
-        en: "Form snippets create CRM leads, tickets or mailing-list contacts. SEO fields (title, meta, sitemap) live on each page. Redirects manage URL changes. Website analytics / visitor tracking are optional integrations. Translate pages with the language switcher when multi-language is enabled.",
-        fr: "Les formulaires créent pistes CRM, tickets ou contacts mailing. SEO (titre, meta, sitemap) par page. Redirections pour les changements d'URL. Analytics / visiteurs optionnels. Traduction via le sélecteur de langue.",
+        en: "Static pages hold editor content (landing, about). Dynamic pages are QWeb views bound to records (shop, product, blog post). Snippets are reusable blocks. Form snippets create CRM leads, tickets or mailing-list contacts. SEO fields (title, meta, sitemap) and URL redirects live per page / website config. Analytics integrations (GA, Plausible…) are optional.",
+        fr: "Page statique = contenu éditeur (landing, à propos). Page dynamique = vue QWeb liée aux enregistrements (boutique, produit, article blog). Snippets = blocs réutilisables. Formulaires → pistes CRM, tickets ou contacts mailing. SEO (titre, meta, sitemap) et redirections URL par page / config site. Analytics (GA, Plausible…) optionnels.",
       },
     },
   ],
@@ -311,8 +311,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Checkout, paiements & livraison",
       },
       body: {
-        en: "Payment providers and shipping methods appear at checkout; delivery carriers can be based on weight, price or custom. Fiscal positions apply correct taxes online. Abandoned cart recovery emails revive incomplete checkouts. Customer accounts / guest checkout are configurable. Orders sync to Sales and Inventory like any SO.",
-        fr: "Paiements et modes de livraison au checkout (poids, prix, custom). Positions fiscales pour la TVA en ligne. Relance paniers abandonnés. Compte client ou invité. Les commandes rejoignent Ventes / Inventaire comme un SO.",
+        en: "Payment providers and shipping methods appear at checkout; delivery carriers can be based on weight, price or custom. Fiscal positions apply correct taxes online. Abandoned cart recovery emails revive incomplete checkouts. Customer accounts / guest checkout and an optional Extra Step are configurable. Orders sync to Sales and Inventory like any SO. Shop ribbons (On Sale, In Stock…) power catalog filters.",
+        fr: "Paiements et modes de livraison au checkout (poids, prix, custom). Positions fiscales pour la TVA en ligne. Relance paniers abandonnés. Compte client ou invité + étape Extra optionnelle. Les commandes rejoignent Ventes / Inventaire comme un SO. Rubans boutique (En promo, En stock…) pilotent les filtres catalogue.",
       },
     },
     {
@@ -321,8 +321,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Stock & portail",
       },
       body: {
-        en: "Shared inventory with the Inventory app keeps online availability accurate; prevent sales of out-of-stock items if configured. Cross-selling and recently viewed blocks are website snippets. Portal users see orders, invoices and delivery tracking. Promo codes / loyalty programs reuse Sales discount engines.",
-        fr: "Stock partagé avec Inventaire ; bloquer les ruptures si configuré. Cross-sell / vus récemment = snippets. Portail : commandes, factures, suivi. Codes promo / fidélité = moteur de remises Ventes.",
+        en: "Shared inventory with the Inventory app keeps online availability accurate; prevent sales of out-of-stock items if configured. Cross-selling and recently viewed blocks are website snippets. Portal users see orders, invoices and delivery tracking. Promo codes / loyalty programs reuse Sales discount engines. Remember: one product record — tick Sell on Website / Published.",
+        fr: "Stock partagé avec Inventaire ; bloquer les ruptures si configuré. Cross-sell / vus récemment = snippets. Portail : commandes, factures, suivi. Codes promo / fidélité = moteur de remises Ventes. Un seul produit — cocher Vendre en ligne / Publié.",
       },
     },
   ],
@@ -333,8 +333,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Email Marketing",
       },
       body: {
-        en: "Mailing lists and contacts receive mass mailings built with templates/snippets. A/B tests compare subject or content. Bounce, opt-out and blacklist handling protect deliverability. KPIs: delivered, opened, clicked, replied. Prefer mass mailing for one-shot campaigns; keep lists clean.",
-        fr: "Listes et contacts reçoivent des mailings (templates/snippets). A/B test sur objet ou contenu. Rebonds, désinscriptions et listes noires protègent la délivrabilité. KPI : délivré, ouvert, cliqué, répondu. Mailing de masse = campagne one-shot ; listes propres.",
+        en: "Mailing lists and contacts receive mass mailings built with templates/snippets. Lists can be static or dynamic: dynamic membership is recomputed at send time (v19). A/B tests compare subject or content. Bounce, opt-out and blacklist handling protect deliverability. KPIs: delivered, opened, clicked, replied. Prefer mass mailing for one-shot campaigns; keep lists clean.",
+        fr: "Listes et contacts reçoivent des mailings (templates/snippets). Listes statiques ou dynamiques : le membership dynamique est recalculé à l'envoi (v19). A/B test sur objet ou contenu. Rebonds, désinscriptions et listes noires protègent la délivrabilité. KPI : délivré, ouvert, cliqué, répondu. Mailing de masse = campagne one-shot ; listes propres.",
       },
     },
     {
@@ -343,8 +343,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Marketing Automation & SMS",
       },
       body: {
-        en: "Automation workflows chain activities on triggers (time delay, email opened, link clicked, stage changed). Use automation for nurture sequences. SMS Marketing needs IAP credits and opt-in compliance. Social Marketing schedules posts. Link trackers measure campaign URLs. Marketing cards generate shareable creatives.",
-        fr: "Les workflows d'automation enchaînent des activités sur déclencheurs (délai, ouverture, clic, changement d'étape) — idéal pour le nurturing. SMS = crédits IAP + opt-in. Social Marketing planifie les posts. Trackers = URLs de campagne. Marketing Cards = créatifs partageables.",
+        en: "Automation workflows chain activities on triggers (time delay, email opened, link clicked, stage changed, abandoned cart). Target/Filter domains select participants — same idea as Email Marketing filters. SMS Marketing needs IAP credits and opt-in compliance. Social Marketing schedules posts. UTM source/medium/campaign attribute revenue on CRM and SO.",
+        fr: "Les workflows d'automation enchaînent des activités sur déclencheurs (délai, ouverture, clic, étape, panier abandonné). Target/Filter = domaines de participants — même logique que les filtres Email Marketing. SMS = crédits IAP + opt-in. Social Marketing planifie les posts. UTM source/medium/campaign attribuent le CA sur CRM et commandes.",
       },
     },
   ],
@@ -355,8 +355,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Types de questions & conception",
       },
       body: {
-        en: "Surveys support multiple choice, text, numerical, date, matrix and more. Sections organize long forms. Conditional display shows/hides questions from prior answers. Randomization and time limits appear in certification-style surveys. Live session mode projects questions for events.",
-        fr: "Choix multiple, texte, numérique, date, matrice… Sections pour les longs formulaires. Affichage conditionnel selon les réponses. Randomisation et limite de temps pour les certifications. Mode session live pour les événements.",
+        en: "Surveys support multiple choice, text, numerical, date, matrix and more. Sections organize long forms. Layout is a frequent exam trap: one page at a time, one section at a time, or everything on a single page. Conditional display shows/hides questions from prior answers (trigger questions). Randomization and time limits appear in certification-style surveys. Live session mode projects questions for events.",
+        fr: "Choix multiple, texte, numérique, date, matrice… Sections pour les longs formulaires. Affichage = piège d'examen fréquent : une page à la fois, une section à la fois, ou tout sur une seule page. Affichage conditionnel selon les réponses (questions déclencheuses). Randomisation et limite de temps pour les certifications. Mode session live pour les événements.",
       },
     },
     {
@@ -377,8 +377,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Sessions & paiements",
       },
       body: {
-        en: "Open a POS session on a configured point of sale → sell products → close with cash control (opening/closing counted cash). Split bills and multiple payment methods are supported. Refunds create reverse orders. Customer display and IoT devices (printers, payment terminals, scales) attach to the POS config.",
-        fr: "Ouvrir une session sur un PdV configuré → vendre → clôturer avec contrôle caisse. Split et multi-paiements. Remboursements = commandes inverses. Afficheur client et IoT (imprimantes, TPE, balances) se lient à la config PdV.",
+        en: "Open a POS session on a configured point of sale → sell products → close with cash control (opening/closing counted cash). v19 Presets switch dine-in / takeaway / delivery (or custom modes) without reconfiguring the whole POS. Split bills and multiple payment methods are supported. Refunds create reverse orders. Customer display and IoT devices (printers, payment terminals, scales) attach to the POS config.",
+        fr: "Ouvrir une session sur un PdV configuré → vendre → clôturer avec contrôle caisse. Presets v19 : bascule sur place / à emporter / livraison (ou modes custom) sans reconfigurer tout le PdV. Split et multi-paiements. Remboursements = commandes inverses. Afficheur client et IoT (imprimantes, TPE, balances) se lient à la config PdV.",
       },
     },
     {
@@ -387,8 +387,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Restaurant, fidélité & clôture",
       },
       body: {
-        en: "Restaurant mode adds floors, tables, course/notes and preparation displays (kitchen). Tips and bar tabs are common options. Loyalty programs and promotions apply discounts at the POS. Closing posts sales to Inventory (stock moves) and Accounting (journal entries). Offline cache continues selling and syncs when the network returns — a frequent exam point.",
-        fr: "Mode restaurant : plans, tables, notes et écrans de préparation. Pourboires / additions ouvertes. Fidélité et promos au PdV. La clôture poste vers Inventaire et Comptabilité. Cache hors-ligne = vente continue puis sync — point d'examen fréquent.",
+        en: "Restaurant mode adds floors, tables, course/notes and preparation displays (kitchen). Tips and bar tabs are common options. Loyalty programs and promotions apply discounts at the POS. Closing posts sales to Inventory (stock moves) and Accounting (journal entries). Offline-first cache continues selling and syncs when the network returns — a frequent exam point.",
+        fr: "Mode restaurant : plans, tables, notes et écrans de préparation. Pourboires / additions ouvertes. Fidélité et promos au PdV. La clôture poste vers Inventaire et Comptabilité. Cache offline-first = vente continue puis sync — point d'examen fréquent.",
       },
     },
   ],
@@ -399,8 +399,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Ce que Studio peut modifier",
       },
       body: {
-        en: "Studio adds fields (and shows them on forms/lists), rearranges views, creates new menus/models for light apps, and builds automated actions / approval rules without code. Report layouts and button visibility can be adjusted. Prefer Studio for lightweight functional tweaks; complex business logic still needs development.",
-        fr: "Studio ajoute des champs (formulaires/listes), réorganise les vues, crée menus/modèles légers et des actions automatisées / approbations sans code. Mise en page des rapports et visibilité des boutons. Studio = ajustements légers ; logique métier complexe = développement.",
+        en: "Studio adds fields (and shows them on forms/lists), rearranges views, creates new menus/models for light apps, and builds automated actions / approval rules without code. Report layouts and button visibility can be adjusted. Prefer Settings checkboxes for standard features; Studio for lightweight custom tweaks. Customizations are stored as database records (ir.model.fields, views…) — not Python modules — which affects upgrades and migrations (classic exam angle).",
+        fr: "Studio ajoute des champs (formulaires/listes), réorganise les vues, crée menus/modèles légers et des actions automatisées / approbations sans code. Mise en page des rapports et visibilité des boutons. Préférer les cases Paramètres pour le standard ; Studio pour les tweaks légers. Les perso sont des enregistrements en base (ir.model.fields, vues…) — pas des modules Python — d'où l'impact upgrades/migrations (angle d'examen classique).",
       },
     },
     {
@@ -475,8 +475,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Où l'IA apparaît dans Odoo 19",
       },
       body: {
-        en: "Odoo 19 AI helps draft and improve text (emails, website, chatter), powers AI fields, agents, default prompts, document sorting, live chat helpers, voice transcription, email-template suggestions and support-workflow assists. API keys configure the provider connection. Exam angle: know the feature list and which apps expose AI.",
-        fr: "L'IA Odoo 19 aide à rédiger/améliorer du texte (e-mails, site, chatter), via champs IA, agents, prompts, tri de documents, live chat, transcription vocale, suggestions de modèles d'e-mail et assistances support. Clés API = connexion fournisseur. À l'examen : connaître la liste des features et les apps concernées.",
+        en: "Odoo 19 AI helps draft and improve text (emails, website, chatter), powers AI fields, agents, default prompts, document sorting, live chat helpers, voice transcription, email-template suggestions and support-workflow assists. Server actions can update fields from a natural-language prompt. Most features consume IAP credits (cloud) — not a free local engine. API keys configure the provider connection. Exam angle: know the feature list and which apps expose AI.",
+        fr: "L'IA Odoo 19 aide à rédiger/améliorer du texte (e-mails, site, chatter), via champs IA, agents, prompts, tri de documents, live chat, transcription vocale, suggestions de modèles d'e-mail et assistances support. Les actions serveur peuvent mettre à jour des champs via un prompt. La plupart des features consomment des crédits IAP (cloud) — pas un moteur local gratuit. Clés API = connexion fournisseur. À l'examen : connaître la liste des features et les apps concernées.",
       },
     },
     {
@@ -485,8 +485,8 @@ export const COURSE_STUDY_BLOCKS: Record<
         fr: "Ce que l'IA ne remplace pas",
       },
       body: {
-        en: "AI does not replace functional configuration: fiscal positions, inventory routes, access rights, tax mapping and accounting locks remain manual setups. It assists content and sorting; it does not magically post correct journal entries or invent warehouse rules. Distinguishing automation (Studio/server actions) from generative AI is a frequent trap.",
-        fr: "L'IA ne remplace pas la config fonctionnelle : positions fiscales, routes stock, droits, taxes et verrous comptables restent manuels. Elle assiste le contenu et le tri ; elle ne poste pas magiquement la bonne écriture ni n'invente les règles d'entrepôt. Distinguer automation (Studio/actions) et IA générative est un piège fréquent.",
+        en: "AI does not replace functional configuration: fiscal positions, inventory routes, access rights, tax mapping and accounting locks remain manual setups. It assists content and sorting; it does not magically post correct journal entries or invent warehouse rules. Distinguishing automation (Studio/server actions) from generative AI is a frequent trap. OCR / invoice extraction also uses IAP — different credit packs from SMS or lead mining.",
+        fr: "L'IA ne remplace pas la config fonctionnelle : positions fiscales, routes stock, droits, taxes et verrous comptables restent manuels. Elle assiste le contenu et le tri ; elle ne poste pas magiquement la bonne écriture ni n'invente les règles d'entrepôt. Distinguer automation (Studio/actions) et IA générative est un piège fréquent. OCR / extraction de factures = aussi IAP — packs distincts du SMS ou du mining de pistes.",
       },
     },
   ],

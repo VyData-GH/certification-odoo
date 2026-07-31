@@ -461,6 +461,9 @@ export const translations = {
       quickFlow: "Essential flow",
       readMore: "Study module",
       keyTopics: "Everything to cover",
+      configHints: "What you can configure",
+      configHintsHint:
+        "Where to set it up in Odoo — Settings, product form, warehouse, etc. Useful when a question asks which option enables a behaviour.",
       examFocus: "Exam traps & distinctions",
       studyDeep: "Study notes (no UI needed)",
       studyDeepHint:
@@ -475,6 +478,12 @@ export const translations = {
       allModules: "All modules →",
       notFound: "Module not found",
       backToList: "Back to courses",
+      examTipsTitle: "Flows & exam traps",
+      examTipsBadge: "Cross-module",
+      examTipsReadMore: "Read full tips",
+      examTipsNext: "Next step",
+      examTipsNextHint:
+        "Then study each certification module — exam traps are highlighted in every course page.",
     },
     historyPage: {
       title: "Session History",
@@ -1032,6 +1041,9 @@ export const translations = {
       quickFlow: "Flux essentiel",
       readMore: "Étudier le module",
       keyTopics: "Tout ce qu'il faut couvrir",
+      configHints: "Ce que vous pouvez paramétrer",
+      configHintsHint:
+        "Où le régler dans Odoo — Paramètres, fiche produit, entrepôt, etc. Utile quand une question demande quelle option active un comportement.",
       examFocus: "Pièges & distinctions examen",
       studyDeep: "Notes d'étude (sans ouvrir Odoo)",
       studyDeepHint:
@@ -1047,6 +1059,12 @@ export const translations = {
       allModules: "Tous les modules →",
       notFound: "Module introuvable",
       backToList: "Retour aux cours",
+      examTipsTitle: "Flux & pièges d'examen",
+      examTipsBadge: "Transverse",
+      examTipsReadMore: "Lire les conseils complets",
+      examTipsNext: "Étape suivante",
+      examTipsNextHint:
+        "Ensuite, étudiez chaque module certification — les pièges d'examen sont déjà renforcés dans chaque fiche.",
     },
     historyPage: {
       title: "Historique des sessions",
