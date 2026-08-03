@@ -64,7 +64,13 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     pathname,
   ]);
 
-  if (loading || !demoReady || (user && emailVerified && accessLoading)) {
+  // Keep UI mounted during background access re-checks if already approved
+  // (e.g. JWT refresh) so in-progress exams are not unmounted/reset.
+  if (
+    loading ||
+    !demoReady ||
+    (user && emailVerified && accessLoading && !isApproved)
+  ) {
     return <AppLoading message={tr.auth.loading} />;
   }
 

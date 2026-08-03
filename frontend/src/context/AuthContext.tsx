@@ -67,34 +67,44 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const configured = isSupabaseConfigured();
 
-  const applySession = useCallback(async (s: Session | null) => {
-    setSession(s);
-    setUser(s?.user ?? null);
+  const applySession = useCallback(
+    async (s: Session | null, event?: string) => {
+      setSession(s);
+      setUser(s?.user ?? null);
 
-    if (!s?.user || !isEmailVerified(s.user) || !s.access_token) {
-      setAccessStatus(null);
-      setIsAdmin(false);
+      if (!s?.user || !isEmailVerified(s.user) || !s.access_token) {
+        setAccessStatus(null);
+        setIsAdmin(false);
+        setAccessLoading(false);
+        return;
+      }
+
+      // JWT auto-refresh must not flash a full-screen loading gate (unmounts exam UI).
+      const silentRefresh = event === "TOKEN_REFRESHED";
+      if (!silentRefresh) {
+        setAccessLoading(true);
+      }
+      const access = await fetchAccessStatus(s.access_token);
+      if (access) {
+        setAccessStatus(access.status);
+        setIsAdmin(access.isAdmin || isAdminEmail(s.user.email));
+      } else {
+        // Fail closed for new checks, but keep admin emails usable offline of API
+        const admin = isAdminEmail(s.user.email);
+        setIsAdmin(admin);
+        setAccessStatus(admin ? "approved" : null);
+      }
       setAccessLoading(false);
-      return;
-    }
 
-    setAccessLoading(true);
-    const access = await fetchAccessStatus(s.access_token);
-    if (access) {
-      setAccessStatus(access.status);
-      setIsAdmin(access.isAdmin || isAdminEmail(s.user.email));
-    } else {
-      // Fail closed for new checks, but keep admin emails usable offline of API
-      const admin = isAdminEmail(s.user.email);
-      setIsAdmin(admin);
-      setAccessStatus(admin ? "approved" : null);
-    }
-    setAccessLoading(false);
-
-    if (access?.status === "approved" || isAdminEmail(s.user.email)) {
-      await syncLocalHistoryToCloud(s.access_token);
-    }
-  }, []);
+      if (
+        !silentRefresh &&
+        (access?.status === "approved" || isAdminEmail(s.user.email))
+      ) {
+        await syncLocalHistoryToCloud(s.access_token);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const supabase = getSupabase();
@@ -106,8 +116,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, s) => {
-      void applySession(s);
+    } = supabase.auth.onAuthStateChange((event, s) => {
+      void applySession(s, event);
     });
 
     return () => subscription.unsubscribe();

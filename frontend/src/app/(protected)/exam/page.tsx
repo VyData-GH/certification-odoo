@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { AppLoading } from "@/components/AppLoading";
@@ -24,6 +24,12 @@ import {
   peekExamReplay,
   startExamRetry,
 } from "@/lib/exam-replay";
+import {
+  buildExamAttemptKey,
+  clearExamDraft,
+  loadExamDraft,
+  saveExamDraft,
+} from "@/lib/exam-draft";
 import { localizeQuestions } from "@/lib/localize";
 import { isDontKnow, isUnanswered } from "@/lib/answers";
 import { saveHistory } from "@/services/historyService";
@@ -37,6 +43,7 @@ import {
   resolveExamTiming,
   LocalizedQuestion,
   ModuleId,
+  Question,
 } from "@/types/exam";
 
 function ExamContent() {
@@ -44,6 +51,8 @@ function ExamContent() {
   const searchParams = useSearchParams();
   const { tr, locale } = useLanguage();
   const { accessToken } = useAuth();
+  const accessTokenRef = useRef(accessToken);
+  accessTokenRef.current = accessToken;
 
   const [questions, setQuestions] = useState<LocalizedQuestion[]>([]);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
@@ -59,9 +68,25 @@ function ExamContent() {
   const [sessionSeed, setSessionSeed] = useState<number | null>(null);
   const [examStarted, setExamStarted] = useState(false);
 
+  // Prevent JWT/token or locale flicker from wiping an in-progress attempt.
+  const examStartedRef = useRef(false);
+  const submittedRef = useRef(false);
+  examStartedRef.current = examStarted;
+  submittedRef.current = submitted;
+
   const isReviewMode = config?.mode === "review";
+  /** Once a timed (or module) attempt has started, leaving is locked — like the official exam. */
+  const navigationLocked =
+    examStarted && !submitted && !isReviewMode;
 
   useEffect(() => {
+    // Token refresh / remount must never reset answers mid-exam.
+    if (examStartedRef.current && !submittedRef.current) {
+      return;
+    }
+
+    const attemptKey = buildExamAttemptKey(searchParams);
+    const draft = loadExamDraft(attemptKey);
     const replayParam = searchParams.get("replay");
     const presetId = searchParams.get("preset");
     const moduleParam = searchParams.get("module") as ModuleId | null;
@@ -72,7 +97,86 @@ function ExamContent() {
 
     let cancelled = false;
 
+    function applyPreparedExam(
+      examConfig: ExamConfig,
+      selected: Question[],
+      seed: number,
+      restore?: {
+        answers: (number | null)[];
+        currentIndex: number;
+        startedAt: number;
+        totalSeconds: number;
+      }
+    ) {
+      const examLocale =
+        examConfig.forceEnglish || forceEnglish ? "en" : locale;
+      const dontKnowLabel =
+        examLocale === "en" ? "I don't know" : tr.exam.dontKnow;
+      const localized = localizeQuestions(selected, examLocale);
+      const shuffled = shuffleAllQuestionOptions(
+        localized,
+        seed,
+        dontKnowLabel
+      );
+
+      setConfig(examConfig);
+      setSessionSeed(seed);
+      setQuestions(shuffled);
+
+      if (restore) {
+        const elapsed = Math.floor((Date.now() - restore.startedAt) / 1000);
+        const remaining = Math.max(0, restore.totalSeconds - elapsed);
+        setAnswers(restore.answers);
+        setCurrentIndex(
+          Math.min(Math.max(0, restore.currentIndex), shuffled.length - 1)
+        );
+        setTotalSeconds(restore.totalSeconds);
+        setRemainingSeconds(remaining);
+        setStartedAt(restore.startedAt);
+        setExamStarted(true);
+        setSubmitted(false);
+        setResult(null);
+        setReviewRevealed(false);
+      } else {
+        const duration = examConfig.durationMinutes * 60;
+        setAnswers(new Array(shuffled.length).fill(null));
+        setRemainingSeconds(duration);
+        setTotalSeconds(duration);
+        setExamStarted(false);
+        setStartedAt(null);
+        setSubmitted(false);
+        setResult(null);
+        setCurrentIndex(0);
+        setReviewRevealed(false);
+      }
+
+      if (replayParam) {
+        dismissExamReplayStorage();
+      } else {
+        clearExamReplay();
+      }
+    }
+
     async function boot() {
+      // Resume mid-exam draft (F5 / remount) before selecting a new question set.
+      if (draft?.questionIds?.length) {
+        const restored = loadQuestionsByIds(draft.questionIds);
+        if (
+          restored.length === draft.questionIds.length &&
+          draft.answers.length === draft.questionIds.length
+        ) {
+          if (cancelled) return;
+          applyPreparedExam(draft.config, restored, draft.sessionSeed, {
+            answers: draft.answers,
+            currentIndex: draft.currentIndex,
+            startedAt: draft.startedAt,
+            totalSeconds: draft.totalSeconds,
+          });
+          return;
+        }
+        clearExamDraft();
+      }
+
       let examConfig: ExamConfig;
       let selected;
       let seed: number;
@@ -135,7 +239,7 @@ function ExamContent() {
             getDueSrsCount,
           } = await import("@/lib/spaced-repetition");
 
-          const { items } = await loadHistory(accessToken);
+          const { items } = await loadHistory(accessTokenRef.current);
           let questionIds: string[] = [];
           let modules: ModuleId[] | undefined;
 
@@ -202,53 +306,27 @@ function ExamContent() {
         return;
       }
 
-      const examLocale =
-        examConfig.forceEnglish || forceEnglish ? "en" : locale;
-      const dontKnowLabel =
-        examLocale === "en"
-          ? "I don't know"
-          : tr.exam.dontKnow;
-      const localized = localizeQuestions(selected, examLocale);
-      const shuffled = shuffleAllQuestionOptions(
-        localized,
-        seed,
-        dontKnowLabel
-      );
-
-      setConfig(examConfig);
-      setSessionSeed(seed);
-      setQuestions(shuffled);
-      setAnswers(new Array(shuffled.length).fill(null));
-      const duration = examConfig.durationMinutes * 60;
-      setRemainingSeconds(duration);
-      setTotalSeconds(duration);
-      setExamStarted(false);
-      setStartedAt(null);
-      setSubmitted(false);
-      setResult(null);
-      setCurrentIndex(0);
-      setReviewRevealed(false);
-      if (replayParam) {
-        dismissExamReplayStorage();
-      } else {
-        clearExamReplay();
-      }
+      applyPreparedExam(examConfig, selected, seed);
     }
 
     void boot();
     return () => {
       cancelled = true;
     };
-  }, [searchParams, router, locale, tr.exam.dontKnow, accessToken]);
+    // accessToken intentionally omitted: JWT refresh must not reboot the exam.
+  }, [searchParams, router, locale, tr.exam.dontKnow]);
 
   const handleStartExam = useCallback(() => {
     clearExamReplay();
+    const now = Date.now();
     setExamStarted(true);
-    setStartedAt(Date.now());
+    setStartedAt(now);
   }, []);
 
   const handleSubmit = useCallback(() => {
+    if (submittedRef.current) return;
     if (!config || !startedAt || sessionSeed === null) return;
+    submittedRef.current = true;
 
     const examLocale: "en" | "fr" =
       config.forceEnglish ? "en" : locale;
@@ -298,6 +376,7 @@ function ExamContent() {
       ...scoreData,
     };
 
+    clearExamDraft();
     setResult(examResult);
     setSubmitted(true);
     void saveHistory(examResult, accessToken);
@@ -306,6 +385,55 @@ function ExamContent() {
       .catch(() => undefined);
     setShowConfirm(false);
   }, [config, startedAt, sessionSeed, questions, answers, accessToken, locale]);
+
+  // Persist mid-exam draft so F5 / token remounts do not lose answers.
+  useEffect(() => {
+    if (
+      !navigationLocked ||
+      !config ||
+      sessionSeed === null ||
+      !startedAt ||
+      questions.length === 0
+    ) {
+      return;
+    }
+    saveExamDraft({
+      attemptKey: buildExamAttemptKey(searchParams),
+      config,
+      sessionSeed,
+      questionIds: questions.map((q) => q.id),
+      answers,
+      currentIndex,
+      remainingSeconds,
+      totalSeconds,
+      startedAt,
+      examLocale: config.forceEnglish ? "en" : locale,
+      savedAt: Date.now(),
+    });
+  }, [
+    navigationLocked,
+    config,
+    sessionSeed,
+    startedAt,
+    questions,
+    answers,
+    currentIndex,
+    remainingSeconds,
+    totalSeconds,
+    searchParams,
+    locale,
+  ]);
+
+  // Block tab close / refresh while a locked attempt is running.
+  useEffect(() => {
+    if (!navigationLocked) return;
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [navigationLocked]);
 
   useEffect(() => {
     if (!config || !examStarted || submitted || isReviewMode || remainingSeconds <= 0) {
@@ -325,6 +453,28 @@ function ExamContent() {
 
     return () => clearInterval(interval);
   }, [config, examStarted, submitted, isReviewMode, remainingSeconds, handleSubmit]);
+
+  // Time already expired when restoring a draft → submit immediately.
+  useEffect(() => {
+    if (
+      !config ||
+      !examStarted ||
+      submitted ||
+      isReviewMode ||
+      config.durationMinutes <= 0 ||
+      remainingSeconds > 0
+    ) {
+      return;
+    }
+    handleSubmit();
+  }, [
+    config,
+    examStarted,
+    submitted,
+    isReviewMode,
+    remainingSeconds,
+    handleSubmit,
+  ]);
 
   const handleSelect = (index: number) => {
     if (submitted) return;
@@ -383,9 +533,11 @@ function ExamContent() {
         <div className="max-w-6xl mx-auto px-4 h-11 flex items-center justify-between gap-3">
           <div className="flex items-center gap-4 min-w-0">
             <BrandLogo className="h-6 w-auto" />
-            <Link href="/" className="text-white/80 hover:text-white text-sm shrink-0">
-              {tr.exam.leave}
-            </Link>
+            {!navigationLocked && (
+              <Link href="/" className="text-white/80 hover:text-white text-sm shrink-0">
+                {tr.exam.leave}
+              </Link>
+            )}
           </div>
           <h1 className="font-medium text-sm">
             {isReviewMode
