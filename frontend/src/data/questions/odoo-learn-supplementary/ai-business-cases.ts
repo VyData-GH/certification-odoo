@@ -57,7 +57,7 @@ complexQ({
     },
     distractors: [
       { en: "Replace every relational many2one with a free-text chat transcript.", fr: "Remplacez chaque many2one relationnel par une transcription de discussion en texte libre." },
-      { en: "Disable record rules so AI can edit any company record.", fr: "Désactivez les règles d'enregistrement afin que l'IA puisse modifier n'importe quel enregistrement d'entreprise." },
+      { en: "Disable access domains so AI can edit any company record.", fr: "Désactivez les domaines d'accès afin que l'IA puisse modifier n'importe quel enregistrement d'entreprise." },
       { en: "Convert binary attachments into encrypted blockchain hashes only.", fr: "Convertissez les pièces jointes binaires uniquement en hachages de blockchain cryptés." },
     ],
     explanation: {

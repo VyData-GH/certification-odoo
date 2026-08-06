@@ -15,12 +15,12 @@ export interface QuestionStats {
 }
 
 export const QUESTION_STATS: QuestionStats = {
-  "total": 2307,
-  "certificationTotal": 1880,
+  "total": 2308,
+  "certificationTotal": 1881,
   "supplementaryTotal": 427,
   "byModule": {
     "accounting": 176,
-    "ai": 20,
+    "ai": 21,
     "ai-business-cases": 10,
     "appointments": 9,
     "barcode": 26,
@@ -62,7 +62,7 @@ export const QUESTION_STATS: QuestionStats = {
     "ecommerce": 104,
     "survey": 35,
     "marketing": 85,
-    "ai": 20,
+    "ai": 21,
     "crm": 157,
     "sales": 134,
     "purchases": 70,

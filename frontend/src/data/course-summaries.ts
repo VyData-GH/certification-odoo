@@ -916,7 +916,7 @@ export const CERTIFICATION_COURSE_SUMMARIES: Record<
       en: [
         "Unlike Excel exports, Odoo Spreadsheet stays live-connected to the database and refreshes",
         "A Dashboard is a synthesis view of existing sheets/widgets — not a separate disconnected file",
-        "Live inserts respect the viewer’s record rules",
+        "Live inserts respect the viewer’s access domains",
         "No formula links to another spreadsheet file (data-leak protection)",
         "For functional cert: know the live-data principle — exact ODOO.PIVOT syntax is secondary",
       ],

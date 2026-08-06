@@ -561,7 +561,7 @@ complexQ({
     },
     distractors: [
       { en: "The data is copied once as static values and never updates again.", fr: "Les données sont copiées une fois sous forme de valeurs statiques et ne sont plus jamais mises à jour." },
-      { en: "Inserted lists bypass record rules so every user sees all companies' data.", fr: "Les listes insérées contournent les règles d'enregistrement afin que chaque utilisateur puisse voir les données de toutes les entreprises." },
+      { en: "Inserted lists bypass access domains so every user sees all companies' data.", fr: "Les listes insérées contournent les domaines d'accès afin que chaque utilisateur puisse voir les données de toutes les entreprises." },
       { en: "Pivots can only be refreshed after exporting the spreadsheet to Excel.", fr: "Les pivots ne peuvent être actualisés qu'après avoir exporté la feuille de calcul vers Excel." },
     ],
     explanation: {

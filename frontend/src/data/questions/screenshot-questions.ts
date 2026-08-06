@@ -81,13 +81,13 @@ export const screenshotQuestions = [
     image: {
       src: "/exam-screenshots/mrp-manufacturing.svg",
       alt: {
-        en: "Odoo manufacturing order form with Produce All button",
-        fr: "Ordre de fabrication Odoo avec le bouton Produire tout",
+        en: "Odoo manufacturing order form with Produce button",
+        fr: "Ordre de fabrication Odoo avec le bouton Produire",
       },
     },
     text: {
-      en: "Based on this Manufacturing Order screenshot, what does « Produce All » do?",
-      fr: "D'après cette capture d'ordre de fabrication, que fait « Produire tout » ?",
+      en: "Based on this Manufacturing Order screenshot, what does « Produce » do?",
+      fr: "D'après cette capture d'ordre de fabrication, que fait « Produire » ?",
     },
     correct: {
       en: "Records production for the full quantity, consumes components, and posts finished goods into stock",
@@ -108,8 +108,8 @@ export const screenshotQuestions = [
       },
     ],
     explanation: {
-      en: "Produce All on a manufacturing order completes production for the entire quantity, triggering component consumption and finished product moves (MRP ‣ Operations ‣ Manufacturing Orders).",
-      fr: "Produire tout sur un ordre de fabrication finalise la production pour toute la quantité, déclenchant la consommation des composants et les entrées de produits finis (MRP ‣ Opérations ‣ Ordres de fabrication).",
+      en: "From Odoo 19.4, a single Produce button replaces Produce / Produce All. It completes production for the quantity, triggering component consumption and finished product moves (MRP ‣ Operations ‣ Manufacturing Orders).",
+      fr: "Depuis Odoo 19.4, un seul bouton Produire remplace Produire / Produire tout. Il finalise la production pour la quantité, déclenchant la consommation des composants et les entrées de produits finis (MRP ‣ Opérations ‣ Ordres de fabrication).",
     },
   }),
   screenshotQ({

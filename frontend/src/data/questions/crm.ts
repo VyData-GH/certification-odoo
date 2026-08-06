@@ -258,8 +258,8 @@ export const crmQuestions = [
         fr: "Définir les routes d'entrepôt et politiques de livraison appliquées automatiquement quand une opportunité atteint l'étape Gagné",
       },
       {
-        en: "Restrict CRM record visibility through record rules so each team can only access contacts in its country",
-        fr: "Restreindre la visibilité des enregistrements CRM via des règles d'enregistrement pour que chaque équipe n'accède qu'aux contacts de son pays",
+        en: "Restrict CRM record visibility through access domains so each team can only access contacts in its country",
+        fr: "Restreindre la visibilité des enregistrements CRM via des domaines d'accès pour que chaque équipe n'accède qu'aux contacts de son pays",
       },
       {
         en: "Replace the Salesperson field on quotations; all confirmed orders inherit the team leader as the default salesperson",

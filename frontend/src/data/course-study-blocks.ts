@@ -405,12 +405,12 @@ export const COURSE_STUDY_BLOCKS: Record<
     },
     {
       title: {
-        en: "Access rights vs record rules",
-        fr: "Droits d'accès vs règles d'enregistrement",
+        en: "Access rights & record domains (19.4)",
+        fr: "Droits d'accès & domaines (19.4)",
       },
       body: {
-        en: "Access rights (ACL): which create/read/write/unlink a security group may perform on a model. Record rules: which records of that model the group can see (domain filter, e.g. only own sales team). Confusing the two is a classic exam trap. Developer mode reveals technical field names and view XML for debugging.",
-        fr: "Droits d'accès (ACL) : create/read/write/unlink d'un groupe sur un modèle. Règles d'enregistrement : quels enregistrements sont visibles (domaine, ex. son équipe). Piège classique : les confondre. Mode développeur = noms techniques et XML des vues.",
+        en: "From Odoo 19.4, ACLs and former record rules are merged into ir.access: model + CRUD operations + optional group + domain. With a group set, the line grants permission on matching records; without a group, the domain restricts all users. Confusing « can do CRUD on the model » vs « which rows » remains a classic trap — but both live on one access screen. Developer mode reveals technical field names and view XML for debugging.",
+        fr: "Depuis Odoo 19.4, ACL et anciennes règles d'enregistrement sont fusionnés dans ir.access : modèle + CRUD + groupe optionnel + domaine. Avec un groupe, la ligne accorde l'accès sur les enregistrements correspondants ; sans groupe, le domaine restreint tous les utilisateurs. Piège classique : confondre « CRUD sur le modèle » et « quelles lignes » — mais les deux sont sur un seul écran. Mode développeur = noms techniques et XML des vues.",
       },
     },
     {

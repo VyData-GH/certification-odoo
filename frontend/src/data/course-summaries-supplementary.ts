@@ -55,8 +55,8 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
   "global-settings": {
     readMinutes: 3,
     overview: {
-      en: "Global settings and access rights: multi-company, users, groups, and record rules basics.",
-      fr: "Paramètres globaux et droits d'accès : multi-société, utilisateurs, groupes et règles d'enregistrement.",
+      en: "Global settings and access rights: multi-company, users, groups, and ir.access domains (19.4).",
+      fr: "Paramètres globaux et droits d'accès : multi-société, utilisateurs, groupes et domaines ir.access (19.4).",
     },
     quickFlow: {
       en: [
@@ -74,25 +74,25 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
       en: [
         "Access rights via security groups",
         "Multi-company isolation and shared records",
-        "Record rules (domain filters per group)",
+        "ir.access domains (CRUD + row filter on one line, 19.4)",
         "Developer mode for technical menus",
       ],
       fr: [
         "Droits d'accès via groupes de sécurité",
         "Isolation multi-société et enregistrements partagés",
-        "Règles d'enregistrement (filtres domaine par groupe)",
+        "Domaines ir.access (CRUD + filtre lignes sur une ligne, 19.4)",
         "Mode développeur pour menus techniques",
       ],
     },
     mustKnow: {
       en: [
         "Groups grant menu + model access",
-        "Record rules further restrict rows",
+        "ir.access domains further restrict rows (19.4)",
         "Multi-company fields on partners/products matter",
       ],
       fr: [
         "Les groupes donnent accès menus + modèles",
-        "Les règles restreignent les lignes",
+        "Domaines ir.access restreignent les lignes (19.4)",
         "Champs multi-société sur partenaires/produits",
       ],
     },
@@ -808,7 +808,7 @@ export const SUPPLEMENTARY_COURSE_SUMMARIES: Record<
       en: [
         "Create/extend a module → models & fields",
         "Define views and actions",
-        "Add security (ACL / record rules) → test",
+        "Add security (ir.access domains) → test",
       ],
       fr: [
         "Créer/étendre un module → modèles et champs",

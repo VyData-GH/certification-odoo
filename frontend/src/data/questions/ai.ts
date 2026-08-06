@@ -322,8 +322,8 @@ export const aiQuestions = [
         fr: "Seul l'administrateur système peut voir les suggestions IA ; les utilisateurs standard reçoivent le texte final par e-mail",
       },
       {
-        en: "Suggestions bypass record rules and are applied to all companies in a multi-company database at once",
-        fr: "Les suggestions contournent les règles d'enregistrement et s'appliquent à toutes les sociétés multi-société d'un coup",
+        en: "Suggestions bypass access domains and are applied to all companies in a multi-company database at once",
+        fr: "Les suggestions contournent les domaines d'accès et s'appliquent à toutes les sociétés multi-société d'un coup",
       },
     ],
     explanation: {
@@ -339,8 +339,8 @@ export const aiQuestions = [
       fr: "Qu'est-ce qu'un Agent IA dans Odoo 19 ?",
     },
     correct: {
-      en: "A configurable conversational agent with topics, tools, and optional document sources for guided assistance",
-      fr: "Un agent conversationnel configurable avec sujets, outils et sources documentaires optionnelles pour une assistance guidée",
+      en: "A configurable conversational agent with skills, tools, and optional document sources for guided assistance",
+      fr: "Un agent conversationnel configurable avec compétences (skills), outils et sources documentaires optionnelles pour une assistance guidée",
     },
     distractors: [
       {
@@ -357,8 +357,8 @@ export const aiQuestions = [
       },
     ],
     explanation: {
-      en: "AI Agents are configured in the AI app with topics, tools, and knowledge sources to answer questions and perform allowed actions.",
-      fr: "Les Agents IA se configurent dans l'app AI avec sujets, outils et sources pour répondre et effectuer des actions autorisées.",
+      en: "AI Agents are configured in the AI app with skills (formerly called topics in earlier 19.x), tools, and knowledge sources to answer questions and perform allowed actions.",
+      fr: "Les Agents IA se configurent dans l'app AI avec des compétences/skills (anciennement « topics » en 19.x), outils et sources pour répondre et effectuer des actions autorisées.",
     },
   }),
   complexQ({
@@ -599,6 +599,36 @@ export const aiQuestions = [
     explanation: {
       en: "Governance covers access control, human review of AI output, and monitoring of external provider consumption.",
       fr: "La gouvernance couvre le contrôle d'accès, la revue humaine des sorties IA et le suivi de la consommation fournisseur.",
+    },
+  }),
+  complexQ({
+    id: "ai-021",
+    module: "ai",
+    text: {
+      en: "What does MCP (Model Context Protocol) enable in Odoo 19.4 AI?",
+      fr: "Que permet le MCP (Model Context Protocol) dans l'IA Odoo 19.4 ?",
+    },
+    correct: {
+      en: "Connect external AI tools securely to the Odoo database via an MCP key to query and act on data",
+      fr: "Connecter des outils IA externes de façon sécurisée à la base Odoo via une clé MCP pour interroger et agir sur les données",
+    },
+    distractors: [
+      {
+        en: "Replace all Odoo security groups so external tools gain unrestricted write access to every model",
+        fr: "Remplacer tous les groupes de sécurité Odoo pour que les outils externes aient un accès en écriture illimité à tous les modèles",
+      },
+      {
+        en: "Export the entire PostgreSQL dump nightly to a public FTP folder for offline ChatGPT training",
+        fr: "Exporter chaque nuit le dump PostgreSQL complet vers un dossier FTP public pour un entraînement ChatGPT hors ligne",
+      },
+      {
+        en: "Disable Ask AI search inside Odoo because MCP fully replaces in-app AI agents and skills",
+        fr: "Désactiver la recherche Ask AI dans Odoo car le MCP remplace entièrement les agents et compétences IA internes",
+      },
+    ],
+    explanation: {
+      en: "Odoo 19.4 can act as an MCP server: create an MCP key so external AI clients (e.g. Claude, ChatGPT, Cursor) access Odoo data and workflows under controlled credentials. In-app agents and skills remain separate.",
+      fr: "Odoo 19.4 peut agir comme serveur MCP : créer une clé MCP pour que des clients IA externes (Claude, ChatGPT, Cursor…) accèdent aux données et flux Odoo sous credentials contrôlés. Les agents et compétences internes restent distincts.",
     },
   }),
 ];
